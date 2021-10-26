@@ -66,7 +66,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtProductCode.Text = "";
             txtProductDesc.Text = "";
             txtProdPrice.Text = "";
-            drpVariety.SelectedIndex = -1;
+            drpVariety.Text = "";
+            txtStockLevel.Text = "";
         }
 
 

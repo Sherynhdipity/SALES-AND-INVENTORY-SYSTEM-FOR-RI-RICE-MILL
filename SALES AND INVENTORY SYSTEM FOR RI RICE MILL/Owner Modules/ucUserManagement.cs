@@ -58,15 +58,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dgvUserList.Refresh();
             con.Close();
         }
+
+
         //Clear Data  
         public void ClearControls()
         {
+            //Add
             txtName.Text = "";
             txtUsername.Text = "";
             txtPassword.Text = "";
             txtConfirmPass.Text = "";
             drpRole.Text = "";
             drpStatus.Text = "";
+            
+
+            //Update
+            txtName1.Text = "";
+            txtUsername1.Text = "";
+            drpRole1.Text = "";
+            drpStatus.Text = "";
+
+
         }
 
         //Method AddUser
@@ -146,28 +158,28 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             result = MessageBox.Show("Do you want to update this user?", "Update User", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if (String.IsNullOrEmpty(txtName1.Text) && String.IsNullOrEmpty(txtUsername1.Text) && String.IsNullOrEmpty(drpRole.Text) && String.IsNullOrEmpty(drpStatus.Text))
+                if (String.IsNullOrEmpty(txtName1.Text) && String.IsNullOrEmpty(txtUsername1.Text) && String.IsNullOrEmpty(drpRole1.Text) && String.IsNullOrEmpty(drpStatus.Text))
                 {
                     MessageBox.Show("Please Select User to Update");
                     dgvUserList.Visible = true;
                     DisplayUserList();
                 }
-                else if (String.IsNullOrEmpty(txtName.Text))
+                else if (String.IsNullOrEmpty(txtName1.Text))
                 {
                     MessageBox.Show("Enter Name first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtName.Focus();
                 }
-                else if (String.IsNullOrWhiteSpace(txtName.Text))
+                else if (String.IsNullOrWhiteSpace(txtName1.Text))
                 {
                     MessageBox.Show("Whitespace is not allowed!");
                     txtName.Clear();
                 }
-                else if (String.IsNullOrEmpty(txtUsername.Text))
+                else if (String.IsNullOrEmpty(txtUsername1.Text))
                 {
                     MessageBox.Show("Enter Username first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtUsername.Focus();
                 }
-                else if (String.IsNullOrWhiteSpace(txtUsername.Text))
+                else if (String.IsNullOrWhiteSpace(txtUsername1.Text))
                 {
                     MessageBox.Show("Whitespace is not allowed!");
                     txtUsername.Clear();
@@ -178,7 +190,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     {
                         con.Close();
                         con.Open();
-                        QueryUpdate = "UPDATE tblUsers SET Name = '" + txtName1.Text + "', Username = '" + txtUsername1.Text + "', Status = '" + drpStatus.Text + "', RoleID = (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole.Text + "') WHERE UserID = '" + lblUserID.Text + "'";
+                        QueryUpdate = "UPDATE tblUsers SET Name = '" + txtName1.Text + "', Username = '" + txtUsername1.Text + "', Status = '" + drpStatus.Text + "', RoleID = (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole1.Text + "') WHERE UserID = '" + lblUserID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
 
@@ -203,6 +215,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
+        //for update
         private void dgvUserList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -210,15 +223,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 DataGridViewRow row = this.dgvUserList.Rows[e.RowIndex];
 
 
-                txtName.Text = row.Cells[0].Value.ToString();
-                txtUsername.Text = row.Cells[1].Value.ToString();
+                txtName1.Text = row.Cells[0].Value.ToString();
+                txtUsername1.Text = row.Cells[1].Value.ToString();
                 drpStatus.Text = row.Cells[2].Value.ToString();
-                drpRole.Text = row.Cells[3].Value.ToString();
+                drpRole1.Text = row.Cells[3].Value.ToString();
 
 
                 con.Close();
                 con.Open();
-                QuerySelect = "SELECT UserID FROM tblUsers WHERE Name='" + txtName.Text + "'";
+                QuerySelect = "SELECT UserID FROM tblUsers WHERE Name='" + txtName1.Text + "'";
                 cmd = new SqlCommand(QuerySelect, con);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -236,42 +249,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             dgvUserList.Visible = false;
             panelAdd.Visible = true;
-            btnUpdate.Visible = false;
-
-            drpStatus.Visible = false;
-            lblStatus.Visible = false;
+            panelUpdate.Visible = false;
 
             lblAddUser.Visible = true;
             lblUserList.Visible = false;
             lblUpdateUser.Visible = false;
 
-            //Password
-
-            bunifuLabel4.Visible = true;
-            txtPassword.Visible = true;
-            txtConfirmPass.Visible = true;
-            lblPassNotif.Visible = true;
         }
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
-            panelAdd.Visible = true;
-            btnUpdate.Visible = true;
+            panelAdd.Visible = false;
+            panelUpdate.Visible = true;
+
             lblUpdateUser.Visible = true;
             lblAddUser.Visible = false;
+
             lblUserList.Visible = false;
             dgvUserList.Visible = false;
-
-
-            drpStatus.Visible = true;
-            lblStatus.Visible = true;
-
-            //Password
-
-            bunifuLabel4.Visible = false;
-            txtPassword.Visible = false;
-            txtConfirmPass.Visible = false;
-            lblPassNotif.Visible = false;
 
 
         }
@@ -282,6 +277,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblAddUser.Visible = false;
             lblUpdateUser.Visible = false;
             panelAdd.Visible = false;
+            panelUpdate.Visible = false;
             dgvUserList.Visible = true;
             DisplayUserList();
         }
@@ -318,6 +314,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 lblPassNotif.ForeColor = System.Drawing.Color.Red;
                 lblPassNotif.Text = "Passwords Don't Match";
             }
+        }
+
+        private void btnCancel1_Click(object sender, EventArgs e)
+        {
+            ClearControls();
         }
     }
 }
