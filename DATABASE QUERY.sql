@@ -31,6 +31,7 @@ CREATE TABLE tblProducts(
 	[ProductDesc] [varchar](max) NULL,
 	[ProductVariety] [varchar](100) NULL,
 	[Price] [decimal](18, 2) NULL,
+	[RestockLevel] [int], NULL
 	)
 
 
@@ -79,7 +80,7 @@ CREATE TABLE tblPayments(
 
 CREATE TABLE tblTransactions(
 	[TransactionID] [int] IDENTITY(1,1) PRIMARY KEY,
-        [TransactionDate] [datetime] NULL,
+    [TransactionDate] [datetime] NULL,
 	[PurchaseID] [int] NULL,
 	[UserID] [int] NULL,
 	)
