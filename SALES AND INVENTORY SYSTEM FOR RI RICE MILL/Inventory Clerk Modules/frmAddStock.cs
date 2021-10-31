@@ -27,12 +27,102 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryInsert;
         public static string QuerySelect;
         public static string QueryUpdate;
-        public static string QueryDelete;
+
+
+        //Display ProductData in DataGridView  
+        public void DisplayProductList()
+        {
+            con.Open();
+            QuerySelect = "SELECT ProductCode AS 'Product Code', ProductDesc AS 'Product Description', ProductVariety AS 'Product Variety', Price, RestockLevel AS 'Restock Level' FROM tblProducts ORDER BY ProductID ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+
+            dgvProductList.DataSource = dt;
+            dgvProductList.Refresh();
+            con.Close();
+        }
+
+
+        private void addStock()
+        {
+            if (String.IsNullOrWhiteSpace(txtBatchNo.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtBatchNo.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtBatchNo.Text))
+            {
+                MessageBox.Show("Enter Batch Number!");
+                txtBatchNo.Focus();
+            }
+            else if (String.IsNullOrWhiteSpace(txtQuantity.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtQuantity.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtQuantity.Text))
+            {
+                MessageBox.Show("Enter Quantity!");
+                txtQuantity.Focus();
+            }
+            else if (txtBatchNo.Text != "" && txtQuantity.Text != "")
+            {
+                result = MessageBox.Show("Do you want to Add this Stock?", "Add Stock", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        //INSERT tblBatch
+                        con.Open();
+                        QueryInsert = "INSERT INTO tblBatch(BatchNumber,MillingDate) VALUES ('" + txtBatchNo.Text + "', '" + dtpMillingDate.Value.Date.ToShortDateString() + "') ";
+                        cmd = new SqlCommand(QueryInsert, con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+
+                        //INSERT tblBatchProduct
+                        con.Open();
+                        int qty = Convert.ToInt32(txtQuantity.Text);
+                        int batchNum = Convert.ToInt32(txtBatchNo.Text);
+                        for (int i = 0; i < qty; i++)
+                        {
+                            batchNum++;
+                            QueryInsert = "INSERT INTO tblBatchProduct(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + (batchNum - 1).ToString() + "', 'IN')";
+                            cmd = new SqlCommand(QueryInsert, con);
+                            cmd.ExecuteNonQuery();
+                        }
+                        con.Close();
+
+
+                        //INSERT tblStockin
+                        con.Open();
+                        QueryInsert = "INSERT INTO tblStockin (ProductID,QtyStockedIn,StockinDate,BatchID) VALUES((SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'), '" + txtQuantity.Text + "', '" + dtpStockinDate.Value.Date.ToShortDateString() + "', (SELECT MAX(BatchID) FROM tblBatch))";
+                        cmd = new SqlCommand(QueryInsert, con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+        }
+
 
 
         private void txtProductSearch_TextChange(object sender, EventArgs e)
         {
-
             if (txtProductSearch.Text == "")
             {
                 txtProductCode.Text = "";
@@ -43,7 +133,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 try
                 {
-                    con.Close();
                     con.Open();
                     QuerySelect = "SELECT ProductCode, ProductDesc, ProductVariety FROM tblProducts WHERE ProductCode ='" + txtProductSearch.Text + "' OR ProductDesc LIKE'%" + txtProductSearch.Text + "%'";
                     cmd = new SqlCommand(QuerySelect, con);
@@ -73,63 +162,42 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnAddStock_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(txtSackNo.Text))
+            addStock();
+        }
+
+        private void frmAddStock_Load(object sender, EventArgs e)
+        {
+            DisplayProductList();
+        }
+
+        private void dgvProductList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
             {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtSackNo.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtSackNo.Text))
-            {
-                MessageBox.Show("Enter Quantity!");
-                txtSackNo.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtQuantity.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtQuantity.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtQuantity.Text))
-            {
-                MessageBox.Show("Enter Quantity!");
-                txtQuantity.Focus();
-            }
-            else if (txtSackNo.Text != "" && txtQuantity.Text != "")
-            {
-                result = MessageBox.Show("Do you want to Add this Stock?", "Add Stock", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                DataGridViewRow row = this.dgvProductList.Rows[e.RowIndex];
+
+                txtProductCode.Text = row.Cells[0].Value.ToString();
+                txtProdDesc.Text = row.Cells[1].Value.ToString();
+                txtVariety.Text = row.Cells[2].Value.ToString();
+
+                con.Open();
+                QuerySelect = "SELECT ProductID FROM tblProducts WHERE ProductCode='" + txtProductCode.Text + "'";
+                cmd = new SqlCommand(QuerySelect, con);
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    try
-                    {
-                        con.Close();
-                        con.Open();
-                        QueryInsert = "INSERT INTO tblBatch(MillingDate,SackNumber) VALUES ('" + dtpMillingDate.Value.Date.ToShortDateString() + "', '" + txtSackNo.Text + "') ";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-
-                        con.Open();
-                        QueryInsert = "INSERT INTO tblStockin (ProductID,QtyStockedIn,StockinDate,BatchID) VALUES((SELECT ProductID FROM tblProducts WHERE ProductDesc = '" + txtProdDesc.Text + "'), '" + txtQuantity.Text + "', '" + dtpStockinDate.Value.Date.ToShortDateString() + "', (SELECT MAX(BatchID) FROM tblBatch))";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
-
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
-                        con.Close();
-                    }
+                    reader.Read();
+                    lblItemID.Text = reader["ProductID"].ToString();
+                    reader.Close();
                 }
-                else
-                {
+                con.Close();
 
-                }
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -123,27 +123,41 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 result = MessageBox.Show("Do you want to Add this Product?", "Add Product", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    try
+                    con.Open();
+                    QuerySelect = "SELECT * FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
                     {
-                        con.Close();
-                        con.Open();
-                        QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,ProductVariety,Price, RestockLevel) VALUES ('" + txtProductCode.Text + "', '" + txtProductDesc.Text + "', '" + drpVariety.Text + "', '" + txtProdPrice.Text + "', '" + txtStockLevel.Text +"')";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
-                        DisplayProductList();
-                        ClearControls();
-                        MessageBox.Show("Product Added Successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    catch (Exception ex)
-                    {
-
-                        MessageBox.Show(ex.Message);
-                    }
-                    finally
-                    {
+                        MessageBox.Show("This Product already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         con.Close();
                     }
+                    else
+                    {
+                        try
+                        {
+                            con.Open();
+                            QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,ProductVariety,Price, RestockLevel) VALUES ('" + txtProductCode.Text + "', '" + txtProductDesc.Text + "', '" + drpVariety.Text + "', '" + txtProdPrice.Text + "', '" + txtStockLevel.Text + "')";
+                            cmd = new SqlCommand(QueryInsert, con);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            MessageBox.Show("Product Added Successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DisplayProductList();
+                            ClearControls();
+                            
+                        }
+
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
+                    }                  
                 }
                 else
                 {
@@ -170,6 +184,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtProductCode.Text + "', ProductDesc='" + txtProductDesc.Text + "', ProductVariety='" + drpVariety.Text + "', Price='" + txtProdPrice.Text + "', RestockLevel='" + txtStockLevel.Text +"' WHERE ProductID='" + lblItemID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
+                        con.Close();
 
                         MessageBox.Show("Product Updated Successfully!", "Update Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DisplayProductList();
@@ -178,7 +193,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("This Product already exists. Try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message);
                     }
 
                     finally
@@ -208,7 +223,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtProdPrice.Text = row.Cells[3].Value.ToString();
                 txtStockLevel.Text = row.Cells[4].Value.ToString();
 
-                con.Close();
                 con.Open();
                 QuerySelect = "SELECT ProductID FROM tblProducts WHERE ProductCode='" + txtProductCode.Text + "'";
                 cmd = new SqlCommand(QuerySelect, con);

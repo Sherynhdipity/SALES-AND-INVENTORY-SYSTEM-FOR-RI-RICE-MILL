@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class frmBackup : UserControl
+    public partial class ucBackupRestore : UserControl
     {
-        private static frmBackup backup;
-        public static frmBackup backupInstance
+        private static ucBackupRestore backupRestore;
+        public static ucBackupRestore backupRestoreInstance
         {
             get
             {
-                if (backup == null)
-                    backup = new frmBackup();
-                return backup;
+                if (backupRestore == null)
+                    backupRestore = new ucBackupRestore();
+                return backupRestore;
             }
         }
-        public frmBackup()
+        public ucBackupRestore()
         {
             InitializeComponent();
         }

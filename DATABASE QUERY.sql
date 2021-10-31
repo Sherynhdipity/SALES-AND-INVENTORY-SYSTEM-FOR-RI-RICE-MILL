@@ -31,6 +31,7 @@ CREATE TABLE tblProducts(
 	[ProductDesc] [varchar](max) NULL,
 	[ProductVariety] [varchar](100) NULL,
 	[Price] [decimal](18, 2) NULL,
+	[RestockLevel] [int], NULL
 	)
 
 
@@ -56,9 +57,18 @@ CREATE TABLE tblProducts(
 
 CREATE TABLE tblBatch(
 	[BatchID] [int] IDENTITY(1,1) PRIMARY KEY,
+	[BatchNumber] [int] NULL,
 	[MillingDate] [datetime] NULL,
-	[SackNumber] [int] NULL,
 	)
+
+
+CREATE TABLE tblBatchProduct(
+	[ID][int] IDENTITY(1,1) PRIMARY KEY,
+	[BatchID] [int] NULL,
+	[BatchNumber] [int] NULL,
+	[Status] [datetime] NULL,
+	)
+
 
 
 
@@ -79,7 +89,7 @@ CREATE TABLE tblPayments(
 
 CREATE TABLE tblTransactions(
 	[TransactionID] [int] IDENTITY(1,1) PRIMARY KEY,
-        [TransactionDate] [datetime] NULL,
+    [TransactionDate] [datetime] NULL,
 	[PurchaseID] [int] NULL,
 	[UserID] [int] NULL,
 	)

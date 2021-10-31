@@ -34,25 +34,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuLabel5 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvStockList = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.btnUpdate = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuPanel4 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.dgvProductList = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.bunifuLabel9 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnAddStock = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.btnRefresh = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
-            this.bunifuPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
             this.bunifuPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,10 +74,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.BorderThickness = 1;
             this.bunifuPanel1.Controls.Add(this.bunifuLabel5);
             this.bunifuPanel1.Controls.Add(this.dgvStockList);
-            this.bunifuPanel1.Location = new System.Drawing.Point(480, 223);
+            this.bunifuPanel1.Location = new System.Drawing.Point(26, 223);
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = false;
-            this.bunifuPanel1.Size = new System.Drawing.Size(583, 429);
+            this.bunifuPanel1.Size = new System.Drawing.Size(1037, 429);
             this.bunifuPanel1.TabIndex = 8;
             // 
             // bunifuLabel5
@@ -132,7 +124,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvStockList.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvStockList.CurrentTheme.BackColor = System.Drawing.Color.White;
             this.dgvStockList.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvStockList.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.Black;
+            this.dgvStockList.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
             this.dgvStockList.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
             this.dgvStockList.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvStockList.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
@@ -153,7 +145,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvStockList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStockList.EnableHeadersVisualStyles = false;
             this.dgvStockList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvStockList.HeaderBackColor = System.Drawing.Color.Black;
+            this.dgvStockList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvStockList.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvStockList.HeaderForeColor = System.Drawing.Color.White;
             this.dgvStockList.Location = new System.Drawing.Point(16, 32);
@@ -162,7 +154,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvStockList.RowHeadersVisible = false;
             this.dgvStockList.RowTemplate.Height = 40;
             this.dgvStockList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockList.Size = new System.Drawing.Size(547, 379);
+            this.dgvStockList.Size = new System.Drawing.Size(996, 379);
             this.dgvStockList.TabIndex = 4;
             this.dgvStockList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
@@ -256,100 +248,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnUpdate.TextMarginLeft = 0;
             this.btnUpdate.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnUpdate.UseDefaultRadiusAndThickness = true;
-            // 
-            // bunifuPanel4
-            // 
-            this.bunifuPanel4.BackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.bunifuPanel4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel4.BackgroundImage")));
-            this.bunifuPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuPanel4.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.bunifuPanel4.BorderRadius = 10;
-            this.bunifuPanel4.BorderThickness = 1;
-            this.bunifuPanel4.Controls.Add(this.dgvProductList);
-            this.bunifuPanel4.Controls.Add(this.bunifuLabel9);
-            this.bunifuPanel4.Location = new System.Drawing.Point(26, 223);
-            this.bunifuPanel4.Name = "bunifuPanel4";
-            this.bunifuPanel4.ShowBorders = false;
-            this.bunifuPanel4.Size = new System.Drawing.Size(431, 429);
-            this.bunifuPanel4.TabIndex = 7;
-            // 
-            // dgvProductList
-            // 
-            this.dgvProductList.AllowCustomTheming = false;
-            this.dgvProductList.AllowUserToAddRows = false;
-            this.dgvProductList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvProductList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvProductList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProductList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProductList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvProductList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvProductList.ColumnHeadersHeight = 40;
-            this.dgvProductList.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.dgvProductList.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvProductList.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvProductList.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dgvProductList.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvProductList.CurrentTheme.BackColor = System.Drawing.Color.White;
-            this.dgvProductList.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvProductList.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.Black;
-            this.dgvProductList.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.dgvProductList.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvProductList.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.dgvProductList.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvProductList.CurrentTheme.Name = null;
-            this.dgvProductList.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvProductList.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvProductList.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvProductList.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dgvProductList.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductList.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvProductList.EnableHeadersVisualStyles = false;
-            this.dgvProductList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvProductList.HeaderBackColor = System.Drawing.Color.Black;
-            this.dgvProductList.HeaderBgColor = System.Drawing.Color.Empty;
-            this.dgvProductList.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvProductList.Location = new System.Drawing.Point(16, 32);
-            this.dgvProductList.Name = "dgvProductList";
-            this.dgvProductList.ReadOnly = true;
-            this.dgvProductList.RowHeadersVisible = false;
-            this.dgvProductList.RowTemplate.Height = 40;
-            this.dgvProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductList.Size = new System.Drawing.Size(397, 379);
-            this.dgvProductList.TabIndex = 4;
-            this.dgvProductList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // bunifuLabel9
-            // 
-            this.bunifuLabel9.AllowParentOverrides = false;
-            this.bunifuLabel9.AutoEllipsis = false;
-            this.bunifuLabel9.CursorType = null;
-            this.bunifuLabel9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.bunifuLabel9.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel9.Location = new System.Drawing.Point(13, 8);
-            this.bunifuLabel9.Name = "bunifuLabel9";
-            this.bunifuLabel9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel9.Size = new System.Drawing.Size(97, 18);
-            this.bunifuLabel9.TabIndex = 0;
-            this.bunifuLabel9.Text = "Product List";
-            this.bunifuLabel9.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel9.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnAddStock
             // 
@@ -503,16 +402,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Controls.Add(this.bunifuPanel2);
             this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.bunifuPanel1);
-            this.Controls.Add(this.bunifuPanel4);
             this.Name = "frmInventory";
             this.Size = new System.Drawing.Size(1087, 675);
             this.Load += new System.EventHandler(this.frmInventory_Load);
             this.bunifuPanel1.ResumeLayout(false);
             this.bunifuPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).EndInit();
-            this.bunifuPanel4.ResumeLayout(false);
-            this.bunifuPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
             this.bunifuPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -520,9 +415,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
         #endregion
-        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel4;
-        private Bunifu.UI.WinForms.BunifuDataGridView dgvProductList;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel9;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvStockList;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel5;

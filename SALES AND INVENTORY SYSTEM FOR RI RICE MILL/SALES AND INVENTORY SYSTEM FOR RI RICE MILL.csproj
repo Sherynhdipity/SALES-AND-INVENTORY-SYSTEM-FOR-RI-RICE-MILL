@@ -205,6 +205,18 @@
     <Compile Include="Cashier Modules\frmMainSales.Designer.cs">
       <DependentUpon>frmMainSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBatchItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBatchItems.Designer.cs">
+      <DependentUpon>frmBatchItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmUpdateStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmUpdateStock.Designer.cs">
+      <DependentUpon>frmUpdateStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory Clerk Modules\frmAddStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,42 +259,6 @@
     <Compile Include="Shared Modules\frmViewSalesReport.Designer.cs">
       <DependentUpon>frmViewSalesReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Shared Modules\frmBackup1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup1.Designer.cs">
-      <DependentUpon>frmBackup1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup2.Designer.cs">
-      <DependentUpon>frmBackup2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup3.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup3.Designer.cs">
-      <DependentUpon>frmBackup3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup4.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup4.Designer.cs">
-      <DependentUpon>frmBackup4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup5.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup5.Designer.cs">
-      <DependentUpon>frmBackup5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup6.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackup6.Designer.cs">
-      <DependentUpon>frmBackup6.cs</DependentUpon>
-    </Compile>
     <Compile Include="Shared Modules\ucDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -313,35 +289,11 @@
     <Compile Include="Owner Modules\ucProductManagement.Designer.cs">
       <DependentUpon>ucProductManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Shared Modules\frmBackupAndRestore.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmBackupAndRestore.Designer.cs">
-      <DependentUpon>frmBackupAndRestore.cs</DependentUpon>
-    </Compile>
     <Compile Include="Owner Modules\ucReports.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Owner Modules\ucReports.Designer.cs">
       <DependentUpon>ucReports.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmRestore1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmRestore1.Designer.cs">
-      <DependentUpon>frmRestore1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmRestore2.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmRestore2.Designer.cs">
-      <DependentUpon>frmRestore2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Shared Modules\frmRestore3.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Shared Modules\frmRestore3.Designer.cs">
-      <DependentUpon>frmRestore3.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\ucUserManagement.cs">
       <SubType>UserControl</SubType>
@@ -364,12 +316,24 @@
       <DependentUpon>ucInventoryReports.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Shared Modules\ucBackupRestore.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Shared Modules\ucBackupRestore.Designer.cs">
+      <DependentUpon>ucBackupRestore.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cashier Modules\frmMainSales.resx">
       <DependentUpon>frmMainSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="crpReceipt - Copy.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crpReceipt - Copy.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBatchItems.resx">
+      <DependentUpon>frmBatchItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\frmUpdateStock.resx">
+      <DependentUpon>frmUpdateStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\frmAddStock.resx">
       <DependentUpon>frmAddStock.cs</DependentUpon>
@@ -392,24 +356,6 @@
     <EmbeddedResource Include="Shared Modules\frmViewSalesReport.resx">
       <DependentUpon>frmViewSalesReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmBackup1.resx">
-      <DependentUpon>frmBackup1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmBackup2.resx">
-      <DependentUpon>frmBackup2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmBackup3.resx">
-      <DependentUpon>frmBackup3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmBackup4.resx">
-      <DependentUpon>frmBackup4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmBackup5.resx">
-      <DependentUpon>frmBackup5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmBackup6.resx">
-      <DependentUpon>frmBackup6.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Shared Modules\ucDashboard.resx">
       <DependentUpon>ucDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -425,20 +371,8 @@
     <EmbeddedResource Include="Owner Modules\ucProductManagement.resx">
       <DependentUpon>ucProductManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmBackupAndRestore.resx">
-      <DependentUpon>frmBackupAndRestore.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\ucReports.resx">
       <DependentUpon>ucReports.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmRestore1.resx">
-      <DependentUpon>frmRestore1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmRestore2.resx">
-      <DependentUpon>frmRestore2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shared Modules\frmRestore3.resx">
-      <DependentUpon>frmRestore3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\ucUserManagement.resx">
       <DependentUpon>ucUserManagement.cs</DependentUpon>
@@ -459,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\ucInventoryReports.resx">
       <DependentUpon>ucInventoryReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shared Modules\ucBackupRestore.resx">
+      <DependentUpon>ucBackupRestore.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

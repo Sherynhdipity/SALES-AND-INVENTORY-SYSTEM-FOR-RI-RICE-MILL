@@ -45,7 +45,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Display Data in DataGridView  
         public void DisplayUserList()
         {
-            con.Close();
             con.Open();
             QuerySelect = "SELECT a.Name as 'Name', a.Username as 'Username', a.Status as 'Status', b.Role as 'Role' FROM tblUsers a INNER JOIN tblRoles b ON a.RoleID = b.RoleID ORDER BY UserID DESC";
             cmd = new SqlCommand(QuerySelect, con);
@@ -70,6 +69,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtConfirmPass.Text = "";
             drpRole.Text = "";
             drpStatus.Text = "";
+            lblPassNotif.Text = "";
             
 
             //Update
@@ -84,6 +84,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Method AddUser
         private void AddUser()
         {
+
             if (String.IsNullOrEmpty(txtName.Text) && String.IsNullOrEmpty(txtUsername.Text) && String.IsNullOrEmpty(txtPassword.Text) && String.IsNullOrEmpty(drpRole.Text) && String.IsNullOrEmpty(drpStatus.Text))
             {
                 MessageBox.Show("Fields should not be empty!");
@@ -123,27 +124,43 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    try
+                    con.Open();
+                    QuerySelect = "SELECT * FROM tblUsers WHERE Name = '" + txtName.Text + "' AND Username = '" + txtUsername.Text + "'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
                     {
+                        MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         con.Close();
-                        con.Open();
-                        QueryInsert = "INSERT INTO tblUsers (Name,Username,Password,Status,RoleID) VALUES ('" + txtName.Text + "', '" + txtUsername.Text + "', '" + txtPassword.Text + "', '" + status + "', (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole.SelectedItem.ToString() + "'))";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
-                        DisplayUserList();
                         ClearControls();
-                        MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            con.Open();
+                            QueryInsert = "INSERT INTO tblUsers VALUES (Name,Username,Password,Status,RoleID) VALUES ('" + txtName.Text + "', '" + txtUsername.Text + "', '" + txtPassword.Text + "', '" + status + "', (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole.SelectedItem.ToString() + "'))";
+                            cmd = new SqlCommand(QueryInsert, con);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                            DisplayUserList();
+                            MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearControls();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
+
                     }
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        //MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    finally
-                    {
-                        con.Close();
-                    }
                 }
             }
             else
@@ -188,23 +205,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     try
                     {
-                        con.Close();
                         con.Open();
                         QueryUpdate = "UPDATE tblUsers SET Name = '" + txtName1.Text + "', Username = '" + txtUsername1.Text + "', Status = '" + drpStatus.Text + "', RoleID = (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole1.Text + "') WHERE UserID = '" + lblUserID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
-
+                        con.Close();
                         MessageBox.Show("User Updated Successfully!", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DisplayUserList();
                         ClearControls();
 
- 
 
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("This User already exists. Try again!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //MessageBox.Show(drpRole.SelectedItem.ToString());
+                        MessageBox.Show(ex.Message);
                     }
 
                     finally
@@ -228,8 +242,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 drpStatus.Text = row.Cells[2].Value.ToString();
                 drpRole1.Text = row.Cells[3].Value.ToString();
 
-
-                con.Close();
                 con.Open();
                 QuerySelect = "SELECT UserID FROM tblUsers WHERE Name='" + txtName1.Text + "'";
                 cmd = new SqlCommand(QuerySelect, con);
@@ -254,6 +266,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblAddUser.Visible = true;
             lblUserList.Visible = false;
             lblUpdateUser.Visible = false;
+
+            ClearControls();
 
         }
 

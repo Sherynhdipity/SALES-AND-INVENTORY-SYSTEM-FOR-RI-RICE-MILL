@@ -40,28 +40,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryDelete;
 
 
-        //Display ProductData in DataGridView  
-        public void DisplayProductList()
-        {
-            con.Close();
-            con.Open();
-            QuerySelect = "SELECT ProductCode AS 'Product Code', ProductDesc AS 'Product Description', ProductVariety AS 'Product Variety', Price FROM tblProducts ORDER BY ProductID ASC";
-            cmd = new SqlCommand(QuerySelect, con);
-
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
-
-            dgvProductList.DataSource = dt;
-            dgvProductList.Refresh();
-            con.Close();
-        }
-
+        //Display InventoryData in DataGridView  
         public void DisplayStockList()
         {
             con.Close();
             con.Open();
-            QuerySelect = "SELECT a.stockinID AS 'Stock ID', b.ProductDesc AS 'Product Description', a.QtyStockedIn AS 'Quantity', a.StockinDate AS 'Stock-in Date', a.BatchID AS 'Batch ID' FROM tblStockin a INNER JOIN tblProducts b ON a.ProductID = b.ProductID";
+            QuerySelect = "SELECT a.stockinID AS 'Stock ID', b.ProductDesc AS 'Product Description', b.ProductVariety AS 'Product Variety', b.RestockLevel AS 'Restock Level', a.QtyStockedIn AS 'Quantity', a.StockinDate AS 'Stock-in Date', a.BatchID AS 'Batch ID' FROM tblStockin a INNER JOIN tblProducts b ON a.ProductID = b.ProductID";
             cmd = new SqlCommand(QuerySelect, con);
 
             adapter = new SqlDataAdapter(cmd);
@@ -75,7 +59,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void frmInventory_Load(object sender, EventArgs e)
         {
-            DisplayProductList();
             DisplayStockList();
         }
 
@@ -87,8 +70,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            DisplayProductList();
             DisplayStockList();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            frmUpdateStock stock = new frmUpdateStock();
+            stock.Show();
         }
     }
 }

@@ -44,9 +44,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
+
+
             if (!panelModule.Controls.Contains(ucUsers.usersInstance))
             {
                 panelModule.Controls.Add(ucUsers.usersInstance);
+                panelModule.Refresh();
                 ucUsers.usersInstance.Dock = DockStyle.Fill;
                 
             }
@@ -79,7 +82,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 panelModule.Controls.Add(ucProducts.productsInstance);
                 ucProducts.productsInstance.Dock = DockStyle.Fill;
-                ucProducts.productsInstance.BringToFront();
             }
             else
             {
@@ -89,6 +91,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+
             if (!panelModule.Controls.Contains(ucDashboard.dashboardInstance))
             {
                 panelModule.Controls.Add(ucDashboard.dashboardInstance);
@@ -103,16 +106,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            if (!panelModule.Controls.Contains(frmBackup.backupInstance))
+            if (!panelModule.Controls.Contains(ucBackupRestore.backupRestoreInstance))
             {
-                panelModule.Controls.Add(frmBackup.backupInstance);
-                frmBackup.backupInstance.Dock = DockStyle.Fill;
-                frmBackup.backupInstance.BringToFront();
+                panelModule.Controls.Add(ucBackupRestore.backupRestoreInstance);
+                ucBackupRestore.backupRestoreInstance.Dock = DockStyle.Fill;
+                ucBackupRestore.backupRestoreInstance.BringToFront();
             }
             else
             {
-                frmBackup.backupInstance.BringToFront();
-
+                ucBackupRestore.backupRestoreInstance.BringToFront();
             }
         }
 

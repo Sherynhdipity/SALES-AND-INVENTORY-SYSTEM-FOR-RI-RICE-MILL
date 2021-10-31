@@ -1,0 +1,171 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
+namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
+{
+    public partial class frmUpdateStock : Form
+    {
+        public frmUpdateStock()
+        {
+            InitializeComponent();
+        }
+
+        public static SqlConnection con = new SqlConnection(DBConnection.con);
+        public static SqlCommand cmd = new SqlCommand();
+        public static SqlDataReader reader;
+        public static SqlDataAdapter adapter;
+        public static DataTable dt = new DataTable();
+        public static DialogResult result;
+        public static string QuerySelect;
+        public static string QueryUpdate;
+
+        private void UpdateStock()
+        {
+            if (String.IsNullOrWhiteSpace(txtSackNo.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtSackNo.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtSackNo.Text))
+            {
+                MessageBox.Show("Enter Quantity!");
+                txtSackNo.Focus();
+            }
+            else if (String.IsNullOrWhiteSpace(txtQuantity.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtQuantity.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtQuantity.Text))
+            {
+                MessageBox.Show("Enter Quantity!");
+                txtQuantity.Focus();
+            }
+            else if (txtSackNo.Text != "" && txtQuantity.Text != "")
+            {
+                result = MessageBox.Show("Do you want to Update this Stock?", "Update Stock", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    con.Close();
+                    con.Open();
+                    QuerySelect = "SELECT COUNT(*) as ID FROM tblBatch WHERE BatchID = '"+txtSackNo.Text+"'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+
+                        try
+                        {
+                            con.Close();
+                            con.Open();
+                            QueryUpdate = "UPDATE tblBatch SET MillingDate = '" + dtpMillingDate.Value.Date.ToShortDateString() + "', Sack Number = '"+txtSackNo.Text+"' WHERE BatchID = (SELECT BatchID From tblStockIn WHERE ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'))";
+                            cmd = new SqlCommand(QueryUpdate, con);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+
+                            //Update tblBatchNumbers
+                            con.Open();
+                            int quant = Convert.ToInt32(txtQuantity.Text);
+                            int batchNum = Convert.ToInt32(txtSackNo.Text);
+                            for (int i = 0; i < quant; i++)
+                            {
+                                batchNum++;
+                                QueryUpdate = "INSERT INTO tblBatchNumbers(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + (batchNum - 1).ToString() + "', 'IN')";
+                                cmd = new SqlCommand(QueryUpdate, con);
+                                cmd.ExecuteNonQuery();
+                            }
+                            con.Close();
+
+
+                            con.Open();
+                            QueryUpdate = "UPDATE tblStockin SET StockinDate = '" + dtpStockinDate.Value.Date.ToShortDateString() + "', QtyStockedIn = '" + txtQuantity.Text + "' WHERE ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "')";
+                            cmd = new SqlCommand(QueryUpdate, con);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Stock Updated Successfully!", "Update Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Batch ID not found!");
+                    }
+                    con.Close();
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        private void btnUpdateStock_Click(object sender, EventArgs e)
+        {
+            UpdateStock();
+        }
+
+        private void txtStockID_TextChange(object sender, EventArgs e)
+        {
+            if (txtStockID.Text == "")
+            {
+                txtProductCode.Text = "";
+                txtProdDesc.Text = "";
+                txtVariety.Text = "";
+                txtQuantity.Text = "";
+                txtSackNo.Text = "";
+            }
+            else
+            {
+                try
+                {
+                    con.Close();
+                    con.Open();
+                    QuerySelect = "SELECT p.ProductDesc AS 'Product Description', p.ProductVariety AS 'Product Variety', b.SackNumber AS 'Sack Number', s.QtyStockedIn AS 'Quantity', s.StockinDate AS 'Stock-in Date', FROM tblStockin a INNER JOIN tblProducts p ON s.ProductID = p.ProductID WHERE stockID ='" + txtStockID.Text + "%'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        txtProductCode.Text = reader["ProductCode"].ToString();
+                        txtProdDesc.Text = reader["ProductDesc"].ToString();
+                        txtVariety.Text = reader["ProductVariety"].ToString();
+                        txtSackNo.Text = reader["SackNumber"].ToString();
+                        txtQuantity.Text = reader["QtyStockedIn"].ToString();
+
+                        reader.Close();
+                    }
+                    else
+                    {
+                        txtProductCode.Text = "";
+                        txtProdDesc.Text = "";
+                        txtVariety.Text = "";
+                    }
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+    }
+}

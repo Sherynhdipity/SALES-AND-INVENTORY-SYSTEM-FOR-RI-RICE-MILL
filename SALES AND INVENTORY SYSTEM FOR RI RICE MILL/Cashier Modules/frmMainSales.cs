@@ -57,6 +57,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
+
             if (!panelModule.Controls.Contains(ucDashboard.dashboardInstance))
             {
                 panelModule.Controls.Add(ucDashboard.dashboardInstance);
@@ -71,15 +72,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
-            if (!panelModule.Controls.Contains(frmBackup.backupInstance))
+            if (!panelModule.Controls.Contains(ucBackupRestore.backupRestoreInstance))
             {
-                panelModule.Controls.Add(frmBackup.backupInstance);
-                frmBackup.backupInstance.Dock = DockStyle.Fill;
-                frmBackup.backupInstance.BringToFront();
+                panelModule.Controls.Add(ucBackupRestore.backupRestoreInstance);
+                ucBackupRestore.backupRestoreInstance.Dock = DockStyle.Fill;
+                ucBackupRestore.backupRestoreInstance.BringToFront();
             }
             else
             {
-                frmBackup.backupInstance.BringToFront();
+                ucBackupRestore.backupRestoreInstance.BringToFront();
             }
         }
 
