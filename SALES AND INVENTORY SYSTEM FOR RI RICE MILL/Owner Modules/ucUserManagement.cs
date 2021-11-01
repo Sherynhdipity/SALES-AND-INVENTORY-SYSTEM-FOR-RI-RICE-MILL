@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class ucUsers : UserControl
+    public partial class ucUsers : UserControl, IControlBase
     {
         private static ucUsers users;
         public static ucUsers usersInstance
@@ -42,6 +42,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             InitializeComponent();
         }
 
+        public void ReloadControl()
+        {
+            panelAdd.Visible = false;
+            panelUpdate.Visible = false;
+            lblAddUser.Visible = false;
+            dgvUserList.Visible = false;
+            lblUpdateUser.Visible = false;
+            lblUserList.Visible = false;
+        }
+
         //Display Data in DataGridView  
         public void DisplayUserList()
         {
@@ -68,15 +78,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtPassword.Text = "";
             txtConfirmPass.Text = "";
             drpRole.Text = "";
-            drpStatus.Text = "";
             lblPassNotif.Text = "";
             
 
             //Update
             txtName1.Text = "";
             txtUsername1.Text = "";
+            txtPassword1.Text = "";
+            txtConfirmPass1.Text = "";
             drpRole1.Text = "";
             drpStatus.Text = "";
+            lblPassNotif1.Text = "";
+
 
 
         }
@@ -282,6 +295,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblUserList.Visible = false;
             dgvUserList.Visible = false;
 
+            ClearControls();
 
         }
 
@@ -333,6 +347,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnCancel1_Click(object sender, EventArgs e)
         {
             ClearControls();
+        }
+
+        private void txtConfirmPass1_TextChange(object sender, EventArgs e)
+        {
+            if (txtConfirmPass1.Text == txtPassword1.Text)
+            {
+                lblPassNotif1.ForeColor = System.Drawing.Color.Green;
+                lblPassNotif1.Text = "Passwords Matched";
+            }
+            else
+            {
+                lblPassNotif1.ForeColor = System.Drawing.Color.Red;
+                lblPassNotif1.Text = "Passwords Don't Match";
+            }
         }
     }
 }

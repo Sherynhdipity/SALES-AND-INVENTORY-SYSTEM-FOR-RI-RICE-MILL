@@ -205,12 +205,18 @@
     <Compile Include="Cashier Modules\frmMainSales.Designer.cs">
       <DependentUpon>frmMainSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBSalesandInventoryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmBatchItems.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmBatchItems.Designer.cs">
       <DependentUpon>frmBatchItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="IControlBase.cs" />
     <Compile Include="Inventory Clerk Modules\frmUpdateStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +356,8 @@
     <EmbeddedResource Include="Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Receipt.rdlc" />
+    <EmbeddedResource Include="SalesReport.rdlc" />
     <EmbeddedResource Include="Shared Modules\frmViewInventoryReport.resx">
       <DependentUpon>frmViewInventoryReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -397,6 +405,17 @@
     <EmbeddedResource Include="Shared Modules\ucBackupRestore.resx">
       <DependentUpon>ucBackupRestore.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DBSalesandInventoryDataSet.xsc">
+      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesandInventoryDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBSalesandInventoryDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBSalesandInventoryDataSet.xss">
+      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

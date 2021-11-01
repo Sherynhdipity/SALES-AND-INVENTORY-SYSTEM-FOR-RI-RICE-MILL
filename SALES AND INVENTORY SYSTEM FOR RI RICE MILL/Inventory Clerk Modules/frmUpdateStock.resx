@@ -132,11 +132,11 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="txtStockID.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAQIAAAAnCAYAAADkWUZhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACeSURBVHhe7dSxDQMxDARB9l+VBJXxZbgA+2go+Ro4A1zC
-        nFsAf+ecZ631NbNZ69+/GajqAzBP//7NgBDAVEIACAEgBEAIASAEgBAAIQSAEABCAIQQAEIACAEQQgAI
-        ASAEQAgBIASAEAAhBIAQAEIAhBAAQgAIARBCAAgBIARACAEgBIAQACEEgBAAQgDEKwR7708fzGzW+vdv
-        BoDZqn58McaKnkcH2AAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAASMAAAAnCAYAAABExi6PAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC+SURBVHhe7dRBDcMwAARB80flyDAKowAaWfKnBJJ9zEj3
+        OQA7ADLWWp8558/M7Ont/pwUjbEPgDfs/pwUiRHwHjECEsQISBAjIEGMgAQxAhLECEgQIyBBjIAEMQIS
+        xAhIECMgQYyABDECEsQISBAjIEGMgAQxAhLECEgQIyBBjIAEMQISxAhIECMgQYyABDECEsQISBAjIEGM
+        gAQxAhLECEgQIyBBjIAEMQIS/mJ0Xdd3H2ZmT2/356QI4G1j3PlWl9lhCs4lAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="txtQuantity.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -222,7 +222,7 @@
     <value>#bunifu-label { padding: 0px; margin: auto; padding-top: 0px;font-family: 'Arial Rounded MT Bold'; font-size: 9.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: center; }</value>
   </data>
   <data name="bunifuLabel13.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 30pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
+    <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 30pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
   </data>
   <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -54,32 +54,34 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 result = MessageBox.Show("Do you want to Update this Stock?", "Update Stock", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    con.Close();
-                    con.Open();
-                    QuerySelect = "SELECT COUNT(*) as ID FROM tblBatch WHERE BatchID = '"+txtSackNo.Text+"'";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
-                    {
+                   
 
                         try
                         {
                             con.Close();
                             con.Open();
-                            QueryUpdate = "UPDATE tblBatch SET MillingDate = '" + dtpMillingDate.Value.Date.ToShortDateString() + "', Sack Number = '"+txtSackNo.Text+"' WHERE BatchID = (SELECT BatchID From tblStockIn WHERE ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'))";
+                            QueryUpdate = "UPDATE tblBatch SET MillingDate = '" + dtpMillingDate.Value.Date.ToShortDateString() + "', BatchNumber = '"+txtSackNo.Text+ "' WHERE BatchID = (SELECT BatchID FROM tblStockIn WHERE StockinID = '" + txtStockID.Text+"')";
                             cmd = new SqlCommand(QueryUpdate, con);
                             cmd.ExecuteNonQuery();
                             con.Close();
 
 
-                            //Update tblBatchNumbers
+                        //Update tblBatchNumbers
+
+                        con.Open();
+                        string query = "DELETE FROM tblBatchProduct WHERE BatchID = (SELECT BatchID FROM tblStockIn WHERE StockinID = '" + txtStockID.Text + "')";
+                        cmd = new SqlCommand(query, con);
+                        cmd.ExecuteNonQuery();
+                   
+                        con.Close();
+
                             con.Open();
                             int quant = Convert.ToInt32(txtQuantity.Text);
                             int batchNum = Convert.ToInt32(txtSackNo.Text);
                             for (int i = 0; i < quant; i++)
                             {
                                 batchNum++;
-                                QueryUpdate = "INSERT INTO tblBatchNumbers(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + (batchNum - 1).ToString() + "', 'IN')";
+                                QueryUpdate = "INSERT INTO tblBatchProduct(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + (batchNum - 1).ToString() + "', 'IN')";
                                 cmd = new SqlCommand(QueryUpdate, con);
                                 cmd.ExecuteNonQuery();
                             }
@@ -103,11 +105,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             con.Close();
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Batch ID not found!");
-                    }
+                    
                     con.Close();
 
                 }
@@ -139,17 +137,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     con.Close();
                     con.Open();
-                    QuerySelect = "SELECT p.ProductDesc AS 'Product Description', p.ProductVariety AS 'Product Variety', b.SackNumber AS 'Sack Number', s.QtyStockedIn AS 'Quantity', s.StockinDate AS 'Stock-in Date', FROM tblStockin a INNER JOIN tblProducts p ON s.ProductID = p.ProductID WHERE stockID ='" + txtStockID.Text + "%'";
+                    QuerySelect = "SELECT p.ProductCode AS 'Product Code',p.ProductDesc AS 'Product Description', p.ProductVariety AS 'Product Variety', b.BatchNumber AS 'Batch Number', s.QtyStockedIn AS 'Quantity', s.StockinDate AS 'Stock-in Date'FROM tblStockin s INNER JOIN tblProducts p ON s.ProductID = p.ProductID INNER JOIN tblBatch b ON s.BatchID = b.BatchID WHERE s.StockinID = '" + txtStockID.Text + "'";
                     cmd = new SqlCommand(QuerySelect, con);
                     reader = cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        txtProductCode.Text = reader["ProductCode"].ToString();
-                        txtProdDesc.Text = reader["ProductDesc"].ToString();
-                        txtVariety.Text = reader["ProductVariety"].ToString();
-                        txtSackNo.Text = reader["SackNumber"].ToString();
-                        txtQuantity.Text = reader["QtyStockedIn"].ToString();
+                        txtProductCode.Text = reader["Product Code"].ToString();
+                        txtProdDesc.Text = reader["Product Description"].ToString();
+                        txtVariety.Text = reader["Product Variety"].ToString();
+                        txtSackNo.Text = reader["Batch Number"].ToString();
+                        txtQuantity.Text = reader["Quantity"].ToString();
 
                         reader.Close();
                     }
@@ -166,6 +164,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

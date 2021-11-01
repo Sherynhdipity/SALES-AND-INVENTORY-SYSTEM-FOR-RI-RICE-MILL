@@ -76,6 +76,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtVariety = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.bunifuGroupBox2.SuspendLayout();
             this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +89,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel7.CursorType = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.bunifuLabel7.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel7.Location = new System.Drawing.Point(40, 111);
+            this.bunifuLabel7.Location = new System.Drawing.Point(31, 159);
             this.bunifuLabel7.Name = "bunifuLabel7";
             this.bunifuLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel7.Size = new System.Drawing.Size(84, 23);
@@ -176,7 +177,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtStockID.IconRight = null;
             this.txtStockID.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStockID.Lines = new string[0];
-            this.txtStockID.Location = new System.Drawing.Point(159, 102);
+            this.txtStockID.Location = new System.Drawing.Point(136, 147);
             this.txtStockID.MaxLength = 32767;
             this.txtStockID.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtStockID.Modified = false;
@@ -212,7 +213,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtStockID.SelectionLength = 0;
             this.txtStockID.SelectionStart = 0;
             this.txtStockID.ShortcutsEnabled = true;
-            this.txtStockID.Size = new System.Drawing.Size(258, 39);
+            this.txtStockID.Size = new System.Drawing.Size(291, 39);
             this.txtStockID.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtStockID.TabIndex = 45;
             this.txtStockID.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -500,7 +501,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuGroupBox2.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bunifuGroupBox2.LabelIndent = 10;
             this.bunifuGroupBox2.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
-            this.bunifuGroupBox2.Location = new System.Drawing.Point(435, 12);
+            this.bunifuGroupBox2.Location = new System.Drawing.Point(444, 57);
             this.bunifuGroupBox2.Name = "bunifuGroupBox2";
             this.bunifuGroupBox2.Size = new System.Drawing.Size(517, 377);
             this.bunifuGroupBox2.TabIndex = 44;
@@ -757,14 +758,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel13.AllowParentOverrides = false;
             this.bunifuLabel13.AutoEllipsis = false;
             this.bunifuLabel13.CursorType = null;
-            this.bunifuLabel13.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F);
+            this.bunifuLabel13.Font = new System.Drawing.Font("Impact", 30F);
             this.bunifuLabel13.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel13.Location = new System.Drawing.Point(21, 22);
+            this.bunifuLabel13.Location = new System.Drawing.Point(90, 57);
             this.bunifuLabel13.Name = "bunifuLabel13";
             this.bunifuLabel13.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel13.Size = new System.Drawing.Size(264, 46);
+            this.bunifuLabel13.Size = new System.Drawing.Size(251, 48);
             this.bunifuLabel13.TabIndex = 46;
-            this.bunifuLabel13.Text = "Update Stock";
+            this.bunifuLabel13.Text = "UPDATE STOCKS";
             this.bunifuLabel13.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel13.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -783,7 +784,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.Controls.Add(this.txtProdDesc);
             this.bunifuPanel1.Controls.Add(this.txtProductCode);
             this.bunifuPanel1.Controls.Add(this.bunifuLabel3);
-            this.bunifuPanel1.Location = new System.Drawing.Point(21, 153);
+            this.bunifuPanel1.Location = new System.Drawing.Point(31, 198);
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(396, 236);
@@ -900,18 +901,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtVariety.UseSystemPasswordChar = false;
             this.txtVariety.WordWrap = true;
             // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.btnExit.Location = new System.Drawing.Point(915, -2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(58, 38);
+            this.btnExit.TabIndex = 101;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = false;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // frmUpdateStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(973, 401);
+            this.ClientSize = new System.Drawing.Size(973, 446);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtStockID);
             this.Controls.Add(this.bunifuPanel1);
             this.Controls.Add(this.bunifuLabel13);
             this.Controls.Add(this.bunifuGroupBox2);
             this.Controls.Add(this.bunifuLabel7);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUpdateStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Stocks";
@@ -946,5 +962,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuTextBox txtVariety;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnUpdateStock;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private System.Windows.Forms.Button btnExit;
     }
 }
