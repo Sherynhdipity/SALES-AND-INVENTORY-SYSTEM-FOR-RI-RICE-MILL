@@ -54,8 +54,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 result = MessageBox.Show("Do you want to Update this Stock?", "Update Stock", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                   
-
+                  
                         try
                         {
                             con.Close();

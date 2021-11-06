@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class ucUsers : UserControl, IControlBase
+    public partial class ucUsers : UserControl
     {
         private static ucUsers users;
         public static ucUsers usersInstance

@@ -44,8 +44,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
-            this.lblTime = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.bunifuPanel3 = new Bunifu.UI.WinForms.BunifuPanel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -298,49 +296,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuCards2.BorderRadius = 5;
             this.bunifuCards2.BottomSahddow = true;
             this.bunifuCards2.color = System.Drawing.Color.SeaGreen;
-            this.bunifuCards2.Controls.Add(this.lblTime);
-            this.bunifuCards2.Controls.Add(this.bunifuLabel8);
             this.bunifuCards2.Controls.Add(this.monthCalendar1);
             this.bunifuCards2.Controls.Add(this.bunifuLabel12);
             this.bunifuCards2.LeftSahddow = false;
-            this.bunifuCards2.Location = new System.Drawing.Point(550, 46);
+            this.bunifuCards2.Location = new System.Drawing.Point(725, 47);
             this.bunifuCards2.Name = "bunifuCards2";
             this.bunifuCards2.RightSahddow = true;
             this.bunifuCards2.ShadowDepth = 20;
-            this.bunifuCards2.Size = new System.Drawing.Size(474, 273);
+            this.bunifuCards2.Size = new System.Drawing.Size(278, 273);
             this.bunifuCards2.TabIndex = 11;
-            // 
-            // lblTime
-            // 
-            this.lblTime.AllowParentOverrides = false;
-            this.lblTime.AutoEllipsis = false;
-            this.lblTime.CursorType = null;
-            this.lblTime.Font = new System.Drawing.Font("Impact", 15.75F);
-            this.lblTime.ForeColor = System.Drawing.Color.Black;
-            this.lblTime.Location = new System.Drawing.Point(326, 95);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTime.Size = new System.Drawing.Size(54, 27);
-            this.lblTime.TabIndex = 11;
-            this.lblTime.Text = "CLOCK";
-            this.lblTime.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTime.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel8
-            // 
-            this.bunifuLabel8.AllowParentOverrides = false;
-            this.bunifuLabel8.AutoEllipsis = false;
-            this.bunifuLabel8.CursorType = null;
-            this.bunifuLabel8.Font = new System.Drawing.Font("Impact", 15.75F);
-            this.bunifuLabel8.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel8.Location = new System.Drawing.Point(326, 38);
-            this.bunifuLabel8.Name = "bunifuLabel8";
-            this.bunifuLabel8.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel8.Size = new System.Drawing.Size(54, 27);
-            this.bunifuLabel8.TabIndex = 10;
-            this.bunifuLabel8.Text = "CLOCK";
-            this.bunifuLabel8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuLabel8.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // monthCalendar1
             // 
@@ -860,7 +824,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Controls.Add(this.bunifuPanel1);
             this.Name = "ucDashboard";
             this.Size = new System.Drawing.Size(1087, 675);
-            this.Load += new System.EventHandler(this.ucDashboard_Load);
             this.bunifuPanel10.ResumeLayout(false);
             this.bunifuPanel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -904,8 +867,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel7;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel12;
         private Bunifu.Framework.UI.BunifuCards bunifuCards2;
-        private Bunifu.UI.WinForms.BunifuLabel lblTime;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel8;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel3;
         private System.Windows.Forms.PictureBox pictureBox4;

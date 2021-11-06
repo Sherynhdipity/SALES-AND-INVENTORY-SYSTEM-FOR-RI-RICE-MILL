@@ -27,14 +27,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             InitializeComponent();
         }
 
-        private void bunifuPanel8_Click(object sender, EventArgs e)
-        {
-
         }
 
-        private void ucDashboard_Load(object sender, EventArgs e)
-        {
-            lblTime.Text = DateTime.Now.ToString();
-        }
     }
-}
+

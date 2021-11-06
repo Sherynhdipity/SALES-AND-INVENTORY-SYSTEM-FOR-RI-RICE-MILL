@@ -130,17 +130,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     if (reader.HasRows)
                     {
                         MessageBox.Show("This Product already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        con.Close();
+                        
                     }
                     else
                     {
                         try
                         {
+                            con.Close();
                             con.Open();
                             QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,ProductVariety,Price, RestockLevel) VALUES ('" + txtProductCode.Text + "', '" + txtProductDesc.Text + "', '" + drpVariety.Text + "', '" + txtProdPrice.Text + "', '" + txtStockLevel.Text + "')";
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.ExecuteNonQuery();
-                            con.Close();
 
                             MessageBox.Show("Product Added Successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             DisplayProductList();
@@ -157,7 +157,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             con.Close();
                         }
-                    }                  
+                    }
+
                 }
                 else
                 {

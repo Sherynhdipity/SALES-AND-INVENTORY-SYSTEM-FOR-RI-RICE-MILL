@@ -19,7 +19,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public frmMainSales()
         {
             InitializeComponent();
-            con.Open();
         }
 
         private void frmMain_Load(object sender, EventArgs e)

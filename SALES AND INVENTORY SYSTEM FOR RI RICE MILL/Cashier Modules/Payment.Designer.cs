@@ -42,13 +42,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.txtAmount = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.pbPay = new System.Windows.Forms.PictureBox();
             this.txtCash = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCancel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPay)).BeginInit();
+            this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnXit = new System.Windows.Forms.Button();
+            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtAmount
@@ -80,7 +83,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtAmount.IconRight = null;
             this.txtAmount.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAmount.Lines = new string[0];
-            this.txtAmount.Location = new System.Drawing.Point(158, 159);
+            this.txtAmount.Location = new System.Drawing.Point(158, 154);
             this.txtAmount.MaxLength = 32767;
             this.txtAmount.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtAmount.Modified = false;
@@ -116,7 +119,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtAmount.SelectionLength = 0;
             this.txtAmount.SelectionStart = 0;
             this.txtAmount.ShortcutsEnabled = true;
-            this.txtAmount.Size = new System.Drawing.Size(292, 37);
+            this.txtAmount.Size = new System.Drawing.Size(222, 37);
             this.txtAmount.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtAmount.TabIndex = 4;
             this.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -132,27 +135,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel3.AllowParentOverrides = false;
             this.bunifuLabel3.AutoEllipsis = false;
             this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F);
+            this.bunifuLabel3.Font = new System.Drawing.Font("Impact", 18F);
             this.bunifuLabel3.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel3.Location = new System.Drawing.Point(184, 50);
+            this.bunifuLabel3.Location = new System.Drawing.Point(12, 6);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(170, 46);
+            this.bunifuLabel3.Size = new System.Drawing.Size(86, 29);
             this.bunifuLabel3.TabIndex = 45;
-            this.bunifuLabel3.Text = "Payment";
+            this.bunifuLabel3.Text = "PAYMENT";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // pbPay
-            // 
-            this.pbPay.BackColor = System.Drawing.Color.RoyalBlue;
-            this.pbPay.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.sales;
-            this.pbPay.Location = new System.Drawing.Point(79, 28);
-            this.pbPay.Name = "pbPay";
-            this.pbPay.Size = new System.Drawing.Size(82, 86);
-            this.pbPay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPay.TabIndex = 46;
-            this.pbPay.TabStop = false;
             // 
             // txtCash
             // 
@@ -218,7 +210,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtCash.SelectionLength = 0;
             this.txtCash.SelectionStart = 0;
             this.txtCash.ShortcutsEnabled = true;
-            this.txtCash.Size = new System.Drawing.Size(292, 37);
+            this.txtCash.Size = new System.Drawing.Size(222, 37);
             this.txtCash.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtCash.TabIndex = 47;
             this.txtCash.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -235,8 +227,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1.AutoEllipsis = false;
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F);
-            this.bunifuLabel1.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel1.Location = new System.Drawing.Point(36, 159);
+            this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel1.Location = new System.Drawing.Point(36, 154);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(101, 32);
@@ -251,8 +243,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.AutoEllipsis = false;
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F);
-            this.bunifuLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel2.Location = new System.Drawing.Point(36, 202);
+            this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel2.Location = new System.Drawing.Point(36, 207);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(67, 32);
@@ -310,7 +302,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.IdleIconLeftImage = null;
             this.btnCancel.IdleIconRightImage = null;
             this.btnCancel.IndicateFocus = false;
-            this.btnCancel.Location = new System.Drawing.Point(88, 305);
+            this.btnCancel.Location = new System.Drawing.Point(87, 281);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCancel.OnDisabledState.BorderRadius = 1;
@@ -344,7 +336,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnCancel.OnPressedState.IconLeftImage = null;
             this.btnCancel.OnPressedState.IconRightImage = null;
-            this.btnCancel.Size = new System.Drawing.Size(150, 39);
+            this.btnCancel.Size = new System.Drawing.Size(107, 39);
             this.btnCancel.TabIndex = 50;
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCancel.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -402,7 +394,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuButton2.IdleIconLeftImage = null;
             this.bunifuButton2.IdleIconRightImage = null;
             this.bunifuButton2.IndicateFocus = false;
-            this.bunifuButton2.Location = new System.Drawing.Point(271, 305);
+            this.bunifuButton2.Location = new System.Drawing.Point(219, 281);
             this.bunifuButton2.Name = "bunifuButton2";
             this.bunifuButton2.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.bunifuButton2.OnDisabledState.BorderRadius = 1;
@@ -436,7 +428,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuButton2.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton2.OnPressedState.IconLeftImage = null;
             this.bunifuButton2.OnPressedState.IconRightImage = null;
-            this.bunifuButton2.Size = new System.Drawing.Size(150, 39);
+            this.bunifuButton2.Size = new System.Drawing.Size(129, 39);
             this.bunifuButton2.TabIndex = 51;
             this.bunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -444,25 +436,87 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuButton2.TextPadding = new System.Windows.Forms.Padding(0);
             this.bunifuButton2.UseDefaultRadiusAndThickness = true;
             // 
+            // bunifuPanel1
+            // 
+            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.bunifuPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel1.BackgroundImage")));
+            this.bunifuPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuPanel1.BorderColor = System.Drawing.Color.Transparent;
+            this.bunifuPanel1.BorderRadius = 0;
+            this.bunifuPanel1.BorderThickness = 0;
+            this.bunifuPanel1.Controls.Add(this.btnXit);
+            this.bunifuPanel1.Controls.Add(this.btnExit);
+            this.bunifuPanel1.Controls.Add(this.bunifuLabel3);
+            this.bunifuPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuPanel1.Location = new System.Drawing.Point(0, 0);
+            this.bunifuPanel1.Name = "bunifuPanel1";
+            this.bunifuPanel1.ShowBorders = false;
+            this.bunifuPanel1.Size = new System.Drawing.Size(427, 38);
+            this.bunifuPanel1.TabIndex = 105;
+            // 
+            // btnExit
+            // 
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.btnExit.Location = new System.Drawing.Point(814, 0);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(58, 38);
+            this.btnExit.TabIndex = 101;
+            this.btnExit.Text = "X";
+            this.btnExit.UseVisualStyleBackColor = false;
+            // 
+            // btnXit
+            // 
+            this.btnXit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnXit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnXit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.btnXit.Location = new System.Drawing.Point(370, 0);
+            this.btnXit.Name = "btnXit";
+            this.btnXit.Size = new System.Drawing.Size(58, 38);
+            this.btnXit.TabIndex = 102;
+            this.btnXit.Text = "X";
+            this.btnXit.UseVisualStyleBackColor = false;
+            this.btnXit.Click += new System.EventHandler(this.btnXit_Click);
+            // 
+            // bunifuLabel4
+            // 
+            this.bunifuLabel4.AllowParentOverrides = false;
+            this.bunifuLabel4.AutoEllipsis = false;
+            this.bunifuLabel4.CursorType = null;
+            this.bunifuLabel4.Font = new System.Drawing.Font("Impact", 18F);
+            this.bunifuLabel4.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel4.Location = new System.Drawing.Point(108, 89);
+            this.bunifuLabel4.Name = "bunifuLabel4";
+            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel4.Size = new System.Drawing.Size(212, 29);
+            this.bunifuLabel4.TabIndex = 103;
+            this.bunifuLabel4.Text = "SUMMARY OF PAYMENT";
+            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // frmPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ClientSize = new System.Drawing.Size(498, 372);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(427, 337);
+            this.Controls.Add(this.bunifuLabel4);
+            this.Controls.Add(this.bunifuPanel1);
             this.Controls.Add(this.bunifuButton2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.bunifuLabel1);
             this.Controls.Add(this.txtCash);
-            this.Controls.Add(this.pbPay);
-            this.Controls.Add(this.bunifuLabel3);
             this.Controls.Add(this.txtAmount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPayment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
-            ((System.ComponentModel.ISupportInitialize)(this.pbPay)).EndInit();
+            this.bunifuPanel1.ResumeLayout(false);
+            this.bunifuPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,11 +526,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private Bunifu.UI.WinForms.BunifuTextBox txtAmount;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
-        private System.Windows.Forms.PictureBox pbPay;
         private Bunifu.UI.WinForms.BunifuTextBox txtCash;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnCancel;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
+        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnXit;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
     }
 }
