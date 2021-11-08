@@ -46,10 +46,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCancel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnConfirm = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.btnExit = new System.Windows.Forms.Button();
             this.btnXit = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +83,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtAmount.IconRight = null;
             this.txtAmount.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAmount.Lines = new string[0];
-            this.txtAmount.Location = new System.Drawing.Point(158, 154);
+            this.txtAmount.Location = new System.Drawing.Point(158, 169);
             this.txtAmount.MaxLength = 32767;
             this.txtAmount.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtAmount.Modified = false;
@@ -174,7 +174,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtCash.IconRight = null;
             this.txtCash.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCash.Lines = new string[0];
-            this.txtCash.Location = new System.Drawing.Point(158, 202);
+            this.txtCash.Location = new System.Drawing.Point(158, 221);
             this.txtCash.MaxLength = 32767;
             this.txtCash.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCash.Modified = false;
@@ -220,20 +220,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtCash.TextPlaceholder = "";
             this.txtCash.UseSystemPasswordChar = false;
             this.txtCash.WordWrap = true;
+            this.txtCash.TextChange += new System.EventHandler(this.txtCash_TextChanged);
+            this.txtCash.TextChanged += new System.EventHandler(this.txtCash_TextChanged);
+            this.txtCash.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCash_KeyPress);
             // 
             // bunifuLabel1
             // 
             this.bunifuLabel1.AllowParentOverrides = false;
             this.bunifuLabel1.AutoEllipsis = false;
             this.bunifuLabel1.CursorType = null;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F);
+            this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(36, 154);
+            this.bunifuLabel1.Location = new System.Drawing.Point(24, 184);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(101, 32);
+            this.bunifuLabel1.Size = new System.Drawing.Size(128, 22);
             this.bunifuLabel1.TabIndex = 48;
-            this.bunifuLabel1.Text = "Amount";
+            this.bunifuLabel1.Text = "Total Amount:";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -242,12 +245,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.AllowParentOverrides = false;
             this.bunifuLabel2.AutoEllipsis = false;
             this.bunifuLabel2.CursorType = null;
-            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F);
+            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel2.Location = new System.Drawing.Point(36, 207);
+            this.bunifuLabel2.Location = new System.Drawing.Point(24, 236);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(67, 32);
+            this.bunifuLabel2.Size = new System.Drawing.Size(46, 22);
             this.bunifuLabel2.TabIndex = 49;
             this.bunifuLabel2.Text = "Cash";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -302,7 +305,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.IdleIconLeftImage = null;
             this.btnCancel.IdleIconRightImage = null;
             this.btnCancel.IndicateFocus = false;
-            this.btnCancel.Location = new System.Drawing.Point(87, 281);
+            this.btnCancel.Location = new System.Drawing.Point(92, 337);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCancel.OnDisabledState.BorderRadius = 1;
@@ -345,96 +348,97 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.UseDefaultRadiusAndThickness = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // bunifuButton2
+            // btnConfirm
             // 
-            this.bunifuButton2.AllowAnimations = true;
-            this.bunifuButton2.AllowMouseEffects = true;
-            this.bunifuButton2.AllowToggling = false;
-            this.bunifuButton2.AnimationSpeed = 200;
-            this.bunifuButton2.AutoGenerateColors = false;
-            this.bunifuButton2.AutoRoundBorders = false;
-            this.bunifuButton2.AutoSizeLeftIcon = true;
-            this.bunifuButton2.AutoSizeRightIcon = true;
-            this.bunifuButton2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuButton2.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
-            this.bunifuButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton2.BackgroundImage")));
-            this.bunifuButton2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton2.ButtonText = "Confirm [Enter]";
-            this.bunifuButton2.ButtonTextMarginLeft = 0;
-            this.bunifuButton2.ColorContrastOnClick = 45;
-            this.bunifuButton2.ColorContrastOnHover = 45;
-            this.bunifuButton2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnConfirm.AllowAnimations = true;
+            this.btnConfirm.AllowMouseEffects = true;
+            this.btnConfirm.AllowToggling = false;
+            this.btnConfirm.AnimationSpeed = 200;
+            this.btnConfirm.AutoGenerateColors = false;
+            this.btnConfirm.AutoRoundBorders = false;
+            this.btnConfirm.AutoSizeLeftIcon = true;
+            this.btnConfirm.AutoSizeRightIcon = true;
+            this.btnConfirm.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfirm.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnConfirm.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirm.BackgroundImage")));
+            this.btnConfirm.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnConfirm.ButtonText = "Confirm [Enter]";
+            this.btnConfirm.ButtonTextMarginLeft = 0;
+            this.btnConfirm.ColorContrastOnClick = 45;
+            this.btnConfirm.ColorContrastOnHover = 45;
+            this.btnConfirm.Cursor = System.Windows.Forms.Cursors.Default;
             borderEdges2.BottomLeft = true;
             borderEdges2.BottomRight = true;
             borderEdges2.TopLeft = true;
             borderEdges2.TopRight = true;
-            this.bunifuButton2.CustomizableEdges = borderEdges2;
-            this.bunifuButton2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.bunifuButton2.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.bunifuButton2.DisabledFillColor = System.Drawing.Color.Empty;
-            this.bunifuButton2.DisabledForecolor = System.Drawing.Color.Empty;
-            this.bunifuButton2.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.bunifuButton2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuButton2.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton2.IconLeft = null;
-            this.bunifuButton2.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuButton2.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuButton2.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.bunifuButton2.IconMarginLeft = 11;
-            this.bunifuButton2.IconPadding = 10;
-            this.bunifuButton2.IconRight = null;
-            this.bunifuButton2.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bunifuButton2.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuButton2.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.bunifuButton2.IconSize = 25;
-            this.bunifuButton2.IdleBorderColor = System.Drawing.Color.Empty;
-            this.bunifuButton2.IdleBorderRadius = 0;
-            this.bunifuButton2.IdleBorderThickness = 0;
-            this.bunifuButton2.IdleFillColor = System.Drawing.Color.Empty;
-            this.bunifuButton2.IdleIconLeftImage = null;
-            this.bunifuButton2.IdleIconRightImage = null;
-            this.bunifuButton2.IndicateFocus = false;
-            this.bunifuButton2.Location = new System.Drawing.Point(219, 281);
-            this.bunifuButton2.Name = "bunifuButton2";
-            this.bunifuButton2.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.bunifuButton2.OnDisabledState.BorderRadius = 1;
-            this.bunifuButton2.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton2.OnDisabledState.BorderThickness = 1;
-            this.bunifuButton2.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.bunifuButton2.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.bunifuButton2.OnDisabledState.IconLeftImage = null;
-            this.bunifuButton2.OnDisabledState.IconRightImage = null;
-            this.bunifuButton2.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.bunifuButton2.onHoverState.BorderRadius = 1;
-            this.bunifuButton2.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton2.onHoverState.BorderThickness = 1;
-            this.bunifuButton2.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.bunifuButton2.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton2.onHoverState.IconLeftImage = null;
-            this.bunifuButton2.onHoverState.IconRightImage = null;
-            this.bunifuButton2.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuButton2.OnIdleState.BorderRadius = 1;
-            this.bunifuButton2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton2.OnIdleState.BorderThickness = 1;
-            this.bunifuButton2.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuButton2.OnIdleState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton2.OnIdleState.IconLeftImage = null;
-            this.bunifuButton2.OnIdleState.IconRightImage = null;
-            this.bunifuButton2.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.bunifuButton2.OnPressedState.BorderRadius = 1;
-            this.bunifuButton2.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton2.OnPressedState.BorderThickness = 1;
-            this.bunifuButton2.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.bunifuButton2.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton2.OnPressedState.IconLeftImage = null;
-            this.bunifuButton2.OnPressedState.IconRightImage = null;
-            this.bunifuButton2.Size = new System.Drawing.Size(129, 39);
-            this.bunifuButton2.TabIndex = 51;
-            this.bunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuButton2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.bunifuButton2.TextMarginLeft = 0;
-            this.bunifuButton2.TextPadding = new System.Windows.Forms.Padding(0);
-            this.bunifuButton2.UseDefaultRadiusAndThickness = true;
+            this.btnConfirm.CustomizableEdges = borderEdges2;
+            this.btnConfirm.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnConfirm.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnConfirm.DisabledFillColor = System.Drawing.Color.Empty;
+            this.btnConfirm.DisabledForecolor = System.Drawing.Color.Empty;
+            this.btnConfirm.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnConfirm.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.IconLeft = null;
+            this.btnConfirm.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConfirm.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnConfirm.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnConfirm.IconMarginLeft = 11;
+            this.btnConfirm.IconPadding = 10;
+            this.btnConfirm.IconRight = null;
+            this.btnConfirm.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConfirm.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnConfirm.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnConfirm.IconSize = 25;
+            this.btnConfirm.IdleBorderColor = System.Drawing.Color.Empty;
+            this.btnConfirm.IdleBorderRadius = 0;
+            this.btnConfirm.IdleBorderThickness = 0;
+            this.btnConfirm.IdleFillColor = System.Drawing.Color.Empty;
+            this.btnConfirm.IdleIconLeftImage = null;
+            this.btnConfirm.IdleIconRightImage = null;
+            this.btnConfirm.IndicateFocus = false;
+            this.btnConfirm.Location = new System.Drawing.Point(224, 337);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnConfirm.OnDisabledState.BorderRadius = 1;
+            this.btnConfirm.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnConfirm.OnDisabledState.BorderThickness = 1;
+            this.btnConfirm.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnConfirm.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnConfirm.OnDisabledState.IconLeftImage = null;
+            this.btnConfirm.OnDisabledState.IconRightImage = null;
+            this.btnConfirm.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnConfirm.onHoverState.BorderRadius = 1;
+            this.btnConfirm.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnConfirm.onHoverState.BorderThickness = 1;
+            this.btnConfirm.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnConfirm.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.onHoverState.IconLeftImage = null;
+            this.btnConfirm.onHoverState.IconRightImage = null;
+            this.btnConfirm.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnConfirm.OnIdleState.BorderRadius = 1;
+            this.btnConfirm.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnConfirm.OnIdleState.BorderThickness = 1;
+            this.btnConfirm.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnConfirm.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.OnIdleState.IconLeftImage = null;
+            this.btnConfirm.OnIdleState.IconRightImage = null;
+            this.btnConfirm.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnConfirm.OnPressedState.BorderRadius = 1;
+            this.btnConfirm.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnConfirm.OnPressedState.BorderThickness = 1;
+            this.btnConfirm.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnConfirm.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.OnPressedState.IconLeftImage = null;
+            this.btnConfirm.OnPressedState.IconRightImage = null;
+            this.btnConfirm.Size = new System.Drawing.Size(129, 39);
+            this.btnConfirm.TabIndex = 51;
+            this.btnConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnConfirm.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnConfirm.TextMarginLeft = 0;
+            this.btnConfirm.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnConfirm.UseDefaultRadiusAndThickness = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // bunifuPanel1
             // 
@@ -454,6 +458,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.Size = new System.Drawing.Size(427, 38);
             this.bunifuPanel1.TabIndex = 105;
             // 
+            // btnXit
+            // 
+            this.btnXit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnXit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnXit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.btnXit.Location = new System.Drawing.Point(382, 0);
+            this.btnXit.Name = "btnXit";
+            this.btnXit.Size = new System.Drawing.Size(46, 38);
+            this.btnXit.TabIndex = 102;
+            this.btnXit.Text = "X";
+            this.btnXit.UseVisualStyleBackColor = false;
+            this.btnXit.Click += new System.EventHandler(this.btnXit_Click);
+            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
@@ -466,20 +484,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnExit.TabIndex = 101;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = false;
-            // 
-            // btnXit
-            // 
-            this.btnXit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.btnXit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnXit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.btnXit.Location = new System.Drawing.Point(370, 0);
-            this.btnXit.Name = "btnXit";
-            this.btnXit.Size = new System.Drawing.Size(58, 38);
-            this.btnXit.TabIndex = 102;
-            this.btnXit.Text = "X";
-            this.btnXit.UseVisualStyleBackColor = false;
-            this.btnXit.Click += new System.EventHandler(this.btnXit_Click);
             // 
             // bunifuLabel4
             // 
@@ -502,10 +506,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(427, 337);
+            this.ClientSize = new System.Drawing.Size(427, 403);
             this.Controls.Add(this.bunifuLabel4);
             this.Controls.Add(this.bunifuPanel1);
-            this.Controls.Add(this.bunifuButton2);
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.bunifuLabel1);
@@ -515,6 +519,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Name = "frmPayment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment";
+            this.Load += new System.EventHandler(this.frmPayment_Load);
             this.bunifuPanel1.ResumeLayout(false);
             this.bunifuPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -523,17 +528,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
         #endregion
-
-        private Bunifu.UI.WinForms.BunifuTextBox txtAmount;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private Bunifu.UI.WinForms.BunifuTextBox txtCash;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnCancel;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton2;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnConfirm;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnXit;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
+        public Bunifu.UI.WinForms.BunifuTextBox txtAmount;
     }
 }

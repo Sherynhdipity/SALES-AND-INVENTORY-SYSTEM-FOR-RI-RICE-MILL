@@ -192,83 +192,102 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="crpReceipt - Copy.cs">
-      <DependentUpon>crpReceipt - Copy.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="DBConnection.cs" />
-    <Compile Include="Cashier Modules\frmMainSales.cs">
+    <Compile Include="Cashier Modules\Cashier Mainform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\frmMainSales.Designer.cs">
-      <DependentUpon>frmMainSales.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Cashier Mainform.Designer.cs">
+      <DependentUpon>Cashier Mainform.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBSalesandInventoryDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Cashier Modules\frmProductLookup.cs">
+    <Compile Include="Cashier Modules\Product Lookup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\frmProductLookup.Designer.cs">
-      <DependentUpon>frmProductLookup.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Product Lookup.Designer.cs">
+      <DependentUpon>Product Lookup.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmBatchItems.cs">
+    <Compile Include="Cashier Modules\Sales History.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBatchItems.Designer.cs">
-      <DependentUpon>frmBatchItems.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Sales History.Designer.cs">
+      <DependentUpon>Sales History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\frmvoidauth.cs">
+    <Compile Include="Cashier Modules\Discount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\frmvoidauth.Designer.cs">
-      <DependentUpon>frmvoidauth.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Discount.Designer.cs">
+      <DependentUpon>Discount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\frmPLQuant.cs">
+    <Compile Include="Link Forms\Restore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\frmPLQuant.Designer.cs">
-      <DependentUpon>frmPLQuant.cs</DependentUpon>
+    <Compile Include="Link Forms\Restore.Designer.cs">
+      <DependentUpon>Restore.cs</DependentUpon>
     </Compile>
-    <Compile Include="Link Forms\frmViewSalesReport.cs">
+    <Compile Include="Link Forms\Backup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Link Forms\frmViewSalesReport.Designer.cs">
-      <DependentUpon>frmViewSalesReport.cs</DependentUpon>
+    <Compile Include="Link Forms\Backup.Designer.cs">
+      <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmUpdateStock.cs">
+    <Compile Include="Inventory Clerk Modules\Batch Items.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmUpdateStock.Designer.cs">
-      <DependentUpon>frmUpdateStock.cs</DependentUpon>
+    <Compile Include="Inventory Clerk Modules\Batch Items.Designer.cs">
+      <DependentUpon>Batch Items.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmAddStock.cs">
+    <Compile Include="Cashier Modules\Void Authentication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmAddStock.Designer.cs">
-      <DependentUpon>frmAddStock.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Void Authentication.Designer.cs">
+      <DependentUpon>Void Authentication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\frmReceipt.cs">
+    <Compile Include="Cashier Modules\Quantity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\frmReceipt.Designer.cs">
-      <DependentUpon>frmReceipt.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Quantity.Designer.cs">
+      <DependentUpon>Quantity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmMainInventory.cs">
+    <Compile Include="Owner Modules\Add Variety.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmMainInventory.Designer.cs">
-      <DependentUpon>frmMainInventory.cs</DependentUpon>
+    <Compile Include="Owner Modules\Add Variety.Designer.cs">
+      <DependentUpon>Add Variety.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\frmSalesManagement.cs">
+    <Compile Include="Link Forms\Sales Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\frmSalesManagement.Designer.cs">
-      <DependentUpon>frmSalesManagement.cs</DependentUpon>
+    <Compile Include="Link Forms\Sales Report.Designer.cs">
+      <DependentUpon>Sales Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Update Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Update Stock.Designer.cs">
+      <DependentUpon>Update Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Add Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Add Stock.Designer.cs">
+      <DependentUpon>Add Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\Receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Receipt.Designer.cs">
+      <DependentUpon>Receipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Clerk Mainform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Clerk Mainform.Designer.cs">
+      <DependentUpon>Clerk Mainform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\Cashier Terminal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Cashier Terminal.Designer.cs">
+      <DependentUpon>Cashier Terminal.cs</DependentUpon>
     </Compile>
     <Compile Include="Cashier Modules\Payment.cs">
       <SubType>Form</SubType>
@@ -276,140 +295,164 @@
     <Compile Include="Cashier Modules\Payment.Designer.cs">
       <DependentUpon>Payment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Link Forms\frmViewInventoryReport.cs">
+    <Compile Include="Link Forms\Inventory Reports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Link Forms\frmViewInventoryReport.Designer.cs">
-      <DependentUpon>frmViewInventoryReport.cs</DependentUpon>
+    <Compile Include="Link Forms\Inventory Reports.Designer.cs">
+      <DependentUpon>Inventory Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\ucDashboard.cs">
+    <Compile Include="Owner Modules\Owner Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Owner Modules\ucDashboard.Designer.cs">
-      <DependentUpon>ucDashboard.cs</DependentUpon>
+    <Compile Include="Owner Modules\Owner Dashboard.Designer.cs">
+      <DependentUpon>Owner Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\ucInventoryManagement.cs">
+    <Compile Include="Inventory Clerk Modules\Inventory.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\ucInventoryManagement.Designer.cs">
-      <DependentUpon>ucInventoryManagement.cs</DependentUpon>
+    <Compile Include="Inventory Clerk Modules\Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\frmMainOwner.cs">
+    <Compile Include="Owner Modules\Owner Mainform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\frmMainOwner.Designer.cs">
-      <DependentUpon>frmMainOwner.cs</DependentUpon>
+    <Compile Include="Owner Modules\Owner Mainform.Designer.cs">
+      <DependentUpon>Owner Mainform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\ucProductManagement.cs">
+    <Compile Include="Owner Modules\Products.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Owner Modules\ucProductManagement.Designer.cs">
-      <DependentUpon>ucProductManagement.cs</DependentUpon>
+    <Compile Include="Owner Modules\Products.Designer.cs">
+      <DependentUpon>Products.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\ucReports.cs">
+    <Compile Include="Owner Modules\Owner Reports.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Owner Modules\ucReports.Designer.cs">
-      <DependentUpon>ucReports.cs</DependentUpon>
+    <Compile Include="Owner Modules\Owner Reports.Designer.cs">
+      <DependentUpon>Owner Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\ucUserManagement.cs">
+    <Compile Include="Owner Modules\Users.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Owner Modules\ucUserManagement.Designer.cs">
-      <DependentUpon>ucUserManagement.cs</DependentUpon>
+    <Compile Include="Owner Modules\Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Cashier Modules\ucCashierReports.cs">
+    <Compile Include="Cashier Modules\Cashier Reports.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\ucCashierReports.Designer.cs">
-      <DependentUpon>ucCashierReports.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Cashier Reports.Designer.cs">
+      <DependentUpon>Cashier Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\ucInventoryReports.cs">
+    <Compile Include="Inventory Clerk Modules\Clerk Reports.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\ucInventoryReports.Designer.cs">
-      <DependentUpon>ucInventoryReports.cs</DependentUpon>
+    <Compile Include="Inventory Clerk Modules\Clerk Reports.Designer.cs">
+      <DependentUpon>Clerk Reports.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
-    <Compile Include="Link Forms\ucBackupRestore.cs">
+    <Compile Include="Link Forms\Backup and Restore.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Link Forms\ucBackupRestore.Designer.cs">
-      <DependentUpon>ucBackupRestore.cs</DependentUpon>
+    <Compile Include="Link Forms\Backup and Restore.Designer.cs">
+      <DependentUpon>Backup and Restore.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Cashier Modules\frmMainSales.resx">
-      <DependentUpon>frmMainSales.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Cashier Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Cashier Dashboard.Designer.cs">
+      <DependentUpon>Cashier Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Clerk Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Clerk Dashboard.Designer.cs">
+      <DependentUpon>Clerk Dashboard.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Cashier Modules\Cashier Mainform.resx">
+      <DependentUpon>Cashier Mainform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="crpReceipt - Copy.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crpReceipt - Copy.cs</LastGenOutput>
+    <EmbeddedResource Include="Cashier Modules\Product Lookup.resx">
+      <DependentUpon>Product Lookup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\frmProductLookup.resx">
-      <DependentUpon>frmProductLookup.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\Sales History.resx">
+      <DependentUpon>Sales History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmBatchItems.resx">
-      <DependentUpon>frmBatchItems.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\Discount.resx">
+      <DependentUpon>Discount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\frmvoidauth.resx">
-      <DependentUpon>frmvoidauth.cs</DependentUpon>
+    <EmbeddedResource Include="Link Forms\Restore.resx">
+      <DependentUpon>Restore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\frmPLQuant.resx">
-      <DependentUpon>frmPLQuant.cs</DependentUpon>
+    <EmbeddedResource Include="Link Forms\Backup.resx">
+      <DependentUpon>Backup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Link Forms\frmViewSalesReport.resx">
-      <DependentUpon>frmViewSalesReport.cs</DependentUpon>
+    <EmbeddedResource Include="Inventory Clerk Modules\Batch Items.resx">
+      <DependentUpon>Batch Items.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\frmUpdateStock.resx">
-      <DependentUpon>frmUpdateStock.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\Void Authentication.resx">
+      <DependentUpon>Void Authentication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\frmAddStock.resx">
-      <DependentUpon>frmAddStock.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\Quantity.resx">
+      <DependentUpon>Quantity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\frmReceipt.resx">
-      <DependentUpon>frmReceipt.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Add Variety.resx">
+      <DependentUpon>Add Variety.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\frmMainInventory.resx">
-      <DependentUpon>frmMainInventory.cs</DependentUpon>
+    <EmbeddedResource Include="Link Forms\Sales Report.resx">
+      <DependentUpon>Sales Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\frmSalesManagement.resx">
-      <DependentUpon>frmSalesManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Inventory Clerk Modules\Update Stock.resx">
+      <DependentUpon>Update Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\Add Stock.resx">
+      <DependentUpon>Add Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\Receipt.resx">
+      <DependentUpon>Receipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\Clerk Mainform.resx">
+      <DependentUpon>Clerk Mainform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\Cashier Terminal.resx">
+      <DependentUpon>Cashier Terminal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Receipt.rdlc" />
-    <EmbeddedResource Include="SalesReport.rdlc" />
-    <EmbeddedResource Include="Link Forms\frmViewInventoryReport.resx">
-      <DependentUpon>frmViewInventoryReport.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\Receipt.rdlc" />
+    <EmbeddedResource Include="Reports\InventoryReport.rdlc" />
+    <EmbeddedResource Include="Reports\SalesReport.rdlc" />
+    <EmbeddedResource Include="Link Forms\Inventory Reports.resx">
+      <DependentUpon>Inventory Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\ucDashboard.resx">
-      <DependentUpon>ucDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Owner Dashboard.resx">
+      <DependentUpon>Owner Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\ucInventoryManagement.resx">
-      <DependentUpon>ucInventoryManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Inventory Clerk Modules\Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\frmMainOwner.resx">
-      <DependentUpon>frmMainOwner.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Owner Mainform.resx">
+      <DependentUpon>Owner Mainform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\ucProductManagement.resx">
-      <DependentUpon>ucProductManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Products.resx">
+      <DependentUpon>Products.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\ucReports.resx">
-      <DependentUpon>ucReports.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Owner Reports.resx">
+      <DependentUpon>Owner Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\ucUserManagement.resx">
-      <DependentUpon>ucUserManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -422,26 +465,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Cashier Modules\ucCashierReports.resx">
-      <DependentUpon>ucCashierReports.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\Cashier Reports.resx">
+      <DependentUpon>Cashier Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\ucInventoryReports.resx">
-      <DependentUpon>ucInventoryReports.cs</DependentUpon>
+    <EmbeddedResource Include="Inventory Clerk Modules\Clerk Reports.resx">
+      <DependentUpon>Clerk Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Link Forms\ucBackupRestore.resx">
-      <DependentUpon>ucBackupRestore.cs</DependentUpon>
+    <EmbeddedResource Include="Link Forms\Backup and Restore.resx">
+      <DependentUpon>Backup and Restore.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DBSalesandInventoryDataSet.xsc">
-      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DBSalesandInventoryDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBSalesandInventoryDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBSalesandInventoryDataSet.xss">
-      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
-    </None>
+    <EmbeddedResource Include="Cashier Modules\Cashier Dashboard.resx">
+      <DependentUpon>Cashier Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
+      <DependentUpon>Clerk Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -574,6 +612,9 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\plus.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\money.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
