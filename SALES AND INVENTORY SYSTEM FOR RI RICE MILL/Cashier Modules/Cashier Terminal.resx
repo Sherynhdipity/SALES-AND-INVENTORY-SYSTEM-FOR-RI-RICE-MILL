@@ -306,6 +306,15 @@
         QNycD319Pz1HQ2KaAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="bunifuTextBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALkAAAApCAYAAABpy4gfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACnSURBVHhe7dKxCQMxAARB9V+VhMr4MlyAjUCJW9ifgUsu
+        3gGvsPd+5pxfs9JO1zfxMc4BNafrm7jIaRI5eSInT+TkiZw8kZMncvJETp7IyRM5eSInT+TkiZw8kZMn
+        cvJETp7IyRM5eSInT+TkiZw8kZMncvJETp7IyRM5eSInT+TkiZw8kZMncvJETp7IyRM5eSInT+Tk/UW+
+        1vqcw6y00/VNHMrG+AG93dXA3X6xZQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="txtAmount.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAALkAAAApCAYAAABpy4gfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -333,15 +342,6 @@
   <data name="lblIVno.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 9.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
-  <data name="txtQuantityCount.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAALkAAAApCAYAAABpy4gfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACnSURBVHhe7dKxCQMxAARB9V+VhMr4MlyAjUCJW9ifgUsu
-        3gGvsPd+5pxfs9JO1zfxMc4BNafrm7jIaRI5eSInT+TkiZw8kZMncvJETp7IyRM5eSInT+TkiZw8kZMn
-        cvJETp7IyRM5eSInT+TkiZw8kZMncvJETp7IyRM5eSInT+TkiZw8kZMncvJETp7IyRM5eSInT+Tk/UW+
-        1vqcw6y00/VNHMrG+AG93dXA3X6xZQAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="bunifuLabel4.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 9.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
@@ -362,6 +362,16 @@
   </data>
   <data name="bunifuLabel6.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 9.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  </data>
+  <data name="txtQuantityCount.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAArIAAAApCAYAAADJR8opAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD8SURBVHhe7dbBCcAgAARBS7M0Ozcx+EkJCzNwn6tgBwAA
+        ZO2957tlZmZmZhbYvBn7hew5AACgYN2MFbIAAKQIWQAAkoQsAABJQhYAgCQhCwBAkpAFACBJyAIAkCRk
+        AQBIErIAACQJWQAAkoQsAABJQhYAgCQhCwBAkpAFACBJyAIAkCRkAQBIErIAACQJWQAAkoQsAABJQhYA
+        gCQhCwBAkpAFACBJyAIAkCRkAQBIErIAACQJWQAAkoQsAABJQhYAgCQhCwBAkpAFACBJyAIAkCRkAQBI
+        ErIAACQJWQAAkoQsAABJQhYAgKRfyM5zmJmZmZkFNm/GAgBAzRgP5InkrZJw9pwAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -389,6 +399,9 @@
   </data>
   <data name="bunifuLabel13.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 69.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 255, 0); text-align: left; }</value>
+  </data>
+  <data name="bunifuLabel7.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 9.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>40</value>

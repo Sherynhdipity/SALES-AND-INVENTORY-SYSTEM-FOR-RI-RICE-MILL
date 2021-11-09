@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAY8AAAAmCAYAAAA8/hd1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACwSURBVHhe7dUxDYAwAABBnAFqCC5wSqqkLAjo7zdc8g5+
+        26/3OO/xAMCq7Y8JAKvMA4DMPADIzAOAzDwAyMwDgMw8AMjMA4DMPADIzAOAzDwAyMwDgMw8AMjMA4DM
+        PADIzAOAzDwAyMwDgMw8AMjMA4DMPADIzAOAzDwAyMwDgMw8AMjMA4DMPADIzAOAzDwAyMwDgMw8AMjM
+        A4DMPADIzAOAzDwAyMwDgMw8AIjG/AC13ZFug5YW2gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="bunifuLabel3.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 18pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
+  </data>
+  <data name="bunifuLabel1.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 14.25pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  </data>
+  <data name="btnAddDiscount.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFsAAAArCAYAAAAXFPRYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVGhD7dChAYAwAMAwLtnL8B9n4Dc4AAlVEVF13cYx
+        z3Gsxd/m+cx+C/zB7JDZIbNDZofMDpkdMjtkdsjskNkhs0Nmh8wOmR0yO2R2yOyQ2SGzQ2aHzA6ZHTI7
+        ZHbI7JDZIbNDZofMDpkdMjtkdsjskNkhs0Nmh8wOmR0yO2R2aBv7vN4CH9vndQOn0tj/CGix+gAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
 </root>

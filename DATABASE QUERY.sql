@@ -31,7 +31,6 @@ CREATE TABLE tblProducts(
 	[ProductDesc] [varchar](max) NULL,
 	[ProductVariety] [varchar](100) NULL,
 	[Price] [decimal](18, 2) NULL,
-	[RestockLevel] [int], NULL
 	)
 
 
@@ -42,14 +41,16 @@ CREATE TABLE tblProducts(
 	[ProductID] [int] NULL,
 	[QtyStockedIn] [int] NULL,
 	[StockinDate] [datetime] NULL,
+	[RestockLevel] [int], NULL
 	[BatchID] [int] NULL,
 	)
 
 
  CREATE TABLE tblStockout(
-	[stockoutID] [int] IDENTITY(1,1) PRIMARY KEY,
+	[StockoutID] [int] IDENTITY(1,1) PRIMARY KEY,
 	[ProductID] [int] NULL,
-        [TransactionID] [int] NULL,
+	[QtyStockedOut] [int] NULL,
+	[PurchaseID] [int] NULL,
 	[StockoutDate] [datetime] NULL,
 	[BatchID] [int] NULL,
 	)
@@ -57,7 +58,6 @@ CREATE TABLE tblProducts(
 
 CREATE TABLE tblBatch(
 	[BatchID] [int] IDENTITY(1,1) PRIMARY KEY,
-	[BatchNumber] [int] NULL,
 	[MillingDate] [datetime] NULL,
 	)
 
@@ -77,19 +77,19 @@ CREATE TABLE tblBatchProduct(
 CREATE TABLE tblDiscount(
 	[DiscountID] [int] IDENTITY(1,1) PRIMARY KEY,
 	[DiscountName] [varchar](50) NULL,
-	[DiscountPercentage] [decimal](18, 2) NULL,
+	[DiscountPercentage] [float] NULL,
  )
 
 CREATE TABLE tblPayments(
 	[PaymentID] [int] IDENTITY(1,1) PRIMARY KEY,
 	[TotalAmount] [decimal](18, 2) NULL,
-	[AmountPayed] [decimal](18, 2) NULL,
+	[AmountPaid] [decimal](18, 2) NULL,
 
 	)
 
 CREATE TABLE tblTransactions(
 	[TransactionID] [int] IDENTITY(1,1) PRIMARY KEY,
-    [TransactionDate] [datetime] NULL,
+        [TransactionDate] [datetime] NULL,
 	[PurchaseID] [int] NULL,
 	[UserID] [int] NULL,
 	)
@@ -102,7 +102,7 @@ CREATE TABLE tblPurchases(
 	[ProductID] [int] NULL,
 	[DiscountID] [int] NULL,
 	[PaymentID] [int] NULL,
-	[VAT] [decimal](18, 2) NULL,
+	[VAT] [float] NULL,
 	)
 
 

@@ -117,33 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtAmount.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAN4AAAAlCAYAAAAtMldtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAClSURBVHhe7dOxDcMwAANB7T+VDI2RMTJADAFqMoD9zR3A
-        hv0PILLW+sw5f2b27HZrJ7sx9gE8b7d2shMevEV4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHh
-        QUB4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHhQUB4EBAeBIQHAeFBQHgQEB4EhAeBv/Cu6/ru
-        w8ye3W7tZAe8a4wblcpowdPf2YAAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="bunifuLabel3.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 18pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
-  </data>
-  <data name="txtCash.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAN4AAAAlCAYAAAAtMldtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAClSURBVHhe7dOxDcMwAANB7T+VDI2RMTJADAFqMoD9zR3A
-        hv0PILLW+sw5f2b27HZrJ7sx9gE8b7d2shMevEV4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHh
-        QUB4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHhQUB4EBAeBIQHAeFBQHgQEB4EhAeBv/Cu6/ru
-        w8ye3W7tZAe8a4wblcpowdPf2YAAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="bunifuLabel1.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 14.25pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
   <data name="bunifuLabel2.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 14.25pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  </data>
+  <data name="bunifuLabel4.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 18pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAasAAAAmCAYAAAB6SLTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC4SURBVHhe7dUxDYAwAADBOgPUEFzgtKmSsiDihxsueQc/
+        jnue17NeAKgaf2wAqDIrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMr
+        APLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMr
+        APLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAiFv7A6rkEb+QIV8TAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="bunifuLabel3.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 18pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
+  </data>
+  <data name="btnConfirm.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIEAAAAnCAYAAAAo5SujAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB0SURBVHhe7dIxAQAgEMQwlGAZ/CGD/eEE4IAMmbq29Vmr
+        z3P4Va1M8Ar8xASYABMQJsAEmIAwASbABIQJMAEmIEyACTABYQJMgAkIE2ACTECYABNgAsIEmAATECbA
+        BJiAMAEmwASECTABJiBaH7VfgU+M2hc+XoTbIG6EVgAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="btnCancel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -154,24 +156,22 @@
         rkJggg==
 </value>
   </data>
-  <data name="btnConfirm.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="txtCash.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIEAAAAnCAYAAAAo5SujAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB0SURBVHhe7dIxAQAgEMQwlGAZ/CGD/eEE4IAMmbq29Vmr
-        z3P4Va1M8Ar8xASYABMQJsAEmIAwASbABIQJMAEmIEyACTABYQJMgAkIE2ACTECYABNgAsIEmAATECbA
-        BJiAMAEmwASECTABJiBaH7VfgU+M2hc+XoTbIG6EVgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAN4AAAAlCAYAAAAtMldtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAClSURBVHhe7dOxDcMwAANB7T+VDI2RMTJADAFqMoD9zR3A
+        hv0PILLW+sw5f2b27HZrJ7sx9gE8b7d2shMevEV4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHh
+        QUB4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHhQUB4EBAeBIQHAeFBQHgQEB4EhAeBv/Cu6/ru
+        w8ye3W7tZAe8a4wblcpowdPf2YAAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="txtAmount.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAasAAAAmCAYAAAB6SLTfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC4SURBVHhe7dUxDYAwAADBOgPUEFzgtKmSsiDihxsueQc/
-        jnue17NeAKgaf2wAqDIrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMr
-        APLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAyDMr
-        APLMCoA8swIgz6wAyDMrAPLMCoA8swIgz6wAiFv7A6rkEb+QIV8TAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAN4AAAAlCAYAAAAtMldtAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAClSURBVHhe7dOxDcMwAANB7T+VDI2RMTJADAFqMoD9zR3A
+        hv0PILLW+sw5f2b27HZrJ7sx9gE8b7d2shMevEV4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHh
+        QUB4EBAeBIQHAeFBQHgQEB4EhAcB4UFAeBAQHgSEBwHhQUB4EBAeBIQHAeFBQHgQEB4EhAeBv/Cu6/ru
+        w8ye3W7tZAe8a4wblcpowdPf2YAAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="bunifuLabel4.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 18pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
 </root>

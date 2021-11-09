@@ -633,7 +633,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
-
+            frmDiscount discount = new frmDiscount();
+            discount.Show();
         }
 
         //mod end
