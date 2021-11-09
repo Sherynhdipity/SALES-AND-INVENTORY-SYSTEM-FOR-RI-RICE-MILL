@@ -65,7 +65,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnAddStock_Click(object sender, EventArgs e)
         {
             frmAddStock stock = new frmAddStock();
-            stock.Show();
+            DialogResult res =  stock.ShowDialog();
+
+            if (res==DialogResult.OK)
+            {
+                DisplayStockList();
+            }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

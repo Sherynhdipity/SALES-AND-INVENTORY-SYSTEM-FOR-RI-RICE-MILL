@@ -105,6 +105,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSalesHistory.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvSalesHistory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvSalesHistory.EnableHeadersVisualStyles = false;
             this.dgvSalesHistory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.dgvSalesHistory.HeaderBackColor = System.Drawing.Color.DodgerBlue;

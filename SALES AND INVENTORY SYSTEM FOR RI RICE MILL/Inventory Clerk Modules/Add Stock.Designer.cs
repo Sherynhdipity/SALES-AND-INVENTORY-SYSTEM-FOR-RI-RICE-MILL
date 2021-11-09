@@ -1115,6 +1115,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Name = "frmAddStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Stock";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddStock_FormClosing);
             this.Load += new System.EventHandler(this.frmAddStock_Load);
             this.bunifuGroupBox2.ResumeLayout(false);
             this.bunifuGroupBox2.PerformLayout();

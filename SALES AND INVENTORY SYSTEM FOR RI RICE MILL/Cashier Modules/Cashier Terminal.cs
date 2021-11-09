@@ -39,7 +39,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 int count;
 
                 con.Open();
-                cmd = new SqlCommand("SELECT TOP 1 TransactionNo FROM tblTransactions WHERE TransactionNo LIKE '%" + sdate + "'", con);
+                cmd = new SqlCommand("SELECT TOP 1 TransactionNo FROM tblTransactions WHERE TransactionNo LIKE '" + sdate + "%'", con);
                 reader = cmd.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows)
@@ -70,6 +70,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public void ColumnsLoader()
         {
             dt.Rows.Clear();
+            dt.Columns.Clear();
             dt.Columns.Add("Product Code", typeof(string)).ReadOnly = true;
             dt.Columns.Add("Product Description", typeof(string)).ReadOnly = true;
             dt.Columns.Add("Product Variety", typeof(string)).ReadOnly = true;
@@ -92,11 +93,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtStock.Text = "0";
             txtAmount.Text = "";
             txtQuantityCount.Text = "";
-
+            txtDiscountAmount.Text = "";
+            txtVatAmount.Text = "";
             //label controls
             lblTransNo.Text = "0000000000";
             lblTotal.Text = "0.00";
             lblTransDate.Text = "Date";
+            lblDiscPercentage.Text = "0 %";
             dt.Clear();
         }
 
@@ -113,7 +116,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT Password FROM tblUsers WHERE RoleID = 1 AND Status = 'Active' AND Password = '" + adminPass + "'";
+                QuerySelect = "SELECT * FROM tblUsers WHERE RoleID = 1 AND Status = 'Active' AND Password = '" + adminPass + "'";
                 cmd = new SqlCommand(QuerySelect, con);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -142,6 +145,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     lblTotal.Text = totalamount.ToString() + "." + "00";
 
                     txtAmount.Text = totalamount.ToString();
+                    recompute(totalamount);
                     txtSearch.Focus();
                     dvgOrderList.Refresh();
 
@@ -157,7 +161,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
 
         }
@@ -409,7 +417,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         totalamount = Convert.ToDouble(dt.Compute("sum([subtotal])", ""));
                         lblTotal.Text = totalamount.ToString("#,0.00");
                         txtAmount.Text = totalamount.ToString("0.00");
+                        //compute here lols
+                        recompute(totalamount);
+                        //asta lng di
                     }
+
+
 
                     txtSearch.Focus();
                     txtProductCode.Text = "";
@@ -427,7 +440,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show(ex.Message);
             }
         }
+        private void recompute(double totalamount)
+        {
+            string[] tempDisc = lblDiscPercentage.Text.ToString().Split(' ');
 
+            txtVatAmount.Text = (totalamount * 0.12).ToString("#,0.00");
+            totalamount = totalamount + (totalamount * 0.12);
+            lblTotal.Text = totalamount.ToString("#,0.00");
+
+            if (!(Convert.ToDouble(tempDisc[0].ToString()) == 0))
+            {
+                txtDiscountAmount.Text = (totalamount * (Convert.ToDouble(tempDisc[0].ToString()) / 100)).ToString("#,0.00");
+                totalamount = totalamount - (totalamount * (Convert.ToDouble(tempDisc[0].ToString()) / 100));
+                lblTotal.Text = totalamount.ToString("#,0.00");
+            }
+        }
         private void txtSearch_TextChange(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
@@ -473,6 +500,38 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+                try
+                {
+                    con.Open();
+                    QuerySelect = "select Count(tblBatchProduct.BatchID) AS Stock from tblBatchProduct INNER JOIN tblStockin on tblBatchProduct.BatchID = tblStockin.BatchID where Status='IN' AND tblStockin.ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtSearch.Text + "' )";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        txtStock.Text = reader["Stock"].ToString();
+
+                        reader.Close();
+                    }
+                    else
+                    {
+                       
+                        txtStock.Text = "0";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
                 }
             }
         }
@@ -605,15 +664,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             payment.txtAmount.Text = lblTotal.Text;
             payment.transNo = lblTransNo.Text;
             payment.storeDt(dtfromdvg);
-            payment.ShowDialog();
+            DialogResult res = payment.ShowDialog();
+
+            if (res== DialogResult.OK)
+            {
+                ClearAll();
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Do you want to Exit the Application?", "Exit", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Do you want to return to Dashboard?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                Application.Exit();
+                frmMainSales main = new frmMainSales();
+                main.Show();
+                this.Close();
             }
         }
 
@@ -634,7 +700,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnDiscount_Click(object sender, EventArgs e)
         {
             frmDiscount discount = new frmDiscount();
-            discount.Show();
+            discount.ShowDialog();
+            try
+            {
+                con.Open();
+                string query = "SELECT DiscountPercentage FROM tblDiscount WHERE DiscountID = "+ discount.discountID;
+                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblDiscPercentage.Text = reader["DiscountPercentage"].ToString()+" %";
+                    if (!txtAmount.Text.ToString().Equals(string.Empty))
+                    {
+                        recompute(Convert.ToDouble(txtAmount.Text.ToString()));
+                    }
+                }
+            }   
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         //mod end

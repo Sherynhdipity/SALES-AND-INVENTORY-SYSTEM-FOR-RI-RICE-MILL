@@ -28,12 +28,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QuerySelect;
         public static string QueryUpdate;
 
-
+        public string discountID { get; set; }
         public void DisplayDiscounts()
         {
             con.Close();
             con.Open();
-            QuerySelect = "SELECT DiscountID, DiscountName from tblDiscounts";
+            QuerySelect = "SELECT DiscountID, DiscountName from tblDiscount";
             cmd = new SqlCommand(QuerySelect, con);
 
             adapter = new SqlDataAdapter(cmd);
@@ -43,12 +43,28 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             drpDiscount.DataSource = dt;
             drpDiscount.DisplayMember = "DiscountName";
             drpDiscount.ValueMember = "DiscountID";
+            drpDiscount.SelectedIndex = 0;
         }
 
 
         private void btnXit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void drpDiscount_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            discountID = drpDiscount.SelectedValue.ToString();
+        }
+
+        private void frmDiscount_Load(object sender, EventArgs e)
+        {
+            DisplayDiscounts();
+        }
+
+        private void btnAddDiscount_Click(object sender, EventArgs e)
+        {
+            btnXit_Click(sender, e);
         }
     }
 }

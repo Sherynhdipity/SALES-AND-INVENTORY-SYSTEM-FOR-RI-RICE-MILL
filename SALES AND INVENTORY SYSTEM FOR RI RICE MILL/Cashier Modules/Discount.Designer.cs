@@ -142,8 +142,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.drpDiscount.Name = "drpDiscount";
             this.drpDiscount.Size = new System.Drawing.Size(260, 32);
             this.drpDiscount.TabIndex = 107;
+            this.drpDiscount.Text = null;
             this.drpDiscount.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.drpDiscount.TextLeftMargin = 5;
+            this.drpDiscount.SelectedIndexChanged += new System.EventHandler(this.drpDiscount_SelectedIndexChanged);
             // 
             // bunifuLabel1
             // 
@@ -251,6 +253,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnAddDiscount.TextMarginLeft = 0;
             this.btnAddDiscount.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAddDiscount.UseDefaultRadiusAndThickness = true;
+            this.btnAddDiscount.Click += new System.EventHandler(this.btnAddDiscount_Click);
             // 
             // frmDiscount
             // 
@@ -265,6 +268,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Name = "frmDiscount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Discount";
+            this.Load += new System.EventHandler(this.frmDiscount_Load);
             this.bunifuPanel1.ResumeLayout(false);
             this.bunifuPanel1.PerformLayout();
             this.ResumeLayout(false);

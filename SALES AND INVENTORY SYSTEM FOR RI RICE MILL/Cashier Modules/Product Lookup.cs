@@ -103,7 +103,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 string temp_stock = "";
                 con.Close();
                 con.Open();
-                QuerySelect = "SELECT s.QtyStockedIn AS 'Stock' FROM tblStockin s INNER JOIN tblProducts p ON s.ProductID = p.ProductID WHERE p.ProductCode ='" + Convert.ToString(selectedRow.Cells["Product Code"].Value) + "'";
+                QuerySelect = "select Count(tblBatchProduct.BatchID) AS Stock from tblBatchProduct INNER JOIN tblStockin on tblBatchProduct.BatchID = tblStockin.BatchID where Status='IN' AND tblStockin.ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '"  + Convert.ToString(selectedRow.Cells["Product Code"].Value) + "')";
                 cmd = new SqlCommand(QuerySelect, con);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)

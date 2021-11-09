@@ -77,7 +77,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     {
                         //INSERT tblBatch
                         con.Open();
-                        QueryInsert = "INSERT INTO tblBatch(BatchNumber,MillingDate) VALUES ('" + txtBatchNo.Text + "', '" + dtpMillingDate.Value.Date.ToShortDateString() + "') ";
+                        QueryInsert = "INSERT INTO tblBatch(MillingDate) VALUES ( '" + dtpMillingDate.Value.Date.ToShortDateString() + "') ";
                         cmd = new SqlCommand(QueryInsert, con);
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -198,6 +198,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmAddStock_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

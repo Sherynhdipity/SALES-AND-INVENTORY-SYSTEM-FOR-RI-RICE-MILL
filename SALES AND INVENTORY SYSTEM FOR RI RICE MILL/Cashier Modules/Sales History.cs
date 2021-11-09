@@ -34,7 +34,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
 
             con.Open();
-            QuerySelect = "SELECT t.TransactionDate AS 'Transaction Date', t.TransactionNo AS 'Transaction No.', p.QuantityBought AS 'Quantity', p.VAT AS 'Tax', pm.TotalAmount AS 'Total Amount' FROM tblTransactions t INNER JOIN tblPurchases p ON t.PurchaseID = p.PurchaseID INNER JOIN tblPayments pm ON t.PurchaseID = p.PurchaseID";
+            QuerySelect = "SELECT * FROM transactionHistory";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
