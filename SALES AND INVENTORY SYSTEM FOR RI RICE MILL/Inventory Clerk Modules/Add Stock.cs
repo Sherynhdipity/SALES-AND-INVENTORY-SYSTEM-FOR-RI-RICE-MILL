@@ -32,17 +32,42 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Display ProductData in DataGridView  
         public void DisplayProductList()
         {
-            con.Open();
-            QuerySelect = "SELECT b.ProductCode AS 'Product Code',b.ProductDesc AS 'Product Description', c.VarietyName AS 'Product Variety', b.Price FROM tblProducts a INNER JOIN tblProducts b ON a.ProductID = b.ProductID INNER JOIN tblProductVariety c ON b.VarietyID = c.VarietyID;";
-            cmd = new SqlCommand(QuerySelect, con);
 
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
+            try
+            {
 
-            dgvProductList.DataSource = dt;
-            dgvProductList.Refresh();
-            con.Close();
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                con.Open();
+
+                QuerySelect = "SELECT * FROM viewProducts";
+                cmd = new SqlCommand(QuerySelect, con);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgvProductList.DataSource = dt;
+                dgvProductList.Refresh();
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+
+                con.Close();
+
+            }
+
         }
 
 
@@ -76,32 +101,112 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     try
                     {
                         //INSERT tblBatch
-                        con.Open();
-                        QueryInsert = "INSERT INTO tblBatch(MillingDate) VALUES ( '" + dtpMillingDate.Value.Date.ToShortDateString() + "') ";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-
-                        //INSERT tblBatchProduct
-                        con.Open();
-                        int qty = Convert.ToInt32(txtQuantity.Text);
-                        for (int i = 0; i < qty; i++)
+                        if (con.State == ConnectionState.Open)
                         {
-                            QueryInsert = "INSERT INTO tblBatchProduct(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + txtBatchNo.Text + "', 'IN')";
+                            con.Close();
+                        }
+
+                        try
+                        {
+
+                            if (con.State == ConnectionState.Open)
+                            {
+                                con.Close();
+                            }
+
+                            con.Open();
+
+                            QueryInsert = "INSERT INTO tblBatch(MillingDate) VALUES ( '" + dtpMillingDate.Value.Date.ToShortDateString() + "') ";
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.ExecuteNonQuery();
+
+
                         }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+
+                        }
+                        finally
+                        {
+
                             con.Close();
+
+                        }
+
+
+                        //INSERT tblBatchProduct
+
+                        try
+                        {
+
+                            if (con.State == ConnectionState.Open)
+                            {
+                                con.Close();
+                            }
+
+                            con.Open();
+
+                            int qty = Convert.ToInt32(txtQuantity.Text);
+                            for (int i = 0; i < qty; i++)
+                            {
+                                QueryInsert = "INSERT INTO tblBatchProduct(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + txtBatchNo.Text + "', 'IN')";
+                                cmd = new SqlCommand(QueryInsert, con);
+                                cmd.ExecuteNonQuery();
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+
+                        }
+                        finally
+                        {
+
+                            con.Close();
+
+                        }
 
 
                         //INSERT tblStockin
-                        con.Open();
-                        QueryInsert = "INSERT INTO tblStockin (ProductID,QtyStockedIn,StockinDate,BatchID) VALUES((SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'), '" + txtQuantity.Text + "', '" + dtpStockinDate.Value.Date.ToShortDateString() + "', (SELECT MAX(BatchID) FROM tblBatch))";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        try
+                        {
+
+                            if (con.State == ConnectionState.Open)
+                            {
+                                con.Close();
+                            }
+
+                            con.Open();
+
+                            QueryInsert = "INSERT INTO tblStockin (ProductID,QtyStockedIn,StockinDate,BatchID) VALUES((SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'), '" + txtQuantity.Text + "', '" + dtpStockinDate.Value.Date.ToShortDateString() + "', (SELECT MAX(BatchID) FROM tblBatch))";
+                            cmd = new SqlCommand(QueryInsert, con);
+                            cmd.ExecuteNonQuery();
+
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+
+                        }
+                        finally
+                        {
+
+                            con.Close();
+
+                        }
+
+                        MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtProductCode.Text = "";
+                        txtProdDesc.Text = "";
+                        txtVariety.Text = "";
+                        DisplayProductList();
                         frmInventory inventory = new frmInventory();
                         inventory.dgvStockList.Refresh();
 
@@ -128,35 +233,44 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtProductCode.Text = "";
                 txtProdDesc.Text = "";
                 txtVariety.Text = "";
+                DisplayProductList();
             }
             else
             {
+
                 try
                 {
+
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+
                     con.Open();
-                    QuerySelect = "SELECT ProductCode, ProductDesc, ProductVariety FROM tblProducts WHERE ProductCode ='" + txtProductSearch.Text + "' OR ProductDesc LIKE'%" + txtProductSearch.Text + "%'";
+                    QuerySelect = "SELECT * FROM viewProducts WHERE [Product Code] LIKE '" + txtProductSearch.Text + "%' OR [Product Description] LIKE'%" + txtProductSearch.Text + "%'";
                     cmd = new SqlCommand(QuerySelect, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        txtProductCode.Text = reader["ProductCode"].ToString();
-                        txtProdDesc.Text = reader["ProductDesc"].ToString();
-                        txtVariety.Text = reader["ProductVariety"].ToString();
-                        reader.Close();
-                    }
-                    else
-                    {
-                        txtProductCode.Text = "";
-                        txtProdDesc.Text = "";
-                        txtVariety.Text = "";
-                    }
-                    con.Close();
+
+                    adapter = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dgvProductList.DataSource = dt;
+                    dgvProductList.Refresh();
+                   
                 }
                 catch (Exception ex)
                 {
+
                     MessageBox.Show(ex.Message);
+
                 }
+                finally
+                {
+
+                    con.Close();
+
+                }
+
             }
         }
 
@@ -180,17 +294,42 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtProdDesc.Text = row.Cells[1].Value.ToString();
                 txtVariety.Text = row.Cells[2].Value.ToString();
 
-                con.Open();
-                QuerySelect = "SELECT ProductID FROM tblProducts WHERE ProductCode='" + txtProductCode.Text + "'";
-                cmd = new SqlCommand(QuerySelect, con);
-                reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+
+                try
                 {
-                    reader.Read();
-                    lblItemID.Text = reader["ProductID"].ToString();
-                    reader.Close();
+
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+
+                    con.Open();
+
+                    QuerySelect = "SELECT ProductID FROM tblProducts WHERE ProductCode='" + txtProductCode.Text + "'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        lblItemID.Text = reader["ProductID"].ToString();
+                        reader.Close();
+                    }
+
+
                 }
-                con.Close();
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                }
+                finally
+                {
+
+                    con.Close();
+
+                }
+
 
             }
         }
@@ -203,6 +342,43 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void frmAddStock_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void txtBatchNo_Leave(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                con.Open();
+                QuerySelect = "SELECT BatchNumber FROM tblBatchProduct WHERE BatchNumber = "+txtBatchNo.Text;
+                reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    MessageBox.Show(this, "Batch number already exists.", "Duplicate Batch Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtBatchNo.Focus();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+
+                con.Close();
+
+            }
+
         }
     }
 }

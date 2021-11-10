@@ -48,8 +48,32 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             if (e.KeyCode == Keys.Enter)
             {
-                Product_Quantity = Convert.ToInt32(txtQty.Text);
-                this.Close();
+
+                try
+                {
+
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+
+                    Product_Quantity = Convert.ToInt32(txtQty.Text);
+                    this.Close();
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                }
+                finally
+                {
+
+                    con.Close();
+
+                }
+
             }
         }
     }

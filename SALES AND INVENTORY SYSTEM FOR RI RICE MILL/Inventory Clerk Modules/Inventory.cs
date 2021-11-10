@@ -43,18 +43,42 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Display InventoryData in DataGridView  
         public void DisplayStockList()
         {
-            con.Close();
-            con.Open();
-            QuerySelect = "SELECT a.stockinID AS 'Stock ID', b.ProductDesc AS 'Product Description', c.VarietyName AS 'Product Variety', a.RestockLevel AS 'Restock Level', a.QtyStockedIn AS 'Quantity', a.StockinDate AS 'Stock-in Date', a.BatchID AS 'Batch ID' FROM tblStockin a INNER JOIN tblProducts b ON a.ProductID = b.ProductID INNER JOIN tblProductVariety c ON b.VarietyID = c.VarietyID;";
-            cmd = new SqlCommand(QuerySelect, con);
 
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
+            try
+            {
 
-            dgvStockList.DataSource = dt;
-            dgvStockList.Refresh();
-            con.Close();
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                con.Open();
+
+                //start code here
+                QuerySelect = "SELECT * FROM viewAvailableStocks";
+                cmd = new SqlCommand(QuerySelect, con);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgvStockList.DataSource = dt;
+                dgvStockList.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+
+                con.Close();
+
+            }
+
         }
 
         private void frmInventory_Load(object sender, EventArgs e)

@@ -49,35 +49,76 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Display ProductData in DataGridView  
         public void DisplayProductList()
         {
-            con.Close();
-            con.Open();
-            QuerySelect = "SELECT p.ProductCode AS 'Product Code', p.ProductDesc AS 'Product Description', v.VarietyName AS 'Product Variety', p.Price FROM tblProducts p INNER JOIN tblProductVariety v ON p.VarietyID = v.VarietyID";
-            cmd = new SqlCommand(QuerySelect, con);
 
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
+            try
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+                con.Open();
+                QuerySelect = "SELECT * FROM viewProducts";
+                cmd = new SqlCommand(QuerySelect, con);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
                 adapter.Fill(dt);
 
-            dgvProductList.DataSource = dt;
-            dgvProductList.Refresh();
-            con.Close();
+                dgvProductList.DataSource = dt;
+                dgvProductList.Refresh();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
 
         public void DisplayVarieties()
         {
-            con.Close();
-            con.Open();
-            QuerySelect = "SELECT VarietyID, VarietyName from tblProductVariety";
-            cmd = new SqlCommand(QuerySelect, con);
 
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
+            try
+            {
 
-            drpVariety.DataSource = dt;
-            drpVariety.DisplayMember = "VarietyName";
-            drpVariety.ValueMember = "VarietyID";
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                con.Open();
+
+
+                QuerySelect = "SELECT VarietyID, VarietyName from tblProductVariety";
+                cmd = new SqlCommand(QuerySelect, con);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+
+                drpVariety.DataSource = dt;
+                drpVariety.DisplayMember = "VarietyName";
+                drpVariety.ValueMember = "VarietyID";
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+
+                con.Close();
+
+            }
+
         }
 
 
@@ -87,16 +128,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtProductCode.Text = "";
             txtProductDesc.Text = "";
             txtProdPrice.Text = "";
-            drpVariety.Text = "";
+            txtrReStocklvl.Text= drpVariety.Text = "";
         }
 
 
         //Method AddProduct
         private void AddProduct()
         {
-            if (String.IsNullOrEmpty(txtProductCode.Text) && String.IsNullOrEmpty(txtProductDesc.Text) && String.IsNullOrEmpty(txtProdPrice.Text))
+            if (String.IsNullOrEmpty(txtProductCode.Text) && String.IsNullOrEmpty(txtProductDesc.Text) && String.IsNullOrEmpty(txtProdPrice.Text) && String.IsNullOrEmpty(txtrReStocklvl.Text))
             {
                 MessageBox.Show("Fields should not be empty!");
+                txtProductCode.Focus();
             }
             else if (String.IsNullOrEmpty(txtProductCode.Text))
             {
@@ -107,6 +149,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 MessageBox.Show("Whitespace is not allowed!");
                 txtProductCode.Clear();
+                txtProductCode.Focus();
             }
             else if (String.IsNullOrEmpty(txtProductDesc.Text))
             {
@@ -117,6 +160,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 MessageBox.Show("Whitespace is not allowed!");
                 txtProductDesc.Clear();
+                txtProductDesc.Focus();
             }
             else if (String.IsNullOrEmpty(txtProdPrice.Text))
             {
@@ -127,49 +171,98 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 MessageBox.Show("Whitespace is not allowed!");
                 txtProdPrice.Clear();
+                txtProdPrice.Focus();
+            }
+            else if (String.IsNullOrEmpty(txtrReStocklvl.Text))
+            {
+                MessageBox.Show("Enter Restock Level first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtrReStocklvl.Focus();
+            }
+            else if (String.IsNullOrWhiteSpace(txtrReStocklvl.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtrReStocklvl.Clear();
+                txtrReStocklvl.Focus();
             }
             else if (txtProductCode.Text != "" && txtProductDesc.Text != "" && drpVariety.Text != "" && txtProdPrice.Text != "")
             {
                 result = MessageBox.Show("Do you want to Add this Product?", "Add Product", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    con.Close();
-                    con.Open();
-                    QuerySelect = "SELECT * FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
+
+                    try
                     {
-                        MessageBox.Show("This Product already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        
-                    }
-                    else
-                    {
-                        try
-                        {
-                            con.Close();
-                            con.Open();
-                            QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,VarietyID,Price) VALUES ('" + txtProductCode.Text + "', '" + txtProductDesc.Text + "', (Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'), '" + txtProdPrice.Text + "')";
-                            cmd = new SqlCommand(QueryInsert, con);
-                            cmd.ExecuteNonQuery();
 
-                            MessageBox.Show("Product Added Successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DisplayProductList();
-                            ClearControls();
-                            
-                        }
-
-                        catch (Exception ex)
-                        {
-
-                            MessageBox.Show(ex.Message);
-                        }
-                        finally
+                        if (con.State == ConnectionState.Open)
                         {
                             con.Close();
                         }
+
+                        con.Open();
+                        QuerySelect = "SELECT * FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'";
+                        cmd = new SqlCommand(QuerySelect, con);
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("This Product already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+                        else
+                        {
+
+                            try
+                            {
+
+                                if (con.State == ConnectionState.Open)
+                                {
+                                    con.Close();
+                                }
+
+                                con.Open();
+
+                                QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,VarietyID,Price,RestockLevel) VALUES ('" + txtProductCode.Text + "', '" + txtProductDesc.Text + "', (Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'),'"+txtProdPrice.Text+"', '" + txtrReStocklvl.Text + "')";
+                                cmd = new SqlCommand(QueryInsert, con);
+                                cmd.ExecuteNonQuery();
+
+                                MessageBox.Show("Product Added Successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                DisplayProductList();
+                                ClearControls();
+
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message);
+
+                            }
+                            finally
+                            {
+
+                                con.Close();
+
+                            }
+
+                        }
+
+
+
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+
+                    }
+                    finally
+                    {
+
+                        con.Close();
+
                     }
 
+                    
                 }
                 else
                 {
@@ -182,18 +275,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Method UpdateProduct
         private void UpdateProduct()
         {
-            if (txtProductCode.Text != "" && txtProductDesc.Text != "" && txtProdPrice.Text != "" && drpVariety.Text != "") 
+            if (txtProductCode.Text != "" && txtProductDesc.Text != "" && txtProdPrice.Text != "" && drpVariety.Text != "" && txtrReStocklvl.Text != "") 
             { 
 
                 result = MessageBox.Show("Do you want to update this Product?", "Update Product", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
 
                 {
+
                     try
                     {
-                        con.Close();
+
+                        if (con.State == ConnectionState.Open)
+                        {
+                            con.Close();
+                        }
+
                         con.Open();
-                        QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtProductCode.Text + "', ProductDesc='" + txtProductDesc.Text + "', VarietyID=(Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'), Price='" + txtProdPrice.Text + "' WHERE ProductID='" + lblItemID.Text + "'";
+
+                        QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtProductCode.Text + "', ProductDesc='" + txtProductDesc.Text + "', VarietyID=(Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'), Price='" + txtProdPrice.Text + "' , RestockLevel =" + txtrReStocklvl.Text + " WHERE ProductID='" + lblItemID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -201,17 +301,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         MessageBox.Show("Product Updated Successfully!", "Update Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DisplayProductList();
                         ClearControls();
-                          
+
+
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
-                    }
 
+                        MessageBox.Show(ex.Message);
+
+                    }
                     finally
                     {
+
                         con.Close();
+
                     }
+
                 }
             }
             else
@@ -233,18 +338,44 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtProductDesc.Text = row.Cells[1].Value.ToString();
                 drpVariety.Text = row.Cells[2].Value.ToString();
                 txtProdPrice.Text = row.Cells[3].Value.ToString();
+                txtrReStocklvl.Text = row.Cells[4].Value.ToString();
 
-                con.Open();
-                QuerySelect = "SELECT ProductID FROM tblProducts WHERE ProductCode='" + txtProductCode.Text + "'";
-                cmd = new SqlCommand(QuerySelect, con);
-                reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+
+                try
                 {
-                    reader.Read();
-                    lblItemID.Text = reader["ProductID"].ToString();
-                    reader.Close();
+
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+
+                    con.Open();
+
+                    QuerySelect = "SELECT ProductID FROM tblProducts WHERE ProductCode='" + txtProductCode.Text + "'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        lblItemID.Text = reader["ProductID"].ToString();
+                        reader.Close();
+                    }
+
+
                 }
-                con.Close();
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                }
+                finally
+                {
+
+                    con.Close();
+
+                }
+
 
             }
         }
@@ -260,6 +391,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
+            ClearControls();
             dgvProductList.Visible = false;
             panelProductInfo.Visible = true;
             btnUpdate.Visible = false;
@@ -311,16 +443,40 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             else
             {
-                con.Open();
-                QuerySelect = "SELECT ProductCode AS 'Product Code', ProductDesc AS 'Product Description', ProductVariety AS 'Product Variety', Price, RestockLevel AS 'Restock Level' FROM tblProducts where ProductCode like '" + txtSearchProduct.Text + "%' OR ProductDesc like '%" + txtSearchProduct.Text + "%' OR ProductVariety like '%" + txtSearchProduct.Text + "%' OR  Price like '%" + txtSearchProduct.Text + "%' OR RestockLevel like '%" + txtSearchProduct.Text + "' ORDER BY ProductID DESC";
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                adapter.Fill(dt);
-                dgvProductList.DataSource = dt;
-                dgvProductList.Refresh();
 
-                con.Close();
+                try
+                {
+
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
+
+                    con.Open();
+
+                    QuerySelect = "SELECT * FROM viewProducts where [Product Code] like '%" + txtSearchProduct.Text + "%' OR [Product Description] like '%" + txtSearchProduct.Text + "%' OR Variety like '%" + txtSearchProduct.Text + "%' OR  Price like '%" + txtSearchProduct.Text + "%' OR [Restock Level] like '%" + txtSearchProduct.Text + "%' ORDER BY [Product Code] DESC";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    adapter.Fill(dt);
+                    dgvProductList.DataSource = null;
+                    dgvProductList.DataSource = dt;
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                }
+                finally
+                {
+
+                    con.Close();
+
+                }
+
             }
             
         }
@@ -355,9 +511,31 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             DisplayVarieties();
         }
 
+
         private void ucProducts_Load(object sender, EventArgs e)
         {
             DisplayVarieties();
+        }
+
+        private void panelProductInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchProduct_TextChanged(object sender, EventArgs e)
+        {
+            txtSearchProduct_TextChange(sender, e);
+        }
+
+        private void dgvProductList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvProductList_CellClick(sender, e);
+            btnUpdateProduct_Click(sender, e);
         }
     }
 }
