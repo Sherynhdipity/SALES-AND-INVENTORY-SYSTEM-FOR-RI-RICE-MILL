@@ -39,18 +39,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 int count;
 
                 con.Open();
-                cmd = new SqlCommand("SELECT TOP 1 TransactionNo FROM tblTransactions WHERE TransactionNo LIKE '" + sdate + "%'", con);
+                cmd = new SqlCommand("SELECT count(TransactionID) as id FROM tblTransactions WHERE TransactionNo LIKE '" + sdate + "%'", con);
                 reader = cmd.ExecuteReader();
-                reader.Read();
                 if (reader.HasRows)
                 {
-                    transNo = reader[0].ToString();
-                    count = int.Parse(transNo.Substring(8, 4));
-                    lblTransNo.Text = sdate + (count + 1);
+                    while (reader.Read())
+                    {
+                        transNo = reader["id"].ToString();
+                        count = int.Parse(transNo);
+                        lblTransNo.Text = sdate +"0" +(count + 1);
+                    }
                 }
                 else
                 {
-                    transNo = sdate + "0001";
+                    transNo = sdate + "01";
                     lblTransNo.Text = transNo;
                     lblTransDate.Text = DateTime.Now.ToString("MMMM dd,yyyy");
                 }
@@ -61,8 +63,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             catch(Exception ex)
             {
+                
+                MessageBox.Show(ex.Message+ex.StackTrace, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
                 con.Close();
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -659,6 +665,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+
+
             setdt();
             frmPayment payment = new frmPayment();
             payment.txtAmount.Text = lblTotal.Text;
@@ -666,7 +674,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             payment.storeDt(dtfromdvg);
             DialogResult res = payment.ShowDialog();
 
-            if (res== DialogResult.OK)
+            if (res == DialogResult.OK)
             {
                 ClearAll();
             }
@@ -678,8 +686,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             if (dialog == DialogResult.Yes)
             {
                 frmMainSales main = new frmMainSales();
-                main.Show();
+                
+                this.DialogResult = DialogResult.OK;
+               
                 this.Close();
+                main.Show();
             }
         }
 
@@ -723,6 +734,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
             }
+        }
+
+        private void frmSalesManagement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
 
         //mod end

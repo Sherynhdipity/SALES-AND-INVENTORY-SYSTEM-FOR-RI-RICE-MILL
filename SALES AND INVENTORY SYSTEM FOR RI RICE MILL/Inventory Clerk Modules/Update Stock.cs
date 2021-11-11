@@ -57,37 +57,136 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                   
                         try
                         {
-                            con.Close();
-                            con.Open();
-                            QueryUpdate = "UPDATE tblBatch SET MillingDate = '" + dtpMillingDate.Value.Date.ToShortDateString() + "', BatchNumber = '"+txtSackNo.Text+ "' WHERE BatchID = (SELECT BatchID FROM tblStockIn WHERE StockinID = '" + txtStockID.Text+"')";
-                            cmd = new SqlCommand(QueryUpdate, con);
-                            cmd.ExecuteNonQuery();
-                            con.Close();
+
+                            try
+                            {
+
+                                if (con.State == ConnectionState.Open)
+                                {
+                                    con.Close();
+                                }
+
+                                con.Open();
+
+                                QueryUpdate = "UPDATE tblBatch SET MillingDate = '" + dtpMillingDate.Value.Date.ToShortDateString() + "', BatchNumber = '" + txtSackNo.Text + "' WHERE BatchID = (SELECT BatchID FROM tblStockIn WHERE StockinID = '" + txtStockID.Text + "')";
+                                cmd = new SqlCommand(QueryUpdate, con);
+                                cmd.ExecuteNonQuery();
 
 
-                        con.Open();
-                        string query = "DELETE FROM tblBatchProduct WHERE BatchID = (SELECT BatchID FROM tblStockIn WHERE StockinID = '" + txtStockID.Text + "')";
-                        cmd = new SqlCommand(query, con);
-                        cmd.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
 
-                        con.Close();
+                                MessageBox.Show(ex.Message);
 
-                        con.Open();
-                        int quant = Convert.ToInt32(txtQuantity.Text);
-                        for (int i = 0; i < quant; i++)
+                            }
+                            finally
+                            {
+
+                                con.Close();
+
+                            }
+
+
+
+
+                            try
+                            {
+
+                                if (con.State == ConnectionState.Open)
+                                {
+                                    con.Close();
+                                }
+
+                                con.Open();
+
+                                string query = "DELETE FROM tblBatchProduct WHERE BatchID = (SELECT BatchID FROM tblStockIn WHERE StockinID = '" + txtStockID.Text + "')";
+                                cmd = new SqlCommand(query, con);
+                                cmd.ExecuteNonQuery();
+
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show(ex.Message);
+
+                            }
+                            finally
+                            {
+
+                                con.Close();
+
+                            }
+
+
+                        try
                         {
-                            QueryUpdate = "INSERT INTO tblBatchProduct(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + txtSackNo.Text + "', 'IN')";
-                            cmd = new SqlCommand(QueryUpdate, con);
-                            cmd.ExecuteNonQuery();
+
+                            if (con.State == ConnectionState.Open)
+                            {
+                                con.Close();
+                            }
+
+                            con.Open();
+
+                            int quant = Convert.ToInt32(txtQuantity.Text);
+                            for (int i = 0; i < quant; i++)
+                            {
+                                QueryUpdate = "INSERT INTO tblBatchProduct(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + txtSackNo.Text + "', 'IN')";
+                                cmd = new SqlCommand(QueryUpdate, con);
+                                cmd.ExecuteNonQuery();
+                            }
+
+
                         }
-                        con.Close();
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+
+                        }
+                        finally
+                        {
+
+                            con.Close();
+
+                        }
 
 
-                        con.Open();
+
+
+
+                        try
+                        {
+
+                            if (con.State == ConnectionState.Open)
+                            {
+                                con.Close();
+                            }
+
+                            con.Open();
+
                             QueryUpdate = "UPDATE tblStockin SET StockinDate = '" + dtpStockinDate.Value.Date.ToShortDateString() + "', QtyStockedIn = '" + txtQuantity.Text + "' WHERE ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "')";
                             cmd = new SqlCommand(QueryUpdate, con);
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Stock Updated Successfully!", "Update Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                            MessageBox.Show(ex.Message);
+
+                        }
+                        finally
+                        {
+
+                            con.Close();
+
+                        }
+
+                        MessageBox.Show("Stock Updated Successfully!", "Update Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         frmInventory inventory = new frmInventory();
                         inventory.dgvStockList.Refresh();
@@ -104,7 +203,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             con.Close();
                         }
                     
-                    con.Close();
+                   
 
                 }
                 else
@@ -133,34 +232,62 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 try
                 {
-                    con.Close();
-                    con.Open();
-                    QuerySelect = "SELECT p.ProductCode AS 'Product Code', p.ProductDesc AS 'Product Description', c.VarietyName AS 'Product Variety', b.BatchNumber AS 'Batch Number', s.QtyStockedIn AS 'Quantity', s.StockinDate AS 'Stock-in Date' FROM tblStockin s INNER JOIN tblProducts p ON s.ProductID = p.ProductID INNER JOIN tblBatch b ON s.BatchID = b.BatchID INNER JOIN tblProductVariety c ON p.VarietyID= c.VarietyID WHERE s.StockinID = '" + txtStockID.Text + "';";
 
-                    cmd = new SqlCommand(QuerySelect, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
+                    try
                     {
-                        reader.Read();
-                        txtProductCode.Text = reader["Product Code"].ToString();
-                        txtProdDesc.Text = reader["Product Description"].ToString();
-                        txtVariety.Text = reader["Product Variety"].ToString();
-                        txtSackNo.Text = reader["Batch Number"].ToString();
-                        txtQuantity.Text = reader["Quantity"].ToString();
 
-                        reader.Close();
+                        if (con.State == ConnectionState.Open)
+                        {
+                            con.Close();
+                        }
+
+                        con.Open();
+
+                        QuerySelect = "SELECT * FROM viewProducts where'" + txtStockID.Text + "';";
+
+                        cmd = new SqlCommand(QuerySelect, con);
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            txtProductCode.Text = reader["Product Code"].ToString();
+                            txtProdDesc.Text = reader["Product Description"].ToString();
+                            txtVariety.Text = reader["Product Variety"].ToString();
+                            txtSackNo.Text = reader["Batch Number"].ToString();
+                            txtQuantity.Text = reader["Quantity"].ToString();
+
+                            reader.Close();
+                        }
+                        else
+                        {
+                            txtProductCode.Text = "";
+                            txtProdDesc.Text = "";
+                            txtVariety.Text = "";
+                        }
+
+
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        txtProductCode.Text = "";
-                        txtProdDesc.Text = "";
-                        txtVariety.Text = "";
+
+                        MessageBox.Show(ex.Message);
+
                     }
-                    con.Close();
+                    finally
+                    {
+
+                        con.Close();
+
+                    }
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
                 }
             }
         }

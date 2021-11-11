@@ -54,13 +54,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 ucCashierReports.cashierReportsInstance.BringToFront();
             }
         }
-
+        
         private void btnDashboard_Click(object sender, EventArgs e)
         {
 
             if (!panelModule.Controls.Contains(ucSalesDashboard.dashboardInstance))
             {
                 panelModule.Controls.Add(ucSalesDashboard.dashboardInstance);
+                ucSalesDashboard.dashboardInstance.populateDash();
                 ucSalesDashboard.dashboardInstance.Dock = DockStyle.Fill;
                 ucSalesDashboard.dashboardInstance.BringToFront();
             }
@@ -103,8 +104,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnSales_Click(object sender, EventArgs e)
         {
             frmSalesManagement sales = new frmSalesManagement();
-            sales.Show();
+            DialogResult res = sales.ShowDialog();
             this.Hide();
+            if (res == DialogResult.OK)
+            {
+                frmMain_Load(sender, e);
+            }
+        }
+
+        private void panelModule_Layout(object sender, LayoutEventArgs e)
+        {
+            frmMain_Load(sender, e);
         }
     }
 }

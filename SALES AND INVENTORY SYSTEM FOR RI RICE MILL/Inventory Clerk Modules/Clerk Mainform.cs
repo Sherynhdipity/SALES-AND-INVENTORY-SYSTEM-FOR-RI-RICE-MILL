@@ -27,6 +27,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             lblUserName.Text = frmLogin.GetUserName.ToString();
             lblUserRole.Text = frmLogin.GetUserRole.ToString();
+
+           
+
         }
 
         public bool isFormMinimized = false;
@@ -109,6 +112,41 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
                 frmInventory.inventoryInstance.BringToFront();
+            }
+        }
+
+        private void frmMainInventory_Shown(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+
+                con.Open();
+                string query = "SELECT * FROM viewAllStocks";
+                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lowStockNotif lsn = new lowStockNotif();
+                    DialogResult res = lsn.ShowDialog();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+
+                con.Close();
+
             }
         }
     }

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DBSalesandInventoryDataSet1" targetNamespace="http://tempuri.org/DBSalesandInventoryDataSet1.xsd" xmlns:mstns="http://tempuri.org/DBSalesandInventoryDataSet1.xsd" xmlns="http://tempuri.org/DBSalesandInventoryDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="con" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="con (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.GlobalReference.Default.con" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="viewAvailableStocksTableAdapter" GeneratorDataComponentClassName="viewAvailableStocksTableAdapter" Name="viewAvailableStocks" UserDataComponentName="viewAvailableStocksTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="con (Settings)" DbObjectName="DBSalesandInventory.dbo.viewAvailableStocks" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [Product Code], [Product Description], Variety, Price, [Available Stock], [Restock Level] FROM dbo.viewAvailableStocks</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Product Code" DataSetColumn="Product Code" />
+              <Mapping SourceColumn="Product Description" DataSetColumn="Product Description" />
+              <Mapping SourceColumn="Variety" DataSetColumn="Variety" />
+              <Mapping SourceColumn="Price" DataSetColumn="Price" />
+              <Mapping SourceColumn="Available Stock" DataSetColumn="Available Stock" />
+              <Mapping SourceColumn="Restock Level" DataSetColumn="Restock Level" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DBSalesandInventoryDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DBSalesandInventoryDataSet1" msprop:Generator_UserDSName="DBSalesandInventoryDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="viewAvailableStocks" msprop:Generator_TableClassName="viewAvailableStocksDataTable" msprop:Generator_TableVarName="tableviewAvailableStocks" msprop:Generator_TablePropName="viewAvailableStocks" msprop:Generator_RowDeletingName="viewAvailableStocksRowDeleting" msprop:Generator_RowChangingName="viewAvailableStocksRowChanging" msprop:Generator_RowEvHandlerName="viewAvailableStocksRowChangeEventHandler" msprop:Generator_RowDeletedName="viewAvailableStocksRowDeleted" msprop:Generator_UserTableName="viewAvailableStocks" msprop:Generator_RowChangedName="viewAvailableStocksRowChanged" msprop:Generator_RowEvArgName="viewAvailableStocksRowChangeEvent" msprop:Generator_RowClassName="viewAvailableStocksRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Product_x0020_Code" msprop:Generator_ColumnVarNameInTable="columnProduct_Code" msprop:Generator_ColumnPropNameInRow="Product_Code" msprop:Generator_ColumnPropNameInTable="Product_CodeColumn" msprop:Generator_UserColumnName="Product Code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Product_x0020_Description" msprop:Generator_ColumnVarNameInTable="columnProduct_Description" msprop:Generator_ColumnPropNameInRow="Product_Description" msprop:Generator_ColumnPropNameInTable="Product_DescriptionColumn" msprop:Generator_UserColumnName="Product Description" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Variety" msprop:Generator_ColumnVarNameInTable="columnVariety" msprop:Generator_ColumnPropNameInRow="Variety" msprop:Generator_ColumnPropNameInTable="VarietyColumn" msprop:Generator_UserColumnName="Variety" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Available_x0020_Stock" msprop:Generator_ColumnVarNameInTable="columnAvailable_Stock" msprop:Generator_ColumnPropNameInRow="Available_Stock" msprop:Generator_ColumnPropNameInTable="Available_StockColumn" msprop:Generator_UserColumnName="Available Stock" type="xs:int" minOccurs="0" />
+              <xs:element name="Restock_x0020_Level" msprop:Generator_ColumnVarNameInTable="columnRestock_Level" msprop:Generator_ColumnPropNameInRow="Restock_Level" msprop:Generator_ColumnPropNameInTable="Restock_LevelColumn" msprop:Generator_UserColumnName="Restock Level" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

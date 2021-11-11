@@ -217,6 +217,21 @@
     <Compile Include="Cashier Modules\Discount.Designer.cs">
       <DependentUpon>Discount.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBSalesandInventoryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBSalesandInventoryDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSalesandInventoryDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBSalesandInventoryDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Link Forms\Restore.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +261,12 @@
     </Compile>
     <Compile Include="Cashier Modules\Quantity.Designer.cs">
       <DependentUpon>Quantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\lowStockNotif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\lowStockNotif.Designer.cs">
+      <DependentUpon>lowStockNotif.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Add Variety.cs">
       <SubType>Form</SubType>
@@ -343,6 +364,12 @@
     <Compile Include="Owner Modules\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintReciept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintReciept.Designer.cs">
+      <DependentUpon>PrintReciept.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cashier Modules\Cashier Reports.cs">
@@ -388,6 +415,9 @@
     <EmbeddedResource Include="Cashier Modules\Discount.resx">
       <DependentUpon>Discount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\lowStockNotif.resx">
+      <DependentUpon>lowStockNotif.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Link Forms\Restore.resx">
       <DependentUpon>Restore.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,6 +456,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReciept.resx">
+      <DependentUpon>PrintReciept.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Receipt.rdlc" />
     <EmbeddedResource Include="Reports\InventoryReport.rdlc" />
@@ -480,6 +513,39 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DBSalesandInventoryDataSet.xsc">
+      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesandInventoryDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBSalesandInventoryDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBSalesandInventoryDataSet.xss">
+      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesandInventoryDataSet1.xsc">
+      <DependentUpon>DBSalesandInventoryDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesandInventoryDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBSalesandInventoryDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBSalesandInventoryDataSet1.xss">
+      <DependentUpon>DBSalesandInventoryDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesandInventoryDataSet2.xsc">
+      <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesandInventoryDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBSalesandInventoryDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBSalesandInventoryDataSet2.xss">
+      <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
