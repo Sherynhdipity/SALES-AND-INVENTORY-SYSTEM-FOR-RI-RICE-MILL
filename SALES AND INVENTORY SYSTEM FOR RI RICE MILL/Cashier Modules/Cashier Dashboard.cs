@@ -13,7 +13,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
         public partial class ucSalesDashboard : UserControl
         {
+
         public static SqlConnection con = new SqlConnection(DBConnection.con);
+        public static SqlCommand cmd = new SqlCommand();
+        public static SqlDataReader reader;
+        public static SqlDataAdapter adapter;
+        public static DataTable dt = new DataTable();
+        public static DialogResult result;
+        public static string QuerySelect;
 
         private static ucSalesDashboard dashboard;
             public static ucSalesDashboard dashboardInstance
@@ -37,8 +44,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                string query = "SELECT sum(tblStockout.QtyStockedOut) as res from tblStockout";
-                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+                QuerySelect = "SELECT sum(tblStockout.QtyStockedOut) as res from tblStockout";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
                     lblProductsSold.Text = reader["res"].ToString();
@@ -58,8 +65,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                string query = "SELECT count(TransactionNo) as res from tblTransactions";
-                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+                QuerySelect = "SELECT count(TransactionNo) as res from tblTransactions";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
                     txtotaltrans.Text = lblTotalTransactions.Text = reader["res"].ToString();
@@ -79,8 +86,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                string query = "SELECT sum(TotalAmount) as res from tblPayments";
-                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+                QuerySelect = "SELECT sum(TotalAmount) as res from tblPayments";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
@@ -105,8 +112,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                string query = "SELECT count(ProductID) as res from tblProducts";
-                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+                QuerySelect = "SELECT count(ProductID) as res from tblProducts";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
@@ -127,8 +134,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                string query = "SELECT count(VarietyID) as res from tblProductVariety";
-                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+                QuerySelect = "SELECT count(VarietyID) as res from tblProductVariety";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
@@ -151,11 +158,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void ucSalesDashboard_Load(object sender, EventArgs e)
         {
             populateDash();
-        }
-
-        private void bunifuLabel18_Click(object sender, EventArgs e)
-        {
-
         }
     }
 

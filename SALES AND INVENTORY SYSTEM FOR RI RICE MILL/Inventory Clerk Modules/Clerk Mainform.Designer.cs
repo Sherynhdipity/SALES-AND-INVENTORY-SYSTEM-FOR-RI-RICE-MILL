@@ -41,7 +41,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bunifuFormDock1 = new Bunifu.UI.WinForms.BunifuFormDock();
             this.panelModule = new System.Windows.Forms.Panel();
-            this.frmDashboard2 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ucDashboard();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.panelLogout = new System.Windows.Forms.Panel();
             this.pbLogout = new System.Windows.Forms.PictureBox();
@@ -67,7 +66,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnDashboard = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.frmDashboard1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ucDashboard();
-            this.panelModule.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
             this.panelLogout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).BeginInit();
@@ -136,19 +134,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // panelModule
             // 
-            this.panelModule.Controls.Add(this.frmDashboard2);
             this.panelModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelModule.Location = new System.Drawing.Point(279, 63);
             this.panelModule.Name = "panelModule";
             this.panelModule.Size = new System.Drawing.Size(1087, 675);
             this.panelModule.TabIndex = 33;
-            // 
-            // frmDashboard2
-            // 
-            this.frmDashboard2.Location = new System.Drawing.Point(0, -3);
-            this.frmDashboard2.Name = "frmDashboard2";
-            this.frmDashboard2.Size = new System.Drawing.Size(1087, 675);
-            this.frmDashboard2.TabIndex = 0;
             // 
             // bunifuPanel2
             // 
@@ -985,7 +975,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.Shown += new System.EventHandler(this.frmMainInventory_Shown);
             this.Resize += new System.EventHandler(this.frmMain_Resize);
-            this.panelModule.ResumeLayout(false);
             this.bunifuPanel2.ResumeLayout(false);
             this.bunifuPanel2.PerformLayout();
             this.panelLogout.ResumeLayout(false);
@@ -1036,6 +1025,5 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
         private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
         private System.Windows.Forms.Panel panelLogout;
-        private ucDashboard frmDashboard2;
     }
 }

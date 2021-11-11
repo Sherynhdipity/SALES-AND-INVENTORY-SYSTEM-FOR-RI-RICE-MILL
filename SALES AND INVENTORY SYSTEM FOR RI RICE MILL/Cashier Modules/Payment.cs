@@ -478,11 +478,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Hide();
         }
 
-        private void btnXit_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void frmPayment_Load(object sender, EventArgs e)
         {
 
@@ -536,6 +531,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void frmPayment_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

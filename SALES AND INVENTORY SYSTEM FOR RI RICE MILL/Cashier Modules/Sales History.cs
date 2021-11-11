@@ -45,10 +45,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             con.Close();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
-
     }
 }

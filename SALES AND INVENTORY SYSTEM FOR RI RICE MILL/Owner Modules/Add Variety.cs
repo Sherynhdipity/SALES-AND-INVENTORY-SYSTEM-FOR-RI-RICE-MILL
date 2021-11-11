@@ -41,7 +41,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             try
             {
-                if(String.IsNullOrEmpty(txtVariety.Text))
+                if (String.IsNullOrEmpty(txtVariety.Text))
                 {
                     MessageBox.Show("fields should not be empty!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
@@ -97,20 +97,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnAddVariety_Click(object sender, EventArgs e)
         {
             AddVariety();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

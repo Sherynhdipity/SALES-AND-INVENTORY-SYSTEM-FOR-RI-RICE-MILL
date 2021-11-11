@@ -57,11 +57,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             con.Close();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void txtSearchProduct_TextChange(object sender, EventArgs e)
         {
             if (txtSearchProduct.Text == "")
@@ -133,6 +128,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 stock = qty.Product_Stock;
                 this.Close();
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

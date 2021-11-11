@@ -26,9 +26,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
 
             lblUserName.Text = frmLogin.GetUserName.ToString();
-            lblUserRole.Text = frmLogin.GetUserRole.ToString();
-
-           
+            lblUserRole.Text = frmLogin.GetUserRole.ToString();  
 
         }
 
@@ -60,15 +58,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            if (!panelModule.Controls.Contains(ucDashboard.dashboardInstance))
+            if (!panelModule.Controls.Contains(ucInventoryDashboard.dashboardInstance))
             {
-                panelModule.Controls.Add(ucDashboard.dashboardInstance);
-                ucDashboard.dashboardInstance.Dock = DockStyle.Fill;
-                ucDashboard.dashboardInstance.BringToFront();
+                panelModule.Controls.Add(ucInventoryDashboard.dashboardInstance);
+                ucInventoryDashboard.dashboardInstance.Dock = DockStyle.Fill;
+                ucInventoryDashboard.dashboardInstance.BringToFront();
             }
             else
             {
-                ucDashboard.dashboardInstance.BringToFront();
+                ucInventoryDashboard.dashboardInstance.BringToFront();
             }
         }
 

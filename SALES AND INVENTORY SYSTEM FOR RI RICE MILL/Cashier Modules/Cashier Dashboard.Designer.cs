@@ -83,7 +83,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel10.Controls.Add(this.lblProductsSold);
             this.bunifuPanel10.Controls.Add(this.bunifuLabel7);
             this.bunifuPanel10.Controls.Add(this.pictureBox3);
-            this.bunifuPanel10.Location = new System.Drawing.Point(552, 47);
+            this.bunifuPanel10.Location = new System.Drawing.Point(661, 124);
             this.bunifuPanel10.Name = "bunifuPanel10";
             this.bunifuPanel10.ShowBorders = true;
             this.bunifuPanel10.Size = new System.Drawing.Size(234, 133);
@@ -96,7 +96,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblProductsSold.CursorType = null;
             this.lblProductsSold.Font = new System.Drawing.Font("Impact", 15.75F);
             this.lblProductsSold.ForeColor = System.Drawing.Color.White;
-            this.lblProductsSold.Location = new System.Drawing.Point(105, 81);
+            this.lblProductsSold.Location = new System.Drawing.Point(109, 81);
             this.lblProductsSold.Name = "lblProductsSold";
             this.lblProductsSold.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblProductsSold.Size = new System.Drawing.Size(11, 26);
@@ -112,7 +112,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel7.CursorType = null;
             this.bunifuLabel7.Font = new System.Drawing.Font("Impact", 15.75F);
             this.bunifuLabel7.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel7.Location = new System.Drawing.Point(104, 25);
+            this.bunifuLabel7.Location = new System.Drawing.Point(108, 25);
             this.bunifuLabel7.Name = "bunifuLabel7";
             this.bunifuLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel7.Size = new System.Drawing.Size(89, 53);
@@ -125,7 +125,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.ecommerce;
-            this.pictureBox3.Location = new System.Drawing.Point(15, 25);
+            this.pictureBox3.Location = new System.Drawing.Point(19, 25);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(77, 82);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -143,7 +143,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.Controls.Add(this.pictureBox2);
             this.bunifuPanel2.Controls.Add(this.lblTotalTransactions);
             this.bunifuPanel2.Controls.Add(this.bunifuLabel4);
-            this.bunifuPanel2.Location = new System.Drawing.Point(310, 47);
+            this.bunifuPanel2.Location = new System.Drawing.Point(419, 124);
             this.bunifuPanel2.Name = "bunifuPanel2";
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(234, 133);
@@ -153,7 +153,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.lending;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 25);
+            this.pictureBox2.Location = new System.Drawing.Point(18, 25);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(77, 82);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -167,7 +167,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblTotalTransactions.CursorType = null;
             this.lblTotalTransactions.Font = new System.Drawing.Font("Impact", 15.75F);
             this.lblTotalTransactions.ForeColor = System.Drawing.Color.White;
-            this.lblTotalTransactions.Location = new System.Drawing.Point(100, 81);
+            this.lblTotalTransactions.Location = new System.Drawing.Point(104, 81);
             this.lblTotalTransactions.Name = "lblTotalTransactions";
             this.lblTotalTransactions.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTotalTransactions.Size = new System.Drawing.Size(11, 26);
@@ -183,7 +183,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel4.CursorType = null;
             this.bunifuLabel4.Font = new System.Drawing.Font("Impact", 15.75F);
             this.bunifuLabel4.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel4.Location = new System.Drawing.Point(97, 27);
+            this.bunifuLabel4.Location = new System.Drawing.Point(101, 27);
             this.bunifuLabel4.Name = "bunifuLabel4";
             this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel4.Size = new System.Drawing.Size(124, 53);
@@ -203,7 +203,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.Controls.Add(this.pictureBox1);
             this.bunifuPanel1.Controls.Add(this.lblTotalSales);
             this.bunifuPanel1.Controls.Add(this.bunifuLabel1);
-            this.bunifuPanel1.Location = new System.Drawing.Point(70, 47);
+            this.bunifuPanel1.Location = new System.Drawing.Point(179, 124);
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(234, 133);
@@ -213,7 +213,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.growth;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 25);
+            this.pictureBox1.Location = new System.Drawing.Point(19, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(77, 82);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -227,7 +227,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblTotalSales.CursorType = null;
             this.lblTotalSales.Font = new System.Drawing.Font("Impact", 15.75F);
             this.lblTotalSales.ForeColor = System.Drawing.Color.White;
-            this.lblTotalSales.Location = new System.Drawing.Point(102, 61);
+            this.lblTotalSales.Location = new System.Drawing.Point(106, 61);
             this.lblTotalSales.Name = "lblTotalSales";
             this.lblTotalSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTotalSales.Size = new System.Drawing.Size(11, 26);
@@ -244,7 +244,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1.CursorType = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel1.Font = new System.Drawing.Font("Impact", 15.75F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel1.Location = new System.Drawing.Point(98, 35);
+            this.bunifuLabel1.Location = new System.Drawing.Point(102, 35);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(102, 26);
@@ -269,7 +269,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel4.Controls.Add(this.bunifuLabel15);
             this.bunifuPanel4.Controls.Add(this.pictureBox5);
             this.bunifuPanel4.Controls.Add(this.bunifuLabel16);
-            this.bunifuPanel4.Location = new System.Drawing.Point(70, 208);
+            this.bunifuPanel4.Location = new System.Drawing.Point(179, 285);
             this.bunifuPanel4.Name = "bunifuPanel4";
             this.bunifuPanel4.ShowBorders = true;
             this.bunifuPanel4.Size = new System.Drawing.Size(353, 253);
@@ -282,7 +282,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel35.CursorType = null;
             this.bunifuLabel35.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.bunifuLabel35.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel35.Location = new System.Drawing.Point(28, 136);
+            this.bunifuLabel35.Location = new System.Drawing.Point(32, 136);
             this.bunifuLabel35.Name = "bunifuLabel35";
             this.bunifuLabel35.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel35.Size = new System.Drawing.Size(107, 31);
@@ -298,7 +298,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel10.CursorType = null;
             this.bunifuLabel10.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.bunifuLabel10.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel10.Location = new System.Drawing.Point(28, 190);
+            this.bunifuLabel10.Location = new System.Drawing.Point(32, 190);
             this.bunifuLabel10.Name = "bunifuLabel10";
             this.bunifuLabel10.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel10.Size = new System.Drawing.Size(107, 31);
@@ -314,7 +314,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtavgSales.CursorType = null;
             this.txtavgSales.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.txtavgSales.ForeColor = System.Drawing.Color.Black;
-            this.txtavgSales.Location = new System.Drawing.Point(168, 197);
+            this.txtavgSales.Location = new System.Drawing.Point(172, 197);
             this.txtavgSales.Name = "txtavgSales";
             this.txtavgSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtavgSales.Size = new System.Drawing.Size(60, 15);
@@ -330,7 +330,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtavgStocks.CursorType = null;
             this.txtavgStocks.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.txtavgStocks.ForeColor = System.Drawing.Color.Black;
-            this.txtavgStocks.Location = new System.Drawing.Point(168, 145);
+            this.txtavgStocks.Location = new System.Drawing.Point(172, 145);
             this.txtavgStocks.Name = "txtavgStocks";
             this.txtavgStocks.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtavgStocks.Size = new System.Drawing.Size(68, 15);
@@ -346,7 +346,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtotaltrans.CursorType = null;
             this.txtotaltrans.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.txtotaltrans.ForeColor = System.Drawing.Color.Black;
-            this.txtotaltrans.Location = new System.Drawing.Point(170, 102);
+            this.txtotaltrans.Location = new System.Drawing.Point(174, 102);
             this.txtotaltrans.Name = "txtotaltrans";
             this.txtotaltrans.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtotaltrans.Size = new System.Drawing.Size(44, 15);
@@ -362,7 +362,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel15.CursorType = null;
             this.bunifuLabel15.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.bunifuLabel15.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel15.Location = new System.Drawing.Point(28, 87);
+            this.bunifuLabel15.Location = new System.Drawing.Point(32, 87);
             this.bunifuLabel15.Name = "bunifuLabel15";
             this.bunifuLabel15.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel15.Size = new System.Drawing.Size(125, 30);
@@ -375,7 +375,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.sales;
-            this.pictureBox5.Location = new System.Drawing.Point(48, 17);
+            this.pictureBox5.Location = new System.Drawing.Point(52, 17);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(56, 49);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -389,7 +389,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel16.CursorType = null;
             this.bunifuLabel16.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel16.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel16.Location = new System.Drawing.Point(151, 21);
+            this.bunifuLabel16.Location = new System.Drawing.Point(155, 21);
             this.bunifuLabel16.Name = "bunifuLabel16";
             this.bunifuLabel16.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel16.Size = new System.Drawing.Size(96, 37);
@@ -414,7 +414,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel5.Controls.Add(this.bunifuLabel22);
             this.bunifuPanel5.Controls.Add(this.pictureBox6);
             this.bunifuPanel5.Controls.Add(this.bunifuLabel23);
-            this.bunifuPanel5.Location = new System.Drawing.Point(429, 208);
+            this.bunifuPanel5.Location = new System.Drawing.Point(538, 285);
             this.bunifuPanel5.Name = "bunifuPanel5";
             this.bunifuPanel5.ShowBorders = true;
             this.bunifuPanel5.Size = new System.Drawing.Size(357, 253);
@@ -427,7 +427,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblNumVarieties.CursorType = null;
             this.lblNumVarieties.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.lblNumVarieties.ForeColor = System.Drawing.Color.Black;
-            this.lblNumVarieties.Location = new System.Drawing.Point(158, 153);
+            this.lblNumVarieties.Location = new System.Drawing.Point(162, 153);
             this.lblNumVarieties.Name = "lblNumVarieties";
             this.lblNumVarieties.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblNumVarieties.Size = new System.Drawing.Size(54, 15);
@@ -443,7 +443,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblavgsalespervar.CursorType = null;
             this.lblavgsalespervar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.lblavgsalespervar.ForeColor = System.Drawing.Color.Black;
-            this.lblavgsalespervar.Location = new System.Drawing.Point(160, 197);
+            this.lblavgsalespervar.Location = new System.Drawing.Point(164, 197);
             this.lblavgsalespervar.Name = "lblavgsalespervar";
             this.lblavgsalespervar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblavgsalespervar.Size = new System.Drawing.Size(49, 15);
@@ -451,7 +451,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblavgsalespervar.Text = "Avg/var";
             this.lblavgsalespervar.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblavgsalespervar.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblavgsalespervar.Click += new System.EventHandler(this.bunifuLabel18_Click);
             // 
             // bunifuLabel19
             // 
@@ -460,7 +459,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel19.CursorType = null;
             this.bunifuLabel19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.bunifuLabel19.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel19.Location = new System.Drawing.Point(28, 141);
+            this.bunifuLabel19.Location = new System.Drawing.Point(32, 141);
             this.bunifuLabel19.Name = "bunifuLabel19";
             this.bunifuLabel19.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel19.Size = new System.Drawing.Size(110, 30);
@@ -476,7 +475,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel20.CursorType = null;
             this.bunifuLabel20.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.bunifuLabel20.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel20.Location = new System.Drawing.Point(28, 190);
+            this.bunifuLabel20.Location = new System.Drawing.Point(32, 190);
             this.bunifuLabel20.Name = "bunifuLabel20";
             this.bunifuLabel20.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel20.Size = new System.Drawing.Size(93, 31);
@@ -492,7 +491,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lbladdedproducts.CursorType = null;
             this.lbladdedproducts.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.lbladdedproducts.ForeColor = System.Drawing.Color.Black;
-            this.lbladdedproducts.Location = new System.Drawing.Point(158, 105);
+            this.lbladdedproducts.Location = new System.Drawing.Point(162, 105);
             this.lbladdedproducts.Name = "lbladdedproducts";
             this.lbladdedproducts.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lbladdedproducts.Size = new System.Drawing.Size(65, 15);
@@ -508,7 +507,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel22.CursorType = null;
             this.bunifuLabel22.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.bunifuLabel22.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel22.Location = new System.Drawing.Point(28, 105);
+            this.bunifuLabel22.Location = new System.Drawing.Point(32, 105);
             this.bunifuLabel22.Name = "bunifuLabel22";
             this.bunifuLabel22.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel22.Size = new System.Drawing.Size(107, 31);
@@ -521,7 +520,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(48, 17);
+            this.pictureBox6.Location = new System.Drawing.Point(52, 17);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(56, 49);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -535,7 +534,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel23.CursorType = null;
             this.bunifuLabel23.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel23.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel23.Location = new System.Drawing.Point(160, 21);
+            this.bunifuLabel23.Location = new System.Drawing.Point(164, 21);
             this.bunifuLabel23.Name = "bunifuLabel23";
             this.bunifuLabel23.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel23.Size = new System.Drawing.Size(75, 37);

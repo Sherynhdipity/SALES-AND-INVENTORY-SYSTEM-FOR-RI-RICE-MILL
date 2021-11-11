@@ -47,8 +47,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = "C:\\Users\\LENOVO\\source\\repos\\SALES AND INVENTORY SYSTEM FOR RI RICE MILL\\SALES AN" +
-    "D INVENTORY SYSTEM FOR RI RICE MILL\\bin\\Debug\\Report3.rpt";
+            this.crystalReportViewer1.ReportSource = "C:\\Users\\LENOVO\\Desktop\\SALES AND INVENTORY SYSTEM FOR RI RICE MILL\\SALES AND INV" +
+    "ENTORY SYSTEM FOR RI RICE MILL\\Receipt.rpt";
             this.crystalReportViewer1.Size = new System.Drawing.Size(800, 484);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);

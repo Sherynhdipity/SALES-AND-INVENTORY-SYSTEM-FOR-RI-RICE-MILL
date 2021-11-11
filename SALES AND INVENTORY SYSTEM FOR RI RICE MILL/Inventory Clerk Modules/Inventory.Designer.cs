@@ -42,7 +42,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnUpdate = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnAddStock = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.btnRefresh = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockList)).BeginInit();
             this.bunifuPanel2.SuspendLayout();
@@ -350,49 +349,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel2.BorderRadius = 10;
             this.bunifuPanel2.BorderThickness = 1;
-            this.bunifuPanel2.Controls.Add(this.btnRefresh);
             this.bunifuPanel2.Controls.Add(this.btnUpdate);
             this.bunifuPanel2.Controls.Add(this.btnAddStock);
             this.bunifuPanel2.Location = new System.Drawing.Point(26, 133);
             this.bunifuPanel2.Name = "bunifuPanel2";
             this.bunifuPanel2.ShowBorders = true;
-            this.bunifuPanel2.Size = new System.Drawing.Size(431, 70);
+            this.bunifuPanel2.Size = new System.Drawing.Size(374, 70);
             this.bunifuPanel2.TabIndex = 45;
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.ActiveImage = null;
-            this.btnRefresh.AllowAnimations = true;
-            this.btnRefresh.AllowBuffering = false;
-            this.btnRefresh.AllowToggling = false;
-            this.btnRefresh.AllowZooming = false;
-            this.btnRefresh.AllowZoomingOnFocus = false;
-            this.btnRefresh.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnRefresh.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnRefresh.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.ErrorImage")));
-            this.btnRefresh.FadeWhenInactive = false;
-            this.btnRefresh.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.btnRefresh.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.reload;
-            this.btnRefresh.ImageActive = null;
-            this.btnRefresh.ImageLocation = null;
-            this.btnRefresh.ImageMargin = 20;
-            this.btnRefresh.ImageSize = new System.Drawing.Size(22, 19);
-            this.btnRefresh.ImageZoomSize = new System.Drawing.Size(42, 39);
-            this.btnRefresh.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnRefresh.InitialImage")));
-            this.btnRefresh.Location = new System.Drawing.Point(367, 16);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Rotation = 0;
-            this.btnRefresh.ShowActiveImage = true;
-            this.btnRefresh.ShowCursorChanges = true;
-            this.btnRefresh.ShowImageBorders = true;
-            this.btnRefresh.ShowSizeMarkers = false;
-            this.btnRefresh.Size = new System.Drawing.Size(42, 39);
-            this.btnRefresh.TabIndex = 13;
-            this.btnRefresh.ToolTipText = "";
-            this.btnRefresh.WaitOnLoad = false;
-            this.btnRefresh.Zoom = 20;
-            this.btnRefresh.ZoomSpeed = 10;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmInventory
             // 
@@ -421,7 +384,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnUpdate;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel2;
-        private Bunifu.UI.WinForms.BunifuImageButton btnRefresh;
         public Bunifu.UI.WinForms.BunifuDataGridView dgvStockList;
     }
 }

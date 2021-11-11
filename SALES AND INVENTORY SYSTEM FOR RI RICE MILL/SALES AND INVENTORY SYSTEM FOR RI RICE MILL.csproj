@@ -292,12 +292,6 @@
     <Compile Include="Inventory Clerk Modules\Add Stock.Designer.cs">
       <DependentUpon>Add Stock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\Receipt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashier Modules\Receipt.Designer.cs">
-      <DependentUpon>Receipt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventory Clerk Modules\Clerk Mainform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,11 +358,11 @@
     <Compile Include="Owner Modules\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrintReciept.cs">
+    <Compile Include="Cashier Modules\PrintReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PrintReciept.Designer.cs">
-      <DependentUpon>PrintReciept.cs</DependentUpon>
+    <Compile Include="Cashier Modules\PrintReceipt.Designer.cs">
+      <DependentUpon>PrintReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -445,9 +439,6 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Add Stock.resx">
       <DependentUpon>Add Stock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\Receipt.resx">
-      <DependentUpon>Receipt.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Mainform.resx">
       <DependentUpon>Clerk Mainform.cs</DependentUpon>
     </EmbeddedResource>
@@ -457,12 +448,9 @@
     <EmbeddedResource Include="Cashier Modules\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PrintReciept.resx">
-      <DependentUpon>PrintReciept.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\PrintReceipt.resx">
+      <DependentUpon>PrintReceipt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Receipt.rdlc" />
-    <EmbeddedResource Include="Reports\InventoryReport.rdlc" />
-    <EmbeddedResource Include="Reports\SalesReport.rdlc" />
     <EmbeddedResource Include="Link Forms\Inventory Reports.resx">
       <DependentUpon>Inventory Reports.cs</DependentUpon>
     </EmbeddedResource>
@@ -681,6 +669,7 @@
     <None Include="Resources\plus.png" />
     <None Include="Resources\cancel.png" />
     <None Include="Resources\money.png" />
+    <None Include="Resources\packages.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

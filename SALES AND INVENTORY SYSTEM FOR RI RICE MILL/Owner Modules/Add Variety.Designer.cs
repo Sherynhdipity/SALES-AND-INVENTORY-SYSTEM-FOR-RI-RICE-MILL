@@ -36,11 +36,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.btnExit = new System.Windows.Forms.Button();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.txtVariety = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel11 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnAddVariety = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,20 +61,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel13.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel13.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // btnExit
-            // 
-            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnExit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.btnExit.Location = new System.Drawing.Point(318, 0);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(41, 38);
-            this.btnExit.TabIndex = 101;
-            this.btnExit.Text = "X";
-            this.btnExit.UseVisualStyleBackColor = false;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // bunifuPanel1
             // 
             this.bunifuPanel1.BackgroundColor = System.Drawing.Color.RoyalBlue;
@@ -83,7 +69,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel1.BorderRadius = 0;
             this.bunifuPanel1.BorderThickness = 0;
-            this.bunifuPanel1.Controls.Add(this.btnExit);
+            this.bunifuPanel1.Controls.Add(this.btnClose);
             this.bunifuPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.bunifuPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuPanel1.Name = "bunifuPanel1";
@@ -274,6 +260,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnAddVariety.UseDefaultRadiusAndThickness = true;
             this.btnAddVariety.Click += new System.EventHandler(this.btnAddVariety_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.color = System.Drawing.Color.RoyalBlue;
+            this.btnClose.colorActive = System.Drawing.Color.IndianRed;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
+            this.btnClose.Image = null;
+            this.btnClose.ImagePosition = 21;
+            this.btnClose.ImageZoom = 50;
+            this.btnClose.LabelPosition = 43;
+            this.btnClose.LabelText = "x";
+            this.btnClose.Location = new System.Drawing.Point(302, -9);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(63, 56);
+            this.btnClose.TabIndex = 50;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // frmAddVariety
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,10 +304,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         #endregion
 
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel13;
-        private System.Windows.Forms.Button btnExit;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
         private Bunifu.UI.WinForms.BunifuTextBox txtVariety;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel11;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnAddVariety;
+        private Bunifu.Framework.UI.BunifuTileButton btnClose;
     }
 }
