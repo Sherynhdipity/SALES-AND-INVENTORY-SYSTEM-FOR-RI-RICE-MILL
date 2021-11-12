@@ -155,7 +155,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 "1," +
                                 "(SELECT MAX(PaymentID) as pID from tblPayments)," +
                                 "0.12)";
-                            //QueryInsert = "INSERT INTO tblPurchases(PurchaseDate ,InvoiceNumber, QuantityBought, ProductID, DiscountID, PaymentID, VAT) VALUES ('" + sales.lblTransDate.Text + "', '" + sales.lblIVno.Text + "','" + sales.txtQuantityCount.Text + "','" + "', (Select ProductID from tblProducts Where ProductCode = '" + dtFromSalesMgt.Rows[0][0].ToString() + "'), '" ) ";
+                           // QueryInsert = "INSERT INTO tblPurchases(PurchaseDate ,InvoiceNumber, QuantityBought, ProductID, DiscountID, PaymentID, VAT) VALUES ('" + sales.lblTransDate.Text + "', '" + sales.lblIVno.Text + "','" + sales.txtQuantityCount.Text + "','" + "', (Select ProductID from tblProducts Where ProductCode = '" + dtFromSalesMgt.Rows[0][0].ToString() + "'), '" ) ";
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.ExecuteNonQuery();
                             Console.WriteLine("Purchases inserted");
@@ -467,6 +467,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
+
         private void printreciept()
         {
             PrintReciept pr = new PrintReciept();
@@ -481,11 +482,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void frmPayment_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            SettlePayment();
         }
 
         private void txtCash_TextChange(object sender, EventArgs e)
@@ -536,6 +532,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            //Close();
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            SettlePayment();
         }
     }
 }

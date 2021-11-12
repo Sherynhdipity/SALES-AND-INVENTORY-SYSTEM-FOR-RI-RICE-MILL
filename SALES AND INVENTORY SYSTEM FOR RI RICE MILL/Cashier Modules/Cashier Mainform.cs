@@ -26,7 +26,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             lblUserName.Text = frmLogin.GetUserName.ToString();
             lblUserRole.Text = frmLogin.GetUserRole.ToString();
-            btnDashboard_Click(sender,e);
         }
 
         public bool isFormMinimized = false;

@@ -51,6 +51,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     lblProductsSold.Text = reader["res"].ToString();
+                    lblstocksSold.Text = reader["res"].ToString();
+                    string temp = reader["res"].ToString();
+                    lblQtyStockedOut.Text = temp;
+                    lblavgstocksperday.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
                 }
             }
             catch (Exception)
@@ -143,6 +147,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     string temp = reader["res"].ToString();
                     lblNumVarieties.Text = temp;
                     lblavgsalespervar.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            //inventory report
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT count(StockinID) as res from tblStockin";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    string temp = reader["res"].ToString();
+                    lbladdedstocks.Text = temp;
 
                 }
             }

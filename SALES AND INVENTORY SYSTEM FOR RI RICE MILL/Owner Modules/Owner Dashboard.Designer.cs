@@ -34,11 +34,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel24 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel25 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel26 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel27 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblstocksSold = new Bunifu.UI.WinForms.BunifuLabel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.bunifuLabel28 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblavgstocksperday = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel29 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel30 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lbladdedstocks = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblNumVarieties = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblavgsalespervar = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel19 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -70,7 +70,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuPanel3 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblQtyStockedOut = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.bunifuPanel6.SuspendLayout();
@@ -100,11 +100,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel6.Controls.Add(this.bunifuLabel24);
             this.bunifuPanel6.Controls.Add(this.bunifuLabel25);
             this.bunifuPanel6.Controls.Add(this.bunifuLabel26);
-            this.bunifuPanel6.Controls.Add(this.bunifuLabel27);
+            this.bunifuPanel6.Controls.Add(this.lblstocksSold);
             this.bunifuPanel6.Controls.Add(this.pictureBox7);
-            this.bunifuPanel6.Controls.Add(this.bunifuLabel28);
+            this.bunifuPanel6.Controls.Add(this.lblavgstocksperday);
             this.bunifuPanel6.Controls.Add(this.bunifuLabel29);
-            this.bunifuPanel6.Controls.Add(this.bunifuLabel30);
+            this.bunifuPanel6.Controls.Add(this.lbladdedstocks);
             this.bunifuPanel6.Location = new System.Drawing.Point(697, 282);
             this.bunifuPanel6.Name = "bunifuPanel6";
             this.bunifuPanel6.ShowBorders = true;
@@ -159,21 +159,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel26.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.bunifuLabel26.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel27
+            // lblstocksSold
             // 
-            this.bunifuLabel27.AllowParentOverrides = false;
-            this.bunifuLabel27.AutoEllipsis = false;
-            this.bunifuLabel27.CursorType = null;
-            this.bunifuLabel27.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.bunifuLabel27.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel27.Location = new System.Drawing.Point(191, 157);
-            this.bunifuLabel27.Name = "bunifuLabel27";
-            this.bunifuLabel27.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel27.Size = new System.Drawing.Size(69, 15);
-            this.bunifuLabel27.TabIndex = 59;
-            this.bunifuLabel27.Text = "#stocksold";
-            this.bunifuLabel27.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuLabel27.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblstocksSold.AllowParentOverrides = false;
+            this.lblstocksSold.AutoEllipsis = false;
+            this.lblstocksSold.CursorType = null;
+            this.lblstocksSold.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblstocksSold.ForeColor = System.Drawing.Color.Black;
+            this.lblstocksSold.Location = new System.Drawing.Point(191, 157);
+            this.lblstocksSold.Name = "lblstocksSold";
+            this.lblstocksSold.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblstocksSold.Size = new System.Drawing.Size(69, 15);
+            this.lblstocksSold.TabIndex = 59;
+            this.lblstocksSold.Text = "#stocksold";
+            this.lblstocksSold.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblstocksSold.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // pictureBox7
             // 
@@ -186,21 +186,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.pictureBox7.TabIndex = 55;
             this.pictureBox7.TabStop = false;
             // 
-            // bunifuLabel28
+            // lblavgstocksperday
             // 
-            this.bunifuLabel28.AllowParentOverrides = false;
-            this.bunifuLabel28.AutoEllipsis = false;
-            this.bunifuLabel28.CursorType = null;
-            this.bunifuLabel28.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.bunifuLabel28.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel28.Location = new System.Drawing.Point(191, 203);
-            this.bunifuLabel28.Name = "bunifuLabel28";
-            this.bunifuLabel28.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel28.Size = new System.Drawing.Size(92, 15);
-            this.bunifuLabel28.TabIndex = 58;
-            this.bunifuLabel28.Text = "#stocksoldday";
-            this.bunifuLabel28.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuLabel28.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblavgstocksperday.AllowParentOverrides = false;
+            this.lblavgstocksperday.AutoEllipsis = false;
+            this.lblavgstocksperday.CursorType = null;
+            this.lblavgstocksperday.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lblavgstocksperday.ForeColor = System.Drawing.Color.Black;
+            this.lblavgstocksperday.Location = new System.Drawing.Point(191, 203);
+            this.lblavgstocksperday.Name = "lblavgstocksperday";
+            this.lblavgstocksperday.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblavgstocksperday.Size = new System.Drawing.Size(92, 15);
+            this.lblavgstocksperday.TabIndex = 58;
+            this.lblavgstocksperday.Text = "#stocksoldday";
+            this.lblavgstocksperday.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblavgstocksperday.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // bunifuLabel29
             // 
@@ -218,21 +218,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel29.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuLabel29.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // bunifuLabel30
+            // lbladdedstocks
             // 
-            this.bunifuLabel30.AllowParentOverrides = false;
-            this.bunifuLabel30.AutoEllipsis = false;
-            this.bunifuLabel30.CursorType = null;
-            this.bunifuLabel30.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.bunifuLabel30.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel30.Location = new System.Drawing.Point(191, 106);
-            this.bunifuLabel30.Name = "bunifuLabel30";
-            this.bunifuLabel30.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel30.Size = new System.Drawing.Size(49, 15);
-            this.bunifuLabel30.TabIndex = 55;
-            this.bunifuLabel30.Text = "#stocks";
-            this.bunifuLabel30.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuLabel30.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lbladdedstocks.AllowParentOverrides = false;
+            this.lbladdedstocks.AutoEllipsis = false;
+            this.lbladdedstocks.CursorType = null;
+            this.lbladdedstocks.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.lbladdedstocks.ForeColor = System.Drawing.Color.Black;
+            this.lbladdedstocks.Location = new System.Drawing.Point(191, 106);
+            this.lbladdedstocks.Name = "lbladdedstocks";
+            this.lbladdedstocks.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lbladdedstocks.Size = new System.Drawing.Size(49, 15);
+            this.lbladdedstocks.TabIndex = 55;
+            this.lbladdedstocks.Text = "#stocks";
+            this.lbladdedstocks.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbladdedstocks.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // lblNumVarieties
             // 
@@ -707,36 +707,36 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // bunifuPanel3
             // 
-            this.bunifuPanel3.BackgroundColor = System.Drawing.Color.Orange;
+            this.bunifuPanel3.BackgroundColor = System.Drawing.Color.IndianRed;
             this.bunifuPanel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel3.BackgroundImage")));
             this.bunifuPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuPanel3.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel3.BorderRadius = 3;
             this.bunifuPanel3.BorderThickness = 1;
-            this.bunifuPanel3.Controls.Add(this.bunifuLabel2);
+            this.bunifuPanel3.Controls.Add(this.lblQtyStockedOut);
             this.bunifuPanel3.Controls.Add(this.bunifuLabel3);
             this.bunifuPanel3.Controls.Add(this.pictureBox4);
             this.bunifuPanel3.Location = new System.Drawing.Point(806, 121);
             this.bunifuPanel3.Name = "bunifuPanel3";
             this.bunifuPanel3.ShowBorders = true;
             this.bunifuPanel3.Size = new System.Drawing.Size(234, 133);
-            this.bunifuPanel3.TabIndex = 66;
+            this.bunifuPanel3.TabIndex = 73;
             // 
-            // bunifuLabel2
+            // lblQtyStockedOut
             // 
-            this.bunifuLabel2.AllowParentOverrides = false;
-            this.bunifuLabel2.AutoEllipsis = false;
-            this.bunifuLabel2.CursorType = null;
-            this.bunifuLabel2.Font = new System.Drawing.Font("Impact", 15.75F);
-            this.bunifuLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel2.Location = new System.Drawing.Point(109, 81);
-            this.bunifuLabel2.Name = "bunifuLabel2";
-            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(11, 26);
-            this.bunifuLabel2.TabIndex = 6;
-            this.bunifuLabel2.Text = "0";
-            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblQtyStockedOut.AllowParentOverrides = false;
+            this.lblQtyStockedOut.AutoEllipsis = false;
+            this.lblQtyStockedOut.CursorType = null;
+            this.lblQtyStockedOut.Font = new System.Drawing.Font("Impact", 15.75F);
+            this.lblQtyStockedOut.ForeColor = System.Drawing.Color.White;
+            this.lblQtyStockedOut.Location = new System.Drawing.Point(109, 81);
+            this.lblQtyStockedOut.Name = "lblQtyStockedOut";
+            this.lblQtyStockedOut.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblQtyStockedOut.Size = new System.Drawing.Size(11, 26);
+            this.lblQtyStockedOut.TabIndex = 6;
+            this.lblQtyStockedOut.Text = "0";
+            this.lblQtyStockedOut.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblQtyStockedOut.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // bunifuLabel3
             // 
@@ -748,16 +748,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel3.Location = new System.Drawing.Point(108, 25);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(89, 53);
+            this.bunifuLabel3.Size = new System.Drawing.Size(112, 27);
             this.bunifuLabel3.TabIndex = 5;
-            this.bunifuLabel3.Text = "PRODUCTS \r\nSOLD";
+            this.bunifuLabel3.Text = "STOCKED OUT";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.growth;
+            this.pictureBox4.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.packages;
             this.pictureBox4.Location = new System.Drawing.Point(19, 25);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(77, 82);
@@ -808,11 +808,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel24;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel25;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel26;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel27;
+        private Bunifu.UI.WinForms.BunifuLabel lblstocksSold;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel28;
+        private Bunifu.UI.WinForms.BunifuLabel lblavgstocksperday;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel29;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel30;
+        private Bunifu.UI.WinForms.BunifuLabel lbladdedstocks;
         private Bunifu.UI.WinForms.BunifuLabel lblNumVarieties;
         private Bunifu.UI.WinForms.BunifuLabel lblavgsalespervar;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel19;
@@ -844,7 +844,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private System.Windows.Forms.PictureBox pictureBox1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel3;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Bunifu.UI.WinForms.BunifuLabel lblQtyStockedOut;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private System.Windows.Forms.PictureBox pictureBox4;
     }

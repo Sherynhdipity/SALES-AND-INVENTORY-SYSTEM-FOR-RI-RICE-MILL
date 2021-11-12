@@ -44,13 +44,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnExit = new System.Windows.Forms.Button();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnConfirm = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnCancel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtCash = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtAmount = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,6 +119,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.ShowBorders = false;
             this.bunifuPanel1.Size = new System.Drawing.Size(427, 38);
             this.bunifuPanel1.TabIndex = 105;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.color = System.Drawing.Color.RoyalBlue;
+            this.btnClose.colorActive = System.Drawing.Color.IndianRed;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Image = null;
+            this.btnClose.ImagePosition = 21;
+            this.btnClose.ImageZoom = 50;
+            this.btnClose.LabelPosition = 43;
+            this.btnClose.LabelText = "x";
+            this.btnClose.Location = new System.Drawing.Point(369, -9);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(63, 56);
+            this.btnClose.TabIndex = 102;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExit
             // 
@@ -332,7 +352,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.TextMarginLeft = 0;
             this.btnCancel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnCancel.UseDefaultRadiusAndThickness = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
             // txtCash
             // 
@@ -487,26 +507,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtAmount.TextPlaceholder = "";
             this.txtAmount.UseSystemPasswordChar = false;
             this.txtAmount.WordWrap = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.color = System.Drawing.Color.RoyalBlue;
-            this.btnClose.colorActive = System.Drawing.Color.IndianRed;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Image = null;
-            this.btnClose.ImagePosition = 21;
-            this.btnClose.ImageZoom = 50;
-            this.btnClose.LabelPosition = 43;
-            this.btnClose.LabelText = "x";
-            this.btnClose.Location = new System.Drawing.Point(369, -9);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(8);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(63, 56);
-            this.btnClose.TabIndex = 102;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmPayment
             // 
