@@ -104,8 +104,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmUpdateStock stock = new frmUpdateStock();
-            stock.Show();
+            //frmUpdateStock stock = new frmUpdateStock();
+            //stock.Show();
         }
     }
 }

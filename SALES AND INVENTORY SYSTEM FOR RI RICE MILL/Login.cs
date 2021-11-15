@@ -120,7 +120,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             MessageBox.Show("Invalid Account! Try Again", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             ClearControls();
                         }
-
+                        con.Close();
 
                     }
                     catch (Exception ex)

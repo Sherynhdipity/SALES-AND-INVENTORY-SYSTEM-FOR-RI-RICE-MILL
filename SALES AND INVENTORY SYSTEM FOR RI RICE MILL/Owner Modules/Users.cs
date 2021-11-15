@@ -137,6 +137,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    con.Close();
                     con.Open();
                     QuerySelect = "SELECT * FROM tblUsers WHERE Name = '" + txtName.Text + "' AND Username = '" + txtUsername.Text + "'";
                     cmd = new SqlCommand(QuerySelect, con);
@@ -160,6 +161,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             DisplayUserList();
                             MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearControls();
+                            con.Close();
                         }
 
                         catch (Exception ex)
@@ -218,6 +220,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     try
                     {
+                        con.Close();
                         con.Open();
                         QueryUpdate = "UPDATE tblUsers SET Name = '" + txtName1.Text + "', Username = '" + txtUsername1.Text + "', Status = '" + drpStatus.Text + "', RoleID = (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole1.Text + "') WHERE UserID = '" + lblUserID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
@@ -255,6 +258,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 drpStatus.Text = row.Cells[2].Value.ToString();
                 drpRole1.Text = row.Cells[3].Value.ToString();
 
+                con.Close();
                 con.Open();
                 QuerySelect = "SELECT UserID FROM tblUsers WHERE Name='" + txtName1.Text + "'";
                 cmd = new SqlCommand(QuerySelect, con);

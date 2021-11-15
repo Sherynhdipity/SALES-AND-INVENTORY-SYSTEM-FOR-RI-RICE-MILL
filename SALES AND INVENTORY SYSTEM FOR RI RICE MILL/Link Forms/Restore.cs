@@ -58,7 +58,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 cmd = new SqlCommand(QueryRestore3, con);
                 cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Database Backed up Successfully!", "Backup", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Database Restored Successfully!", "Restore", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 con.Close();
 
 

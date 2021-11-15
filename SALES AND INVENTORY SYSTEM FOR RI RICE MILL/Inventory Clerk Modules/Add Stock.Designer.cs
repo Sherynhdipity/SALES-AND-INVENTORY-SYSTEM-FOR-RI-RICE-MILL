@@ -197,7 +197,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnAddStock.IdleIconLeftImage = null;
             this.btnAddStock.IdleIconRightImage = null;
             this.btnAddStock.IndicateFocus = false;
-            this.btnAddStock.Location = new System.Drawing.Point(330, 308);
+            this.btnAddStock.Location = new System.Drawing.Point(330, 264);
             this.btnAddStock.Name = "btnAddStock";
             this.btnAddStock.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAddStock.OnDisabledState.BorderRadius = 1;
@@ -986,7 +986,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnClose.color = System.Drawing.Color.RoyalBlue;
             this.btnClose.colorActive = System.Drawing.Color.IndianRed;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
