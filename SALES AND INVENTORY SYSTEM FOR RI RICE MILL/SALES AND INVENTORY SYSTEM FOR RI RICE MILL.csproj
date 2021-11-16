@@ -364,6 +364,12 @@
     <Compile Include="Cashier Modules\PrintReceipt.Designer.cs">
       <DependentUpon>PrintReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Owner Modules\Customers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\Customers.Designer.cs">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cashier Modules\Cashier Reports.cs">
@@ -378,7 +384,6 @@
     <Compile Include="Inventory Clerk Modules\Clerk Reports.Designer.cs">
       <DependentUpon>Clerk Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Link Forms\Backup and Restore.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -397,6 +402,18 @@
     <Compile Include="Inventory Clerk Modules\Clerk Dashboard.Designer.cs">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Receipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Sales Return.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Sales Return.Designer.cs">
+      <DependentUpon>Sales Return.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cashier Modules\Cashier Mainform.resx">
       <DependentUpon>Cashier Mainform.cs</DependentUpon>
     </EmbeddedResource>
@@ -408,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Discount.resx">
       <DependentUpon>Discount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\Sales Return.resx">
+      <DependentUpon>Sales Return.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\lowStockNotif.resx">
       <DependentUpon>lowStockNotif.cs</DependentUpon>
@@ -475,6 +495,9 @@
     <EmbeddedResource Include="Owner Modules\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\Customers.resx">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -500,6 +523,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Receipt.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="DBSalesandInventoryDataSet.xsc">
       <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
@@ -670,19 +697,6 @@
     <None Include="Resources\cancel.png" />
     <None Include="Resources\money.png" />
     <None Include="Resources\packages.png" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
