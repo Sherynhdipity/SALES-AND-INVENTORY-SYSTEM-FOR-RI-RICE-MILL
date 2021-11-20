@@ -63,7 +63,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        QuerySelect = "SELECT a.UserID as 'UserID', a.Name as 'Name', a.Username as 'Username', a.Password as 'Password', a.Status as 'Status', b.Role as 'Role' FROM tblUsers a INNER JOIN tblRoles b ON a.RoleID = b.RoleID  WHERE Username='" + txtUsername.Text + "' AND Password='" + txtPassword.Text + "'";
+                        QuerySelect = "SELECT a.UserID as 'UserID', a.Name as 'Name', a.Username as 'Username', a.Password as 'Password', a.UserStatus as 'Status', b.RoleName as 'Role' FROM tblUsers a INNER JOIN tblRoles b ON a.RoleID = b.RoleID  WHERE Username='" + txtUsername.Text + "' AND Password='" + txtPassword.Text + "'";
                         cmd = new SqlCommand(QuerySelect, con);
                         reader = cmd.ExecuteReader();
                         if (reader.HasRows)
@@ -125,8 +125,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     }
                     catch (Exception ex)
                     {
-
-                        MessageBox.Show(ex.Message);
+                        
+                        MessageBox.Show(ex.Message + ex.StackTrace);
 
                     }
                     finally

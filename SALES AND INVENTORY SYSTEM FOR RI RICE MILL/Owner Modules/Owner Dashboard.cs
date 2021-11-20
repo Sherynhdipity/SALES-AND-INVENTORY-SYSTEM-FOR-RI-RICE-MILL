@@ -46,7 +46,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT sum(tblStockout.QtyStockedOut) as res from tblStockout";
+                QuerySelect = "SELECT sum(tblStockout.StockoutQuantity) as res from tblStockout";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {

@@ -176,12 +176,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                                 con.Open();
 
-                                QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,VarietyID,Price,RestockLevel) VALUES ('" + txtCustomerCode.Text + "', '" + txtCustomerName.Text + "', (Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'),'"+txtContactNo.Text+"', '" + txtrReStocklvl.Text + "')";
+                                //QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,VarietyID,Price,RestockLevel) VALUES ('" + txtCustomerCode.Text + "', '" + txtCustomerName.Text + "', (Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'),'"+txtContactNo.Text+"', '" + txtrReStocklvl.Text + "')";
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.ExecuteNonQuery();
 
                                 MessageBox.Show("Product Added Successfully!", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                DisplayProductList();
+                                
                                 ClearControls();
 
 
@@ -231,7 +231,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Method UpdateCustomer
         private void UpdateCustomer()
         {
-            if (txtCustomerCode.Text != "" && txtCustomerName.Text != "" && txtContactNo.Text != "" && drpVariety.Text != "" && txtrReStocklvl.Text != "") 
+            if (txtCustomerCode.Text != "" && txtCustomerName.Text != "" && txtContactNo.Text != "" && txtAddress.Text != "") 
             { 
 
                 result = MessageBox.Show("Do you want to Update this Customer?", "Update Customert", MessageBoxButtons.YesNo);
@@ -249,13 +249,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtCustomerCode.Text + "', ProductDesc='" + txtCustomerName.Text + "', VarietyID=(Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'), Price='" + txtContactNo.Text + "' , RestockLevel =" + txtrReStocklvl.Text + " WHERE ProductID='" + lblItemID.Text + "'";
+                        //QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtCustomerCode.Text + "', ProductDesc='" + txtCustomerName.Text + "', VarietyID=(Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'), Price='" + txtContactNo.Text + "' , RestockLevel =" + txtrReStocklvl.Text + " WHERE ProductID='" + lblItemID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
                         con.Close();
 
                         MessageBox.Show("Product Updated Successfully!", "Update Product", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DisplayCustomertList();
+                        DisplayCustomerList();
                         ClearControls();
 
 
@@ -392,9 +392,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 txtCustomerCode.Text = row.Cells[0].Value.ToString();
                 txtCustomerName.Text = row.Cells[1].Value.ToString();
-                drpVariety.Text = row.Cells[2].Value.ToString();
+                txtAddress.Text = row.Cells[2].Value.ToString();
                 txtContactNo.Text = row.Cells[3].Value.ToString();
-                txtrReStocklvl.Text = row.Cells[4].Value.ToString();
+                //txtrReStocklvl.Text = row.Cells[4].Value.ToString();
 
 
                 try
