@@ -93,7 +93,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show("Enter Quantity!");
                 txtQuantity.Focus();
             }
-            else if (txtBatchNo.Text != "" && txtQuantity.Text != "")
+            else if (String.IsNullOrWhiteSpace(txtPrice.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtPrice.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtPrice.Text))
+            {
+                MessageBox.Show("Enter Quantity!");
+                txtPrice.Focus();
+            }
+            else if (txtBatchNo.Text != "" && txtQuantity.Text != "" && txtPrice.Text != "")
             {
                 result = MessageBox.Show("Do you want to Add this Stock?", "Add Stock", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -116,7 +126,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                             con.Open();
 
-                            QueryInsert = "INSERT INTO tblBatch(MillingDate) VALUES ( '" + dtpMillingDate.Value.Date.ToShortDateString() + "') ";
+                            QueryInsert = "INSERT INTO tblBatch(BatchQuantity, ProductID, AvailableStock, MillingDate, BatchNumber, Price, UnitID) VALUES ( '"+txtQuantity.Text+"', (SELECT ProductID FROM tblProducts WHERE ProductCode = '"+txtProductCode.Text+"'), '"+txtQuantity.Text+"', '" + dtpMillingDate.Value.Date.ToShortDateString() + "', '"+txtBatchNo.Text+"', '"+txtPrice.Text+"' ,1) ";
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.ExecuteNonQuery();
 
@@ -138,37 +148,37 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         //INSERT tblBatchProduct
 
-                        try
-                        {
+                        //try
+                        //{
 
-                            if (con.State == ConnectionState.Open)
-                            {
-                                con.Close();
-                            }
+                        //    if (con.State == ConnectionState.Open)
+                        //    {
+                        //        con.Close();
+                        //    }
 
-                            con.Open();
+                        //    con.Open();
 
-                            int qty = Convert.ToInt32(txtQuantity.Text);
-                            for (int i = 0; i < qty; i++)
-                            {
-                                QueryInsert = "INSERT INTO tblBatchProduct(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + txtBatchNo.Text + "', 'IN')";
-                                cmd = new SqlCommand(QueryInsert, con);
-                                cmd.ExecuteNonQuery();
-                            }
+                        //    int qty = Convert.ToInt32(txtQuantity.Text);
+                        //    for (int i = 0; i < qty; i++)
+                        //    {
+                        //        QueryInsert = "INSERT INTO tblBatch(BatchID, BatchNumber, Status)Values((SELECT MAX(BatchID) FROM tblBatch), '" + txtBatchNo.Text + "', 'IN')";
+                        //        cmd = new SqlCommand(QueryInsert, con);
+                        //        cmd.ExecuteNonQuery();
+                        //    }
 
-                        }
-                        catch (Exception ex)
-                        {
+                        //}
+                        //catch (Exception ex)
+                        //{
 
-                            MessageBox.Show(ex.Message);
+                        //    MessageBox.Show(ex.Message);
 
-                        }
-                        finally
-                        {
+                        //}
+                        //finally
+                        //{
 
-                            con.Close();
+                        //    con.Close();
 
-                        }
+                        //}
 
 
                         //INSERT tblStockin
@@ -183,7 +193,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                             con.Open();
 
-                            QueryInsert = "INSERT INTO tblStockin (ProductID,StockinQuantity,StockinDate,BatchID) VALUES((SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtProductCode.Text + "'), '" + txtQuantity.Text + "', '" + dtpStockinDate.Value.Date.ToShortDateString() + "', (SELECT MAX(BatchID) FROM tblBatch))";
+                            QueryInsert = "INSERT INTO tblStockin (BatchID,StockinQuantity,StockinDate) VALUES((SELECT MAX(BatchID) FROM tblBatch), '" + txtQuantity.Text + "', '" + dtpStockinDate.Value.Date.ToShortDateString() + "')";
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.ExecuteNonQuery();
 
@@ -347,37 +357,37 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void txtBatchNo_Leave(object sender, EventArgs e)
         {
 
-            try
-            {
+            //try
+            //{
 
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
+            //    if (con.State == ConnectionState.Open)
+            //    {
+            //        con.Close();
+            //    }
 
-                con.Open();
-                QuerySelect = "SELECT BatchNumber FROM tblBatchProduct WHERE BatchNumber = "+txtBatchNo.Text;
-                reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    MessageBox.Show(this, "Batch number already exists.", "Duplicate Batch Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtBatchNo.Focus();
-                }
+            //    con.Open();
+            //    QuerySelect = "SELECT BatchNumber FROM tblBatchProduct WHERE BatchNumber = "+txtBatchNo.Text;
+            //    reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+            //    if (reader.Read())
+            //    {
+            //        MessageBox.Show(this, "Batch number already exists.", "Duplicate Batch Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //        txtBatchNo.Focus();
+            //    }
 
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message);
+            //    MessageBox.Show(ex.Message);
 
-            }
-            finally
-            {
+            //}
+            //finally
+            //{
 
-                con.Close();
+            //    con.Close();
 
-            }
+            //}
 
         }
 

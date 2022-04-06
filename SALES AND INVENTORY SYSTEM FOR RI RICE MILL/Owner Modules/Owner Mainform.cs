@@ -30,6 +30,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblAdminRole.Text = frmLogin.GetUserRole.ToString();
 
             con.Close();
+
+            //load dashboard
+            btnDashboard.PerformClick();
         }
 
         public bool isFormMinimized = false;
@@ -46,16 +49,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
 
 
-            if (!panelModule.Controls.Contains(ucUsers.usersInstance))
+            if (!panelModule.Controls.Contains(Owner_Modules.UserManagement.usersInstance))
             {
-                panelModule.Controls.Add(ucUsers.usersInstance);
+                panelModule.Controls.Add(Owner_Modules.UserManagement.usersInstance);
                 panelModule.Refresh();
-                ucUsers.usersInstance.Dock = DockStyle.Fill;
+                Owner_Modules.UserManagement.usersInstance.Dock = DockStyle.Fill;
                 
             }
             else
             {
-                ucUsers.usersInstance.BringToFront();
+                Owner_Modules.UserManagement.usersInstance.BringToFront();
             }
         }
 
@@ -78,14 +81,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnProducts_Click(object sender, EventArgs e)
         {
 
-            if (!panelModule.Controls.Contains(ucProducts.productsInstance))
+            if (!panelModule.Controls.Contains(Owner_Modules.frmItems.itemsInstance))
             {
-                panelModule.Controls.Add(ucProducts.productsInstance);
-                ucProducts.productsInstance.Dock = DockStyle.Fill;
+                panelModule.Controls.Add(Owner_Modules.frmItems.itemsInstance);
+                Owner_Modules.frmItems.itemsInstance.Dock = DockStyle.Fill;
             }
             else
             {
-                ucProducts.productsInstance.BringToFront();
+                Owner_Modules.frmItems.itemsInstance.BringToFront();
             }
         }
 
@@ -129,6 +132,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             }
             else if(dialog == DialogResult.No)
+            {
+
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuButton23_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Do you want to Logout from the System?", "Log-out", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmLogin login = new frmLogin();
+                this.Hide();
+                login.Show();
+
+            }
+            else if (dialog == DialogResult.No)
             {
 
             }

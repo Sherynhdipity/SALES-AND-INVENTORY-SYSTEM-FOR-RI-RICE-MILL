@@ -1,0 +1,5 @@
+[autorun]
+open=CRXIR2_Autorun.exe  
+icon=CRXIR2_Autorun.exe, 0
+shell\install=Install
+shell\install\command=CRXIR2_Autorun.exe

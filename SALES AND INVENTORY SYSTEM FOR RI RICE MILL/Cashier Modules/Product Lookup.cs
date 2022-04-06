@@ -46,7 +46,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
 
             con.Open();
-            QuerySelect = "SELECT p.ProductCode AS 'Product Code', p.ProductDesc AS 'Product Description', v.VarietyName AS 'Product Variety', p.Price FROM tblProducts p INNER JOIN tblProductVariety v ON p.VarietyID = v.VarietyID";
+            QuerySelect = "SELECT p.ProductCode AS 'Product Code', p.ProductDesc AS 'Product Description', v.VarietyName AS 'Product Variety', p.Price FROM tblProducts p INNER JOIN tblProductsVariety v ON p.VarietyID = v.VarietyID";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -66,7 +66,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
                 con.Open();
-                QuerySelect = "SELECT a.ProductCode AS 'Product Code', a.ProductDesc AS 'Product Description', b.VarietyName AS 'Product Variety', a.Price FROM tblProducts a INNER JOIN tblProductVariety b ON a.VarietyID = b.VarietyID where a.ProductCode like '" + txtSearchProduct.Text + "%' OR a.ProductDesc like '%" + txtSearchProduct.Text + "%' OR b.VarietyName like '%" + txtSearchProduct.Text + "%' OR  a.Price like '%" + txtSearchProduct.Text + "' ORDER BY a.ProductID DESC";
+                QuerySelect = "SELECT a.ProductCode AS 'Product Code', a.ProductDesc AS 'Product Description', b.VarietyName AS 'Product Variety', a.Price FROM tblProducts a INNER JOIN tblProductsVariety b ON a.VarietyID = b.VarietyID where a.ProductCode like '" + txtSearchProduct.Text + "%' OR a.ProductDesc like '%" + txtSearchProduct.Text + "%' OR b.VarietyName like '%" + txtSearchProduct.Text + "%' OR  a.Price like '%" + txtSearchProduct.Text + "' ORDER BY a.ProductID DESC";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();

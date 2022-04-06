@@ -55,8 +55,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Display Data in DataGridView  
         public void DisplayUserList()
         {
+            con.Close();
             con.Open();
-            QuerySelect = "SELECT a.Name as 'Name', a.Username as 'Username', a.Status as 'Status', b.Role as 'Role' FROM tblUsers a INNER JOIN tblRoles b ON a.RoleID = b.RoleID ORDER BY UserID DESC";
+            QuerySelect = "SELECT a.Name as 'Name', a.Username as 'Username', a.UserStatus as 'Status', b.RoleName as 'Role' FROM tblUsers a INNER JOIN tblRoles b ON a.RoleID = b.RoleID ORDER BY UserID DESC";
             cmd = new SqlCommand(QuerySelect, con);
 
             adapter = new SqlDataAdapter(cmd);
@@ -97,7 +98,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Method AddUser
         private void AddUser()
         {
-
+            con.Close();
             if (String.IsNullOrEmpty(txtName.Text) && String.IsNullOrEmpty(txtUsername.Text) && String.IsNullOrEmpty(txtPassword.Text) && String.IsNullOrEmpty(drpRole.Text) && String.IsNullOrEmpty(drpStatus.Text))
             {
                 MessageBox.Show("Fields should not be empty!");
@@ -145,23 +146,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     if (reader.HasRows)
                     {
                         MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        con.Close();
+                        //con.Close();
                         ClearControls();
                     }
                     else
                     {
                         try
                         {
+                            //con.Close();
+                            con.Close();
                             con.Open();
-                            QueryInsert = "INSERT INTO tblUsers VALUES (Name,Username,Password,Status,RoleID) VALUES ('" + txtName.Text + "', '" + txtUsername.Text + "', '" + txtPassword.Text + "', '" + status + "', (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole.SelectedItem.ToString() + "'))";
+                            QueryInsert = "INSERT INTO tblUsers (Name,Username,Password,UserStatus,RoleID) VALUES ('" + txtName.Text + "', '" + txtUsername.Text + "', '" + txtPassword.Text + "', '" + status + "', (SELECT RoleID FROM tblRoles WHERE RoleName = '" + drpRole.SelectedItem.ToString() + "'))";
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.ExecuteNonQuery();
-                            con.Close();
+                            //con.Close();
 
+                            //con.Close();
+                            //con.Open();
                             DisplayUserList();
                             MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ClearControls();
-                            con.Close();
+                            //con.Close();
                         }
 
                         catch (Exception ex)
@@ -222,7 +227,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     {
                         con.Close();
                         con.Open();
-                        QueryUpdate = "UPDATE tblUsers SET Name = '" + txtName1.Text + "', Username = '" + txtUsername1.Text + "', Status = '" + drpStatus.Text + "', RoleID = (SELECT RoleID FROM tblRoles WHERE Role = '" + drpRole1.Text + "') WHERE UserID = '" + lblUserID.Text + "'";
+                        QueryUpdate = "UPDATE tblUsers SET Name = '" + txtName1.Text + "', Username = '" + txtUsername1.Text + "', UserStatus = '" + drpStatus.Text + "', RoleID = (SELECT RoleID FROM tblRoles WHERE RoleName = '" + drpRole1.Text + "') WHERE UserID = '" + lblUserID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
                         con.Close();

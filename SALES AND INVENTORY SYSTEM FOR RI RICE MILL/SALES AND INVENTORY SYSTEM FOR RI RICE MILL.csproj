@@ -8,10 +8,26 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL</RootNamespace>
     <AssemblyName>SALES AND INVENTORY SYSTEM FOR RI RICE MILL</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +47,26 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -192,6 +228,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add_new_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_new_user.Designer.cs">
+      <DependentUpon>Add_new_user.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="Cashier Modules\Cashier Mainform.cs">
       <SubType>Form</SubType>
@@ -231,6 +273,23 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBSalesInventoryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSalesInventoryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmAddStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmAddStocks.Designer.cs">
+      <DependentUpon>frmAddStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\InventoryManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\InventoryManagement.Designer.cs">
+      <DependentUpon>InventoryManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Link Forms\Restore.cs">
       <SubType>Form</SubType>
@@ -316,6 +375,30 @@
     <Compile Include="Link Forms\Inventory Reports.Designer.cs">
       <DependentUpon>Inventory Reports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Owner Modules\frmAddItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\frmAddItem.Designer.cs">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\frmItems.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\frmItems.Designer.cs">
+      <DependentUpon>frmItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\frmUpdateItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\frmUpdateItem.Designer.cs">
+      <DependentUpon>frmUpdateItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\frmUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\frmUpdateUser.Designer.cs">
+      <DependentUpon>frmUpdateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Owner Modules\Owner Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -351,6 +434,12 @@
     </Compile>
     <Compile Include="Owner Modules\Owner Reports.Designer.cs">
       <DependentUpon>Owner Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\UserManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\UserManagement.Designer.cs">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Users.cs">
       <SubType>UserControl</SubType>
@@ -408,12 +497,9 @@
     <Compile Include="Cashier Modules\Sales Return.Designer.cs">
       <DependentUpon>Sales Return.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReceiptR1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReceiptR1.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
+    <EmbeddedResource Include="Add_new_user.resx">
+      <DependentUpon>Add_new_user.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Cashier Mainform.resx">
       <DependentUpon>Cashier Mainform.cs</DependentUpon>
     </EmbeddedResource>
@@ -428,6 +514,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Sales Return.resx">
       <DependentUpon>Sales Return.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\frmAddStocks.resx">
+      <DependentUpon>frmAddStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\InventoryManagement.resx">
+      <DependentUpon>InventoryManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\lowStockNotif.resx">
       <DependentUpon>lowStockNotif.cs</DependentUpon>
@@ -474,6 +566,18 @@
     <EmbeddedResource Include="Link Forms\Inventory Reports.resx">
       <DependentUpon>Inventory Reports.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\frmAddItem.resx">
+      <DependentUpon>frmAddItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\frmItems.resx">
+      <DependentUpon>frmItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\frmUpdateItem.resx">
+      <DependentUpon>frmUpdateItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\frmUpdateUser.resx">
+      <DependentUpon>frmUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Owner Dashboard.resx">
       <DependentUpon>Owner Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -491,6 +595,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Owner Reports.resx">
       <DependentUpon>Owner Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\UserManagement.resx">
+      <DependentUpon>UserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
@@ -524,10 +631,6 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReceiptR1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReceiptR1.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="DBSalesandInventoryDataSet.xsc">
       <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
     </None>
@@ -560,6 +663,17 @@
     </None>
     <None Include="DBSalesandInventoryDataSet2.xss">
       <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesInventoryDataSet.xsc">
+      <DependentUpon>DBSalesInventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBSalesInventoryDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBSalesInventoryDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBSalesInventoryDataSet.xss">
+      <DependentUpon>DBSalesInventoryDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -700,6 +814,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\returning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\products.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reports_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data-restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\log-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power-button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_now.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

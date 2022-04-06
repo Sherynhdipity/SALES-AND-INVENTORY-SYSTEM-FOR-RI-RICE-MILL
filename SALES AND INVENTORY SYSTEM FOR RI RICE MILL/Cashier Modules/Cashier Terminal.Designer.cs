@@ -433,9 +433,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel20.Location = new System.Drawing.Point(19, 345);
             this.bunifuLabel20.Name = "bunifuLabel20";
             this.bunifuLabel20.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel20.Size = new System.Drawing.Size(102, 15);
+            this.bunifuLabel20.Size = new System.Drawing.Size(29, 15);
             this.bunifuLabel20.TabIndex = 20;
-            this.bunifuLabel20.Text = "Product Variety";
+            this.bunifuLabel20.Text = "SKU";
             this.bunifuLabel20.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel20.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -1050,9 +1050,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel9.Location = new System.Drawing.Point(22, 401);
             this.bunifuLabel9.Name = "bunifuLabel9";
             this.bunifuLabel9.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel9.Size = new System.Drawing.Size(90, 15);
+            this.bunifuLabel9.Size = new System.Drawing.Size(67, 15);
             this.bunifuLabel9.TabIndex = 7;
-            this.bunifuLabel9.Text = "Product Price";
+            this.bunifuLabel9.Text = "Item Price";
             this.bunifuLabel9.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel9.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -1153,9 +1153,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1.Location = new System.Drawing.Point(22, 217);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(89, 15);
+            this.bunifuLabel1.Size = new System.Drawing.Size(55, 15);
             this.bunifuLabel1.TabIndex = 2;
-            this.bunifuLabel1.Text = "Product Code";
+            this.bunifuLabel1.Text = "Barcode";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -1169,9 +1169,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.Location = new System.Drawing.Point(22, 279);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(131, 15);
+            this.bunifuLabel2.Size = new System.Drawing.Size(108, 15);
             this.bunifuLabel2.TabIndex = 1;
-            this.bunifuLabel2.Text = "Product Description";
+            this.bunifuLabel2.Text = "Item Description";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -1182,12 +1182,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel19.CursorType = null;
             this.bunifuLabel19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel19.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel19.Location = new System.Drawing.Point(65, 177);
+            this.bunifuLabel19.Location = new System.Drawing.Point(90, 177);
             this.bunifuLabel19.Name = "bunifuLabel19";
             this.bunifuLabel19.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel19.Size = new System.Drawing.Size(203, 18);
+            this.bunifuLabel19.Size = new System.Drawing.Size(160, 18);
             this.bunifuLabel19.TabIndex = 0;
-            this.bunifuLabel19.Text = "PRODUCT INFORMATION";
+            this.bunifuLabel19.Text = "ITEM INFORMATION";
             this.bunifuLabel19.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel19.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 

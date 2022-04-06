@@ -1,0 +1,175 @@
+As per the definition of "Runtime Software" under the USE, DEPLOYMENT, 
+ AND DISTRIBUTION OF RUNTIME SOFTWARE section of the License Agreement, 
+ the following files constitute "Runtime Software": 
+  
+
+ File Type                              File Name                       Folder
+ =========                              =========                       ======
+ Executable Jar File                    CRDBJavaServerCommon.jar        java/lib
+ Executable Jar File                    CRDBXMLServer.jar               java/lib
+ Executable Jar File                    CrystalCharting.jar             java/lib
+ Executable Jar File                    CrystalCommon.jar               java/lib
+ Executable Jar File                    CrystalContentModels.jar        java/lib
+ Executable Jar File                    CrystalExporters.jar            java/lib
+ Executable Jar File                    CrystalExportingBase.jar        java/lib
+ Executable Jar File                    CrystalFormulas.jar             java/lib
+ Executable Jar File                    CrystalQueryEngine.jar          java/lib
+ Executable Jar File                    CrystalReportEngine.jar         java/lib
+ Executable Jar File                    CrystalReportingCommon.jar      java/lib
+ Executable Jar File                    jrcerom.jar                     java/lib
+ Executable Jar File                    keycodeDecoder.jar              java/lib
+ Executable Jar File                    rascore.jar                     java/lib
+ Executable Jar File                    rpoifs.jar                      java/lib
+ Executable Jar File                    MetafileRenderer.jar            java/lib
+ Executable Jar File                    serialization.jar               java/lib
+ Executable Jar File                    URIUtil.jar                     java/lib
+ Executable Jar File                    webreporting.jar                java/lib
+ Executable Jar File                    webreporting-jsf.jar            java/lib
+ Executable Jar File                    Concurrent.jar                  java/lib/external
+ Executable Jar File                    icu4j.jar                       java/lib/external
+ Executable Jar File                    log4j.jar                       java/lib/external
+ Executable Jar File                    xercesImpl.jar                  java/lib/external
+ Executable Jar File                    xml-apis.jar                    java/lib/external
+ TLD file                               crystal-tags-reportviewer.tld   java/lib/taglib
+ JavaServer Page                        crsmarttag.jsp                  crystalreportviewers11
+ CSP File                               crystalimagehandler.csp         crystalreportviewers11
+ JavaServer Page                        crystalimagehandler.jsp         crystalreportviewers11
+ CAB file                               PrintControl.cab                crystalreportviewers11\ActiveXControls
+ Cascading Style Sheet Document         default.css                     crystalreportviewers11\css
+ Cascading Style Sheet Document         exception.css                   crystalreportviewers11\css
+ HTML Document                          calendar.html                   crystalreportviewers11\html
+ HTML Document                          calendarbottom.html             crystalreportviewers11\html
+ HTML Document                          calendartop.html                crystalreportviewers11\html
+ HTML Document                          crystalexportdialog.htm         crystalreportviewers11\html
+ HTML Document                          crystalprinthost.html           crystalreportviewers11\html
+ GIF Image                              begindots.gif                   crystalreportviewers11\images\tree
+ GIF Image                              beginminus.gif                  crystalreportviewers11\images\tree
+ GIF Image                              beginplus.gif                   crystalreportviewers11\images\tree
+ GIF Image                              blank.gif                       crystalreportviewers11\images\tree
+ GIF Image                              blankdots.gif                   crystalreportviewers11\images\tree
+ GIF Image                              dots.gif                        crystalreportviewers11\images\tree
+ GIF Image                              emptybox.gif                    crystalreportviewers11\images\tree
+ GIF Image                              lastdots.gif                    crystalreportviewers11\images\tree
+ GIF Image                              lastminus.gif                   crystalreportviewers11\images\tree
+ GIF Image                              lastplus.gif                    crystalreportviewers11\images\tree
+ GIF Image                              magnify.gif                     crystalreportviewers11\images\tree
+ GIF Image                              mdownarrow.gif                  crystalreportviewers11\images\tree
+ GIF Image                              minubox.gif                     crystalreportviewers11\images\tree
+ GIF Image                              minus.gif                       crystalreportviewers11\images\tree
+ GIF Image                              minusbox.gif                    crystalreportviewers11\images\tree
+ GIF Image                              muparrow.gif                    crystalreportviewers11\images\tree
+ GIF Image                              plus.gif                        crystalreportviewers11\images\tree
+ GIF Image                              plusbox.gif                     crystalreportviewers11\images\tree
+ GIF Image                              resizebar.gif                   crystalreportviewers11\images\tree
+ GIF Image                              singleminus.gif                 crystalreportviewers11\images\tree
+ GIF Image                              singleplus.gif                  crystalreportviewers11\images\tree
+ GIF Image                              addallfield.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              addallfield_over.gif            crystalreportviewers11\images\toolbar
+ GIF Image                              addfield.gif                    crystalreportviewers11\images\toolbar
+ GIF Image                              addfield_over.gif               crystalreportviewers11\images\toolbar
+ GIF Image                              bologo.gif                      crystalreportviewers11\images\toolbar
+ GIF Image                              calendar.gif                    crystalreportviewers11\images\toolbar
+ GIF Image                              export.gif                      crystalreportviewers11\images\toolbar
+ GIF Image                              export_over.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              first.gif                       crystalreportviewers11\images\toolbar
+ GIF Image                              first_over.gif                  crystalreportviewers11\images\toolbar
+ GIF Image                              firstd.gif                      crystalreportviewers11\images\toolbar
+ GIF Image                              firstresults.gif                crystalreportviewers11\images\toolbar
+ GIF Image                              firstresults_over.gif           crystalreportviewers11\images\toolbar
+ GIF Image                              gotopage.gif                    crystalreportviewers11\images\toolbar
+ GIF Image                              gotopage_over.gif               crystalreportviewers11\images\toolbar
+ GIF Image                              grouptree.gif                   crystalreportviewers11\images\toolbar
+ GIF Image                              grouptree_over.gif              crystalreportviewers11\images\toolbar
+ GIF Image                              grouptreepressed.gif            crystalreportviewers11\images\toolbar
+ GIF Image                              help.gif                        crystalreportviewers11\images\toolbar
+ GIF Image                              help_over.gif                   crystalreportviewers11\images\toolbar
+ GIF Image                              last.gif                        crystalreportviewers11\images\toolbar
+ GIF Image                              last_over.gif                   crystalreportviewers11\images\toolbar
+ GIF Image                              lastd.gif                       crystalreportviewers11\images\toolbar
+ GIF Image                              lastresults.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              lastresults_over.gif            crystalreportviewers11\images\toolbar
+ GIF Image                              left_button.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              mblackarrow.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              mdownarrow.gif                  crystalreportviewers11\images\toolbar
+ GIF Image                              mdownfield.gif                  crystalreportviewers11\images\toolbar
+ GIF Image                              mdownfield_over.gif             crystalreportviewers11\images\toolbar
+ GIF Image                              middle_button.gif               crystalreportviewers11\images\toolbar
+ GIF Image                              mlogo.gif                       crystalreportviewers11\images\toolbar
+ GIF Image                              mtitleimage.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              muparrow.gif                    crystalreportviewers11\images\toolbar
+ GIF Image                              mupfield.gif                    crystalreportviewers11\images\toolbar
+ GIF Image                              mupfield_over.gif               crystalreportviewers11\images\toolbar
+ GIF Image                              next.gif                        crystalreportviewers11\images\toolbar
+ GIF Image                              next_over.gif                   crystalreportviewers11\images\toolbar
+ GIF Image                              nextd.gif                       crystalreportviewers11\images\toolbar
+ GIF Image                              nextresults.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              nextresults_over.gif            crystalreportviewers11\images\toolbar
+ GIF Image                              prev.gif                        crystalreportviewers11\images\toolbar
+ GIF Image                              prev_over.gif                   crystalreportviewers11\images\toolbar
+ GIF Image                              prevd.gif                       crystalreportviewers11\images\toolbar
+ GIF Image                              prevresults.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              prevresults_over.gif            crystalreportviewers11\images\toolbar
+ GIF Image                              print.gif                       crystalreportviewers11\images\toolbar
+ GIF Image                              print_over.gif                  crystalreportviewers11\images\toolbar
+ GIF Image                              refresh.gif                     crystalreportviewers11\images\toolbar
+ GIF Image                              refresh_over.gif                crystalreportviewers11\images\toolbar
+ GIF Image                              refreshd.gif                    crystalreportviewers11\images\toolbar
+ GIF Image                              removeallfield.gif              crystalreportviewers11\images\toolbar
+ GIF Image                              removeallfield_over.gif         crystalreportviewers11\images\toolbar
+ GIF Image                              removefield.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              removefield_over.gif            crystalreportviewers11\images\toolbar
+ GIF Image                              right_button.gif                crystalreportviewers11\images\toolbar
+ GIF Image                              search.gif                      crystalreportviewers11\images\toolbar
+ GIF Image                              search_over.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              separator.gif                   crystalreportviewers11\images\toolbar
+ GIF Image                              tab_fill_sel.gif                crystalreportviewers11\images\toolbar
+ GIF Image                              tab_fill_unsel.gif              crystalreportviewers11\images\toolbar
+ GIF Image                              tab_left_sel.gif                crystalreportviewers11\images\toolbar
+ GIF Image                              tab_left_unsel.gif              crystalreportviewers11\images\toolbar
+ GIF Image                              tab_right_sel.gif               crystalreportviewers11\images\toolbar
+ GIF Image                              tab_right_unsel.gif             crystalreportviewers11\images\toolbar
+ GIF Image                              up.gif                          crystalreportviewers11\images\toolbar
+ GIF Image                              up_over.gif                     crystalreportviewers11\images\toolbar
+ GIF Image                              upd.gif                         crystalreportviewers11\images\toolbar
+ GIF Image                              view.gif                        crystalreportviewers11\images\toolbar
+ GIF Image                              view_over.gif                   crystalreportviewers11\images\toolbar
+ GIF Image                              viewpressed.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              wizard.gif                      crystalreportviewers11\images\toolbar
+ GIF Image                              wizard_over.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              wizardpressed.gif               crystalreportviewers11\images\toolbar
+ JScript Script File                    calendar.js                     crystalreportviewers11\images\toolbar
+ JScript Script File                    calendar_param.js               crystalreportviewers11\images\toolbar
+ JScript Script File                    dt_param.js                     crystalreportviewers11\images\toolbar
+ JScript Script File                    export.js                       crystalreportviewers11\images\toolbar
+ JScript Script File                    exportdialog.js                 crystalreportviewers11\images\toolbar
+ JScript Script File                    KeyDownEvent.js                 crystalreportviewers11\images\toolbar
+ JScript Script File                    print.js                        crystalreportviewers11\images\toolbar
+ JScript Script File                    prompts.js                      crystalreportviewers11\images\toolbar
+ JScript Script File                    prompts_param.js                crystalreportviewers11\images\toolbar
+ JScript Script File                    search.js                       crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_de.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_en.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_es.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_fr.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_it.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_ja.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_ko.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_nl.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_pt.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_zh.js                   crystalreportviewers11\images\toolbar
+ JScript Script File                    strings_zh_TW.js                crystalreportviewers11\images\toolbar
+ Cascading Style Sheet Document         promptengine_default.css        crystalreportviewers11\images\toolbar
+ HTML Document                          calendar.html                   crystalreportviewers11\images\toolbar
+ HTML Document                          calendarbottom.html             crystalreportviewers11\images\toolbar
+ HTML Document                          calendartop.html                crystalreportviewers11\images\toolbar
+ GIF Image                              addallfield.gif                 crystalreportviewers11\images\toolbar
+ GIF Image                              addallfield_over.gif            crystalreportviewers11\images\toolbar
+ GIF Image                              addfield.gif                    crystalreportviewers11\images\toolbar
+ GIF Image                              addfield_over.gif               crystalreportviewers11\images\toolbar
+ GIF Image                              button_left_normal.gif          crystalreportviewers11\images\toolbar
+ GIF Image                              button_middle_normal.gif        crystalreportviewers11\images\toolbar
+ GIF Image                              button_right_normal.gif         crystalreportviewers11\images\toolbar
+ GIF Image                              calendar.gif                    crystalreportviewers11\images\toolbar
+ JScript Script File                    promptengine_calendar.js        crystalreportviewers11\images\toolbar
+ JScript Script File                    promptengine_prompts.js         crystalreportviewers11\images\toolbar
+ JScript Script File                    promptengine_strings_en.js      crystalreportviewers11\images\toolbar 

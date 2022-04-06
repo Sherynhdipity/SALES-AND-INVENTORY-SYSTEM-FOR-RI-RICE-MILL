@@ -55,7 +55,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     if (result == DialogResult.Yes)
                     {
                         con.Open();
-                        QuerySelect = "SELECT * FROM tblProductVariety WHERE VarietyName = '" + txtVariety.Text + "'";
+                        QuerySelect = "SELECT * FROM tblProductsVariety WHERE VarietyName = '" + txtVariety.Text + "'";
                         cmd = new SqlCommand(QuerySelect, con);
                         reader = cmd.ExecuteReader();
                         if (reader.HasRows)
@@ -69,7 +69,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             {
                                 con.Close();
                                 con.Open();
-                                QueryInsert = "INSERT INTO tblProductVariety (VarietyName) VALUES ('" + txtVariety.Text + "')";
+                                QueryInsert = "INSERT INTO tblProductsVariety (VarietyName) VALUES ('" + txtVariety.Text + "')";
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.ExecuteNonQuery();
 

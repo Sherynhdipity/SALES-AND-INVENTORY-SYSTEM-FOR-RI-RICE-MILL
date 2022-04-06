@@ -37,9 +37,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Do you want to Log-in from the System?", "Login", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (dialog == DialogResult.Yes)
-            {
+            //DialogResult dialog = MessageBox.Show("Do you want to Log-in from the System?", "Login", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            //if (dialog == DialogResult.Yes)
+            //{
                 if (txtUsername.Text == "")
                 {
                     MessageBox.Show("Enter your Username first", "Login", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -63,24 +63,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        QuerySelect = "SELECT a.UserID as 'UserID', a.Name as 'Name', a.Username as 'Username', a.Password as 'Password', a.Status as 'Status', b.Role as 'Role' FROM tblUsers a INNER JOIN tblRoles b ON a.RoleID = b.RoleID  WHERE Username='" + txtUsername.Text + "' AND Password='" + txtPassword.Text + "'";
+                        QuerySelect = "Select user_id, username, first_name, last_name, password, user_type from tblUsers WHERE username='" + txtUsername.Text + "' AND password='" + txtPassword.Text + "'";
                         cmd = new SqlCommand(QuerySelect, con);
                         reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {
                             reader.Read();
-                            GetUserID = reader["UserID"].ToString();
-                            GetUserName = reader["Name"].ToString();
-                            GetUserUsername = reader["Username"].ToString();
-                            GetUserRole = reader["Role"].ToString();
-                            GetUserStatus = reader["Status"].ToString();
+                            string fName = reader["first_name"].ToString();
+                            string lName = reader["last_name"].ToString();
 
-                            if (reader[4].ToString() == "Inactive")
-                            {
-                                MessageBox.Show("Can't log-in into the system. Admin has deactivated your account", "User Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
+                            GetUserID = reader["user_id"].ToString();
+                            GetUserName = fName + " " + lName;
+                            GetUserUsername = reader["username"].ToString();
+                            GetUserRole = reader["user_type"].ToString();
+                            //GetUserStatus = reader["Status"].ToString();
+
+                            //if (reader[4].ToString() == "Inactive")
+                            //{
+                            //    MessageBox.Show("Can't log-in into the system. Admin has deactivated your account", "User Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            //}
+                            //else
+                            //{
                                 switch (reader[5].ToString())
                                 {
                                     case "Administrator":
@@ -113,7 +116,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                             break;
                                         }
                                 }
-                            }
+                            //}
                         }
                         else
                         {
@@ -137,7 +140,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     }
 
                 }
-            }
+            //}
            
         }
         private void pbExit_Click(object sender, EventArgs e)
@@ -157,6 +160,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void frmLogin_Load(object sender, EventArgs e)
         {
             timer1.Enabled = true;
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }

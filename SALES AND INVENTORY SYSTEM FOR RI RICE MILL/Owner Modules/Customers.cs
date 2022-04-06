@@ -176,7 +176,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                                 con.Open();
 
-                                //QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,VarietyID,Price,RestockLevel) VALUES ('" + txtCustomerCode.Text + "', '" + txtCustomerName.Text + "', (Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'),'"+txtContactNo.Text+"', '" + txtrReStocklvl.Text + "')";
+                                //QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,VarietyID,Price,RestockLevel) VALUES ('" + txtCustomerCode.Text + "', '" + txtCustomerName.Text + "', (Select VarietyID from tblProductsVariety Where VarietyName = '" + drpVariety.Text + "'),'"+txtContactNo.Text+"', '" + txtrReStocklvl.Text + "')";
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.ExecuteNonQuery();
 
@@ -249,7 +249,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        //QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtCustomerCode.Text + "', ProductDesc='" + txtCustomerName.Text + "', VarietyID=(Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'), Price='" + txtContactNo.Text + "' , RestockLevel =" + txtrReStocklvl.Text + " WHERE ProductID='" + lblItemID.Text + "'";
+                        //QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtCustomerCode.Text + "', ProductDesc='" + txtCustomerName.Text + "', VarietyID=(Select VarietyID from tblProductsVariety Where VarietyName = '" + drpVariety.Text + "'), Price='" + txtContactNo.Text + "' , RestockLevel =" + txtrReStocklvl.Text + " WHERE ProductID='" + lblItemID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
                         con.Close();

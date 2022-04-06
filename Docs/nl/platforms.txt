@@ -1,0 +1,2 @@
+Zie de productdocumentatie op het web voor de nieuwste versie van dit document:
+http://support.businessobjects.com/documentation/supported_platforms/xi_release2/default.asp

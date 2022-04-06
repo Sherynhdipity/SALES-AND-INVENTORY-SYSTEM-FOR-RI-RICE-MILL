@@ -334,7 +334,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtrReStocklvl.IconRight = null;
             this.txtrReStocklvl.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtrReStocklvl.Lines = new string[0];
-            this.txtrReStocklvl.Location = new System.Drawing.Point(112, 300);
+            this.txtrReStocklvl.Location = new System.Drawing.Point(112, 250);
             this.txtrReStocklvl.MaxLength = 32767;
             this.txtrReStocklvl.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtrReStocklvl.Modified = false;
@@ -388,10 +388,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel2.Location = new System.Drawing.Point(41, 300);
+            this.bunifuLabel2.Location = new System.Drawing.Point(41, 250);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(66, 35);
+            this.bunifuLabel2.Size = new System.Drawing.Size(66, 37);
             this.bunifuLabel2.TabIndex = 49;
             this.bunifuLabel2.Text = "Restock \r\nLevel:";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
@@ -631,6 +631,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtProdPrice.TextMarginTop = 1;
             this.txtProdPrice.TextPlaceholder = "";
             this.txtProdPrice.UseSystemPasswordChar = false;
+            this.txtProdPrice.Visible = false;
             this.txtProdPrice.WordWrap = true;
             this.txtProdPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProdPrice_KeyPress);
             // 
@@ -790,6 +791,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1.Text = "Price:";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.bunifuLabel1.Visible = false;
             // 
             // btnSave
             // 

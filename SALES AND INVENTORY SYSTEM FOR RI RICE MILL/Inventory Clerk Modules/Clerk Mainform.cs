@@ -13,9 +13,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
     public partial class frmMainInventory : Form
     {
+
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
-
         public frmMainInventory()
         {
             InitializeComponent();
@@ -24,9 +24,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
             lblUserName.Text = frmLogin.GetUserName.ToString();
-            lblUserRole.Text = frmLogin.GetUserRole.ToString();  
+            lblUserRole.Text = frmLogin.GetUserRole.ToString();
+            
+            //load dashboard
+            btnDashboard.PerformClick();
+            Inventory_Clerk_Modules.InventoryManagement.ID = frmLogin.GetUserID.ToString();
 
         }
 
@@ -67,6 +70,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
                 ucInventoryDashboard.dashboardInstance.BringToFront();
+
             }
         }
 
@@ -101,15 +105,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnInventory_Click(object sender, EventArgs e)
         {
-            if (!panelModule.Controls.Contains(frmInventory.inventoryInstance))
+            if (!panelModule.Controls.Contains(Inventory_Clerk_Modules.InventoryManagement.inventoryInstance))
             {
-                panelModule.Controls.Add(frmInventory.inventoryInstance);
-                frmInventory.inventoryInstance.Dock = DockStyle.Fill;
-                frmInventory.inventoryInstance.BringToFront();
+                panelModule.Controls.Add(Inventory_Clerk_Modules.InventoryManagement.inventoryInstance);
+                Inventory_Clerk_Modules.InventoryManagement.inventoryInstance.Dock = DockStyle.Fill;
+                Inventory_Clerk_Modules.InventoryManagement.inventoryInstance.BringToFront();
             }
             else
             {
-                frmInventory.inventoryInstance.BringToFront();
+                Inventory_Clerk_Modules.InventoryManagement.inventoryInstance.BringToFront();
             }
         }
 
@@ -124,7 +128,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
 
                 con.Open();
-                string query = "SELECT * FROM viewAllStocks";
+                string query = "Select Description, SKU, [Batch Quantity], [Critical Level] from InventoryView WHERE  [Batch Quantity] < [Critical Level]";
                 SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
                 if (reader.Read())
                 {
@@ -144,6 +148,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
 
                 con.Close();
+
+            }
+        }
+
+        private void panelLogout_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuButton23_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Do you want to Logout from the System?", "Log-out", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmLogin login = new frmLogin();
+                this.Hide();
+                login.Show();
+            }
+            else if (dialog == DialogResult.No)
+            {
 
             }
         }

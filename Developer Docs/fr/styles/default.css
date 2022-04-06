@@ -1,0 +1,105 @@
+/* General Style Definition */
+
+
+/*
+  COLOUR PALETE
+  Dark Blue: 1b4c8f
+  Medium Blue: 2d62b0
+  Medium blue: 6794d7 - menu borders and roll over colour
+  Light Blue: d3e7ff - menu and box header background
+  
+  Grey: a9a9a9    table borders
+*/
+
+body
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  color: #1b4c8f;
+  font-size: x-small;
+  margin: 0px;
+}
+
+p
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  color: #2c58aa;
+  font-size: x-small;
+  margin: 0px 0px 0px 8px;
+}
+
+li
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  color: #1b4c8f;
+  font-size: x-small;
+  margin: 0px;
+}
+
+td.ProdName
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  color: #ffffff;
+  font-size: x-small;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.banner
+{
+  font-family: Arial;
+  color: #636384;
+  font-size: x-small;
+; font-weight: bold; margin-left: 8px
+}
+
+h2.navInterf
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  color: #1b4c8f;
+  font-size: small;
+  font-weight: bold;
+  margin: 0px;
+}
+
+h3.navInterf
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  color: #1b4c8f;
+  font-size: x-small;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0px;
+}
+
+a.mainNav
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size: x-small;
+  font-weight: normal;
+  margin: 0px;
+}
+
+a.additional
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size: xx-small;
+  font-weight: bold;
+  margin: 0px;
+  
+}
+
+.ProdName {  
+font-family: Arial, Verdana, Helvetica, sans-serif;
+font-size: x-small;
+font-weight: bold;
+color: #FFFFFF;
+margin-left: 0px; padding-left: 8px
+}
+
+.copyright 
+{
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size: xx-small; 
+  font-weight: lighter;
+  text-align: right
+}

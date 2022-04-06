@@ -1,0 +1,2 @@
+Die aktuellste Version dieses Dokuments finden Sie in der Produktdokumentation auf der folgenden Website:
+http://support.businessobjects.com/documentation/supported_platforms/xi_release2/default.asp

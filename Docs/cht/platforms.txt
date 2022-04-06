@@ -1,0 +1,2 @@
+如需本文件的最新版本，請參閱  Web 上的「產品說明文件」：
+http://support.businessobjects.com/documentation/supported_platforms/xi_release2/default.asp

@@ -93,7 +93,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Open();
 
 
-                QuerySelect = "SELECT VarietyID, VarietyName from tblProductVariety";
+                QuerySelect = "SELECT VarietyID, VarietyName from tblProductsVariety";
                 cmd = new SqlCommand(QuerySelect, con);
 
                 adapter = new SqlDataAdapter(cmd);
@@ -127,15 +127,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             txtProductCode.Text = "";
             txtProductDesc.Text = "";
-            txtProdPrice.Text = "";
+            //txtProdPrice.Text = "";
             txtrReStocklvl.Text= drpVariety.Text = "";
+            pbBarcode.Image = null;
         }
 
 
         //Method AddProduct
         private void AddProduct()
         {
-            if (String.IsNullOrEmpty(txtProductCode.Text) && String.IsNullOrEmpty(txtProductDesc.Text) && String.IsNullOrEmpty(txtProdPrice.Text) && String.IsNullOrEmpty(txtrReStocklvl.Text))
+            if (String.IsNullOrEmpty(txtProductCode.Text) && String.IsNullOrEmpty(txtProductDesc.Text) && String.IsNullOrEmpty(txtrReStocklvl.Text))
             {
                 MessageBox.Show("Fields should not be empty!");
                 txtProductCode.Focus();
@@ -162,17 +163,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtProductDesc.Clear();
                 txtProductDesc.Focus();
             }
-            else if (String.IsNullOrEmpty(txtProdPrice.Text))
-            {
-                MessageBox.Show("Enter Item Price first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtProdPrice.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtProdPrice.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtProdPrice.Clear();
-                txtProdPrice.Focus();
-            }
+            //else if (String.IsNullOrEmpty(txtProdPrice.Text))
+            //{
+            //    MessageBox.Show("Enter Item Price first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    txtProdPrice.Focus();
+            //}
+            //else if (String.IsNullOrWhiteSpace(txtProdPrice.Text))
+            //{
+            //    MessageBox.Show("Whitespace is not allowed!");
+            //    txtProdPrice.Clear();
+            //    txtProdPrice.Focus();
+            //}
             else if (String.IsNullOrEmpty(txtrReStocklvl.Text))
             {
                 MessageBox.Show("Enter Restock Level first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -184,7 +185,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtrReStocklvl.Clear();
                 txtrReStocklvl.Focus();
             }
-            else if (txtProductCode.Text != "" && txtProductDesc.Text != "" && drpVariety.Text != "" && txtProdPrice.Text != "")
+            else if (txtProductCode.Text != "" && txtProductDesc.Text != "" && drpVariety.Text != "")
             {
                 result = MessageBox.Show("Do you want to Add this Product?", "Add Product", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -220,7 +221,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                                 con.Open();
 
-                                QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,VarietyID,Price,RestockLevel) VALUES ('" + txtProductCode.Text + "', '" + txtProductDesc.Text + "', (Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'),'"+txtProdPrice.Text+"', '" + txtrReStocklvl.Text + "')";
+                                QueryInsert = "INSERT INTO tblProducts (ProductCode,ProductDesc,ProductShortCode,VarietyID,RestockLevel) VALUES ('" + txtProductCode.Text + "', '" + txtProductDesc.Text + "','', (Select VarietyID from tblProductsVariety Where VarietyName = '" + drpVariety.Text + "'), '" + txtrReStocklvl.Text + "')";
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.ExecuteNonQuery();
 
@@ -275,7 +276,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Method UpdateProduct
         private void UpdateProduct()
         {
-            if (txtProductCode.Text != "" && txtProductDesc.Text != "" && txtProdPrice.Text != "" && drpVariety.Text != "" && txtrReStocklvl.Text != "") 
+            if (txtProductCode.Text != "" && txtProductDesc.Text != "" && drpVariety.Text != "" && txtrReStocklvl.Text != "") 
             { 
 
                 result = MessageBox.Show("Do you want to update this Product?", "Update Product", MessageBoxButtons.YesNo);
@@ -293,7 +294,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtProductCode.Text + "', ProductDesc='" + txtProductDesc.Text + "', VarietyID=(Select VarietyID from tblProductVariety Where VarietyName = '" + drpVariety.Text + "'), Price='" + txtProdPrice.Text + "' , RestockLevel =" + txtrReStocklvl.Text + " WHERE ProductID='" + lblItemID.Text + "'";
+                        QueryUpdate = "UPDATE tblProducts SET ProductCode='" + txtProductCode.Text + "', ProductDesc='" + txtProductDesc.Text + "', VarietyID=(Select VarietyID from tblProductsVariety Where VarietyName = '" + drpVariety.Text + "') , RestockLevel =" + txtrReStocklvl.Text + " WHERE ProductID='" + lblItemID.Text + "'";
                         cmd = new SqlCommand(QueryUpdate, con);
                         cmd.ExecuteNonQuery();
                         con.Close();
@@ -337,8 +338,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtProductCode.Text = row.Cells[0].Value.ToString();
                 txtProductDesc.Text = row.Cells[1].Value.ToString();
                 drpVariety.Text = row.Cells[2].Value.ToString();
-                txtProdPrice.Text = row.Cells[3].Value.ToString();
-                txtrReStocklvl.Text = row.Cells[4].Value.ToString();
+                //txtProdPrice.Text = row.Cells[3].Value.ToString();
+                txtrReStocklvl.Text = row.Cells[3].Value.ToString();
 
 
                 try
@@ -382,16 +383,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void txtProdPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
 
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             ClearControls();
+            DisplayVarieties();
             dgvProductList.Visible = false;
             panelProductInfo.Visible = true;
             btnUpdate.Visible = false;
@@ -402,12 +404,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
+            lblProductList.Visible = true;
             panelProductInfo.Visible = true;
             btnUpdate.Visible = true;
             lblUpdateProduct.Visible = true;
             lblAddProduct.Visible = false;
             lblProductList.Visible = false;
-            dgvProductList.Visible = false;
+            dgvProductList.Visible = true;
+            DisplayProductList();
         }
 
         private void btnViewProducts_Click(object sender, EventArgs e)
@@ -454,7 +458,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                     con.Open();
 
-                    QuerySelect = "SELECT * FROM viewProducts where [Product Code] like '%" + txtSearchProduct.Text + "%' OR [Product Description] like '%" + txtSearchProduct.Text + "%' OR Variety like '%" + txtSearchProduct.Text + "%' OR  Price like '%" + txtSearchProduct.Text + "%' OR [Restock Level] like '%" + txtSearchProduct.Text + "%' ORDER BY [Product Code] DESC";
+                    QuerySelect = "SELECT * FROM viewProducts where [Product Code] like '%" + txtSearchProduct.Text + "%' OR [Product Description] like '%" + txtSearchProduct.Text + "%' OR Variety like '%" + txtSearchProduct.Text + "%' OR [Restock Level] like '%" + txtSearchProduct.Text + "%' ORDER BY [Product Code] DESC";
                     cmd = new SqlCommand(QuerySelect, con);
                     adapter = new SqlDataAdapter(cmd);
                     dt = new DataTable();

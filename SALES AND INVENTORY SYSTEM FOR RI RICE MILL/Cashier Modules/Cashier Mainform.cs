@@ -26,6 +26,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             lblUserName.Text = frmLogin.GetUserName.ToString();
             lblUserRole.Text = frmLogin.GetUserRole.ToString();
+
+            btnDashboard.PerformClick();
         }
 
         public bool isFormMinimized = false;
@@ -119,6 +121,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void pictureBox3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pbLogout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuButton24_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Do you want to Logout from the System?", "Log-out", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                frmLogin login = new frmLogin();
+                this.Hide();
+                login.Show();
+            }
+            else if (dialog == DialogResult.No)
+            {
+
+            }
         }
     }
 }

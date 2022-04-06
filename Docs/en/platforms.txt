@@ -1,0 +1,2 @@
+For the latest version of this document, see Product Documentation on the web at:
+http://support.businessobjects.com/documentation/supported_platforms/xi_release2/default.asp

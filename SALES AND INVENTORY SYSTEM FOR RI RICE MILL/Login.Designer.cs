@@ -75,14 +75,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuGradientPanel1.Controls.Add(this.pictureBox1);
             this.bunifuGradientPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.bunifuGradientPanel1.GradientBottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.Blue;
+            this.bunifuGradientPanel1.GradientBottomRight = System.Drawing.Color.MidnightBlue;
             this.bunifuGradientPanel1.GradientTopLeft = System.Drawing.Color.Yellow;
             this.bunifuGradientPanel1.GradientTopRight = System.Drawing.Color.RoyalBlue;
             this.bunifuGradientPanel1.Location = new System.Drawing.Point(0, 0);
             this.bunifuGradientPanel1.Name = "bunifuGradientPanel1";
             this.bunifuGradientPanel1.Quality = 10;
             this.bunifuGradientPanel1.Size = new System.Drawing.Size(315, 425);
-            this.bunifuGradientPanel1.TabIndex = 0;
+            this.bunifuGradientPanel1.TabIndex = 3;
             // 
             // bunifuLabel1
             // 
@@ -91,11 +91,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel1.CursorType = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.bunifuLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bunifuLabel1.Location = new System.Drawing.Point(33, 242);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(252, 45);
-            this.bunifuLabel1.TabIndex = 100;
+            this.bunifuLabel1.TabIndex = 0;
             this.bunifuLabel1.Text = "R & I Rice Mill\r\nSales and Inventory System";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -138,7 +139,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtUsername.IconRight = null;
             this.txtUsername.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsername.Lines = new string[0];
-            this.txtUsername.Location = new System.Drawing.Point(341, 214);
+            this.txtUsername.Location = new System.Drawing.Point(341, 221);
             this.txtUsername.MaxLength = 32767;
             this.txtUsername.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtUsername.Modified = false;
@@ -184,19 +185,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtUsername.TextPlaceholder = "";
             this.txtUsername.UseSystemPasswordChar = false;
             this.txtUsername.WordWrap = true;
+            this.txtUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyDown);
             // 
             // bunifuLabel3
             // 
             this.bunifuLabel3.AllowParentOverrides = false;
             this.bunifuLabel3.AutoEllipsis = false;
             this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.bunifuLabel3.Location = new System.Drawing.Point(341, 192);
+            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.bunifuLabel3.Location = new System.Drawing.Point(341, 199);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(71, 15);
-            this.bunifuLabel3.TabIndex = 2;
-            this.bunifuLabel3.Text = "Username:";
+            this.bunifuLabel3.Size = new System.Drawing.Size(82, 19);
+            this.bunifuLabel3.TabIndex = 4;
+            this.bunifuLabel3.Text = "Username";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -205,13 +207,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel4.AllowParentOverrides = false;
             this.bunifuLabel4.AutoEllipsis = false;
             this.bunifuLabel4.CursorType = null;
-            this.bunifuLabel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.bunifuLabel4.Location = new System.Drawing.Point(341, 260);
+            this.bunifuLabel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.bunifuLabel4.Location = new System.Drawing.Point(341, 267);
             this.bunifuLabel4.Name = "bunifuLabel4";
             this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel4.Size = new System.Drawing.Size(68, 15);
-            this.bunifuLabel4.TabIndex = 3;
-            this.bunifuLabel4.Text = "Password:";
+            this.bunifuLabel4.Size = new System.Drawing.Size(79, 19);
+            this.bunifuLabel4.TabIndex = 8;
+            this.bunifuLabel4.Text = "Password";
             this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -243,7 +245,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtPassword.IconRight = null;
             this.txtPassword.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPassword.Lines = new string[0];
-            this.txtPassword.Location = new System.Drawing.Point(341, 281);
+            this.txtPassword.Location = new System.Drawing.Point(341, 288);
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtPassword.Modified = false;
@@ -289,6 +291,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtPassword.TextPlaceholder = "";
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.WordWrap = true;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // btnLogin
             // 
@@ -301,7 +304,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogin.AutoSizeLeftIcon = true;
             this.btnLogin.AutoSizeRightIcon = true;
             this.btnLogin.BackColor = System.Drawing.Color.Transparent;
-            this.btnLogin.BackColor1 = System.Drawing.Color.RoyalBlue;
+            this.btnLogin.BackColor1 = System.Drawing.Color.MidnightBlue;
             this.btnLogin.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogin.BackgroundImage")));
             this.btnLogin.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             this.btnLogin.ButtonText = "Login";
@@ -333,11 +336,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogin.IdleBorderColor = System.Drawing.Color.Black;
             this.btnLogin.IdleBorderRadius = 1;
             this.btnLogin.IdleBorderThickness = 1;
-            this.btnLogin.IdleFillColor = System.Drawing.Color.RoyalBlue;
+            this.btnLogin.IdleFillColor = System.Drawing.Color.MidnightBlue;
             this.btnLogin.IdleIconLeftImage = null;
             this.btnLogin.IdleIconRightImage = null;
             this.btnLogin.IndicateFocus = false;
-            this.btnLogin.Location = new System.Drawing.Point(389, 333);
+            this.btnLogin.Location = new System.Drawing.Point(341, 342);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnLogin.OnDisabledState.BorderRadius = 1;
@@ -359,7 +362,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogin.OnIdleState.BorderRadius = 1;
             this.btnLogin.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
             this.btnLogin.OnIdleState.BorderThickness = 1;
-            this.btnLogin.OnIdleState.FillColor = System.Drawing.Color.RoyalBlue;
+            this.btnLogin.OnIdleState.FillColor = System.Drawing.Color.MidnightBlue;
             this.btnLogin.OnIdleState.ForeColor = System.Drawing.Color.White;
             this.btnLogin.OnIdleState.IconLeftImage = null;
             this.btnLogin.OnIdleState.IconRightImage = null;
@@ -371,7 +374,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogin.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnLogin.OnPressedState.IconLeftImage = null;
             this.btnLogin.OnPressedState.IconRightImage = null;
-            this.btnLogin.Size = new System.Drawing.Size(150, 39);
+            this.btnLogin.Size = new System.Drawing.Size(238, 39);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnLogin.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -385,12 +388,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.AllowParentOverrides = false;
             this.bunifuLabel2.AutoEllipsis = false;
             this.bunifuLabel2.CursorType = null;
-            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
-            this.bunifuLabel2.Location = new System.Drawing.Point(341, 151);
+            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 25F);
+            this.bunifuLabel2.Location = new System.Drawing.Point(406, 39);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(50, 23);
-            this.bunifuLabel2.TabIndex = 6;
+            this.bunifuLabel2.Size = new System.Drawing.Size(90, 38);
+            this.bunifuLabel2.TabIndex = 7;
             this.bunifuLabel2.Text = "Login";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -421,11 +424,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblTime.AutoEllipsis = false;
             this.lblTime.CursorType = null;
             this.lblTime.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F);
-            this.lblTime.Location = new System.Drawing.Point(411, 82);
+            this.lblTime.Location = new System.Drawing.Point(406, 110);
             this.lblTime.Name = "lblTime";
             this.lblTime.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTime.Size = new System.Drawing.Size(90, 23);
-            this.lblTime.TabIndex = 33;
+            this.lblTime.TabIndex = 5;
             this.lblTime.Text = "00:00 AM";
             this.lblTime.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTime.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
@@ -436,11 +439,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblDayDate.AutoEllipsis = false;
             this.lblDayDate.CursorType = null;
             this.lblDayDate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.lblDayDate.Location = new System.Drawing.Point(382, 111);
+            this.lblDayDate.Location = new System.Drawing.Point(377, 139);
             this.lblDayDate.Name = "lblDayDate";
             this.lblDayDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDayDate.Size = new System.Drawing.Size(157, 15);
-            this.lblDayDate.TabIndex = 34;
+            this.lblDayDate.TabIndex = 6;
             this.lblDayDate.Text = "Sunday, January 1, 1998";
             this.lblDayDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblDayDate.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;

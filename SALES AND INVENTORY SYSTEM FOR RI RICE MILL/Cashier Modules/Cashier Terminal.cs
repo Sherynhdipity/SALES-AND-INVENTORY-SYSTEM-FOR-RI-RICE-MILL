@@ -39,7 +39,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 int count;
 
                 con.Open();
-                cmd = new SqlCommand("SELECT count(TransactionID) as id FROM tblTransactions WHERE TransactionNo LIKE '" + sdate + "%'", con);
+                cmd = new SqlCommand("SELECT count(transaction_number) as id FROM tblOrder WHERE transaction_number LIKE '" + sdate + "%'", con);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -477,7 +477,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     con.Close();
                     con.Open();
-                    QuerySelect = "SELECT p.ProductCode AS 'Product Code', p.ProductDesc AS 'Product Description', c.VarietyName AS 'Product Variety', s.QtyStockedIn AS 'Stock', p.Price AS 'Price' FROM tblStockin s INNER JOIN tblProducts p ON s.ProductID = p.ProductID INNER JOIN tblProductVariety c ON p.VarietyID = c.VarietyID WHERE p.ProductCode ='" + txtSearch.Text + "'";
+                    QuerySelect = "SELECT b.inventory_id, a.barcode AS 'Product Code', a.description AS 'Product Description', b.SKU, b.batch_quantity AS 'Stock', a.price AS 'Price' " +
+                        "FROM tblItem a INNER JOIN tblInventory b ON a.item_number = b.item_number WHERE a.barcode ='" + txtSearch.Text + "' ORDER BY b.inventory_id ASC";
                     cmd = new SqlCommand(QuerySelect, con);
                     reader = cmd.ExecuteReader();
                     if (reader.HasRows)
@@ -485,7 +486,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         reader.Read();
                         txtProductCode.Text = reader["Product Code"].ToString();
                         txtProdDesc.Text = reader["Product Description"].ToString();
-                        txtProdVariety.Text = reader["Product Variety"].ToString();
+                        txtProdVariety.Text = reader["SKU"].ToString();
                         txtStock.Text = reader["Stock"].ToString();
                         txtProdPrice.Text = reader["Price"].ToString();
 
@@ -512,33 +513,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     con.Close();
                 }
 
-                try
-                {
-                    con.Open();
-                    QuerySelect = "select Count(tblBatchProduct.BatchID) AS Stock from tblBatchProduct INNER JOIN tblStockin on tblBatchProduct.BatchID = tblStockin.BatchID where Status='IN' AND tblStockin.ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '" + txtSearch.Text + "' )";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        txtStock.Text = reader["Stock"].ToString();
+                //try
+                //{
+                //    con.Open();
+                //    QuerySelect = "select Count(inventory_id) AS Stock from tblInventory WHERE item_number = '" + txtSearch.Text + "'";
+                //    cmd = new SqlCommand(QuerySelect, con);
+                //    reader = cmd.ExecuteReader();
+                //    if (reader.HasRows)
+                //    {
+                //        reader.Read();
+                //        txtStock.Text = reader["Stock"].ToString();
 
-                        reader.Close();
-                    }
-                    else
-                    {
+                //        reader.Close();
+                //    }
+                //    else
+                //    {
                        
-                        txtStock.Text = "0";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                }
+                //        txtStock.Text = "0";
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message);
+                //}
+                //finally
+                //{
+                //    con.Close();
+                //}
             }
         }
 

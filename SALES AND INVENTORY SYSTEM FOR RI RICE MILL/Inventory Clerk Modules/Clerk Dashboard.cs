@@ -26,7 +26,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public ucInventoryDashboard()
         {
             InitializeComponent();
-            populateDash();
+           // populateDash();
         }
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -46,19 +46,65 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT sum(tblStockout.QtyStockedOut) as res from tblStockout";
+                QuerySelect = "SELECT sum(StockoutQuantity) as res from tblStockout";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+              
                 if (reader.Read())
                 {
-                    lblProductsSold.Text = reader["res"].ToString();
-                    lblQtyStockedOut.Text = reader["res"].ToString();
-                    lblstocksSold.Text = reader["res"].ToString();
+                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
+                    {
+                        lblProductsSold.Text = "0";
+                        lblQtyStockedOut.Text = "0";
+                        lblstocksSold.Text = "0";
+                        
+                    }
+                    else
+                    {
+                        lblProductsSold.Text = reader["res"].ToString();
+                        lblQtyStockedOut.Text = reader["res"].ToString();
+                        lblstocksSold.Text = reader["res"].ToString();
+                        
+                    }
+                      
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            //for stock sold every day
+            try
+            {
+                con.Open();
+                QuerySelect = "select CONVERT(varchar, date, 23) as 'datenow' from dbo.viewStockOutandDate where 'datenow' = CONVERT(varchar, GETDATE(), 23)";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+
+                if (reader.Read())
+                {
+                    if (reader["datenow"].ToString() == "" || reader["datenow"].ToString() == "0")
+                    {
+                        lblStockSoldToday.Text = "0";
+                    }
+                    else
+                    {
+                        lblStockSoldToday.Text = reader["datenow"].ToString();
+                    }
+                }
+                else
+                {
+                    lblStockSoldToday.Text = "0";
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -73,13 +119,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    txtotaltrans.Text = lblTotalTransactions.Text = reader["res"].ToString();
+                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
+                    {
+                        txtotaltrans.Text = "0";
+                    }
+                    else
+                    {
+                        txtotaltrans.Text = lblTotalTransactions.Text = reader["res"].ToString();
+                    }
+                    
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -94,23 +148,47 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    string temp = reader["res"].ToString();
-                    lblTotalSales.Text = (Convert.ToDouble(temp)).ToString("n2");
+                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
+                    {
+                        lblTotalSales.Text = "0";
+                    }
+                    else
+                    {
+                        string temp = reader["res"].ToString();
+                        lblTotalSales.Text = (Convert.ToDouble(temp)).ToString("n2");
+                    }
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 con.Close();
             }
             //average stocks per trans
-            txtavgStocks.Text = (Convert.ToDouble(lblProductsSold.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
-            txtavgSales.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
+            if (lblProductsSold.Text != "0" && lblTotalTransactions.Text != "0")
+            {
+                txtavgStocks.Text = (Convert.ToDouble(lblProductsSold.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
+            }
+            else
+            {
+                txtavgStocks.Text = "0";
+            }
+
+            if(lblTotalSales.Text != "0" && lblTotalTransactions.Text != "0")
+            {
+                txtavgSales.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
+            }
+            else
+            {
+                txtavgSales.Text = "0";
+            }
+            
+            
 
             //prods
             try
@@ -125,10 +203,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -138,7 +216,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT count(VarietyID) as res from tblProductVariety";
+                QuerySelect = "SELECT count(VarietyID) as res from tblProductsVariety";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
@@ -148,10 +226,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -171,7 +249,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
 
                 con.Open();
-                QuerySelect = "SELECT sum(tblStockin.QtyStockedIn) as res from tblStockin";
+                QuerySelect = "SELECT sum(tblStockin.StockinQuantity) as res from tblStockin";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
@@ -208,10 +286,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -222,7 +300,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT count(VarietyID) as res from tblProductVariety";
+                QuerySelect = "SELECT count(VarietyID) as res from tblProductsVariety";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
@@ -232,10 +310,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -255,10 +333,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {

@@ -1,0 +1,2 @@
+このマニュアルの最新バージョンについては、次の Web ページの製品マニュアルを参照してください。
+http://support.businessobjects.com/documentation/supported_platforms/xi_release2/default.asp

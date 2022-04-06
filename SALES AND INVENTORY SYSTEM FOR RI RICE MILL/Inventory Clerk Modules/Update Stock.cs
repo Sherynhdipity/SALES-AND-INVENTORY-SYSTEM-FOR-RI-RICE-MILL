@@ -243,7 +243,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        QuerySelect = "SELECT * FROM viewProducts where'" + txtStockID.Text + "';";
+                        QuerySelect = "SELECT * FROM viewProducts where Batch Number =  '" + txtStockID.Text + "';";
 
                         cmd = new SqlCommand(QuerySelect, con);
                         reader = cmd.ExecuteReader();

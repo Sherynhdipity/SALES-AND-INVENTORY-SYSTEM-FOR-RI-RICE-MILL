@@ -1,0 +1,66 @@
+As per the definition of "Runtime Software" under the USE, DEPLOYMENT, AND
+DISTRIBUTION oF RUNTIME SOFTWARE section of the Crystal Reports 11 License Agreement, the following files constitute "Runtime Software".
+
+**.NET MERGE MODULES**
+Crystal11_NET_EmbeddedReporting.msm
+Crystal11_NET_EmbeddedInstall.msi
+
+**RDC MERGE MODULES**
+CrystalReports11_maps.msm
+CrystalReports11_RDC_Designtime.msm
+CrystalReports11_RDC_License.msm
+CrystalReports11_RDC_Reportengine.msm
+CrystalReports11_RDC_Runtime.msm
+
+JAVA
+In addition to the list of Java "Runtime Software" located below, please see java_runtime.txt, installed with the Crystal 
+Reports Java Reporting Componnent.
+ReportViewer.jar	Java Zero-Client Report Viewer
+ReportViewerBean.jar	Java Thick-Client Report Viewer
+asn1.jar
+cecore.jar
+celib.jar
+ceplugins.jar
+cereports.jar
+certj.jar
+cesession.jar
+ceutils.jar
+cexsd.jar
+CorbaIDL.jar
+CRDBJavabeansServer.jar
+CRDBJavaServer.jar
+CRDBJavaServerCommon.jar
+CRDBJDBCServer.jar
+CRDBXMLServer.jar
+crlov.jar
+crlovexternal.jar
+crlovmanifest.jar
+CrystalCharting.jar
+CrystalCommon.jar
+CrystalContentModels.jar
+CrystalExporters.jar
+CrystalExportingBase.jar
+CrystalFormulas.jar
+CrystalQueryEngine.jar
+CrystalReportEngine.jar
+CrystalReportingCommon.jar
+ebus405.jar
+freessl201.jar
+jrcerom.jar
+jsafe.jar
+keycodeDecoder.jar
+MetafileRenderer.jar
+rasapp.jar
+rascore.jar
+ReportTemplate.jar
+rpoifs.jar
+Serialization.jar
+sslj.jar
+u211java.jar
+URIUtil.jar
+webreporting-jsf.jar
+webreporting.jar
+WebReportWizard.jar
+
+
+
