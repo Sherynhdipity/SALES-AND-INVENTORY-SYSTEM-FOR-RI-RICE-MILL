@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class frmAddNewUser : Form
+    public partial class frmAddNewCustomer : Form
     {
-        public frmAddNewUser()
+        public frmAddNewCustomer()
         {
             InitializeComponent();
         }
@@ -31,12 +31,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryDelete;
         public static string status = "Active";
 
-        private void frmAddNewUser_Load(object sender, EventArgs e)
+        private void frmAddNewCustomer_Load(object sender, EventArgs e)
         {
-            cmbGender.SelectedIndex = 0;
-            cmbUser_Type.SelectedIndex = 0;
 
             this.ActiveControl = txtFirstName;
+
+            loadProvinces();
+            loadDiscount();
         }
 
         //methods
@@ -49,17 +50,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtLastName.Clear();
             txtContact.Clear();
             txtStreet.Clear();
-            txtBarangay.Clear();
-            txtMunicipality.Clear();
-            txtProvince.Clear();
-            txtUserName.Clear();
-            txtPassword.Clear();
-            txtConfirmPassword.Clear();
-            cmbGender.SelectedIndex = 0;
-            cmbUser_Type.SelectedIndex = 0;
-        } 
-        //AddUser
-        public void AddUser()
+            cmbBarangay.SelectedIndex = 0;
+            cmbMunicipality.SelectedIndex = 0;
+            cmbProvince.SelectedIndex = 0;
+        }
+
+        //AddCustomer
+
+        public void AddCustomer()
         {
             con.Close();
 
@@ -113,87 +111,58 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show("Whitespace is not allowed!");
                 txtStreet.Clear();
             }
-            else if (String.IsNullOrEmpty(txtBarangay.Text))
+            else if (String.IsNullOrEmpty(cmbBarangay.Text))
             {
                 MessageBox.Show("Enter Barangay!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBarangay.Focus();
+                cmbBarangay.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtBarangay.Text))
+            else if (String.IsNullOrWhiteSpace(cmbBarangay.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtBarangay.Clear();
+                cmbBarangay.Items.Clear();
             }
-            else if (String.IsNullOrEmpty(txtMunicipality.Text))
+            else if (String.IsNullOrEmpty(cmbMunicipality.Text))
             {
                 MessageBox.Show("Enter Municipality!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMunicipality.Focus();
+                cmbMunicipality.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtMunicipality.Text))
+            else if (String.IsNullOrWhiteSpace(cmbMunicipality.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtMunicipality.Clear();
+                cmbMunicipality.Items.Clear();
             }
-            else if (String.IsNullOrEmpty(txtProvince.Text))
+            else if (String.IsNullOrEmpty(cmbProvince.Text))
             {
                 MessageBox.Show("Enter Province!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtProvince.Focus();
+                cmbProvince.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtProvince.Text))
+            else if (String.IsNullOrWhiteSpace(cmbProvince.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtProvince.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtUserName.Text))
-            {
-                MessageBox.Show("Enter Username!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtUserName.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtUserName.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtUserName.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtPassword.Text))
-            {
-                MessageBox.Show("Enter Password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPassword.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtPassword.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtConfirmPassword.Text))
-            {
-                MessageBox.Show("Enter Confirm Password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtConfirmPassword.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtConfirmPassword.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtConfirmPassword.Clear();
+                cmbProvince.Items.Clear();
             }
             else if (txtFirstName.Text != "" && txtMiddleName.Text != ""
                 && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
-                && txtBarangay.Text != "" && txtMunicipality.Text != "" && txtProvince.Text != ""
-                && txtUserName.Text != "" && txtPassword.Text != "" && txtConfirmPassword.Text != "")
+                && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != "")
             {
-                if (txtPassword.Text == txtConfirmPassword.Text) {
                 result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     con.Close();
                     con.Open();
-                    QuerySelect = "SELECT * FROM tblUsers " +
-                        "WHERE first_name = '" + txtFirstName.Text + "' " +
-                        "AND middle_name = '" + txtMiddleName.Text + "' " +
-                        "AND last_name = '" + txtLastName.Text + "' " +
-                        "AND username = '" + txtUserName.Text + "'";
+                    QuerySelect = "SELECT * FROM tblCustomers WHERE First_name =@fName AND Middle_name =@mName AND Last_name =@lName";
+
                     cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@fName", txtFirstName.Text);
+                    cmd.Parameters.AddWithValue("@mName", txtMiddleName.Text);
+                    cmd.Parameters.AddWithValue("@lName", txtLastName.Text);
+
+
                     reader = cmd.ExecuteReader();
+
                     if (reader.HasRows)
                     {
-                        MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("This customer already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         ClearControls();
                     }
                     else
@@ -202,30 +171,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             con.Close();
                             con.Open();
-                            QueryInsert = "INSERT INTO tblUsers " +
-                            "(last_name,first_name,middle_name,birthday,street," +
-                            "barangay,municipality,province,contact_number,sex," +
-                            "username,password,user_type) " +
-                            "VALUES ('" 
-                            + txtLastName.Text + "', '" 
-                            + txtFirstName.Text + "', '" 
-                            + txtMiddleName.Text + "', '"
-                            + dtpBirthday.Value.Date + "', '"
-                            + txtStreet.Text + "', '"
-                            + txtBarangay.Text + "', '"
-                            + txtMunicipality.Text + "', '"
-                            + txtProvince.Text + "', '"
-                            + txtContact.Text + "', '"
-                            + cmbGender.SelectedItem.ToString() + "', '"
-                            + txtUserName.Text + "', '"
-                            + txtPassword.Text + "', '"
-                            + cmbUser_Type.SelectedItem.ToString() + "')";
+                            QueryInsert = "INSERT INTO tblCustomers (Last_name,First_name,Middle_name,Street," +
+                            "Barangay,Municipality,Province,Contact_number, Discount_code) " +
+                            "VALUES (@lName, @fName, @mName, @street, @brgy, @city, @province, @cNo, @discount)";
+
                             cmd = new SqlCommand(QueryInsert, con);
+
+                            cmd.Parameters.AddWithValue("@fName", txtFirstName.Text);
+                            cmd.Parameters.AddWithValue("@mName", txtMiddleName.Text);
+                            cmd.Parameters.AddWithValue("@lName", txtLastName.Text);
+                            cmd.Parameters.AddWithValue("@province", cmbProvince.SelectedValue.ToString());
+                            cmd.Parameters.AddWithValue("@city", cmbMunicipality.SelectedValue.ToString());
+                            cmd.Parameters.AddWithValue("@brgy", cmbBarangay.SelectedValue.ToString());
+                            cmd.Parameters.AddWithValue("@street", txtStreet.Text);
+                            cmd.Parameters.AddWithValue("@cNo", txtContact.Text);
+                            cmd.Parameters.AddWithValue("@discount", cmbDiscount.SelectedValue.ToString());
+
                             cmd.ExecuteNonQuery();
 
-                            MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Customer Added Successfully!", "Add Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
-                           
+
                         }
 
                         catch (Exception ex)
@@ -239,16 +205,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         }
 
                     }
-
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Password Don't Match!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtConfirmPassword.Focus();
                 }
             }
+            
             else
             {
                 MessageBox.Show("Please Provide Details!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -256,9 +215,79 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
 
+        public void loadDiscount()
+        {
+            con.Close();
+            con.Open();
+            QuerySelect = "Select * From tblDiscounts Order by Discount_Description ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            cmbDiscount.DisplayMember = "Discount_Description";
+            cmbDiscount.ValueMember = "Discount_code";
+            cmbDiscount.DataSource = dt;
+        }
+
+        public void loadProvinces()
+        {
+            con.Close();
+            con.Open();
+            QuerySelect = "Select * From tblProvinces Order by province_desc ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            cmbProvince.DisplayMember = "province_desc";
+            cmbProvince.ValueMember = "province_code";
+            cmbProvince.DataSource = dt;
+
+        }
+
+        public void loadMunicipalities()
+        {
+            con.Close();
+            con.Open();
+            QuerySelect = "Select * From tblMunicipality Where province_code = '" + cmbProvince.SelectedValue + "' Order by municipality_desc ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            cmbMunicipality.DisplayMember = "municipality_desc";
+            cmbMunicipality.ValueMember = "municipality_code";
+            cmbMunicipality.DataSource = dt;
+        }
+
+        public void loadBarangays()
+        {
+            con.Close();
+            con.Open();
+            QuerySelect = "Select * From tblBarangay Where municipality_code = '" + cmbMunicipality.SelectedValue + "' Order by brgy_desc ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            cmbBarangay.DisplayMember = "brgy_desc";
+            cmbBarangay.ValueMember = "brgy_code";
+            cmbBarangay.DataSource = dt;
+        }
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
-            AddUser();
+            AddCustomer();
         }
 
         private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
@@ -279,6 +308,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        private void cmbMunicipality_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            loadBarangays();
+        }
+
+        private void cmbProvince_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            loadMunicipalities();
         }
     }
 }

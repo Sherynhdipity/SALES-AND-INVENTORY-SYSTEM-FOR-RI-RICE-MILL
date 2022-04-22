@@ -63,19 +63,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        QuerySelect = "Select user_id, username, first_name, last_name, password, user_type from tblUsers WHERE username='" + txtUsername.Text + "' AND password='" + txtPassword.Text + "'";
+                        QuerySelect = "Select user_id, Username, First_name, Last_name, Password, User_type from tblUsers WHERE Username='" + txtUsername.Text + "' AND Password='" + txtPassword.Text + "'";
                         cmd = new SqlCommand(QuerySelect, con);
                         reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {
                             reader.Read();
-                            string fName = reader["first_name"].ToString();
-                            string lName = reader["last_name"].ToString();
+                            string fName = reader["First_name"].ToString();
+                            string lName = reader["Last_name"].ToString();
 
-                            GetUserID = reader["user_id"].ToString();
+                            GetUserID = reader["User_id"].ToString();
                             GetUserName = fName + " " + lName;
-                            GetUserUsername = reader["username"].ToString();
-                            GetUserRole = reader["user_type"].ToString();
+                            GetUserUsername = reader["Username"].ToString();
+                            GetUserRole = reader["User_type"].ToString();
                             //GetUserStatus = reader["Status"].ToString();
 
                             //if (reader[4].ToString() == "Inactive")
@@ -141,6 +141,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 }
             //}
+            con.Close();
            
         }
         private void pbExit_Click(object sender, EventArgs e)

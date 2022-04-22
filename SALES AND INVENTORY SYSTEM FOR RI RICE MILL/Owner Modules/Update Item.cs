@@ -46,15 +46,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void frmUpdateItem_Load(object sender, EventArgs e)
         {
-            DisplayUser();
+            DisplayItems();
         }
 
-        public void DisplayUser()
+        public void DisplayItems()
         {
             try
             {
                 con.Open();
-                QuerySelect = "SELECT * from tblItem WHERE item_number = '" + id + "'";
+                QuerySelect = "SELECT * from tblItems WHERE Item_id = '" + id + "'";
 
 
                 cmd = new SqlCommand(QuerySelect, con);
@@ -63,18 +63,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 adapter.Fill(dt);
                 if (dt.Rows.Count > 0)
                 {
-                    txtDescription.Text = dt.Rows[0]["description"].ToString();
-                    txtBarcode.Text = dt.Rows[0]["barcode"].ToString();
-                    txtPrice.Text = dt.Rows[0]["price"].ToString();
-                    txtCriticalLevel.Text = dt.Rows[0]["critical_level"].ToString();
-                    if (dt.Rows[0]["unit_measurement"].ToString() == "50")
-                    {
-                        cmbUnit.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        cmbUnit.SelectedIndex = 1;
-                    }
+                    txtDescription.Text = dt.Rows[0]["Description"].ToString();
+                    txtPrice.Text = dt.Rows[0]["Price"].ToString();
+                    txtCriticalLevel.Text = dt.Rows[0]["Critical_level"].ToString();
                 }
             }
             catch (Exception ex)
@@ -88,10 +79,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
         }
 
+
+        //clear controls
+        public void ClearControls()
+        {
+            txtDescription.Clear();
+            txtPrice.Clear();
+            txtCriticalLevel.Clear();
+        }
+
+
+        //UpdateItem
         public void UpdateItem()
         {
-            con.Close();
-
             if (String.IsNullOrEmpty(txtDescription.Text))
             {
                 MessageBox.Show("Enter Description!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -117,75 +117,67 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCriticalLevel.Focus();
             }
-            else if (String.IsNullOrEmpty(txtBarcode.Text))
-            {
-                MessageBox.Show("Enter Barcode!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBarcode.Focus();
-            }
             else if (txtDescription.Text != "" && txtPrice.Text != ""
-                && txtCriticalLevel.Text != "" && txtBarcode.Text != "")
+                && txtCriticalLevel.Text != "")
             {
                 result = MessageBox.Show("Do you want to update this item?", "Update Item", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    try
+                    con.Close();
+                    con.Open();
+                    QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical";
+
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                    cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                    cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+
+                    reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+
                     {
-                        con.Close();
-                        con.Open();
-                        QueryUpdate = "Update tblItem Set " +
-                        "barcode ='" + txtBarcode.Text + "',description = '" + txtDescription.Text + "'" +
-                        ",unit_measurement = '" + cmbUnit.SelectedItem.ToString() + "',price = '" + txtPrice.Text +
-                        "',critical_level = '" + txtCriticalLevel.Text + "' WHERE item_number = '" + id + "'";
-
-                        cmd = new SqlCommand(QueryUpdate, con);
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Item Updated Successfully!", "Update Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         con.Close();
                     }
-                    finally
+                    else
                     {
-                        con.Close();
-                    }
+                        try
+                        {
+                            con.Close();
+                            con.Open();
+                            QueryUpdate = "UPDATE tblItems SET Description = @desc, Price = @price,Critical_level = @crit WHERE Item_id = '" + id + "'";
+
+                            cmd = new SqlCommand(QueryUpdate, con);
+
+                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                            cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                            cmd.Parameters.AddWithValue("@crit", txtCriticalLevel.Text);
+
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Item Updated Successfully!", "Update Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            con.Close();
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
+
+                    }  
 
                 }
             }
         }
-                
 
-            
 
-        private void txtBarcode_TextChange(object sender, EventArgs e)
-        {
-            if (txtBarcode.Text == "")
-            {
-                ptbBarcode.Image = null;
-            }
-            else
-            {
-                try
-                {
-                    BarcodeWriter barcode = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
-                    ptbBarcode.Image = barcode.Write(txtBarcode.Text);
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            txtBarcode.Text = "";
-        }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {

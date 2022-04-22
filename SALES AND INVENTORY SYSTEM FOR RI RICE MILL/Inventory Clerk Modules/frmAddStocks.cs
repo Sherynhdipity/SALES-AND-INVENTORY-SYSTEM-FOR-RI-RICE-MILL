@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ZXing;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 {
@@ -36,20 +39,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         public static string QueryUpdate;
         public static string QueryDelete;
         public static string status = "Active";
+        private static readonly Regex sWhitespace = new Regex(@"\s+");
 
         private void frmAddStocks_Load(object sender, EventArgs e)
         {
+            dgvSKUList.Refresh();
+            autoCompleteDescription();
             this.ActiveControl = txtViewItem;
         }
 
         public void ClearControls()
         {
             txtDescription.Clear();
-            txtUnit.Clear();
-            txtPrice.Clear();
-            txtCriticalLevel.Clear();
-            txtBarcode.Clear();
-            txtItemNumber.Clear();
+            txtBatchQuantity.Clear();
         }
 
         static String remVowel(String str, String str1)
@@ -86,29 +88,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 else
                 {
                     con.Open();
-                    QuerySelect = "SELECT item_number as 'ID', barcode as 'Barcode', " +
-                      "description as 'Description' ,unit_measurement as 'Unit', price as 'Price'," +
-                      " critical_level as 'Critical Level' from tblItem WHERE item_number LIKE '" + txtViewItem.Text + "%' " +
-                      "OR barcode LIKE '" + txtViewItem.Text + "%' " +
-                      "OR description LIKE '" + txtViewItem.Text + "%' " +
-                      "OR unit_measurement LIKE '" + txtViewItem.Text + "%' " +
-                      "OR price LIKE '" + txtViewItem.Text + "%' " +
-                      "OR critical_level LIKE '" + txtViewItem.Text + "%'";
+                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
 
 
                     cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@id", txtViewItem.Text);
+                    cmd.Parameters.AddWithValue("@desc", txtViewItem.Text);
+                    cmd.Parameters.AddWithValue("@price", txtViewItem.Text);
+                    cmd.Parameters.AddWithValue("@crit", txtViewItem.Text);
                     adapter = new SqlDataAdapter(cmd);
                     dt = new DataTable();
                     adapter.Fill(dt);
                     if (dt.Rows.Count > 0)
                     {
-                        txtItemNumber.Text = dt.Rows[0]["ID"].ToString();
+                        //txtItemNumber.Text = dt.Rows[0]["ID"].ToString();
                         txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                        txtBarcode.Text = dt.Rows[0]["Barcode"].ToString();
-                        txtPrice.Text = dt.Rows[0]["Price"].ToString();
-                        txtUnit.Text = dt.Rows[0]["Unit"].ToString();
-                        txtCriticalLevel.Text = dt.Rows[0]["Critical Level"].ToString();
-                        txtSKU.Text = remVowel(dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Unit"].ToString());
+                        //txtBarcode.Text = dt.Rows[0]["Barcode"].ToString();
+                        //txtPrice.Text = dt.Rows[0]["Price"].ToString();
+                        //txtUnit.Text = dt.Rows[0]["Unit"].ToString();
+                        //txtCriticalLevel.Text = dt.Rows[0]["Critical Level"].ToString();
+                        //txtSKU.Text = remVowel(dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Unit"].ToString());
                     }
                 }
                 
@@ -130,35 +129,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             con.Close();
 
-            if (String.IsNullOrEmpty(txtItemNumber.Text))
+            if (String.IsNullOrEmpty(txtViewItem.Text))
             {
                 MessageBox.Show("Enter Item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtItemNumber.Focus();
+                txtViewItem.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtItemNumber.Text))
+            else if (String.IsNullOrWhiteSpace(txtViewItem.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtItemNumber.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtBatchNumber.Text))
-            {
-                MessageBox.Show("Enter Batch Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBatchNumber.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtBatchNumber.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtBatchNumber.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtSKU.Text))
-            {
-                MessageBox.Show("Enter SKU!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtSKU.Focus();
+                txtViewItem.Clear();
             }
             else if (String.IsNullOrEmpty(txtBatchQuantity.Text))
             {
                 MessageBox.Show("Enter Batch Quantity!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtBatchQuantity.Focus();
+            }
+            else if (String.IsNullOrWhiteSpace(txtBatchQuantity.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtBatchQuantity.Clear();
             }
             else
             {
@@ -167,21 +156,55 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 {
                     try
                     {
+                        int rows = dgvSKUList.Rows.Count;
                         con.Close();
                         con.Open();
-                        QueryInsert = "INSERT INTO tblInventory " +
-                        "(item_number,user_id,batch_number,SKU,batch_quantity,milled_date,stock_in_date) " +
-                        "VALUES ('"
-                        + txtItemNumber.Text + "', '"
-                        + Id + "', '"
-                        + txtBatchNumber.Text + "', '"
-                        + txtSKU.Text + "', '"
-                        + txtBatchQuantity.Text + "'," +
-                        "'" + dtpMilledDate.Value.Date + "'," +
-                        "'" + dtpStockInDate.Value.Date + "')";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
+                        if(rows > 0)
+                        {
+                            int batch_number;
+                                    QuerySelect = "SELECT MAX(Batch_number) FROM tblInventories " +
+                                        "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc)";
+                            cmd = new SqlCommand(QuerySelect, con);
+                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                            adapter = new SqlDataAdapter(cmd);
+                            dt = new DataTable();
+                            adapter.Fill(dt);
+                            if(dt.Rows[0][0].ToString() == null || dt.Rows[0][0].ToString() == "")
+                            {
+                                batch_number = 1;
+                            }
+                            else
+                            {
+                                batch_number = Convert.ToInt32(dt.Rows[0][0].ToString()) + 1;
+                            }
 
+
+                            for (int i = 0; i < rows; i++)
+                            {
+                               QueryInsert = "INSERT INTO tblInventories " +
+                               "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id) " +
+                               "VALUES ('"
+                               + batch_number + "', '"
+                               + dgvSKUList.Rows[i].Cells[0].Value.ToString() + "', @mDate, @sDate, '"
+                               + Id + "'," +
+                               "(SELECT Item_id  FROM tblItems WHERE Description = @desc))";
+                                
+                                cmd = new SqlCommand(QueryInsert, con);
+                                cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                                cmd.Parameters.AddWithValue("@mDate", dtpMilledDate.Value.Date);
+                                cmd.Parameters.AddWithValue("@sDate", dtpStockInDate.Value.Date);
+
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Generate SKU First!");
+                        }
+                        txtViewItem.Clear();
+                        txtBatchQuantity.Clear();
+                        dgvSKUList.Rows.Clear();
+                        dgvSKUList.Refresh();
                         MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
 
@@ -197,29 +220,28 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                         con.Close();
                     }
                 }
-                   
+
             }
         }
 
-        private void txtBarcode_TextChange(object sender, EventArgs e)
+        public void autoCompleteDescription()
         {
-            if (txtBarcode.Text == "")
+            con.Close();
+            QuerySelect = "SELECT [Description] FROM tblItems " +
+                "WHERE Description LIKE '"+txtViewItem.Text+"%'";
+            cmd = new SqlCommand(QuerySelect, con);
+            con.Open();
+            reader = cmd.ExecuteReader();
+            AutoCompleteStringCollection MyCollection = new AutoCompleteStringCollection();
+            while (reader.Read())
             {
-                ptbBarcode.Image = null;
+                MyCollection.Add(reader.GetString(0));
             }
-            else
-            {
-                try
-                {
-                    BarcodeWriter barcode = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
-                    ptbBarcode.Image = barcode.Write(txtBarcode.Text);
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
+            txtViewItem.AutoCompleteCustomSource = MyCollection;
+            con.Close();
         }
+
+
 
         private void txtViewItem_TextChange(object sender, EventArgs e)
         {
@@ -232,6 +254,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 ClearControls();
             }
             
+        }
+
+        public static string ReplaceWhitespace(string input, string replacement)
+        {
+            return sWhitespace.Replace(input, replacement);
         }
 
 
@@ -273,6 +300,113 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
                 e.Handled = true;
             }
+        }
+
+        public void displaySKU()
+        {
+            dgvSKUList.Rows.Clear();
+            dgvSKUList.Refresh();
+
+            if (txtDescription.Text == "")
+            {
+                MessageBox.Show("Enter Item Description!");
+            }
+            else if (txtBatchQuantity.Text == "")
+            {
+                MessageBox.Show("Enter Quantity!");
+            }
+            else
+            {
+                string description;
+                int quantity;
+
+                description = txtDescription.Text;
+                quantity = Convert.ToInt32(txtBatchQuantity.Text);
+
+                dgvSKUList.ColumnCount = 1;
+                //dgvSKUList.Columns[0].Name = "";
+                dgvSKUList.Columns[0].Name = "SKU";
+
+                QuerySelect = "Select SKU from tblInventories " +
+                    "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories) " +
+                    "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '"+description+"')";
+                cmd = new SqlCommand(QuerySelect, con);
+                con.Open();
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                if (reader.HasRows)
+                {
+
+                    string sku = reader.GetString(0);
+                    string lastCharacter = sku.Substring(sku.Length - 3);
+                    //string lastCharacter = (sku1 + sku2 + sku3).ToString();
+                    //MessageBox.Show(lastCharacter.ToString());
+                    int lastSKU = Convert.ToInt32(lastCharacter.ToString())+1;
+                        
+                    for (int i = lastSKU; i < quantity + lastSKU; i++)
+                    {
+                        string[] row = new string[] { ReplaceWhitespace(description, "") + "-" + i.ToString("000") };
+                        dgvSKUList.Rows.Add(row);
+                    }
+
+                }
+                else
+                {
+                    for (int i = 1; i <= quantity; i++)
+                    {
+                        string[] row = new string[] { ReplaceWhitespace(description, "") + "-" + i.ToString("000") };
+                        dgvSKUList.Rows.Add(row);
+                    }
+                }
+                con.Close();
+
+            }         
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            displaySKU();
+        }
+
+        private void txtBatchQuantity_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+       
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            this.appData1.Clear();
+            int rows = dgvSKUList.Rows.Count;
+            if(rows > 0)
+            {
+                for (int i =0; i < rows; i++)
+                {
+                    //MessageBox.Show(dgvSKUList.Rows[i].Cells[0].Value.ToString());
+                    BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
+                    Image img = barcode.Encode(BarcodeLib.TYPE.CODE128, dgvSKUList.Rows[i].Cells[0].Value.ToString(), Color.Black, Color.White, 290, 120);
+                    //pbBarcode.Image = img;
+
+                    //this.appData1.Clear();
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        img.Save(ms, ImageFormat.Png);
+                        //for (int i = 0; i < 5; i++)
+                        this.appData1.Barcode.AddBarcodeRow(dgvSKUList.Rows[i].Cells[0].Value.ToString(), ms.ToArray());
+                    }
+                    
+
+                }
+                using (frmBarcodes frm = new frmBarcodes(this.appData1.Barcode))
+                {
+                    frm.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter Item First!");
+            }
+            
+         
         }
     }
 }

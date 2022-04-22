@@ -175,6 +175,24 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="btnStockCard.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAHoAAAAnCAYAAADASVzNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACLSURBVHhe7dGxDYRAEMDABemLoEv6pQwK4JOr4jzBSM49
+        x/F7ZuZjX+vxfNd1s7E13OjdGR1hdITREUZHGB1hdITREUZHGB1hdITREUZHGB1hdITREUZHGB1hdITR
+        EUZHGB1hdITREUZHGB1hdITREUZHGB1hdITREUZHGB1hdITREWv0+a5gW+f7BwhsfoDdo6pSAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="btnPrintBarcode.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAHoAAAAnCAYAAADASVzNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACLSURBVHhe7dGxDYRAEMDABemLoEv6pQwK4JOr4jzBSM49
+        x/F7ZuZjX+vxfNd1s7E13OjdGR1hdITREUZHGB1hdITREUZHGB1hdITREUZHGB1hdITREUZHGB1hdITR
+        EUZHGB1hdITREUZHGB1hdITREUZHGB1hdITREUZHGB1hdITREWv0+a5gW+f7BwhsfoDdo6pSAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <data name="btnAddStock.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAHoAAAAnCAYAAADASVzNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

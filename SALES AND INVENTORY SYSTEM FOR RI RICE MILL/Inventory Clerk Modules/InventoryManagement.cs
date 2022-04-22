@@ -63,17 +63,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
                 if (txtViewStocks.Text == "" || txtViewStocks.Text == null)
                 {
-                    QuerySelect = "SELECT * from InventoryView";
+                    QuerySelect = "SELECT * from InventoryViews";
                 }
                 else
                 {
-                    QuerySelect = "SELECT * from InventoryView WHERE ID LIKE '" + txtViewStocks.Text + "%' " +
-                   "OR Description LIKE '" + txtViewStocks.Text + "%' " +
-                   "OR Unit LIKE '" + txtViewStocks.Text + "%' " +
-                   "OR SKU LIKE '" + txtViewStocks.Text + "%'";
+                    QuerySelect = "SELECT * from InventoryViews WHERE (Description LIKE '%' + @desc + '%') OR ([Batch Number] LIKE '%' + @batchNo + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
                 }
 
                 cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@desc", txtViewStocks.Text);
+                cmd.Parameters.AddWithValue("@batchNo", txtViewStocks.Text);
+                cmd.Parameters.AddWithValue("@crit", txtViewStocks.Text);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
@@ -92,16 +92,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             }
         }
 
-        private void btnAddStock_Click(object sender, EventArgs e)
+            private void btnAddStock_Click(object sender, EventArgs e)
         {
             addNew.Id = ID;
             addNew.ShowDialog();
             
-        }
+        }                   
 
         private void txtViewStocks_TextChange(object sender, EventArgs e)
         {
             DisplayItems();
+        }
+
+        private void btnPrintBarcode_Click(object sender, EventArgs e)
+        {
+            frmBarcodeLookup lookup = new frmBarcodeLookup();
+            lookup.ShowDialog();
+
         }
     }
 }

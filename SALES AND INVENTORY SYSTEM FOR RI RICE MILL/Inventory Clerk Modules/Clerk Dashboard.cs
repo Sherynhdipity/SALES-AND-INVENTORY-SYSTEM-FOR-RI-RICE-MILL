@@ -55,14 +55,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     {
                         lblProductsSold.Text = "0";
                         lblQtyStockedOut.Text = "0";
-                        lblstocksSold.Text = "0";
+                       // lblstocksSold.Text = "0";
                         
                     }
                     else
                     {
                         lblProductsSold.Text = reader["res"].ToString();
                         lblQtyStockedOut.Text = reader["res"].ToString();
-                        lblstocksSold.Text = reader["res"].ToString();
+                        //lblstocksSold.Text = reader["res"].ToString();
                         
                     }
                       
@@ -89,16 +89,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     if (reader["datenow"].ToString() == "" || reader["datenow"].ToString() == "0")
                     {
-                        lblStockSoldToday.Text = "0";
+                        //lblStockSoldToday.Text = "0";
                     }
                     else
                     {
-                        lblStockSoldToday.Text = reader["datenow"].ToString();
+                    //    lblStockSoldToday.Text = reader["datenow"].ToString();
                     }
                 }
                 else
                 {
-                    lblStockSoldToday.Text = "0";
+                    //lblStockSoldToday.Text = "0";
                 }
 
             }
@@ -121,11 +121,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
                     {
-                        txtotaltrans.Text = "0";
+                      //  txtotaltrans.Text = "0";
                     }
                     else
                     {
-                        txtotaltrans.Text = lblTotalTransactions.Text = reader["res"].ToString();
+                        //txtotaltrans.Text = lblTotalTransactions.Text = reader["res"].ToString();
                     }
                     
                 }
@@ -150,12 +150,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
                     {
-                        lblTotalSales.Text = "0";
+                      //  lblTotalSales.Text = "0";
                     }
                     else
                     {
                         string temp = reader["res"].ToString();
-                        lblTotalSales.Text = (Convert.ToDouble(temp)).ToString("n2");
+                       // lblTotalSales.Text = (Convert.ToDouble(temp)).ToString("n2");
                     }
 
                 }
@@ -170,23 +170,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
             }
             //average stocks per trans
-            if (lblProductsSold.Text != "0" && lblTotalTransactions.Text != "0")
-            {
-                txtavgStocks.Text = (Convert.ToDouble(lblProductsSold.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
-            }
-            else
-            {
-                txtavgStocks.Text = "0";
-            }
+            //if (lblProductsSold.Text != "0" && lblTotalTransactions.Text != "0")
+            //{
+            //    txtavgStocks.Text = (Convert.ToDouble(lblProductsSold.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
+            //}
+            //else
+            //{
+            //    txtavgStocks.Text = "0";
+            //}
 
-            if(lblTotalSales.Text != "0" && lblTotalTransactions.Text != "0")
-            {
-                txtavgSales.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
-            }
-            else
-            {
-                txtavgSales.Text = "0";
-            }
+            //if(lblTotalSales.Text != "0" && lblTotalTransactions.Text != "0")
+            //{
+            //    txtavgSales.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
+            //}
+            //else
+            //{
+            //    txtavgSales.Text = "0";
+            //}
             
             
 
@@ -199,7 +199,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
-                    lbladdedproducts.Text = temp;
+               //     lbladdedproducts.Text = temp;
 
                 }
             }
@@ -221,8 +221,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
-                    lblNumVarieties.Text = temp;
-                    lblavgsalespervar.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
+                    //lblNumVarieties.Text = temp;
+                    //lblavgsalespervar.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
 
                 }
             }
@@ -253,7 +253,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    lbladdedproducts.Text = reader["res"].ToString();
+                //    lbladdedproducts.Text = reader["res"].ToString();
                 }
 
 
@@ -282,7 +282,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
-                    lbladdedproducts.Text = temp;
+                  //  lbladdedproducts.Text = temp;
 
                 }
             }
@@ -305,8 +305,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
-                    lblNumVarieties.Text = temp;
-                    lblavgsalespervar.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
+                    //lblNumVarieties.Text = temp;
+                    //lblavgsalespervar.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
 
                 }
             }
@@ -329,7 +329,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     string temp = reader["res"].ToString();
-                    lbladdedstocks.Text = temp;
+                    //lbladdedstocks.Text = temp;
 
                 }
             }

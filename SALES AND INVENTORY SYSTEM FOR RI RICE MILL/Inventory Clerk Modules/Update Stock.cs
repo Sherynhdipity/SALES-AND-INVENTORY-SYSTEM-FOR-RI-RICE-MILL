@@ -188,8 +188,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         MessageBox.Show("Stock Updated Successfully!", "Update Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        frmInventory inventory = new frmInventory();
-                        inventory.dgvStockList.Refresh();
+                        //frmInventory inventory = new frmInventory();
+                        //inventory.dgvStockList.Refresh();
 
                     }
 

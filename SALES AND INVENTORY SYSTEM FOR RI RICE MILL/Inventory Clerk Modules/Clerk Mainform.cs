@@ -119,37 +119,37 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void frmMainInventory_Shown(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
-                if (con.State == ConnectionState.Open)
-                {
-                    con.Close();
-                }
+            //    if (con.State == ConnectionState.Open)
+            //    {
+            //        con.Close();
+            //    }
 
-                con.Open();
-                string query = "Select Description, SKU, [Batch Quantity], [Critical Level] from InventoryView WHERE  [Batch Quantity] < [Critical Level]";
-                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    lowStockNotif lsn = new lowStockNotif();
-                    DialogResult res = lsn.ShowDialog();
-                }
+            //    con.Open();
+            //    string query = "Select Description, SKU, [Batch Quantity], [Critical Level] from InventoryView WHERE  [Batch Quantity] < [Critical Level]";
+            //    SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
+            //    if (reader.Read())
+            //    {
+            //        lowStockNotif lsn = new lowStockNotif();
+            //        DialogResult res = lsn.ShowDialog();
+            //    }
 
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message);
+            //    MessageBox.Show(ex.Message);
 
-            }
-            finally
-            {
+            //}
+            //finally
+            //{
 
-                con.Close();
+            //    con.Close();
 
-            }
+            //}
         }
 
         private void panelLogout_Paint(object sender, PaintEventArgs e)

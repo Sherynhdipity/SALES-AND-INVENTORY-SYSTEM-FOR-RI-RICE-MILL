@@ -76,23 +76,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 if (txtViewItems.Text == "" || txtViewItems.Text == null)
                 {
-                    QuerySelect = "SELECT item_number as 'ID', barcode as 'Barcode', " +
-                   "description as 'Description' ,unit_measurement as 'Unit', price as 'Price'," +
-                   " critical_level as 'Critical Level' from tblItem";
+                    QuerySelect = "SELECT * FROM ItemViews";
                 }
                 else
                 {
-                    QuerySelect = "SELECT item_number as 'ID', barcode as 'Barcode', " +
-                   "description as 'Description' ,unit_measurement as 'Unit', price as 'Price'," +
-                   " critical_level as 'Critical Level' from tblItem WHERE item_number LIKE '" + txtViewItems.Text + "%' " +
-                   "OR barcode LIKE '" + txtViewItems.Text + "%' " +
-                   "OR description LIKE '" + txtViewItems.Text + "%' " +
-                   "OR unit_measurement LIKE '" + txtViewItems.Text + "%' " +
-                   "OR price LIKE '" + txtViewItems.Text + "%' " +
-                   "OR critical_level LIKE '" + txtViewItems.Text + "%'";
+                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @lName + '%') OR ([Critical Level] LIKE '%' + @cNum + '%')";
                 }
 
                 cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@id", txtViewItems.Text);
+                cmd.Parameters.AddWithValue("@desc", txtViewItems.Text);
+                cmd.Parameters.AddWithValue("@price", txtViewItems.Text);
+                cmd.Parameters.AddWithValue("@crit", txtViewItems.Text);
+
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);

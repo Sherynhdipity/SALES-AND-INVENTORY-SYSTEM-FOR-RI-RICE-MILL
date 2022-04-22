@@ -339,7 +339,6 @@
             this.dgvUserList.Size = new System.Drawing.Size(875, 409);
             this.dgvUserList.TabIndex = 4;
             this.dgvUserList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.dgvUserList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserList_CellClick);
             this.dgvUserList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUserList_CellContentClick);
             // 
             // UserManagement

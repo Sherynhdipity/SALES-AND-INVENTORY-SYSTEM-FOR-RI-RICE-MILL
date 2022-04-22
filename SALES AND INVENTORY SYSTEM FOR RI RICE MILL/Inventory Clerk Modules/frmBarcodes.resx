@@ -117,38 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="bunifuLabel13.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 15.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAWcAAAAmCAYAAAAYy1rwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACuSURBVHhe7dQxDYAwAADBOgPUEFzgtKmSsiDihxsueQU/
-        jnue17NeADrGHxuADnMGCDJngCBzBggyZ4AgcwYIMmeAIHMGCDJngCBzBggyZ4AgcwYIMmeAIHMGCDJn
-        gCBzBggyZ4AgcwYIMmeAIHMGCDJngCBzBggyZ4AgcwYIMmeAIHMGCDJngCBzBggyZ4AgcwYIMmeAIHMG
-        CDJngCBzBggyZ4AgcwYIMmeAnLU/DbeRBQhK65gAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="txtVariety.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAOsAAAAnCAYAAADuIL8aAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACuSURBVHhe7dOxCQMxAARB9V+VHpXhMlyAH4ESd6CFGbjk
-        8h1AyFrrM+f8mdl9232eVMfYB3Cn3edJVaxwM7FChFghQqwQIVaIECtEiBUixAoRYoUIsUKEWCFCrBAh
-        VogQK0SIFSLEChFihQixQoRYIUKsECFWiBArRIgVIsQKEWKFCLFChFghQqwQIVaIECtEiBUixAoRYoUI
-        sULEX6zP83z3YWb3bfd5UgXuN8YLCKKpCXWowxQAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="bunifuLabel11.BaseStylesheet" xml:space="preserve">
-    <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
-  </data>
-  <data name="btnAddVariety.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFsAAAArCAYAAAAXFPRYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVGhD7dChAYAwAMAwLtnL8B9n4Dc4AAlVEVF13cYx
-        z3Gsxd/m+cx+C/zB7JDZIbNDZofMDpkdMjtkdsjskNkhs0Nmh8wOmR0yO2R2yOyQ2SGzQ2aHzA6ZHTI7
-        ZHbI7JDZIbNDZofMDpkdMjtkdsjskNkhs0Nmh8wOmR0yO2R2aBv7vN4CH9vndQOn0tj/CGix+gAAAABJ
-        RU5ErkJggg==
-</value>
-  </data>
 </root>

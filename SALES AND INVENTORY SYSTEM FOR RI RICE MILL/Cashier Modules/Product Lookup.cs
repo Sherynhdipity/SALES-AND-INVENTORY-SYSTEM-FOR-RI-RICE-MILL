@@ -46,7 +46,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
 
             con.Open();
-            QuerySelect = "SELECT p.ProductCode AS 'Product Code', p.ProductDesc AS 'Product Description', v.VarietyName AS 'Product Variety', p.Price FROM tblProducts p INNER JOIN tblProductsVariety v ON p.VarietyID = v.VarietyID";
+            QuerySelect = "SELECT Description, Price, Stock FROM ItemLookUp";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -66,7 +66,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
                 con.Open();
-                QuerySelect = "SELECT a.ProductCode AS 'Product Code', a.ProductDesc AS 'Product Description', b.VarietyName AS 'Product Variety', a.Price FROM tblProducts a INNER JOIN tblProductsVariety b ON a.VarietyID = b.VarietyID where a.ProductCode like '" + txtSearchProduct.Text + "%' OR a.ProductDesc like '%" + txtSearchProduct.Text + "%' OR b.VarietyName like '%" + txtSearchProduct.Text + "%' OR  a.Price like '%" + txtSearchProduct.Text + "' ORDER BY a.ProductID DESC";
+                QuerySelect = "SELECT Barcode, Description , Price FROM tblItems WHERE Barcode LIKE '" + txtSearchProduct.Text + "%' OR Description LIKE '%" + txtSearchProduct.Text + "%' OR Price LIKE '%" + txtSearchProduct.Text + "' ORDER BY Item_id DESC";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -98,7 +98,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 string temp_stock = "";
                 con.Close();
                 con.Open();
-                QuerySelect = "select Count(tblBatchProduct.BatchID) AS Stock from tblBatchProduct INNER JOIN tblStockin on tblBatchProduct.BatchID = tblStockin.BatchID where Status='IN' AND tblStockin.ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '"  + Convert.ToString(selectedRow.Cells["Product Code"].Value) + "')";
+                QuerySelect = "SELECT COUNT(a.Item_id) as 'Stock' FROM tblInventories a INNER JOIN tblItems b ON a.Item_id = b.Item_id WHERE b.Description = '" + Convert.ToString(selectedRow.Cells["Description"].Value) + "';";
+                //QuerySelect = "select Count(tblBatchProduct.BatchID) AS Stock from tblBatchProduct INNER JOIN tblStockin on tblBatchProduct.BatchID = tblStockin.BatchID where Status='IN' AND tblStockin.ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '"  + Convert.ToString(selectedRow.Cells["Product Code"].Value) + "')";
                 cmd = new SqlCommand(QuerySelect, con);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -114,9 +115,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
 
                 frmPLQuant qty = new frmPLQuant();
-                qty.product_Code = Convert.ToString(selectedRow.Cells["Product Code"].Value);
-                qty.product_Desc = Convert.ToString(selectedRow.Cells["Product Description"].Value);
-                qty.product_Variety = Convert.ToString(selectedRow.Cells["Product Variety"].Value);
+                //qty.product_Code = Convert.ToString(selectedRow.Cells["Barcode"].Value);
+                qty.product_Desc = Convert.ToString(selectedRow.Cells["Description"].Value);
+              //  qty.product_Variety = Convert.ToString(selectedRow.Cells["Product Variety"].Value);
                 qty.product_Price = Convert.ToString(selectedRow.Cells["Price"].Value);
                 qty.Product_Stock = temp_stock;
                 qty.ShowDialog();

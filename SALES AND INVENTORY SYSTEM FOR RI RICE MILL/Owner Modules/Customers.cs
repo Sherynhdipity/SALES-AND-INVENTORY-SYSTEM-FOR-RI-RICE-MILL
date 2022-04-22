@@ -441,5 +441,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dgvCustomerList_CellClick(sender, e);
             btnUpdateCustomer_Click(sender, e);
         }
+
+        private void lblAddProduct_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

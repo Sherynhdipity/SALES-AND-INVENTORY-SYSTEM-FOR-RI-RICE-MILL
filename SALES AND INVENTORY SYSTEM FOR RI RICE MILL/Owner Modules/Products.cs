@@ -494,7 +494,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             catch(Exception ex)
             {
-                
+                MessageBox.Show(ex.Message);
             }
 
         }
@@ -509,8 +509,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnAddVariety_Click(object sender, EventArgs e)
         {
-            frmAddVariety variety = new frmAddVariety();
-            variety.ShowDialog();
+            //frmAddVariety variety = new frmAddVariety();
+            //variety.ShowDialog();
             //refresh combobox
             DisplayVarieties();
         }

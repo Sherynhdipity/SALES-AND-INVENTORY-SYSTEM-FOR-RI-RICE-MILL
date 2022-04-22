@@ -34,8 +34,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void frmAddItem_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = txtBarcode;
-            cmbUnit.SelectedIndex = 0;    
+            
         }
 
         //methods
@@ -44,14 +43,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public void ClearControls()
         {
             txtDescription.Clear();
-            cmbUnit.SelectedIndex = 0;
             txtPrice.Clear();
             txtCriticalLevel.Clear();
-            txtBarcode.Clear();
         }
 
         //add item
-
         public void addItem()
         {
             con.Close();
@@ -81,47 +77,56 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCriticalLevel.Focus();
             }
-            else if (String.IsNullOrEmpty(txtBarcode.Text))
-            {
-                MessageBox.Show("Enter Barcode!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBarcode.Focus();
-            }
             else
             {
-                result = MessageBox.Show("Do you want to add this item?", "Update Item", MessageBoxButtons.YesNo);
+                result = MessageBox.Show("Do you want to add this item?", "Add Item", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    try
+                    con.Close();
+                    con.Open();
+                    QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical";
+
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                    cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                    cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+
+                    reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+
                     {
-                        con.Close();
-                        con.Open();
-                        QueryInsert = "INSERT INTO tblItem " +
-                        "(barcode,description,unit_measurement,price,critical_level) " +
-                        "VALUES ('"
-                        + txtBarcode.Text + "', '"
-                        + txtDescription.Text + "', '"
-                        + cmbUnit.SelectedItem.ToString() + "', '"
-                        + txtPrice.Text + "', '"
-                        + txtCriticalLevel.Text + "')";
-                        cmd = new SqlCommand(QueryInsert, con);
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
-
+                        MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        ClearControls();
                     }
-
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message);
+                        try
+                        {
+                            con.Close();
+                            con.Open();
+                            QueryInsert = "INSERT INTO tblItems (Description,Price,Critical_Level) VALUES (@desc, @price, @critical)";
 
-                    }
-                    finally
-                    {
-                        con.Close();
+                            cmd = new SqlCommand(QueryInsert, con);
+                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                            cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                            cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearControls();
+                            this.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
                     }
                 }
-                  
             }
         }
 
@@ -132,44 +137,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
                 e.Handled = true;
             }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+
+            ClearControls();
             this.Close();
         }
 
-        private void txtBarcode_TextChange(object sender, EventArgs e)
-        {
-            if (txtBarcode.Text == "")
-            {
-                ptbBarcode.Image = null;
-            }
-            else
-            {
-                try
-                {
-                    BarcodeWriter barcode = new BarcodeWriter() { Format = BarcodeFormat.CODE_128 };
-                    ptbBarcode.Image = barcode.Write(txtBarcode.Text);
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
-
-        }
-
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            txtBarcode.Text = "";
-        }
 
         private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
         {

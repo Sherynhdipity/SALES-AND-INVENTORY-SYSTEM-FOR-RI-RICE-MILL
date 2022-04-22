@@ -157,5 +157,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             }
         }
+
+        private void btnCustomers_Click(object sender, EventArgs e)
+        {
+
+            if (!panelModule.Controls.Contains(Owner_Modules.frmCustomer.customersInstance))
+            {
+                panelModule.Controls.Add(Owner_Modules.frmCustomer.customersInstance);
+                Owner_Modules.frmCustomer.customersInstance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                Owner_Modules.frmCustomer.customersInstance.BringToFront();
+            }
+        }
     }
 }

@@ -139,6 +139,9 @@
   <data name="notif" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\notif.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="returning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\returning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -181,6 +184,12 @@
   <data name="group" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\group.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="search_now" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search_now.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sales report" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sales report.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="inventory" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\inventory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -217,9 +226,6 @@
   <data name="discount" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\discount.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sales report" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sales report.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="products" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\products.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -235,9 +241,6 @@
   <data name="reload1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reload1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="maximize" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\maximize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="power-button1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\power-button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -247,8 +250,8 @@
   <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lending" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lending.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="money" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\money.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -262,11 +265,11 @@
   <data name="close-cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close-cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="returning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\returning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="maximize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\maximize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lending" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lending.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="data-restore" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\data-restore.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,7 +283,7 @@
   <data name="growth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\growth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search_now" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search_now.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="customer-feedback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customer-feedback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

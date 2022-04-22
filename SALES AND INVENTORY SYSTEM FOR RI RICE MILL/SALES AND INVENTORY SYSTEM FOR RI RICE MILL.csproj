@@ -70,6 +70,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="BarcodeStandard, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarcodeLib.2.4.0\lib\netstandard2.0\BarcodeStandard.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.Charts.WinForms, Version=1.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.Charts.WinForms.1.1.5\lib\net40\Bunifu.Charts.WinForms.dll</HintPath>
     </Reference>
@@ -182,6 +185,9 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1484.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
     </Reference>
@@ -204,8 +210,36 @@
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=4.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.5.0.2\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
@@ -228,11 +262,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add_new_user.cs">
+    <Compile Include="AppData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\addCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Add_new_user.Designer.cs">
-      <DependentUpon>Add_new_user.cs</DependentUpon>
+    <Compile Include="Cashier Modules\addCustomer.Designer.cs">
+      <DependentUpon>addCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\Sales Return.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Sales Return.Designer.cs">
+      <DependentUpon>Sales Return.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Barcode Lookup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Barcode Lookup.Designer.cs">
+      <DependentUpon>Barcode Lookup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmBarcodes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmBarcodes.Designer.cs">
+      <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\Add Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\Add Customer.Designer.cs">
+      <DependentUpon>Add Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\Add User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\Add User.Designer.cs">
+      <DependentUpon>Add User.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnection.cs" />
     <Compile Include="Cashier Modules\Cashier Mainform.cs">
@@ -303,12 +372,6 @@
     <Compile Include="Link Forms\Backup.Designer.cs">
       <DependentUpon>Backup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\Batch Items.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\Batch Items.Designer.cs">
-      <DependentUpon>Batch Items.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cashier Modules\Void Authentication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,12 +390,6 @@
     <Compile Include="Inventory Clerk Modules\lowStockNotif.Designer.cs">
       <DependentUpon>lowStockNotif.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\Add Variety.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Owner Modules\Add Variety.Designer.cs">
-      <DependentUpon>Add Variety.cs</DependentUpon>
-    </Compile>
     <Compile Include="Link Forms\Sales Report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,12 +401,6 @@
     </Compile>
     <Compile Include="Inventory Clerk Modules\Update Stock.Designer.cs">
       <DependentUpon>Update Stock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\Add Stock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\Add Stock.Designer.cs">
-      <DependentUpon>Add Stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory Clerk Modules\Clerk Mainform.cs">
       <SubType>Form</SubType>
@@ -375,41 +426,47 @@
     <Compile Include="Link Forms\Inventory Reports.Designer.cs">
       <DependentUpon>Inventory Reports.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\frmAddItem.cs">
+    <Compile Include="Owner Modules\Add Item.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\frmAddItem.Designer.cs">
-      <DependentUpon>frmAddItem.cs</DependentUpon>
+    <Compile Include="Owner Modules\Add Item.Designer.cs">
+      <DependentUpon>Add Item.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\frmItems.cs">
+    <Compile Include="Owner Modules\Customer Management.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Owner Modules\frmItems.Designer.cs">
-      <DependentUpon>frmItems.cs</DependentUpon>
+    <Compile Include="Owner Modules\Customer Management.Designer.cs">
+      <DependentUpon>Customer Management.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\frmUpdateItem.cs">
+    <Compile Include="Owner Modules\Item Management.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\Item Management.Designer.cs">
+      <DependentUpon>Item Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\Update Item.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\frmUpdateItem.Designer.cs">
-      <DependentUpon>frmUpdateItem.cs</DependentUpon>
+    <Compile Include="Owner Modules\Update Item.Designer.cs">
+      <DependentUpon>Update Item.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\frmUpdateUser.cs">
+    <Compile Include="Owner Modules\Update Customer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\frmUpdateUser.Designer.cs">
-      <DependentUpon>frmUpdateUser.cs</DependentUpon>
+    <Compile Include="Owner Modules\Update Customer.Designer.cs">
+      <DependentUpon>Update Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\Update User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\Update User.Designer.cs">
+      <DependentUpon>Update User.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Owner Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Owner Modules\Owner Dashboard.Designer.cs">
       <DependentUpon>Owner Dashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\Inventory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\Inventory.Designer.cs">
-      <DependentUpon>Inventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -491,14 +548,23 @@
     <Compile Include="Inventory Clerk Modules\Clerk Dashboard.Designer.cs">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\Sales Return.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashier Modules\Sales Return.Designer.cs">
+    <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
+      <DependentUpon>addCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\Sales Return.resx">
       <DependentUpon>Sales Return.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="Add_new_user.resx">
-      <DependentUpon>Add_new_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\Barcode Lookup.resx">
+      <DependentUpon>Barcode Lookup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\frmBarcodes.resx">
+      <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\Add Customer.resx">
+      <DependentUpon>Add Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\Add User.resx">
+      <DependentUpon>Add User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Cashier Mainform.resx">
       <DependentUpon>Cashier Mainform.cs</DependentUpon>
@@ -511,9 +577,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Discount.resx">
       <DependentUpon>Discount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\Sales Return.resx">
-      <DependentUpon>Sales Return.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\frmAddStocks.resx">
       <DependentUpon>frmAddStocks.cs</DependentUpon>
@@ -530,26 +593,17 @@
     <EmbeddedResource Include="Link Forms\Backup.resx">
       <DependentUpon>Backup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\Batch Items.resx">
-      <DependentUpon>Batch Items.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Void Authentication.resx">
       <DependentUpon>Void Authentication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Quantity.resx">
       <DependentUpon>Quantity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\Add Variety.resx">
-      <DependentUpon>Add Variety.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Link Forms\Sales Report.resx">
       <DependentUpon>Sales Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\Update Stock.resx">
       <DependentUpon>Update Stock.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\Add Stock.resx">
-      <DependentUpon>Add Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Mainform.resx">
       <DependentUpon>Clerk Mainform.cs</DependentUpon>
@@ -566,23 +620,26 @@
     <EmbeddedResource Include="Link Forms\Inventory Reports.resx">
       <DependentUpon>Inventory Reports.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\frmAddItem.resx">
-      <DependentUpon>frmAddItem.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Add Item.resx">
+      <DependentUpon>Add Item.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\frmItems.resx">
-      <DependentUpon>frmItems.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Customer Management.resx">
+      <DependentUpon>Customer Management.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\frmUpdateItem.resx">
-      <DependentUpon>frmUpdateItem.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Item Management.resx">
+      <DependentUpon>Item Management.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\frmUpdateUser.resx">
-      <DependentUpon>frmUpdateUser.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Update Item.resx">
+      <DependentUpon>Update Item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\Update Customer.resx">
+      <DependentUpon>Update Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\Update User.resx">
+      <DependentUpon>Update User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Owner Dashboard.resx">
       <DependentUpon>Owner Dashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\Inventory.resx">
-      <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -631,6 +688,20 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Receipt.rdlc" />
+    <EmbeddedResource Include="Report2.rdlc" />
+    <EmbeddedResource Include="Report1.rdlc" />
+    <None Include="AppData.xsc">
+      <DependentUpon>AppData.xsd</DependentUpon>
+    </None>
+    <None Include="AppData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AppData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AppData.xss">
+      <DependentUpon>AppData.xsd</DependentUpon>
+    </None>
     <None Include="DBSalesandInventoryDataSet.xsc">
       <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
     </None>
@@ -859,6 +930,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search_now.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer-feedback.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -123,6 +123,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap customer_feedback {
+            get {
+                object obj = ResourceManager.GetObject("customer-feedback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dash {
             get {
                 object obj = ResourceManager.GetObject("dash", resourceCulture);

@@ -9,16 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
+namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class frmUpdateUser : Form
+    public partial class frmAddNewUser : Form
     {
-        private string id;
-        public string Id
+        public frmAddNewUser()
         {
-            get { return id; }
-            set { id = value; }
+            InitializeComponent();
         }
+
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
@@ -32,19 +31,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static string QueryDelete;
         public static string status = "Active";
 
-        public frmUpdateUser()
+        private void frmAddNewUser_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
-            
-           
+            cmbGender.SelectedIndex = 0;
+            cmbUser_Type.SelectedIndex = 0;
+
+            this.ActiveControl = txtFirstName;
+
+            loadProvinces();
         }
 
-        private void frmUpdateUser_Load(object sender, EventArgs e)
-        {
-            DisplayUser();
+        //methods
 
-        }
-
+        //clear controls
         public void ClearControls()
         {
             txtFirstName.Clear();
@@ -52,19 +51,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             txtLastName.Clear();
             txtContact.Clear();
             txtStreet.Clear();
-            txtBarangay.Clear();
-            txtMunicipality.Clear();
-            txtProvince.Clear();
+            cmbBarangay.SelectedIndex =0;
+            cmbMunicipality.SelectedIndex = 0;
+            cmbProvince.SelectedIndex =0;
             txtUserName.Clear();
             txtPassword.Clear();
             txtConfirmPassword.Clear();
             cmbGender.SelectedIndex = 0;
             cmbUser_Type.SelectedIndex = 0;
-        }
+        } 
+        //AddUser
 
-        //Method UpdateUser
-
-        public void UpdateUser()
+        public void AddUser()
         {
             con.Close();
 
@@ -118,35 +116,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtStreet.Clear();
             }
-            else if (String.IsNullOrEmpty(txtBarangay.Text))
+            else if (String.IsNullOrEmpty(cmbBarangay.Text))
             {
                 MessageBox.Show("Enter Barangay!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtBarangay.Focus();
+                cmbBarangay.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtBarangay.Text))
+            else if (String.IsNullOrWhiteSpace(cmbBarangay.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtBarangay.Clear();
+                cmbBarangay.Items.Clear();
             }
-            else if (String.IsNullOrEmpty(txtMunicipality.Text))
+            else if (String.IsNullOrEmpty(cmbMunicipality.Text))
             {
                 MessageBox.Show("Enter Municipality!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMunicipality.Focus();
+                cmbMunicipality.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtMunicipality.Text))
+            else if (String.IsNullOrWhiteSpace(cmbMunicipality.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtMunicipality.Clear();
+                cmbMunicipality.Items.Clear();
             }
-            else if (String.IsNullOrEmpty(txtProvince.Text))
+            else if (String.IsNullOrEmpty(cmbProvince.Text))
             {
                 MessageBox.Show("Enter Province!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtProvince.Focus();
+                cmbProvince.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtProvince.Text))
+            else if (String.IsNullOrWhiteSpace(cmbProvince.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtProvince.Clear();
+                cmbProvince.Items.Clear();
             }
             else if (String.IsNullOrEmpty(txtUserName.Text))
             {
@@ -180,62 +178,74 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
             else if (txtFirstName.Text != "" && txtMiddleName.Text != ""
                 && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
-                && txtBarangay.Text != "" && txtMunicipality.Text != "" && txtProvince.Text != ""
+                && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != ""
                 && txtUserName.Text != "" && txtPassword.Text != "" && txtConfirmPassword.Text != "")
             {
-                if (txtPassword.Text == txtConfirmPassword.Text)
+                if (txtPassword.Text == txtConfirmPassword.Text) {
+                result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
                 {
-                    result = MessageBox.Show("Do you want to update this User?", "Update User", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                    {
                         con.Close();
                         con.Open();
-                        QuerySelect = "SELECT * FROM tblUsers " +
-                            "WHERE first_name = '" + txtFirstName.Text + "' " +
-                            "AND middle_name = '" + txtMiddleName.Text + "' " +
-                            "AND last_name = '" + txtLastName.Text + "' " +
-                            "AND username = '" + txtUserName.Text + "'";
+                        QuerySelect = "SELECT * FROM tblUsers WHERE First_name =@fName AND Middle_name =@mName AND Last_name =@lName AND Username =@uName";
+                        
                         cmd = new SqlCommand(QuerySelect, con);
+                        cmd.Parameters.AddWithValue("@fName", txtFirstName.Text);
+                        cmd.Parameters.AddWithValue("@mName", txtMiddleName.Text);
+                        cmd.Parameters.AddWithValue("@lName", txtLastName.Text);
+                        cmd.Parameters.AddWithValue("@uName", txtUserName.Text);
+
                         reader = cmd.ExecuteReader();
-                        if (reader.HasRows)
+
+                    if (reader.HasRows)
+                    {
+                        MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        ClearControls();
+                    }
+                    else
+                    {
+                        try
                         {
-                            MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            this.Close();
-                        }
-                        else
-                        {
-                            try
-                            {
-                                con.Close();
-                                con.Open();
-                                QueryUpdate = "Update tblUsers Set " +
-                                "last_name ='" + txtLastName.Text + "',first_name = '" + txtFirstName.Text + "'" +
-                                ",middle_name = '" + txtMiddleName.Text + "',birthday = '" + dtpBirthday.Value.Date +
-                                "',street = '" + txtStreet.Text + "',barangay = '" + txtBarangay.Text + "'" +
-                                ",municipality = '" + txtMunicipality.Text + "',province = '" + txtProvince.Text + "'" +
-                                ",contact_number = '" + txtContact.Text + "', sex = '" + cmbGender.SelectedItem.ToString() + "'" +
-                                ",username = '" + txtUserName.Text + "', password = '" + txtPassword.Text + "'" +
-                                ",user_type = '" + cmbUser_Type.SelectedItem.ToString() + "' WHERE user_id = '" + id + "'";
-                               
-                                cmd = new SqlCommand(QueryUpdate, con);
+                            con.Close();
+                            con.Open();
+                            QueryInsert = "INSERT INTO tblUsers (Last_name,First_name,Middle_name,Birthday,Street," +
+                            "Barangay,Municipality,Province,Contact_number,Sex,Username,Password,User_type) " +
+                            "VALUES (@lName, @fName, @mName, @birthday, @street, @brgy, @city, @province, @cNo, @gender, @username, @password, @userType)";
+                                
+                                cmd = new SqlCommand(QueryInsert, con);
+
+                                cmd.Parameters.AddWithValue("@fName", txtFirstName.Text);
+                                cmd.Parameters.AddWithValue("@mName", txtMiddleName.Text);
+                                cmd.Parameters.AddWithValue("@lName", txtLastName.Text);
+                                cmd.Parameters.AddWithValue("@birthday", dtpBirthday.Value.Date);
+                                cmd.Parameters.AddWithValue("@province", cmbProvince.SelectedValue.ToString());
+                                cmd.Parameters.AddWithValue("@city", cmbMunicipality.SelectedValue.ToString());
+                                cmd.Parameters.AddWithValue("@brgy", cmbBarangay.SelectedValue.ToString());
+                                cmd.Parameters.AddWithValue("@street", txtStreet.Text);
+                                cmd.Parameters.AddWithValue("@cNo", txtContact.Text);
+                                cmd.Parameters.AddWithValue("@gender", cmbGender.SelectedItem.ToString());
+                                cmd.Parameters.AddWithValue("@userName", txtUserName.Text);
+                                cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                                cmd.Parameters.AddWithValue("@userType", cmbUser_Type.SelectedItem.ToString());
+
                                 cmd.ExecuteNonQuery();
-
-                                MessageBox.Show("User Updated Successfully!", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                
+                                MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.Close();
+                           
+                        }
 
-                            }
-
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(ex.Message);
-                                con.Close();
-                            }
-                            finally
-                            {
-                                con.Close();
-                            }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
 
                         }
+                        finally
+                        {
+                            con.Close();
+                        }
+
+                    }
 
                     }
 
@@ -252,68 +262,62 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
         }
 
-        public void DisplayUser()
+        public void loadProvinces()
         {
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT * from tblUsers WHERE user_id = '"+id+"'";
-                
+            con.Close();
+            con.Open();
+            QuerySelect = "Select * From tblProvinces Order by province_desc ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            con.Close();
 
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                adapter.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    txtFirstName.Text =  dt.Rows[0]["first_name"].ToString();
-                    txtMiddleName.Text = dt.Rows[0]["middle_name"].ToString();
-                    txtLastName.Text = dt.Rows[0]["last_name"].ToString();
-                    txtContact.Text = dt.Rows[0]["contact_number"].ToString();
-                    if (dt.Rows[0]["sex"].ToString() == "Male")
-                    {
-                        cmbGender.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        cmbGender.SelectedIndex = 1;
-                    }
-                    txtStreet.Text = dt.Rows[0]["street"].ToString();
-                    txtBarangay.Text = dt.Rows[0]["barangay"].ToString();
-                    txtMunicipality.Text = dt.Rows[0]["municipality"].ToString();
-                    txtProvince.Text = dt.Rows[0]["province"].ToString();
-                    dtpBirthday.Value = Convert.ToDateTime(dt.Rows[0]["birthday"].ToString());
-                    txtUserName.Text = dt.Rows[0]["username"].ToString();
-                    txtPassword.Text = dt.Rows[0]["password"].ToString();
-                    txtConfirmPassword.Text = dt.Rows[0]["password"].ToString();
-                    if (dt.Rows[0]["user_type"].ToString() == "Cashier")
-                    {
-                        cmbUser_Type.SelectedIndex = 0;
-                    }
-                    else if(dt.Rows[0]["user_type"].ToString() == "Inventory Clerk")
-                    {
-                        cmbUser_Type.SelectedIndex = 1;
-                    }
-                    else if (dt.Rows[0]["user_type"].ToString() == "Administrator")
-                    {
-                        cmbUser_Type.SelectedIndex = 2;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
+            cmbProvince.DisplayMember = "province_desc";
+            cmbProvince.ValueMember = "province_code";
+            cmbProvince.DataSource = dt;
 
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
         }
+
+        public void loadMunicipalities()
+        {
+            con.Close();
+            con.Open();
+            QuerySelect = "Select * From tblMunicipality Where province_code = '"+cmbProvince.SelectedValue+ "' Order by municipality_desc ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            cmbMunicipality.DisplayMember = "municipality_desc";
+            cmbMunicipality.ValueMember = "municipality_code";
+            cmbMunicipality.DataSource = dt;
+        }
+
+        public void loadBarangays()
+        {
+            con.Close();
+            con.Open();
+            QuerySelect = "Select * From tblBarangay Where municipality_code = '" + cmbMunicipality.SelectedValue + "' Order by brgy_desc ASC";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            cmbBarangay.DisplayMember = "brgy_desc";
+            cmbBarangay.ValueMember = "brgy_code";
+            cmbBarangay.DataSource = dt;
+        }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            UpdateUser();
+            AddUser();
         }
 
         private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
@@ -323,17 +327,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
                 e.Handled = true;
             }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbProvince_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadMunicipalities();
+        }
+
+        private void cmbMunicipality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadBarangays();
         }
     }
 }

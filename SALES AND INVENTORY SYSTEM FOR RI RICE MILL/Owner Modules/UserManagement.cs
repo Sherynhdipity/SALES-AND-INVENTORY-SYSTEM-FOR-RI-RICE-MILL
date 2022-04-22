@@ -66,33 +66,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             DisplayUser();
         }
 
-        public void DisplayUserList()
-        {
-            //con.Close();
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT * from tblUsers";
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                adapter.Fill(dt);
-
-                dgvUserList.DataSource = dt;
-                dgvUserList.Refresh();
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-           
- 
-        }
 
         public void DisplayUser()
         {
@@ -102,23 +75,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 if (txtViewUsers.Text == "" || txtViewUsers.Text == null)
                 {
-                    QuerySelect = "SELECT user_id as 'ID', first_name as 'First Name', " +
-                   "last_name as 'Last Name' ,contact_number as 'Contact', username as 'Username'," +
-                   " user_type as 'User Type' from tblUsers";
+                    QuerySelect = "SELECT * FROM UserViews";
                 }
                 else
                 {
-                    QuerySelect = "SELECT user_id as 'ID', first_name as 'First Name', " +
-                   "last_name as 'Last Name' ,contact_number as 'Contact', username as 'Username'," +
-                   " user_type as 'User Type' from tblUsers WHERE user_id LIKE '" + txtViewUsers.Text + "%' " +
-                   "OR first_name LIKE '"+txtViewUsers.Text+"%' " +
-                   "OR last_name LIKE '"+txtViewUsers.Text+"%' " +
-                   "OR contact_number LIKE '"+txtViewUsers.Text+"%' " +
-                   "OR username LIKE '"+txtViewUsers.Text+"%' " +
-                   "OR user_type LIKE '"+txtViewUsers.Text+"%'";
+                    QuerySelect = "SELECT * FROM  UserViews WHERE (ID LIKE '%' + @id + '%') OR ([First Name] LIKE '%' + @fName + '%') OR ([Last Name] LIKE '%' + @lName + '%') OR ([Contact Number] LIKE '%' + @cNum + '%') OR (Username LIKE '%' + @userName + '%') OR ([User Type] LIKE '%' + @userType + '%')";
                 } 
                 
                 cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@id", txtViewUsers.Text);
+                cmd.Parameters.AddWithValue("@fName", txtViewUsers.Text);
+                cmd.Parameters.AddWithValue("@lName", txtViewUsers.Text);
+                cmd.Parameters.AddWithValue("@cNum", txtViewUsers.Text);
+                cmd.Parameters.AddWithValue("@userName", txtViewUsers.Text);
+                cmd.Parameters.AddWithValue("@userType", txtViewUsers.Text);
+
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
@@ -141,11 +112,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             
             addNew.ShowDialog();
-        }
-
-        private void dgvUserList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
         }
 
         private void txtViewUsers_TextChange(object sender, EventArgs e)
