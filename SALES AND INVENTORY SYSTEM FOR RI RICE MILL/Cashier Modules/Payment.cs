@@ -79,9 +79,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 result = MessageBox.Show("Confirm Payment?", "Settle Payment", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                        try
-                        {
-                        //INSERT tblOrders
+                    try
+                    {
+                        //INSERT tblOrders  
                         try
                         {
 
@@ -138,13 +138,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             //insert tblOrderDetails and Delete from inventory
                             for (int i = 0; i < SKU.Length; i++)
                             {
-                                QueryInsert = "INSERT INTO tblOrderDetails(Inventory_id, Order_id,Transaction_number)" +
-                                "VALUES((SELECT Inventory_id FROM tblInventories WHERE SKU = '" + SKU[i] + "'),(SELECT MAX(Order_id) FROM tblOrders), '" + transNo + "')";
+                                QueryInsert = "INSERT INTO tblOrderDetails(Order_id, SKU, Transaction_number)" +
+                                "VALUES((SELECT MAX(Order_id) FROM tblOrders), @sku, @transNo)";
+
                                 cmd = new SqlCommand(QueryInsert, con);
+                                cmd.Parameters.AddWithValue("@sku", SKU[i]);
+                                cmd.Parameters.AddWithValue("@transNo", transNo);
                                 cmd.ExecuteNonQuery();
 
-                                QueryDelete = "DELETE FROM tblInventories WHERE SKU = '"+SKU[i]+"'";
+                                QueryDelete = "DELETE FROM tblInventories WHERE SKU = @sku";
                                 cmd = new SqlCommand(QueryDelete, con);
+                                cmd.Parameters.AddWithValue("@sku", SKU[i]);
                                 cmd.ExecuteNonQuery();
                             }
                            
@@ -160,41 +164,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             con.Close();
                         }
-   
-
-
-
-                            //try
-                            //{
-
-                            //    if (con.State == ConnectionState.Open)
-                            //    {
-                            //        con.Close();
-                            //    }
-
-                            //    con.Open();
-
-                            //    QueryInsert = "insert into tblTransactions values(" + transNo.Trim().ToString() + ",'" + DateTime.Now.Date.ToString("yyyy-MM-dd H:mm:ss") + "'," +
-                            //           "(select max(PurchaseID) from tblPurchases),(SELECT UserID from tblUsers where [Name] LIKE('" + frmLogin.GetUserName.ToString() + "')))";
-                            //    cmd = new SqlCommand(QueryInsert, con);
-                            //    cmd.ExecuteNonQuery();
-                            //    Console.WriteLine("transaction inserted");
-
-
-                            //}
-                            //catch (Exception ex)
-                            //{
-
-                            //    MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
-
-                            //}
-                            //finally
-                            //{
-
-                            //    con.Close();
-
-                            //}
-
 
                         }
 
@@ -207,333 +176,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             con.Close();
                         }
 
-                    //for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
-                    //{
-                    //    ////INSERT tblPurchases
-
-                    //    try
-                    //    {
-
-                    //        if (con.State == ConnectionState.Open)
-                    //        {
-                    //            con.Close();
-                    //        }
-
-                    //        con.Open();
-
-                    //        QueryInsert = "INSERT INTO [dbo].[tblPurchases]" +
-                    //            "([PurchaseDate],[InvoiceNumber],[QuantityBought],[ProductID],[DiscountID],[PaymentID],[VAT])" +
-                    //            "VALUES" +
-                    //            "('" + DateTime.Now.ToString("yyyy-MM-dd H:mm:ss") +
-                    //            "'," + transNo +
-                    //            "," + dtFromSalesMgt.Rows[i][3].ToString() +
-                    //            ",(SELECT ProductID from tblProducts where ProductCode like('" + dtFromSalesMgt.Rows[i][0].ToString() + "'))," +
-                    //            "1," +
-                    //            "(SELECT MAX(PaymentID) as pID from tblPayments)," +
-                    //            "0.12)";
-                    //       // QueryInsert = "INSERT INTO tblPurchases(PurchaseDate ,InvoiceNumber, QuantityBought, ProductID, DiscountID, PaymentID, VAT) VALUES ('" + sales.lblTransDate.Text + "', '" + sales.lblIVno.Text + "','" + sales.txtQuantityCount.Text + "','" + "', (Select ProductID from tblProducts Where ProductCode = '" + dtFromSalesMgt.Rows[0][0].ToString() + "'), '" ) ";
-                    //        cmd = new SqlCommand(QueryInsert, con);
-                    //        cmd.ExecuteNonQuery();
-                    //        Console.WriteLine("Purchases inserted");
-
-
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-
-                    //        MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
-
-                    //    }
-                    //    finally
-                    //    {
-
-                    //        con.Close();
-
-                    //    }
-
-
-                    //    //stockout
-
-                    //    try
-                    //    {
-                    //            string temp = "";
-                    //            int tempctr = 0;
-                    //            string temp2 = "";
-                    //            int temp2ctr = 0;
-                    //            string temp3 = "";
-                    //            int temp3ctr = 0;
-                    //            string query = "select TOP " + dtFromSalesMgt.Rows[i][3].ToString() + " tblBatchProduct.BatchID, tblStockin.ProductID FROM tblBatchProduct" +
-                    //            " full join tblStockin on tblBatchProduct.BatchID = tblStockin.BatchID where tblStockin.ProductID =" +
-                    //            "  (SELECT ProductID from tblProducts where ProductCode like('" + dtFromSalesMgt.Rows[i][0].ToString() + "')) " +
-                    //            "AND UPPER(tblBatchProduct.Status) like('IN')";
-                    //            con.Open();
-                    //            SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
-                    //            while (reader.Read())
-                    //            {
-                    //                if (temp.Equals(string.Empty))
-                    //                {
-                    //                    temp = reader["BatchID"].ToString();
-                    //                    tempctr++;
-                    //                }
-                    //                else
-                    //                {
-                    //                    if (temp.Equals(reader["BatchID"].ToString()))
-                    //                    {
-                    //                        tempctr++;
-                    //                    }
-                    //                    else if (!temp.Equals(reader["BatchID"].ToString()) && temp2.Equals(string.Empty))
-                    //                    {
-                    //                        temp2 = reader["BatchID"].ToString();
-                    //                        temp2ctr++;
-                    //                    }
-                    //                    else if (!temp.Equals(reader["BatchID"].ToString()) && !temp2.Equals(string.Empty))
-                    //                    {
-                    //                        if (temp2.Equals(reader["BatchID"].ToString()))
-                    //                        {
-                    //                            tempctr++;
-                    //                        }
-                    //                        else if (!temp2.Equals(reader["BatchID"].ToString()) && temp3.Equals(string.Empty))
-                    //                        {
-                    //                            temp3 = reader["BatchID"].ToString();
-                    //                            temp3ctr++;
-                    //                        }
-                    //                        else if (!temp2.Equals(reader["BatchID"].ToString()) && !temp3.Equals(string.Empty))
-                    //                        {
-
-                    //                            temp3ctr++;
-                    //                        }
-                    //                    }
-                    //                }
-                    //            }
-                                
-                    //        try
-                    //        {
-
-                    //            if (con.State == ConnectionState.Open)
-                    //            {
-                    //                con.Close();
-                    //            }
-
-                    //            con.Open();
-
-                    //            QueryInsert = "INSERT INTO tblStockout ([ProductID],[QtyStockedOut],[PurchaseID],[StockoutDate],[BatchID])" +
-                    //                " VALUES(" + "(SELECT ProductID from tblProducts where ProductCode like('" + dtFromSalesMgt.Rows[i][0].ToString() + "')), " +
-                    //                "'" + tempctr.ToString() + "', (select max(PurchaseID) from tblPurchases),'" + DateTime.Now.Date.ToString("yyyy-MM-dd H:mm:ss") + "'" +
-                    //                ", " + temp + ")";
-                    //            cmd = new SqlCommand(QueryInsert, con);
-                    //            cmd.ExecuteNonQuery();
-
-
-                    //        }
-                    //        catch (Exception ex)
-                    //        {
-
-                    //            MessageBox.Show(ex.Message);
-
-                    //        }
-                    //        finally
-                    //        {
-
-                    //            con.Close();
-
-                    //        }
-
-                    //            for (int ctr = 0; ctr < tempctr; ctr++)
-                    //            {
-
-                    //            try
-                    //            {
-
-                    //                if (con.State == ConnectionState.Open)
-                    //                {
-                    //                    con.Close();
-                    //                }
-
-                    //                con.Open();
-
-                                    
-                    //                QueryInsert = "UPDATE tblBatchProduct SET Status = 'OUT'" +
-                    //                    " WHERE BatchID = " + temp +
-                    //                    " AND ID=(SELECT MIN(ID) FROM tblBatchProduct WHERE BatchID = " + temp + " AND UPPER(Status) = 'IN')";
-                    //                cmd = new SqlCommand(QueryInsert, con);
-                    //                cmd.ExecuteNonQuery();
-
-
-                    //            }
-                    //            catch (Exception ex)
-                    //            {
-
-                    //                MessageBox.Show(ex.Message);
-
-                    //            }
-                    //            finally
-                    //            {
-
-                    //                con.Close();
-
-                    //            }
-
-                    //        }
-
-                    //            if (!temp2.Equals(string.Empty))
-                    //            {
-
-                    //            try
-                    //            {
-
-                    //                if (con.State == ConnectionState.Open)
-                    //                {
-                    //                    con.Close();
-                    //                }
-
-                    //                con.Open();
-
-                    //                QueryInsert = "INSERT INTO tblStockout ([ProductID],[QtyStockedOut],[PurchaseID],[StockoutDate],[BatchID])" +
-                    //                   " VALUES(" + "(SELECT ProductID from tblProducts where ProductCode like('" + dtFromSalesMgt.Rows[i][0].ToString() + "')), " +
-                    //                   "'" + temp2ctr.ToString() + "', (select max(PurchaseID) from tblPurchases),'" + DateTime.Now.Date.ToString("yyyy-MM-dd H:mm:ss") + "'" +
-                    //                   ", " + temp2 + ")";
-                    //                cmd = new SqlCommand(QueryInsert, con);
-                    //                cmd.ExecuteNonQuery();
-
-
-                    //            }
-                    //            catch (Exception ex)
-                    //            {
-
-                    //                MessageBox.Show(ex.Message);
-
-                    //            }
-                    //            finally
-                    //            {
-
-                    //                con.Close();
-
-                    //            }
-
-
-                    //            for (int ctr = 0; ctr < temp2ctr; ctr++)
-                    //                {
-
-                    //                try
-                    //                {
-
-                    //                    if (con.State == ConnectionState.Open)
-                    //                    {
-                    //                        con.Close();
-                    //                    }
-
-                    //                    con.Open();
-
-                    //                    QueryInsert = "UPDATE tblBatchProduct SET Status = 'OUT'" +
-                    //                         " WHERE BatchID = " + temp2 +
-                    //                         " AND ID=(SELECT MIN(ID) FROM tblBatchProduct WHERE BatchID = " + temp2 + " AND UPPER(Status) = 'IN')";
-                    //                    cmd = new SqlCommand(QueryInsert, con);
-                    //                    cmd.ExecuteNonQuery();
-
-
-                    //                }
-                    //                catch (Exception ex)
-                    //                {
-
-                    //                    MessageBox.Show(ex.Message);
-
-                    //                }
-                    //                finally
-                    //                {
-
-                    //                    con.Close();
-
-                    //                }
-
-                    //            }
-                    //            }
-                    //            if (!temp3.Equals(string.Empty))
-                    //            {
-
-                    //            try
-                    //            {
-
-                    //                if (con.State == ConnectionState.Open)
-                    //                {
-                    //                    con.Close();
-                    //                }
-
-                    //                con.Open();
-
-                    //                QueryInsert = "INSERT INTO tblStockout ([ProductID],[QtyStockedOut],[PurchaseID],[StockoutDate],[BatchID])" +
-                    //                   " VALUES(" + "(SELECT ProductID from tblProducts where ProductCode like('" + dtFromSalesMgt.Rows[i][0].ToString() + "')), " +
-                    //                   "'" + temp3ctr.ToString() + "', (select max(PurchaseID) from tblPurchases),'" + DateTime.Now.Date.ToString("yyyy-MM-dd H:mm:ss") + "'" +
-                    //                   ", " + temp3 + ")";
-                    //                cmd = new SqlCommand(QueryInsert, con);
-                    //                cmd.ExecuteNonQuery();
-
-
-                    //            }
-                    //            catch (Exception ex)
-                    //            {
-
-                    //                MessageBox.Show(ex.Message);
-
-                    //            }
-                    //            finally
-                    //            {
-
-                    //                con.Close();
-
-                    //            }
-
-
-                    //            for (int ctr = 0; ctr < temp3ctr; ctr++)
-                    //                {
-
-                    //                try
-                    //                {
-
-                    //                    if (con.State == ConnectionState.Open)
-                    //                    {
-                    //                        con.Close();
-                    //                    }
-
-                    //                    con.Open();
-
-
-                    //                    QueryInsert = "UPDATE tblBatchProduct SET Status = 'OUT'" +
-                    //                        " WHERE BatchID = " + temp3 +
-                    //                        " AND ID=(SELECT MIN(ID) FROM tblBatchProduct WHERE BatchID = " + temp3 + " AND UPPER(Status) = 'IN')";
-                    //                    cmd = new SqlCommand(QueryInsert, con);
-                    //                    cmd.ExecuteNonQuery();
-
-
-                    //                }
-                    //                catch (Exception ex)
-                    //                {
-
-                    //                    MessageBox.Show(ex.Message);
-
-                    //                }
-                    //                finally
-                    //                {
-
-                    //                    con.Close();
-
-                    //                }
-
-                    //            }
-                    //            }
-                                
-
-
-
-                    //        }
-                    //        catch (Exception ex)
-                    //        {
-                    //            MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
-                    //        }
-                    //        finally
-                    //        {
-                    //            con.Close();
-                    //        }
-                    //    }//for(int i = 0; i < dtFromSalesMgt.Rows.Count; i++) end
                     MessageBox.Show("Change: "+( Convert.ToDouble(txtCash.Text)-Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //printreciept();
@@ -673,6 +315,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                      txtAmount.Text = total.ToString();
                 }
                 con.Close();
+                txtAmount.Enabled = false;
                 txtCash.Focus();
             }
         }

@@ -242,6 +242,7 @@
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -278,6 +279,11 @@
     </Compile>
     <Compile Include="Cashier Modules\Sales Return.Designer.cs">
       <DependentUpon>Sales Return.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBSaleInventoryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBSaleInventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Inventory Clerk Modules\Barcode Lookup.cs">
       <SubType>Form</SubType>
@@ -327,26 +333,6 @@
     </Compile>
     <Compile Include="Cashier Modules\Discount.Designer.cs">
       <DependentUpon>Discount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DBSalesandInventoryDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBSalesandInventoryDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBSalesandInventoryDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBSalesandInventoryDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="DBSalesInventoryDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBSalesInventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Inventory Clerk Modules\frmAddStocks.cs">
       <SubType>Form</SubType>
@@ -702,49 +688,16 @@
     <None Include="AppData.xss">
       <DependentUpon>AppData.xsd</DependentUpon>
     </None>
-    <None Include="DBSalesandInventoryDataSet.xsc">
-      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
+    <None Include="DBSaleInventoryDataSet.xsc">
+      <DependentUpon>DBSaleInventoryDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DBSalesandInventoryDataSet.xsd">
+    <None Include="DBSaleInventoryDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBSalesandInventoryDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBSaleInventoryDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DBSalesandInventoryDataSet.xss">
-      <DependentUpon>DBSalesandInventoryDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DBSalesandInventoryDataSet1.xsc">
-      <DependentUpon>DBSalesandInventoryDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DBSalesandInventoryDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBSalesandInventoryDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBSalesandInventoryDataSet1.xss">
-      <DependentUpon>DBSalesandInventoryDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="DBSalesandInventoryDataSet2.xsc">
-      <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DBSalesandInventoryDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBSalesandInventoryDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBSalesandInventoryDataSet2.xss">
-      <DependentUpon>DBSalesandInventoryDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="DBSalesInventoryDataSet.xsc">
-      <DependentUpon>DBSalesInventoryDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DBSalesInventoryDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DBSalesInventoryDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DBSalesInventoryDataSet.xss">
-      <DependentUpon>DBSalesInventoryDataSet.xsd</DependentUpon>
+    <None Include="DBSaleInventoryDataSet.xss">
+      <DependentUpon>DBSaleInventoryDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

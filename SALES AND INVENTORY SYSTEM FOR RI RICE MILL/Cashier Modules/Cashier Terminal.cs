@@ -207,33 +207,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
             }
-
-
         }
-
-
-        // update Inventory
-        private void UpdateInventoryStocks()
-        {
-
-            try
-            {
-                for (int i = 0; i < dvgOrderList.Rows.Count; i++)
-                {
-
-                    QueryUpdate = "UPDATE tblStockin SET QtyStockedIn ='" + dvgOrderList.Rows[i].Cells["Remaining Quantity"].Value + "' WHERE ProductID='" + dvgOrderList.Rows[i].Cells["Product Code"].Value + "'";
-                    con.Open();
-                    cmd = new SqlCommand(QueryUpdate, con);
-                    cmd.ExecuteNonQuery();
-                }
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -484,6 +458,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     con.Close();
                 }
+                con.Close();
             }
         }
 
@@ -529,6 +504,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     con.Close();
                 }
+                con.Close();
             }
         }
 
@@ -698,34 +674,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 frmLogin l = new frmLogin();
                 l.Show();
-            }
-        }
-
-        private void btnDiscount_Click(object sender, EventArgs e)
-        {
-            frmDiscount discount = new frmDiscount();
-            discount.ShowDialog();
-            try
-            {
-                con.Open();
-                string query = "SELECT DiscountPercentage FROM tblDiscount WHERE DiscountID = "+ discount.discountID;
-                SqlDataReader reader = new SqlCommand(query, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    lblDiscPercentage.Text = reader["DiscountPercentage"].ToString()+" %";
-                    if (!txtAmount.Text.ToString().Equals(string.Empty))
-                    {
-                        recompute(Convert.ToDouble(txtAmount.Text.ToString()));
-                    }
-                }
-            }   
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
             }
         }
 

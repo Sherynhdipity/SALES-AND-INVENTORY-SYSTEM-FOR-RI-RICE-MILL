@@ -77,6 +77,37 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             return final;
         }
 
+        static string RemoveVowel(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                switch (input[i])
+                {
+                    case 'a':
+                    case 'e':
+                    case 'i':
+                    case 'o':
+                    case 'u':
+                    case 'A':
+                    case 'E':
+                    case 'I':
+                    case 'O':
+                    case 'U':
+                    case '-':
+                    case ' ':
+                        sb.Append("");
+                        break;
+
+                    default:
+                        sb.Append(input[i]);
+                        break;
+                }
+            }
+            return sb.ToString();
+        }
+
         public void DisplayItems()
         {
             try
@@ -302,6 +333,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             }
         }
 
+        static string makeShortCode(string i)
+        {
+            string input = i;
+            input = RemoveVowel(input);
+            int length = input.Length;
+            //if (length >= 9)
+            //{
+                input = input.Remove(input.Length - 2);
+                input = input + "00000000";
+                input = input.Substring(0, 9);
+                
+                return input;
+            //}
+            //else
+            //{
+            //    input = input + "00000000";
+            //    input = input.Substring(0, 9);
+
+            //    return input;
+            //}
+
+        }
+
         public void displaySKU()
         {
             dgvSKUList.Rows.Clear();
@@ -342,19 +396,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                     //string lastCharacter = (sku1 + sku2 + sku3).ToString();
                     //MessageBox.Show(lastCharacter.ToString());
                     int lastSKU = Convert.ToInt32(lastCharacter.ToString())+1;
-                        
+                    string newDesc = makeShortCode(description);
                     for (int i = lastSKU; i < quantity + lastSKU; i++)
                     {
-                        string[] row = new string[] { ReplaceWhitespace(description, "") + "-" + i.ToString("000") };
+                        string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
                         dgvSKUList.Rows.Add(row);
                     }
 
                 }
                 else
                 {
+                    string newDesc = makeShortCode(description);
                     for (int i = 1; i <= quantity; i++)
                     {
-                        string[] row = new string[] { ReplaceWhitespace(description, "") + "-" + i.ToString("000") };
+                        string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
                         dgvSKUList.Rows.Add(row);
                     }
                 }

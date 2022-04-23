@@ -20,17 +20,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DBSalesandInventoryDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DBSaleInventoryDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DBSalesandInventoryDataSet : global::System.Data.DataSet {
+    public partial class DBSaleInventoryDataSet : global::System.Data.DataSet {
         
-        private viewForRecieptDataTable tableviewForReciept;
+        private CashierDashboardViewDataTable tableCashierDashboardView;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public DBSalesandInventoryDataSet() {
+        public DBSaleInventoryDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected DBSalesandInventoryDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DBSaleInventoryDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["viewForReciept"] != null)) {
-                    base.Tables.Add(new viewForRecieptDataTable(ds.Tables["viewForReciept"]));
+                if ((ds.Tables["CashierDashboardView"] != null)) {
+                    base.Tables.Add(new CashierDashboardViewDataTable(ds.Tables["CashierDashboardView"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public viewForRecieptDataTable viewForReciept {
+        public CashierDashboardViewDataTable CashierDashboardView {
             get {
-                return this.tableviewForReciept;
+                return this.tableCashierDashboardView;
             }
         }
         
@@ -127,7 +127,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DBSalesandInventoryDataSet cln = ((DBSalesandInventoryDataSet)(base.Clone()));
+            DBSaleInventoryDataSet cln = ((DBSaleInventoryDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["viewForReciept"] != null)) {
-                    base.Tables.Add(new viewForRecieptDataTable(ds.Tables["viewForReciept"]));
+                if ((ds.Tables["CashierDashboardView"] != null)) {
+                    base.Tables.Add(new CashierDashboardViewDataTable(ds.Tables["CashierDashboardView"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableviewForReciept = ((viewForRecieptDataTable)(base.Tables["viewForReciept"]));
+            this.tableCashierDashboardView = ((CashierDashboardViewDataTable)(base.Tables["CashierDashboardView"]));
             if ((initTable == true)) {
-                if ((this.tableviewForReciept != null)) {
-                    this.tableviewForReciept.InitVars();
+                if ((this.tableCashierDashboardView != null)) {
+                    this.tableCashierDashboardView.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DBSalesandInventoryDataSet";
+            this.DataSetName = "DBSaleInventoryDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DBSalesandInventoryDataSet.xsd";
+            this.Namespace = "http://tempuri.org/DBSaleInventoryDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableviewForReciept = new viewForRecieptDataTable();
-            base.Tables.Add(this.tableviewForReciept);
+            this.tableCashierDashboardView = new CashierDashboardViewDataTable();
+            base.Tables.Add(this.tableCashierDashboardView);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeviewForReciept() {
+        private bool ShouldSerializeCashierDashboardView() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DBSalesandInventoryDataSet ds = new DBSalesandInventoryDataSet();
+            DBSaleInventoryDataSet ds = new DBSaleInventoryDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,39 +270,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void viewForRecieptRowChangeEventHandler(object sender, viewForRecieptRowChangeEvent e);
+        public delegate void CashierDashboardViewRowChangeEventHandler(object sender, CashierDashboardViewRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class viewForRecieptDataTable : global::System.Data.TypedTableBase<viewForRecieptRow> {
+        public partial class CashierDashboardViewDataTable : global::System.Data.TypedTableBase<CashierDashboardViewRow> {
             
-            private global::System.Data.DataColumn columnTransactionID;
+            private global::System.Data.DataColumn columnTotal_Transactions;
             
-            private global::System.Data.DataColumn columnTransactionNo;
-            
-            private global::System.Data.DataColumn columnInvoiceNumber;
-            
-            private global::System.Data.DataColumn columnQuantityBought;
-            
-            private global::System.Data.DataColumn columnVarietyName;
-            
-            private global::System.Data.DataColumn columnProductDesc;
-            
-            private global::System.Data.DataColumn columnPrice;
-            
-            private global::System.Data.DataColumn columnTotalAmount;
-            
-            private global::System.Data.DataColumn columnAmountPaid;
-            
-            private global::System.Data.DataColumn columnPaymentID;
+            private global::System.Data.DataColumn columnTotal_Sales;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewForRecieptDataTable() {
-                this.TableName = "viewForReciept";
+            public CashierDashboardViewDataTable() {
+                this.TableName = "CashierDashboardView";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -310,7 +294,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal viewForRecieptDataTable(global::System.Data.DataTable table) {
+            internal CashierDashboardViewDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -327,88 +311,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected viewForRecieptDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected CashierDashboardViewDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TransactionIDColumn {
+            public global::System.Data.DataColumn Total_TransactionsColumn {
                 get {
-                    return this.columnTransactionID;
+                    return this.columnTotal_Transactions;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TransactionNoColumn {
+            public global::System.Data.DataColumn Total_SalesColumn {
                 get {
-                    return this.columnTransactionNo;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn InvoiceNumberColumn {
-                get {
-                    return this.columnInvoiceNumber;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn QuantityBoughtColumn {
-                get {
-                    return this.columnQuantityBought;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn VarietyNameColumn {
-                get {
-                    return this.columnVarietyName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn ProductDescColumn {
-                get {
-                    return this.columnProductDesc;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PriceColumn {
-                get {
-                    return this.columnPrice;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn TotalAmountColumn {
-                get {
-                    return this.columnTotalAmount;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn AmountPaidColumn {
-                get {
-                    return this.columnAmountPaid;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn PaymentIDColumn {
-                get {
-                    return this.columnPaymentID;
+                    return this.columnTotal_Sales;
                 }
             }
             
@@ -423,54 +343,46 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewForRecieptRow this[int index] {
+            public CashierDashboardViewRow this[int index] {
                 get {
-                    return ((viewForRecieptRow)(this.Rows[index]));
+                    return ((CashierDashboardViewRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewForRecieptRowChangeEventHandler viewForRecieptRowChanging;
+            public event CashierDashboardViewRowChangeEventHandler CashierDashboardViewRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewForRecieptRowChangeEventHandler viewForRecieptRowChanged;
+            public event CashierDashboardViewRowChangeEventHandler CashierDashboardViewRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewForRecieptRowChangeEventHandler viewForRecieptRowDeleting;
+            public event CashierDashboardViewRowChangeEventHandler CashierDashboardViewRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event viewForRecieptRowChangeEventHandler viewForRecieptRowDeleted;
+            public event CashierDashboardViewRowChangeEventHandler CashierDashboardViewRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddviewForRecieptRow(viewForRecieptRow row) {
+            public void AddCashierDashboardViewRow(CashierDashboardViewRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewForRecieptRow AddviewForRecieptRow(int TransactionID, long TransactionNo, long InvoiceNumber, int QuantityBought, string VarietyName, string ProductDesc, decimal Price, decimal TotalAmount, decimal AmountPaid, int PaymentID) {
-                viewForRecieptRow rowviewForRecieptRow = ((viewForRecieptRow)(this.NewRow()));
+            public CashierDashboardViewRow AddCashierDashboardViewRow(int Total_Transactions, double Total_Sales) {
+                CashierDashboardViewRow rowCashierDashboardViewRow = ((CashierDashboardViewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        TransactionID,
-                        TransactionNo,
-                        InvoiceNumber,
-                        QuantityBought,
-                        VarietyName,
-                        ProductDesc,
-                        Price,
-                        TotalAmount,
-                        AmountPaid,
-                        PaymentID};
-                rowviewForRecieptRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowviewForRecieptRow);
-                return rowviewForRecieptRow;
+                        Total_Transactions,
+                        Total_Sales};
+                rowCashierDashboardViewRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowCashierDashboardViewRow);
+                return rowCashierDashboardViewRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                viewForRecieptDataTable cln = ((viewForRecieptDataTable)(base.Clone()));
+                CashierDashboardViewDataTable cln = ((CashierDashboardViewDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -478,75 +390,49 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new viewForRecieptDataTable();
+                return new CashierDashboardViewDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnTransactionID = base.Columns["TransactionID"];
-                this.columnTransactionNo = base.Columns["TransactionNo"];
-                this.columnInvoiceNumber = base.Columns["InvoiceNumber"];
-                this.columnQuantityBought = base.Columns["QuantityBought"];
-                this.columnVarietyName = base.Columns["VarietyName"];
-                this.columnProductDesc = base.Columns["ProductDesc"];
-                this.columnPrice = base.Columns["Price"];
-                this.columnTotalAmount = base.Columns["TotalAmount"];
-                this.columnAmountPaid = base.Columns["AmountPaid"];
-                this.columnPaymentID = base.Columns["PaymentID"];
+                this.columnTotal_Transactions = base.Columns["Total Transactions"];
+                this.columnTotal_Sales = base.Columns["Total Sales"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnTransactionID = new global::System.Data.DataColumn("TransactionID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTransactionID);
-                this.columnTransactionNo = new global::System.Data.DataColumn("TransactionNo", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTransactionNo);
-                this.columnInvoiceNumber = new global::System.Data.DataColumn("InvoiceNumber", typeof(long), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInvoiceNumber);
-                this.columnQuantityBought = new global::System.Data.DataColumn("QuantityBought", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantityBought);
-                this.columnVarietyName = new global::System.Data.DataColumn("VarietyName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVarietyName);
-                this.columnProductDesc = new global::System.Data.DataColumn("ProductDesc", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProductDesc);
-                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrice);
-                this.columnTotalAmount = new global::System.Data.DataColumn("TotalAmount", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalAmount);
-                this.columnAmountPaid = new global::System.Data.DataColumn("AmountPaid", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnAmountPaid);
-                this.columnPaymentID = new global::System.Data.DataColumn("PaymentID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPaymentID);
-                this.columnVarietyName.MaxLength = 50;
-                this.columnProductDesc.MaxLength = 2147483647;
+                this.columnTotal_Transactions = new global::System.Data.DataColumn("Total Transactions", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal_Transactions);
+                this.columnTotal_Sales = new global::System.Data.DataColumn("Total Sales", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal_Sales);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewForRecieptRow NewviewForRecieptRow() {
-                return ((viewForRecieptRow)(this.NewRow()));
+            public CashierDashboardViewRow NewCashierDashboardViewRow() {
+                return ((CashierDashboardViewRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new viewForRecieptRow(builder);
+                return new CashierDashboardViewRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(viewForRecieptRow);
+                return typeof(CashierDashboardViewRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.viewForRecieptRowChanged != null)) {
-                    this.viewForRecieptRowChanged(this, new viewForRecieptRowChangeEvent(((viewForRecieptRow)(e.Row)), e.Action));
+                if ((this.CashierDashboardViewRowChanged != null)) {
+                    this.CashierDashboardViewRowChanged(this, new CashierDashboardViewRowChangeEvent(((CashierDashboardViewRow)(e.Row)), e.Action));
                 }
             }
             
@@ -554,8 +440,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.viewForRecieptRowChanging != null)) {
-                    this.viewForRecieptRowChanging(this, new viewForRecieptRowChangeEvent(((viewForRecieptRow)(e.Row)), e.Action));
+                if ((this.CashierDashboardViewRowChanging != null)) {
+                    this.CashierDashboardViewRowChanging(this, new CashierDashboardViewRowChangeEvent(((CashierDashboardViewRow)(e.Row)), e.Action));
                 }
             }
             
@@ -563,8 +449,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.viewForRecieptRowDeleted != null)) {
-                    this.viewForRecieptRowDeleted(this, new viewForRecieptRowChangeEvent(((viewForRecieptRow)(e.Row)), e.Action));
+                if ((this.CashierDashboardViewRowDeleted != null)) {
+                    this.CashierDashboardViewRowDeleted(this, new CashierDashboardViewRowChangeEvent(((CashierDashboardViewRow)(e.Row)), e.Action));
                 }
             }
             
@@ -572,14 +458,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.viewForRecieptRowDeleting != null)) {
-                    this.viewForRecieptRowDeleting(this, new viewForRecieptRowChangeEvent(((viewForRecieptRow)(e.Row)), e.Action));
+                if ((this.CashierDashboardViewRowDeleting != null)) {
+                    this.CashierDashboardViewRowDeleting(this, new CashierDashboardViewRowChangeEvent(((CashierDashboardViewRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveviewForRecieptRow(viewForRecieptRow row) {
+            public void RemoveCashierDashboardViewRow(CashierDashboardViewRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -588,7 +474,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DBSalesandInventoryDataSet ds = new DBSalesandInventoryDataSet();
+                DBSaleInventoryDataSet ds = new DBSaleInventoryDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -606,7 +492,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "viewForRecieptDataTable";
+                attribute2.FixedValue = "CashierDashboardViewDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -650,295 +536,72 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class viewForRecieptRow : global::System.Data.DataRow {
+        public partial class CashierDashboardViewRow : global::System.Data.DataRow {
             
-            private viewForRecieptDataTable tableviewForReciept;
+            private CashierDashboardViewDataTable tableCashierDashboardView;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal viewForRecieptRow(global::System.Data.DataRowBuilder rb) : 
+            internal CashierDashboardViewRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableviewForReciept = ((viewForRecieptDataTable)(this.Table));
+                this.tableCashierDashboardView = ((CashierDashboardViewDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int TransactionID {
+            public int Total_Transactions {
                 get {
                     try {
-                        return ((int)(this[this.tableviewForReciept.TransactionIDColumn]));
+                        return ((int)(this[this.tableCashierDashboardView.Total_TransactionsColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionID\' in table \'viewForReciept\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total Transactions\' in table \'CashierDashboardView\' is DBNu" +
+                                "ll.", e);
                     }
                 }
                 set {
-                    this[this.tableviewForReciept.TransactionIDColumn] = value;
+                    this[this.tableCashierDashboardView.Total_TransactionsColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public long TransactionNo {
+            public double Total_Sales {
                 get {
                     try {
-                        return ((long)(this[this.tableviewForReciept.TransactionNoColumn]));
+                        return ((double)(this[this.tableCashierDashboardView.Total_SalesColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TransactionNo\' in table \'viewForReciept\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total Sales\' in table \'CashierDashboardView\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableviewForReciept.TransactionNoColumn] = value;
+                    this[this.tableCashierDashboardView.Total_SalesColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public long InvoiceNumber {
-                get {
-                    try {
-                        return ((long)(this[this.tableviewForReciept.InvoiceNumberColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'InvoiceNumber\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.InvoiceNumberColumn] = value;
-                }
+            public bool IsTotal_TransactionsNull() {
+                return this.IsNull(this.tableCashierDashboardView.Total_TransactionsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int QuantityBought {
-                get {
-                    try {
-                        return ((int)(this[this.tableviewForReciept.QuantityBoughtColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'QuantityBought\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.QuantityBoughtColumn] = value;
-                }
+            public void SetTotal_TransactionsNull() {
+                this[this.tableCashierDashboardView.Total_TransactionsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string VarietyName {
-                get {
-                    try {
-                        return ((string)(this[this.tableviewForReciept.VarietyNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VarietyName\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.VarietyNameColumn] = value;
-                }
+            public bool IsTotal_SalesNull() {
+                return this.IsNull(this.tableCashierDashboardView.Total_SalesColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string ProductDesc {
-                get {
-                    try {
-                        return ((string)(this[this.tableviewForReciept.ProductDescColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ProductDesc\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.ProductDescColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal Price {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableviewForReciept.PriceColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.PriceColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal TotalAmount {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableviewForReciept.TotalAmountColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalAmount\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.TotalAmountColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public decimal AmountPaid {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableviewForReciept.AmountPaidColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'AmountPaid\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.AmountPaidColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int PaymentID {
-                get {
-                    try {
-                        return ((int)(this[this.tableviewForReciept.PaymentIDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentID\' in table \'viewForReciept\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableviewForReciept.PaymentIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTransactionIDNull() {
-                return this.IsNull(this.tableviewForReciept.TransactionIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTransactionIDNull() {
-                this[this.tableviewForReciept.TransactionIDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTransactionNoNull() {
-                return this.IsNull(this.tableviewForReciept.TransactionNoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTransactionNoNull() {
-                this[this.tableviewForReciept.TransactionNoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsInvoiceNumberNull() {
-                return this.IsNull(this.tableviewForReciept.InvoiceNumberColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetInvoiceNumberNull() {
-                this[this.tableviewForReciept.InvoiceNumberColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsQuantityBoughtNull() {
-                return this.IsNull(this.tableviewForReciept.QuantityBoughtColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetQuantityBoughtNull() {
-                this[this.tableviewForReciept.QuantityBoughtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsVarietyNameNull() {
-                return this.IsNull(this.tableviewForReciept.VarietyNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetVarietyNameNull() {
-                this[this.tableviewForReciept.VarietyNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsProductDescNull() {
-                return this.IsNull(this.tableviewForReciept.ProductDescColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetProductDescNull() {
-                this[this.tableviewForReciept.ProductDescColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPriceNull() {
-                return this.IsNull(this.tableviewForReciept.PriceColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPriceNull() {
-                this[this.tableviewForReciept.PriceColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsTotalAmountNull() {
-                return this.IsNull(this.tableviewForReciept.TotalAmountColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetTotalAmountNull() {
-                this[this.tableviewForReciept.TotalAmountColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsAmountPaidNull() {
-                return this.IsNull(this.tableviewForReciept.AmountPaidColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetAmountPaidNull() {
-                this[this.tableviewForReciept.AmountPaidColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsPaymentIDNull() {
-                return this.IsNull(this.tableviewForReciept.PaymentIDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetPaymentIDNull() {
-                this[this.tableviewForReciept.PaymentIDColumn] = global::System.Convert.DBNull;
+            public void SetTotal_SalesNull() {
+                this[this.tableCashierDashboardView.Total_SalesColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -946,22 +609,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class viewForRecieptRowChangeEvent : global::System.EventArgs {
+        public class CashierDashboardViewRowChangeEvent : global::System.EventArgs {
             
-            private viewForRecieptRow eventRow;
+            private CashierDashboardViewRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewForRecieptRowChangeEvent(viewForRecieptRow row, global::System.Data.DataRowAction action) {
+            public CashierDashboardViewRowChangeEvent(CashierDashboardViewRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public viewForRecieptRow Row {
+            public CashierDashboardViewRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -977,7 +640,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         }
     }
 }
-namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSetTableAdapters {
+namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSaleInventoryDataSetTableAdapters {
     
     
     /// <summary>
@@ -989,7 +652,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class viewForRecieptTableAdapter : global::System.ComponentModel.Component {
+    public partial class CashierDashboardViewTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1003,7 +666,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public viewForRecieptTableAdapter() {
+        public CashierDashboardViewTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1100,17 +763,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "viewForReciept";
-            tableMapping.ColumnMappings.Add("TransactionID", "TransactionID");
-            tableMapping.ColumnMappings.Add("TransactionNo", "TransactionNo");
-            tableMapping.ColumnMappings.Add("InvoiceNumber", "InvoiceNumber");
-            tableMapping.ColumnMappings.Add("QuantityBought", "QuantityBought");
-            tableMapping.ColumnMappings.Add("VarietyName", "VarietyName");
-            tableMapping.ColumnMappings.Add("ProductDesc", "ProductDesc");
-            tableMapping.ColumnMappings.Add("Price", "Price");
-            tableMapping.ColumnMappings.Add("TotalAmount", "TotalAmount");
-            tableMapping.ColumnMappings.Add("AmountPaid", "AmountPaid");
-            tableMapping.ColumnMappings.Add("PaymentID", "PaymentID");
+            tableMapping.DataSetTable = "CashierDashboardView";
+            tableMapping.ColumnMappings.Add("Total Transactions", "Total Transactions");
+            tableMapping.ColumnMappings.Add("Total Sales", "Total Sales");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1118,7 +773,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.Default.con;
+            this._connection.ConnectionString = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.Default.DBSaleInventoryConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1127,8 +782,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT TransactionID, TransactionNo, InvoiceNumber, QuantityBought, VarietyName, " +
-                "ProductDesc, Price, TotalAmount, AmountPaid, PaymentID FROM dbo.viewForReciept";
+            this._commandCollection[0].CommandText = "SELECT [Total Transactions], [Total Sales] FROM dbo.CashierDashboardView";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1136,7 +790,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DBSalesandInventoryDataSet.viewForRecieptDataTable dataTable) {
+        public virtual int Fill(DBSaleInventoryDataSet.CashierDashboardViewDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1149,9 +803,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DBSalesandInventoryDataSet.viewForRecieptDataTable GetData() {
+        public virtual DBSaleInventoryDataSet.CashierDashboardViewDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DBSalesandInventoryDataSet.viewForRecieptDataTable dataTable = new DBSalesandInventoryDataSet.viewForRecieptDataTable();
+            DBSaleInventoryDataSet.CashierDashboardViewDataTable dataTable = new DBSaleInventoryDataSet.CashierDashboardViewDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1225,7 +879,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(DBSalesandInventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DBSaleInventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1235,7 +889,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(DBSalesandInventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DBSaleInventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1245,7 +899,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(DBSalesandInventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DBSaleInventoryDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1279,7 +933,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(DBSalesandInventoryDataSet dataSet) {
+        public virtual int UpdateAll(DBSaleInventoryDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

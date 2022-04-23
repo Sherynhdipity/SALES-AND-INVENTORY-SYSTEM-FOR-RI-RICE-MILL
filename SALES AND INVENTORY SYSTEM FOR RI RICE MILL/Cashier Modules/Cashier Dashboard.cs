@@ -19,6 +19,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static SqlDataReader reader;
         public static SqlDataAdapter adapter;
         public static DataTable dt = new DataTable();
+        public static DataSet ds = new DataSet();
         public static DialogResult result;
         public static string QuerySelect;
 
@@ -38,78 +39,113 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             
                 
             }
-            
+
+        public void populateChart()
+        {
+            // Sales 
+
+            try
+            {
+                con.Open();
+
+                QuerySelect = "SELECT * from CashierDashboardView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                DataView source = new DataView(ds.Tables[0]);
+                salesChart.DataSource = source;
+
+                salesChart.Series[0].XValueMember = "Total Sales";
+                salesChart.Series[0].YValueMembers = "Total Sales";
+
+                salesChart.DataBind();
+
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            // Trans
+
+            try
+            {
+                con.Open();
+
+                QuerySelect = "SELECT * from CashierDashboardView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                DataView source = new DataView(ds.Tables[0]);
+                transChart.DataSource = source;
+
+                transChart.Series[0].XValueMember = "Total Transactions";
+                transChart.Series[0].YValueMembers = "Total Transactions";
+
+                transChart.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
         public void populateDash()
         {
-            //stockout
-            //try
-            //{
-            //    con.Open();
-            //    QuerySelect = "SELECT sum(tblStockout.QtyStockedOut) as res from tblStockout";
-            //    SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-            //    if (reader.Read())
-            //    {
-            //        lblProductsSold.Text = reader["res"].ToString();
-            //    }
-            //}
-            //catch (Exception)
-            //{
+            // Total Sales
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT SUM(Total_cost) as totalSales from tblOrders";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblTotalSales.Text = reader["totalSales"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-            //    throw;
-            //}
-            //finally
-            //{
-            //    con.Close();
-            //}
+            //Total transactions
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT COUNT(Order_id) as totalTrans from tblOrders";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblTotalTransactions.Text = reader["totalTrans"].ToString();
+                }
+            }
+            catch (Exception)
+            {
 
-            ////transactions
-            //try
-            //{
-            //    con.Open();
-            //    QuerySelect = "SELECT count(TransactionNo) as res from tblTransactions";
-            //    SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-            //    if (reader.Read())
-            //    {
-            //        txtotaltrans.Text = lblTotalTransactions.Text = reader["res"].ToString();
-            //    }
-            //}
-            //catch (Exception)
-            //{
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-            //    throw;
-            //}
-            //finally
-            //{
-            //    con.Close();
-            //}
-
-            ////sales
-            //try
-            //{
-            //    con.Open();
-            //    QuerySelect = "SELECT sum(TotalAmount) as res from tblPayments";
-            //    SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-            //    if (reader.Read())
-            //    {
-            //        string temp = reader["res"].ToString();
-            //        lblTotalSales.Text = (Convert.ToDouble(temp)).ToString("n2");
-                     
-            //    }
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
-            //finally
-            //{
-            //    con.Close();
-            //}
-            ////average stocks per trans
-            //txtavgStocks.Text = (Convert.ToDouble(lblProductsSold.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
-            //txtavgSales.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
-            
-            ////prods
+            ////totalProductSold
             //try
             //{
             //    con.Open();
@@ -131,34 +167,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //{
             //    con.Close();
             //}
-            ////vary
-            //try
-            //{
-            //    con.Open();
-            //    QuerySelect = "SELECT count(VarietyID) as res from tblProductsVariety";
-            //    SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-            //    if (reader.Read())
-            //    {
-            //        string temp = reader["res"].ToString();
-            //        lblNumVarieties.Text = temp;
-            //        lblavgsalespervar.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
-
-            //    }
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
-            //finally
-            //{
-            //    con.Close();
-            //}
         }
 
         private void ucSalesDashboard_Load(object sender, EventArgs e)
         {
-            //populateDash();
+            populateDash();
+            populateChart();
+
+            
         }
     }
 

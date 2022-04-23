@@ -39,16 +39,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvLLS = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.viewAvailableStocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dBSalesandInventoryDataSet1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet1();
-            this.viewAvailableStocksTableAdapter = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet1TableAdapters.viewAvailableStocksTableAdapter();
+           
+           
             this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
-            this.dBSalesandInventoryDataSet2 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet2();
+            
             this.lowstocksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lowstocksTableAdapter = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSalesandInventoryDataSet2TableAdapters.lowstocksTableAdapter();
+          
             ((System.ComponentModel.ISupportInitialize)(this.dgvLLS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewAvailableStocksBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBSalesandInventoryDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBSalesandInventoryDataSet2)).BeginInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.lowstocksBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,16 +153,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // viewAvailableStocksBindingSource
             // 
             this.viewAvailableStocksBindingSource.DataMember = "viewAvailableStocks";
-            this.viewAvailableStocksBindingSource.DataSource = this.dBSalesandInventoryDataSet1;
+            
             // 
             // dBSalesandInventoryDataSet1
             // 
-            this.dBSalesandInventoryDataSet1.DataSetName = "DBSalesandInventoryDataSet1";
-            this.dBSalesandInventoryDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+           
             // 
             // viewAvailableStocksTableAdapter
             // 
-            this.viewAvailableStocksTableAdapter.ClearBeforeFill = true;
+            
             // 
             // btnClose
             // 
@@ -185,20 +183,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnClose.TabIndex = 3;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // dBSalesandInventoryDataSet2
-            // 
-            this.dBSalesandInventoryDataSet2.DataSetName = "DBSalesandInventoryDataSet2";
-            this.dBSalesandInventoryDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // lowstocksBindingSource
-            // 
-            this.lowstocksBindingSource.DataMember = "lowstocks";
-            this.lowstocksBindingSource.DataSource = this.dBSalesandInventoryDataSet2;
-            // 
-            // lowstocksTableAdapter
-            // 
-            this.lowstocksTableAdapter.ClearBeforeFill = true;
-            // 
+            //
+            
             // lowStockNotif
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,8 +204,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Load += new System.EventHandler(this.lowStockNotif_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLLS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewAvailableStocksBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBSalesandInventoryDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBSalesandInventoryDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lowstocksBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -232,12 +216,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvLLS;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
-        private DBSalesandInventoryDataSet1 dBSalesandInventoryDataSet1;
-        private System.Windows.Forms.BindingSource viewAvailableStocksBindingSource;
-        private DBSalesandInventoryDataSet1TableAdapters.viewAvailableStocksTableAdapter viewAvailableStocksTableAdapter;
+        private System.Windows.Forms.BindingSource viewAvailableStocksBindingSource;    
         private Bunifu.Framework.UI.BunifuTileButton btnClose;
-        private DBSalesandInventoryDataSet2 dBSalesandInventoryDataSet2;
         private System.Windows.Forms.BindingSource lowstocksBindingSource;
-        private DBSalesandInventoryDataSet2TableAdapters.lowstocksTableAdapter lowstocksTableAdapter;
     }
 }

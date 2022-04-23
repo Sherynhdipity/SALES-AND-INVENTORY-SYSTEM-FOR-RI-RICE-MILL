@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DBSaleInventoryDataSet" targetNamespace="http://tempuri.org/DBSaleInventoryDataSet.xsd" xmlns:mstns="http://tempuri.org/DBSaleInventoryDataSet.xsd" xmlns="http://tempuri.org/DBSaleInventoryDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBSaleInventoryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBSaleInventoryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.GlobalReference.Default.DBSaleInventoryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CashierDashboardViewTableAdapter" GeneratorDataComponentClassName="CashierDashboardViewTableAdapter" Name="CashierDashboardView" UserDataComponentName="CashierDashboardViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.CashierDashboardView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [Total Transactions], [Total Sales] FROM dbo.CashierDashboardView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Total Transactions" DataSetColumn="Total Transactions" />
+              <Mapping SourceColumn="Total Sales" DataSetColumn="Total Sales" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DBSaleInventoryDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="DBSaleInventoryDataSet" msprop:Generator_DataSetName="DBSaleInventoryDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CashierDashboardView" msprop:Generator_RowEvHandlerName="CashierDashboardViewRowChangeEventHandler" msprop:Generator_RowDeletedName="CashierDashboardViewRowDeleted" msprop:Generator_RowDeletingName="CashierDashboardViewRowDeleting" msprop:Generator_RowEvArgName="CashierDashboardViewRowChangeEvent" msprop:Generator_TablePropName="CashierDashboardView" msprop:Generator_RowChangedName="CashierDashboardViewRowChanged" msprop:Generator_RowChangingName="CashierDashboardViewRowChanging" msprop:Generator_TableClassName="CashierDashboardViewDataTable" msprop:Generator_RowClassName="CashierDashboardViewRow" msprop:Generator_TableVarName="tableCashierDashboardView" msprop:Generator_UserTableName="CashierDashboardView">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Total_x0020_Transactions" msprop:Generator_ColumnPropNameInRow="Total_Transactions" msprop:Generator_ColumnPropNameInTable="Total_TransactionsColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Transactions" msprop:Generator_UserColumnName="Total Transactions" type="xs:int" minOccurs="0" />
+              <xs:element name="Total_x0020_Sales" msprop:Generator_ColumnPropNameInRow="Total_Sales" msprop:Generator_ColumnPropNameInTable="Total_SalesColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Sales" msprop:Generator_UserColumnName="Total Sales" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
