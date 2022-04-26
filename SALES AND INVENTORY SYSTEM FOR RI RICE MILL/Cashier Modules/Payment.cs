@@ -42,6 +42,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryDelete;
         public double amount;
         public double discount;
+        public string discountCode;
         public double discount_total;
         public double total;
         public int total_quantity = 0;
@@ -94,14 +95,43 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             {
                                 total_quantity += Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString());
                             }
-                            QueryInsert = "INSERT INTO tblOrders(Customer_id, User_id, Order_date, Quantity, Total_discount, Total_cost)" +
-                            "VALUES('" + CustomerID + "','" + frmLogin.GetUserID.ToString() + "', '" + DateTime.Now.Date.ToString("yyyy-MM-dd H:mm:ss") + "', '" + total_quantity + "', '" + discount_total + "', '" + total + "')";
+                            QueryInsert = "INSERT INTO tblOrders(Customer_id, User_id, Transaction_number, OR_number, Order_date, Quantity, Total_discount, Total_cost, Senior_Citizen_number,PWD_number )" +
+                            "VALUES(@cID, @uID, @transNo,@OR, @orderDate, @qty, @discount, @total, @senior, @PWD)";
                             cmd = new SqlCommand(QueryInsert, con);
+
+                            cmd.Parameters.AddWithValue("@cID", CustomerID);
+                            cmd.Parameters.AddWithValue("@uID", frmLogin.GetUserID.ToString());
+                            cmd.Parameters.AddWithValue("@transNo", transNo);
+                            cmd.Parameters.AddWithValue("@OR", txtORNumber.Text);
+                            cmd.Parameters.AddWithValue("@orderDate", DateTime.Now.Date.ToString("yyyy-MM-dd H:mm:ss"));
+                            cmd.Parameters.AddWithValue("@qty", total_quantity);
+                            cmd.Parameters.AddWithValue("@discount", discount_total);
+                            cmd.Parameters.AddWithValue("@total", total);
+                            if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "SC #:")
+                            {
+                                cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
+                                cmd.Parameters.AddWithValue("@PWD", "");
+                            }else if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "PWD #:")
+                            {
+                                cmd.Parameters.AddWithValue("@senior", "");
+                                cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
+                            }
+                            else
+                            {
+                                cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
+                                cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
+                            }
+                           
+
+
+
+
+
                             cmd.ExecuteNonQuery();
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+                            MessageBox.Show(ex.Message);
                         }
                         finally
                         {
@@ -138,12 +168,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             //insert tblOrderDetails and Delete from inventory
                             for (int i = 0; i < SKU.Length; i++)
                             {
-                                QueryInsert = "INSERT INTO tblOrderDetails(Order_id, SKU, Transaction_number)" +
-                                "VALUES((SELECT MAX(Order_id) FROM tblOrders), @sku, @transNo)";
+                                QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
+                                "VALUES((SELECT MAX(Order_id) FROM tblOrders),(SELECT Item_id from tblInventories WHERE (SKU LIKE '%' + @sku  + '%')), @sku)";
 
                                 cmd = new SqlCommand(QueryInsert, con);
+
                                 cmd.Parameters.AddWithValue("@sku", SKU[i]);
-                                cmd.Parameters.AddWithValue("@transNo", transNo);
                                 cmd.ExecuteNonQuery();
 
                                 QueryDelete = "DELETE FROM tblInventories WHERE SKU = @sku";
@@ -212,6 +242,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             txtViewCustomer.AutoCompleteCustomSource = MyCollection;
             con.Close();
+           
         }
 
         private void frmPayment_Load(object sender, EventArgs e)
@@ -280,6 +311,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //this.Close();
             frmAddNewCustomer addNewCustomer = new frmAddNewCustomer();
             addNewCustomer.ShowDialog();
+
             
 
         }
@@ -298,6 +330,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 reader.Read();
                 if (reader.HasRows)
                 {
+                    dt.Clear();
                     customerID = reader.GetInt32(0);
                     QuerySelect = "SELECT * FROM viewDiscount WHERE [Customer ID] = '" + customerID + "'";
                     cmd = new SqlCommand(QuerySelect, con);
@@ -306,18 +339,80 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
 
+                    ////txtOSCA/PWD
+
+                    //QuerySelect = "Select tblCustomer.DiscountCode from tblCustomer INNER JOIN " +
+                    //     "dbo.tblDiscounts ON dbo.tblCustomers.Discount_code = dbo.tblDiscounts.Discount_code INNER JOIN" +
+                    //     "dbo.tblOrders ON dbo.tblCustomers.Customer_id = dbo.tblOrders.Customer_id" +
+                    //     "where dbo.tblCustomers.Customer_id = @CID";
+
+                    //cmd = new SqlCommand(QuerySelect,con);
+                    //cmd.Parameters.AddWithValue("@CID", CustomerID);                   
+                    //reader = cmd.ExecuteReader();
+                    //if (reader.HasRows)
+                    //{
+                    //    reader.Read();
+                    //    discountCode = reader["Discount_code"].ToString();
+
+                    //    switch (reader[0].ToString())
+                    //    {
+                    //        case "LC01":
+                    //            {
+                    //                txtPWDOSCA.Visible = false;
+                    //                break;
+                    //            }
+                    //        case "SC01":
+                    //            {
+                    //                txtPWDOSCA.Visible = true;
+                    //                break;
+                    //            }
+                    //        case "PWD01":
+                    //            {
+                    //                txtPWDOSCA.Visible = true;
+                    //                break;
+                    //            }
+                    //        default:
+                    //            {
+                    //                txtPWDOSCA.Visible = false;
+                    //                break;
+                    //            }
+                    //    }
+                    //}
+                    cmd.ExecuteNonQuery();
+
+                    if(dt.Rows[0][1].ToString() == "SC01")
+                    {
+                        lblPWDORSC.Visible = true;
+                        lblPWDORSC.Text = "SC #:";
+                        txtPWDOSCA.Visible = true;
+                    }else if (dt.Rows[0][1].ToString() == "PWD01")
+                    {
+                        lblPWDORSC.Visible = true;
+                        lblPWDORSC.Text = "PWD #:";
+                        txtPWDOSCA.Visible = true;
+                    }
+                    else if(dt.Rows[0][1].ToString() == "LC01")
+                    {
+                        lblPWDORSC.Visible = false;
+                        txtPWDOSCA.Visible = false;
+                    }
 
                     //recompute amount
-                     amount = Convert.ToDouble(txtAmount.Text);
+                    amount = Convert.ToDouble(txtAmount.Text);
                      discount = Convert.ToDouble(dt.Rows[0][2].ToString());
                      discount_total = amount * discount;
                      total = amount - discount_total;
                      txtAmount.Text = total.ToString();
                 }
                 con.Close();
-                txtAmount.Enabled = false;
+                txtViewCustomer.Enabled = false;
                 txtCash.Focus();
             }
+        }
+
+        private void txtAmount_TextChange(object sender, EventArgs e)
+        {
+           
         }
     }
 }

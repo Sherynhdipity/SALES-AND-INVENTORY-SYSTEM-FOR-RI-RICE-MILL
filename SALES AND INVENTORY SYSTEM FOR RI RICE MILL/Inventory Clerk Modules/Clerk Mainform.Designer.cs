@@ -170,7 +170,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.panelLogout.TabIndex = 35;
             this.panelLogout.Visible = false;
             this.panelLogout.Click += new System.EventHandler(this.panelLogout_Click);
-            this.panelLogout.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLogout_Paint);
             // 
             // pbLogout
             // 

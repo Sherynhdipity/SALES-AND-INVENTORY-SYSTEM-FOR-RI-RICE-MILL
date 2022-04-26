@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="reportsDataSet" targetNamespace="http://tempuri.org/reportsDataSet.xsd" xmlns:mstns="http://tempuri.org/reportsDataSet.xsd" xmlns="http://tempuri.org/reportsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBSaleInventoryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBSaleInventoryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.GlobalReference.Default.DBSaleInventoryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SalesReportViewTableAdapter" GeneratorDataComponentClassName="SalesReportViewTableAdapter" Name="SalesReportView" UserDataComponentName="SalesReportViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.SalesReportView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Order_date, Description, Quantity, Amount, Discount, [Total Sales] FROM dbo.SalesReportView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Order_date" DataSetColumn="Order_date" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+              <Mapping SourceColumn="Discount" DataSetColumn="Discount" />
+              <Mapping SourceColumn="Total Sales" DataSetColumn="Total Sales" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="reportsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="reportsDataSet" msprop:Generator_DataSetName="reportsDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SalesReportView" msprop:Generator_RowEvHandlerName="SalesReportViewRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesReportViewRowDeleted" msprop:Generator_RowDeletingName="SalesReportViewRowDeleting" msprop:Generator_RowEvArgName="SalesReportViewRowChangeEvent" msprop:Generator_TablePropName="SalesReportView" msprop:Generator_RowChangedName="SalesReportViewRowChanged" msprop:Generator_RowChangingName="SalesReportViewRowChanging" msprop:Generator_TableClassName="SalesReportViewDataTable" msprop:Generator_RowClassName="SalesReportViewRow" msprop:Generator_TableVarName="tableSalesReportView" msprop:Generator_UserTableName="SalesReportView">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Order_date" msprop:Generator_ColumnPropNameInRow="Order_date" msprop:Generator_ColumnPropNameInTable="Order_dateColumn" msprop:Generator_ColumnVarNameInTable="columnOrder_date" msprop:Generator_UserColumnName="Order_date" type="xs:dateTime" />
+              <xs:element name="Description" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Quantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_UserColumnName="Amount" type="xs:double" />
+              <xs:element name="Discount" msprop:Generator_ColumnPropNameInRow="Discount" msprop:Generator_ColumnPropNameInTable="DiscountColumn" msprop:Generator_ColumnVarNameInTable="columnDiscount" msprop:Generator_UserColumnName="Discount" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_x0020_Sales" msprop:Generator_ColumnPropNameInRow="Total_Sales" msprop:Generator_ColumnPropNameInTable="Total_SalesColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Sales" msprop:Generator_UserColumnName="Total Sales" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

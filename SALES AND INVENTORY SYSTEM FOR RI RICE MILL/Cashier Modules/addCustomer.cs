@@ -56,6 +56,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 {
                     QuerySelect = "SELECT * FROM  CustomerViews WHERE (ID LIKE '%' + @id + '%') OR ([First Name] LIKE '%' + @fName + '%') OR ([Last Name] LIKE '%' + @lName + '%') OR ([Contact Number] LIKE '%' + @cNum + '%') OR ([Discount Code] LIKE '%' + @discount + '%')";
 
+                  
+
+
                 }
 
                 cmd = new SqlCommand(QuerySelect, con);

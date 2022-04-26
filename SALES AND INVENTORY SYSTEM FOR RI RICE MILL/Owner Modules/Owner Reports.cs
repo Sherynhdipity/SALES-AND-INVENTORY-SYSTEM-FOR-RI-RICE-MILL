@@ -29,8 +29,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnViewSalesReports_Click(object sender, EventArgs e)
         {
-            frmViewSalesReport salesReport = new frmViewSalesReport();
-            salesReport.Show();
+            
         }
 
         private void btnViewInventoryReports_Click(object sender, EventArgs e)

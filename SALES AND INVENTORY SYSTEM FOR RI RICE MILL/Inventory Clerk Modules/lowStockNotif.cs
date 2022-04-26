@@ -19,21 +19,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public lowStockNotif()
         {
             InitializeComponent();
-            popDgv();
-        }
-
-        private void bunifuLabel1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void lowStockNotif_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dBSalesandInventoryDataSet2.lowstocks' table. You can move, or remove it, as needed.
-            //this.lowstocksTableAdapter.Fill(this.dBSalesandInventoryDataSet2.lowstocks);
-            // TODO: This line of code loads data into the 'dBSalesandInventoryDataSet1.viewAvailableStocks' table. You can move, or remove it, as needed.
-            //this.viewAvailableStocksTableAdapter.Fill(this.dBSalesandInventoryDataSet1.viewAvailableStocks);
-            //popDgv();
+            popDgv();
         }
         void popDgv()
         {
@@ -47,7 +37,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 con.Open();
 
-                string query = "Select ID, Description, Unit, SKU, [Batch Quantity], [Critical Level] from InventoryView WHERE  [Batch Quantity] < [Critical Level]";
+                string query = "SELECT * FROM lowStockView WHERE [Available Stock] < [Restock Level]";
                 cmd = new SqlCommand(query, con);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);

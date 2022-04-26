@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 int count;
 
                 con.Open();
-                cmd = new SqlCommand("SELECT count(Transaction_number) as id FROM tblOrderDetails WHERE Transaction_number LIKE '" + sdate + "%'", con);
+                cmd = new SqlCommand("SELECT count(Transaction_number) as id FROM tblOrders WHERE Transaction_number LIKE '" + sdate + "%'", con);
                 reader = cmd.ExecuteReader();
                 if (reader.HasRows)
                 {
@@ -98,13 +99,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtStock.Text = "0";
             txtAmount.Text = "";
             txtQuantityCount.Text = "";
-            txtDiscountAmount.Text = "";
             txtVatAmount.Text = "";
             //label controls
             lblTransNo.Text = "0000000000";
             lblTotal.Text = "0.00";
             lblTransDate.Text = "Date";
-            lblDiscPercentage.Text = "0 %";
             dt.Clear();
         }
 
@@ -147,9 +146,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[2].Value);
                     }
 
-                    lblTotal.Text = totalamount.ToString() + "." + "00";
+                    //lblTotal.Text = totalamount.ToString() + "." + "00";
 
                     txtAmount.Text = totalamount.ToString();
+                    lblTotal.Text = txtAmount.Text;
                     recompute(totalamount);
                     txtSearch.Focus();
                     dvgOrderList.Refresh();
@@ -259,8 +259,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[5].Value);
                 }
 
-                lblTotal.Text = totalamount.ToString("#,0.00");
+               
                 txtAmount.Text = totalamount.ToString("0.00");
+                lblTotal.Text = txtAmount.Text;
+                //lblTotal.Text = totalamount.ToString("#,0.00");
             }
             else
             {
@@ -280,8 +282,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[5].Value);
                 }
 
-                lblTotal.Text = totalamount.ToString("#,0.00");
-                txtAmount.Text = totalamount.ToString("0.00");
+                txtAmount.Text = totalamount.ToString("#,0.00");
+                lblTotal.Text = txtAmount.Text;
+                //txtAmount.Text = totalamount.ToString("0.00");
             }
 
         }
@@ -378,8 +381,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         double totalamount = 0;
                         totalamount = Convert.ToDouble(dt.Compute("sum([subtotal])", ""));
-                        lblTotal.Text = totalamount.ToString("#,0.00");
+                        
                         txtAmount.Text = totalamount.ToString("0.00");
+                        lblTotal.Text = txtAmount.Text;
+                        //lblTotal.Text = totalamount.ToString("#,0.00");
                         //compute here lols
                         recompute(totalamount);
                         //asta lng di
@@ -403,19 +408,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
         private void recompute(double totalamount)
         {
-            string[] tempDisc = lblDiscPercentage.Text.ToString().Split(' ');
 
             txtVatable.Text = (totalamount / 1.12).ToString("#,0.00");
             txtVatAmount.Text = (totalamount * 0.12).ToString("#,0.00");
             totalamount = totalamount + (totalamount * 0.12);
-            lblTotal.Text = totalamount.ToString("#,0.00");
-
-            if (!(Convert.ToDouble(tempDisc[0].ToString()) == 0))
-            {
-                txtDiscountAmount.Text = (totalamount * (Convert.ToDouble(tempDisc[0].ToString()) / 100)).ToString("#,0.00");
-                totalamount = totalamount - (totalamount * (Convert.ToDouble(tempDisc[0].ToString()) / 100));
-                lblTotal.Text = totalamount.ToString("#,0.00");
-            }
+            lblTotal.Text = txtAmount.Text;
+            //lblTotal.Text = totalamount.ToString("#,0.00");
         }
 
 

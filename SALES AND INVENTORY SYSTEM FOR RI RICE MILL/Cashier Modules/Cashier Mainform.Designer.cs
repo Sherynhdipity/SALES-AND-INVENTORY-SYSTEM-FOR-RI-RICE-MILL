@@ -1,5 +1,5 @@
 ﻿
-namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
+namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 {
     partial class frmMainSales
     {
@@ -42,18 +42,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuFormDock1 = new Bunifu.UI.WinForms.BunifuFormDock();
             this.panelModule = new System.Windows.Forms.Panel();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.lblUserRole = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblUserName = new Bunifu.UI.WinForms.BunifuLabel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.btnLogout = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
-            this.bunifuButton23 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
+            this.btnSalesReturns = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnReports = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnBackup = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnSales = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnDashboard = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblUserRole = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
@@ -139,6 +139,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.Size = new System.Drawing.Size(1087, 63);
             this.bunifuPanel2.TabIndex = 34;
             // 
+            // lblUserRole
+            // 
+            this.lblUserRole.AllowParentOverrides = false;
+            this.lblUserRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUserRole.AutoEllipsis = false;
+            this.lblUserRole.BackColor = System.Drawing.Color.MidnightBlue;
+            this.lblUserRole.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblUserRole.CursorType = System.Windows.Forms.Cursors.Default;
+            this.lblUserRole.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic);
+            this.lblUserRole.ForeColor = System.Drawing.Color.White;
+            this.lblUserRole.Location = new System.Drawing.Point(90, 38);
+            this.lblUserRole.MinimumSize = new System.Drawing.Size(150, 0);
+            this.lblUserRole.Name = "lblUserRole";
+            this.lblUserRole.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUserRole.Size = new System.Drawing.Size(150, 15);
+            this.lblUserRole.TabIndex = 39;
+            this.lblUserRole.Text = "Role";
+            this.lblUserRole.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblUserRole.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // lblUserName
             // 
             this.lblUserName.AllowParentOverrides = false;
@@ -179,7 +199,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.BorderRadius = 0;
             this.bunifuPanel1.BorderThickness = 0;
             this.bunifuPanel1.Controls.Add(this.btnLogout);
-            this.bunifuPanel1.Controls.Add(this.bunifuButton23);
+            this.bunifuPanel1.Controls.Add(this.btnSalesReturns);
             this.bunifuPanel1.Controls.Add(this.bunifuLabel2);
             this.bunifuPanel1.Controls.Add(this.btnReports);
             this.bunifuPanel1.Controls.Add(this.btnBackup);
@@ -284,94 +304,95 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogout.UseDefaultRadiusAndThickness = true;
             this.btnLogout.Click += new System.EventHandler(this.bunifuButton24_Click);
             // 
-            // bunifuButton23
+            // btnSalesReturns
             // 
-            this.bunifuButton23.AllowAnimations = true;
-            this.bunifuButton23.AllowMouseEffects = true;
-            this.bunifuButton23.AllowToggling = false;
-            this.bunifuButton23.AnimationSpeed = 200;
-            this.bunifuButton23.AutoGenerateColors = false;
-            this.bunifuButton23.AutoRoundBorders = true;
-            this.bunifuButton23.AutoSizeLeftIcon = true;
-            this.bunifuButton23.AutoSizeRightIcon = true;
-            this.bunifuButton23.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuButton23.BackColor1 = System.Drawing.Color.MidnightBlue;
-            this.bunifuButton23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton23.BackgroundImage")));
-            this.bunifuButton23.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton23.ButtonText = "SALES RETURNS";
-            this.bunifuButton23.ButtonTextMarginLeft = 0;
-            this.bunifuButton23.ColorContrastOnClick = 45;
-            this.bunifuButton23.ColorContrastOnHover = 45;
-            this.bunifuButton23.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnSalesReturns.AllowAnimations = true;
+            this.btnSalesReturns.AllowMouseEffects = true;
+            this.btnSalesReturns.AllowToggling = false;
+            this.btnSalesReturns.AnimationSpeed = 200;
+            this.btnSalesReturns.AutoGenerateColors = false;
+            this.btnSalesReturns.AutoRoundBorders = true;
+            this.btnSalesReturns.AutoSizeLeftIcon = true;
+            this.btnSalesReturns.AutoSizeRightIcon = true;
+            this.btnSalesReturns.BackColor = System.Drawing.Color.Transparent;
+            this.btnSalesReturns.BackColor1 = System.Drawing.Color.MidnightBlue;
+            this.btnSalesReturns.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalesReturns.BackgroundImage")));
+            this.btnSalesReturns.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSalesReturns.ButtonText = "SALES RETURNS";
+            this.btnSalesReturns.ButtonTextMarginLeft = 0;
+            this.btnSalesReturns.ColorContrastOnClick = 45;
+            this.btnSalesReturns.ColorContrastOnHover = 45;
+            this.btnSalesReturns.Cursor = System.Windows.Forms.Cursors.Default;
             borderEdges2.BottomLeft = true;
             borderEdges2.BottomRight = true;
             borderEdges2.TopLeft = true;
             borderEdges2.TopRight = true;
-            this.bunifuButton23.CustomizableEdges = borderEdges2;
-            this.bunifuButton23.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.bunifuButton23.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.bunifuButton23.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.bunifuButton23.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.bunifuButton23.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
-            this.bunifuButton23.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuButton23.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton23.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuButton23.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuButton23.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.bunifuButton23.IconMarginLeft = 11;
-            this.bunifuButton23.IconPadding = 4;
-            this.bunifuButton23.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bunifuButton23.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuButton23.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.bunifuButton23.IconSize = 40;
-            this.bunifuButton23.IdleBorderColor = System.Drawing.Color.RoyalBlue;
-            this.bunifuButton23.IdleBorderRadius = 38;
-            this.bunifuButton23.IdleBorderThickness = 1;
-            this.bunifuButton23.IdleFillColor = System.Drawing.Color.MidnightBlue;
-            this.bunifuButton23.IdleIconLeftImage = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.lending;
-            this.bunifuButton23.IdleIconRightImage = null;
-            this.bunifuButton23.IndicateFocus = false;
-            this.bunifuButton23.Location = new System.Drawing.Point(12, 361);
-            this.bunifuButton23.Name = "bunifuButton23";
-            this.bunifuButton23.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.bunifuButton23.OnDisabledState.BorderRadius = 1;
-            this.bunifuButton23.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton23.OnDisabledState.BorderThickness = 1;
-            this.bunifuButton23.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.bunifuButton23.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.bunifuButton23.OnDisabledState.IconLeftImage = null;
-            this.bunifuButton23.OnDisabledState.IconRightImage = null;
-            this.bunifuButton23.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.bunifuButton23.onHoverState.BorderRadius = 1;
-            this.bunifuButton23.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton23.onHoverState.BorderThickness = 1;
-            this.bunifuButton23.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.bunifuButton23.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton23.onHoverState.IconLeftImage = null;
-            this.bunifuButton23.onHoverState.IconRightImage = null;
-            this.bunifuButton23.OnIdleState.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.bunifuButton23.OnIdleState.BorderRadius = 1;
-            this.bunifuButton23.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton23.OnIdleState.BorderThickness = 1;
-            this.bunifuButton23.OnIdleState.FillColor = System.Drawing.Color.MidnightBlue;
-            this.bunifuButton23.OnIdleState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton23.OnIdleState.IconLeftImage = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.lending;
-            this.bunifuButton23.OnIdleState.IconRightImage = null;
-            this.bunifuButton23.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.bunifuButton23.OnPressedState.BorderRadius = 1;
-            this.bunifuButton23.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.bunifuButton23.OnPressedState.BorderThickness = 1;
-            this.bunifuButton23.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.bunifuButton23.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.bunifuButton23.OnPressedState.IconLeftImage = null;
-            this.bunifuButton23.OnPressedState.IconRightImage = null;
-            this.bunifuButton23.Size = new System.Drawing.Size(281, 40);
-            this.bunifuButton23.TabIndex = 31;
-            this.bunifuButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuButton23.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.bunifuButton23.TextMarginLeft = 0;
-            this.bunifuButton23.TextPadding = new System.Windows.Forms.Padding(0);
-            this.bunifuButton23.UseDefaultRadiusAndThickness = true;
+            this.btnSalesReturns.CustomizableEdges = borderEdges2;
+            this.btnSalesReturns.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSalesReturns.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnSalesReturns.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnSalesReturns.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnSalesReturns.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.ButtonStates.Pressed;
+            this.btnSalesReturns.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalesReturns.ForeColor = System.Drawing.Color.White;
+            this.btnSalesReturns.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalesReturns.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnSalesReturns.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnSalesReturns.IconMarginLeft = 11;
+            this.btnSalesReturns.IconPadding = 4;
+            this.btnSalesReturns.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalesReturns.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnSalesReturns.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnSalesReturns.IconSize = 40;
+            this.btnSalesReturns.IdleBorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSalesReturns.IdleBorderRadius = 38;
+            this.btnSalesReturns.IdleBorderThickness = 1;
+            this.btnSalesReturns.IdleFillColor = System.Drawing.Color.MidnightBlue;
+            this.btnSalesReturns.IdleIconLeftImage = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.lending;
+            this.btnSalesReturns.IdleIconRightImage = null;
+            this.btnSalesReturns.IndicateFocus = false;
+            this.btnSalesReturns.Location = new System.Drawing.Point(12, 361);
+            this.btnSalesReturns.Name = "btnSalesReturns";
+            this.btnSalesReturns.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnSalesReturns.OnDisabledState.BorderRadius = 1;
+            this.btnSalesReturns.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSalesReturns.OnDisabledState.BorderThickness = 1;
+            this.btnSalesReturns.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnSalesReturns.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnSalesReturns.OnDisabledState.IconLeftImage = null;
+            this.btnSalesReturns.OnDisabledState.IconRightImage = null;
+            this.btnSalesReturns.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnSalesReturns.onHoverState.BorderRadius = 1;
+            this.btnSalesReturns.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSalesReturns.onHoverState.BorderThickness = 1;
+            this.btnSalesReturns.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnSalesReturns.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnSalesReturns.onHoverState.IconLeftImage = null;
+            this.btnSalesReturns.onHoverState.IconRightImage = null;
+            this.btnSalesReturns.OnIdleState.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnSalesReturns.OnIdleState.BorderRadius = 1;
+            this.btnSalesReturns.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSalesReturns.OnIdleState.BorderThickness = 1;
+            this.btnSalesReturns.OnIdleState.FillColor = System.Drawing.Color.MidnightBlue;
+            this.btnSalesReturns.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnSalesReturns.OnIdleState.IconLeftImage = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.lending;
+            this.btnSalesReturns.OnIdleState.IconRightImage = null;
+            this.btnSalesReturns.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnSalesReturns.OnPressedState.BorderRadius = 1;
+            this.btnSalesReturns.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
+            this.btnSalesReturns.OnPressedState.BorderThickness = 1;
+            this.btnSalesReturns.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnSalesReturns.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnSalesReturns.OnPressedState.IconLeftImage = null;
+            this.btnSalesReturns.OnPressedState.IconRightImage = null;
+            this.btnSalesReturns.Size = new System.Drawing.Size(281, 40);
+            this.btnSalesReturns.TabIndex = 31;
+            this.btnSalesReturns.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSalesReturns.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnSalesReturns.TextMarginLeft = 0;
+            this.btnSalesReturns.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnSalesReturns.UseDefaultRadiusAndThickness = true;
+            this.btnSalesReturns.Click += new System.EventHandler(this.btnSalesReturns_Click);
             // 
             // bunifuLabel2
             // 
@@ -761,26 +782,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // lblUserRole
-            // 
-            this.lblUserRole.AllowParentOverrides = false;
-            this.lblUserRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserRole.AutoEllipsis = false;
-            this.lblUserRole.BackColor = System.Drawing.Color.MidnightBlue;
-            this.lblUserRole.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblUserRole.CursorType = System.Windows.Forms.Cursors.Default;
-            this.lblUserRole.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Italic);
-            this.lblUserRole.ForeColor = System.Drawing.Color.White;
-            this.lblUserRole.Location = new System.Drawing.Point(90, 38);
-            this.lblUserRole.MinimumSize = new System.Drawing.Size(150, 0);
-            this.lblUserRole.Name = "lblUserRole";
-            this.lblUserRole.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUserRole.Size = new System.Drawing.Size(150, 15);
-            this.lblUserRole.TabIndex = 39;
-            this.lblUserRole.Text = "Role";
-            this.lblUserRole.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblUserRole.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
             // frmMainSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -821,8 +822,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel2;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private ucDashboard frmDashboard1;
-       // private ucSalesDashboard ucSalesDashboard1;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton23;
+        // private ucSalesDashboard ucSalesDashboard1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnSalesReturns;
         private System.Windows.Forms.PictureBox pictureBox6;
         private Bunifu.UI.WinForms.BunifuLabel lblUserName;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnLogout;

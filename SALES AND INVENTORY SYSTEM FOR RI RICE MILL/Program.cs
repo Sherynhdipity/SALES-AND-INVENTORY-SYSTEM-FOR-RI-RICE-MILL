@@ -16,7 +16,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new frmLogin());
+            Application.Run(new frmLogin());
         }
     }
 }

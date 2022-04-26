@@ -26,12 +26,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public ucDashboard()
         {
             InitializeComponent();
-            //populateDash();
+            populateDash();
+            //populateChart();
         }
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
         public static SqlDataReader reader;
+        public static DataSet ds;
         public static SqlDataAdapter adapter;
         public static DataTable dt = new DataTable();
         public static DialogResult result;
@@ -39,39 +41,115 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
 
+        //public void populateChart()
+        //{
+        //    // Sales 
 
+        //    try
+        //    {
+        //        con.Open();
+
+        //        QuerySelect = "SELECT * from CashierDashboardView";
+        //        cmd = new SqlCommand(QuerySelect, con);
+        //        adapter = new SqlDataAdapter(cmd);
+        //        ds = new DataSet();
+        //        adapter.Fill(ds);
+        //        DataView source = new DataView(ds.Tables[0]);
+        //        salesChart.DataSource = source;
+
+        //        salesChart.Series[0].XValueMember = "Total Sales";
+        //        salesChart.Series[0].YValueMembers = "Total Sales";
+
+        //        salesChart.DataBind();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
+
+        //    //StockedIN
+
+        //    try
+        //    {
+        //        con.Open();
+
+        //        QuerySelect = "SELECT * from OwnerDashboardView";
+        //        cmd = new SqlCommand(QuerySelect, con);
+        //        adapter = new SqlDataAdapter(cmd);
+        //        ds = new DataSet();
+        //        adapter.Fill(ds);
+        //        DataView source = new DataView(ds.Tables[0]);
+        //        StocksChart.DataSource = source;
+
+        //        StocksChart.Series[0].XValueMember = "Stocked In";
+        //        StocksChart.Series[0].YValueMembers = "Stocked In";
+
+        //        StocksChart.DataBind();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
+
+        //    //StockedOUT
+
+        //    try
+        //    {
+        //        con.Open();
+
+        //        QuerySelect = "SELECT * from OwnerDashboardView";
+        //        cmd = new SqlCommand(QuerySelect, con);
+        //        adapter = new SqlDataAdapter(cmd);
+        //        ds = new DataSet();
+        //        adapter.Fill(ds);
+        //        DataView source = new DataView(ds.Tables[0]);
+        //        StocksChart.DataSource = source;
+
+        //        StocksChart.Series[1].XValueMember = "Stocked Out";
+        //        StocksChart.Series[1].YValueMembers = "Stocked Out";
+
+        //        StocksChart.DataBind();
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
+
+        //}
+
+
+
+        //not chart
         public void populateDash()
         {
-            //stockout
+            // Total Sales
             try
             {
                 con.Open();
-                QuerySelect = "SELECT sum(tblStockout.StockoutQuantity) as res from tblStockout";
+                QuerySelect = "Select * from OwnerDashboardView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
-                    {
-                        lblProductsSold.Text = "0";
-                       // lblstocksSold.Text = "0";
-                        lblQtyStockedOut.Text = "0";
-                       // lblavgstocksperday.Text = "0";
-
-                    }
-                    else
-                    {
-                        lblProductsSold.Text = reader["res"].ToString();
-                       // lblstocksSold.Text = reader["res"].ToString();
-                        string temp = reader["res"].ToString();
-                        lblQtyStockedOut.Text = temp;
-                       // lblavgstocksperday.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
-                    }
+                    lblTotalSales.Text = reader["Total Sales"].ToString();
                 }
-
             }
             catch (Exception)
             {
-
                 throw;
             }
             finally
@@ -79,23 +157,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
             }
 
-            //transactions
+            //Total transactions
             try
             {
                 con.Open();
-                QuerySelect = "SELECT count(TransactionNo) as res from tblTransactions";
+                QuerySelect = "SELECT * from OwnerDashboardView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    if(reader["res"].ToString() == "" || reader["res"].ToString() == "0")
-                    {
-                     //   txtotaltrans.Text = "0";
-                    }
-                    else
-                    {
-                       // txtotaltrans.Text = lblTotalTransactions.Text = reader["res"].ToString();
-                    }
-
+                    lblTotalTransactions.Text = reader["Total Transactions"].ToString();
                 }
             }
             catch (Exception)
@@ -108,23 +178,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
             }
 
-            //sales
+            //StockedIn
+
             try
             {
                 con.Open();
-                QuerySelect = "SELECT sum(TotalAmount) as res from tblPayments";
+                QuerySelect = "SELECT * from OwnerDashboardView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
-                    {
-                        lblTotalSales.Text = "0";
-                    }
-                    else
-                    {
-                        string temp = reader["res"].ToString();
-                        lblTotalSales.Text = (Convert.ToDouble(temp)).ToString("n2");
-                    }
+                    lblStockedIn.Text = reader["Stocked In"].ToString();
                 }
             }
             catch (Exception)
@@ -137,104 +200,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
             }
 
-            //average stocks per trans
-            if(lblProductsSold.Text != "0" && lblTotalTransactions.Text != "0")
-            {
-              //  txtavgStocks.Text = (Convert.ToDouble(lblProductsSold.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
-            }
-            else
-            {
-              //  txtavgStocks.Text = "0";
-            }
-
-            if (lblTotalSales.Text != "0" && lblTotalTransactions.Text != "0")
-            {
-              //  txtavgSales.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(lblTotalTransactions.Text.ToString())).ToString("n2");
-            }
-            else
-            {
-              //  txtavgSales.Text = "0";
-            }
-          
-
-            //prods
+            //StockedOut
             try
             {
                 con.Open();
-                QuerySelect = "SELECT count(ProductID) as res from tblProducts";
+                QuerySelect = "SELECT * from OwnerDashboardView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
-                    {
-                      //  lbladdedproducts.Text = "0";
-                    }
-                    else
-                    {
-                        string temp = reader["res"].ToString();
-                     //   lbladdedproducts.Text = temp;
-                    }                    
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
-            //vary
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT count(VarietyID) as res from tblProductsVariety";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
-                    {
-                        //lblNumVarieties.Text = "0";
-                        //lblavgsalespervar.Text = "0";
-                    }
-                    else
-                    {
-                        string temp = reader["res"].ToString();
-                        //lblNumVarieties.Text = temp;
-                        //lblavgsalespervar.Text = (Convert.ToDouble(lblTotalSales.Text.ToString()) / Convert.ToDouble(temp)).ToString("n2");
-                    }           
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
-
-            //inventory report
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT count(StockinID) as res from tblStockin";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    if (reader["res"].ToString() == "" || reader["res"].ToString() == "0")
-                    {
-                        //lbladdedstocks.Text = "0";
-                    }
-                    else
-                    {
-                        string temp = reader["res"].ToString();
-                      //  lbladdedstocks.Text = temp;
-                    }
-               
-
+                    lblStockedOut.Text = reader["Stocked Out"].ToString();
                 }
             }
             catch (Exception)
@@ -250,5 +224,5 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
     }
 
-    }
+}
 

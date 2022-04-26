@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserManagement));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -39,14 +38,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.dBSalesInventoryDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tblUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bunifuPanel4 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtViewUsers = new Bunifu.UI.WinForms.BunifuTextBox();
             this.dgvUserList = new Bunifu.UI.WinForms.BunifuDataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dBSalesInventoryDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblUsersBindingSource)).BeginInit();
             this.bunifuPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserList)).BeginInit();
             this.SuspendLayout();
@@ -67,13 +62,6 @@
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // 
-            // tblUsersBindingSource
-            // 
-            this.tblUsersBindingSource.DataMember = "tblUsers";
-            this.tblUsersBindingSource.DataSource = this.dBSalesInventoryDataSetBindingSource;
-            // 
-            
             // bunifuPanel4
             // 
             this.bunifuPanel4.BackgroundColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -334,8 +322,6 @@
             this.Controls.Add(this.bunifuLabel3);
             this.Name = "UserManagement";
             this.Size = new System.Drawing.Size(1002, 646);
-            ((System.ComponentModel.ISupportInitialize)(this.dBSalesInventoryDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblUsersBindingSource)).EndInit();
             this.bunifuPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUserList)).EndInit();
             this.ResumeLayout(false);
@@ -349,8 +335,6 @@
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel4;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvUserList;
         private Bunifu.UI.WinForms.BunifuTextBox txtViewUsers;
-        private System.Windows.Forms.BindingSource tblUsersBindingSource;
-        private System.Windows.Forms.BindingSource dBSalesInventoryDataSetBindingSource;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
     }
 }

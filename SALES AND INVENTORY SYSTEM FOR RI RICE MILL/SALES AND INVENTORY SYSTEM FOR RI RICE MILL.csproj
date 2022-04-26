@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -274,11 +274,17 @@
     <Compile Include="Cashier Modules\addCustomer.Designer.cs">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\Sales Return.cs">
+    <Compile Include="Cashier Modules\Returns Management.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Returns Management.Designer.cs">
+      <DependentUpon>Returns Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\ReturnItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\Sales Return.Designer.cs">
-      <DependentUpon>Sales Return.cs</DependentUpon>
+    <Compile Include="Cashier Modules\ReturnItem.Designer.cs">
+      <DependentUpon>ReturnItem.cs</DependentUpon>
     </Compile>
     <Compile Include="DBSaleInventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -296,6 +302,12 @@
     </Compile>
     <Compile Include="Inventory Clerk Modules\frmBarcodes.Designer.cs">
       <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmStockCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmStockCard.Designer.cs">
+      <DependentUpon>frmStockCard.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Add Customer.cs">
       <SubType>Form</SubType>
@@ -376,18 +388,6 @@
     <Compile Include="Inventory Clerk Modules\lowStockNotif.Designer.cs">
       <DependentUpon>lowStockNotif.cs</DependentUpon>
     </Compile>
-    <Compile Include="Link Forms\Sales Report.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Link Forms\Sales Report.Designer.cs">
-      <DependentUpon>Sales Report.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\Update Stock.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\Update Stock.Designer.cs">
-      <DependentUpon>Update Stock.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventory Clerk Modules\Clerk Mainform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -466,12 +466,6 @@
     <Compile Include="Owner Modules\Owner Mainform.Designer.cs">
       <DependentUpon>Owner Mainform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\Products.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Owner Modules\Products.Designer.cs">
-      <DependentUpon>Products.cs</DependentUpon>
-    </Compile>
     <Compile Include="Owner Modules\Owner Reports.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -496,11 +490,10 @@
     <Compile Include="Cashier Modules\PrintReceipt.Designer.cs">
       <DependentUpon>PrintReceipt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\Customers.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Owner Modules\Customers.Designer.cs">
-      <DependentUpon>Customers.cs</DependentUpon>
+    <Compile Include="OwnerDashboardDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OwnerDashboardDataset.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -534,17 +527,34 @@
     <Compile Include="Inventory Clerk Modules\Clerk Dashboard.Designer.cs">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="reportsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reportsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportViewer.Designer.cs">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\Sales Return.resx">
-      <DependentUpon>Sales Return.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\Returns Management.resx">
+      <DependentUpon>Returns Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\ReturnItem.resx">
+      <DependentUpon>ReturnItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\Barcode Lookup.resx">
       <DependentUpon>Barcode Lookup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\frmBarcodes.resx">
       <DependentUpon>frmBarcodes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\frmStockCard.resx">
+      <DependentUpon>frmStockCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
@@ -584,12 +594,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Quantity.resx">
       <DependentUpon>Quantity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Link Forms\Sales Report.resx">
-      <DependentUpon>Sales Report.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\Update Stock.resx">
-      <DependentUpon>Update Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Mainform.resx">
       <DependentUpon>Clerk Mainform.cs</DependentUpon>
@@ -633,9 +637,6 @@
     <EmbeddedResource Include="Owner Modules\Owner Mainform.resx">
       <DependentUpon>Owner Mainform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\Products.resx">
-      <DependentUpon>Products.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Owner Reports.resx">
       <DependentUpon>Owner Reports.cs</DependentUpon>
     </EmbeddedResource>
@@ -644,9 +645,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\Customers.resx">
-      <DependentUpon>Customers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -674,7 +672,9 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Receipt.rdlc" />
+    <EmbeddedResource Include="ReportViewer.resx">
+      <DependentUpon>ReportViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report2.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />
     <None Include="AppData.xsc">
@@ -699,6 +699,17 @@
     <None Include="DBSaleInventoryDataSet.xss">
       <DependentUpon>DBSaleInventoryDataSet.xsd</DependentUpon>
     </None>
+    <None Include="OwnerDashboardDataset.xsc">
+      <DependentUpon>OwnerDashboardDataset.xsd</DependentUpon>
+    </None>
+    <None Include="OwnerDashboardDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OwnerDashboardDataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="OwnerDashboardDataset.xss">
+      <DependentUpon>OwnerDashboardDataset.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -714,6 +725,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="reportsDataSet.xsc">
+      <DependentUpon>reportsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="reportsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>reportsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="reportsDataSet.xss">
+      <DependentUpon>reportsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\dashboard.png" />
   </ItemGroup>
   <ItemGroup>

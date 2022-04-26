@@ -37,17 +37,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MAVERICK-PC\\SQLEXPRESS;Initial Catalog=DBSalesInventory;Integrated Se" +
-            "curity=True")]
-        public string DBSalesInventoryConnectionString {
-            get {
-                return ((string)(this["DBSalesInventoryConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MAVERICK-PC\\SQLEXPRESS;Initial Catalog=DBSaleInventory;Integrated Sec" +
             "urity=True")]
         public string DBSaleInventoryConnectionString {

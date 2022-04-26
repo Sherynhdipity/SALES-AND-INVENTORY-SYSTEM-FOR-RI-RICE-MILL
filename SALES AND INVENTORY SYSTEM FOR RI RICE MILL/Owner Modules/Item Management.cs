@@ -105,6 +105,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
                 con.Close();
             }
+            con.Close();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -119,11 +120,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dgvItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvItemList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            try
             {
-                updateItem.Id = dgvItemList[1, e.RowIndex].Value.ToString();
-                updateItem.ShowDialog();
+                if (dgvItemList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+                {
+                    updateItem.Id = dgvItemList[1, e.RowIndex].Value.ToString();
+                    updateItem.ShowDialog();
+                }
             }
+            catch(Exception ex)
+            {
+                throw;
+            }
+
+            
         }
     }
 }

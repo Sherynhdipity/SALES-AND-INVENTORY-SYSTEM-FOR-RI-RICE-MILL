@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OwnerDashboardDataset" targetNamespace="http://tempuri.org/OwnerDashboardDataset.xsd" xmlns:mstns="http://tempuri.org/OwnerDashboardDataset.xsd" xmlns="http://tempuri.org/OwnerDashboardDataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBSaleInventoryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBSaleInventoryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.GlobalReference.Default.DBSaleInventoryConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OwnerDashboardViewTableAdapter" GeneratorDataComponentClassName="OwnerDashboardViewTableAdapter" Name="OwnerDashboardView" UserDataComponentName="OwnerDashboardViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.OwnerDashboardView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [Total Sales], [Total Transactions], [Stocked Out], [Stocked In] FROM dbo.OwnerDashboardView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Total Sales" DataSetColumn="Total Sales" />
+              <Mapping SourceColumn="Total Transactions" DataSetColumn="Total Transactions" />
+              <Mapping SourceColumn="Stocked Out" DataSetColumn="Stocked Out" />
+              <Mapping SourceColumn="Stocked In" DataSetColumn="Stocked In" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OwnerDashboardDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="OwnerDashboardDataset" msprop:Generator_DataSetName="OwnerDashboardDataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OwnerDashboardView" msprop:Generator_RowEvHandlerName="OwnerDashboardViewRowChangeEventHandler" msprop:Generator_RowDeletedName="OwnerDashboardViewRowDeleted" msprop:Generator_RowDeletingName="OwnerDashboardViewRowDeleting" msprop:Generator_RowEvArgName="OwnerDashboardViewRowChangeEvent" msprop:Generator_TablePropName="OwnerDashboardView" msprop:Generator_RowChangedName="OwnerDashboardViewRowChanged" msprop:Generator_RowChangingName="OwnerDashboardViewRowChanging" msprop:Generator_TableClassName="OwnerDashboardViewDataTable" msprop:Generator_RowClassName="OwnerDashboardViewRow" msprop:Generator_TableVarName="tableOwnerDashboardView" msprop:Generator_UserTableName="OwnerDashboardView">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Total_x0020_Sales" msprop:Generator_ColumnPropNameInRow="Total_Sales" msprop:Generator_ColumnPropNameInTable="Total_SalesColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Sales" msprop:Generator_UserColumnName="Total Sales" type="xs:double" />
+              <xs:element name="Total_x0020_Transactions" msprop:Generator_ColumnPropNameInRow="Total_Transactions" msprop:Generator_ColumnPropNameInTable="Total_TransactionsColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Transactions" msprop:Generator_UserColumnName="Total Transactions" type="xs:int" minOccurs="0" />
+              <xs:element name="Stocked_x0020_Out" msprop:Generator_ColumnPropNameInRow="Stocked_Out" msprop:Generator_ColumnPropNameInTable="Stocked_OutColumn" msprop:Generator_ColumnVarNameInTable="columnStocked_Out" msprop:Generator_UserColumnName="Stocked Out" type="xs:int" minOccurs="0" />
+              <xs:element name="Stocked_x0020_In" msprop:Generator_ColumnPropNameInRow="Stocked_In" msprop:Generator_ColumnPropNameInTable="Stocked_InColumn" msprop:Generator_ColumnVarNameInTable="columnStocked_In" msprop:Generator_UserColumnName="Stocked In" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
