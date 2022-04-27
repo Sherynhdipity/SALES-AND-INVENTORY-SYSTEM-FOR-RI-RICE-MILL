@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
@@ -27,6 +28,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             InitializeComponent();
         }
 
+        public static SqlConnection con = new SqlConnection(DBConnection.con);
+        public static SqlCommand cmd = new SqlCommand();
+        public static SqlDataReader reader;
+        public static SqlDataAdapter adapter;
+        public static DataTable dt = new DataTable();
+        public static DialogResult result;
+        public static string QueryInsert;
+        public static string QuerySelect;
+        public static string QueryUpdate;
+        public static string QueryDelete;
+
         private void btnViewSalesReports_Click(object sender, EventArgs e)
         {
            
@@ -36,6 +48,58 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             frmViewInventoryReport inventoryReport = new frmViewInventoryReport();
             inventoryReport.Show();
+        }
+
+        private void ucInventoryReports_Load(object sender, EventArgs e)
+        {
+            AvailableStock();
+            StockOut();
+        }
+
+        public void AvailableStock()
+        {
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT * from InventoryDashboardView";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    txtTotalAvailableStock.Text = reader["Total Available Stock"].ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public void StockOut()
+        {
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT * from InventoryDashboardView";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                   txtStockOut.Text = reader["Stock out"].ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
     }
 }

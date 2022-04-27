@@ -309,6 +309,12 @@
     <Compile Include="Inventory Clerk Modules\frmStockCard.Designer.cs">
       <DependentUpon>frmStockCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="OReceipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OReceipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Owner Modules\Add Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,6 +435,30 @@
     </Compile>
     <Compile Include="Owner Modules\Item Management.Designer.cs">
       <DependentUpon>Item Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\OwnerInventoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\OwnerInventoryReport.Designer.cs">
+      <DependentUpon>OwnerInventoryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\OwnerSalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\OwnerSalesReport.Designer.cs">
+      <DependentUpon>OwnerSalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\RestockReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\RestockReport.Designer.cs">
+      <DependentUpon>RestockReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\Sales Return.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\Sales Return.Designer.cs">
+      <DependentUpon>Sales Return.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Update Item.cs">
       <SubType>Form</SubType>
@@ -556,6 +586,10 @@
     <EmbeddedResource Include="Inventory Clerk Modules\frmStockCard.resx">
       <DependentUpon>frmStockCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OReceipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OReceipt.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
     </EmbeddedResource>
@@ -618,6 +652,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Item Management.resx">
       <DependentUpon>Item Management.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\OwnerInventoryReport.resx">
+      <DependentUpon>OwnerInventoryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\OwnerSalesReport.resx">
+      <DependentUpon>OwnerSalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\RestockReport.resx">
+      <DependentUpon>RestockReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\Sales Return.resx">
+      <DependentUpon>Sales Return.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Update Item.resx">
       <DependentUpon>Update Item.cs</DependentUpon>

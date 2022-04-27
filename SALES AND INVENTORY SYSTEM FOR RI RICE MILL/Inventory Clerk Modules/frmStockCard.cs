@@ -37,8 +37,52 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void frmStockCard_Load(object sender, EventArgs e)
         {
-            dtvStockCard.Refresh();
-            
+            //Stock In
+            try
+            {
+                QuerySelect = " Select * from StockCardIN";
+
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvStockIN.DataSource = dt;
+                dgvStockOut.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            //Stock Out
+            try
+            {
+                QuerySelect = " Select * from StockCardOUT";
+
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvStockOut.DataSource = dt;
+                dgvStockOut.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
         }
     }
 }

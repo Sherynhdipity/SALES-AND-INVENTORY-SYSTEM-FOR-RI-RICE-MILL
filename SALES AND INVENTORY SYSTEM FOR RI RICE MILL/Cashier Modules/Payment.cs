@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
@@ -95,8 +98,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             {
                                 total_quantity += Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString());
                             }
-                            QueryInsert = "INSERT INTO tblOrders(Customer_id, User_id, Transaction_number, OR_number, Order_date, Quantity, Total_discount, Total_cost, Senior_Citizen_number,PWD_number )" +
-                            "VALUES(@cID, @uID, @transNo,@OR, @orderDate, @qty, @discount, @total, @senior, @PWD)";
+                            QueryInsert = "INSERT INTO tblOrders(Customer_id, User_id, Transaction_number, OR_number, Order_date, Quantity, Total_discount, Total_cost, Cash, Senior_Citizen_number,PWD_number )" +
+                            "VALUES(@cID, @uID, @transNo,@OR, @orderDate, @qty, @discount, @total, @cash, @senior, @PWD)";
                             cmd = new SqlCommand(QueryInsert, con);
 
                             cmd.Parameters.AddWithValue("@cID", CustomerID);
@@ -107,6 +110,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             cmd.Parameters.AddWithValue("@qty", total_quantity);
                             cmd.Parameters.AddWithValue("@discount", discount_total);
                             cmd.Parameters.AddWithValue("@total", total);
+                            cmd.Parameters.AddWithValue("@cash", txtCash.Text);
+
                             if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "SC #:")
                             {
                                 cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
@@ -120,13 +125,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             {
                                 cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
                                 cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
-                            }
-                           
-
-
-
-
-
+                            }      
                             cmd.ExecuteNonQuery();
                         }
                         catch (Exception ex)
@@ -136,6 +135,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         finally
                         {
                             con.Close();
+
                         }
 
 
@@ -215,13 +215,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
-
-        private void printreciept()
-        {
-            PrintReciept pr = new PrintReciept();
-            pr.ShowDialog();
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -252,7 +245,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void txtCash_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
@@ -304,15 +304,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             SettlePayment();
+
+
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             //this.Close();
             frmAddNewCustomer addNewCustomer = new frmAddNewCustomer();
-            addNewCustomer.ShowDialog();
-
-            
+            addNewCustomer.ShowDialog();      
 
         }
 
@@ -338,54 +338,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     con.Open();
                     adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
-
-                    ////txtOSCA/PWD
-
-                    //QuerySelect = "Select tblCustomer.DiscountCode from tblCustomer INNER JOIN " +
-                    //     "dbo.tblDiscounts ON dbo.tblCustomers.Discount_code = dbo.tblDiscounts.Discount_code INNER JOIN" +
-                    //     "dbo.tblOrders ON dbo.tblCustomers.Customer_id = dbo.tblOrders.Customer_id" +
-                    //     "where dbo.tblCustomers.Customer_id = @CID";
-
-                    //cmd = new SqlCommand(QuerySelect,con);
-                    //cmd.Parameters.AddWithValue("@CID", CustomerID);                   
-                    //reader = cmd.ExecuteReader();
-                    //if (reader.HasRows)
-                    //{
-                    //    reader.Read();
-                    //    discountCode = reader["Discount_code"].ToString();
-
-                    //    switch (reader[0].ToString())
-                    //    {
-                    //        case "LC01":
-                    //            {
-                    //                txtPWDOSCA.Visible = false;
-                    //                break;
-                    //            }
-                    //        case "SC01":
-                    //            {
-                    //                txtPWDOSCA.Visible = true;
-                    //                break;
-                    //            }
-                    //        case "PWD01":
-                    //            {
-                    //                txtPWDOSCA.Visible = true;
-                    //                break;
-                    //            }
-                    //        default:
-                    //            {
-                    //                txtPWDOSCA.Visible = false;
-                    //                break;
-                    //            }
-                    //    }
-                    //}
                     cmd.ExecuteNonQuery();
+
+                    //DiscountCodeTextbox
 
                     if(dt.Rows[0][1].ToString() == "SC01")
                     {
                         lblPWDORSC.Visible = true;
                         lblPWDORSC.Text = "SC #:";
                         txtPWDOSCA.Visible = true;
-                    }else if (dt.Rows[0][1].ToString() == "PWD01")
+                    }
+                    else if (dt.Rows[0][1].ToString() == "PWD01")
                     {
                         lblPWDORSC.Visible = true;
                         lblPWDORSC.Text = "PWD #:";
@@ -404,15 +367,41 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                      total = amount - discount_total;
                      txtAmount.Text = total.ToString();
                 }
+
                 con.Close();
                 txtViewCustomer.Enabled = false;
                 txtCash.Focus();
             }
         }
 
-        private void txtAmount_TextChange(object sender, EventArgs e)
+        private void txtORNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPWDOSCA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             InitializeComponent();
 
             BindingSource bs = (BindingSource)dgvInventoryReport.DataSource;//You should first convert DataSourse into Binding Sourse
-            DataTable dt = (DataTable)bs.DataSource;
+          
         }
 
         public class Inventory 

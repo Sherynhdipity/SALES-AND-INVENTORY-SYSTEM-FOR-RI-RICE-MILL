@@ -14,10 +14,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
     public partial class frmReturnItem : Form
     {
         private string id;
+        private string sku;
         public string Id
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public string SKU
+        {
+            get { return sku; }
+            set { sku = value; }
         }
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -73,8 +80,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                         con.Close();
                         con.Open();
 
-                        QueryInsert = "INSERT INTO tblReturns(Order_id,Return_quantity,Remarks, Return_date)" +
-                            "VALUES(@oID,(SELECT COUNT(SKU) AS QTYRETURNED FROM tblOrderDetails WHERE SKU = @sku), @remarks, @returnDate)";
+                        QueryInsert = "INSERT INTO tblReturns(Order_id, SKU, Return_quantity,Remarks, Return_date)" +
+                            "VALUES(@oID, @sku,(SELECT COUNT(SKU) AS QTYRETURNED FROM tblOrderDetails WHERE SKU = @sku), @remarks, @returnDate)";
                         cmd = new SqlCommand(QueryInsert, con);
 
                         cmd.Parameters.AddWithValue("@oID", id);
@@ -111,7 +118,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             try
             {
                 con.Open();
-                QuerySelect = "SELECT Description, SKU, Price from OrderDetailsView WHERE Order_id = '" + id +"'";
+                QuerySelect = "SELECT Description, SKU, Price from OrderDetailsView WHERE SKU = '" + sku +"'";
                 
 
                 cmd = new SqlCommand(QuerySelect, con);
@@ -146,17 +153,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            //(e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
 
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            //// only allow one decimal point
+            //if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

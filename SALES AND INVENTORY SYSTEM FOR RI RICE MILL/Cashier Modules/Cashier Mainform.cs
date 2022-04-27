@@ -26,8 +26,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
             lblUserName.Text = frmLogin.GetUserName.ToString();
             lblUserRole.Text = frmLogin.GetUserRole.ToString();
-
-            //btnDashboard.PerformClick();
+            //MessageBox.Show("reloaded");
+                btnDashboard.PerformClick();
+         
+            
         }
 
         public bool isFormMinimized = false;
@@ -63,6 +65,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             {
                 panelModule.Controls.Add(ucSalesDashboard.dashboardInstance);
                 ucSalesDashboard.dashboardInstance.populateDash();
+                //ucSalesDashboard.dashboardInstance.populateChart();
                 ucSalesDashboard.dashboardInstance.Dock = DockStyle.Fill;
                 ucSalesDashboard.dashboardInstance.BringToFront();
             }
@@ -99,7 +102,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         private void panelModule_Layout(object sender, LayoutEventArgs e)
         {
-            frmMain_Load(sender, e);
+            //frmMain_Load(sender, e); dito ang problem cho ahhh ookiii wait run ko muna kuya
         }
 
         private void bunifuButton24_Click(object sender, EventArgs e)

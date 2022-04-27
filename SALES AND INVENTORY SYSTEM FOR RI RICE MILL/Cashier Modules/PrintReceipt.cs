@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class PrintReciept : Form
+    public partial class frmPrintReceipt : Form
     {
-        public PrintReciept()
+        public frmPrintReceipt()
         {
             InitializeComponent();
         }
@@ -20,6 +20,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void PrintReciept_Load(object sender, EventArgs e)
+        {
+
+            //this.reportViewer1.RefreshReport();
         }
     }
 }

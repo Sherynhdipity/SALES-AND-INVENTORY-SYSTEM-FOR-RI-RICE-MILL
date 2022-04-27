@@ -100,12 +100,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtAmount.Text = "";
             txtQuantityCount.Text = "";
             txtVatAmount.Text = "";
+
             //label controls
             lblTransNo.Text = "0000000000";
             lblTotal.Text = "0.00";
             lblTransDate.Text = "Date";
             dt.Clear();
         }
+
+
 
         //Remove Product from List
         void VoidProduct()
@@ -357,26 +360,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         }
                         else
                         {
-                            //if (txtProdDesc.Text.Length > 13)
-                            //{
-                            //    item = dt.NewRow();
-                            //   // item["product code"] = txtProductCode.Text;
-                            //    item["product description"] = txtProdDesc.Text.Substring(0, 13);
-                            //    item["quantity"] = txtQuantity.Text;
-                            //    item["price"] = price.ToString("#,0.00");
-                            //    item["subtotal"] = qty * price;
-                            //    dt.Rows.Add(item);
-                            //}
-                            //else
-                            //{
                                 item = dt.NewRow();
-                              //  item["product code"] = txtProductCode.Text;
                                 item["product description"] = txtProdDesc.Text;
                                 item["quantity"] = txtQuantity.Text;
                                 item["price"] = price.ToString("#,0.00");
                                 item["subtotal"] = qty * price;
                                 dt.Rows.Add(item);
-                            //}
                         }
 
                         double totalamount = 0;
@@ -579,6 +568,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             GetTransNo();
             txtSearch.Enabled = true;
             txtSearch.Focus();
+
             //buttons
             btnSearchProduct.Enabled = true;
             btnAdd.Enabled = true;
@@ -644,6 +634,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             if (res == DialogResult.OK)
             {
                 ClearAll();
+
+                //buttons
+                btnSearchProduct.Enabled = false;
+                btnAdd.Enabled = false;
+                btnVoid.Enabled = false;
+                btnPay.Enabled = false;
+                btnCancel.Enabled = false;
             }
         }
 

@@ -132,15 +132,6 @@
   <data name="bunifuLabel4.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
   </data>
-  <data name="btnPrintReport.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAnCAYAAAD+QPHGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACSSURBVHhe7dKhAYAwAMAwLtnL8B9n4Dc4AAs1EVG13cYx
-        z3GsBf+Z5zPeW4BvGY+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E
-        8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIbGOf11uAz+zzugFcoFNzH6WN
-        kgAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="btnSearch.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -579,6 +570,15 @@
         3S2O0Q9Z2pyMMaZNFHhDAM5KQfmq0MQVDeKzpvBdU1PKGpNkczLGmC6jQJ0J2qkSM5MI8tejzr8LLOxj
         1ozyhiTZlMxsc9ddd1nWXItAfxh6c4nOQR9vQNpObPvSYbF9t6z50V0/8/8Bgo32YaxpGUMAAAAASUVO
         RK5CYII=
+</value>
+  </data>
+  <data name="btnPrintReport.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAnCAYAAAD+QPHGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACSSURBVHhe7dKhAYAwAMAwLtnL8B9n4Dc4AAs1EVG13cYx
+        z3GsBf+Z5zPeW4BvGY+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E
+        8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIbGOf11uAz+zzugFcoFNzH6WN
+        kgAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="btnClear.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

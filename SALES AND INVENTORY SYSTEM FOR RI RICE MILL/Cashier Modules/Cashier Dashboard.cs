@@ -11,8 +11,8 @@ using System.Windows.Forms;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-        public partial class ucSalesDashboard : UserControl
-        {
+    public partial class ucSalesDashboard : UserControl
+    {
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
@@ -24,21 +24,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QuerySelect;
 
         private static ucSalesDashboard dashboard;
-            public static ucSalesDashboard dashboardInstance
+        public static ucSalesDashboard dashboardInstance
+        {
+            get
             {
-                get
-                {
-                    if (dashboard == null)
-                        dashboard = new ucSalesDashboard();
-                    return dashboard;
-                }
+                if (dashboard == null)
+                    dashboard = new ucSalesDashboard();
+                return dashboard;
             }
-            public ucSalesDashboard()
-            {
-                InitializeComponent();
-            
-                
-            }
+        }
+        public ucSalesDashboard()
+        {
+            InitializeComponent();
+        }
 
         public void populateChart()
         {
@@ -56,15 +54,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 DataView source = new DataView(ds.Tables[0]);
                 salesChart.DataSource = source;
 
-                salesChart.Series[0].XValueMember = "Total Sales";
-                salesChart.Series[0].YValueMembers = "Total Sales";
+                salesChart.Series[0].XValueMember = "Total Amount";
+                salesChart.Series[0].YValueMembers = "Total Amount";
 
                 salesChart.DataBind();
 
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -85,15 +83,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 DataView source = new DataView(ds.Tables[0]);
                 transChart.DataSource = source;
 
-                transChart.Series[0].XValueMember = "Total Transactions";
-                transChart.Series[0].YValueMembers = "Total Transactions";
+                transChart.Series[0].XValueMember = "Total Transaction";
+                transChart.Series[0].YValueMembers = "Total Transaction";
 
                 transChart.DataBind();
 
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -115,9 +113,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     lblTotalSales.Text = reader["totalSales"].ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -135,48 +133,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     lblTotalTransactions.Text = reader["totalTrans"].ToString();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
             finally
             {
                 con.Close();
             }
-
-            ////totalProductSold
-            //try
-            //{
-            //    con.Open();
-            //    QuerySelect = "SELECT count(ProductID) as res from tblProducts";
-            //    SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-            //    if (reader.Read())
-            //    {
-            //        string temp = reader["res"].ToString();
-            //        lbladdedproducts.Text = temp;
-
-            //    }
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
-            //finally
-            //{
-            //    con.Close();
-            //}
+            
         }
 
         private void ucSalesDashboard_Load(object sender, EventArgs e)
         {
             populateDash();
-           // populateChart();
+            populateChart();
 
-            
         }
     }
-
-    }
+}
 

@@ -111,9 +111,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
+
         private void btnViewReport_Click(object sender, EventArgs e)
         {
             DisplaySalesReport();
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

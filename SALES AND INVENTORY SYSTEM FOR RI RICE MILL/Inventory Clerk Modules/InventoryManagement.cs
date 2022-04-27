@@ -110,5 +110,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             lookup.ShowDialog();
 
         }
+
+        private void btnStockCard_Click(object sender, EventArgs e)
+        {
+            Inventory_Clerk_Modules.frmStockCard f1 = new Inventory_Clerk_Modules.frmStockCard();
+            f1.ShowDialog();
+        }
     }
 }

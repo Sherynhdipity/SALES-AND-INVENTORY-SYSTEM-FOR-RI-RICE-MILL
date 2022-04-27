@@ -53,8 +53,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             frmReturnItem frm = (frmReturnItem)sender;
         }
 
+        public void DisplayReturns()
+        {
 
-        public void DisplayCustomerName()
+        }
+
+
+            public void DisplayCustomerName()
         {
             if (txtTransNo.Text == "")
             {
@@ -113,7 +118,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                     con.Close();
                     con.Open();
 
-                    QuerySelect = "SELECT Description, SKU, Price, [Order Date] FROM OrderDetailsView WHERE TransNum = @transNo";
+                    QuerySelect = "SELECT Order_id, Description, SKU, Price, [Order Date] FROM OrderDetailsView WHERE TransNum = @transNo";
 
                     cmd = new SqlCommand(QuerySelect, con);
                     cmd.Parameters.AddWithValue("@transNo", txtTransNo.Text);
@@ -155,10 +160,34 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         private void dgvOrderDeetsList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            MessageBox.Show("error");
+            //if (dgvOrderDeetsList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            //{
+            //    returnItem.Id = dgvOrderDeetsList[1, e.RowIndex].Value.ToString();
+            //    returnItem.ShowDialog();
+            //}
+        }
 
+        private void dgvOrderDeetsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (dgvOrderDeetsList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            //{
+            //    returnItem.Id = dgvOrderDeetsList[1, e.RowIndex].Value.ToString();
+            //    returnItem.ShowDialog();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("err");
+            //}
+        }
+
+        private void dgvOrderDeetsList_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
             if (dgvOrderDeetsList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
             {
-                returnItem.Id = dgvOrderDeetsList[1, e.RowIndex].Value.ToString();
+                returnItem.SKU = dgvOrderDeetsList[2, e.RowIndex].Value.ToString();
+                returnItem.Id = dgvOrderDeetsList[0, e.RowIndex].Value.ToString();
+                //MessageBox.Show(returnItem.Id);
                 returnItem.ShowDialog();
             }
         }
