@@ -30,16 +30,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRestockReport));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.dgvRestockReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnPrintReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRestockReport)).BeginInit();
+            this.dgvRestockReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRestockReport)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuLabel3
@@ -57,69 +57,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel3.Text = "Restock Reports";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // dgvRestockReport
-            // 
-            this.dgvRestockReport.AllowCustomTheming = false;
-            this.dgvRestockReport.AllowUserToAddRows = false;
-            this.dgvRestockReport.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dgvRestockReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRestockReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRestockReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvRestockReport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvRestockReport.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRestockReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvRestockReport.ColumnHeadersHeight = 40;
-            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvRestockReport.CurrentTheme.BackColor = System.Drawing.Color.White;
-            this.dgvRestockReport.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvRestockReport.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.dgvRestockReport.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.dgvRestockReport.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvRestockReport.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.dgvRestockReport.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvRestockReport.CurrentTheme.Name = null;
-            this.dgvRestockReport.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvRestockReport.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvRestockReport.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvRestockReport.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dgvRestockReport.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRestockReport.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvRestockReport.EnableHeadersVisualStyles = false;
-            this.dgvRestockReport.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvRestockReport.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.dgvRestockReport.HeaderBgColor = System.Drawing.Color.Empty;
-            this.dgvRestockReport.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvRestockReport.Location = new System.Drawing.Point(35, 146);
-            this.dgvRestockReport.Name = "dgvRestockReport";
-            this.dgvRestockReport.ReadOnly = true;
-            this.dgvRestockReport.RowHeadersVisible = false;
-            this.dgvRestockReport.RowTemplate.Height = 40;
-            this.dgvRestockReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRestockReport.Size = new System.Drawing.Size(930, 479);
-            this.dgvRestockReport.TabIndex = 124;
-            this.dgvRestockReport.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.dgvRestockReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesOwnerReport_CellContentClick);
             // 
             // pictureBox6
             // 
@@ -222,22 +159,88 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnPrintReport.TextMarginLeft = 0;
             this.btnPrintReport.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnPrintReport.UseDefaultRadiusAndThickness = true;
+            this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
+            // 
+            // dgvRestockReport
+            // 
+            this.dgvRestockReport.AllowCustomTheming = false;
+            this.dgvRestockReport.AllowUserToAddRows = false;
+            this.dgvRestockReport.AllowUserToDeleteRows = false;
+            this.dgvRestockReport.AllowUserToResizeColumns = false;
+            this.dgvRestockReport.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dgvRestockReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvRestockReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRestockReport.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvRestockReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRestockReport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvRestockReport.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRestockReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRestockReport.ColumnHeadersHeight = 40;
+            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.dgvRestockReport.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvRestockReport.CurrentTheme.BackColor = System.Drawing.Color.White;
+            this.dgvRestockReport.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.dgvRestockReport.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.dgvRestockReport.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.dgvRestockReport.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvRestockReport.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.dgvRestockReport.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvRestockReport.CurrentTheme.Name = null;
+            this.dgvRestockReport.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvRestockReport.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dgvRestockReport.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvRestockReport.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.dgvRestockReport.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRestockReport.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvRestockReport.EnableHeadersVisualStyles = false;
+            this.dgvRestockReport.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.dgvRestockReport.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.dgvRestockReport.HeaderBgColor = System.Drawing.Color.Empty;
+            this.dgvRestockReport.HeaderForeColor = System.Drawing.Color.White;
+            this.dgvRestockReport.Location = new System.Drawing.Point(25, 146);
+            this.dgvRestockReport.Name = "dgvRestockReport";
+            this.dgvRestockReport.ReadOnly = true;
+            this.dgvRestockReport.RowHeadersVisible = false;
+            this.dgvRestockReport.RowTemplate.Height = 40;
+            this.dgvRestockReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRestockReport.Size = new System.Drawing.Size(950, 327);
+            this.dgvRestockReport.TabIndex = 135;
+            this.dgvRestockReport.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
             // frmRestockReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 537);
-            this.Controls.Add(this.bunifuLabel3);
+            this.ClientSize = new System.Drawing.Size(1000, 481);
             this.Controls.Add(this.dgvRestockReport);
+            this.Controls.Add(this.bunifuLabel3);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.btnPrintReport);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmRestockReport";
             this.Text = "RestockReport";
             this.Load += new System.EventHandler(this.RestockReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRestockReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRestockReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,8 +248,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         #endregion
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
-        private Bunifu.UI.WinForms.BunifuDataGridView dgvRestockReport;
         private System.Windows.Forms.PictureBox pictureBox6;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPrintReport;
+        private Bunifu.UI.WinForms.BunifuDataGridView dgvRestockReport;
     }
 }

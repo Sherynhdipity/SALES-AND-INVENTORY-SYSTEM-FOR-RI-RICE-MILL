@@ -43,6 +43,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 bunifuPanel1.Visible = true;
             }
+
+            DateTime date = DateTime.Now;
+            lblDate.Text = string.Format("{0:D}", date);
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
@@ -170,6 +173,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 Owner_Modules.frmCustomer.customersInstance.BringToFront();
             }
+        }
+
+        private void panelModule_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

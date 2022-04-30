@@ -104,7 +104,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         public void populateDgvOrderDeets()
         {
-            dgvOrderDeetsList.Rows.Clear();
+            dgvOrderDeetsList.Rows.Clear(); //may error pag mag type ule ng transNo
             dgvOrderDeetsList.Refresh();
 
             if (txtCustomer.Text == "")

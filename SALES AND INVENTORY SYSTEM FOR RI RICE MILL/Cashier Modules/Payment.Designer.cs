@@ -888,7 +888,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblPWDORSC.CursorType = null;
             this.lblPWDORSC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.lblPWDORSC.ForeColor = System.Drawing.Color.Black;
-            this.lblPWDORSC.Location = new System.Drawing.Point(87, 183);
+            this.lblPWDORSC.Location = new System.Drawing.Point(85, 183);
             this.lblPWDORSC.Name = "lblPWDORSC";
             this.lblPWDORSC.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblPWDORSC.Size = new System.Drawing.Size(16, 22);

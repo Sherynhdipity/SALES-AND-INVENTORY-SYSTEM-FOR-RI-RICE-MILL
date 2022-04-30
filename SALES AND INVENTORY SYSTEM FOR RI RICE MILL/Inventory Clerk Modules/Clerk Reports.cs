@@ -46,8 +46,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnViewInventoryReports_Click(object sender, EventArgs e)
         {
-            frmViewInventoryReport inventoryReport = new frmViewInventoryReport();
-            inventoryReport.Show();
+            Inventory_Clerk_Modules.On_HandInventoryReports f1 = new Inventory_Clerk_Modules.On_HandInventoryReports();
+            f1.ShowDialog();
+
         }
 
         private void ucInventoryReports_Load(object sender, EventArgs e)
@@ -100,6 +101,36 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
             }
+
+        }
+
+        public void countStockINToday()
+        {
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT Count(SKU) from tblInventories where Stock_in_date = @date";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    txtStockInToday.Text = reader["SKU"].ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void bunifuButton21_Click(object sender, EventArgs e)
+        {
+            Inventory_Clerk_Modules.ReStockInventory f2 = new Inventory_Clerk_Modules.ReStockInventory();
+            f2.ShowDialog();
         }
     }
 }

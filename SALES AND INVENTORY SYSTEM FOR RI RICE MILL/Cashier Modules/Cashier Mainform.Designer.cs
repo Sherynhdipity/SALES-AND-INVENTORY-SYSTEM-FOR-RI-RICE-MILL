@@ -54,6 +54,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.btnSales = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.btnDashboard = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblDate = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
@@ -129,6 +130,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.bunifuPanel2.BorderColor = System.Drawing.Color.MidnightBlue;
             this.bunifuPanel2.BorderRadius = 0;
             this.bunifuPanel2.BorderThickness = 0;
+            this.bunifuPanel2.Controls.Add(this.lblDate);
             this.bunifuPanel2.Controls.Add(this.lblUserRole);
             this.bunifuPanel2.Controls.Add(this.lblUserName);
             this.bunifuPanel2.Controls.Add(this.pictureBox6);
@@ -138,6 +140,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(1087, 63);
             this.bunifuPanel2.TabIndex = 34;
+            this.bunifuPanel2.Click += new System.EventHandler(this.bunifuPanel2_Click);
             // 
             // lblUserRole
             // 
@@ -782,6 +785,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // lblDate
+            // 
+            this.lblDate.AllowParentOverrides = false;
+            this.lblDate.AutoEllipsis = false;
+            this.lblDate.CursorType = null;
+            this.lblDate.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblDate.Location = new System.Drawing.Point(714, 14);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblDate.Size = new System.Drawing.Size(303, 33);
+            this.lblDate.TabIndex = 35;
+            this.lblDate.Text = "Sunday, January 1, 1998";
+            this.lblDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDate.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // frmMainSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,5 +847,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         private Bunifu.UI.WinForms.BunifuLabel lblUserName;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 btnLogout;
         private Bunifu.UI.WinForms.BunifuLabel lblUserRole;
+        private Bunifu.UI.WinForms.BunifuLabel lblDate;
     }
 }

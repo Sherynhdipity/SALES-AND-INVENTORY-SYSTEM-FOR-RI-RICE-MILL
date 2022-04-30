@@ -70,5 +70,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
             }
         }
+
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            frmInventoryReport frm = new frmInventoryReport();
+            RestockReports restock = new RestockReports();
+
+            dt = new DataTable();
+            QuerySelect = "Select * from RestockListReportView";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            restock.Database.Tables["RestockListReportView"].SetDataSource(dt);
+            frm.InventoryReportViewer1.ReportSource = restock;
+            con.Close();
+            frm.Show();
+
+        }
     }
 }

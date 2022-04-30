@@ -209,7 +209,9 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
@@ -274,6 +276,14 @@
     <Compile Include="Cashier Modules\addCustomer.Designer.cs">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cashier Modules\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Cashier Modules\Returns Management.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -309,11 +319,29 @@
     <Compile Include="Inventory Clerk Modules\frmStockCard.Designer.cs">
       <DependentUpon>frmStockCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="OReceipt.cs">
+    <Compile Include="Inventory Clerk Modules\On-HandInventoryReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\On-HandInventoryReports.Designer.cs">
+      <DependentUpon>On-HandInventoryReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\ReStockInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\ReStockInventory.Designer.cs">
+      <DependentUpon>ReStockInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OReceipt.rpt</DependentUpon>
+      <DependentUpon>InventoryReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InventoryReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryReports.Designer.cs">
+      <DependentUpon>InventoryReports.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Add Customer.cs">
       <SubType>Form</SubType>
@@ -460,6 +488,21 @@
     <Compile Include="Owner Modules\Sales Return.Designer.cs">
       <DependentUpon>Sales Return.cs</DependentUpon>
     </Compile>
+    <Compile Include="reportsDataSet.cs">
+      <DependentUpon>reportsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RestockReports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestockReports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReturnReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReturnReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Owner Modules\Update Item.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -514,10 +557,10 @@
     <Compile Include="Owner Modules\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\PrintReceipt.cs">
+    <Compile Include="PrintReceipt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\PrintReceipt.Designer.cs">
+    <Compile Include="PrintReceipt.Designer.cs">
       <DependentUpon>PrintReceipt.cs</DependentUpon>
     </Compile>
     <Compile Include="OwnerDashboardDataset.Designer.cs">
@@ -557,16 +600,28 @@
     <Compile Include="Inventory Clerk Modules\Clerk Dashboard.Designer.cs">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Receipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>reportsDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="ReportViewer.cs">
+    <Compile Include="SalesReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReportViewer.Designer.cs">
-      <DependentUpon>ReportViewer.cs</DependentUpon>
+    <Compile Include="SalesReport.Designer.cs">
+      <DependentUpon>SalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
@@ -586,9 +641,18 @@
     <EmbeddedResource Include="Inventory Clerk Modules\frmStockCard.resx">
       <DependentUpon>frmStockCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OReceipt.rpt">
+    <EmbeddedResource Include="Inventory Clerk Modules\On-HandInventoryReports.resx">
+      <DependentUpon>On-HandInventoryReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\ReStockInventory.resx">
+      <DependentUpon>ReStockInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>OReceipt.cs</LastGenOutput>
+      <LastGenOutput>InventoryReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryReports.resx">
+      <DependentUpon>InventoryReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
@@ -638,7 +702,15 @@
     <EmbeddedResource Include="Cashier Modules\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\PrintReceipt.resx">
+    <EmbeddedResource Include="RestockReports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RestockReports.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReturnReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintReceipt.resx">
       <DependentUpon>PrintReceipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Link Forms\Inventory Reports.resx">
@@ -718,11 +790,19 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReportViewer.resx">
-      <DependentUpon>ReportViewer.cs</DependentUpon>
+    <EmbeddedResource Include="Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Receipt.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report2.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="SalesReport.resx">
+      <DependentUpon>SalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="AppData.xsc">
       <DependentUpon>AppData.xsd</DependentUpon>
     </None>
@@ -733,6 +813,17 @@
     </None>
     <None Include="AppData.xss">
       <DependentUpon>AppData.xsd</DependentUpon>
+    </None>
+    <None Include="Cashier Modules\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Cashier Modules\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Cashier Modules\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="DBSaleInventoryDataSet.xsc">
       <DependentUpon>DBSaleInventoryDataSet.xsd</DependentUpon>

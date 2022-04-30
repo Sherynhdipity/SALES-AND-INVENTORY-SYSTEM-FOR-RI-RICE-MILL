@@ -44,9 +44,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.panelModule = new System.Windows.Forms.Panel();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.panelLogout = new System.Windows.Forms.Panel();
-            this.pbLogout = new System.Windows.Forms.PictureBox();
-            this.bunifuLabel5 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblUserRole = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblUserName = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
@@ -61,10 +58,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuButton22 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton2();
             this.frmDashboard1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ucDashboard();
+            this.lblDate = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.panelLogout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -128,6 +124,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.panelModule.Name = "panelModule";
             this.panelModule.Size = new System.Drawing.Size(1087, 675);
             this.panelModule.TabIndex = 33;
+            this.panelModule.Paint += new System.Windows.Forms.PaintEventHandler(this.panelModule_Paint);
             // 
             // bunifuPanel2
             // 
@@ -137,8 +134,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.BorderColor = System.Drawing.Color.MidnightBlue;
             this.bunifuPanel2.BorderRadius = 0;
             this.bunifuPanel2.BorderThickness = 0;
+            this.bunifuPanel2.Controls.Add(this.lblDate);
             this.bunifuPanel2.Controls.Add(this.pictureBox6);
-            this.bunifuPanel2.Controls.Add(this.panelLogout);
             this.bunifuPanel2.Controls.Add(this.lblUserRole);
             this.bunifuPanel2.Controls.Add(this.lblUserName);
             this.bunifuPanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -147,6 +144,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(1087, 63);
             this.bunifuPanel2.TabIndex = 34;
+            this.bunifuPanel2.Click += new System.EventHandler(this.bunifuPanel2_Click);
             // 
             // pictureBox6
             // 
@@ -158,48 +156,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 36;
             this.pictureBox6.TabStop = false;
-            // 
-            // panelLogout
-            // 
-            this.panelLogout.BackColor = System.Drawing.Color.RoyalBlue;
-            this.panelLogout.Controls.Add(this.pbLogout);
-            this.panelLogout.Controls.Add(this.bunifuLabel5);
-            this.panelLogout.Location = new System.Drawing.Point(937, 13);
-            this.panelLogout.Name = "panelLogout";
-            this.panelLogout.Size = new System.Drawing.Size(129, 39);
-            this.panelLogout.TabIndex = 35;
-            this.panelLogout.Visible = false;
-            this.panelLogout.Click += new System.EventHandler(this.panelLogout_Click);
-            // 
-            // pbLogout
-            // 
-            this.pbLogout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbLogout.BackColor = System.Drawing.Color.Transparent;
-            this.pbLogout.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.logout;
-            this.pbLogout.Location = new System.Drawing.Point(10, 6);
-            this.pbLogout.Name = "pbLogout";
-            this.pbLogout.Size = new System.Drawing.Size(28, 27);
-            this.pbLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogout.TabIndex = 30;
-            this.pbLogout.TabStop = false;
-            // 
-            // bunifuLabel5
-            // 
-            this.bunifuLabel5.AllowParentOverrides = false;
-            this.bunifuLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuLabel5.AutoEllipsis = false;
-            this.bunifuLabel5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabel5.CursorType = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabel5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.bunifuLabel5.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel5.Location = new System.Drawing.Point(55, 11);
-            this.bunifuLabel5.Name = "bunifuLabel5";
-            this.bunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel5.Size = new System.Drawing.Size(59, 15);
-            this.bunifuLabel5.TabIndex = 29;
-            this.bunifuLabel5.Text = "LOG OUT";
-            this.bunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // lblUserRole
             // 
@@ -950,6 +906,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.frmDashboard1.Size = new System.Drawing.Size(1087, 675);
             this.frmDashboard1.TabIndex = 0;
             // 
+            // lblDate
+            // 
+            this.lblDate.AllowParentOverrides = false;
+            this.lblDate.AutoEllipsis = false;
+            this.lblDate.CursorType = null;
+            this.lblDate.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblDate.Location = new System.Drawing.Point(750, 12);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblDate.Size = new System.Drawing.Size(303, 29);
+            this.lblDate.TabIndex = 7;
+            this.lblDate.Text = "Sunday, January 1, 1998";
+            this.lblDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDate.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblDate.Click += new System.EventHandler(this.lblDayDate_Click);
+            // 
             // frmMainInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -969,9 +942,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.ResumeLayout(false);
             this.bunifuPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.panelLogout.ResumeLayout(false);
-            this.panelLogout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogout)).EndInit();
             this.bunifuPanel1.ResumeLayout(false);
             this.bunifuPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -993,16 +963,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private System.Windows.Forms.Panel panelModule;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel2;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel5;
-        private System.Windows.Forms.PictureBox pbLogout;
         private Bunifu.UI.WinForms.BunifuLabel lblUserRole;
         private Bunifu.UI.WinForms.BunifuLabel lblUserName;
         private ucDashboard frmDashboard1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton21;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel9;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton22;
-        private System.Windows.Forms.Panel panelLogout;
         private System.Windows.Forms.PictureBox pictureBox6;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton2 bunifuButton23;
+        private Bunifu.UI.WinForms.BunifuLabel lblDate;
     }
 }

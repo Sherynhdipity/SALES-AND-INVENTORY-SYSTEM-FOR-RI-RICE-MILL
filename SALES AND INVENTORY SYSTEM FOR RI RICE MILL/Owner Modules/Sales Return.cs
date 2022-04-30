@@ -17,6 +17,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             InitializeComponent();
         }
+        string date1;
+        string date2;
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd;
@@ -40,8 +42,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
-                dgvSalesOwnerReport.DataSource = dt;
-                dgvSalesOwnerReport.Refresh();
+                dgvReturnOwnerReport.DataSource = dt;
+                dgvReturnOwnerReport.Refresh();
 
             }
             catch (Exception ex)
@@ -53,6 +55,43 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
                 con.Close();
             }
+        }
+
+        private void frmSales_Return_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            frmInventoryReport frm = new frmInventoryReport();
+            ReturnReport ret = new ReturnReport();
+
+            try
+            {
+                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+                date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+                con.Open();
+
+                dt = new DataTable();
+                QuerySelect = "Select * from tblReturns";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                ret.Database.Tables["tblReturns"].SetDataSource(dt);
+                frm.InventoryReportViewer1.ReportSource = ret;
+                con.Close();
+                frm.Show();
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+
+          
         }
     }
 }

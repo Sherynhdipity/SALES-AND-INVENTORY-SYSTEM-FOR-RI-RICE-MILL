@@ -29,14 +29,23 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="DBSaleInventoryDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="DBSaleInventoryDataSet" msprop:Generator_DataSetName="DBSaleInventoryDataSet">
+  <xs:element name="DBSaleInventoryDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DBSaleInventoryDataSet" msprop:Generator_UserDSName="DBSaleInventoryDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CashierDashboardView" msprop:Generator_RowEvHandlerName="CashierDashboardViewRowChangeEventHandler" msprop:Generator_RowDeletedName="CashierDashboardViewRowDeleted" msprop:Generator_RowDeletingName="CashierDashboardViewRowDeleting" msprop:Generator_RowEvArgName="CashierDashboardViewRowChangeEvent" msprop:Generator_TablePropName="CashierDashboardView" msprop:Generator_RowChangedName="CashierDashboardViewRowChanged" msprop:Generator_RowChangingName="CashierDashboardViewRowChanging" msprop:Generator_TableClassName="CashierDashboardViewDataTable" msprop:Generator_RowClassName="CashierDashboardViewRow" msprop:Generator_TableVarName="tableCashierDashboardView" msprop:Generator_UserTableName="CashierDashboardView">
+        <xs:element name="CashierDashboardView" msprop:Generator_TableClassName="CashierDashboardViewDataTable" msprop:Generator_RowEvArgName="CashierDashboardViewRowChangeEvent" msprop:Generator_TableVarName="tableCashierDashboardView" msprop:Generator_TablePropName="CashierDashboardView" msprop:Generator_RowDeletingName="CashierDashboardViewRowDeleting" msprop:Generator_RowChangingName="CashierDashboardViewRowChanging" msprop:Generator_RowDeletedName="CashierDashboardViewRowDeleted" msprop:Generator_RowEvHandlerName="CashierDashboardViewRowChangeEventHandler" msprop:Generator_UserTableName="CashierDashboardView" msprop:Generator_RowChangedName="CashierDashboardViewRowChanged" msprop:Generator_RowClassName="CashierDashboardViewRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Total_x0020_Transactions" msprop:Generator_ColumnPropNameInRow="Total_Transactions" msprop:Generator_ColumnPropNameInTable="Total_TransactionsColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Transactions" msprop:Generator_UserColumnName="Total Transactions" type="xs:int" minOccurs="0" />
-              <xs:element name="Total_x0020_Sales" msprop:Generator_ColumnPropNameInRow="Total_Sales" msprop:Generator_ColumnPropNameInTable="Total_SalesColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Sales" msprop:Generator_UserColumnName="Total Sales" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_x0020_Transactions" msprop:Generator_ColumnVarNameInTable="columnTotal_Transactions" msprop:Generator_ColumnPropNameInRow="Total_Transactions" msprop:Generator_ColumnPropNameInTable="Total_TransactionsColumn" msprop:Generator_UserColumnName="Total Transactions" type="xs:int" minOccurs="0" />
+              <xs:element name="Total_x0020_Sales" msprop:Generator_ColumnVarNameInTable="columnTotal_Sales" msprop:Generator_ColumnPropNameInRow="Total_Sales" msprop:Generator_ColumnPropNameInTable="Total_SalesColumn" msprop:Generator_UserColumnName="Total Sales" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReceiptDt" msprop:Generator_TableClassName="ReceiptDtDataTable" msprop:Generator_TableVarName="tableReceiptDt" msprop:Generator_TablePropName="ReceiptDt" msprop:Generator_RowDeletingName="ReceiptDtRowDeleting" msprop:Generator_RowChangingName="ReceiptDtRowChanging" msprop:Generator_RowEvHandlerName="ReceiptDtRowChangeEventHandler" msprop:Generator_RowDeletedName="ReceiptDtRowDeleted" msprop:Generator_UserTableName="ReceiptDt" msprop:Generator_RowChangedName="ReceiptDtRowChanged" msprop:Generator_RowEvArgName="ReceiptDtRowChangeEvent" msprop:Generator_RowClassName="ReceiptDtRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

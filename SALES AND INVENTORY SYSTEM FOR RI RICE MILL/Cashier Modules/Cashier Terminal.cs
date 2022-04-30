@@ -21,6 +21,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryUpdate;
         public static string QueryDelete;
         public static string adminPass;
+    
 
 
 
@@ -537,7 +538,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             dtfromdvg.Rows.Clear();
             dtfromdvg.Columns.Clear();
-            //dtfromdvg.Columns.Add("Product Code", typeof(string)).ReadOnly = true;
             dtfromdvg.Columns.Add("Product Description", typeof(string)).ReadOnly = true;
             dtfromdvg.Columns.Add("Product Variety", typeof(string)).ReadOnly = true;
             dtfromdvg.Columns.Add("Quantity", typeof(int));
@@ -619,16 +619,34 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+                string[] itemDesc = new string[dvgOrderList.Rows.Count];
+                int[] qty = new int[dvgOrderList.Rows.Count];
+                double[] price = new double[dvgOrderList.Rows.Count];
 
-            //Cashier_Modules.addCustomer frmAddNew = new Cashier_Modules.addCustomer();
 
-            //frmAddNew.ShowDialog();
+            //itemdeets to pass on payment
+            for (int i = 0; i < dvgOrderList.Rows.Count; i++)
+            {
+                itemDesc[i] = dvgOrderList.Rows[i].Cells[0].Value.ToString();
+                qty[i] = Convert.ToInt32(dvgOrderList.Rows[i].Cells[1].Value.ToString());
+                price[i] = Convert.ToDouble(dvgOrderList.Rows[i].Cells[3].Value.ToString());      
+            }
+
+
 
             setdt();
             frmPayment payment = new frmPayment();
             payment.txtAmount.Text = lblTotal.Text;
             payment.transNo = lblTransNo.Text;
             payment.storeDt(dtfromdvg);
+            payment.ItemDesc = itemDesc;
+            payment.Qty = qty;
+            payment.Price = price;
+            payment.tax = txtVatAmount.Text;
+            payment.vatable = txtVatable.Text;
+
+        
+
             DialogResult res = payment.ShowDialog();
 
             if (res == DialogResult.OK)

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 {
@@ -27,7 +29,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static DialogResult result;
         public static string QuerySelect;
 
-
+        string date1;
+        string date2;
         private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
         {
 
@@ -47,7 +50,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = "Select * from SalesReportView where Order_date between @FromDate and @ToDate";
+                QuerySelect = "Select * from SalesReportView where [Order Date] between @FromDate and @ToDate";
                     
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -69,6 +72,39 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
                 con.Close();
             }
+        }
+
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            SalesReport sales = new SalesReport();
+            frmSalesReport frm = new frmSalesReport();
+            
+
+            try
+            {
+                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+                date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+                con.Open();
+
+                dt = new DataTable();
+                QuerySelect = "SELECT * FROM SalesReportView WHERE [Order Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                sales.Database.Tables["SalesReportView"].SetDataSource(dt);
+                frm.SalesReportViewer.ReportSource = sales;
+                con.Close();
+                frm.Show();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
         }
     }
 }

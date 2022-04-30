@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
@@ -36,64 +38,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 return cashierReports;
             }
         }
+        string date1;
+        string date2;
+
         public ucCashierReports()
         {
             InitializeComponent();
         }
 
-        //public void DisplaySalesReport()
-        //{
-        //    try
-        //    {
-        //        con.Open();
-
-        //        if (txtViewCustomers.Text == "" || txtViewCustomers.Text == null)
-        //        {
-        //            QuerySelect = "SELECT * from CustomerViews";
-        //        }
-        //        else
-        //        {
-        //            QuerySelect = "SELECT * FROM  CustomerViews WHERE (ID LIKE '%' + @id + '%') OR ([First Name] LIKE '%' + @fName + '%') OR ([Last Name] LIKE '%' + @lName + '%') OR ([Contact Number] LIKE '%' + @cNum + '%') OR ([Discount Code] LIKE '%' + @discount + '%')";
-
-        //        }
-
-        //        cmd = new SqlCommand(QuerySelect, con);
-
-        //        cmd.Parameters.AddWithValue("@id", txtViewCustomers.Text);
-        //        cmd.Parameters.AddWithValue("@fName", txtViewCustomers.Text);
-        //        cmd.Parameters.AddWithValue("@lName", txtViewCustomers.Text);
-        //        cmd.Parameters.AddWithValue("@cNum", txtViewCustomers.Text);
-        //        cmd.Parameters.AddWithValue("@province", txtViewCustomers.Text);
-        //        cmd.Parameters.AddWithValue("@city", txtViewCustomers.Text);
-        //        cmd.Parameters.AddWithValue("@street", txtViewCustomers.Text);
-        //        cmd.Parameters.AddWithValue("@discount", txtViewCustomers.Text);
-
-
-        //        adapter = new SqlDataAdapter(cmd);
-        //        dt = new DataTable();
-        //        adapter.Fill(dt);
-        //        dgvCustomerList.DataSource = dt;
-
-        //        dgvCustomerList.Refresh();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
-        //}
 
         public void DisplaySalesReport()
         {
             try
             {
-                QuerySelect = "SELECT * FROM  SalesReportView";
+                QuerySelect = "Select * from SalesReportView where [Order Date] = @date";
 
                 cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@date", dtpDate.Value);
+
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
@@ -109,15 +71,71 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
             }
+
         }
 
-
+       
         private void btnViewReport_Click(object sender, EventArgs e)
         {
-            DisplaySalesReport();
+            
         }
 
-        private void bunifuButton1_Click(object sender, EventArgs e)
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ucCashierReports_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            DisplaySalesReport();
+          
+        }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            SalesReport sales = new SalesReport();
+            frmSalesReport frm = new frmSalesReport();
+
+            try
+            {
+                date1 = dtpDate.Value.Year + "-" + dtpDate.Value.Month + "-" + dtpDate.Value.Day;
+                con.Open();
+
+                dt = new DataTable();
+                QuerySelect = "SELECT * FROM SalesReportView WHERE [Order Date] = '" + date1 + "'";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                sales.Database.Tables["SalesReportView"].SetDataSource(dt);
+                frm.SalesReportViewer.ReportSource = sales;
+                con.Close();
+                frm.Show();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void bunifuLabel2_Click(object sender, EventArgs e)
         {
 
         }

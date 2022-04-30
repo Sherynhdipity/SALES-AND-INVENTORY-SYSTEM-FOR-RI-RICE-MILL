@@ -34,7 +34,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.AppData = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.AppData();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.OReceipt1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OReceipt();
+            this.Receipt1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Receipt();
             ((System.ComponentModel.ISupportInitialize)(this.BarcodeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppData)).BeginInit();
             this.SuspendLayout();
@@ -56,20 +56,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
+            this.crystalReportViewer1.ActiveViewIndex = 0;
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(680, 484);
+            this.crystalReportViewer1.ReportSource = this.Receipt1;
+            this.crystalReportViewer1.Size = new System.Drawing.Size(772, 604);
             this.crystalReportViewer1.TabIndex = 0;
+            this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
             // frmPrintReceipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 484);
+            this.ClientSize = new System.Drawing.Size(772, 604);
             this.Controls.Add(this.crystalReportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPrintReceipt";
@@ -87,8 +89,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.BindingSource BarcodeBindingSource;
         private AppData AppData;
-        private SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OReceipt OReceipt1;
         public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-        //private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private Receipt Receipt1;
     }
 }

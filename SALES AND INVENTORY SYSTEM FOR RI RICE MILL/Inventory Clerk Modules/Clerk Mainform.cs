@@ -150,6 +150,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
 
             }
+
+            DateTime date = DateTime.Now;
+            lblDate.Text = string.Format("{0:D}", date);
         }
 
         private void bunifuButton23_Click(object sender, EventArgs e)
@@ -165,6 +168,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
 
             }
+        }
+
+        private void lblDayDate_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void panelModule_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuPanel2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

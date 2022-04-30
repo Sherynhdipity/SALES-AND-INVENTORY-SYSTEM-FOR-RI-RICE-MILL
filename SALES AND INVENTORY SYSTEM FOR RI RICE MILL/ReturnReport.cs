@@ -16,14 +16,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class OReceipt : ReportClass {
+    public class ReturnReport : ReportClass {
         
-        public OReceipt() {
+        public ReturnReport() {
         }
         
         public override string ResourceName {
             get {
-                return "OReceipt.rpt";
+                return "ReturnReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         
         public override string FullResourceName {
             get {
-                return "SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OReceipt.rpt";
+                return "SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ReturnReport.rpt";
             }
             set {
                 // Do nothing
@@ -82,7 +82,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section PageFooterSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section PageFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
             }
@@ -90,9 +90,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedOReceipt : Component, ICachedReport {
+    public class CachedReturnReport : Component, ICachedReport {
         
-        public CachedOReceipt() {
+        public CachedReturnReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            OReceipt rpt = new OReceipt();
+            ReturnReport rpt = new ReturnReport();
             rpt.Site = this.Site;
             return rpt;
         }

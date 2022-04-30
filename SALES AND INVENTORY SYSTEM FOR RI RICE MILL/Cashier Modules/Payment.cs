@@ -31,6 +31,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
         //end mods
 
+        frmSalesManagement sales = new frmSalesManagement();
         Cashier_Modules.addCustomer addCustomer = new Cashier_Modules.addCustomer();
         frmAddNewCustomer addNewCustomer = new frmAddNewCustomer();
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -50,10 +51,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public double total;
         public int total_quantity = 0;
         public string[] SKU;
-        frmSalesManagement sales = new frmSalesManagement();
-        
-        private int customerID;
+        public string tax, vatable;
 
+        public string [] ItemDesc { get; set; }
+        public int []  Qty { get; set; }
+        public double[] Price { get; set; }
+
+
+
+
+        private int customerID;
         public int CustomerID
         {
             get { return customerID; }
@@ -169,7 +176,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             for (int i = 0; i < SKU.Length; i++)
                             {
                                 QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
-                                "VALUES((SELECT MAX(Order_id) FROM tblOrders),(SELECT Item_id from tblInventories WHERE (SKU LIKE '%' + @sku  + '%')), @sku)";
+                                "VALUES((SELECT MAX(Order_id) FROM tblOrders),(SELECT Item_id from tblInventories WHERE (SKU LIKE '%' + @sku  + '%')  AND Batch_number = (SELECT MIN(Batch_number) FROM tblInventories)), @sku)";
 
                                 cmd = new SqlCommand(QueryInsert, con);
 
@@ -305,6 +312,81 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             SettlePayment();
 
+            Receipt resibo = new Receipt();
+
+            /*------- Official Receipt Details ------*/
+
+            // PHS1 - TERMINAL DETAILS
+
+            TextObject cashier = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["cashierName"];
+            cashier.Text = frmLogin.GetUserName.ToString();
+            TextObject transNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["transNo"];
+            transNum.Text = transNo;
+            TextObject ORNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["ORNo"];
+            ORNum.Text = txtORNumber.Text;
+
+           
+
+            //RFS1 - ITEMS TOTAL
+
+            TextObject totalqty = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalQty"];
+            totalqty.Text = total_quantity.ToString();
+            TextObject totalamt = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalAmount"];
+            totalamt.Text = total.ToString();
+            TextObject amtpaid = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cash"];
+            amtpaid.Text = txtCash.Text;
+            TextObject change = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Change"];
+            change.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0");
+            TextObject vatSale = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["vatSale"];
+            vatSale.Text = vatable;
+            TextObject VAT = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Tax"];
+            VAT.Text = tax;
+
+
+
+            //RFS1 - CUSTOMER DETAILS
+            TextObject customer = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
+            customer.Text = txtViewCustomer.Text;
+            TextObject cusNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
+            customer.Text = txtViewCustomer.Text;
+            TextObject cusIdNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cusNO"];
+            cusIdNo.Text = txtPWDOSCA.Text;
+
+
+
+            //DETAILS - ITEM DETAILS
+
+            string[,] table = new string[ItemDesc.Length, 3];
+            for (int i = 0; i < ItemDesc.Length; i++)
+            {
+                table[i, 0] = ItemDesc[i];
+                table[i, 1] = Qty[i].ToString();
+                table[i, 2] = Price[i].ToString();
+            }
+
+            DataTable testDt = new DataTable();
+  
+                testDt.Columns.Add("Description",typeof(string));
+                testDt.Columns.Add("Qty", typeof(string));
+                testDt.Columns.Add("Price", typeof(string));
+
+            for (int outerIndex = 0; outerIndex < ItemDesc.Length; outerIndex++)
+            {
+                DataRow newRow = testDt.NewRow();
+                for (int innerIndex = 0; innerIndex < 3; innerIndex++)
+                {
+
+                    newRow[innerIndex] = table[outerIndex, innerIndex];
+
+                }
+                testDt.Rows.Add(newRow);
+            }
+            resibo.Database.Tables["order_details"].SetDataSource(testDt);
+
+            //resibo.SetDataSource(testDt);
+            frmPrintReceipt.getform.Show();
+            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = null;
+            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = resibo;
 
         }
 

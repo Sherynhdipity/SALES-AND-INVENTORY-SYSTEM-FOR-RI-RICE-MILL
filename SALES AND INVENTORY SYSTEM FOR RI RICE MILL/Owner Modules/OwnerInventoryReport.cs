@@ -27,6 +27,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static DialogResult result;
         public static string QuerySelect;
 
+        string date1;
+        string date2;
+
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
@@ -40,8 +43,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
-                dgvSalesOwnerReport.DataSource = dt;
-                dgvSalesOwnerReport.Refresh();
+                dgvInventoryOwnerReport.DataSource = dt;
+                dgvInventoryOwnerReport.Refresh();
 
             }
             catch (Exception ex)
@@ -52,6 +55,48 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             finally
             {
                 con.Close();
+            }
+        }
+
+        private void frmOwnerInventoryReport_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            InventoryReport inventory = new InventoryReport();
+            frmInventoryReport frm = new frmInventoryReport();
+
+            try
+            {
+                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+                date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+                con.Open();
+
+                dt = new DataTable();
+                QuerySelect = "SELECT * FROM InventoryReportView WHERE Stock_in_date BETWEEN '" + date1 + "' AND '" + date2 + "'";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                inventory.Database.Tables["InventoryReportView"].SetDataSource(dt);
+                frm.InventoryReportViewer1.ReportSource = inventory;
+                con.Close();
+                frm.Show();
+
+               
+
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

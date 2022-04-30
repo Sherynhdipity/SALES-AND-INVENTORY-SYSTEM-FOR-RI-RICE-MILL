@@ -93,11 +93,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "Select * from tblReturns ";
+                QuerySelect = "Select Return_quantity from tblReturns";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    txtTotalReturn.Text = reader["Return_quantity"].ToString();
+                    txtTotalReturn.Text = reader["Return Quantity"].ToString();
 
                 }
             }

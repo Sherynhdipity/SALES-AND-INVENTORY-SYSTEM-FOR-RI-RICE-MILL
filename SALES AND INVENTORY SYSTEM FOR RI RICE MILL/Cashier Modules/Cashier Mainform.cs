@@ -40,6 +40,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             {
                 bunifuPanel1.Visible = true;
             }
+
+            DateTime date = DateTime.Now;
+            lblDate.Text = string.Format("{0:D}", date);
         }
 
 
@@ -134,6 +137,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             {
                 Cashier_Modules.ucReturns.returnsInstance.BringToFront();
             }
+
+        }
+
+        private void bunifuPanel2_Click(object sender, EventArgs e)
+        {
 
         }
     }

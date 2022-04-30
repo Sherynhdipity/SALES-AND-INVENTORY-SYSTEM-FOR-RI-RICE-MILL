@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class ReportViewer : Form
+    public partial class frmSalesReport : Form
     {
-        public ReportViewer()
+        public frmSalesReport()
         {
             InitializeComponent();
         }
