@@ -51,6 +51,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public double total;
         public int total_quantity = 0;
         public string[] SKU;
+        public string[] DESCRIPTION;
         public string tax, vatable;
 
         public string [] ItemDesc { get; set; }
@@ -70,10 +71,44 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
             autoCompleteCustomer();
+            //this.Close();
             //Cashier_Modules.addCustomer addCustomer = (Cashier_Modules.addCustomer)sender;
             //txtCustomer.Text = CustomerID;
             //this.ShowDialog();
         }
+
+        void CheckORExist()
+        {
+            try
+            {
+
+                con.Open();
+
+                QuerySelect = "SELECT Convert(Varchar(10),OR_number) FROM tblOrders WHERE Convert(Varchar(10),OR_number) = @OR";
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@OR", txtORNumber.Text);
+                string ORExist = (string)cmd.ExecuteScalar();
+                
+                if (ORExist == txtORNumber.Text)  
+                {
+                    MessageBox.Show("This OR Number Already Exists! ");
+                }
+                else
+                {
+                    SettlePayment();
+                }
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }   
 
         void SettlePayment()
         {
@@ -145,7 +180,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         }
 
-
                         //updateInventory
                         if (con.State == ConnectionState.Open)
                         {
@@ -156,10 +190,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             //get SKU
                             con.Open();
                             SKU = new string[total_quantity];
+                            DESCRIPTION = new string[total_quantity];
                             int ctr = 0;
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
-                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " SKU FROM tblInventories" +
+                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " SKU, Item_id FROM tblInventories" +
                                     " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + dtFromSalesMgt.Rows[i][0].ToString() + "')";
                                 cmd = new SqlCommand(QuerySelect, con);
                                 adapter = new SqlDataAdapter(cmd);
@@ -168,18 +203,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 for (int j =0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
                                 {
                                     SKU[ctr] = dtNew.Rows[j][0].ToString();
-                                    ctr ++;
+                                    DESCRIPTION[ctr] = dtNew.Rows[j][1].ToString();
+
+                                    //DESCRIPTION[ctr] = dtFromSalesMgt.Rows[i][0].ToString();
+
+                                    ctr++;
                                 }
                             }
 
                             //insert tblOrderDetails and Delete from inventory
                             for (int i = 0; i < SKU.Length; i++)
                             {
+                                //QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
+                                //"VALUES((SELECT MAX(Order_id) FROM tblOrders),(SELECT Item_id from tblItems WHERE (Description LIKE '%' + @description  + '%')  AND Batch_number = (SELECT MIN(Batch_number) FROM tblInventories)), @sku)";
                                 QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
-                                "VALUES((SELECT MAX(Order_id) FROM tblOrders),(SELECT Item_id from tblInventories WHERE (SKU LIKE '%' + @sku  + '%')  AND Batch_number = (SELECT MIN(Batch_number) FROM tblInventories)), @sku)";
-
+                                "VALUES((SELECT MAX(Order_id) FROM tblOrders),@description, @sku)";
                                 cmd = new SqlCommand(QueryInsert, con);
 
+                                cmd.Parameters.AddWithValue("@description", DESCRIPTION[i]);
                                 cmd.Parameters.AddWithValue("@sku", SKU[i]);
                                 cmd.ExecuteNonQuery();
 
@@ -187,10 +228,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd = new SqlCommand(QueryDelete, con);
                                 cmd.Parameters.AddWithValue("@sku", SKU[i]);
                                 cmd.ExecuteNonQuery();
-                            }
-                           
-
-
+                            }                       
 
                         }
                         catch (Exception ex)
@@ -201,7 +239,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             con.Close();
                         }
-
                         }
 
                         catch (Exception ex)
@@ -215,11 +252,93 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                     MessageBox.Show("Change: "+( Convert.ToDouble(txtCash.Text)-Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //printreciept();
+                    GenerateReceipt();
                     this.Close();
 
                 }
             }
+        }
+
+        void GenerateReceipt()
+        {
+            Receipt resibo = new Receipt();
+
+            /*------- Official Receipt Details ------*/
+
+            // PHS1 - TERMINAL DETAILS
+
+            TextObject cashier = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["cashierName"];
+            cashier.Text = frmLogin.GetUserName.ToString();
+            TextObject transNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["transNo"];
+            transNum.Text = transNo;
+            TextObject ORNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["ORNo"];
+            ORNum.Text = txtORNumber.Text;
+
+
+
+            //RFS1 - ITEMS TOTAL
+
+            TextObject totalqty = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalQty"];
+            totalqty.Text = total_quantity.ToString();
+            TextObject totalamt = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalAmount"];
+            totalamt.Text = total.ToString();
+            TextObject amtpaid = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cash"];
+            amtpaid.Text = txtCash.Text;
+            TextObject change = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Change"];
+            change.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0");
+            TextObject vatSale = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["vatSale"];
+            vatSale.Text = vatable;
+            TextObject VAT = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Tax"];
+            VAT.Text = tax;
+
+
+
+            //RFS1 - CUSTOMER DETAILS
+            TextObject customer = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
+            customer.Text = txtViewCustomer.Text;
+            TextObject cusNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
+            customer.Text = txtViewCustomer.Text;
+            TextObject cusIdNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cusNO"];
+            cusIdNo.Text = txtPWDOSCA.Text;
+
+
+
+            //DETAILS - ITEM DETAILS
+
+            string[,] table = new string[ItemDesc.Length, 3];
+            for (int i = 0; i < ItemDesc.Length; i++)
+            {
+                table[i, 0] = ItemDesc[i];
+                table[i, 1] = Qty[i].ToString();
+                table[i, 2] = Price[i].ToString();
+            }
+
+            DataTable testDt = new DataTable();
+
+            testDt.Columns.Add("Description", typeof(string));
+            testDt.Columns.Add("Qty", typeof(string));
+            testDt.Columns.Add("Price", typeof(string));
+
+            for (int outerIndex = 0; outerIndex < ItemDesc.Length; outerIndex++)
+            {
+                DataRow newRow = testDt.NewRow();
+                for (int innerIndex = 0; innerIndex < 3; innerIndex++)
+                {
+
+                    newRow[innerIndex] = table[outerIndex, innerIndex];
+
+                }
+                testDt.Rows.Add(newRow);
+            }
+            resibo.Database.Tables["order_details"].SetDataSource(testDt);
+
+            //resibo.SetDataSource(testDt);
+            frmPrintReceipt.getform.Show();
+            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = null;
+            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = resibo;
+
+            this.DialogResult = DialogResult.OK;
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -245,8 +364,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
            
         }
 
-        private void frmPayment_Load(object sender, EventArgs e)
+        public void frmPayment_Load(object sender, EventArgs e)
         {
+
             autoCompleteCustomer();
         }
 
@@ -295,105 +415,30 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void frmPayment_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            //this.DialogResult = DialogResult.OK;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Hide();
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
-            //Close();
+            this.Hide();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            SettlePayment();
+            CheckORExist();
 
-            Receipt resibo = new Receipt();
-
-            /*------- Official Receipt Details ------*/
-
-            // PHS1 - TERMINAL DETAILS
-
-            TextObject cashier = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["cashierName"];
-            cashier.Text = frmLogin.GetUserName.ToString();
-            TextObject transNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["transNo"];
-            transNum.Text = transNo;
-            TextObject ORNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["ORNo"];
-            ORNum.Text = txtORNumber.Text;
-
-           
-
-            //RFS1 - ITEMS TOTAL
-
-            TextObject totalqty = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalQty"];
-            totalqty.Text = total_quantity.ToString();
-            TextObject totalamt = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalAmount"];
-            totalamt.Text = total.ToString();
-            TextObject amtpaid = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cash"];
-            amtpaid.Text = txtCash.Text;
-            TextObject change = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Change"];
-            change.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0");
-            TextObject vatSale = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["vatSale"];
-            vatSale.Text = vatable;
-            TextObject VAT = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Tax"];
-            VAT.Text = tax;
-
-
-
-            //RFS1 - CUSTOMER DETAILS
-            TextObject customer = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
-            customer.Text = txtViewCustomer.Text;
-            TextObject cusNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
-            customer.Text = txtViewCustomer.Text;
-            TextObject cusIdNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cusNO"];
-            cusIdNo.Text = txtPWDOSCA.Text;
-
-
-
-            //DETAILS - ITEM DETAILS
-
-            string[,] table = new string[ItemDesc.Length, 3];
-            for (int i = 0; i < ItemDesc.Length; i++)
-            {
-                table[i, 0] = ItemDesc[i];
-                table[i, 1] = Qty[i].ToString();
-                table[i, 2] = Price[i].ToString();
-            }
-
-            DataTable testDt = new DataTable();
-  
-                testDt.Columns.Add("Description",typeof(string));
-                testDt.Columns.Add("Qty", typeof(string));
-                testDt.Columns.Add("Price", typeof(string));
-
-            for (int outerIndex = 0; outerIndex < ItemDesc.Length; outerIndex++)
-            {
-                DataRow newRow = testDt.NewRow();
-                for (int innerIndex = 0; innerIndex < 3; innerIndex++)
-                {
-
-                    newRow[innerIndex] = table[outerIndex, innerIndex];
-
-                }
-                testDt.Rows.Add(newRow);
-            }
-            resibo.Database.Tables["order_details"].SetDataSource(testDt);
-
-            //resibo.SetDataSource(testDt);
-            frmPrintReceipt.getform.Show();
-            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = null;
-            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = resibo;
-
+            
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             //this.Close();
-            frmAddNewCustomer addNewCustomer = new frmAddNewCustomer();
+            addNewCustomer.FormClosed += new FormClosedEventHandler(Form_Closed);
             addNewCustomer.ShowDialog();      
 
         }
@@ -402,6 +447,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             if (e.KeyCode == Keys.Enter)
             {
+
+                //// for Setting Loyal Customers
+
+                //QuerySelect = "SELECT COUNT(Transaction_number) AS TransCount, SUM(Total_cost) AS Total FROM tblOrders INNER JOIN tblCustomers ON tblOrders.Customer_id = tblCustomers.Customer_id WHERE tblCustomers.First_name = @fName AND tblCustomers.Last_name = @lName";
+                //cmd = new SqlCommand(QuerySelect, con);
+                //con.Open();
+                //reader = cmd.ExecuteReader();
+                //if (reader.HasRows)
+                //{
+
+                //}
+                // With Discount Code
                 string phrase = txtViewCustomer.Text;
                 string[] words = phrase.Split(' ');
                 
@@ -421,7 +478,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
                     cmd.ExecuteNonQuery();
-
+                    con.Close();
                     //DiscountCodeTextbox
 
                     if(dt.Rows[0][1].ToString() == "SC01")
@@ -429,31 +486,129 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         lblPWDORSC.Visible = true;
                         lblPWDORSC.Text = "SC #:";
                         txtPWDOSCA.Visible = true;
+
+                        amount = Convert.ToDouble(txtAmount.Text);
+                        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        discount_total = amount * discount;
+                        total = amount - discount_total;
+                        txtAmount.Text = total.ToString();
                     }
                     else if (dt.Rows[0][1].ToString() == "PWD01")
                     {
                         lblPWDORSC.Visible = true;
                         lblPWDORSC.Text = "PWD #:";
                         txtPWDOSCA.Visible = true;
+
+                        amount = Convert.ToDouble(txtAmount.Text);
+                        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        discount_total = amount * discount;
+                        total = amount - discount_total;
+                        txtAmount.Text = total.ToString();
                     }
                     else if(dt.Rows[0][1].ToString() == "LC01")
                     {
                         lblPWDORSC.Visible = false;
                         txtPWDOSCA.Visible = false;
-                    }
 
+                        amount = Convert.ToDouble(txtAmount.Text);
+                        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        discount_total = amount * discount;
+                        total = amount - discount_total;
+                        txtAmount.Text = total.ToString();
+                    }
+                    else if(dt.Rows[0][1].ToString() == "NC01")
+                    {
+                        loyaltyCheck();
+                    }    
+
+                    
                     //recompute amount
-                    amount = Convert.ToDouble(txtAmount.Text);
-                     discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                     discount_total = amount * discount;
-                     total = amount - discount_total;
-                     txtAmount.Text = total.ToString();
+
+                    //amount = Convert.ToDouble(txtAmount.Text);
+                    //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                    //discount_total = amount * discount;
+                    //total = amount - discount_total;
+                    //txtAmount.Text = total.ToString();
                 }
 
                 con.Close();
                 txtViewCustomer.Enabled = false;
                 txtCash.Focus();
             }
+        }
+
+        public void loyaltyCheck()
+        {
+            double totalCost;
+
+            //check for loyal customer*
+            QuerySelect = "SELECT total_transaction, total_cost FROM tblDiscounts WHERE Discount_code = 'LC01'";
+            cmd = new SqlCommand(QuerySelect, con);
+            con.Open();
+            adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            cmd.ExecuteNonQuery();
+            int trans = Convert.ToInt32(dt.Rows[1][3].ToString());
+            double cost = Convert.ToDouble(dt.Rows[1][4].ToString());
+            con.Close();
+
+
+            string QuerySelect1 = "SELECT COUNT(User_id), SUM(Total_cost) as 'Sum' From tblOrders WHERE [Customer_id] = '" + customerID + "'";
+            SqlCommand cmd1 = new SqlCommand(QuerySelect1, con);
+            con.Open();
+            SqlDataAdapter adapter1 = new SqlDataAdapter(cmd1);
+            DataTable newDt = new DataTable();
+            adapter1.Fill(newDt);
+            cmd1.ExecuteNonQuery();
+            con.Close();
+            int transactionCount = Convert.ToInt32(newDt.Rows[0][0].ToString());
+            if (newDt.Rows[0][1].ToString() == "")
+            {
+                totalCost = 0;
+            }
+            else
+            {
+                totalCost = Convert.ToDouble(newDt.Rows[0][1].ToString());
+            }
+            
+            if (transactionCount >= trans && totalCost >= cost)
+            {
+                string QuerySelect2 = "SELECT Discount_Percentage FROM tblDiscounts";
+                SqlCommand cmd2 = new SqlCommand(QuerySelect2, con);
+                con.Open();
+                SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                DataTable newDt1 = new DataTable();
+                adapter2.Fill(newDt1);
+                cmd2.ExecuteNonQuery();
+                con.Close();
+                double loyal_customer = Convert.ToDouble(newDt1.Rows[0][0].ToString());
+                double normal_customer = Convert.ToDouble(newDt1.Rows[1][0].ToString());
+                double pwd = Convert.ToDouble(newDt1.Rows[2][0].ToString());
+                double senior = Convert.ToDouble(newDt1.Rows[3][0].ToString());
+
+                //update discount status of customer
+                QueryUpdate = "Update tblCustomers SET Discount_code = 'LC01' WHERE Customer_id = '"+customerID+"'";
+                cmd = new SqlCommand(QueryUpdate, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+
+                MessageBox.Show(txtViewCustomer.Text + " is now a loyal customer. Discount is applied.");
+                amount = Convert.ToDouble(txtAmount.Text);
+                discount = Convert.ToDouble(loyal_customer);
+                discount_total = amount * discount;
+                total = amount - discount_total;
+                txtAmount.Text = total.ToString();
+            }
+            else
+            {
+                amount = Convert.ToDouble(txtAmount.Text);
+                //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                //discount_total = amount * discount;
+                total = amount;
+                txtAmount.Text = total.ToString();
+            }
+            con.Close();
         }
 
         private void txtORNumber_KeyPress(object sender, KeyPressEventArgs e)

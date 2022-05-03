@@ -32,12 +32,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.InventoryReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.InventoryReport();
             this.InventoryReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.ReturnReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ReturnReport();
-            this.SalesReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.frmSalesReport();
             this.SuspendLayout();
             // 
             // InventoryReportViewer1
             // 
-            this.InventoryReportViewer1.ActiveViewIndex = 0;
+            this.InventoryReportViewer1.ActiveViewIndex = -1;
             this.InventoryReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.InventoryReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.InventoryReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -64,6 +63,5 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private InventoryReport InventoryReport1;
         public CrystalDecisions.Windows.Forms.CrystalReportViewer InventoryReportViewer1;
         private ReturnReport ReturnReport1;
-        private frmSalesReport SalesReport1;
     }
 }

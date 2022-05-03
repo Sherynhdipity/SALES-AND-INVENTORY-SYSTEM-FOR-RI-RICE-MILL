@@ -56,9 +56,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     {
                         con.Close();
                     }
-
-                    Product_Quantity = Convert.ToInt32(txtQty.Text);
-                    this.Close();
+                    if(txtQty.Text != "")
+                    {
+                        Product_Quantity = Convert.ToInt32(txtQty.Text);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter quantity!");
+                    }
+                    
 
                 }
                 catch (Exception ex)
@@ -79,7 +86,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Hide();
         }
     }
 }

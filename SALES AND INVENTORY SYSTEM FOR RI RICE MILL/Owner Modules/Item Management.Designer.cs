@@ -201,7 +201,7 @@
             this.txtViewItems.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtViewItems.Lines = new string[0];
             this.txtViewItems.Location = new System.Drawing.Point(16, 29);
-            this.txtViewItems.MaxLength = 32767;
+            this.txtViewItems.MaxLength = 50;
             this.txtViewItems.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtViewItems.Modified = false;
             this.txtViewItems.Multiline = false;

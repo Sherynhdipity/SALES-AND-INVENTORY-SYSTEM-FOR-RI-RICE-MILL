@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -117,7 +117,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-                    addNew.ShowDialog();
+            addNew.ShowDialog();
         }
 
 
@@ -133,6 +133,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 updateCustomer.Id = dgvCustomerList[1, e.RowIndex].Value.ToString();
                 updateCustomer.ShowDialog();
             }
+        }
+
+        private void btnDiscountReq_Click(object sender, EventArgs e)
+        {
+            frmDiscountRequirements discount = new frmDiscountRequirements();
+            discount.ShowDialog();
         }
     }
 }

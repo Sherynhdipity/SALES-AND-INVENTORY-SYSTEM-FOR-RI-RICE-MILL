@@ -28,16 +28,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static string QuerySelect;
 
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void dgvSalesOwnerReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void RestockReport_Load(object sender, EventArgs e)
         {
             try

@@ -27,7 +27,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             InitializeComponent();
            populateDash();
-            //populateGraph();
+            populateGraph();
 
 
         }
@@ -43,66 +43,66 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
 
-        //public void populateGraph()
-        //{
-        //    //StockedIN
+        public void populateGraph()
+        {
+            //StockedIN
 
-        //    try
-        //    {
-        //        con.Open();
+            try
+            {
+                con.Open();
 
-        //        QuerySelect = "SELECT * from OwnerDashboardView";
-        //        cmd = new SqlCommand(QuerySelect, con);
-        //        adapter = new SqlDataAdapter(cmd);
-        //        ds = new DataSet();
-        //        adapter.Fill(ds);
-        //        DataView source = new DataView(ds.Tables[0]);
-        //        StocksChart.DataSource = source;
+                QuerySelect = "SELECT * from OwnerDashboardView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                DataView source = new DataView(ds.Tables[0]);
+                StocksChart.DataSource = source;
 
-        //        StocksChart.Series[0].XValueMember = "Stocked In";
-        //        StocksChart.Series[0].YValueMembers = "Stocked In";
+                StocksChart.Series[0].XValueMember = "Stocked In";
+                StocksChart.Series[0].YValueMembers = "Stocked In";
 
-        //        StocksChart.DataBind();
+                StocksChart.DataBind();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-        //    //StockedOUT
+            //StockedOUT
 
-        //    try
-        //    {
-        //        con.Open();
+            try
+            {
+                con.Open();
 
-        //        QuerySelect = "SELECT * from OwnerDashboardView";
-        //        cmd = new SqlCommand(QuerySelect, con);
-        //        adapter = new SqlDataAdapter(cmd);
-        //        ds = new DataSet();
-        //        adapter.Fill(ds);
-        //        DataView source = new DataView(ds.Tables[0]);
-        //        StocksChart.DataSource = source;
+                QuerySelect = "SELECT * from OwnerDashboardView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                DataView source = new DataView(ds.Tables[0]);
+                StocksChart.DataSource = source;
 
-        //        StocksChart.Series[1].XValueMember = "Stocked Out";
-        //        StocksChart.Series[1].YValueMembers = "Stocked Out";
+                StocksChart.Series[1].XValueMember = "Stocked Out";
+                StocksChart.Series[1].YValueMembers = "Stocked Out";
 
-        //        StocksChart.DataBind();
+                StocksChart.DataBind();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
 
         public void populateDash()

@@ -27,7 +27,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             InitializeComponent();
             populateDash();
-            //populateChart();
+            populateChart();
         }
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -41,96 +41,95 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
 
-        //public void populateChart()
-        //{
-        //    // Sales 
+        public void populateChart()
+        {
+            // Sales 
 
-        //    try
-        //    {
-        //        con.Open();
+            try
+            {
+                con.Open();
 
-        //        QuerySelect = "SELECT * from CashierDashboardView";
-        //        cmd = new SqlCommand(QuerySelect, con);
-        //        adapter = new SqlDataAdapter(cmd);
-        //        ds = new DataSet();
-        //        adapter.Fill(ds);
-        //        DataView source = new DataView(ds.Tables[0]);
-        //        salesChart.DataSource = source;
+                QuerySelect = "SELECT * from CashierDashboardView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                DataView source = new DataView(ds.Tables[0]);
+                salesChart.DataSource = source;
 
-        //        salesChart.Series[0].XValueMember = "Total Sales";
-        //        salesChart.Series[0].YValueMembers = "Total Sales";
+                salesChart.Series[0].XValueMember = "Total Amount";
+                salesChart.Series[0].YValueMembers = "Total Amount";
 
-        //        salesChart.DataBind();
+                salesChart.DataBind();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            //StockedIN
 
-        //    //StockedIN
+            try
+            {
+                con.Open();
 
-        //    try
-        //    {
-        //        con.Open();
+                QuerySelect = "SELECT * from OwnerDashboardView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                DataView source = new DataView(ds.Tables[0]);
+                StocksChart.DataSource = source;
 
-        //        QuerySelect = "SELECT * from OwnerDashboardView";
-        //        cmd = new SqlCommand(QuerySelect, con);
-        //        adapter = new SqlDataAdapter(cmd);
-        //        ds = new DataSet();
-        //        adapter.Fill(ds);
-        //        DataView source = new DataView(ds.Tables[0]);
-        //        StocksChart.DataSource = source;
+                StocksChart.Series[0].XValueMember = "Stocked In";
+                StocksChart.Series[0].YValueMembers = "Stocked In";
 
-        //        StocksChart.Series[0].XValueMember = "Stocked In";
-        //        StocksChart.Series[0].YValueMembers = "Stocked In";
+                StocksChart.DataBind();
 
-        //        StocksChart.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+            //StockedOUT
 
-        //    //StockedOUT
+            try
+            {
+                con.Open();
 
-        //    try
-        //    {
-        //        con.Open();
+                QuerySelect = "SELECT * from OwnerDashboardView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                adapter.Fill(ds);
+                DataView source = new DataView(ds.Tables[0]);
+                StocksChart.DataSource = source;
 
-        //        QuerySelect = "SELECT * from OwnerDashboardView";
-        //        cmd = new SqlCommand(QuerySelect, con);
-        //        adapter = new SqlDataAdapter(cmd);
-        //        ds = new DataSet();
-        //        adapter.Fill(ds);
-        //        DataView source = new DataView(ds.Tables[0]);
-        //        StocksChart.DataSource = source;
+                StocksChart.Series[1].XValueMember = "Stocked Out";
+                StocksChart.Series[1].YValueMembers = "Stocked Out";
 
-        //        StocksChart.Series[1].XValueMember = "Stocked Out";
-        //        StocksChart.Series[1].YValueMembers = "Stocked Out";
+                StocksChart.DataBind();
 
-        //        StocksChart.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
-
-        //}
 
 
 

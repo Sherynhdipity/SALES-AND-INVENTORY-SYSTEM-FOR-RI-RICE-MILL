@@ -29,15 +29,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QuerySelect;
         public static string QueryUpdate;
         public static string QueryDelete;
-        public static string status = "Active";
+        public static string discountCode = "NC01";
+        
 
         private void frmAddNewCustomer_Load(object sender, EventArgs e)
         {
-
-            this.ActiveControl = txtFirstName;
-
-            loadProvinces();
-            loadDiscount();
+            loadProvinces();   
         }
 
         //methods
@@ -61,90 +58,55 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             con.Close();
 
-            if (String.IsNullOrEmpty(txtFirstName.Text))
-            {
-                MessageBox.Show("Enter First Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtFirstName.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtFirstName.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtFirstName.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtMiddleName.Text))
-            {
-                MessageBox.Show("Enter Middle Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMiddleName.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtMiddleName.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtMiddleName.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtLastName.Text))
-            {
-                MessageBox.Show("Enter Last Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtLastName.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtLastName.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtLastName.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtContact.Text))
-            {
-                MessageBox.Show("Enter Contact Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtContact.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtContact.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtContact.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtStreet.Text))
-            {
-                MessageBox.Show("Enter Street!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStreet.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtStreet.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtStreet.Clear();
-            }
-            else if (String.IsNullOrEmpty(cmbBarangay.Text))
-            {
-                MessageBox.Show("Enter Barangay!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cmbBarangay.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(cmbBarangay.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                cmbBarangay.Items.Clear();
-            }
-            else if (String.IsNullOrEmpty(cmbMunicipality.Text))
-            {
-                MessageBox.Show("Enter Municipality!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cmbMunicipality.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(cmbMunicipality.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                cmbMunicipality.Items.Clear();
-            }
-            else if (String.IsNullOrEmpty(cmbProvince.Text))
-            {
-                MessageBox.Show("Enter Province!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                cmbProvince.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(cmbProvince.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                cmbProvince.Items.Clear();
-            }
-            else if (txtFirstName.Text != "" && txtMiddleName.Text != ""
-                && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
-                && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != "")
-            {
+            //if (String.IsNullOrEmpty(txtFirstName.Text))
+            //{
+            //    MessageBox.Show("Enter First Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else if (String.IsNullOrWhiteSpace(txtFirstName.Text))
+            //{
+            //    MessageBox.Show("Whitespace is not allowed!");
+            //    txtFirstName.Clear();
+            //}
+            //else if (String.IsNullOrEmpty(txtMiddleName.Text))
+            //{
+            //    MessageBox.Show("Enter Middle Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else if (String.IsNullOrWhiteSpace(txtMiddleName.Text))
+            //{
+            //    MessageBox.Show("Whitespace is not allowed!");
+            //    txtMiddleName.Clear();
+            //}
+            //else if (String.IsNullOrEmpty(txtLastName.Text))
+            //{
+            //    MessageBox.Show("Enter Last Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else if (String.IsNullOrWhiteSpace(txtLastName.Text))
+            //{
+            //    MessageBox.Show("Whitespace is not allowed!");
+            //    txtLastName.Clear();
+            //}
+            //else if (String.IsNullOrEmpty(txtContact.Text))
+            //{
+            //    MessageBox.Show("Enter Contact Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else if (String.IsNullOrWhiteSpace(txtContact.Text))
+            //{
+            //    MessageBox.Show("Whitespace is not allowed!");
+            //    txtContact.Clear();
+            //}
+            //else if (String.IsNullOrEmpty(txtStreet.Text))
+            //{
+            //    MessageBox.Show("Enter Street!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
+            //else if (String.IsNullOrWhiteSpace(txtStreet.Text))
+            //{
+            //    MessageBox.Show("Whitespace is not allowed!");
+            //    txtStreet.Clear();
+            //}
+            //else if (txtFirstName.Text != "" && txtMiddleName.Text != ""
+            //    && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
+            //    && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != "")
+            //{
                 result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
@@ -185,7 +147,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             cmd.Parameters.AddWithValue("@brgy", cmbBarangay.SelectedValue.ToString());
                             cmd.Parameters.AddWithValue("@street", txtStreet.Text);
                             cmd.Parameters.AddWithValue("@cNo", txtContact.Text);
-                            cmd.Parameters.AddWithValue("@discount", cmbDiscount.SelectedValue.ToString());
+                            cmd.Parameters.AddWithValue("@discount", discountCode);
 
                             cmd.ExecuteNonQuery();
 
@@ -206,7 +168,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                     }
                 }
-            }
+            //}
             
             else
             {
@@ -215,28 +177,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
 
-        public void loadDiscount()
-        {
-            con.Close();
-            con.Open();
-            QuerySelect = "Select * From tblDiscounts Order by Discount_Description ASC";
-            cmd = new SqlCommand(QuerySelect, con);
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            cmbDiscount.DisplayMember = "Discount_Description";
-            cmbDiscount.ValueMember = "Discount_code";
-            cmbDiscount.DataSource = dt;
-        }
-
         public void loadProvinces()
         {
             con.Close();
             con.Open();
-            QuerySelect = "Select * From tblProvinces Order by province_desc ASC";
+            QuerySelect = "Select * From tblProvinces WHERE psg_code = '126500000'";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -290,24 +235,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             AddCustomer();
         }
 
-        private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+            ClearControls();
         }
 
 
@@ -319,6 +250,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void cmbProvince_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             loadMunicipalities();
+        }
+
+        private void frmAddNewCustomer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //frmPayment payment = new frmPayment();
+            //payment.frmPayment_Load(sender, e);
         }
     }
 }

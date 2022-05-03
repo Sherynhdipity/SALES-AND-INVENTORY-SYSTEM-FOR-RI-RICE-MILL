@@ -249,6 +249,7 @@
             this.Controls.Add(this.dgvStockIN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmStockCard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmStockCard";
             this.Load += new System.EventHandler(this.frmStockCard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStockIN)).EndInit();

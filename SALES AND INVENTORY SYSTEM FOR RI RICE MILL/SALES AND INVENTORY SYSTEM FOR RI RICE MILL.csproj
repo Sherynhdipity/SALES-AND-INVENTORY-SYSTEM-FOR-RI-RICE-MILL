@@ -185,6 +185,12 @@
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="GumroadLicensing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GumroadLicensing.1.0.1\lib\net45\GumroadLicensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Kimtoo.ValidationProvider, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kimtoo.ValidationProvider.1.0.8\lib\net452\Kimtoo.ValidationProvider.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -208,6 +214,9 @@
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
@@ -374,12 +383,6 @@
     <Compile Include="Cashier Modules\Sales History.Designer.cs">
       <DependentUpon>Sales History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\Discount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashier Modules\Discount.Designer.cs">
-      <DependentUpon>Discount.cs</DependentUpon>
-    </Compile>
     <Compile Include="Inventory Clerk Modules\frmAddStocks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -457,6 +460,12 @@
     </Compile>
     <Compile Include="Owner Modules\Customer Management.Designer.cs">
       <DependentUpon>Customer Management.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\frmDiscountRequirements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\frmDiscountRequirements.Designer.cs">
+      <DependentUpon>frmDiscountRequirements.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Item Management.cs">
       <SubType>UserControl</SubType>
@@ -623,6 +632,12 @@
       <DependentUpon>SalesReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SetDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetDiscount.Designer.cs">
+      <DependentUpon>SetDiscount.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -669,9 +684,6 @@
     <EmbeddedResource Include="Cashier Modules\Sales History.resx">
       <DependentUpon>Sales History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\Discount.resx">
-      <DependentUpon>Discount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\frmAddStocks.resx">
       <DependentUpon>frmAddStocks.cs</DependentUpon>
     </EmbeddedResource>
@@ -701,6 +713,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\frmDiscountRequirements.resx">
+      <DependentUpon>frmDiscountRequirements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RestockReports.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -802,6 +817,9 @@
     <EmbeddedResource Include="SalesReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetDiscount.resx">
+      <DependentUpon>SetDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AppData.xsc">
       <DependentUpon>AppData.xsd</DependentUpon>

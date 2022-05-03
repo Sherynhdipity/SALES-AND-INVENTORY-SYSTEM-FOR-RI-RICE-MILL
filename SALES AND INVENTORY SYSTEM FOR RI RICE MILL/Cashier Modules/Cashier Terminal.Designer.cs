@@ -76,7 +76,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel7 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnExit = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnLogout = new Bunifu.Framework.UI.BunifuTileButton();
-            this.btnRecords = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnSet = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnCancel = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnPay = new Bunifu.Framework.UI.BunifuTileButton();
             this.txtQuantityCount = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -253,27 +253,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogout.TabIndex = 37;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // btnRecords
+            // btnSet
             // 
-            this.btnRecords.AutoSize = true;
-            this.btnRecords.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.btnRecords.color = System.Drawing.Color.RoyalBlue;
-            this.btnRecords.colorActive = System.Drawing.Color.LightSteelBlue;
-            this.btnRecords.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRecords.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRecords.ForeColor = System.Drawing.Color.White;
-            this.btnRecords.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.history;
-            this.btnRecords.ImagePosition = 14;
-            this.btnRecords.ImageZoom = 50;
-            this.btnRecords.LabelPosition = 29;
-            this.btnRecords.LabelText = "[F7] History";
-            this.btnRecords.Location = new System.Drawing.Point(1258, 434);
-            this.btnRecords.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnRecords.Name = "btnRecords";
-            this.btnRecords.Size = new System.Drawing.Size(95, 93);
-            this.btnRecords.TabIndex = 36;
-            this.btnRecords.Click += new System.EventHandler(this.btnRecords_Click);
+            this.btnSet.AutoSize = true;
+            this.btnSet.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnSet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnSet.color = System.Drawing.Color.RoyalBlue;
+            this.btnSet.colorActive = System.Drawing.Color.LightSteelBlue;
+            this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSet.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSet.ForeColor = System.Drawing.Color.White;
+            this.btnSet.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.history;
+            this.btnSet.ImagePosition = 14;
+            this.btnSet.ImageZoom = 50;
+            this.btnSet.LabelPosition = 29;
+            this.btnSet.LabelText = "Set Discount";
+            this.btnSet.Location = new System.Drawing.Point(1258, 434);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSet.Name = "btnSet";
+            this.btnSet.Size = new System.Drawing.Size(95, 93);
+            this.btnSet.TabIndex = 36;
+            this.btnSet.Click += new System.EventHandler(this.btnRecords_Click);
             // 
             // btnCancel
             // 
@@ -1618,7 +1618,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Controls.Add(this.bunifuLabel7);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogout);
-            this.Controls.Add(this.btnRecords);
+            this.Controls.Add(this.btnSet);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.txtQuantityCount);
@@ -1691,7 +1691,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.Framework.UI.BunifuTileButton btnVoid;
         private Bunifu.Framework.UI.BunifuTileButton btnPay;
         private Bunifu.Framework.UI.BunifuTileButton btnCancel;
-        private Bunifu.Framework.UI.BunifuTileButton btnRecords;
+        private Bunifu.Framework.UI.BunifuTileButton btnSet;
         private Bunifu.Framework.UI.BunifuTileButton btnLogout;
         private Bunifu.Framework.UI.BunifuTileButton btnExit;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel7;

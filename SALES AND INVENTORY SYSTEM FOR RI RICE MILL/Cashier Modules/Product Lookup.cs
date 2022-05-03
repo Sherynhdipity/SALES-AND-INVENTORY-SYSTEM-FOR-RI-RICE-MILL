@@ -121,19 +121,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 qty.product_Price = Convert.ToString(selectedRow.Cells["Price"].Value);
                 qty.Product_Stock = temp_stock;
                 qty.ShowDialog();
-                productCode = qty.product_Code;
-                productDesc = qty.product_Desc;
-                productVariety = qty.product_Variety;
-                productPrice = qty.product_Price;
-                quantity = qty.Product_Quantity;
-                stock = qty.Product_Stock;
-                this.Close();
+                if(qty.Product_Quantity != 0)
+                {
+                    productCode = qty.product_Code;
+                    productDesc = qty.product_Desc;
+                    productVariety = qty.product_Variety;
+                    productPrice = qty.product_Price;
+                    quantity = qty.Product_Quantity;
+                    stock = qty.Product_Stock;
+                    this.Close();
+                }
+                
+               
+               //this.Close();
             }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Hide();
         }
     }
 }

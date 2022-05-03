@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -39,6 +40,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel4 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnDiscountReq = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnAddCustomer = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtViewCustomers = new Bunifu.UI.WinForms.BunifuTextBox();
             this.dgvCustomerList = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -70,6 +72,7 @@
             this.bunifuPanel4.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bunifuPanel4.BorderRadius = 5;
             this.bunifuPanel4.BorderThickness = 3;
+            this.bunifuPanel4.Controls.Add(this.btnDiscountReq);
             this.bunifuPanel4.Controls.Add(this.btnAddCustomer);
             this.bunifuPanel4.Controls.Add(this.txtViewCustomers);
             this.bunifuPanel4.Controls.Add(this.dgvCustomerList);
@@ -79,6 +82,98 @@
             this.bunifuPanel4.ShowBorders = false;
             this.bunifuPanel4.Size = new System.Drawing.Size(907, 497);
             this.bunifuPanel4.TabIndex = 42;
+            // 
+            // btnDiscountReq
+            // 
+            this.btnDiscountReq.AllowAnimations = true;
+            this.btnDiscountReq.AllowMouseEffects = true;
+            this.btnDiscountReq.AllowToggling = false;
+            this.btnDiscountReq.AnimationSpeed = 200;
+            this.btnDiscountReq.AutoGenerateColors = false;
+            this.btnDiscountReq.AutoRoundBorders = false;
+            this.btnDiscountReq.AutoSizeLeftIcon = true;
+            this.btnDiscountReq.AutoSizeRightIcon = true;
+            this.btnDiscountReq.BackColor = System.Drawing.Color.Transparent;
+            this.btnDiscountReq.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnDiscountReq.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDiscountReq.BackgroundImage")));
+            this.btnDiscountReq.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnDiscountReq.ButtonText = "DISCOUNT REQUIREMENTS";
+            this.btnDiscountReq.ButtonTextMarginLeft = 0;
+            this.btnDiscountReq.ColorContrastOnClick = 45;
+            this.btnDiscountReq.ColorContrastOnHover = 45;
+            this.btnDiscountReq.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnDiscountReq.CustomizableEdges = borderEdges1;
+            this.btnDiscountReq.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnDiscountReq.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnDiscountReq.DisabledFillColor = System.Drawing.Color.Empty;
+            this.btnDiscountReq.DisabledForecolor = System.Drawing.Color.Empty;
+            this.btnDiscountReq.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnDiscountReq.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDiscountReq.ForeColor = System.Drawing.Color.White;
+            this.btnDiscountReq.IconLeft = null;
+            this.btnDiscountReq.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDiscountReq.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnDiscountReq.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnDiscountReq.IconMarginLeft = 11;
+            this.btnDiscountReq.IconPadding = 10;
+            this.btnDiscountReq.IconRight = null;
+            this.btnDiscountReq.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDiscountReq.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnDiscountReq.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnDiscountReq.IconSize = 25;
+            this.btnDiscountReq.IdleBorderColor = System.Drawing.Color.Empty;
+            this.btnDiscountReq.IdleBorderRadius = 0;
+            this.btnDiscountReq.IdleBorderThickness = 0;
+            this.btnDiscountReq.IdleFillColor = System.Drawing.Color.Empty;
+            this.btnDiscountReq.IdleIconLeftImage = null;
+            this.btnDiscountReq.IdleIconRightImage = null;
+            this.btnDiscountReq.IndicateFocus = false;
+            this.btnDiscountReq.Location = new System.Drawing.Point(700, 29);
+            this.btnDiscountReq.Name = "btnDiscountReq";
+            this.btnDiscountReq.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnDiscountReq.OnDisabledState.BorderRadius = 1;
+            this.btnDiscountReq.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnDiscountReq.OnDisabledState.BorderThickness = 1;
+            this.btnDiscountReq.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnDiscountReq.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnDiscountReq.OnDisabledState.IconLeftImage = null;
+            this.btnDiscountReq.OnDisabledState.IconRightImage = null;
+            this.btnDiscountReq.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnDiscountReq.onHoverState.BorderRadius = 1;
+            this.btnDiscountReq.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnDiscountReq.onHoverState.BorderThickness = 1;
+            this.btnDiscountReq.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnDiscountReq.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnDiscountReq.onHoverState.IconLeftImage = null;
+            this.btnDiscountReq.onHoverState.IconRightImage = null;
+            this.btnDiscountReq.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnDiscountReq.OnIdleState.BorderRadius = 1;
+            this.btnDiscountReq.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnDiscountReq.OnIdleState.BorderThickness = 1;
+            this.btnDiscountReq.OnIdleState.FillColor = System.Drawing.Color.MidnightBlue;
+            this.btnDiscountReq.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnDiscountReq.OnIdleState.IconLeftImage = null;
+            this.btnDiscountReq.OnIdleState.IconRightImage = null;
+            this.btnDiscountReq.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnDiscountReq.OnPressedState.BorderRadius = 1;
+            this.btnDiscountReq.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnDiscountReq.OnPressedState.BorderThickness = 1;
+            this.btnDiscountReq.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnDiscountReq.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnDiscountReq.OnPressedState.IconLeftImage = null;
+            this.btnDiscountReq.OnPressedState.IconRightImage = null;
+            this.btnDiscountReq.Size = new System.Drawing.Size(191, 39);
+            this.btnDiscountReq.TabIndex = 7;
+            this.btnDiscountReq.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDiscountReq.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnDiscountReq.TextMarginLeft = 0;
+            this.btnDiscountReq.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnDiscountReq.UseDefaultRadiusAndThickness = true;
+            this.btnDiscountReq.Click += new System.EventHandler(this.btnDiscountReq_Click);
             // 
             // btnAddCustomer
             // 
@@ -99,11 +194,11 @@
             this.btnAddCustomer.ColorContrastOnClick = 45;
             this.btnAddCustomer.ColorContrastOnHover = 45;
             this.btnAddCustomer.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnAddCustomer.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnAddCustomer.CustomizableEdges = borderEdges2;
             this.btnAddCustomer.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAddCustomer.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAddCustomer.DisabledFillColor = System.Drawing.Color.Empty;
@@ -129,7 +224,7 @@
             this.btnAddCustomer.IdleIconLeftImage = null;
             this.btnAddCustomer.IdleIconRightImage = null;
             this.btnAddCustomer.IndicateFocus = false;
-            this.btnAddCustomer.Location = new System.Drawing.Point(769, 29);
+            this.btnAddCustomer.Location = new System.Drawing.Point(572, 29);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAddCustomer.OnDisabledState.BorderRadius = 1;
@@ -336,5 +431,6 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtViewCustomers;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvCustomerList;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnDiscountReq;
     }
 }

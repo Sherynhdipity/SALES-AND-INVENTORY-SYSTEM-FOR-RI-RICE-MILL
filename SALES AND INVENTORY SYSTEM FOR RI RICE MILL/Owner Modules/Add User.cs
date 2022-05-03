@@ -36,7 +36,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             cmbGender.SelectedIndex = 0;
             cmbUser_Type.SelectedIndex = 0;
 
-            this.ActiveControl = txtFirstName;
+          //  this.ActiveControl = txtFirstName;
 
             loadProvinces();
         }
@@ -266,7 +266,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             con.Close();
             con.Open();
-            QuerySelect = "Select * From tblProvinces Order by province_desc ASC";
+            QuerySelect = "Select * From tblProvinces WHERE psg_code = '126500000'";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();

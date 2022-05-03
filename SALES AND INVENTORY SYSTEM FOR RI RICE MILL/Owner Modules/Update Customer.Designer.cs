@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateCustomer));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -52,9 +52,11 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.btnCancel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnSave = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuShadowPanel2 = new Bunifu.UI.WinForms.BunifuShadowPanel();
+            this.btnSave = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnCancel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.cmbDiscount = new Bunifu.UI.WinForms.BunifuDropdown();
+            this.bunifuLabel10 = new Bunifu.UI.WinForms.BunifuLabel();
             this.cmbProvince = new Bunifu.UI.WinForms.BunifuDropdown();
             this.cmbMunicipality = new Bunifu.UI.WinForms.BunifuDropdown();
             this.cmbBarangay = new Bunifu.UI.WinForms.BunifuDropdown();
@@ -71,8 +73,7 @@
             this.txtMiddleName = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblfirstName = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtFirstName = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.bunifuLabel10 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.cmbDiscount = new Bunifu.UI.WinForms.BunifuDropdown();
+            this.validationProvider1 = new Kimtoo.ValidationProvider.ValidationProvider();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuShadowPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -86,103 +87,54 @@
             this.bunifuPanel1.BorderRadius = 3;
             this.bunifuPanel1.BorderThickness = 1;
             this.bunifuPanel1.Controls.Add(this.bunifuShadowPanel2);
+            this.validationProvider1.SetLink(this.bunifuPanel1, null);
             this.bunifuPanel1.Location = new System.Drawing.Point(12, 12);
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(602, 426);
             this.bunifuPanel1.TabIndex = 1;
             // 
-            // btnCancel
+            // bunifuShadowPanel2
             // 
-            this.btnCancel.AllowAnimations = true;
-            this.btnCancel.AllowMouseEffects = true;
-            this.btnCancel.AllowToggling = false;
-            this.btnCancel.AnimationSpeed = 200;
-            this.btnCancel.AutoGenerateColors = false;
-            this.btnCancel.AutoRoundBorders = false;
-            this.btnCancel.AutoSizeLeftIcon = true;
-            this.btnCancel.AutoSizeRightIcon = true;
-            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
-            this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
-            this.btnCancel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCancel.ButtonText = "Cancel";
-            this.btnCancel.ButtonTextMarginLeft = 0;
-            this.btnCancel.ColorContrastOnClick = 45;
-            this.btnCancel.ColorContrastOnHover = 45;
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnCancel.CustomizableEdges = borderEdges2;
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnCancel.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnCancel.DisabledFillColor = System.Drawing.Color.Empty;
-            this.btnCancel.DisabledForecolor = System.Drawing.Color.Empty;
-            this.btnCancel.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.IconLeft = null;
-            this.btnCancel.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnCancel.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnCancel.IconMarginLeft = 11;
-            this.btnCancel.IconPadding = 10;
-            this.btnCancel.IconRight = null;
-            this.btnCancel.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancel.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnCancel.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnCancel.IconSize = 25;
-            this.btnCancel.IdleBorderColor = System.Drawing.Color.Empty;
-            this.btnCancel.IdleBorderRadius = 0;
-            this.btnCancel.IdleBorderThickness = 0;
-            this.btnCancel.IdleFillColor = System.Drawing.Color.Empty;
-            this.btnCancel.IdleIconLeftImage = null;
-            this.btnCancel.IdleIconRightImage = null;
-            this.btnCancel.IndicateFocus = false;
-            this.btnCancel.Location = new System.Drawing.Point(16, 334);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnCancel.OnDisabledState.BorderRadius = 1;
-            this.btnCancel.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCancel.OnDisabledState.BorderThickness = 1;
-            this.btnCancel.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnCancel.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnCancel.OnDisabledState.IconLeftImage = null;
-            this.btnCancel.OnDisabledState.IconRightImage = null;
-            this.btnCancel.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnCancel.onHoverState.BorderRadius = 1;
-            this.btnCancel.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCancel.onHoverState.BorderThickness = 1;
-            this.btnCancel.onHoverState.FillColor = System.Drawing.Color.White;
-            this.btnCancel.onHoverState.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.onHoverState.IconLeftImage = null;
-            this.btnCancel.onHoverState.IconRightImage = null;
-            this.btnCancel.OnIdleState.BorderColor = System.Drawing.Color.Black;
-            this.btnCancel.OnIdleState.BorderRadius = 1;
-            this.btnCancel.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCancel.OnIdleState.BorderThickness = 1;
-            this.btnCancel.OnIdleState.FillColor = System.Drawing.Color.White;
-            this.btnCancel.OnIdleState.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.OnIdleState.IconLeftImage = null;
-            this.btnCancel.OnIdleState.IconRightImage = null;
-            this.btnCancel.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnCancel.OnPressedState.BorderRadius = 1;
-            this.btnCancel.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCancel.OnPressedState.BorderThickness = 1;
-            this.btnCancel.OnPressedState.FillColor = System.Drawing.Color.White;
-            this.btnCancel.OnPressedState.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.OnPressedState.IconLeftImage = null;
-            this.btnCancel.OnPressedState.IconRightImage = null;
-            this.btnCancel.Size = new System.Drawing.Size(136, 39);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnCancel.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnCancel.TextMarginLeft = 0;
-            this.btnCancel.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnCancel.UseDefaultRadiusAndThickness = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.bunifuShadowPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuShadowPanel2.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.bunifuShadowPanel2.BorderRadius = 1;
+            this.bunifuShadowPanel2.BorderThickness = 1;
+            this.bunifuShadowPanel2.Controls.Add(this.btnSave);
+            this.bunifuShadowPanel2.Controls.Add(this.btnCancel);
+            this.bunifuShadowPanel2.Controls.Add(this.cmbDiscount);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel10);
+            this.bunifuShadowPanel2.Controls.Add(this.cmbProvince);
+            this.bunifuShadowPanel2.Controls.Add(this.cmbMunicipality);
+            this.bunifuShadowPanel2.Controls.Add(this.cmbBarangay);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel8);
+            this.bunifuShadowPanel2.Controls.Add(this.txtContact);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel7);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel4);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel5);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel6);
+            this.bunifuShadowPanel2.Controls.Add(this.txtStreet);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel3);
+            this.bunifuShadowPanel2.Controls.Add(this.txtLastName);
+            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel1);
+            this.bunifuShadowPanel2.Controls.Add(this.txtMiddleName);
+            this.bunifuShadowPanel2.Controls.Add(this.lblfirstName);
+            this.bunifuShadowPanel2.Controls.Add(this.txtFirstName);
+            this.bunifuShadowPanel2.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
+            this.bunifuShadowPanel2.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
+            this.validationProvider1.SetLink(this.bunifuShadowPanel2, null);
+            this.bunifuShadowPanel2.Location = new System.Drawing.Point(3, 3);
+            this.bunifuShadowPanel2.Name = "bunifuShadowPanel2";
+            this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.WhiteSmoke;
+            this.bunifuShadowPanel2.PanelColor2 = System.Drawing.Color.WhiteSmoke;
+            this.bunifuShadowPanel2.ShadowColor = System.Drawing.Color.DarkGray;
+            this.bunifuShadowPanel2.ShadowDept = 2;
+            this.bunifuShadowPanel2.ShadowDepth = 5;
+            this.bunifuShadowPanel2.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
+            this.bunifuShadowPanel2.ShadowTopLeftVisible = false;
+            this.bunifuShadowPanel2.Size = new System.Drawing.Size(596, 420);
+            this.bunifuShadowPanel2.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
+            this.bunifuShadowPanel2.TabIndex = 27;
             // 
             // btnSave
             // 
@@ -233,6 +185,7 @@
             this.btnSave.IdleIconLeftImage = null;
             this.btnSave.IdleIconRightImage = null;
             this.btnSave.IndicateFocus = false;
+            this.validationProvider1.SetLink(this.btnSave, null);
             this.btnSave.Location = new System.Drawing.Point(158, 334);
             this.btnSave.Name = "btnSave";
             this.btnSave.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -276,46 +229,159 @@
             this.btnSave.UseDefaultRadiusAndThickness = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // bunifuShadowPanel2
+            // btnCancel
             // 
-            this.bunifuShadowPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuShadowPanel2.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.bunifuShadowPanel2.BorderRadius = 1;
-            this.bunifuShadowPanel2.BorderThickness = 1;
-            this.bunifuShadowPanel2.Controls.Add(this.btnSave);
-            this.bunifuShadowPanel2.Controls.Add(this.btnCancel);
-            this.bunifuShadowPanel2.Controls.Add(this.cmbDiscount);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel10);
-            this.bunifuShadowPanel2.Controls.Add(this.cmbProvince);
-            this.bunifuShadowPanel2.Controls.Add(this.cmbMunicipality);
-            this.bunifuShadowPanel2.Controls.Add(this.cmbBarangay);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel8);
-            this.bunifuShadowPanel2.Controls.Add(this.txtContact);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel7);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel4);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel5);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel6);
-            this.bunifuShadowPanel2.Controls.Add(this.txtStreet);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel3);
-            this.bunifuShadowPanel2.Controls.Add(this.txtLastName);
-            this.bunifuShadowPanel2.Controls.Add(this.bunifuLabel1);
-            this.bunifuShadowPanel2.Controls.Add(this.txtMiddleName);
-            this.bunifuShadowPanel2.Controls.Add(this.lblfirstName);
-            this.bunifuShadowPanel2.Controls.Add(this.txtFirstName);
-            this.bunifuShadowPanel2.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
-            this.bunifuShadowPanel2.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
-            this.bunifuShadowPanel2.Location = new System.Drawing.Point(3, 3);
-            this.bunifuShadowPanel2.Name = "bunifuShadowPanel2";
-            this.bunifuShadowPanel2.PanelColor = System.Drawing.Color.WhiteSmoke;
-            this.bunifuShadowPanel2.PanelColor2 = System.Drawing.Color.WhiteSmoke;
-            this.bunifuShadowPanel2.ShadowColor = System.Drawing.Color.DarkGray;
-            this.bunifuShadowPanel2.ShadowDept = 2;
-            this.bunifuShadowPanel2.ShadowDepth = 5;
-            this.bunifuShadowPanel2.ShadowStyle = Bunifu.UI.WinForms.BunifuShadowPanel.ShadowStyles.Surrounded;
-            this.bunifuShadowPanel2.ShadowTopLeftVisible = false;
-            this.bunifuShadowPanel2.Size = new System.Drawing.Size(596, 420);
-            this.bunifuShadowPanel2.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
-            this.bunifuShadowPanel2.TabIndex = 27;
+            this.btnCancel.AllowAnimations = true;
+            this.btnCancel.AllowMouseEffects = true;
+            this.btnCancel.AllowToggling = false;
+            this.btnCancel.AnimationSpeed = 200;
+            this.btnCancel.AutoGenerateColors = false;
+            this.btnCancel.AutoRoundBorders = false;
+            this.btnCancel.AutoSizeLeftIcon = true;
+            this.btnCancel.AutoSizeRightIcon = true;
+            this.btnCancel.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancel.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnCancel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.BackgroundImage")));
+            this.btnCancel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnCancel.ButtonText = "Cancel";
+            this.btnCancel.ButtonTextMarginLeft = 0;
+            this.btnCancel.ColorContrastOnClick = 45;
+            this.btnCancel.ColorContrastOnHover = 45;
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnCancel.CustomizableEdges = borderEdges2;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCancel.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnCancel.DisabledFillColor = System.Drawing.Color.Empty;
+            this.btnCancel.DisabledForecolor = System.Drawing.Color.Empty;
+            this.btnCancel.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCancel.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.IconLeft = null;
+            this.btnCancel.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnCancel.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnCancel.IconMarginLeft = 11;
+            this.btnCancel.IconPadding = 10;
+            this.btnCancel.IconRight = null;
+            this.btnCancel.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnCancel.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnCancel.IconSize = 25;
+            this.btnCancel.IdleBorderColor = System.Drawing.Color.Empty;
+            this.btnCancel.IdleBorderRadius = 0;
+            this.btnCancel.IdleBorderThickness = 0;
+            this.btnCancel.IdleFillColor = System.Drawing.Color.Empty;
+            this.btnCancel.IdleIconLeftImage = null;
+            this.btnCancel.IdleIconRightImage = null;
+            this.btnCancel.IndicateFocus = false;
+            this.validationProvider1.SetLink(this.btnCancel, null);
+            this.btnCancel.Location = new System.Drawing.Point(16, 334);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnCancel.OnDisabledState.BorderRadius = 1;
+            this.btnCancel.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnCancel.OnDisabledState.BorderThickness = 1;
+            this.btnCancel.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnCancel.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnCancel.OnDisabledState.IconLeftImage = null;
+            this.btnCancel.OnDisabledState.IconRightImage = null;
+            this.btnCancel.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnCancel.onHoverState.BorderRadius = 1;
+            this.btnCancel.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnCancel.onHoverState.BorderThickness = 1;
+            this.btnCancel.onHoverState.FillColor = System.Drawing.Color.White;
+            this.btnCancel.onHoverState.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.onHoverState.IconLeftImage = null;
+            this.btnCancel.onHoverState.IconRightImage = null;
+            this.btnCancel.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnCancel.OnIdleState.BorderRadius = 1;
+            this.btnCancel.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnCancel.OnIdleState.BorderThickness = 1;
+            this.btnCancel.OnIdleState.FillColor = System.Drawing.Color.White;
+            this.btnCancel.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.OnIdleState.IconLeftImage = null;
+            this.btnCancel.OnIdleState.IconRightImage = null;
+            this.btnCancel.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnCancel.OnPressedState.BorderRadius = 1;
+            this.btnCancel.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnCancel.OnPressedState.BorderThickness = 1;
+            this.btnCancel.OnPressedState.FillColor = System.Drawing.Color.White;
+            this.btnCancel.OnPressedState.ForeColor = System.Drawing.Color.Black;
+            this.btnCancel.OnPressedState.IconLeftImage = null;
+            this.btnCancel.OnPressedState.IconRightImage = null;
+            this.btnCancel.Size = new System.Drawing.Size(136, 39);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnCancel.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnCancel.TextMarginLeft = 0;
+            this.btnCancel.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnCancel.UseDefaultRadiusAndThickness = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // cmbDiscount
+            // 
+            this.cmbDiscount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDiscount.BackgroundColor = System.Drawing.Color.White;
+            this.cmbDiscount.BorderColor = System.Drawing.Color.Black;
+            this.cmbDiscount.BorderRadius = 10;
+            this.cmbDiscount.Color = System.Drawing.Color.Black;
+            this.cmbDiscount.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.cmbDiscount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cmbDiscount.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.cmbDiscount.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cmbDiscount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.cmbDiscount.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
+            this.cmbDiscount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbDiscount.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            this.cmbDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDiscount.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.cmbDiscount.FillDropDown = true;
+            this.cmbDiscount.FillIndicator = false;
+            this.cmbDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbDiscount.ForeColor = System.Drawing.Color.Black;
+            this.cmbDiscount.FormattingEnabled = true;
+            this.cmbDiscount.Icon = null;
+            this.cmbDiscount.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.cmbDiscount.IndicatorColor = System.Drawing.Color.DarkGray;
+            this.cmbDiscount.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.cmbDiscount.IndicatorThickness = 2;
+            this.cmbDiscount.IsDropdownOpened = false;
+            this.cmbDiscount.ItemBackColor = System.Drawing.Color.White;
+            this.cmbDiscount.ItemBorderColor = System.Drawing.Color.White;
+            this.cmbDiscount.ItemForeColor = System.Drawing.Color.Black;
+            this.cmbDiscount.ItemHeight = 26;
+            this.cmbDiscount.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
+            this.cmbDiscount.ItemHighLightForeColor = System.Drawing.Color.White;
+            this.cmbDiscount.ItemTopMargin = 3;
+            this.validationProvider1.SetLink(this.cmbDiscount, null);
+            this.cmbDiscount.Location = new System.Drawing.Point(315, 331);
+            this.cmbDiscount.Name = "cmbDiscount";
+            this.cmbDiscount.Size = new System.Drawing.Size(260, 32);
+            this.cmbDiscount.TabIndex = 25;
+            this.cmbDiscount.Text = null;
+            this.cmbDiscount.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.cmbDiscount.TextLeftMargin = 5;
+            // 
+            // bunifuLabel10
+            // 
+            this.bunifuLabel10.AllowParentOverrides = false;
+            this.bunifuLabel10.AutoEllipsis = false;
+            this.bunifuLabel10.CursorType = null;
+            this.bunifuLabel10.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel10, null);
+            this.bunifuLabel10.Location = new System.Drawing.Point(321, 308);
+            this.bunifuLabel10.Name = "bunifuLabel10";
+            this.bunifuLabel10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel10.Size = new System.Drawing.Size(53, 17);
+            this.bunifuLabel10.TabIndex = 24;
+            this.bunifuLabel10.Text = "Discount";
+            this.bunifuLabel10.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel10.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // cmbProvince
             // 
@@ -353,6 +419,7 @@
             this.cmbProvince.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
             this.cmbProvince.ItemHighLightForeColor = System.Drawing.Color.White;
             this.cmbProvince.ItemTopMargin = 3;
+            this.validationProvider1.SetLink(this.cmbProvince, null);
             this.cmbProvince.Location = new System.Drawing.Point(317, 53);
             this.cmbProvince.Name = "cmbProvince";
             this.cmbProvince.Size = new System.Drawing.Size(260, 32);
@@ -398,6 +465,7 @@
             this.cmbMunicipality.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
             this.cmbMunicipality.ItemHighLightForeColor = System.Drawing.Color.White;
             this.cmbMunicipality.ItemTopMargin = 3;
+            this.validationProvider1.SetLink(this.cmbMunicipality, null);
             this.cmbMunicipality.Location = new System.Drawing.Point(317, 121);
             this.cmbMunicipality.Name = "cmbMunicipality";
             this.cmbMunicipality.Size = new System.Drawing.Size(260, 32);
@@ -446,6 +514,7 @@
             "Male",
             "Female"});
             this.cmbBarangay.ItemTopMargin = 3;
+            this.validationProvider1.SetLink(this.cmbBarangay, null);
             this.cmbBarangay.Location = new System.Drawing.Point(317, 192);
             this.cmbBarangay.Name = "cmbBarangay";
             this.cmbBarangay.Size = new System.Drawing.Size(260, 32);
@@ -460,6 +529,7 @@
             this.bunifuLabel8.AutoEllipsis = false;
             this.bunifuLabel8.CursorType = null;
             this.bunifuLabel8.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel8, null);
             this.bunifuLabel8.Location = new System.Drawing.Point(25, 234);
             this.bunifuLabel8.Name = "bunifuLabel8";
             this.bunifuLabel8.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -497,6 +567,7 @@
             this.txtContact.IconRight = null;
             this.txtContact.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtContact.Lines = new string[0];
+            this.validationProvider1.SetLink(this.txtContact, null);
             this.txtContact.Location = new System.Drawing.Point(16, 257);
             this.txtContact.MaxLength = 32767;
             this.txtContact.MinimumSize = new System.Drawing.Size(1, 1);
@@ -551,6 +622,7 @@
             this.bunifuLabel7.AutoEllipsis = false;
             this.bunifuLabel7.CursorType = null;
             this.bunifuLabel7.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel7, null);
             this.bunifuLabel7.Location = new System.Drawing.Point(324, 30);
             this.bunifuLabel7.Name = "bunifuLabel7";
             this.bunifuLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -566,6 +638,7 @@
             this.bunifuLabel4.AutoEllipsis = false;
             this.bunifuLabel4.CursorType = null;
             this.bunifuLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel4, null);
             this.bunifuLabel4.Location = new System.Drawing.Point(324, 98);
             this.bunifuLabel4.Name = "bunifuLabel4";
             this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -581,6 +654,7 @@
             this.bunifuLabel5.AutoEllipsis = false;
             this.bunifuLabel5.CursorType = null;
             this.bunifuLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel5, null);
             this.bunifuLabel5.Location = new System.Drawing.Point(324, 166);
             this.bunifuLabel5.Name = "bunifuLabel5";
             this.bunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -596,6 +670,7 @@
             this.bunifuLabel6.AutoEllipsis = false;
             this.bunifuLabel6.CursorType = null;
             this.bunifuLabel6.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel6, null);
             this.bunifuLabel6.Location = new System.Drawing.Point(324, 234);
             this.bunifuLabel6.Name = "bunifuLabel6";
             this.bunifuLabel6.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -633,6 +708,7 @@
             this.txtStreet.IconRight = null;
             this.txtStreet.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStreet.Lines = new string[0];
+            this.validationProvider1.SetLink(this.txtStreet, null);
             this.txtStreet.Location = new System.Drawing.Point(315, 257);
             this.txtStreet.MaxLength = 32767;
             this.txtStreet.MinimumSize = new System.Drawing.Size(1, 1);
@@ -686,6 +762,7 @@
             this.bunifuLabel3.AutoEllipsis = false;
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel3, null);
             this.bunifuLabel3.Location = new System.Drawing.Point(25, 166);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -723,6 +800,7 @@
             this.txtLastName.IconRight = null;
             this.txtLastName.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtLastName.Lines = new string[0];
+            this.validationProvider1.SetLink(this.txtLastName, null);
             this.txtLastName.Location = new System.Drawing.Point(16, 189);
             this.txtLastName.MaxLength = 32767;
             this.txtLastName.MinimumSize = new System.Drawing.Size(1, 1);
@@ -776,6 +854,7 @@
             this.bunifuLabel1.AutoEllipsis = false;
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.bunifuLabel1, null);
             this.bunifuLabel1.Location = new System.Drawing.Point(25, 98);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -813,6 +892,7 @@
             this.txtMiddleName.IconRight = null;
             this.txtMiddleName.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMiddleName.Lines = new string[0];
+            this.validationProvider1.SetLink(this.txtMiddleName, null);
             this.txtMiddleName.Location = new System.Drawing.Point(16, 121);
             this.txtMiddleName.MaxLength = 32767;
             this.txtMiddleName.MinimumSize = new System.Drawing.Size(1, 1);
@@ -866,6 +946,7 @@
             this.lblfirstName.AutoEllipsis = false;
             this.lblfirstName.CursorType = null;
             this.lblfirstName.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.validationProvider1.SetLink(this.lblfirstName, null);
             this.lblfirstName.Location = new System.Drawing.Point(25, 30);
             this.lblfirstName.Name = "lblfirstName";
             this.lblfirstName.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -903,6 +984,7 @@
             this.txtFirstName.IconRight = null;
             this.txtFirstName.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFirstName.Lines = new string[0];
+            this.validationProvider1.SetLink(this.txtFirstName, null);
             this.txtFirstName.Location = new System.Drawing.Point(16, 53);
             this.txtFirstName.MaxLength = 32767;
             this.txtFirstName.MinimumSize = new System.Drawing.Size(1, 1);
@@ -950,64 +1032,9 @@
             this.txtFirstName.UseSystemPasswordChar = false;
             this.txtFirstName.WordWrap = true;
             // 
-            // bunifuLabel10
+            // validationProvider1
             // 
-            this.bunifuLabel10.AllowParentOverrides = false;
-            this.bunifuLabel10.AutoEllipsis = false;
-            this.bunifuLabel10.CursorType = null;
-            this.bunifuLabel10.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel10.Location = new System.Drawing.Point(321, 308);
-            this.bunifuLabel10.Name = "bunifuLabel10";
-            this.bunifuLabel10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel10.Size = new System.Drawing.Size(53, 17);
-            this.bunifuLabel10.TabIndex = 24;
-            this.bunifuLabel10.Text = "Discount";
-            this.bunifuLabel10.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel10.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // cmbDiscount
-            // 
-            this.cmbDiscount.BackColor = System.Drawing.Color.Transparent;
-            this.cmbDiscount.BackgroundColor = System.Drawing.Color.White;
-            this.cmbDiscount.BorderColor = System.Drawing.Color.Black;
-            this.cmbDiscount.BorderRadius = 10;
-            this.cmbDiscount.Color = System.Drawing.Color.Black;
-            this.cmbDiscount.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
-            this.cmbDiscount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cmbDiscount.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.cmbDiscount.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cmbDiscount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.cmbDiscount.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
-            this.cmbDiscount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbDiscount.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
-            this.cmbDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDiscount.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            this.cmbDiscount.FillDropDown = true;
-            this.cmbDiscount.FillIndicator = false;
-            this.cmbDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.cmbDiscount.ForeColor = System.Drawing.Color.Black;
-            this.cmbDiscount.FormattingEnabled = true;
-            this.cmbDiscount.Icon = null;
-            this.cmbDiscount.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            this.cmbDiscount.IndicatorColor = System.Drawing.Color.DarkGray;
-            this.cmbDiscount.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
-            this.cmbDiscount.IndicatorThickness = 2;
-            this.cmbDiscount.IsDropdownOpened = false;
-            this.cmbDiscount.ItemBackColor = System.Drawing.Color.White;
-            this.cmbDiscount.ItemBorderColor = System.Drawing.Color.White;
-            this.cmbDiscount.ItemForeColor = System.Drawing.Color.Black;
-            this.cmbDiscount.ItemHeight = 26;
-            this.cmbDiscount.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
-            this.cmbDiscount.ItemHighLightForeColor = System.Drawing.Color.White;
-            this.cmbDiscount.ItemTopMargin = 3;
-            this.cmbDiscount.Location = new System.Drawing.Point(315, 331);
-            this.cmbDiscount.Name = "cmbDiscount";
-            this.cmbDiscount.Size = new System.Drawing.Size(260, 32);
-            this.cmbDiscount.TabIndex = 25;
-            this.cmbDiscount.Text = null;
-            this.cmbDiscount.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
-            this.cmbDiscount.TextLeftMargin = 5;
+            this.validationProvider1.ErrorColor = System.Drawing.Color.Crimson;
             // 
             // frmUpdateCustomer
             // 
@@ -1051,5 +1078,6 @@
         private Bunifu.UI.WinForms.BunifuDropdown cmbMunicipality;
         private Bunifu.UI.WinForms.BunifuDropdown cmbBarangay;
         private Bunifu.UI.WinForms.BunifuDropdown cmbDiscount;
+        private Kimtoo.ValidationProvider.ValidationProvider validationProvider1;
     }
 }

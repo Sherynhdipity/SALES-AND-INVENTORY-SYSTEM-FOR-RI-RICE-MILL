@@ -237,7 +237,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             con.Close();
             con.Open();
-            QuerySelect = "Select * From tblProvinces Order by province_desc ASC";
+            QuerySelect = "Select * From tblProvinces WHERE psg_code = '126500000'";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();

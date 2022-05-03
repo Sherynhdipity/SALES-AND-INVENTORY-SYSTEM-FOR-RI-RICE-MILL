@@ -29,16 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddItem));
+            Kimtoo.ValidationProvider.ValidationObject validationObject10 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject9 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Kimtoo.ValidationProvider.ValidationObject validationObject1 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Kimtoo.ValidationProvider.ValidationObject validationObject2 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject3 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject4 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Kimtoo.ValidationProvider.ValidationObject validationObject5 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject6 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Kimtoo.ValidationProvider.ValidationObject validationObject7 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject8 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -53,6 +63,7 @@
             this.txtPrice = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtDescription = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.validationProvider1 = new Kimtoo.ValidationProvider.ValidationProvider();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuShadowPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +77,12 @@
             this.bunifuPanel1.BorderRadius = 3;
             this.bunifuPanel1.BorderThickness = 1;
             this.bunifuPanel1.Controls.Add(this.bunifuShadowPanel1);
+            validationObject10.CustomErrorMessage = "";
+            validationObject10.Optional = false;
+            validationObject10.PropertyName = "Text";
+            validationObject10.Regex = null;
+            validationObject10.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.bunifuPanel1, validationObject10);
             this.bunifuPanel1.Location = new System.Drawing.Point(12, 12);
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
@@ -88,6 +105,12 @@
             this.bunifuShadowPanel1.Controls.Add(this.txtDescription);
             this.bunifuShadowPanel1.FillStyle = Bunifu.UI.WinForms.BunifuShadowPanel.FillStyles.Solid;
             this.bunifuShadowPanel1.GradientMode = Bunifu.UI.WinForms.BunifuShadowPanel.GradientModes.Vertical;
+            validationObject9.CustomErrorMessage = "";
+            validationObject9.Optional = false;
+            validationObject9.PropertyName = "Text";
+            validationObject9.Regex = null;
+            validationObject9.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.bunifuShadowPanel1, validationObject9);
             this.bunifuShadowPanel1.Location = new System.Drawing.Point(3, 3);
             this.bunifuShadowPanel1.Name = "bunifuShadowPanel1";
             this.bunifuShadowPanel1.PanelColor = System.Drawing.Color.WhiteSmoke;
@@ -150,7 +173,13 @@
             this.btnSave.IdleIconLeftImage = null;
             this.btnSave.IdleIconRightImage = null;
             this.btnSave.IndicateFocus = false;
-            this.btnSave.Location = new System.Drawing.Point(88, 273);
+            validationObject1.CustomErrorMessage = "";
+            validationObject1.Optional = false;
+            validationObject1.PropertyName = "Text";
+            validationObject1.Regex = null;
+            validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.btnSave, validationObject1);
+            this.btnSave.Location = new System.Drawing.Point(88, 300);
             this.btnSave.Name = "btnSave";
             this.btnSave.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSave.OnDisabledState.BorderRadius = 1;
@@ -242,7 +271,13 @@
             this.btnCancel.IdleIconLeftImage = null;
             this.btnCancel.IdleIconRightImage = null;
             this.btnCancel.IndicateFocus = false;
-            this.btnCancel.Location = new System.Drawing.Point(88, 333);
+            validationObject2.CustomErrorMessage = "";
+            validationObject2.Optional = false;
+            validationObject2.PropertyName = "Text";
+            validationObject2.Regex = null;
+            validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.btnCancel, validationObject2);
+            this.btnCancel.Location = new System.Drawing.Point(88, 360);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCancel.OnDisabledState.BorderRadius = 1;
@@ -291,7 +326,13 @@
             this.bunifuLabel2.AutoEllipsis = false;
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel2.Location = new System.Drawing.Point(28, 170);
+            validationObject3.CustomErrorMessage = "";
+            validationObject3.Optional = false;
+            validationObject3.PropertyName = "Text";
+            validationObject3.Regex = null;
+            validationObject3.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.bunifuLabel2, validationObject3);
+            this.bunifuLabel2.Location = new System.Drawing.Point(28, 197);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(74, 17);
@@ -328,8 +369,14 @@
             this.txtCriticalLevel.IconRight = null;
             this.txtCriticalLevel.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCriticalLevel.Lines = new string[0];
-            this.txtCriticalLevel.Location = new System.Drawing.Point(19, 193);
-            this.txtCriticalLevel.MaxLength = 32767;
+            validationObject4.CustomErrorMessage = "Enter Critical Level";
+            validationObject4.Optional = false;
+            validationObject4.PropertyName = "Text";
+            validationObject4.Regex = "^\\d+$";
+            validationObject4.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Integer;
+            this.validationProvider1.SetLink(this.txtCriticalLevel, validationObject4);
+            this.txtCriticalLevel.Location = new System.Drawing.Point(19, 220);
+            this.txtCriticalLevel.MaxLength = 5;
             this.txtCriticalLevel.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCriticalLevel.Modified = false;
             this.txtCriticalLevel.Multiline = false;
@@ -357,7 +404,7 @@
             this.txtCriticalLevel.Padding = new System.Windows.Forms.Padding(3);
             this.txtCriticalLevel.PasswordChar = '\0';
             this.txtCriticalLevel.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtCriticalLevel.PlaceholderText = "Type here..";
+            this.txtCriticalLevel.PlaceholderText = "";
             this.txtCriticalLevel.ReadOnly = false;
             this.txtCriticalLevel.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtCriticalLevel.SelectedText = "";
@@ -371,7 +418,7 @@
             this.txtCriticalLevel.TextMarginBottom = 0;
             this.txtCriticalLevel.TextMarginLeft = 3;
             this.txtCriticalLevel.TextMarginTop = 1;
-            this.txtCriticalLevel.TextPlaceholder = "Type here..";
+            this.txtCriticalLevel.TextPlaceholder = "";
             this.txtCriticalLevel.UseSystemPasswordChar = false;
             this.txtCriticalLevel.WordWrap = true;
             this.txtCriticalLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCriticalLevel_KeyPress);
@@ -382,7 +429,13 @@
             this.bunifuLabel1.AutoEllipsis = false;
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.bunifuLabel1.Location = new System.Drawing.Point(28, 102);
+            validationObject5.CustomErrorMessage = "";
+            validationObject5.Optional = false;
+            validationObject5.PropertyName = "Text";
+            validationObject5.Regex = null;
+            validationObject5.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.bunifuLabel1, validationObject5);
+            this.bunifuLabel1.Location = new System.Drawing.Point(28, 113);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(29, 17);
@@ -419,8 +472,14 @@
             this.txtPrice.IconRight = null;
             this.txtPrice.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPrice.Lines = new string[0];
-            this.txtPrice.Location = new System.Drawing.Point(19, 125);
-            this.txtPrice.MaxLength = 32767;
+            validationObject6.CustomErrorMessage = "Enter Price!";
+            validationObject6.Optional = false;
+            validationObject6.PropertyName = "Text";
+            validationObject6.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
+            validationObject6.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
+            this.validationProvider1.SetLink(this.txtPrice, validationObject6);
+            this.txtPrice.Location = new System.Drawing.Point(19, 136);
+            this.txtPrice.MaxLength = 10;
             this.txtPrice.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtPrice.Modified = false;
             this.txtPrice.Multiline = false;
@@ -448,7 +507,7 @@
             this.txtPrice.Padding = new System.Windows.Forms.Padding(3);
             this.txtPrice.PasswordChar = '\0';
             this.txtPrice.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtPrice.PlaceholderText = "Type here..";
+            this.txtPrice.PlaceholderText = "";
             this.txtPrice.ReadOnly = false;
             this.txtPrice.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtPrice.SelectedText = "";
@@ -462,7 +521,7 @@
             this.txtPrice.TextMarginBottom = 0;
             this.txtPrice.TextMarginLeft = 3;
             this.txtPrice.TextMarginTop = 1;
-            this.txtPrice.TextPlaceholder = "Type here..";
+            this.txtPrice.TextPlaceholder = "";
             this.txtPrice.UseSystemPasswordChar = false;
             this.txtPrice.WordWrap = true;
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
@@ -473,6 +532,12 @@
             this.bunifuLabel13.AutoEllipsis = false;
             this.bunifuLabel13.CursorType = null;
             this.bunifuLabel13.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            validationObject7.CustomErrorMessage = "";
+            validationObject7.Optional = false;
+            validationObject7.PropertyName = "Text";
+            validationObject7.Regex = null;
+            validationObject7.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.bunifuLabel13, validationObject7);
             this.bunifuLabel13.Location = new System.Drawing.Point(28, 30);
             this.bunifuLabel13.Name = "bunifuLabel13";
             this.bunifuLabel13.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -510,8 +575,14 @@
             this.txtDescription.IconRight = null;
             this.txtDescription.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.Lines = new string[0];
+            validationObject8.CustomErrorMessage = "Enter Description!";
+            validationObject8.Optional = false;
+            validationObject8.PropertyName = "Text";
+            validationObject8.Regex = "^[a-zA-Z]+(?:\'[a-zA-Z]+)*(?:[- ][a-zA-Z]+(?:\'[a-zA-Z])*)*$\r\n";
+            validationObject8.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
+            this.validationProvider1.SetLink(this.txtDescription, validationObject8);
             this.txtDescription.Location = new System.Drawing.Point(19, 53);
-            this.txtDescription.MaxLength = 32767;
+            this.txtDescription.MaxLength = 50;
             this.txtDescription.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtDescription.Modified = false;
             this.txtDescription.Multiline = false;
@@ -557,6 +628,10 @@
             this.txtDescription.UseSystemPasswordChar = false;
             this.txtDescription.WordWrap = true;
             // 
+            // validationProvider1
+            // 
+            this.validationProvider1.ErrorColor = System.Drawing.Color.Crimson;
+            // 
             // frmAddItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -587,5 +662,6 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtPrice;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel13;
         private Bunifu.UI.WinForms.BunifuTextBox txtDescription;
+        private Kimtoo.ValidationProvider.ValidationProvider validationProvider1;
     }
 }

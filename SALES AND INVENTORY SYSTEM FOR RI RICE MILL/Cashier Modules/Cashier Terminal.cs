@@ -21,8 +21,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryUpdate;
         public static string QueryDelete;
         public static string adminPass;
-    
 
+        public string transCount;
+        public string transTotal;
+        public Boolean isRowUpdated = false;
+
+        frmSetDiscount set = new frmSetDiscount();
 
 
         public frmSalesManagement()
@@ -154,6 +158,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                     txtAmount.Text = totalamount.ToString();
                     lblTotal.Text = txtAmount.Text;
+
                     recompute(totalamount);
                     txtSearch.Focus();
                     dvgOrderList.Refresh();
@@ -178,6 +183,62 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
 
         }
+
+        //Cancel Transaction
+        void VoidTransaction()
+        {
+            DialogResult dialog = MessageBox.Show("Do you want to cancel the Transaction?", "Cancel Transaction", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                if (String.IsNullOrEmpty(adminPass))
+                {
+                    frmvoidauth voidauth = new frmvoidauth();
+                    voidauth.ShowDialog();
+                    adminPass = voidauth.adminPassword;
+                }
+                try
+                {
+                    con.Open();
+                    QuerySelect = "SELECT * FROM tblUsers WHERE Password = '" + adminPass + "'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+
+                        ClearAll();
+                        txtSearch.Enabled = false;
+
+                        //buttons
+                        btnSearchProduct.Enabled = false;
+                        btnAdd.Enabled = false;
+                        btnVoid.Enabled = false;
+                        btnPay.Enabled = false;
+                        btnCancel.Enabled = false;
+
+                        reader.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong Password! Try Again", "Authorization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    con.Close();
+                    adminPass = null;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+                
+            }     
+
+        }
+
 
         //ButtonKey Shortcuts
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -206,7 +267,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     return true;
 
                 case Keys.F7:
-                    btnRecords.Click += btnRecords_Click;
+                    btnSet.Click += btnRecords_Click;
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
@@ -264,7 +325,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
 
                
-                txtAmount.Text = totalamount.ToString("0.00");
+                txtAmount.Text = /*"P " +*/ totalamount.ToString("#,0.00");
                 lblTotal.Text = txtAmount.Text;
                 //lblTotal.Text = totalamount.ToString("#,0.00");
             }
@@ -286,7 +347,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[5].Value);
                 }
 
-                txtAmount.Text = totalamount.ToString("#,0.00");
+                txtAmount.Text = /*"P " +*/ totalamount.ToString("#,0.00");
                 lblTotal.Text = txtAmount.Text;
                 //txtAmount.Text = totalamount.ToString("0.00");
             }
@@ -297,12 +358,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             try
             {
-                if (txtProdDesc.Text == "")
-                {
-                    MessageBox.Show("Please Search Product First!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtSearch.Focus();
-                }
-                else if (txtQuantity.Text == "")
+                //if (txtProdDesc.Text == "")
+                //{
+                //    MessageBox.Show("Please Search Product First!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    txtSearch.Focus();
+                //}
+                //else 
+                if (txtQuantity.Text == "")
                 {
                     txtQuantity.Text = "1";
                     MessageBox.Show("Invalid Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -372,7 +434,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         double totalamount = 0;
                         totalamount = Convert.ToDouble(dt.Compute("sum([subtotal])", ""));
                         
-                        txtAmount.Text = totalamount.ToString("0.00");
+                        txtAmount.Text = /*"P " +*/ totalamount.ToString("#,0.00");
                         lblTotal.Text = txtAmount.Text;
                         //lblTotal.Text = totalamount.ToString("#,0.00");
                         //compute here lols
@@ -395,6 +457,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 MessageBox.Show(ex.Message);
             }
+            isRowUpdated = true;
         }
         private void recompute(double totalamount)
         {
@@ -579,25 +642,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-                DialogResult dialog = MessageBox.Show("Do you want to cancel the Transaction?", "Cancel Transaction", MessageBoxButtons.YesNo);
-                if (dialog == DialogResult.Yes)
-                {
-                    ClearAll();
-                    txtSearch.Enabled = false;
-
-                    //buttons
-                    btnSearchProduct.Enabled = false;
-                    btnAdd.Enabled = false;
-                    btnVoid.Enabled = false;
-                    btnPay.Enabled = false;
-                    btnCancel.Enabled = false;
-                }
+            VoidTransaction();
         }
 
         private void btnRecords_Click(object sender, EventArgs e)
         {
-            frmSalesHistory salesHistory = new frmSalesHistory();
-            salesHistory.Show();
+            frmSetDiscount set = new frmSetDiscount();
+            set.Show();
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
@@ -609,57 +660,69 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             frmProductLookup productLookup = new frmProductLookup();
             productLookup.ShowDialog();
-            txtProdDesc.Text = productLookup.productDesc;
-            txtProdPrice.Text = productLookup.productPrice;
-            txtQuantity.Text = productLookup.quantity.ToString();
-            txtStock.Text = productLookup.stock;
-
-            btnAdd_Click((object)sender, (EventArgs)e);
+            if(productLookup.quantity.ToString() != "")
+            {
+                txtProdDesc.Text = productLookup.productDesc;
+                txtProdPrice.Text = productLookup.productPrice;
+                txtQuantity.Text = productLookup.quantity.ToString();
+                txtStock.Text = productLookup.stock;
+                btnAdd_Click((object)sender, (EventArgs)e);
+            }
+          
+          
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            if (!isRowUpdated)
+            {
+                MessageBox.Show("Input Item First!");
+            }
+            else
+            {
+
                 string[] itemDesc = new string[dvgOrderList.Rows.Count];
                 int[] qty = new int[dvgOrderList.Rows.Count];
                 double[] price = new double[dvgOrderList.Rows.Count];
 
 
-            //itemdeets to pass on payment
-            for (int i = 0; i < dvgOrderList.Rows.Count; i++)
-            {
-                itemDesc[i] = dvgOrderList.Rows[i].Cells[0].Value.ToString();
-                qty[i] = Convert.ToInt32(dvgOrderList.Rows[i].Cells[1].Value.ToString());
-                price[i] = Convert.ToDouble(dvgOrderList.Rows[i].Cells[3].Value.ToString());      
+                //itemdeets to pass on payment
+                for (int i = 0; i < dvgOrderList.Rows.Count; i++)
+                {
+                    itemDesc[i] = dvgOrderList.Rows[i].Cells[0].Value.ToString();
+                    qty[i] = Convert.ToInt32(dvgOrderList.Rows[i].Cells[1].Value.ToString());
+                    price[i] = Convert.ToDouble(dvgOrderList.Rows[i].Cells[3].Value.ToString());
+                }
+
+
+
+                setdt();
+                frmPayment payment = new frmPayment();
+                payment.txtAmount.Text = lblTotal.Text;
+                payment.transNo = lblTransNo.Text;
+                payment.storeDt(dtfromdvg);
+                payment.ItemDesc = itemDesc;
+                payment.Qty = qty;
+                payment.Price = price;
+                payment.tax = txtVatAmount.Text;
+                payment.vatable = txtVatable.Text;
+
+
+                DialogResult res = payment.ShowDialog();
+
+                if (res == DialogResult.OK)
+                {
+                    ClearAll();
+
+                    //buttons
+                    btnSearchProduct.Enabled = false;
+                    btnAdd.Enabled = false;
+                    btnVoid.Enabled = false;
+                    btnPay.Enabled = false;
+                    btnCancel.Enabled = false;
+                }
             }
-
-
-
-            setdt();
-            frmPayment payment = new frmPayment();
-            payment.txtAmount.Text = lblTotal.Text;
-            payment.transNo = lblTransNo.Text;
-            payment.storeDt(dtfromdvg);
-            payment.ItemDesc = itemDesc;
-            payment.Qty = qty;
-            payment.Price = price;
-            payment.tax = txtVatAmount.Text;
-            payment.vatable = txtVatable.Text;
-
-        
-
-            DialogResult res = payment.ShowDialog();
-
-            if (res == DialogResult.OK)
-            {
-                ClearAll();
-
-                //buttons
-                btnSearchProduct.Enabled = false;
-                btnAdd.Enabled = false;
-                btnVoid.Enabled = false;
-                btnPay.Enabled = false;
-                btnCancel.Enabled = false;
-            }
+               
         }
 
         private void btnExit_Click(object sender, EventArgs e)
