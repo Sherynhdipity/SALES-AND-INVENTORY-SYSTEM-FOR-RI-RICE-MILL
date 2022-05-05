@@ -93,11 +93,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "Select Return_quantity from tblReturns";
+                QuerySelect = "Select Count(SKU) as [Return] from tblReturns";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    txtTotalReturn.Text = reader["Return Quantity"].ToString();
+                    txtTotalReturn.Text = reader["Return"].ToString();
 
                 }
             }
@@ -151,6 +151,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             SaleSummaryReport();
             TransactionSummary();
             InventorySummary();
+            ReturnItemSummary();
         }
 
         private void bunifuButton21_Click(object sender, EventArgs e)
@@ -168,6 +169,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             Owner_Modules.frmSales_Return f4 = new Owner_Modules.frmSales_Return();
             f4.Show();
+        }
+
+        private void txtTotalReturn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

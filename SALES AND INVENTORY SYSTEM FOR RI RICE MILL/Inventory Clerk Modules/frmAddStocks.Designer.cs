@@ -678,6 +678,7 @@
             validationObject9.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.dtpStockInDate, validationObject9);
             this.dtpStockInDate.Location = new System.Drawing.Point(28, 164);
+            this.dtpStockInDate.MinDate = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
             this.dtpStockInDate.MinimumSize = new System.Drawing.Size(4, 32);
             this.dtpStockInDate.Name = "dtpStockInDate";
             this.dtpStockInDate.Size = new System.Drawing.Size(260, 32);
@@ -927,6 +928,7 @@
             validationObject13.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.dtpMilledDate, validationObject13);
             this.dtpMilledDate.Location = new System.Drawing.Point(28, 103);
+            this.dtpMilledDate.MinDate = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
             this.dtpMilledDate.MinimumSize = new System.Drawing.Size(4, 32);
             this.dtpMilledDate.Name = "dtpMilledDate";
             this.dtpMilledDate.Size = new System.Drawing.Size(260, 32);
@@ -966,7 +968,7 @@
             validationObject15.Regex = null;
             validationObject15.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel8, validationObject15);
-            this.bunifuLabel8.Location = new System.Drawing.Point(34, 19);
+            this.bunifuLabel8.Location = new System.Drawing.Point(34, 8);
             this.bunifuLabel8.Name = "bunifuLabel8";
             this.bunifuLabel8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel8.Size = new System.Drawing.Size(91, 17);
@@ -1009,7 +1011,7 @@
             validationObject16.Regex = "^\\d+$";
             validationObject16.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Integer;
             this.validationProvider1.SetLink(this.txtBatchQuantity, validationObject16);
-            this.txtBatchQuantity.Location = new System.Drawing.Point(28, 42);
+            this.txtBatchQuantity.Location = new System.Drawing.Point(28, 31);
             this.txtBatchQuantity.MaxLength = 5;
             this.txtBatchQuantity.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtBatchQuantity.Modified = false;
@@ -1045,7 +1047,7 @@
             this.txtBatchQuantity.SelectionLength = 0;
             this.txtBatchQuantity.SelectionStart = 0;
             this.txtBatchQuantity.ShortcutsEnabled = true;
-            this.txtBatchQuantity.Size = new System.Drawing.Size(260, 32);
+            this.txtBatchQuantity.Size = new System.Drawing.Size(260, 31);
             this.txtBatchQuantity.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtBatchQuantity.TabIndex = 27;
             this.txtBatchQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;

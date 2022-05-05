@@ -26,8 +26,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string transTotal;
         public Boolean isRowUpdated = false;
 
-        frmSetDiscount set = new frmSetDiscount();
-
 
         public frmSalesManagement()
         {
@@ -647,8 +645,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnRecords_Click(object sender, EventArgs e)
         {
-            frmSetDiscount set = new frmSetDiscount();
-            set.Show();
+
         }
 
         private void btnVoid_Click(object sender, EventArgs e)

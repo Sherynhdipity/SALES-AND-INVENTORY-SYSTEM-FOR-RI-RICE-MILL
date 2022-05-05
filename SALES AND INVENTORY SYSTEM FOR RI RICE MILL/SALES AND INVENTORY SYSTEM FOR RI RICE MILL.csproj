@@ -328,6 +328,12 @@
     <Compile Include="Inventory Clerk Modules\frmStockCard.Designer.cs">
       <DependentUpon>frmStockCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Inventory Clerk Modules\frmUpdateStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\frmUpdateStocks.Designer.cs">
+      <DependentUpon>frmUpdateStocks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inventory Clerk Modules\On-HandInventoryReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +363,12 @@
     </Compile>
     <Compile Include="Owner Modules\Add Customer.Designer.cs">
       <DependentUpon>Add Customer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\Update User.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\Update User.Designer.cs">
+      <DependentUpon>Update User.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Add User.cs">
       <SubType>Form</SubType>
@@ -497,6 +509,12 @@
     <Compile Include="Owner Modules\Sales Return.Designer.cs">
       <DependentUpon>Sales Return.cs</DependentUpon>
     </Compile>
+    <Compile Include="Receipt.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="reportsDataSet.cs">
       <DependentUpon>reportsDataSet.xsd</DependentUpon>
     </Compile>
@@ -523,12 +541,6 @@
     </Compile>
     <Compile Include="Owner Modules\Update Customer.Designer.cs">
       <DependentUpon>Update Customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Owner Modules\Update User.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Owner Modules\Update User.Designer.cs">
-      <DependentUpon>Update User.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Owner Dashboard.cs">
       <SubType>UserControl</SubType>
@@ -609,12 +621,6 @@
     <Compile Include="Inventory Clerk Modules\Clerk Dashboard.Designer.cs">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Receipt.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Receipt.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="reportsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -632,11 +638,11 @@
       <DependentUpon>SalesReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SetDiscount.cs">
+    <Compile Include="ViewReturns.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetDiscount.Designer.cs">
-      <DependentUpon>SetDiscount.cs</DependentUpon>
+    <Compile Include="ViewReturns.Designer.cs">
+      <DependentUpon>ViewReturns.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
@@ -656,6 +662,9 @@
     <EmbeddedResource Include="Inventory Clerk Modules\frmStockCard.resx">
       <DependentUpon>frmStockCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\frmUpdateStocks.resx">
+      <DependentUpon>frmUpdateStocks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\On-HandInventoryReports.resx">
       <DependentUpon>On-HandInventoryReports.cs</DependentUpon>
     </EmbeddedResource>
@@ -671,6 +680,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\Update User.resx">
+      <DependentUpon>Update User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add User.resx">
       <DependentUpon>Add User.cs</DependentUpon>
@@ -717,6 +729,10 @@
     <EmbeddedResource Include="Owner Modules\frmDiscountRequirements.resx">
       <DependentUpon>frmDiscountRequirements.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Receipt.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Receipt.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="RestockReports.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RestockReports.cs</LastGenOutput>
@@ -757,9 +773,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Update Customer.resx">
       <DependentUpon>Update Customer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\Update User.resx">
-      <DependentUpon>Update User.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Owner Dashboard.resx">
       <DependentUpon>Owner Dashboard.cs</DependentUpon>
@@ -805,10 +818,6 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Clerk Dashboard.resx">
       <DependentUpon>Clerk Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Receipt.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Receipt.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report2.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="SalesReport.resx">
@@ -818,8 +827,8 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesReport1.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SetDiscount.resx">
-      <DependentUpon>SetDiscount.cs</DependentUpon>
+    <EmbeddedResource Include="ViewReturns.resx">
+      <DependentUpon>ViewReturns.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AppData.xsc">
       <DependentUpon>AppData.xsd</DependentUpon>

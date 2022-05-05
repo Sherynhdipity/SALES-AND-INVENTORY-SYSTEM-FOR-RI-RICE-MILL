@@ -563,7 +563,7 @@
             this.txtDescription.BorderColorIdle = System.Drawing.Color.Black;
             this.txtDescription.BorderRadius = 20;
             this.txtDescription.BorderThickness = 1;
-            this.txtDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
             this.txtDescription.DefaultText = "";
@@ -575,10 +575,10 @@
             this.txtDescription.IconRight = null;
             this.txtDescription.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescription.Lines = new string[0];
-            validationObject8.CustomErrorMessage = "Enter Description!";
-            validationObject8.Optional = false;
+            validationObject8.CustomErrorMessage = "";
+            validationObject8.Optional = true;
             validationObject8.PropertyName = "Text";
-            validationObject8.Regex = "^[a-zA-Z]+(?:\'[a-zA-Z]+)*(?:[- ][a-zA-Z]+(?:\'[a-zA-Z])*)*$\r\n";
+            validationObject8.Regex = "^[a-zA-Z]([\\w -]*[a-zA-Z]),-,\\s?$";
             validationObject8.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtDescription, validationObject8);
             this.txtDescription.Location = new System.Drawing.Point(19, 53);
@@ -610,7 +610,7 @@
             this.txtDescription.Padding = new System.Windows.Forms.Padding(3);
             this.txtDescription.PasswordChar = '\0';
             this.txtDescription.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtDescription.PlaceholderText = "Type here..";
+            this.txtDescription.PlaceholderText = "TYPE HERE..";
             this.txtDescription.ReadOnly = false;
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtDescription.SelectedText = "";
@@ -624,7 +624,7 @@
             this.txtDescription.TextMarginBottom = 0;
             this.txtDescription.TextMarginLeft = 3;
             this.txtDescription.TextMarginTop = 1;
-            this.txtDescription.TextPlaceholder = "Type here..";
+            this.txtDescription.TextPlaceholder = "TYPE HERE..";
             this.txtDescription.UseSystemPasswordChar = false;
             this.txtDescription.WordWrap = true;
             // 

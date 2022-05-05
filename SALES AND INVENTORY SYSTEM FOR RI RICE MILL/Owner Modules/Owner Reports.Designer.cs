@@ -1062,6 +1062,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtTotalReturn.Text = "0";
             this.txtTotalReturn.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.txtTotalReturn.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.txtTotalReturn.Click += new System.EventHandler(this.txtTotalReturn_Click);
             // 
             // bunifuLabel25
             // 

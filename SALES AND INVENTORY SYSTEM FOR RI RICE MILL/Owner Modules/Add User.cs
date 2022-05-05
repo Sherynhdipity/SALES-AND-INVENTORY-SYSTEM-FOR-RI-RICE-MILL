@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
@@ -76,11 +77,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show("Whitespace is not allowed!");
                 txtFirstName.Clear();
             }
-            else if (String.IsNullOrEmpty(txtMiddleName.Text))
-            {
-                MessageBox.Show("Enter Middle Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtMiddleName.Focus();
-            }
             else if (String.IsNullOrWhiteSpace(txtMiddleName.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
@@ -105,11 +101,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 MessageBox.Show("Whitespace is not allowed!");
                 txtContact.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtStreet.Text))
-            {
-                MessageBox.Show("Enter Street!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtStreet.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtStreet.Text))
             {
@@ -176,7 +167,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show("Whitespace is not allowed!");
                 txtConfirmPassword.Clear();
             }
-            else if (txtFirstName.Text != "" && txtMiddleName.Text != ""
+            else if (dtpBirthday.Value.ToString() == "")
+            {
+                MessageBox.Show("Please select date!");
+                dtpBirthday.Focus();
+                return;
+            }
+            else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
+            {
+                MessageBox.Show("Password must be 8 characters with special character");
+                txtPassword.Clear();
+            }
+            else if (!Regex.IsMatch(txtContact.Text, @"^(09|\+639)\d{9}$"))
+            {
+                MessageBox.Show("Phone number must be 11 digit only");
+                txtContact.Clear();
+            }
+            else if (!Regex.IsMatch(txtFirstName.Text, @"^[a-z, A-Z,.'-]+$"))
+            {
+                MessageBox.Show("First Name must be a letter only");
+                txtFirstName.Clear();
+            }
+            
+            else if (!Regex.IsMatch(txtLastName.Text, @"^[a-z, A-Z,.'-]+$"))
+            {
+                MessageBox.Show("Last name must be a letter only");
+                txtLastName.Clear();
+            }
+
+            else if (txtFirstName.Text != "" 
                 && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
                 && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != ""
                 && txtUserName.Text != "" && txtPassword.Text != "" && txtConfirmPassword.Text != "")
@@ -187,12 +206,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                         con.Close();
                         con.Open();
-                        QuerySelect = "SELECT * FROM tblUsers WHERE First_name =@fName AND Middle_name =@mName AND Last_name =@lName AND Username =@uName";
+                        QuerySelect = "SELECT * FROM tblUsers WHERE Username = @uName";
                         
                         cmd = new SqlCommand(QuerySelect, con);
-                        cmd.Parameters.AddWithValue("@fName", txtFirstName.Text);
-                        cmd.Parameters.AddWithValue("@mName", txtMiddleName.Text);
-                        cmd.Parameters.AddWithValue("@lName", txtLastName.Text);
                         cmd.Parameters.AddWithValue("@uName", txtUserName.Text);
 
                         reader = cmd.ExecuteReader();
@@ -232,6 +248,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 
                                 MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.Close();
+                                ClearControls();
                            
                         }
 
@@ -342,6 +359,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void cmbMunicipality_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadBarangays();
+        }
+
+        private void chkViewPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkViewPass.Checked)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+                txtConfirmPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+                txtConfirmPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

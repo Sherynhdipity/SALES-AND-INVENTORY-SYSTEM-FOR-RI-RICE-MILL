@@ -77,11 +77,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 if (txtViewCustomers.Text == "" || txtViewCustomers.Text == null)
                 {
-                    QuerySelect = "SELECT * from CustomerViews";
+                    QuerySelect = "SELECT * from CustomerView";
                 }   
                 else
                 {   
-                    QuerySelect = "SELECT * FROM  CustomerViews WHERE (ID LIKE '%' + @id + '%') OR ([First Name] LIKE '%' + @fName + '%') OR ([Last Name] LIKE '%' + @lName + '%') OR ([Contact Number] LIKE '%' + @cNum + '%') OR ([Discount Code] LIKE '%' + @discount + '%')";
+                    QuerySelect = "SELECT * FROM  CustomerView WHERE (ID LIKE '%' + @id + '%') OR ([First Name] LIKE '%' + @fName + '%') OR ([Last Name] LIKE '%' + @lName + '%') OR ([Contact Number] LIKE '%' + @cNum + '%') OR ([Description] LIKE '%' + @desc + '%')";
 
                 }
 
@@ -94,7 +94,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 cmd.Parameters.AddWithValue("@province", txtViewCustomers.Text);
                 cmd.Parameters.AddWithValue("@city", txtViewCustomers.Text);
                 cmd.Parameters.AddWithValue("@street", txtViewCustomers.Text);
-                cmd.Parameters.AddWithValue("@discount", txtViewCustomers.Text);  
+                cmd.Parameters.AddWithValue("@desc", txtViewCustomers.Text);  
 
 
                 adapter = new SqlDataAdapter(cmd);

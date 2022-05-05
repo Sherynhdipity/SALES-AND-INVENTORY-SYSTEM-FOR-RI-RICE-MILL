@@ -38,6 +38,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.lblTotalSales = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
@@ -51,14 +57,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.salesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.StocksChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bunifuPanel4 = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblStockedIn = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel5 = new Bunifu.UI.WinForms.BunifuLabel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.StocksChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.stockChartViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.salesChartViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ownerDashboardDatasetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ownerDashboardDataset = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OwnerDashboardDataset();
-            this.ownerDashboardViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ownerDashboardViewTableAdapter = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OwnerDashboardDatasetTableAdapters.OwnerDashboardViewTableAdapter();
+            this.stockChartViewTableAdapter = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OwnerDashboardDatasetTableAdapters.StockChartViewTableAdapter();
+            this.salesChartViewTableAdapter = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OwnerDashboardDatasetTableAdapters.SalesChartViewTableAdapter();
+            this.returnChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.bunifuPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,11 +76,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StocksChart)).BeginInit();
             this.bunifuPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StocksChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockChartViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesChartViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ownerDashboardDatasetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ownerDashboardDataset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ownerDashboardViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnChart)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTotalSales
@@ -117,7 +130,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.Controls.Add(this.pictureBox2);
             this.bunifuPanel2.Controls.Add(this.lblTotalTransactions);
             this.bunifuPanel2.Controls.Add(this.bunifuLabel4);
-            this.bunifuPanel2.Location = new System.Drawing.Point(324, 121);
+            this.bunifuPanel2.Location = new System.Drawing.Point(324, 19);
             this.bunifuPanel2.Name = "bunifuPanel2";
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(234, 133);
@@ -188,7 +201,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.Controls.Add(this.pictureBox1);
             this.bunifuPanel1.Controls.Add(this.lblTotalSales);
             this.bunifuPanel1.Controls.Add(this.bunifuLabel1);
-            this.bunifuPanel1.Location = new System.Drawing.Point(84, 121);
+            this.bunifuPanel1.Location = new System.Drawing.Point(84, 19);
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(234, 133);
@@ -205,7 +218,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel3.Controls.Add(this.lblStockedOut);
             this.bunifuPanel3.Controls.Add(this.bunifuLabel3);
             this.bunifuPanel3.Controls.Add(this.pictureBox4);
-            this.bunifuPanel3.Location = new System.Drawing.Point(806, 121);
+            this.bunifuPanel3.Location = new System.Drawing.Point(806, 19);
             this.bunifuPanel3.Name = "bunifuPanel3";
             this.bunifuPanel3.ShowBorders = true;
             this.bunifuPanel3.Size = new System.Drawing.Size(234, 133);
@@ -260,47 +273,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.salesChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.Name = "ChartArea1";
             this.salesChart.ChartAreas.Add(chartArea1);
-            this.salesChart.DataSource = this.ownerDashboardViewBindingSource;
+            this.salesChart.DataSource = this.salesChartViewBindingSource;
             legend1.Name = "Legend1";
             this.salesChart.Legends.Add(legend1);
-            this.salesChart.Location = new System.Drawing.Point(87, 260);
+            this.salesChart.Location = new System.Drawing.Point(84, 158);
             this.salesChart.Name = "salesChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Total Sales";
-            series1.XValueMember = "Total Sales";
-            series1.YValueMembers = "Total Sales";
+            series1.XValueMember = "Date";
+            series1.YValueMembers = "Total";
             this.salesChart.Series.Add(series1);
-            this.salesChart.Size = new System.Drawing.Size(471, 300);
+            this.salesChart.Size = new System.Drawing.Size(474, 246);
             this.salesChart.TabIndex = 74;
-            this.salesChart.Text = "chart1";
-            // 
-            // StocksChart
-            // 
-            this.StocksChart.BorderlineColor = System.Drawing.Color.Black;
-            this.StocksChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.Name = "ChartArea1";
-            this.StocksChart.ChartAreas.Add(chartArea2);
-            this.StocksChart.DataSource = this.ownerDashboardViewBindingSource;
-            legend2.Name = "Legend1";
-            this.StocksChart.Legends.Add(legend2);
-            this.StocksChart.Location = new System.Drawing.Point(566, 260);
-            this.StocksChart.Name = "StocksChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Stocked In";
-            series2.XValueMember = "Stocked In";
-            series2.YValueMembers = "Stocked In";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Stocked Out";
-            series3.XValueMember = "Stocked Out";
-            series3.YValueMembers = "Stocked Out";
-            this.StocksChart.Series.Add(series2);
-            this.StocksChart.Series.Add(series3);
-            this.StocksChart.Size = new System.Drawing.Size(474, 300);
-            this.StocksChart.TabIndex = 75;
-            this.StocksChart.Text = "chart2";
+            this.salesChart.Text = "Sales Chart";
             // 
             // bunifuPanel4
             // 
@@ -313,7 +299,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel4.Controls.Add(this.lblStockedIn);
             this.bunifuPanel4.Controls.Add(this.bunifuLabel5);
             this.bunifuPanel4.Controls.Add(this.pictureBox3);
-            this.bunifuPanel4.Location = new System.Drawing.Point(566, 121);
+            this.bunifuPanel4.Location = new System.Drawing.Point(566, 19);
             this.bunifuPanel4.Name = "bunifuPanel4";
             this.bunifuPanel4.ShowBorders = true;
             this.bunifuPanel4.Size = new System.Drawing.Size(234, 133);
@@ -362,26 +348,99 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
             // 
+            // StocksChart
+            // 
+            this.StocksChart.BorderlineColor = System.Drawing.Color.Black;
+            this.StocksChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea2.Name = "ChartArea1";
+            this.StocksChart.ChartAreas.Add(chartArea2);
+            this.StocksChart.DataSource = this.stockChartViewBindingSource;
+            legend2.Name = "Legend1";
+            this.StocksChart.Legends.Add(legend2);
+            this.StocksChart.Location = new System.Drawing.Point(566, 158);
+            this.StocksChart.Name = "StocksChart";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Stockin";
+            series2.XValueMember = "Description";
+            series2.YValueMembers = "Quantity";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Stockout";
+            series3.XValueMember = "Description";
+            series3.YValueMembers = "QtySold";
+            this.StocksChart.Series.Add(series2);
+            this.StocksChart.Series.Add(series3);
+            this.StocksChart.Size = new System.Drawing.Size(471, 246);
+            this.StocksChart.TabIndex = 75;
+            this.StocksChart.Text = "chart1";
+            title1.Name = "Inventory Data";
+            this.StocksChart.Titles.Add(title1);
+            // 
+            // stockChartViewBindingSource
+            // 
+            this.stockChartViewBindingSource.DataMember = "StockChartView";
+            this.stockChartViewBindingSource.DataSource = this.ownerDashboardDatasetBindingSource;
+            // 
+            // salesChartViewBindingSource
+            // 
+            this.salesChartViewBindingSource.DataMember = "SalesChartView";
+            this.salesChartViewBindingSource.DataSource = this.ownerDashboardDatasetBindingSource;
+            // 
+            // ownerDashboardDatasetBindingSource
+            // 
+            this.ownerDashboardDatasetBindingSource.DataSource = this.ownerDashboardDataset;
+            this.ownerDashboardDatasetBindingSource.Position = 0;
+            // 
             // ownerDashboardDataset
             // 
             this.ownerDashboardDataset.DataSetName = "OwnerDashboardDataset";
             this.ownerDashboardDataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // ownerDashboardViewBindingSource
+            // stockChartViewTableAdapter
             // 
-            this.ownerDashboardViewBindingSource.DataMember = "OwnerDashboardView";
-            this.ownerDashboardViewBindingSource.DataSource = this.ownerDashboardDataset;
+            this.stockChartViewTableAdapter.ClearBeforeFill = true;
             // 
-            // ownerDashboardViewTableAdapter
+            // salesChartViewTableAdapter
             // 
-            this.ownerDashboardViewTableAdapter.ClearBeforeFill = true;
+            this.salesChartViewTableAdapter.ClearBeforeFill = true;
+            // 
+            // returnChart
+            // 
+            this.returnChart.BorderlineColor = System.Drawing.Color.Black;
+            this.returnChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea3.Name = "ChartArea1";
+            this.returnChart.ChartAreas.Add(chartArea3);
+            this.returnChart.DataSource = this.stockChartViewBindingSource;
+            legend3.Name = "Legend1";
+            this.returnChart.Legends.Add(legend3);
+            this.returnChart.Location = new System.Drawing.Point(324, 410);
+            this.returnChart.Name = "returnChart";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Stockin";
+            series4.XValueMember = "Description";
+            series4.YValueMembers = "Quantity";
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Stockout";
+            series5.XValueMember = "Description";
+            series5.YValueMembers = "QtySold";
+            this.returnChart.Series.Add(series4);
+            this.returnChart.Series.Add(series5);
+            this.returnChart.Size = new System.Drawing.Size(474, 246);
+            this.returnChart.TabIndex = 76;
+            this.returnChart.Text = "chart1";
+            title2.Name = "Inventory Data";
+            this.returnChart.Titles.Add(title2);
             // 
             // ucDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.bunifuPanel4);
+            this.Controls.Add(this.returnChart);
             this.Controls.Add(this.StocksChart);
+            this.Controls.Add(this.bunifuPanel4);
             this.Controls.Add(this.salesChart);
             this.Controls.Add(this.bunifuPanel3);
             this.Controls.Add(this.bunifuPanel1);
@@ -398,12 +457,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.salesChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StocksChart)).EndInit();
             this.bunifuPanel4.ResumeLayout(false);
             this.bunifuPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StocksChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockChartViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.salesChartViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ownerDashboardDatasetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ownerDashboardDataset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ownerDashboardViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -422,13 +484,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.DataVisualization.Charting.Chart salesChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart StocksChart;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel4;
         private Bunifu.UI.WinForms.BunifuLabel lblStockedIn;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel5;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.BindingSource ownerDashboardViewBindingSource;
+        private System.Windows.Forms.BindingSource ownerDashboardDatasetBindingSource;
         private OwnerDashboardDataset ownerDashboardDataset;
-        private OwnerDashboardDatasetTableAdapters.OwnerDashboardViewTableAdapter ownerDashboardViewTableAdapter;
+        private System.Windows.Forms.DataVisualization.Charting.Chart StocksChart;
+        private System.Windows.Forms.BindingSource stockChartViewBindingSource;
+        private OwnerDashboardDatasetTableAdapters.StockChartViewTableAdapter stockChartViewTableAdapter;
+        private System.Windows.Forms.BindingSource salesChartViewBindingSource;
+        private OwnerDashboardDatasetTableAdapters.SalesChartViewTableAdapter salesChartViewTableAdapter;
+        private System.Windows.Forms.DataVisualization.Charting.Chart returnChart;
     }
 }

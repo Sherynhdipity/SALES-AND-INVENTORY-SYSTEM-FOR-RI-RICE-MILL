@@ -28,7 +28,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         }
 
         frmAddStocks addNew = new frmAddStocks();
-
+        frmUpdateStocks updateNew = new frmUpdateStocks();
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
@@ -45,13 +45,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             InitializeComponent();
             addNew.FormClosed += new FormClosedEventHandler(Form_Closed);
+            updateNew.FormClosed += new FormClosedEventHandler(Form_Closed1);
 
             DisplayItems();
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Name = "";
+            btn.Text = "Update";
+            btn.UseColumnTextForButtonValue = true;
+
+            dgvStockList.Columns.Add(btn);
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
             frmAddStocks frm = (frmAddStocks)sender;
+            DisplayItems();
+        }
+
+        void Form_Closed1(object sender, FormClosedEventArgs e)
+        {
+            frmUpdateStocks frm = (frmUpdateStocks)sender;
             DisplayItems();
         }
 
@@ -115,6 +128,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             Inventory_Clerk_Modules.frmStockCard f1 = new Inventory_Clerk_Modules.frmStockCard();
             f1.ShowDialog();
+        }
+
+        private void dgvStockList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvStockList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            {
+                updateNew.Id = dgvStockList[2, e.RowIndex].Value.ToString();
+                updateNew.ShowDialog();
+            }
         }
     }
 }

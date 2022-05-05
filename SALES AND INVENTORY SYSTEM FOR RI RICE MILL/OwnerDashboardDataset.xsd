@@ -7,22 +7,38 @@
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBSaleInventoryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBSaleInventoryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.GlobalReference.Default.DBSaleInventoryConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OwnerDashboardViewTableAdapter" GeneratorDataComponentClassName="OwnerDashboardViewTableAdapter" Name="OwnerDashboardView" UserDataComponentName="OwnerDashboardViewTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SalesChartViewTableAdapter" GeneratorDataComponentClassName="SalesChartViewTableAdapter" Name="SalesChartView" UserDataComponentName="SalesChartViewTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.OwnerDashboardView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.SalesChartView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT [Total Sales], [Total Transactions], [Stocked Out], [Stocked In] FROM dbo.OwnerDashboardView</CommandText>
+                    <CommandText>SELECT Date, Total FROM dbo.SalesChartView</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="Total Sales" DataSetColumn="Total Sales" />
-              <Mapping SourceColumn="Total Transactions" DataSetColumn="Total Transactions" />
-              <Mapping SourceColumn="Stocked Out" DataSetColumn="Stocked Out" />
-              <Mapping SourceColumn="Stocked In" DataSetColumn="Stocked In" />
+              <Mapping SourceColumn="Date" DataSetColumn="Date" />
+              <Mapping SourceColumn="Total" DataSetColumn="Total" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StockChartViewTableAdapter" GeneratorDataComponentClassName="StockChartViewTableAdapter" Name="StockChartView" UserDataComponentName="StockChartViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.StockChartView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Quantity, Description, QtySold FROM dbo.StockChartView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="QtySold" DataSetColumn="QtySold" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -31,16 +47,29 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="OwnerDashboardDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="OwnerDashboardDataset" msprop:Generator_DataSetName="OwnerDashboardDataset">
+  <xs:element name="OwnerDashboardDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="OwnerDashboardDataset" msprop:Generator_UserDSName="OwnerDashboardDataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="OwnerDashboardView" msprop:Generator_RowEvHandlerName="OwnerDashboardViewRowChangeEventHandler" msprop:Generator_RowDeletedName="OwnerDashboardViewRowDeleted" msprop:Generator_RowDeletingName="OwnerDashboardViewRowDeleting" msprop:Generator_RowEvArgName="OwnerDashboardViewRowChangeEvent" msprop:Generator_TablePropName="OwnerDashboardView" msprop:Generator_RowChangedName="OwnerDashboardViewRowChanged" msprop:Generator_RowChangingName="OwnerDashboardViewRowChanging" msprop:Generator_TableClassName="OwnerDashboardViewDataTable" msprop:Generator_RowClassName="OwnerDashboardViewRow" msprop:Generator_TableVarName="tableOwnerDashboardView" msprop:Generator_UserTableName="OwnerDashboardView">
+        <xs:element name="SalesChartView" msprop:Generator_TableClassName="SalesChartViewDataTable" msprop:Generator_TableVarName="tableSalesChartView" msprop:Generator_TablePropName="SalesChartView" msprop:Generator_RowDeletingName="SalesChartViewRowDeleting" msprop:Generator_RowChangingName="SalesChartViewRowChanging" msprop:Generator_RowEvHandlerName="SalesChartViewRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesChartViewRowDeleted" msprop:Generator_UserTableName="SalesChartView" msprop:Generator_RowChangedName="SalesChartViewRowChanged" msprop:Generator_RowEvArgName="SalesChartViewRowChangeEvent" msprop:Generator_RowClassName="SalesChartViewRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Total_x0020_Sales" msprop:Generator_ColumnPropNameInRow="Total_Sales" msprop:Generator_ColumnPropNameInTable="Total_SalesColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Sales" msprop:Generator_UserColumnName="Total Sales" type="xs:double" />
-              <xs:element name="Total_x0020_Transactions" msprop:Generator_ColumnPropNameInRow="Total_Transactions" msprop:Generator_ColumnPropNameInTable="Total_TransactionsColumn" msprop:Generator_ColumnVarNameInTable="columnTotal_Transactions" msprop:Generator_UserColumnName="Total Transactions" type="xs:int" minOccurs="0" />
-              <xs:element name="Stocked_x0020_Out" msprop:Generator_ColumnPropNameInRow="Stocked_Out" msprop:Generator_ColumnPropNameInTable="Stocked_OutColumn" msprop:Generator_ColumnVarNameInTable="columnStocked_Out" msprop:Generator_UserColumnName="Stocked Out" type="xs:int" minOccurs="0" />
-              <xs:element name="Stocked_x0020_In" msprop:Generator_ColumnPropNameInRow="Stocked_In" msprop:Generator_ColumnPropNameInTable="Stocked_InColumn" msprop:Generator_ColumnVarNameInTable="columnStocked_In" msprop:Generator_UserColumnName="Stocked In" type="xs:int" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="StockChartView" msprop:Generator_TableClassName="StockChartViewDataTable" msprop:Generator_TableVarName="tableStockChartView" msprop:Generator_TablePropName="StockChartView" msprop:Generator_RowDeletingName="StockChartViewRowDeleting" msprop:Generator_RowChangingName="StockChartViewRowChanging" msprop:Generator_RowEvHandlerName="StockChartViewRowChangeEventHandler" msprop:Generator_RowDeletedName="StockChartViewRowDeleted" msprop:Generator_UserTableName="StockChartView" msprop:Generator_RowChangedName="StockChartViewRowChanged" msprop:Generator_RowEvArgName="StockChartViewRowChangeEvent" msprop:Generator_RowClassName="StockChartViewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QtySold" msprop:Generator_ColumnVarNameInTable="columnQtySold" msprop:Generator_ColumnPropNameInRow="QtySold" msprop:Generator_ColumnPropNameInTable="QtySoldColumn" msprop:Generator_UserColumnName="QtySold" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

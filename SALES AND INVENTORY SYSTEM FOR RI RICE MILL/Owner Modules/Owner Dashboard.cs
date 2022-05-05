@@ -26,7 +26,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public ucDashboard()
         {
             InitializeComponent();
-            populateDash();
+            //populateDash();
             populateChart();
         }
 
@@ -49,7 +49,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Open();
 
-                QuerySelect = "SELECT * from CashierDashboardView";
+                QuerySelect = "SELECT * FROM SalesChartView";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 ds = new DataSet();
@@ -57,8 +57,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 DataView source = new DataView(ds.Tables[0]);
                 salesChart.DataSource = source;
 
-                salesChart.Series[0].XValueMember = "Total Amount";
-                salesChart.Series[0].YValueMembers = "Total Amount";
+                salesChart.Series[0].XValueMember = "Date";
+                salesChart.Series[0].YValueMembers = "Total";
 
                 salesChart.DataBind();
 
@@ -71,13 +71,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
             }
-            //StockedIN
+
+            //Stocks
 
             try
             {
                 con.Open();
 
-                QuerySelect = "SELECT * from OwnerDashboardView";
+                QuerySelect = "SELECT * FROM StockChartView";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 ds = new DataSet();
@@ -85,8 +86,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 DataView source = new DataView(ds.Tables[0]);
                 StocksChart.DataSource = source;
 
-                StocksChart.Series[0].XValueMember = "Stocked In";
-                StocksChart.Series[0].YValueMembers = "Stocked In";
+                StocksChart.Series[0].XValueMember = "Description";
+                StocksChart.Series[0].YValueMembers = "Quantity";
+
+                StocksChart.Series[1].XValueMember = "Description";
+                StocksChart.Series[1].YValueMembers = "QtySold";
+
 
                 StocksChart.DataBind();
 
@@ -100,126 +105,98 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
             }
 
-            //StockedOUT
-
-            try
-            {
-                con.Open();
-
-                QuerySelect = "SELECT * from OwnerDashboardView";
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                ds = new DataSet();
-                adapter.Fill(ds);
-                DataView source = new DataView(ds.Tables[0]);
-                StocksChart.DataSource = source;
-
-                StocksChart.Series[1].XValueMember = "Stocked Out";
-                StocksChart.Series[1].YValueMembers = "Stocked Out";
-
-                StocksChart.DataBind();
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
         }
 
 
 
 
-        //not chart
-        public void populateDash()
-        {
-            // Total Sales
-            try
-            {
-                con.Open();
-                QuerySelect = "Select * from OwnerDashboardView";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    lblTotalSales.Text = reader["Total Sales"].ToString();
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
+        ////not chart
+        //public void populateDash()
+        //{
+        //    // Total Sales
+        //    try
+        //    {
+        //        con.Open();
+        //        QuerySelect = "Select * from OwnerDashboardView";
+        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+        //        if (reader.Read())
+        //        {
+        //            lblTotalSales.Text = reader["Total Sales"].ToString();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
 
-            //Total transactions
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT * from OwnerDashboardView";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    lblTotalTransactions.Text = reader["Total Transactions"].ToString();
-                }
-            }
-            catch (Exception)
-            {
+        //    //Total transactions
+        //    try
+        //    {
+        //        con.Open();
+        //        QuerySelect = "SELECT * from OwnerDashboardView";
+        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+        //        if (reader.Read())
+        //        {
+        //            lblTotalTransactions.Text = reader["Total Transactions"].ToString();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
 
-            //StockedIn
+        //    //StockedIn
 
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT * from OwnerDashboardView";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    lblStockedIn.Text = reader["Stocked In"].ToString();
-                }
-            }
-            catch (Exception)
-            {
+        //    try
+        //    {
+        //        con.Open();
+        //        QuerySelect = "SELECT * from OwnerDashboardView";
+        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+        //        if (reader.Read())
+        //        {
+        //            lblStockedIn.Text = reader["Stocked In"].ToString();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
 
-            //StockedOut
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT * from OwnerDashboardView";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    lblStockedOut.Text = reader["Stocked Out"].ToString();
-                }
-            }
-            catch (Exception)
-            {
+        //    //StockedOut
+        //    try
+        //    {
+        //        con.Open();
+        //        QuerySelect = "SELECT * from OwnerDashboardView";
+        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+        //        if (reader.Read())
+        //        {
+        //            lblStockedOut.Text = reader["Stocked Out"].ToString();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
+        //}
 
     }
 

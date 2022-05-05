@@ -46,18 +46,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             InitializeComponent();
 
             returnItem.FormClosed += new FormClosedEventHandler(Form_Closed);
+
+            populateDgvOrderDeets();
+            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            btn.Name = "";
+            btn.Text = "Return";
+            btn.UseColumnTextForButtonValue = true;
+            dgvOrderDeetsList.Columns.Add(btn);
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
             frmReturnItem frm = (frmReturnItem)sender;
         }
-
-        public void DisplayReturns()
-        {
-
-        }
-
 
             public void DisplayCustomerName()
         {
@@ -103,9 +104,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         }
 
         public void populateDgvOrderDeets()
-        {
-            dgvOrderDeetsList.Rows.Clear(); //may error pag mag type ule ng transNo
-            dgvOrderDeetsList.Refresh();
+        {           
 
             if (txtCustomer.Text == "")
             {
@@ -148,12 +147,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             if (e.KeyCode == Keys.Enter)
             {
                 DisplayCustomerName();
-                populateDgvOrderDeets();
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                btn.Name = "";
-                btn.Text = "Return";
-                btn.UseColumnTextForButtonValue = true;
-                dgvOrderDeetsList.Columns.Add(btn);
+                populateDgvOrderDeets();               
 
             }
         }
@@ -168,19 +162,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             //}
         }
 
-        private void dgvOrderDeetsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (dgvOrderDeetsList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
-            //{
-            //    returnItem.Id = dgvOrderDeetsList[1, e.RowIndex].Value.ToString();
-            //    returnItem.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("err");
-            //}
-        }
-
         private void dgvOrderDeetsList_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvOrderDeetsList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
@@ -190,6 +171,40 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 //MessageBox.Show(returnItem.Id);
                 returnItem.ShowDialog();
             }
+        }
+
+        private void btnViewReturn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                con.Close();
+                con.Open();
+
+                QuerySelect = "SELECT * FROM tblReturns";
+
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgvOrderDeetsList.DataSource = dt;
+                dgvOrderDeetsList.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        private void txtTransNo_TextChange(object sender, EventArgs e)
+        {
+            dt.Rows.Clear();
+            dgvOrderDeetsList.Refresh();
+            txtCustomer.Clear();
         }
     }
 }

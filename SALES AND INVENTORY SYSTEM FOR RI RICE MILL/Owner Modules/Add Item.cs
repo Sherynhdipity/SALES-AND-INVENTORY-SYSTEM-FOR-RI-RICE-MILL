@@ -109,7 +109,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                            cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                            cmd.Parameters.AddWithValue("@price", txtPrice.Text.Replace(",",""));
                             cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
                             cmd.ExecuteNonQuery();
 

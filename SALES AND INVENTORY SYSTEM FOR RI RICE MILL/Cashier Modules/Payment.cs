@@ -33,6 +33,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         frmSalesManagement sales = new frmSalesManagement();
         Cashier_Modules.addCustomer addCustomer = new Cashier_Modules.addCustomer();
+        frmPrintReceipt receipt = new frmPrintReceipt();
         frmAddNewCustomer addNewCustomer = new frmAddNewCustomer();
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
@@ -290,7 +291,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             vatSale.Text = vatable;
             TextObject VAT = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Tax"];
             VAT.Text = tax;
-
+            TextObject Discount = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalDisc"];
+            Discount.Text = discount_total.ToString(); ;
 
 
             //RFS1 - CUSTOMER DETAILS
@@ -431,7 +433,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             CheckORExist();
-
             
         }
 
@@ -447,17 +448,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             if (e.KeyCode == Keys.Enter)
             {
-
-                //// for Setting Loyal Customers
-
-                //QuerySelect = "SELECT COUNT(Transaction_number) AS TransCount, SUM(Total_cost) AS Total FROM tblOrders INNER JOIN tblCustomers ON tblOrders.Customer_id = tblCustomers.Customer_id WHERE tblCustomers.First_name = @fName AND tblCustomers.Last_name = @lName";
-                //cmd = new SqlCommand(QuerySelect, con);
-                //con.Open();
-                //reader = cmd.ExecuteReader();
-                //if (reader.HasRows)
-                //{
-
-                //}
                 // With Discount Code
                 string phrase = txtViewCustomer.Text;
                 string[] words = phrase.Split(' ');

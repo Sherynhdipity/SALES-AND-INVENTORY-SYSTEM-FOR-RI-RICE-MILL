@@ -502,6 +502,7 @@
             this.dgvStockList.Size = new System.Drawing.Size(875, 409);
             this.dgvStockList.TabIndex = 4;
             this.dgvStockList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dgvStockList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockList_CellContentClick);
             // 
             // InventoryManagement
             // 

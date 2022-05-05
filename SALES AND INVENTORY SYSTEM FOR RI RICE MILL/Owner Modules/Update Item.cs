@@ -125,56 +125,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 {
                     con.Close();
                     con.Open();
-                    QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical";
 
-                    cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                    cmd.Parameters.AddWithValue("@price", txtPrice.Text);
-                    cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
-
-                    reader = cmd.ExecuteReader();
-
-                    if (reader.HasRows)
-
+                    try
                     {
-                        MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        con.Close();
+                        con.Open();
+                        QueryUpdate = "UPDATE tblItems SET Description = @desc, Price = @price,Critical_level = @crit WHERE Item_id = '" + id + "'";
+
+                        cmd = new SqlCommand(QueryUpdate, con);
+
+                        cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                        cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                        cmd.Parameters.AddWithValue("@crit", txtCriticalLevel.Text);
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show("Item Updated Successfully!", "Update Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
                         con.Close();
                     }
-                    else
+                    finally
                     {
-                        try
-                        {
-                            con.Close();
-                            con.Open();
-                            QueryUpdate = "UPDATE tblItems SET Description = @desc, Price = @price,Critical_level = @crit WHERE Item_id = '" + id + "'";
-
-                            cmd = new SqlCommand(QueryUpdate, con);
-
-                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                            cmd.Parameters.AddWithValue("@price", txtPrice.Text);
-                            cmd.Parameters.AddWithValue("@crit", txtCriticalLevel.Text);
-
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Item Updated Successfully!", "Update Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
-
-                        }
-
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                            con.Close();
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
-
-                        
-
-                    }  
-
+                        con.Close();
+                    }
                 }
 
                 con.Close();

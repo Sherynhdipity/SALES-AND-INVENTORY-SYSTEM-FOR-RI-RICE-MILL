@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
@@ -58,55 +59,73 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             con.Close();
 
-            //if (String.IsNullOrEmpty(txtFirstName.Text))
+            if (String.IsNullOrEmpty(txtFirstName.Text))
+            {
+                MessageBox.Show("Enter First Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (String.IsNullOrWhiteSpace(txtFirstName.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtFirstName.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtLastName.Text))
+            {
+                MessageBox.Show("Enter Last Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (String.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtLastName.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtContact.Text))
+            {
+                MessageBox.Show("Enter Contact Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (String.IsNullOrWhiteSpace(txtContact.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtContact.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtStreet.Text))
+            {
+                MessageBox.Show("Enter Street!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (String.IsNullOrWhiteSpace(txtStreet.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtStreet.Clear();
+            }
+            else if (!Regex.IsMatch(txtContact.Text, @"^(09)\d{9}$"))
+            {
+                MessageBox.Show("Phone number must be 11 digit only");
+                txtContact.Clear();
+            }
+            else if (!Regex.IsMatch(txtFirstName.Text, @"^[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*$"))
+            {
+                MessageBox.Show("First Name must be a letter only");
+                txtFirstName.Clear();
+            }
+            else if (!Regex.IsMatch(txtLastName.Text, @"^[a-z, A-Z,.'-]+$"))
+            {
+                MessageBox.Show("Last name must be a letter only");
+                txtLastName.Clear();
+            }
+            //else if (cmbProvince.SelectedIndex == -1)//Nothing selected
             //{
-            //    MessageBox.Show("Enter First Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    MessageBox.Show("You must select a Province!", "Error");
             //}
-            //else if (String.IsNullOrWhiteSpace(txtFirstName.Text))
-            //{
-            //    MessageBox.Show("Whitespace is not allowed!");
-            //    txtFirstName.Clear();
-            //}
-            //else if (String.IsNullOrEmpty(txtMiddleName.Text))
-            //{
-            //    MessageBox.Show("Enter Middle Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else if (String.IsNullOrWhiteSpace(txtMiddleName.Text))
-            //{
-            //    MessageBox.Show("Whitespace is not allowed!");
-            //    txtMiddleName.Clear();
-            //}
-            //else if (String.IsNullOrEmpty(txtLastName.Text))
-            //{
-            //    MessageBox.Show("Enter Last Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else if (String.IsNullOrWhiteSpace(txtLastName.Text))
-            //{
-            //    MessageBox.Show("Whitespace is not allowed!");
-            //    txtLastName.Clear();
-            //}
-            //else if (String.IsNullOrEmpty(txtContact.Text))
-            //{
-            //    MessageBox.Show("Enter Contact Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else if (String.IsNullOrWhiteSpace(txtContact.Text))
-            //{
-            //    MessageBox.Show("Whitespace is not allowed!");
-            //    txtContact.Clear();
-            //}
-            //else if (String.IsNullOrEmpty(txtStreet.Text))
-            //{
-            //    MessageBox.Show("Enter Street!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
-            //else if (String.IsNullOrWhiteSpace(txtStreet.Text))
-            //{
-            //    MessageBox.Show("Whitespace is not allowed!");
-            //    txtStreet.Clear();
-            //}
-            //else if (txtFirstName.Text != "" && txtMiddleName.Text != ""
-            //    && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
-            //    && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != "")
-            //{
+            else if (cmbMunicipality.SelectedIndex == -1)//Nothing selected
+            {
+                MessageBox.Show("You must select a Municipality!", "Error");
+            }
+            else if (cmbBarangay.SelectedIndex == -1)//Nothing selected
+            {
+                MessageBox.Show("You must select a Barangay!", "Error");
+            }
+            else if (txtFirstName.Text != ""
+                && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
+                && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != "")
+            {
                 result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
@@ -118,7 +137,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     cmd.Parameters.AddWithValue("@fName", txtFirstName.Text);
                     cmd.Parameters.AddWithValue("@mName", txtMiddleName.Text);
                     cmd.Parameters.AddWithValue("@lName", txtLastName.Text);
-
 
                     reader = cmd.ExecuteReader();
 
@@ -153,6 +171,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                             MessageBox.Show("Customer Added Successfully!", "Add Customer", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
+                            ClearControls();
 
                         }
 
@@ -168,7 +187,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                     }
                 }
-            //}
+            }
             
             else
             {

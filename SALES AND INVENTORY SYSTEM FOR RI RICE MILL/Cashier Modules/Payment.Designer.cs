@@ -486,7 +486,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject10.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
             this.validationProvider1.SetLink(this.txtCash, validationObject10);
             this.txtCash.Location = new System.Drawing.Point(151, 323);
-            this.txtCash.MaxLength = 10;
+            this.txtCash.MaxLength = 13;
             this.txtCash.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCash.Modified = false;
             this.txtCash.Multiline = false;
