@@ -42,8 +42,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         public frmReturnItem()
         {
             InitializeComponent();
-            
-           
+
+
         }
 
         public void ClearControls()
@@ -75,106 +75,122 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 result = MessageBox.Show("Do you want to return this Item?", "Return Item", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    try
+                    con.Close();
+                    con.Open();
+                    QuerySelect = "SELECT * FROM tblReturns WHERE SKU = @sku";
+
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@sku", txtSKU.Text);
+
+                    reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
                     {
-                        con.Close();
-                        con.Open();
-
-                        QueryInsert = "INSERT INTO tblReturns(Order_id, SKU, Return_quantity,Remarks, Return_date)" +
-                            "VALUES(@oID, @sku,(SELECT COUNT(SKU) AS QTYRETURNED FROM tblOrderDetails WHERE SKU = @sku), @remarks, @returnDate)";
-                        cmd = new SqlCommand(QueryInsert, con);
-
-                        cmd.Parameters.AddWithValue("@oID", id);
-                        cmd.Parameters.AddWithValue("@sku", txtSKU.Text);
-                        cmd.Parameters.AddWithValue("@remarks", txtRemarks.Text);
-                        cmd.Parameters.AddWithValue("@returnDate", dtpReturnDate.Value.Date);
-                        
-
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Item Returned Successfully!", "Item Return", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        MessageBox.Show("This item is already returned!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        ClearControls();
                     }
+                    else
+                    {
+                        try
+                        {
+                            con.Close();
+                            con.Open();
 
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.StackTrace);
-                        con.Close();
-                    }
-                    finally
-                    {
-                        con.Close();
+                            QueryInsert = "INSERT INTO tblReturns(Order_id, SKU, Return_quantity,Remarks, Return_date)" +
+                                "VALUES(@oID, @sku,(SELECT COUNT(SKU) AS QTYRETURNED FROM tblOrderDetails WHERE SKU = @sku), @remarks, @returnDate)";
+                            cmd = new SqlCommand(QueryInsert, con);
+
+                            cmd.Parameters.AddWithValue("@oID", id);
+                            cmd.Parameters.AddWithValue("@sku", txtSKU.Text);
+                            cmd.Parameters.AddWithValue("@remarks", txtRemarks.Text);
+                            cmd.Parameters.AddWithValue("@returnDate", dtpReturnDate.Value.Date);
+
+
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Item Returned Successfully!", "Item Return", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.StackTrace);
+                            con.Close();
+                        }
+                        finally
+                        {
+                            con.Close();
+                        }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please Provide Details!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-
-        public void DisplayReturnSelection()
-        {
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT Description, SKU, Price from OrderDetailsView WHERE SKU = '" + sku +"'";
-                
-
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                adapter.Fill(dt);
-                if (dt.Rows.Count > 0)
+                else
                 {
-                    txtDescription.Text =  dt.Rows[0]["Description"].ToString();
-                    txtSKU.Text = dt.Rows[0]["SKU"].ToString();
-                    txtPrice.Text = dt.Rows[0]["Price"].ToString();
+                    MessageBox.Show("Please Provide Details!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+            public void DisplayReturnSelection()
+            {
+                try
+                {
+                    con.Open();
+                    QuerySelect = "SELECT Description, SKU, Price from OrderDetailsView WHERE SKU = '" + sku + "'";
+
+
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    adapter.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtDescription.Text = dt.Rows[0]["Description"].ToString();
+                        txtSKU.Text = dt.Rows[0]["SKU"].ToString();
+                        txtPrice.Text = dt.Rows[0]["Price"].ToString();
+
+                    }
 
                 }
+                catch (Exception ex)
+                {
 
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
-            catch (Exception ex)
+
+
+            private void btnSave_Click(object sender, EventArgs e)
             {
-
-                MessageBox.Show(ex.Message);
+                ReturnItem();
             }
-            finally
+
+            private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
             {
-                con.Close();
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+
+                // only allow one decimal point
+                if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
             }
-        }
 
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            ReturnItem();
-        }
-
-        private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
+            private void btnCancel_Click(object sender, EventArgs e)
             {
-                e.Handled = true;
+                this.Close();
             }
 
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            private void frmUpdateCustomer_Load(object sender, EventArgs e)
             {
-                e.Handled = true;
+                DisplayReturnSelection();
+
             }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void frmUpdateCustomer_Load(object sender, EventArgs e)
-        {
-            DisplayReturnSelection();
-
         }
     }
-}

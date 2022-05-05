@@ -26,9 +26,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public ucInventoryDashboard()
         {
             InitializeComponent();
-           populateDash();
-            populateGraph();
-
+            populateDash();
+            populateChart();
 
         }
 
@@ -43,15 +42,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
 
-        public void populateGraph()
+        public void populateChart()
         {
-            //StockedIN
+            //Stocks
 
             try
             {
                 con.Open();
 
-                QuerySelect = "SELECT * from OwnerDashboardView";
+                QuerySelect = "SELECT * FROM StockChartView";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 ds = new DataSet();
@@ -59,8 +58,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 DataView source = new DataView(ds.Tables[0]);
                 StocksChart.DataSource = source;
 
-                StocksChart.Series[0].XValueMember = "Stocked In";
-                StocksChart.Series[0].YValueMembers = "Stocked In";
+                StocksChart.Series[0].XValueMember = "Description";
+                StocksChart.Series[0].YValueMembers = "Quantity";
+
+                StocksChart.Series[1].XValueMember = "Description";
+                StocksChart.Series[1].YValueMembers = "QtySold";
 
                 StocksChart.DataBind();
 
@@ -74,49 +76,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
             }
 
-            //StockedOUT
-
-            try
-            {
-                con.Open();
-
-                QuerySelect = "SELECT * from OwnerDashboardView";
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                ds = new DataSet();
-                adapter.Fill(ds);
-                DataView source = new DataView(ds.Tables[0]);
-                StocksChart.DataSource = source;
-
-                StocksChart.Series[1].XValueMember = "Stocked Out";
-                StocksChart.Series[1].YValueMembers = "Stocked Out";
-
-                StocksChart.DataBind();
-
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            finally
-            {
-                con.Close();
-            }
         }
 
 
         public void populateDash()
         {
-            //stockout
+            //stockin
             try
             {
                 con.Open();
-                QuerySelect = "SELECT * from InventoryDashboardView";
+                QuerySelect = "SELECT COUNT(SKU) AS [Available Stock] FROM tblInventories";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-              
+
                 if (reader.Read())
                 {
-                    lblTotalAvailableStock.Text = reader["Total Available Stock"].ToString();
+                    lblTotalAvailableStock.Text = reader["Available Stock"].ToString();
                 }
             }
             catch (Exception ex)
@@ -134,12 +108,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT * from InventoryDashboardView";
+                QuerySelect = "SELECT COUNT(SKU) AS [Stock out] FROM tblOrderDetails";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
 
                 if (reader.Read())
                 {
-                   lblQtyStockedOut.Text = reader["Stock out"].ToString();
+                    lblQtyStockedOut.Text = reader["Stock out"].ToString();
                 }
             }
             catch (Exception ex)
@@ -154,6 +128,5 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         }
     }
-
-    }
+}
 

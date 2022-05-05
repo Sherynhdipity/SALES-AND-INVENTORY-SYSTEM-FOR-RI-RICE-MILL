@@ -267,7 +267,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnSet.ImagePosition = 14;
             this.btnSet.ImageZoom = 50;
             this.btnSet.LabelPosition = 29;
-            this.btnSet.LabelText = "Set Discount";
+            this.btnSet.LabelText = "Sales History";
             this.btnSet.Location = new System.Drawing.Point(1258, 434);
             this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSet.Name = "btnSet";

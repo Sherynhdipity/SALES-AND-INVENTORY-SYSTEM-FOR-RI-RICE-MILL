@@ -42,6 +42,24 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="lowStockViewTableAdapter" GeneratorDataComponentClassName="lowStockViewTableAdapter" Name="lowStockView" UserDataComponentName="lowStockViewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.lowStockView" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Description, [Available Stock], [Restock Level] FROM dbo.lowStockView</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="Available Stock" DataSetColumn="Available Stock" />
+              <Mapping SourceColumn="Restock Level" DataSetColumn="Restock Level" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -50,7 +68,7 @@
   <xs:element name="OwnerDashboardDataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="OwnerDashboardDataset" msprop:Generator_UserDSName="OwnerDashboardDataset">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SalesChartView" msprop:Generator_TableClassName="SalesChartViewDataTable" msprop:Generator_TableVarName="tableSalesChartView" msprop:Generator_TablePropName="SalesChartView" msprop:Generator_RowDeletingName="SalesChartViewRowDeleting" msprop:Generator_RowChangingName="SalesChartViewRowChanging" msprop:Generator_RowEvHandlerName="SalesChartViewRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesChartViewRowDeleted" msprop:Generator_UserTableName="SalesChartView" msprop:Generator_RowChangedName="SalesChartViewRowChanged" msprop:Generator_RowEvArgName="SalesChartViewRowChangeEvent" msprop:Generator_RowClassName="SalesChartViewRow">
+        <xs:element name="SalesChartView" msprop:Generator_TableClassName="SalesChartViewDataTable" msprop:Generator_TableVarName="tableSalesChartView" msprop:Generator_RowChangedName="SalesChartViewRowChanged" msprop:Generator_TablePropName="SalesChartView" msprop:Generator_RowDeletingName="SalesChartViewRowDeleting" msprop:Generator_RowChangingName="SalesChartViewRowChanging" msprop:Generator_RowEvHandlerName="SalesChartViewRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesChartViewRowDeleted" msprop:Generator_RowClassName="SalesChartViewRow" msprop:Generator_UserTableName="SalesChartView" msprop:Generator_RowEvArgName="SalesChartViewRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" />
@@ -58,7 +76,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="StockChartView" msprop:Generator_TableClassName="StockChartViewDataTable" msprop:Generator_TableVarName="tableStockChartView" msprop:Generator_TablePropName="StockChartView" msprop:Generator_RowDeletingName="StockChartViewRowDeleting" msprop:Generator_RowChangingName="StockChartViewRowChanging" msprop:Generator_RowEvHandlerName="StockChartViewRowChangeEventHandler" msprop:Generator_RowDeletedName="StockChartViewRowDeleted" msprop:Generator_UserTableName="StockChartView" msprop:Generator_RowChangedName="StockChartViewRowChanged" msprop:Generator_RowEvArgName="StockChartViewRowChangeEvent" msprop:Generator_RowClassName="StockChartViewRow">
+        <xs:element name="StockChartView" msprop:Generator_TableClassName="StockChartViewDataTable" msprop:Generator_TableVarName="tableStockChartView" msprop:Generator_RowChangedName="StockChartViewRowChanged" msprop:Generator_TablePropName="StockChartView" msprop:Generator_RowDeletingName="StockChartViewRowDeleting" msprop:Generator_RowChangingName="StockChartViewRowChanging" msprop:Generator_RowEvHandlerName="StockChartViewRowChangeEventHandler" msprop:Generator_RowDeletedName="StockChartViewRowDeleted" msprop:Generator_RowClassName="StockChartViewRow" msprop:Generator_UserTableName="StockChartView" msprop:Generator_RowEvArgName="StockChartViewRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
@@ -70,6 +88,21 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="QtySold" msprop:Generator_ColumnVarNameInTable="columnQtySold" msprop:Generator_ColumnPropNameInRow="QtySold" msprop:Generator_ColumnPropNameInTable="QtySoldColumn" msprop:Generator_UserColumnName="QtySold" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="lowStockView" msprop:Generator_TableClassName="lowStockViewDataTable" msprop:Generator_TableVarName="tablelowStockView" msprop:Generator_TablePropName="lowStockView" msprop:Generator_RowDeletingName="lowStockViewRowDeleting" msprop:Generator_RowChangingName="lowStockViewRowChanging" msprop:Generator_RowEvHandlerName="lowStockViewRowChangeEventHandler" msprop:Generator_RowDeletedName="lowStockViewRowDeleted" msprop:Generator_UserTableName="lowStockView" msprop:Generator_RowChangedName="lowStockViewRowChanged" msprop:Generator_RowEvArgName="lowStockViewRowChangeEvent" msprop:Generator_RowClassName="lowStockViewRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Available_x0020_Stock" msprop:Generator_ColumnVarNameInTable="columnAvailable_Stock" msprop:Generator_ColumnPropNameInRow="Available_Stock" msprop:Generator_ColumnPropNameInTable="Available_StockColumn" msprop:Generator_UserColumnName="Available Stock" type="xs:int" minOccurs="0" />
+              <xs:element name="Restock_x0020_Level" msprop:Generator_ColumnVarNameInTable="columnRestock_Level" msprop:Generator_ColumnPropNameInRow="Restock_Level" msprop:Generator_ColumnPropNameInTable="Restock_LevelColumn" msprop:Generator_UserColumnName="Restock Level" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

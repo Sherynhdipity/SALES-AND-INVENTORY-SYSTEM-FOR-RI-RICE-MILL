@@ -46,7 +46,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Open();
 
-                QuerySelect = "SELECT * from CashierDashboardView";
+                QuerySelect = "SELECT * FROM SalesChartView";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 ds = new DataSet();
@@ -54,8 +54,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 DataView source = new DataView(ds.Tables[0]);
                 salesChart.DataSource = source;
 
-                salesChart.Series[0].XValueMember = "Total Amount";
-                salesChart.Series[0].YValueMembers = "Total Amount";
+                salesChart.Series[0].XValueMember = "Date";
+                salesChart.Series[0].YValueMembers = "Total";
 
                 salesChart.DataBind();
 
@@ -69,29 +69,30 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
             }
 
-            // Trans
+            //Stocks
 
             try
             {
                 con.Open();
 
-                QuerySelect = "SELECT * from CashierDashboardView";
+                QuerySelect = "SELECT * FROM StockChartView";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 ds = new DataSet();
                 adapter.Fill(ds);
                 DataView source = new DataView(ds.Tables[0]);
-                transChart.DataSource = source;
+                StocksChart.DataSource = source;
 
-                transChart.Series[0].XValueMember = "Total Transaction";
-                transChart.Series[0].YValueMembers = "Total Transaction";
+                StocksChart.Series[0].XValueMember = "Description";
+                StocksChart.Series[0].YValueMembers = "QtySold";
 
-                transChart.DataBind();
+
+                StocksChart.DataBind();
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
             finally
             {
@@ -126,7 +127,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT COUNT(Order_id) as totalTrans from tblOrders";
+                QuerySelect = "SELECT COUNT(Transaction_number) AS [totalTrans] FROM tblOrders";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {

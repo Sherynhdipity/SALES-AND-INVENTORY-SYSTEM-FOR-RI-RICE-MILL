@@ -103,6 +103,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtAmount.Text = "";
             txtQuantityCount.Text = "";
             txtVatAmount.Text = "";
+            txtVatable.Text = "";
 
             //label controls
             lblTransNo.Text = "0000000000";
@@ -645,7 +646,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnRecords_Click(object sender, EventArgs e)
         {
-
+            frmSalesHistory history = new frmSalesHistory();
+            history.Show();
         }
 
         private void btnVoid_Click(object sender, EventArgs e)

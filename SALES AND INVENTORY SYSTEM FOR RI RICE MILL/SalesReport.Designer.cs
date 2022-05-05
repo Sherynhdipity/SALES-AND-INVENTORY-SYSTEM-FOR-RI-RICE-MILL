@@ -30,7 +30,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void InitializeComponent()
         {
             this.SalesReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.SalesReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.SalesReport();
             this.SuspendLayout();
             // 
             // SalesReportViewer

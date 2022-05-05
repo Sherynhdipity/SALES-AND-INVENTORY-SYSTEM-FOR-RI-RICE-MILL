@@ -35,7 +35,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 con.Open();
 
-                string query = "SELECT * FROM RestockListReportView";
+                string query = "SELECT * FROM lowStockView WHERE [Available Stock] < [Restock Level]";
                 cmd = new SqlCommand(query, con);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -68,12 +68,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             RestockReports restock = new RestockReports();
 
             dt = new DataTable();
-            QuerySelect = "Select * from RestockListReportView";
+            QuerySelect = "SELECT * FROM lowStockView WHERE [Available Stock] < [Restock Level]";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
 
-            restock.Database.Tables["RestockListReportView"].SetDataSource(dt);
+            restock.Database.Tables["lowStockView"].SetDataSource(dt);
             frm.InventoryReportViewer1.ReportSource = restock;
             con.Close();
             frm.Show();

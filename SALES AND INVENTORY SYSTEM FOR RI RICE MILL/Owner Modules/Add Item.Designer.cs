@@ -610,7 +610,7 @@
             this.txtDescription.Padding = new System.Windows.Forms.Padding(3);
             this.txtDescription.PasswordChar = '\0';
             this.txtDescription.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtDescription.PlaceholderText = "TYPE HERE..";
+            this.txtDescription.PlaceholderText = "";
             this.txtDescription.ReadOnly = false;
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtDescription.SelectedText = "";
@@ -624,7 +624,7 @@
             this.txtDescription.TextMarginBottom = 0;
             this.txtDescription.TextMarginLeft = 3;
             this.txtDescription.TextMarginTop = 1;
-            this.txtDescription.TextPlaceholder = "TYPE HERE..";
+            this.txtDescription.TextPlaceholder = "";
             this.txtDescription.UseSystemPasswordChar = false;
             this.txtDescription.WordWrap = true;
             // 

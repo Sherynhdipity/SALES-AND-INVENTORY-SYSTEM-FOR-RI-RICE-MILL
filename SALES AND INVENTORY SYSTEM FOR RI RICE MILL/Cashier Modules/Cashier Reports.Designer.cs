@@ -36,13 +36,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.Search = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvSalesReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnGenerateReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.dtpDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -53,32 +53,59 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel3.AllowParentOverrides = false;
             this.bunifuLabel3.AutoEllipsis = false;
             this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F);
+            this.bunifuLabel3.Font = new System.Drawing.Font("Impact", 30F);
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
             this.bunifuLabel3.Location = new System.Drawing.Point(398, 54);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(274, 46);
+            this.bunifuLabel3.Size = new System.Drawing.Size(243, 48);
             this.bunifuLabel3.TabIndex = 44;
-            this.bunifuLabel3.Text = "Sales Reports";
+            this.bunifuLabel3.Text = "SALES REPORTS";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGenerateReport);
             this.groupBox1.Controls.Add(this.dtpDate);
             this.groupBox1.Controls.Add(this.Search);
             this.groupBox1.Controls.Add(this.bunifuLabel1);
             this.groupBox1.Controls.Add(this.bunifuLabel4);
             this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(82, 133);
+            this.groupBox1.Location = new System.Drawing.Point(82, 189);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(738, 108);
+            this.groupBox1.Size = new System.Drawing.Size(930, 73);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Date Range:";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.BackColor = System.Drawing.Color.Transparent;
+            this.dtpDate.BorderColor = System.Drawing.Color.Black;
+            this.dtpDate.BorderRadius = 10;
+            this.dtpDate.Color = System.Drawing.Color.Black;
+            this.dtpDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            this.dtpDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            this.dtpDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpDate.DisplayWeekNumbers = false;
+            this.dtpDate.DPHeight = 0;
+            this.dtpDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpDate.FillDatePicker = false;
+            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpDate.ForeColor = System.Drawing.Color.Black;
+            this.dtpDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpDate.Icon")));
+            this.dtpDate.IconColor = System.Drawing.SystemColors.Control;
+            this.dtpDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            this.dtpDate.LeftTextMargin = 5;
+            this.dtpDate.Location = new System.Drawing.Point(177, 25);
+            this.dtpDate.MinimumSize = new System.Drawing.Size(4, 32);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(215, 32);
+            this.dtpDate.TabIndex = 118;
+            this.dtpDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
             // 
             // Search
             // 
@@ -97,17 +124,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Search.ImageActive = null;
             this.Search.ImageLocation = null;
             this.Search.ImageMargin = 20;
-            this.Search.ImageSize = new System.Drawing.Size(30, 30);
-            this.Search.ImageZoomSize = new System.Drawing.Size(50, 50);
+            this.Search.ImageSize = new System.Drawing.Size(27, 25);
+            this.Search.ImageZoomSize = new System.Drawing.Size(47, 45);
             this.Search.InitialImage = ((System.Drawing.Image)(resources.GetObject("Search.InitialImage")));
-            this.Search.Location = new System.Drawing.Point(448, 35);
+            this.Search.Location = new System.Drawing.Point(398, 19);
             this.Search.Name = "Search";
             this.Search.Rotation = 0;
             this.Search.ShowActiveImage = true;
             this.Search.ShowCursorChanges = true;
             this.Search.ShowImageBorders = true;
             this.Search.ShowSizeMarkers = false;
-            this.Search.Size = new System.Drawing.Size(50, 50);
+            this.Search.Size = new System.Drawing.Size(47, 45);
             this.Search.TabIndex = 110;
             this.Search.ToolTipText = "";
             this.Search.WaitOnLoad = false;
@@ -122,7 +149,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(175, 49);
+            this.bunifuLabel1.Location = new System.Drawing.Point(118, 31);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(43, 22);
@@ -271,7 +298,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnGenerateReport.IdleIconLeftImage = null;
             this.btnGenerateReport.IdleIconRightImage = null;
             this.btnGenerateReport.IndicateFocus = false;
-            this.btnGenerateReport.Location = new System.Drawing.Point(863, 168);
+            this.btnGenerateReport.Location = new System.Drawing.Point(755, 19);
             this.btnGenerateReport.Name = "btnGenerateReport";
             this.btnGenerateReport.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGenerateReport.OnDisabledState.BorderRadius = 1;
@@ -314,38 +341,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnGenerateReport.UseDefaultRadiusAndThickness = true;
             this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
-            // dtpDate
-            // 
-            this.dtpDate.BackColor = System.Drawing.Color.Transparent;
-            this.dtpDate.BorderColor = System.Drawing.Color.Black;
-            this.dtpDate.BorderRadius = 10;
-            this.dtpDate.Color = System.Drawing.Color.Black;
-            this.dtpDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            this.dtpDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpDate.DisabledColor = System.Drawing.Color.White;
-            this.dtpDate.DisplayWeekNumbers = false;
-            this.dtpDate.DPHeight = 0;
-            this.dtpDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpDate.FillDatePicker = false;
-            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpDate.ForeColor = System.Drawing.Color.Black;
-            this.dtpDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpDate.Icon")));
-            this.dtpDate.IconColor = System.Drawing.SystemColors.Control;
-            this.dtpDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            this.dtpDate.LeftTextMargin = 5;
-            this.dtpDate.Location = new System.Drawing.Point(241, 41);
-            this.dtpDate.MinimumSize = new System.Drawing.Size(4, 32);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(182, 32);
-            this.dtpDate.TabIndex = 118;
-            this.dtpDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
-            // 
             // ucCashierReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvSalesReport);
             this.Controls.Add(this.pictureBox1);

@@ -26,15 +26,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static DataTable dt = new DataTable();
         public static string QuerySelect;
 
-
-
-
     //Display TransactionData in DataGridView  
     public void DisplaySalesHistory()
         {
 
             con.Open();
-            QuerySelect = "SELECT * FROM transactionHistory";
+            QuerySelect = "SELECT * SalesReportView";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -43,11 +40,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dgvSalesHistory.DataSource = dt;
             dgvSalesHistory.Refresh();
             con.Close();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

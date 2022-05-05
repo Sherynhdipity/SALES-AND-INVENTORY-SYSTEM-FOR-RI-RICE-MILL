@@ -64,9 +64,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         con.Open();
 
-                        QuerySelect = "Select user_id, Username, First_name, Last_name, Password, User_type from tblUsers WHERE Username='" + txtUsername.Text + "' AND Password='" + txtPassword.Text + "'";
+                        QuerySelect = "Select user_id, Username, First_name, Last_name, Password, User_type from tblUsers WHERE Username= @uName AND Password= @pass";
                         cmd = new SqlCommand(QuerySelect, con);
-                        reader = cmd.ExecuteReader();
+                        cmd.Parameters.AddWithValue("@uName", txtUsername.Text);
+                        cmd.Parameters.AddWithValue("@pass", txtPassword.Text);
+                    reader = cmd.ExecuteReader();
                         if (reader.HasRows)
                         {
                             reader.Read();

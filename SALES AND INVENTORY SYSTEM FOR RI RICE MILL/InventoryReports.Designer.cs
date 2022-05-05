@@ -29,19 +29,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         /// </summary>
         private void InitializeComponent()
         {
-            this.InventoryReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.InventoryReport();
             this.InventoryReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.ReturnReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ReturnReport();
+            this.InventoryReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.InventoryReport();
             this.SuspendLayout();
             // 
             // InventoryReportViewer1
             // 
-            this.InventoryReportViewer1.ActiveViewIndex = -1;
+            this.InventoryReportViewer1.ActiveViewIndex = 0;
             this.InventoryReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.InventoryReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.InventoryReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InventoryReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.InventoryReportViewer1.Name = "InventoryReportViewer1";
+            this.InventoryReportViewer1.ReportSource = this.InventoryReport1;
             this.InventoryReportViewer1.Size = new System.Drawing.Size(800, 450);
             this.InventoryReportViewer1.TabIndex = 0;
             this.InventoryReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
@@ -60,8 +61,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
         #endregion
-        private InventoryReport InventoryReport1;
         public CrystalDecisions.Windows.Forms.CrystalReportViewer InventoryReportViewer1;
         private ReturnReport ReturnReport1;
+        private InventoryReport InventoryReport1;
     }
 }

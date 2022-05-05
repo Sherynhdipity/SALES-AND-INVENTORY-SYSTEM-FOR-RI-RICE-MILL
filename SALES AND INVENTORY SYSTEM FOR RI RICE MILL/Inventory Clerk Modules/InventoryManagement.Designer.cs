@@ -57,7 +57,7 @@
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Impact", 30F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(76, 75);
+            this.bunifuLabel3.Location = new System.Drawing.Point(76, 54);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(397, 48);
@@ -80,7 +80,7 @@
             this.bunifuPanel4.Controls.Add(this.txtViewStocks);
             this.bunifuPanel4.Controls.Add(this.dgvStockList);
             this.bunifuPanel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bunifuPanel4.Location = new System.Drawing.Point(76, 129);
+            this.bunifuPanel4.Location = new System.Drawing.Point(76, 108);
             this.bunifuPanel4.Name = "bunifuPanel4";
             this.bunifuPanel4.ShowBorders = false;
             this.bunifuPanel4.Size = new System.Drawing.Size(907, 497);
@@ -100,7 +100,7 @@
             this.btnStockCard.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
             this.btnStockCard.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStockCard.BackgroundImage")));
             this.btnStockCard.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnStockCard.ButtonText = "STOCK CARD";
+            this.btnStockCard.ButtonText = "STOCK RECORDS";
             this.btnStockCard.ButtonTextMarginLeft = 0;
             this.btnStockCard.ColorContrastOnClick = 45;
             this.btnStockCard.ColorContrastOnHover = 45;
@@ -135,7 +135,7 @@
             this.btnStockCard.IdleIconLeftImage = null;
             this.btnStockCard.IdleIconRightImage = null;
             this.btnStockCard.IndicateFocus = false;
-            this.btnStockCard.Location = new System.Drawing.Point(484, 29);
+            this.btnStockCard.Location = new System.Drawing.Point(475, 29);
             this.btnStockCard.Name = "btnStockCard";
             this.btnStockCard.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnStockCard.OnDisabledState.BorderRadius = 1;
@@ -169,7 +169,7 @@
             this.btnStockCard.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnStockCard.OnPressedState.IconLeftImage = null;
             this.btnStockCard.OnPressedState.IconRightImage = null;
-            this.btnStockCard.Size = new System.Drawing.Size(122, 39);
+            this.btnStockCard.Size = new System.Drawing.Size(131, 39);
             this.btnStockCard.TabIndex = 8;
             this.btnStockCard.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnStockCard.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;

@@ -80,13 +80,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 }
                 else
                 {
-                    QuerySelect = "SELECT * from InventoryViews WHERE (Description LIKE '%' + @desc + '%') OR ([Batch Number] LIKE '%' + @batchNo + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
+                    QuerySelect = "SELECT * from InventoryViews WHERE (Description LIKE '%' + @desc + '%')";
                 }
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@desc", txtViewStocks.Text);
-                cmd.Parameters.AddWithValue("@batchNo", txtViewStocks.Text);
-                cmd.Parameters.AddWithValue("@crit", txtViewStocks.Text);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);

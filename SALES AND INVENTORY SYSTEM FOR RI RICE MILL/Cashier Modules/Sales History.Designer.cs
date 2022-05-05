@@ -35,24 +35,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvSalesHistory = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesHistory)).BeginInit();
-            this.bunifuPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuLabel13
             // 
             this.bunifuLabel13.AllowParentOverrides = false;
             this.bunifuLabel13.AutoEllipsis = false;
-            this.bunifuLabel13.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bunifuLabel13.BackColor = System.Drawing.Color.White;
             this.bunifuLabel13.CursorType = null;
-            this.bunifuLabel13.Font = new System.Drawing.Font("Impact", 15.75F);
-            this.bunifuLabel13.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel13.Location = new System.Drawing.Point(19, 6);
+            this.bunifuLabel13.Font = new System.Drawing.Font("Impact", 20.25F);
+            this.bunifuLabel13.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel13.Location = new System.Drawing.Point(372, 32);
             this.bunifuLabel13.Name = "bunifuLabel13";
             this.bunifuLabel13.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel13.Size = new System.Drawing.Size(124, 26);
+            this.bunifuLabel13.Size = new System.Drawing.Size(160, 34);
             this.bunifuLabel13.TabIndex = 47;
             this.bunifuLabel13.Text = "SALES HISTORY";
             this.bunifuLabel13.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -111,7 +108,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvSalesHistory.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvSalesHistory.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvSalesHistory.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvSalesHistory.Location = new System.Drawing.Point(19, 64);
+            this.dgvSalesHistory.Location = new System.Drawing.Point(20, 76);
             this.dgvSalesHistory.Name = "dgvSalesHistory";
             this.dgvSalesHistory.ReadOnly = true;
             this.dgvSalesHistory.RowHeadersVisible = false;
@@ -121,42 +118,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvSalesHistory.TabIndex = 48;
             this.dgvSalesHistory.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
-            // bunifuPanel1
-            // 
-            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.RoyalBlue;
-            this.bunifuPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel1.BackgroundImage")));
-            this.bunifuPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuPanel1.BorderColor = System.Drawing.Color.Transparent;
-            this.bunifuPanel1.BorderRadius = 0;
-            this.bunifuPanel1.BorderThickness = 0;
-            this.bunifuPanel1.Controls.Add(this.btnClose);
-            this.bunifuPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuPanel1.Location = new System.Drawing.Point(0, 0);
-            this.bunifuPanel1.Name = "bunifuPanel1";
-            this.bunifuPanel1.ShowBorders = false;
-            this.bunifuPanel1.Size = new System.Drawing.Size(872, 38);
-            this.bunifuPanel1.TabIndex = 104;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.color = System.Drawing.Color.RoyalBlue;
-            this.btnClose.colorActive = System.Drawing.Color.IndianRed;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Image = null;
-            this.btnClose.ImagePosition = 21;
-            this.btnClose.ImageZoom = 50;
-            this.btnClose.LabelPosition = 43;
-            this.btnClose.LabelText = "x";
-            this.btnClose.Location = new System.Drawing.Point(810, -9);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(8);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(63, 56);
-            this.btnClose.TabIndex = 50;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // frmSalesHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,14 +125,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(872, 515);
             this.Controls.Add(this.bunifuLabel13);
-            this.Controls.Add(this.bunifuPanel1);
             this.Controls.Add(this.dgvSalesHistory);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmSalesHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Product Lookup";
+            this.Text = "Sales History";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesHistory)).EndInit();
-            this.bunifuPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,7 +140,5 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel13;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvSalesHistory;
-        private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
-        private Bunifu.Framework.UI.BunifuTileButton btnClose;
     }
 }

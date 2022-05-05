@@ -153,7 +153,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             cmd.Parameters.AddWithValue("@qty", total_quantity);
                             cmd.Parameters.AddWithValue("@discount", discount_total);
                             cmd.Parameters.AddWithValue("@total", total);
-                            cmd.Parameters.AddWithValue("@cash", txtCash.Text);
+                            cmd.Parameters.AddWithValue("@cash", txtCash.Text.Replace(",", ""));
 
                             if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "SC #:")
                             {

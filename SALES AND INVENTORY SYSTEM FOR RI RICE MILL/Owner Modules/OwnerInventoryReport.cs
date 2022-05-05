@@ -34,7 +34,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = " Select *  from InventoryReportView where Stock_in_date between @FromDate and @ToDate";
+                QuerySelect = " Select *  from InventoryReportsView where Stock_in_date between @FromDate and @ToDate";
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -81,12 +81,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 con.Open();
 
                 dt = new DataTable();
-                QuerySelect = "SELECT * FROM InventoryReportView WHERE Stock_in_date BETWEEN '" + date1 + "' AND '" + date2 + "'";
+                QuerySelect = "SELECT * FROM InventoryReportsView WHERE Stock_in_date BETWEEN '" + date1 + "' AND '" + date2 + "'";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
 
-                inventory.Database.Tables["InventoryReportView"].SetDataSource(dt);
+                inventory.Database.Tables["InventoryReportsView"].SetDataSource(dt);
                 frm.InventoryReportViewer1.ReportSource = inventory;
                 con.Close();
                 frm.Show();

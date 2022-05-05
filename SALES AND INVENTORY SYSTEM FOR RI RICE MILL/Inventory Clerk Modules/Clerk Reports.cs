@@ -66,7 +66,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    txtTotalAvailableStock.Text = reader["Total Available Stock"].ToString();
+                    txtTotalAvailableStock.Text = reader["Available Stock"].ToString();
 
                 }
             }
@@ -104,28 +104,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         }
 
-        public void countStockINToday()
-        {
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT Count(SKU) from tblInventories where Stock_in_date = @date";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                    txtStockInToday.Text = reader["SKU"].ToString();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
+       
 
         private void bunifuButton21_Click(object sender, EventArgs e)
         {

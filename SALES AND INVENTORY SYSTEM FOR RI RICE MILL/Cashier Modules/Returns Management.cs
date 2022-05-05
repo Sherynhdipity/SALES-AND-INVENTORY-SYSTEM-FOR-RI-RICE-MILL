@@ -45,14 +45,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         {
             InitializeComponent();
 
-            returnItem.FormClosed += new FormClosedEventHandler(Form_Closed);
-
-            populateDgvOrderDeets();
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            btn.Name = "";
-            btn.Text = "Return";
-            btn.UseColumnTextForButtonValue = true;
-            dgvOrderDeetsList.Columns.Add(btn);
+            returnItem.FormClosed += new FormClosedEventHandler(Form_Closed);        
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)
@@ -147,7 +140,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             if (e.KeyCode == Keys.Enter)
             {
                 DisplayCustomerName();
-                populateDgvOrderDeets();               
+                populateDgvOrderDeets();
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                btn.Name = "";
+                btn.Text = "Return";
+                btn.UseColumnTextForButtonValue = true;
+                dgvOrderDeetsList.Columns.Add(btn);
 
             }
         }
@@ -175,29 +173,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         private void btnViewReturn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                con.Close();
-                con.Open();
-
-                QuerySelect = "SELECT * FROM tblReturns";
-
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                dt = new DataTable();
-                adapter.Fill(dt);
-
-                dgvOrderDeetsList.DataSource = dt;
-                dgvOrderDeetsList.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
+            frmViewReturns viewReturns = new frmViewReturns();
+            viewReturns.Show();
         }
 
         private void txtTransNo_TextChange(object sender, EventArgs e)

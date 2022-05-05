@@ -26,7 +26,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public ucDashboard()
         {
             InitializeComponent();
-            //populateDash();
+            populateDash();
             populateChart();
         }
 
@@ -109,94 +109,94 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
 
+        public void populateDash()
+        {
 
-        ////not chart
-        //public void populateDash()
-        //{
-        //    // Total Sales
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "Select * from OwnerDashboardView";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            lblTotalSales.Text = reader["Total Sales"].ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+            // Total Sales
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT SUM(Total_cost) AS [totalSales] FROM tblOrders";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblTotalSales.Text = reader["totalSales"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-        //    //Total transactions
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "SELECT * from OwnerDashboardView";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            lblTotalTransactions.Text = reader["Total Transactions"].ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
 
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+            //Total transactions
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT COUNT(Transaction_number) AS[totalTrans] FROM tblOrders";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblTotalTransactions.Text = reader["totalTrans"].ToString();
+                }
+            }
+            catch (Exception)
+            {
 
-        //    //StockedIn
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "SELECT * from OwnerDashboardView";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            lblStockedIn.Text = reader["Stocked In"].ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+            //StockedIn
 
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT COUNT(SKU) AS [Available Stock] FROM tblInventories";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblStockedIn.Text = reader["Available Stock"].ToString();
+                }
+            }
+            catch (Exception)
+            {
 
-        //    //StockedOut
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "SELECT * from OwnerDashboardView";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            lblStockedOut.Text = reader["Stocked Out"].ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
-        //}
+            //StockedOut
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT COUNT(SKU) AS [Stock out] FROM tblOrderDetails";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblStockedOut.Text = reader["Stock Out"].ToString();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
     }
 
