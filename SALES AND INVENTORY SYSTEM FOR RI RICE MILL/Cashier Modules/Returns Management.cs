@@ -40,12 +40,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         public static string QueryUpdate;
         public static string QueryDelete;
         public static string status = "Active";
+        DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
 
         public ucReturns()
         {
             InitializeComponent();
 
-            returnItem.FormClosed += new FormClosedEventHandler(Form_Closed);        
+            returnItem.FormClosed += new FormClosedEventHandler(Form_Closed);
+
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)
@@ -63,6 +65,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             {
                 try
                 {
+                    
                     con.Close();
                     con.Open();
                     QuerySelect = "SELECT First_name + ' ' + Last_name AS [FullName] FROM tblCustomers INNER JOIN tblOrders ON tblCustomers.Customer_id = tblOrders.Customer_id WHERE tblOrders.Transaction_number = @transNo";
@@ -83,6 +86,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                         txtCustomer.Text = "";
 
                     }
+                    dgvOrderDeetsList.Refresh();
+                    populateDgvOrderDeets();
+                    btn.Name = "";
+                    btn.Text = "Return";
+                    btn.UseColumnTextForButtonValue = true;
+                    dgvOrderDeetsList.Columns.Add(btn);
+
                 }
                 catch (Exception ex)
                 {
@@ -114,14 +124,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
                     cmd = new SqlCommand(QuerySelect, con);
                     cmd.Parameters.AddWithValue("@transNo", txtTransNo.Text);
-
-
                     adapter = new SqlDataAdapter(cmd);
                     dt = new DataTable();
                     adapter.Fill(dt);
 
-                    dgvOrderDeetsList.DataSource = dt;
+                    dgvOrderDeetsList.DataSource = dt;                
                     dgvOrderDeetsList.Refresh();
+
+                    con.Close();
                 }
                 catch (Exception ex)
                 {
@@ -139,13 +149,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         {
             if (e.KeyCode == Keys.Enter)
             {
-                DisplayCustomerName();
-                populateDgvOrderDeets();
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                btn.Name = "";
-                btn.Text = "Return";
-                btn.UseColumnTextForButtonValue = true;
-                dgvOrderDeetsList.Columns.Add(btn);
+                DisplayCustomerName();           
 
             }
         }

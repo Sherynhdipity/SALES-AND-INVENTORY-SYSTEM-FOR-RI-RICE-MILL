@@ -26,6 +26,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         public frmBarcodeLookup()
         {
             InitializeComponent();
+            autoCompleteDescription();
         }
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -54,27 +55,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             dgvSKUList.Refresh();
         }
 
-        static String remVowel(String str, String str1)
+        public void autoCompleteDescription()
         {
-            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
-
-            List<char> al = vowels.OfType<char>().ToList();
-
-            StringBuilder sb = new StringBuilder(str);
-
-            for (int i = 0; i < sb.Length; i++)
+            con.Close();
+            QuerySelect = "SELECT [Description] FROM tblItems " +
+                "WHERE Description LIKE '" + txtViewItem.Text + "%'";
+            cmd = new SqlCommand(QuerySelect, con);
+            con.Open();
+            reader = cmd.ExecuteReader();
+            AutoCompleteStringCollection MyCollection = new AutoCompleteStringCollection();
+            while (reader.Read())
             {
-
-                if (al.Contains(sb[i]))
-                {
-                    sb.Replace(sb[i].ToString(), "");
-                    i--;
-                }
+                MyCollection.Add(reader.GetString(0));
             }
-
-            string final = sb.ToString() + "-" + str1.ToString();
-            final = final.Replace(" ", String.Empty);
-            return final;
+            txtViewItem.AutoCompleteCustomSource = MyCollection;
+            con.Close();
         }
 
         public void DisplayItems()
@@ -135,26 +130,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 ClearControls();
             }
             
-        }
-
-        public static string ReplaceWhitespace(string input, string replacement)
-        {
-            return sWhitespace.Replace(input, replacement);
-        }
-
-        private void txtBatchNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
         }
 
         public void displaySKU()

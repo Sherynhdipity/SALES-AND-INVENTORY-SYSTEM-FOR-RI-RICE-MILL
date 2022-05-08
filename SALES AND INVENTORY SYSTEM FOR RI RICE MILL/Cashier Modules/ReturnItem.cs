@@ -61,7 +61,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             con.Close();
             if (String.IsNullOrEmpty(txtRemarks.Text))
             {
-                MessageBox.Show("Enter Contact Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Enter Remark!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtRemarks.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtRemarks.Text))
@@ -83,7 +83,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                     cmd.Parameters.AddWithValue("@sku", txtSKU.Text);
 
                     reader = cmd.ExecuteReader();
-
+                    
                     if (reader.HasRows)
                     {
                         MessageBox.Show("This item is already returned!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -114,7 +114,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.StackTrace);
-                            con.Close();
+                           
                         }
                         finally
                         {
@@ -167,20 +167,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 ReturnItem();
             }
 
-            private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
-            {
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-                {
-                    e.Handled = true;
-                }
-
-                // only allow one decimal point
-                if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-                {
-                    e.Handled = true;
-                }
-            }
 
             private void btnCancel_Click(object sender, EventArgs e)
             {
@@ -192,5 +178,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 DisplayReturnSelection();
 
             }
+
+        private void txtRemarks_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
+    }
     }

@@ -303,21 +303,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.Close();
         }
 
-        private void txtBatchNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void txtBatchQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -358,74 +343,81 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         public void displaySKU()
         {
-            dgvSKUList.Rows.Clear();
-            dgvSKUList.Refresh();
-
-            if (txtDescription.Text == "")
+            try
             {
-                MessageBox.Show("Enter Item Description!");
-            }
-            else if (txtBatchQuantity.Text == "")
-            {
-                MessageBox.Show("Enter Quantity!");
-            }
-            else
-            {
-                string description;
-                int quantity;
+                dgvSKUList.Rows.Clear();
+                dgvSKUList.Refresh();
 
-                description = txtDescription.Text;
-                quantity = Convert.ToInt32(txtBatchQuantity.Text);
-
-                dgvSKUList.ColumnCount = 1;
-                //dgvSKUList.Columns[0].Name = "";
-                dgvSKUList.Columns[0].Name = "SKU";
-
-                QuerySelect = "Select SKU from tblInventories " +
-                    "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories) " +
-                    "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '"+description+"')";
-                cmd = new SqlCommand(QuerySelect, con);
-                con.Open();
-                reader = cmd.ExecuteReader();
-                reader.Read();
-                if (reader.HasRows)
+                if (txtDescription.Text == "")
                 {
-
-                    string sku = reader.GetString(0);
-                    string lastCharacter = sku.Substring(sku.Length - 3);
-                    //string lastCharacter = (sku1 + sku2 + sku3).ToString();
-                    //MessageBox.Show(lastCharacter.ToString());
-                    int lastSKU = Convert.ToInt32(lastCharacter.ToString())+1;
-                    string newDesc = makeShortCode(description);
-                    for (int i = lastSKU; i < quantity + lastSKU; i++)
-                    {
-                        string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
-                        dgvSKUList.Rows.Add(row);
-                    }
-
+                    MessageBox.Show("Enter Item Description!");
+                }
+                else if (txtBatchQuantity.Text == "")
+                {
+                    MessageBox.Show("Enter Quantity!");
                 }
                 else
                 {
-                    string newDesc = makeShortCode(description);
-                    for (int i = 1; i <= quantity; i++)
-                    {
-                        string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
-                        dgvSKUList.Rows.Add(row);
-                    }
-                }
-                con.Close();
+                    string description;
+                    int quantity;
 
-            }         
+                    description = txtDescription.Text;
+                    quantity = Convert.ToInt32(txtBatchQuantity.Text);
+
+                    dgvSKUList.ColumnCount = 1;
+                    //dgvSKUList.Columns[0].Name = "";
+                    dgvSKUList.Columns[0].Name = "SKU";
+
+                    QuerySelect = "Select SKU from tblInventories " +
+                        "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories) " +
+                        "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + description + "')";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    con.Open();
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    if (reader.HasRows)
+                    {
+
+                        string sku = reader.GetString(0);
+                        string lastCharacter = sku.Substring(sku.Length - 3);
+                        //string lastCharacter = (sku1 + sku2 + sku3).ToString();
+                        //MessageBox.Show(lastCharacter.ToString());
+                        int lastSKU = Convert.ToInt32(lastCharacter.ToString()) + 1;
+                        string newDesc = makeShortCode(description);
+                        for (int i = lastSKU; i < quantity + lastSKU; i++)
+                        {
+                            string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
+                            dgvSKUList.Rows.Add(row);
+                        }
+
+                    }
+                    else
+                    {
+                        string newDesc = makeShortCode(description);
+                        for (int i = 1; i <= quantity; i++)
+                        {
+                            string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
+                            dgvSKUList.Rows.Add(row);
+                        }
+                    }
+                    con.Close();
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            
         }
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
             displaySKU();
-        }
-
-        private void txtBatchQuantity_TextChanged(object sender, EventArgs e)
-        {
-
         }
        
         private void bunifuButton2_Click(object sender, EventArgs e)

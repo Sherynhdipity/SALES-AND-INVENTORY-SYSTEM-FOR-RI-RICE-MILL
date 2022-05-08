@@ -1057,7 +1057,6 @@
             this.txtBatchQuantity.TextPlaceholder = "";
             this.txtBatchQuantity.UseSystemPasswordChar = false;
             this.txtBatchQuantity.WordWrap = true;
-            this.txtBatchQuantity.TextChanged += new System.EventHandler(this.txtBatchQuantity_TextChanged);
             this.txtBatchQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBatchQuantity_KeyPress);
             // 
             // appData1

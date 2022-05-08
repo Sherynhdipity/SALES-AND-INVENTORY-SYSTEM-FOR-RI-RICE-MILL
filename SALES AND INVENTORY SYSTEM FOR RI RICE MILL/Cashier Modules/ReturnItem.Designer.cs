@@ -469,7 +469,7 @@
             this.txtRemarks.TextPlaceholder = "Type here..";
             this.txtRemarks.UseSystemPasswordChar = false;
             this.txtRemarks.WordWrap = true;
-            this.txtRemarks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtContact_KeyPress);
+            this.txtRemarks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRemarks_KeyPress);
             // 
             // bunifuLabel5
             // 
