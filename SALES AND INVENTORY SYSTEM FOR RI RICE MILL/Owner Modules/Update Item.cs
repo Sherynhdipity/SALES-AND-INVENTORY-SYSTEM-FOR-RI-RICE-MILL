@@ -66,6 +66,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     txtDescription.Text = dt.Rows[0]["Description"].ToString();
                     txtPrice.Text = dt.Rows[0]["Price"].ToString();
                     txtCriticalLevel.Text = dt.Rows[0]["Critical_level"].ToString();
+                    txtCostPrice.Text = dt.Rows[0]["Cost_Price"].ToString();
                 }
             }
             catch (Exception ex)
@@ -86,6 +87,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             txtDescription.Clear();
             txtPrice.Clear();
             txtCriticalLevel.Clear();
+            txtCostPrice.Clear();
         }
 
 
@@ -104,13 +106,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
             else if (String.IsNullOrEmpty(txtPrice.Text))
             {
-                MessageBox.Show("Enter Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Enter Selling Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPrice.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtPrice.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
                 txtPrice.Clear();
+            }
+            else if (String.IsNullOrEmpty(txtCostPrice.Text))
+            {
+                MessageBox.Show("Enter Cost Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCostPrice.Focus();
+            }
+            else if (String.IsNullOrWhiteSpace(txtCostPrice.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtCostPrice.Clear();
             }
             else if (String.IsNullOrEmpty(txtCriticalLevel.Text))
             {

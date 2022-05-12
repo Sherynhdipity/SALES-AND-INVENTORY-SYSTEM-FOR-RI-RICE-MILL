@@ -213,12 +213,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                             for (int i = 0; i < rows; i++)
                             {
                                QueryInsert = "INSERT INTO tblInventories " +
-                               "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id) " +
+                               "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id, Status) " +
                                "VALUES ('"
                                + batch_number + "', '"
                                + dgvSKUList.Rows[i].Cells[0].Value.ToString() + "', @mDate, @sDate, '"
                                + Id + "'," +
-                               "(SELECT Item_id  FROM tblItems WHERE Description = @desc))";
+                               "(SELECT Item_id  FROM tblItems WHERE Description = @desc), 'Stock In')";
                                 
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.Parameters.AddWithValue("@desc", txtDescription.Text);

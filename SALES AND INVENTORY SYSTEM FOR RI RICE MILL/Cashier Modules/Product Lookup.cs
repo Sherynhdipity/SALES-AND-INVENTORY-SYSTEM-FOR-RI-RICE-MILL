@@ -37,6 +37,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string productVariety { get; set; }
         public string productPrice { get; set; }
 
+        public bool isReturn { get; set; }
+
         public int quantity { get; set; }
         public string stock { get; set; }
 
@@ -98,7 +100,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 string temp_stock = "";
                 con.Close();
                 con.Open();
-                QuerySelect = "SELECT COUNT(a.Item_id) as 'Stock' FROM tblInventories a INNER JOIN tblItems b ON a.Item_id = b.Item_id WHERE b.Description = '" + Convert.ToString(selectedRow.Cells["Description"].Value) + "';";
+                QuerySelect = "SELECT COUNT(a.Item_id) as 'Stock' FROM tblInventories a INNER JOIN tblItems b ON a.Item_id = b.Item_id WHERE b.Description = '" + Convert.ToString(selectedRow.Cells["Description"].Value) + "' AND a.Status = 'Stock In';";
                 //QuerySelect = "select Count(tblBatchProduct.BatchID) AS Stock from tblBatchProduct INNER JOIN tblStockin on tblBatchProduct.BatchID = tblStockin.BatchID where Status='IN' AND tblStockin.ProductID = (SELECT ProductID FROM tblProducts WHERE ProductCode = '"  + Convert.ToString(selectedRow.Cells["Product Code"].Value) + "')";
                 cmd = new SqlCommand(QuerySelect, con);
                 reader = cmd.ExecuteReader();

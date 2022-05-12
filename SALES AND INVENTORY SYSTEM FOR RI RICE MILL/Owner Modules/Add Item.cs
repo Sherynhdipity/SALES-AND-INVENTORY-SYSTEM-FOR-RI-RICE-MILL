@@ -62,9 +62,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtDescription.Clear();
             }
+            else if (String.IsNullOrEmpty(txtCostPrice.Text))
+            {
+                MessageBox.Show("Enter Cost Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCostPrice.Focus();
+            }
+            else if (String.IsNullOrWhiteSpace(txtCostPrice.Text))
+            {
+                MessageBox.Show("Whitespace is not allowed!");
+                txtCostPrice.Clear();
+            }
             else if (String.IsNullOrEmpty(txtPrice.Text))
             {
-                MessageBox.Show("Enter Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Enter Selling Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtPrice.Focus();
             }
             else if (String.IsNullOrWhiteSpace(txtPrice.Text))
@@ -77,6 +87,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCriticalLevel.Focus();
             }
+            else if (Convert.ToDouble(txtCostPrice.Text) >= Convert.ToDouble(txtPrice.Text))
+            {
+                MessageBox.Show("Cost price must be less than selling price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCriticalLevel.Focus();
+            }
             else
             {
                 result = MessageBox.Show("Do you want to add this item?", "Add Item", MessageBoxButtons.YesNo);
@@ -84,12 +99,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 {
                     con.Close();
                     con.Open();
-                    QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical";
+                    QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical AND Cost_Price = @cost";
 
                     cmd = new SqlCommand(QuerySelect, con);
                     cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
                     cmd.Parameters.AddWithValue("@price", txtPrice.Text);
                     cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+                    cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
 
                     reader = cmd.ExecuteReader();
 
@@ -105,12 +121,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                         {
                             con.Close();
                             con.Open();
-                            QueryInsert = "INSERT INTO tblItems (Description,Price,Critical_Level) VALUES (@desc, @price, @critical)";
+                            QueryInsert = "INSERT INTO tblItems (Description,Price,Critical_Level, Cost_Price) VALUES (@desc, @price, @critical, @cost)";
 
                             cmd = new SqlCommand(QueryInsert, con);
                             cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
                             cmd.Parameters.AddWithValue("@price", txtPrice.Text.Replace(",",""));
                             cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+                            cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
                             cmd.ExecuteNonQuery();
 
                             MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);

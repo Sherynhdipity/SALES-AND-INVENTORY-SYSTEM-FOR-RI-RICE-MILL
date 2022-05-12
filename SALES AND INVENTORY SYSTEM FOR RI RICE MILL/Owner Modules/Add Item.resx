@@ -149,6 +149,30 @@
         zs9ryi4bpuXp8qEBbMNvyF7O57s1Y2ZmW99u9w1xeujFHwAWaAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="bunifuLabel3.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Segoe UI Semibold'; font-size: 10pt; width: 100%; height: 100%; font-style: normal; font-weight: bold; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  </data>
+  <metadata name="validationProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="txtCostPrice.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQQAAAAnCAYAAADpRzYmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALWSURBVHhe7d0/SFtRFMfxNwh5SMwfkvCSQcnoKi4FFxfB
+        KXSSjC7dhSwOHYo4FgqdBRchQ6WZxE6VThkzdHBrcCiBijylpYIOr/f0HJVirdItOd8PHEiOT7fzM/e+
+        8G4EAE8Vh2pXKpWDUIOZmZnT8D6jKGo8SmZWZrdarX4M79dDlUL9l9VisXjWarUuut1udnR0lA2HwwzA
+        +JCZldnt9XpZu93+Xi6X03w+/8Jm/ElKtVrt/dLSUjoajezPApgEaZpma2tr5+ETQz/Mel1H/mGlcOHJ
+        zs7Olf0+gAl0eHiYzc7OnoSZb+ro/4V8MiAMAB9kKSH7Czb+96zKMsGuBeDAxsbGj2Kx+Moy4FYsG4js
+        GQC+XF5eZs1m8yxkwLxGgVqXHUi7BoAj29vb14VC4Y1lQRTJPUq5LQHAn8FgkJXL5S8WB1EUlgtfj4+P
+        7ccAPJFlw9TU1LXFQRTlcrmfcn8SgE8hBqRuWRuAR5IBGgXK2gA8kgzQKFDWBuCRZIBGgbI2AI8kAzQK
+        lLUBeCQZoFGgrA3AI8kAjQJlbQAeSQZoFChrA/BIMkCjQFkbgEeSARoFytoAPJIM0ChQ1gbgkWSARoGy
+        NgCPJAM0CpS1AXgkGaBRoKwNwCPJAI0CZW0AHkkGaBQE8nAEeUgCAJ9CDNwFghz3xKlMgF8hBu4CQU5x
+        kYMbAPgjj0+UxyhaHERRHMcvO50OawbAod3dXXnI6juLg9+ajUYjZR8B8GdlZeU8ZMBzjQJTq9Veb25u
+        cjYD4Mje3t5VkiQfLAb+ENfr9c/9ft8uBTDJ5KS2arX6Lcx+SSPgvvm5ublTzmgAJpuEwcLCghzhtqyj
+        /7BnciT81tYWGwrABNrf37+yTwaPhsGNuFKpvF1cXExlB5JDYIHxJgcxdbvdrNVqXSRJ8inM+IPLhH9Z
+        ltsR09PTF+H1zZcXKIoas5LT2cI/+YPwuh0KAB4TRb8ADIZ1/dTBGfwAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="btnSave.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIgAAAAnCAYAAADU8ABpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -158,9 +182,6 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="validationProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="btnCancel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIgAAAAnCAYAAADU8ABpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

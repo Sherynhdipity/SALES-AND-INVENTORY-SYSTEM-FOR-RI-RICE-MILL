@@ -293,6 +293,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Cashier Modules\DisplaySKU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\DisplaySKU.Designer.cs">
+      <DependentUpon>DisplaySKU.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cashier Modules\Returns Management.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -304,6 +310,12 @@
     </Compile>
     <Compile Include="Cashier Modules\ReturnItem.Designer.cs">
       <DependentUpon>ReturnItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\SearchReturnTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\SearchReturnTransaction.Designer.cs">
+      <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
     </Compile>
     <Compile Include="DBSaleInventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -632,12 +644,6 @@
     <Compile Include="SalesReport.Designer.cs">
       <DependentUpon>SalesReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\ViewReturns.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashier Modules\ViewReturns.Designer.cs">
-      <DependentUpon>ViewReturns.cs</DependentUpon>
-    </Compile>
     <Compile Include="SalesReport1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -647,11 +653,17 @@
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\DisplaySKU.resx">
+      <DependentUpon>DisplaySKU.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Returns Management.resx">
       <DependentUpon>Returns Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\ReturnItem.resx">
       <DependentUpon>ReturnItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\SearchReturnTransaction.resx">
+      <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\Barcode Lookup.resx">
       <DependentUpon>Barcode Lookup.cs</DependentUpon>
@@ -822,9 +834,6 @@
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\ViewReturns.resx">
-      <DependentUpon>ViewReturns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

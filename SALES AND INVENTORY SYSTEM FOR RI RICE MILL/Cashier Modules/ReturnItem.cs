@@ -15,6 +15,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
     {
         private string id;
         private string sku;
+
+        public string productCode { get; set; }
+        public string productDesc { get; set; }
+        public string productVariety { get; set; }
+        public string productPrice { get; set; }
+
+        public int quantity { get; set; }
+        public string stock { get; set; }
+
+        public bool isReturn { get; set; }
+
         public string Id
         {
             get { return id; }
@@ -48,118 +59,165 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         public void ClearControls()
         {
-            txtDescription.Clear();
-            txtSKU.Clear();
-            txtPrice.Clear();
-            txtRemarks.Clear();
+            txtTransNumber.Clear();
+            //txtSKU.Clear();
+            //txtPrice.Clear();
+            //txtRemarks.Clear();
 
         }
 
         //ReturnItem
         public void ReturnItem()
         {
+            int selectedRows = dgvOrderDetails.Rows.GetRowCount(DataGridViewElementStates.Selected);
             con.Close();
-            if (String.IsNullOrEmpty(txtRemarks.Text))
+            if (String.IsNullOrEmpty(txtTransNumber.Text))
             {
                 MessageBox.Show("Enter Remark!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtRemarks.Focus();
+                txtTransNumber.Focus();
             }
-            else if (String.IsNullOrWhiteSpace(txtRemarks.Text))
+            else
             {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtRemarks.Clear();
-            }
-            else if (txtDescription.Text != "" && txtSKU.Text != ""
-                && txtPrice.Text != "" && txtRemarks.Text != "")
-            {
-                result = MessageBox.Show("Do you want to return this Item?", "Return Item", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                if (selectedRows > 0)
                 {
-                    con.Close();
-                    con.Open();
-                    QuerySelect = "SELECT * FROM tblReturns WHERE SKU = @sku";
-
-                    cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("@sku", txtSKU.Text);
-
-                    reader = cmd.ExecuteReader();
-                    
-                    if (reader.HasRows)
+                    if(cmbRemarks.SelectedIndex == 0)
                     {
-                        MessageBox.Show("This item is already returned!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        ClearControls();
+                        for (int i = 0; i < selectedRows; i++)
+                        {
+                            result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                try
+                                {
+                                    con.Close();
+                                    con.Open();
+                                    QueryUpdate = "Update tblInventories SET Status = 'Stock In' WHERE SKU = @sku";
+                                    cmd = new SqlCommand(QueryUpdate, con);
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[2].Value.ToString());
+                                    cmd.ExecuteNonQuery();
+
+                                    QueryInsert = "Insert into tblReturns (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
+                                        "Values(@id, @sku, @qty, @remarks, @date)";
+                                    cmd = new SqlCommand(QueryInsert, con);
+                                    cmd.Parameters.AddWithValue("@id", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[2].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@qty", dgvOrderDetails.Rows[i].Cells[3].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@remarks", "WRONG ITEM");
+                                    cmd.Parameters.AddWithValue("@date", dtpReturnDate.Value.Date);
+                                    cmd.ExecuteNonQuery();
+
+
+                                
+
+                                }
+                                catch(Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                                finally
+                                {
+                                    con.Close();
+                                }
+                                
+                                
+                            }
+                        }
+                       
+                           MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
+                       
+                        
+                      
+                        this.Close();
+        
                     }
-                    else
+                    else if(cmbRemarks.SelectedIndex == 1)
                     {
-                        try
+                        for (int i = 0; i < selectedRows; i++)
                         {
-                            con.Close();
-                            con.Open();
+                            result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+                            if (result == DialogResult.Yes)
+                            {
+                                try
+                                {
+                                    con.Close();
+                                    con.Open();
+                               
 
-                            QueryInsert = "INSERT INTO tblReturns(Order_id, SKU, Return_quantity,Remarks, Return_date)" +
-                                "VALUES(@oID, @sku,(SELECT COUNT(SKU) AS QTYRETURNED FROM tblOrderDetails WHERE SKU = @sku), @remarks, @returnDate)";
-                            cmd = new SqlCommand(QueryInsert, con);
+                                    QueryInsert = "Insert into tblReturns (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
+                                        "Values(@id, @sku, @qty, @remarks, @date)";
+                                    cmd = new SqlCommand(QueryInsert, con);
+                                    cmd.Parameters.AddWithValue("@id", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[2].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@qty", dgvOrderDetails.Rows[i].Cells[3].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@remarks", "DAMAGED");
+                                    cmd.Parameters.AddWithValue("@date", dtpReturnDate.Value.Date);
+                                    cmd.ExecuteNonQuery();
 
-                            cmd.Parameters.AddWithValue("@oID", id);
-                            cmd.Parameters.AddWithValue("@sku", txtSKU.Text);
-                            cmd.Parameters.AddWithValue("@remarks", txtRemarks.Text);
-                            cmd.Parameters.AddWithValue("@returnDate", dtpReturnDate.Value.Date);
 
 
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Item Returned Successfully!", "Item Return", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.Close();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                                finally
+                                {
+                                    con.Close();
+                                }
+
+
+                            }
                         }
+                        MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
 
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.StackTrace);
-                           
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+
+                        this.Close();
+
                     }
+
                 }
-                else
-                {
-                    MessageBox.Show("Please Provide Details!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                
             }
         }
 
             public void DisplayReturnSelection()
             {
-                try
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT Order_id, Description, SKU, Price from OrderDetailsView WHERE TransNum = '" + txtTransNumber.Text + "'";
+
+
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                if (dt.Rows.Count > 0)
                 {
-                    con.Open();
-                    QuerySelect = "SELECT Description, SKU, Price from OrderDetailsView WHERE SKU = '" + sku + "'";
-
-
-                    cmd = new SqlCommand(QuerySelect, con);
-                    adapter = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    adapter.Fill(dt);
-                    if (dt.Rows.Count > 0)
-                    {
-                        txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                        txtSKU.Text = dt.Rows[0]["SKU"].ToString();
-                        txtPrice.Text = dt.Rows[0]["Price"].ToString();
-
-                    }
+                    dgvOrderDetails.DataSource = dt;
+                    // txtDescription.Text = dt.Rows[0]["Description"].ToString();
+                    // txtSKU.Text = dt.Rows[0]["SKU"].ToString();
+                    //txtPrice.Text = dt.Rows[0]["Price"].ToString();
 
                 }
-                catch (Exception ex)
+                else
                 {
+                    dgvOrderDetails.DataSource = null;
+                    MessageBox.Show("Transaction Number Not Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
 
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
 
             private void btnSave_Click(object sender, EventArgs e)
@@ -175,13 +233,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
             private void frmUpdateCustomer_Load(object sender, EventArgs e)
             {
-                DisplayReturnSelection();
+                cmbRemarks.SelectedIndex = 0;
+              //  DisplayReturnSelection();
 
             }
 
-        private void txtRemarks_KeyPress(object sender, KeyPressEventArgs e)
-        {
+       
 
+        private void txtTransNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (String.IsNullOrEmpty(txtTransNumber.Text))
+                {
+                    MessageBox.Show("Enter Transaction Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtTransNumber.Focus();
+                }
+                else if (String.IsNullOrWhiteSpace(txtTransNumber.Text))
+                {
+                    MessageBox.Show("Whitespace is not allowed!");
+                    txtTransNumber.Clear();
+                }
+                else
+                {
+                    DisplayReturnSelection();
+                }
+            }
         }
+
     }
     }

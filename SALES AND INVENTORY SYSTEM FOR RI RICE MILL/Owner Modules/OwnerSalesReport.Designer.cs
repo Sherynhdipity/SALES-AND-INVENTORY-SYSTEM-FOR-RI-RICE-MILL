@@ -381,6 +381,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmOwnerSalesReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OwnerSalesReport";
             this.Load += new System.EventHandler(this.frmOwnerSalesReport_Load);
             this.groupBox1.ResumeLayout(false);

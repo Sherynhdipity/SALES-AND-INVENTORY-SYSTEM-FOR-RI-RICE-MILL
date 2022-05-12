@@ -110,13 +110,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject1.Regex = null;
             validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel1, validationObject1);
-            this.bunifuLabel1.Location = new System.Drawing.Point(17, 277);
+            this.bunifuLabel1.Location = new System.Drawing.Point(48, 274);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(128, 22);
+            this.bunifuLabel1.Size = new System.Drawing.Size(94, 44);
             this.bunifuLabel1.TabIndex = 48;
-            this.bunifuLabel1.Text = "Total Amount:";
-            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel1.Text = "Amount \r\nTendered:";
+            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // bunifuLabel2
@@ -206,7 +206,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject4.Regex = null;
             validationObject4.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.btnClose, validationObject4);
-            this.btnClose.Location = new System.Drawing.Point(455, -8);
+            this.btnClose.Location = new System.Drawing.Point(455, -9);
             this.btnClose.Margin = new System.Windows.Forms.Padding(8);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(63, 56);

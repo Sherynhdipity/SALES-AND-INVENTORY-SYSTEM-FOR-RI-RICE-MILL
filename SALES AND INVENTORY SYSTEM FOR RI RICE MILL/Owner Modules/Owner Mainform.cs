@@ -140,11 +140,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void bunifuButton23_Click(object sender, EventArgs e)
         {
             DialogResult dialog = MessageBox.Show("Do you want to Logout from the System?", "Log-out", MessageBoxButtons.YesNo);
@@ -175,9 +170,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
-        private void panelModule_Paint(object sender, PaintEventArgs e)
+        private void btnBackup_Click_1(object sender, EventArgs e)
         {
-
+            if (!panelModule.Controls.Contains(ucBackupRestore.backupRestoreInstance))
+            {
+                panelModule.Controls.Add(ucBackupRestore.backupRestoreInstance);
+                ucBackupRestore.backupRestoreInstance.Dock = DockStyle.Fill;
+                ucBackupRestore.backupRestoreInstance.BringToFront();
+            }
+            else
+            {
+                ucBackupRestore.backupRestoreInstance.BringToFront();
+            }
         }
     }
 }

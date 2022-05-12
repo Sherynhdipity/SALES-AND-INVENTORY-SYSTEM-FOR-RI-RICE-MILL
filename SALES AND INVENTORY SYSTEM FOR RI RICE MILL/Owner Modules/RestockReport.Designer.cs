@@ -237,6 +237,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.Controls.Add(this.btnPrintReport);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmRestockReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RestockReport";
             this.Load += new System.EventHandler(this.RestockReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

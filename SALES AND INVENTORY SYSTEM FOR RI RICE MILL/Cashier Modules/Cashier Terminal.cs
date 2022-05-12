@@ -9,7 +9,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
     public partial class frmSalesManagement : Form
     {
-
+        frmReturnItem returnItem = new frmReturnItem();
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
         public static SqlDataReader reader;
@@ -25,11 +25,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string transCount;
         public string transTotal;
         public Boolean isRowUpdated = false;
+        public bool isReturn;
 
 
         public frmSalesManagement()
         {
             InitializeComponent();
+            returnItem.FormClosed += new FormClosedEventHandler(Form_Closed);
+        }
+
+        void Form_Closed(object sender, FormClosedEventArgs e)
+        {
+            frmReturnItem frm = (frmReturnItem)sender;
+            btnNewTrans_Click((object)sender, (EventArgs)e);
+            btnSearchProduct_Click((object)sender, (EventArgs)e);
         }
 
 
@@ -290,6 +299,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //Username and Role
             lblUserName.Text = frmLogin.GetUserName.ToString();
             lblUserRole.Text = frmLogin.GetUserRole.ToString();
+
+            btnVoid.LabelText = "[F3] Void" + Environment.NewLine + "Item" + Environment.NewLine;
+            btnCancel.LabelText = "[F5] Void" + Environment.NewLine + "Transaction" + Environment.NewLine;
 
             //Datatable
             ColumnsLoader();
@@ -635,6 +647,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             btnSearchProduct.Enabled = true;
             btnAdd.Enabled = true;
             btnVoid.Enabled = true;
+            btnReturn.Enabled = true;
             btnPay.Enabled = true;
             btnCancel.Enabled = true;
         }
@@ -659,12 +672,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             frmProductLookup productLookup = new frmProductLookup();
             productLookup.ShowDialog();
+            if(isReturn)
+            {
+                isReturn = true;
+            }
+            else
+            {
+                isReturn = false;
+            }
             if(productLookup.quantity.ToString() != "")
             {
                 txtProdDesc.Text = productLookup.productDesc;
                 txtProdPrice.Text = productLookup.productPrice;
                 txtQuantity.Text = productLookup.quantity.ToString();
                 txtStock.Text = productLookup.stock;
+
+               
                 btnAdd_Click((object)sender, (EventArgs)e);
             }
           
@@ -697,6 +720,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 setdt();
                 frmPayment payment = new frmPayment();
+                payment.isReturn = isReturn;
                 payment.txtAmount.Text = lblTotal.Text;
                 payment.transNo = lblTransNo.Text;
                 payment.storeDt(dtfromdvg);
@@ -760,6 +784,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void txtProdDesc_TextChange(object sender, EventArgs e)
         {
             DisplayItemDetails();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            isReturn = true;
+            returnItem.ShowDialog();
+        
+                //txtProdDesc.Text = returnItem.productDesc;
+                //txtProdPrice.Text = returnItem.productPrice;
+                //txtQuantity.Text = returnItem.quantity.ToString();
+                //txtStock.Text = returnItem.stock;
+                //btnAdd_Click((object)sender, (EventArgs)e);
+
+
         }
 
         //mod end

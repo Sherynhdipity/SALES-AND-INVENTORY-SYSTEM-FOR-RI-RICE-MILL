@@ -59,7 +59,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public int []  Qty { get; set; }
         public double[] Price { get; set; }
 
-
+        public bool isReturn{ get; set; }
 
 
         private int customerID;
@@ -128,7 +128,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     try
                     {
-                        //INSERT tblOrders  
+                        //INSERT tblOrders
                         try
                         {
 
@@ -168,8 +168,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             {
                                 cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
                                 cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
-                            }      
+                            }
+                            
                             cmd.ExecuteNonQuery();
+
                         }
                         catch (Exception ex)
                         {
@@ -178,7 +180,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         finally
                         {
                             con.Close();
-
                         }
 
                         //updateInventory
@@ -196,8 +197,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
                                 QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " SKU, Item_id FROM tblInventories" +
-                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + dtFromSalesMgt.Rows[i][0].ToString() + "')";
+                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc)";
                                 cmd = new SqlCommand(QuerySelect, con);
+
+                                cmd.Parameters.AddWithValue("@desc", dtFromSalesMgt.Rows[i][0].ToString());
                                 adapter = new SqlDataAdapter(cmd);
                                 DataTable dtNew = new DataTable();
                                 adapter.Fill(dtNew);
@@ -206,8 +209,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                     SKU[ctr] = dtNew.Rows[j][0].ToString();
                                     DESCRIPTION[ctr] = dtNew.Rows[j][1].ToString();
 
-                                    //DESCRIPTION[ctr] = dtFromSalesMgt.Rows[i][0].ToString();
-
                                     ctr++;
                                 }
                             }
@@ -215,8 +216,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             //insert tblOrderDetails and Delete from inventory
                             for (int i = 0; i < SKU.Length; i++)
                             {
-                                //QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
-                                //"VALUES((SELECT MAX(Order_id) FROM tblOrders),(SELECT Item_id from tblItems WHERE (Description LIKE '%' + @description  + '%')  AND Batch_number = (SELECT MIN(Batch_number) FROM tblInventories)), @sku)";
+
                                 QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
                                 "VALUES((SELECT MAX(Order_id) FROM tblOrders),@description, @sku)";
                                 cmd = new SqlCommand(QueryInsert, con);
@@ -225,11 +225,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd.Parameters.AddWithValue("@sku", SKU[i]);
                                 cmd.ExecuteNonQuery();
 
-                                QueryDelete = "DELETE FROM tblInventories WHERE SKU = @sku";
-                                cmd = new SqlCommand(QueryDelete, con);
+                                QueryUpdate = "UPDATE tblInventories SET Status = 'Stock Out' WHERE SKU = @sku";
+                                cmd = new SqlCommand(QueryUpdate, con);
                                 cmd.Parameters.AddWithValue("@sku", SKU[i]);
                                 cmd.ExecuteNonQuery();
-                            }                       
+                            }
 
                         }
                         catch (Exception ex)
@@ -240,7 +240,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             con.Close();
                         }
-                        }
+                    }
 
                         catch (Exception ex)
                         {
@@ -368,7 +368,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public void frmPayment_Load(object sender, EventArgs e)
         {
-
             autoCompleteCustomer();
         }
 
@@ -459,66 +458,78 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 reader.Read();
                 if (reader.HasRows)
                 {
-                    dt.Clear();
-                    customerID = reader.GetInt32(0);
-                    QuerySelect = "SELECT * FROM viewDiscount WHERE [Customer ID] = '" + customerID + "'";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    con.Close();
-                    con.Open();
-                    adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    //DiscountCodeTextbox
-
-                    if(dt.Rows[0][1].ToString() == "SC01")
+                    if(isReturn)
                     {
-                        lblPWDORSC.Visible = true;
-                        lblPWDORSC.Text = "SC #:";
-                        txtPWDOSCA.Visible = true;
-
                         amount = Convert.ToDouble(txtAmount.Text);
-                        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                        discount_total = amount * discount;
-                        total = amount - discount_total;
+                        //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        //discount_total = amount * discount;
+                        total = amount;
                         txtAmount.Text = total.ToString();
                     }
-                    else if (dt.Rows[0][1].ToString() == "PWD01")
+                    else
                     {
-                        lblPWDORSC.Visible = true;
-                        lblPWDORSC.Text = "PWD #:";
-                        txtPWDOSCA.Visible = true;
+                        dt.Clear();
+                        customerID = reader.GetInt32(0);
+                        QuerySelect = "SELECT * FROM viewDiscount WHERE [Customer ID] = '" + customerID + "'";
+                        cmd = new SqlCommand(QuerySelect, con);
+                        con.Close();
+                        con.Open();
+                        adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        //DiscountCodeTextbox
 
-                        amount = Convert.ToDouble(txtAmount.Text);
-                        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                        discount_total = amount * discount;
-                        total = amount - discount_total;
-                        txtAmount.Text = total.ToString();
+                        if (dt.Rows[0][1].ToString() == "SC01")
+                        {
+                            lblPWDORSC.Visible = true;
+                            lblPWDORSC.Text = "SC #:";
+                            txtPWDOSCA.Visible = true;
+
+                            amount = Convert.ToDouble(txtAmount.Text);
+                            discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                            discount_total = amount * discount;
+                            total = amount - discount_total;
+                            txtAmount.Text = total.ToString();
+                        }
+                        else if (dt.Rows[0][1].ToString() == "PWD01")
+                        {
+                            lblPWDORSC.Visible = true;
+                            lblPWDORSC.Text = "PWD #:";
+                            txtPWDOSCA.Visible = true;
+
+                            amount = Convert.ToDouble(txtAmount.Text);
+                            discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                            discount_total = amount * discount;
+                            total = amount - discount_total;
+                            txtAmount.Text = total.ToString();
+                        }
+                        else if (dt.Rows[0][1].ToString() == "LC01")
+                        {
+                            lblPWDORSC.Visible = false;
+                            txtPWDOSCA.Visible = false;
+
+                            amount = Convert.ToDouble(txtAmount.Text);
+                            discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                            discount_total = amount * discount;
+                            total = amount - discount_total;
+                            txtAmount.Text = total.ToString();
+                        }
+                        else if (dt.Rows[0][1].ToString() == "NC01")
+                        {
+                            loyaltyCheck();
+                        }
+
+
+                        //recompute amount
+
+                        //amount = Convert.ToDouble(txtAmount.Text);
+                        //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        //discount_total = amount * discount;
+                        //total = amount - discount_total;
+                        //txtAmount.Text = total.ToString();
                     }
-                    else if(dt.Rows[0][1].ToString() == "LC01")
-                    {
-                        lblPWDORSC.Visible = false;
-                        txtPWDOSCA.Visible = false;
 
-                        amount = Convert.ToDouble(txtAmount.Text);
-                        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                        discount_total = amount * discount;
-                        total = amount - discount_total;
-                        txtAmount.Text = total.ToString();
-                    }
-                    else if(dt.Rows[0][1].ToString() == "NC01")
-                    {
-                        loyaltyCheck();
-                    }    
-
-                    
-                    //recompute amount
-
-                    //amount = Convert.ToDouble(txtAmount.Text);
-                    //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                    //discount_total = amount * discount;
-                    //total = amount - discount_total;
-                    //txtAmount.Text = total.ToString();
                 }
 
                 con.Close();
@@ -527,7 +538,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
-        public void loyaltyCheck()
+        public void loyaltyCheck()  
         {
             double totalCost;
 

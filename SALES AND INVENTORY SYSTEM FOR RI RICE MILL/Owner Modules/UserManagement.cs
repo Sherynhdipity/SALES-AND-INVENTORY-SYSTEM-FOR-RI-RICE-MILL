@@ -40,7 +40,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static string QuerySelect;
         public static string QueryUpdate;
         public static string QueryDelete;
-        public static string status = "Active";
+        public static string status = "Inactive";
         public UserManagement()
         {
             InitializeComponent();
@@ -48,11 +48,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             updateUser.FormClosed += new FormClosedEventHandler(Form_Closed1);
             DisplayUser();
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+            DataGridViewButtonColumn btn1 = new DataGridViewButtonColumn();
+
             btn.Name = "";
             btn.Text = "Update";
             btn.UseColumnTextForButtonValue = true;
 
+            btn1.Name = "";
+            btn1.Text = "Activate";
+            btn1.UseColumnTextForButtonValue = true;
+
             dgvUserList.Columns.Add(btn);
+            //dgvUserList.Columns.Add(btn1);
         }
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
