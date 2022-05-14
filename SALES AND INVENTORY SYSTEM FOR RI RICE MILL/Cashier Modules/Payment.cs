@@ -78,38 +78,51 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //this.ShowDialog();
         }
 
-        void CheckORExist()
+        //Generate ORNo
+        void GetORNo()
         {
             try
             {
 
-                con.Open();
+                int count = 0;
+                string OR = count.ToString().PadLeft(4, '0');
+                string ORNo;
 
-                QuerySelect = "SELECT Convert(Varchar(10),OR_number) FROM tblOrders WHERE Convert(Varchar(10),OR_number) = @OR";
+                con.Open();
+                QuerySelect = "SELECT MAX(OR_number) as id FROM tblOrders";
                 cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@OR", txtORNumber.Text);
-                string ORExist = (string)cmd.ExecuteScalar();
-                
-                if (ORExist == txtORNumber.Text)  
+                cmd.Parameters.AddWithValue("@OR", OR);
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    MessageBox.Show("This OR Number Already Exists! ");
+                    while (reader.Read())
+                    {
+                        ORNo = reader["id"].ToString();
+                        count = int.Parse(ORNo) + 1;
+                        txtORNumber.Text = count.ToString().PadLeft(4, '0');
+                    }
                 }
                 else
                 {
-                    SettlePayment();
+                    ORNo = OR + "1";
+                    txtORNumber.Text = ORNo;
                 }
 
+                reader.Close();
                 con.Close();
             }
+
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + ex.StackTrace);
+
+                MessageBox.Show(ex.Message + ex.StackTrace, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
                 con.Close();
             }
-        }   
+        }
+
 
         void SettlePayment()
         {
@@ -197,7 +210,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
                                 QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " SKU, Item_id FROM tblInventories" +
-                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc)";
+                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
                                 cmd = new SqlCommand(QuerySelect, con);
 
                                 cmd.Parameters.AddWithValue("@desc", dtFromSalesMgt.Rows[i][0].ToString());
@@ -210,6 +223,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                     DESCRIPTION[ctr] = dtNew.Rows[j][1].ToString();
 
                                     ctr++;
+
+    
                                 }
                             }
 
@@ -229,6 +244,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd = new SqlCommand(QueryUpdate, con);
                                 cmd.Parameters.AddWithValue("@sku", SKU[i]);
                                 cmd.ExecuteNonQuery();
+
+   
                             }
 
                         }
@@ -431,7 +448,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            CheckORExist();
+            SettlePayment();
             
         }
 
@@ -478,6 +495,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         adapter.Fill(dt);
                         cmd.ExecuteNonQuery();
                         con.Close();
+
+
                         //DiscountCodeTextbox
 
                         if (dt.Rows[0][1].ToString() == "SC01")
@@ -491,6 +510,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount_total = amount * discount;
                             total = amount - discount_total;
                             txtAmount.Text = total.ToString();
+                            txtDiscountAmount.Text = discount_total.ToString();
+                            txtDiscountPer.Text = "20%";
                         }
                         else if (dt.Rows[0][1].ToString() == "PWD01")
                         {
@@ -503,6 +524,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount_total = amount * discount;
                             total = amount - discount_total;
                             txtAmount.Text = total.ToString();
+                            txtDiscountAmount.Text = "20%";
                         }
                         else if (dt.Rows[0][1].ToString() == "LC01")
                         {
@@ -514,6 +536,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount_total = amount * discount;
                             total = amount - discount_total;
                             txtAmount.Text = total.ToString();
+                            txtDiscountAmount.Text = "10%";
                         }
                         else if (dt.Rows[0][1].ToString() == "NC01")
                         {
@@ -600,6 +623,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 discount_total = amount * discount;
                 total = amount - discount_total;
                 txtAmount.Text = total.ToString();
+                txtDiscountAmount.Text = discount_total.ToString();
             }
             else
             {
@@ -608,23 +632,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //discount_total = amount * discount;
                 total = amount;
                 txtAmount.Text = total.ToString();
+                txtDiscountAmount.Text = discount_total.ToString();
             }
             con.Close();
         }
 
-        private void txtORNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnGenerateOR_Click(object sender, EventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
+            GetORNo();
         }
 
         private void txtPWDOSCA_KeyPress(object sender, KeyPressEventArgs e)

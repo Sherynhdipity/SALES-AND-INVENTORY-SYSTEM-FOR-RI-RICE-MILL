@@ -57,7 +57,7 @@
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.dgvStockIN.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStockIN.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStockIN.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvStockIN.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.dgvStockIN.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvStockIN.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvStockIN.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -101,13 +101,13 @@
             this.dgvStockIN.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvStockIN.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvStockIN.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvStockIN.Location = new System.Drawing.Point(24, 172);
+            this.dgvStockIN.Location = new System.Drawing.Point(24, 154);
             this.dgvStockIN.Name = "dgvStockIN";
             this.dgvStockIN.ReadOnly = true;
             this.dgvStockIN.RowHeadersVisible = false;
             this.dgvStockIN.RowTemplate.Height = 40;
             this.dgvStockIN.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockIN.Size = new System.Drawing.Size(849, 158);
+            this.dgvStockIN.Size = new System.Drawing.Size(849, 195);
             this.dgvStockIN.TabIndex = 5;
             this.dgvStockIN.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.dgvStockIN.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStockIN_CellContentClick);
@@ -123,7 +123,7 @@
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             this.dgvStockOut.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvStockOut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStockOut.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvStockOut.BackgroundColor = System.Drawing.SystemColors.ControlDark;
             this.dgvStockOut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvStockOut.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvStockOut.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -167,13 +167,13 @@
             this.dgvStockOut.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvStockOut.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvStockOut.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvStockOut.Location = new System.Drawing.Point(24, 395);
+            this.dgvStockOut.Location = new System.Drawing.Point(24, 410);
             this.dgvStockOut.Name = "dgvStockOut";
             this.dgvStockOut.ReadOnly = true;
             this.dgvStockOut.RowHeadersVisible = false;
             this.dgvStockOut.RowTemplate.Height = 40;
             this.dgvStockOut.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStockOut.Size = new System.Drawing.Size(849, 158);
+            this.dgvStockOut.Size = new System.Drawing.Size(849, 195);
             this.dgvStockOut.TabIndex = 6;
             this.dgvStockOut.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
@@ -181,7 +181,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.clipboard;
-            this.pictureBox6.Location = new System.Drawing.Point(240, 27);
+            this.pictureBox6.Location = new System.Drawing.Point(252, 37);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(85, 69);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -195,7 +195,7 @@
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Impact", 30F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(343, 37);
+            this.bunifuLabel3.Location = new System.Drawing.Point(343, 47);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(259, 48);
@@ -211,7 +211,7 @@
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(421, 132);
+            this.bunifuLabel1.Location = new System.Drawing.Point(24, 118);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(98, 34);
@@ -227,7 +227,7 @@
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel2.Location = new System.Drawing.Point(421, 355);
+            this.bunifuLabel2.Location = new System.Drawing.Point(24, 374);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(117, 34);
@@ -241,7 +241,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(897, 575);
+            this.ClientSize = new System.Drawing.Size(913, 617);
             this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.bunifuLabel1);
             this.Controls.Add(this.bunifuLabel3);

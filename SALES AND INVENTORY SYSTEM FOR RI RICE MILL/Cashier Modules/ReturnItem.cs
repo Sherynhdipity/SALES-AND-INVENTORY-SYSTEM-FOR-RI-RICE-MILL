@@ -183,6 +183,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
             public void DisplayReturnSelection()
             {
+            dgvOrderDetails.Refresh();
             try
             {
                 con.Open();

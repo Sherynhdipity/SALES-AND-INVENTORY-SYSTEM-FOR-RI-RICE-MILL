@@ -993,10 +993,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel26.CursorType = null;
             this.bunifuLabel26.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel26.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel26.Location = new System.Drawing.Point(111, 72);
+            this.bunifuLabel26.Location = new System.Drawing.Point(57, 72);
             this.bunifuLabel26.Name = "bunifuLabel26";
             this.bunifuLabel26.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel26.Size = new System.Drawing.Size(162, 101);
+            this.bunifuLabel26.Size = new System.Drawing.Size(231, 101);
             this.bunifuLabel26.TabIndex = 58;
             this.bunifuLabel26.Text = "Total Inventory Item:";
             this.bunifuLabel26.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1072,7 +1072,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel25.CursorType = null;
             this.bunifuLabel25.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel25.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel25.Location = new System.Drawing.Point(71, 87);
+            this.bunifuLabel25.Location = new System.Drawing.Point(62, 90);
             this.bunifuLabel25.Name = "bunifuLabel25";
             this.bunifuLabel25.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel25.Size = new System.Drawing.Size(162, 101);
@@ -1226,7 +1226,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel27.CursorType = null;
             this.bunifuLabel27.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel27.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel27.Location = new System.Drawing.Point(111, 101);
+            this.bunifuLabel27.Location = new System.Drawing.Point(99, 101);
             this.bunifuLabel27.Name = "bunifuLabel27";
             this.bunifuLabel27.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel27.Size = new System.Drawing.Size(153, 33);

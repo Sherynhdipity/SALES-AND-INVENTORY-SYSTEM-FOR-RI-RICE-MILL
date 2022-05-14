@@ -7,10 +7,11 @@ using System.Windows.Forms;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class frmSalesManagement : Form
+    public partial class frmReturnTerminal : Form
     {
         frmReturnItem returnItem = new frmReturnItem();
-        //frmReturns returnMngt = new frmReturns();
+        frmSearchTransNo transNum = new frmSearchTransNo();
+        frmDisplaySKU sku = new frmDisplaySKU();
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
         public static SqlDataReader reader;
@@ -22,6 +23,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryUpdate;
         public static string QueryDelete;
         public static string adminPass;
+        public static string transaction_number;
 
         public string transCount;
         public string transTotal;
@@ -29,19 +31,80 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public bool isReturn;
 
 
-        public frmSalesManagement()
+        public frmReturnTerminal()
         {
             InitializeComponent();
-            returnItem.FormClosed += new FormClosedEventHandler(Form_Closed);
+            transNum.FormClosed += new FormClosedEventHandler(Form_Closed);
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
-            frmReturnItem frm = (frmReturnItem)sender;
-            btnNewTrans_Click((object)sender, (EventArgs)e);
-            btnSearchProduct_Click((object)sender, (EventArgs)e);
+            frmSearchTransNo frm = (frmSearchTransNo)sender;
+            DisplayReturn();
+           // btnNewTrans_Click((object)sender, (EventArgs)e);
+            //btnSearchProduct_Click((object)sender, (EventArgs)e);
         }
 
+        public void DisplayReturn()
+        {
+            dvgOrderList.Refresh();
+            transaction_number = transNum.Transaction_Number;
+            //datagrid
+            try
+            {
+                con.Close();
+                con.Open();
+                QuerySelect = "SELECT Transaction_number as 'Transaction Number', Description, Price, Quantity, Subtotal, Order_details_id as 'Id' FROM ReturnTransactionView WHERE Transaction_number = @trans";
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@trans", transaction_number);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dvgOrderList.DataSource = dt;
+
+                
+            }
+            catch(Exception ex)
+            {
+
+            }finally
+            {
+                con.Close();
+            }
+            //labels
+            try
+            {
+                con.Close();
+                con.Open();
+                QuerySelect = "SELECT * FROM tblOrders WHERE Transaction_number = @trans";
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@trans", transaction_number);
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        lblTotal.Text = reader["Total_cost"].ToString();
+                        string total = String.Format("{0:n}", reader["Transaction_number"].ToString());
+                        lblTransNo.Text = total;
+
+                        DateTime orderDate = Convert.ToDateTime(reader["Order_date"].ToString());
+                        lblTransDate.Text = orderDate.ToString("MMMM dd, yyyy");
+                    }
+                }
+                reader.Close();
+
+            }catch (Exception ex)
+            {
+
+            }finally
+            {
+                con.Close();
+            }
+
+
+        }
 
         //Generate TransNo
         void GetTransNo()
@@ -640,17 +703,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnNewTrans_Click(object sender, EventArgs e)
         {
-            GetTransNo();
-            txtSearch.Enabled = true;
-            txtSearch.Focus();
+            transNum.ShowDialog();
+            
+            //GetTransNo();
+            //txtSearch.Enabled = true;
+            //txtSearch.Focus();
 
-            //buttons
-            btnSearchProduct.Enabled = true;
-            btnAdd.Enabled = true;
-            btnVoid.Enabled = true;
-            btnReturn.Enabled = true;
-            btnPay.Enabled = true;
-            btnCancel.Enabled = true;
+            ////buttons
+            //btnSearchProduct.Enabled = true;
+            //btnAdd.Enabled = true;
+            //btnVoid.Enabled = true;
+            //btnReturn.Enabled = true;
+            //btnPay.Enabled = true;
+            //btnCancel.Enabled = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -800,6 +865,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //btnAdd_Click((object)sender, (EventArgs)e);
 
 
+        }
+
+        private void dvgOrderList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
+            sku.Transaction_Number = dvgOrderList.CurrentRow.Cells["Transaction Number"].Value.ToString();
+            sku.Order_details_id = dvgOrderList.CurrentRow.Cells["Id"].Value.ToString();
+            sku.ShowDialog();            
         }
 
         //mod end

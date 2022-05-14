@@ -149,12 +149,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblDate.AllowParentOverrides = false;
             this.lblDate.AutoEllipsis = false;
             this.lblDate.CursorType = null;
-            this.lblDate.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Arial", 15F);
             this.lblDate.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDate.Location = new System.Drawing.Point(750, 12);
+            this.lblDate.Location = new System.Drawing.Point(839, 19);
             this.lblDate.Name = "lblDate";
             this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblDate.Size = new System.Drawing.Size(303, 33);
+            this.lblDate.Size = new System.Drawing.Size(219, 26);
             this.lblDate.TabIndex = 7;
             this.lblDate.Text = "Sunday, January 1, 1998";
             this.lblDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
@@ -443,7 +443,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.CursorType = System.Windows.Forms.Cursors.Default;
             this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel2.Location = new System.Drawing.Point(12, 133);
+            this.bunifuLabel2.Location = new System.Drawing.Point(12, 164);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(252, 45);
@@ -499,7 +499,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnReports.IdleIconLeftImage = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.reports_new;
             this.btnReports.IdleIconRightImage = null;
             this.btnReports.IndicateFocus = false;
-            this.btnReports.Location = new System.Drawing.Point(12, 361);
+            this.btnReports.Location = new System.Drawing.Point(12, 394);
             this.btnReports.Name = "btnReports";
             this.btnReports.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnReports.OnDisabledState.BorderRadius = 1;
@@ -589,7 +589,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnInventory.IdleIconLeftImage = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.products;
             this.btnInventory.IdleIconRightImage = null;
             this.btnInventory.IndicateFocus = false;
-            this.btnInventory.Location = new System.Drawing.Point(12, 305);
+            this.btnInventory.Location = new System.Drawing.Point(12, 338);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnInventory.OnDisabledState.BorderRadius = 1;
@@ -679,7 +679,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnDashboard.IdleIconLeftImage = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.dash;
             this.btnDashboard.IdleIconRightImage = null;
             this.btnDashboard.IndicateFocus = false;
-            this.btnDashboard.Location = new System.Drawing.Point(12, 245);
+            this.btnDashboard.Location = new System.Drawing.Point(12, 278);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDashboard.OnDisabledState.BorderRadius = 20;
@@ -726,7 +726,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.r_and_i1;
-            this.pictureBox1.Location = new System.Drawing.Point(84, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(84, 50);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(107, 102);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

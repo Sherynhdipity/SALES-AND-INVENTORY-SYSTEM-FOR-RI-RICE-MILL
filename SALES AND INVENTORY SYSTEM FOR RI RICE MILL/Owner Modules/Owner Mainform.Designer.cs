@@ -152,12 +152,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblDate.AllowParentOverrides = false;
             this.lblDate.AutoEllipsis = false;
             this.lblDate.CursorType = null;
-            this.lblDate.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Font = new System.Drawing.Font("Arial", 15F);
             this.lblDate.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblDate.Location = new System.Drawing.Point(737, 12);
+            this.lblDate.Location = new System.Drawing.Point(835, 19);
             this.lblDate.Name = "lblDate";
             this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblDate.Size = new System.Drawing.Size(303, 33);
+            this.lblDate.Size = new System.Drawing.Size(219, 26);
             this.lblDate.TabIndex = 34;
             this.lblDate.Text = "Sunday, January 1, 1998";
             this.lblDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;

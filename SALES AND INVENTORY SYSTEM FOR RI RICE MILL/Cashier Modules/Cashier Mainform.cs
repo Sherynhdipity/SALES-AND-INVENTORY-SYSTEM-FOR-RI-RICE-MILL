@@ -13,6 +13,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 {
     public partial class frmMainSales: Form
     {
+        //frmReturnManagement returnManagement = new frmReturnManagement();
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
 
@@ -126,16 +127,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         private void btnSalesReturns_Click(object sender, EventArgs e)
         {
 
-            if (!panelModule.Controls.Contains(Cashier_Modules.ucReturns.returnsInstance))
+            frmReturnTerminal retrn = new frmReturnTerminal();
+            DialogResult res = retrn.ShowDialog();
+            this.Hide();
+            if (res == DialogResult.OK)
             {
-                panelModule.Controls.Add(Cashier_Modules.ucReturns.returnsInstance);
-                panelModule.Refresh();
-                Cashier_Modules.ucReturns.returnsInstance.Dock = DockStyle.Fill;
-
-            }
-            else
-            {
-                Cashier_Modules.ucReturns.returnsInstance.BringToFront();
+                frmMain_Load(sender, e);
             }
 
         }

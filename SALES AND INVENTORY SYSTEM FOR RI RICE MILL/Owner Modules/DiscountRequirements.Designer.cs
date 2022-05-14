@@ -1,7 +1,7 @@
 ﻿
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 {
-    partial class frmDiscountRequirements
+    partial class DiscountRequirements
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDiscountRequirements));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiscountRequirements));
             Kimtoo.ValidationProvider.ValidationObject validationObject1 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -88,7 +88,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             validationObject1.Regex = "^\\d+$";
             validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Integer;
             this.validationProvider1.SetLink(this.txtTotalTransactions, validationObject1);
-            this.txtTotalTransactions.Location = new System.Drawing.Point(12, 112);
+            this.txtTotalTransactions.Location = new System.Drawing.Point(22, 126);
             this.txtTotalTransactions.MaxLength = 4;
             this.txtTotalTransactions.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTotalTransactions.Modified = false;
@@ -169,7 +169,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             validationObject2.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
             validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
             this.validationProvider1.SetLink(this.txtTotalCost, validationObject2);
-            this.txtTotalCost.Location = new System.Drawing.Point(12, 192);
+            this.txtTotalCost.Location = new System.Drawing.Point(22, 206);
             this.txtTotalCost.MaxLength = 10;
             this.txtTotalCost.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTotalCost.Modified = false;
@@ -271,7 +271,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             validationObject3.Regex = null;
             validationObject3.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.btnSetReq, validationObject3);
-            this.btnSetReq.Location = new System.Drawing.Point(53, 256);
+            this.btnSetReq.Location = new System.Drawing.Point(56, 271);
             this.btnSetReq.Name = "btnSetReq";
             this.btnSetReq.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSetReq.OnDisabledState.BorderRadius = 1;
@@ -331,7 +331,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             validationObject4.Regex = null;
             validationObject4.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel4, validationObject4);
-            this.bunifuLabel4.Location = new System.Drawing.Point(29, 12);
+            this.bunifuLabel4.Location = new System.Drawing.Point(43, 22);
             this.bunifuLabel4.Name = "bunifuLabel4";
             this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel4.Size = new System.Drawing.Size(229, 58);
@@ -353,7 +353,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             validationObject5.Regex = null;
             validationObject5.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel1, validationObject5);
-            this.bunifuLabel1.Location = new System.Drawing.Point(12, 86);
+            this.bunifuLabel1.Location = new System.Drawing.Point(22, 100);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(99, 20);
@@ -375,16 +375,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             validationObject6.Regex = null;
             validationObject6.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel2, validationObject6);
-            this.bunifuLabel2.Location = new System.Drawing.Point(12, 166);
+            this.bunifuLabel2.Location = new System.Drawing.Point(21, 180);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(113, 20);
+            this.bunifuLabel2.Size = new System.Drawing.Size(131, 20);
             this.bunifuLabel2.TabIndex = 106;
-            this.bunifuLabel2.Text = "Cost of Transaction";
+            this.bunifuLabel2.Text = "Amount of Transaction";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // frmDiscountRequirements
+            // DiscountRequirements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -395,7 +395,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.Controls.Add(this.btnSetReq);
             this.Controls.Add(this.txtTotalCost);
             this.Controls.Add(this.txtTotalTransactions);
-            this.Name = "frmDiscountRequirements";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "DiscountRequirements";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmDiscountRequirements_Load);
             this.ResumeLayout(false);

@@ -68,8 +68,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
                 con.Open();
-                QuerySelect = "SELECT Barcode, Description , Price FROM tblItems WHERE LIKE '" + txtSearchProduct.Text + "%' OR Description LIKE '%" + txtSearchProduct.Text + "%' OR Price LIKE '%" + txtSearchProduct.Text + "' ORDER BY Item_id DESC";
+                QuerySelect = "SELECT Description, Price, Stock FROM  ItemLookup WHERE (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR (Stock LIKE '%' + @stock + '%')";
                 cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@desc", txtSearchProduct.Text);
+                cmd.Parameters.AddWithValue("@price", txtSearchProduct.Text);
+                cmd.Parameters.AddWithValue("@stock", txtSearchProduct.Text);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);

@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 {
-    public partial class frmDiscountRequirements : Form
+    public partial class DiscountRequirements : Form
     {
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -25,7 +25,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static string QueryUpdate;
         public static string QueryDelete;
 
-        public frmDiscountRequirements()
+        public DiscountRequirements()
         {
             InitializeComponent();
         }

@@ -285,6 +285,18 @@
     <Compile Include="Cashier Modules\addCustomer.Designer.cs">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cashier Modules\Return Terminal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Return Terminal.Designer.cs">
+      <DependentUpon>Return Terminal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cashier Modules\frmTransactionNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\frmTransactionNumber.Designer.cs">
+      <DependentUpon>frmTransactionNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cashier Modules\DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -299,11 +311,11 @@
     <Compile Include="Cashier Modules\DisplaySKU.Designer.cs">
       <DependentUpon>DisplaySKU.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\Returns Management.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Cashier Modules\SearchTransNo.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\Returns Management.Designer.cs">
-      <DependentUpon>Returns Management.cs</DependentUpon>
+    <Compile Include="Cashier Modules\SearchTransNo.Designer.cs">
+      <DependentUpon>SearchTransNo.cs</DependentUpon>
     </Compile>
     <Compile Include="Cashier Modules\ReturnItem.cs">
       <SubType>Form</SubType>
@@ -328,23 +340,23 @@
     <Compile Include="Inventory Clerk Modules\Barcode Lookup.Designer.cs">
       <DependentUpon>Barcode Lookup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmBarcodes.cs">
+    <Compile Include="Inventory Clerk Modules\Update Stock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmBarcodes.Designer.cs">
-      <DependentUpon>frmBarcodes.cs</DependentUpon>
+    <Compile Include="Inventory Clerk Modules\Update Stock.Designer.cs">
+      <DependentUpon>Update Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Barcode View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory Clerk Modules\Barcode View.Designer.cs">
+      <DependentUpon>Barcode View.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory Clerk Modules\frmStockCard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventory Clerk Modules\frmStockCard.Designer.cs">
       <DependentUpon>frmStockCard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\frmUpdateStocks.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Inventory Clerk Modules\frmUpdateStocks.Designer.cs">
-      <DependentUpon>frmUpdateStocks.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory Clerk Modules\On-HandInventoryReports.cs">
       <SubType>Form</SubType>
@@ -407,11 +419,11 @@
     <Compile Include="Cashier Modules\Sales History.Designer.cs">
       <DependentUpon>Sales History.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmAddStocks.cs">
+    <Compile Include="Inventory Clerk Modules\Add Stock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inventory Clerk Modules\frmAddStocks.Designer.cs">
-      <DependentUpon>frmAddStocks.cs</DependentUpon>
+    <Compile Include="Inventory Clerk Modules\Add Stock.Designer.cs">
+      <DependentUpon>Add Stock.cs</DependentUpon>
     </Compile>
     <Compile Include="Inventory Clerk Modules\InventoryManagement.cs">
       <SubType>UserControl</SubType>
@@ -467,12 +479,6 @@
     <Compile Include="Cashier Modules\Payment.Designer.cs">
       <DependentUpon>Payment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Link Forms\Inventory Reports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Link Forms\Inventory Reports.Designer.cs">
-      <DependentUpon>Inventory Reports.cs</DependentUpon>
-    </Compile>
     <Compile Include="Owner Modules\Add Item.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -485,11 +491,11 @@
     <Compile Include="Owner Modules\Customer Management.Designer.cs">
       <DependentUpon>Customer Management.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\frmDiscountRequirements.cs">
+    <Compile Include="Owner Modules\DiscountRequirements.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\frmDiscountRequirements.Designer.cs">
-      <DependentUpon>frmDiscountRequirements.cs</DependentUpon>
+    <Compile Include="Owner Modules\DiscountRequirements.Designer.cs">
+      <DependentUpon>DiscountRequirements.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Item Management.cs">
       <SubType>UserControl</SubType>
@@ -653,11 +659,17 @@
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\Return Terminal.resx">
+      <DependentUpon>Return Terminal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\frmTransactionNumber.resx">
+      <DependentUpon>frmTransactionNumber.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\DisplaySKU.resx">
       <DependentUpon>DisplaySKU.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\Returns Management.resx">
-      <DependentUpon>Returns Management.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\SearchTransNo.resx">
+      <DependentUpon>SearchTransNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\ReturnItem.resx">
       <DependentUpon>ReturnItem.cs</DependentUpon>
@@ -668,14 +680,14 @@
     <EmbeddedResource Include="Inventory Clerk Modules\Barcode Lookup.resx">
       <DependentUpon>Barcode Lookup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\frmBarcodes.resx">
-      <DependentUpon>frmBarcodes.cs</DependentUpon>
+    <EmbeddedResource Include="Inventory Clerk Modules\Update Stock.resx">
+      <DependentUpon>Update Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory Clerk Modules\Barcode View.resx">
+      <DependentUpon>Barcode View.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\frmStockCard.resx">
       <DependentUpon>frmStockCard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\frmUpdateStocks.resx">
-      <DependentUpon>frmUpdateStocks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\On-HandInventoryReports.resx">
       <DependentUpon>On-HandInventoryReports.cs</DependentUpon>
@@ -708,8 +720,8 @@
     <EmbeddedResource Include="Cashier Modules\Sales History.resx">
       <DependentUpon>Sales History.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory Clerk Modules\frmAddStocks.resx">
-      <DependentUpon>frmAddStocks.cs</DependentUpon>
+    <EmbeddedResource Include="Inventory Clerk Modules\Add Stock.resx">
+      <DependentUpon>Add Stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\InventoryManagement.resx">
       <DependentUpon>InventoryManagement.cs</DependentUpon>
@@ -738,8 +750,8 @@
     <EmbeddedResource Include="Cashier Modules\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\frmDiscountRequirements.resx">
-      <DependentUpon>frmDiscountRequirements.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\DiscountRequirements.resx">
+      <DependentUpon>DiscountRequirements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Receipt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -755,9 +767,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PrintReceipt.resx">
       <DependentUpon>PrintReceipt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Link Forms\Inventory Reports.resx">
-      <DependentUpon>Inventory Reports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add Item.resx">
       <DependentUpon>Add Item.cs</DependentUpon>
