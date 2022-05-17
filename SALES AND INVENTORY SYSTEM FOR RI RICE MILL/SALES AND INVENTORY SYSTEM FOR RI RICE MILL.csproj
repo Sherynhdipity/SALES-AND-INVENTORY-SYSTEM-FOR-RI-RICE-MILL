@@ -285,6 +285,12 @@
     <Compile Include="Cashier Modules\addCustomer.Designer.cs">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cashier Modules\Return Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Modules\Return Payment.Designer.cs">
+      <DependentUpon>Return Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cashier Modules\Return Product Lookup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -664,6 +670,9 @@
     </Compile>
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Modules\Return Payment.resx">
+      <DependentUpon>Return Payment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Return Product Lookup.resx">
       <DependentUpon>Return Product Lookup.cs</DependentUpon>

@@ -17,6 +17,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static SqlDataReader reader;
         public static SqlDataAdapter adapter;
         public static DataTable dt = new DataTable();
+        public static DataTable dt1 = new DataTable();
         public static DialogResult result;
         public static string QueryInsert;
         public static string QuerySelect;
@@ -45,7 +46,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // dvgOrderList.Rows.Clear();
             DisplayReturn();
             btnSearchProduct.Enabled = true;
-           // btnNewTrans_Click((object)sender, (EventArgs)e);
+            btnPay.Enabled = true;
+            // btnNewTrans_Click((object)sender, (EventArgs)e);
             //btnSearchProduct_Click((object)sender, (EventArgs)e);
         }
 
@@ -175,15 +177,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         // Load Columns DataGrid(Table)
         public void ColumnsLoader()
         {
-            dt.Rows.Clear();
-            dt.Columns.Clear();
-            //dt.Columns.Add("Product Code", typeof(string)).ReadOnly = true;
-            dt.Columns.Add("Product Description", typeof(string)).ReadOnly = true;
-            //dt.Columns.Add("Product Variety", typeof(string)).ReadOnly = true;
-            dt.Columns.Add("Quantity", typeof(int));
-            dt.Columns.Add("Price", typeof(float)).ReadOnly = true;
-            dt.Columns.Add("SubTotal", typeof(float));
-            dvgOrderList.DataSource = dt;
+
+            dt1.Rows.Clear();
+            dt1.Clear();
+
+            dt1.Columns.Add("Product Description", typeof(string)).ReadOnly = true;
+
+            dt1.Columns.Add("Quantity", typeof(int));
+            dt1.Columns.Add("Price", typeof(float)).ReadOnly = true;
+            dt1.Columns.Add("SubTotal", typeof(float));
+            dgvItemReplaced.DataSource = dt1;
         }
 
         public void ClearAll()
@@ -204,7 +207,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblTransNo.Text = "0000000000";
             lblTotal.Text = "0.00";
             lblTransDate.Text = "Date";
-            dt.Clear();
+            dt1.Clear();
         }
 
 
@@ -479,7 +482,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 else
                 {
 
-                    DataRow[] rows = dt.Select(string.Format("[product description]='{0}'", txtProdDesc.Text));
+                    DataRow[] rows = dt1.Select(string.Format("[product description]='{0}'", txtProdDesc.Text));
                     DataRow item;
 
                     int qty = Convert.ToInt32(txtQuantity.Text);
@@ -516,20 +519,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             eqty = eqty + qty;
                             item["quantity"] = eqty;
                             item["subtotal"] = eqty * price;
-                            dt.AcceptChanges();
+                            dt1.AcceptChanges();
                         }
                         else
                         {
-                                item = dt.NewRow();
+                                item = dt1.NewRow();
                                 item["product description"] = txtProdDesc.Text;
                                 item["quantity"] = txtQuantity.Text;
                                 item["price"] = price.ToString("#,0.00");
                                 item["subtotal"] = qty * price;
-                                dt.Rows.Add(item);
+                                dt1.Rows.Add(item);
                         }
 
                         double totalamount = 0;
-                        totalamount = Convert.ToDouble(dt.Compute("sum([subtotal])", ""));
+                        totalamount = Convert.ToDouble(dt1.Compute("sum([subtotal])", ""));
                         
                         txtAmount.Text = /*"P " +*/ totalamount.ToString("#,0.00");
                         lblTotal.Text = txtAmount.Text;
@@ -547,12 +550,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     txtStock.Text = "0";
                     txtProdPrice.Text = "";
 
-                    txtQuantityCount.Text = dvgOrderList.Rows.Count.ToString();
+                    txtQuantityCount.Text = dgvItemReplaced.Rows.Count.ToString();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + " HERE 1!!!!");
             }
             isRowUpdated = true;
         }
@@ -705,13 +708,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dtfromdvg.Columns.Add("SubTotal", typeof(float));
             try
             {
-                for (int row = 0; row < dvgOrderList.Rows.Count; row++)
+                for (int row = 0; row < dgvItemReplaced.Rows.Count; row++)
                 {
 
-                   string[] tempArr = new string[dvgOrderList.Columns.Count];
-                    for (int col = 0; col < dvgOrderList.Columns.Count; col++)
+                   string[] tempArr = new string[dgvItemReplaced.Columns.Count];
+                    for (int col = 0; col < dgvItemReplaced.Columns.Count; col++)
                     {
-                        tempArr[col] = dvgOrderList.Rows[row].Cells[col].Value.ToString();
+                        tempArr[col] = dgvItemReplaced.Rows[row].Cells[col].Value.ToString();
                     }
                     dtfromdvg.Rows.Add(tempArr);
                 }
@@ -792,17 +795,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
 
-                string[] itemDesc = new string[dvgOrderList.Rows.Count];
-                int[] qty = new int[dvgOrderList.Rows.Count];
-                double[] price = new double[dvgOrderList.Rows.Count];
+                string[] itemDesc = new string[dgvItemReplaced.Rows.Count];
+                int[] qty = new int[dgvItemReplaced.Rows.Count];
+                double[] price = new double[dgvItemReplaced.Rows.Count];
 
 
                 //itemdeets to pass on payment
-                for (int i = 0; i < dvgOrderList.Rows.Count; i++)
+                for (int i = 0; i < dgvItemReplaced.Rows.Count; i++)
                 {
-                    itemDesc[i] = dvgOrderList.Rows[i].Cells[0].Value.ToString();
-                    qty[i] = Convert.ToInt32(dvgOrderList.Rows[i].Cells[1].Value.ToString());
-                    price[i] = Convert.ToDouble(dvgOrderList.Rows[i].Cells[3].Value.ToString());
+                    itemDesc[i] = dgvItemReplaced.Rows[i].Cells[0].Value.ToString();
+                    qty[i] = Convert.ToInt32(dgvItemReplaced.Rows[i].Cells[1].Value.ToString());
+                    price[i] = Convert.ToDouble(dgvItemReplaced.Rows[i].Cells[3].Value.ToString());
                 }
 
 
@@ -856,8 +859,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             DialogResult dialog = MessageBox.Show("Do you want to Logout from the System?", "Log-out", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                dt.Clear();
-                dt.Columns.Clear();
+                dt1.Clear();
+                dt1.Columns.Clear();
                 Hide();
 
                 frmLogin l = new frmLogin();

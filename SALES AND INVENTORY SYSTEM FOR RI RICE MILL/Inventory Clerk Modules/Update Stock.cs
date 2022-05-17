@@ -17,11 +17,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 {
     public partial class frmUpdateStocks : Form
     {
-        private string id;
-        public string Id
+        private string quantity;
+        private string description;
+        private string batch_number;
+        public string Quantity
         {
-            get { return id; }
-            set { id = value; }
+            get { return quantity; }
+            set { quantity = value; }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
+        public string Batch_number
+        {
+            get { return batch_number; }
+            set { batch_number = value; }
         }
         public frmUpdateStocks()
         {
@@ -40,12 +54,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         public static string QueryDelete;
         public static string status = "Active";
         private static readonly Regex sWhitespace = new Regex(@"\s+");
+        public static int index;
 
         private void frmAddStocks_Load(object sender, EventArgs e)
         {
+            txtDescription.Text = Description;
+            txtBatchQuantity.Text = Quantity;
             dgvSKUList.Refresh();
-            autoCompleteDescription();
-            this.ActiveControl = txtViewItem;
+            displayExistingSKU();
+           // autoCompleteDescription();
+            //this.ActiveControl = txtViewItem;
 
             DateTime date = DateTime.Now;
             dtpMilledDate.Text = string.Format("{0:D}", date);
@@ -114,67 +132,57 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         public void DisplayItems()
         {
-            try
-            {
-                if (txtViewItem.Text == "" || txtViewItem.Text == null)
-                {
-                    ClearControls();
-                }
-                else
-                {
-                    con.Open();
-                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
+            //try
+            //{
+            //    if (txtViewItem.Text == "" || txtViewItem.Text == null)
+            //    {
+            //        ClearControls();
+            //    }
+            //    else
+            //    {
+            //        con.Open();
+            //        QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
 
 
-                    cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("@id", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@desc", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@price", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@crit", txtViewItem.Text);
-                    adapter = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    adapter.Fill(dt);
-                    if (dt.Rows.Count > 0)
-                    {
-                        //txtItemNumber.Text = dt.Rows[0]["ID"].ToString();
-                        txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                        //txtBarcode.Text = dt.Rows[0]["Barcode"].ToString();
-                        //txtPrice.Text = dt.Rows[0]["Price"].ToString();
-                        //txtUnit.Text = dt.Rows[0]["Unit"].ToString();
-                        //txtCriticalLevel.Text = dt.Rows[0]["Critical Level"].ToString();
-                        //txtSKU.Text = remVowel(dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Unit"].ToString());
-                    }
-                }
+            //        cmd = new SqlCommand(QuerySelect, con);
+            //        cmd.Parameters.AddWithValue("@id", txtViewItem.Text);
+            //        cmd.Parameters.AddWithValue("@desc", txtViewItem.Text);
+            //        cmd.Parameters.AddWithValue("@price", txtViewItem.Text);
+            //        cmd.Parameters.AddWithValue("@crit", txtViewItem.Text);
+            //        adapter = new SqlDataAdapter(cmd);
+            //        dt = new DataTable();
+            //        adapter.Fill(dt);
+            //        if (dt.Rows.Count > 0)
+            //        {
+            //            //txtItemNumber.Text = dt.Rows[0]["ID"].ToString();
+            //            txtDescription.Text = dt.Rows[0]["Description"].ToString();
+            //            //txtBarcode.Text = dt.Rows[0]["Barcode"].ToString();
+            //            //txtPrice.Text = dt.Rows[0]["Price"].ToString();
+            //            //txtUnit.Text = dt.Rows[0]["Unit"].ToString();
+            //            //txtCriticalLevel.Text = dt.Rows[0]["Critical Level"].ToString();
+            //            //txtSKU.Text = remVowel(dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Unit"].ToString());
+            //        }
+            //    }
                 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    con.Close();
+            //}
         }
 
         //add item
 
-        public void addStock()
+        public void updateStock()
         {
             con.Close();
 
-            if (String.IsNullOrEmpty(txtViewItem.Text))
-            {
-                MessageBox.Show("Enter Item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtViewItem.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtViewItem.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtViewItem.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtBatchQuantity.Text))
+            if (String.IsNullOrEmpty(txtBatchQuantity.Text))
             {
                 MessageBox.Show("Enter Batch Quantity!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtBatchQuantity.Focus();
@@ -186,63 +194,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             }
             else
             {
-                result = MessageBox.Show("Do you want to add this stock?", "Update Item", MessageBoxButtons.YesNo);
+                result = MessageBox.Show("Do you want to update this stock?", "Update Item", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     try
                     {
-                        int rows = dgvSKUList.Rows.Count;
-                        con.Close();
                         con.Open();
-                        if(rows > 0)
+                        QuerySelect  = "Select TOP "+index+ " SKU from tblInventories WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = '"+Description+ "') AND Batch_number = '" + Batch_number + "' AND status = 'Stock In' ORDER BY Inventory_id DESC";
+                        cmd = new SqlCommand(QuerySelect, con);
+                        cmd.Parameters.AddWithValue("@desc", Description);
+                        cmd.Parameters.AddWithValue("@batch_num", Batch_number);
+                        cmd = new SqlCommand(QuerySelect, con);
+                        adapter = new SqlDataAdapter(cmd);
+                        dt = new DataTable();
+                        adapter.Fill(dt);
+                        if(dt.Rows.Count > 0)
                         {
-                            int batch_number;
-                                    QuerySelect = "SELECT MAX(Batch_number) FROM tblInventories " +
-                                        "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc)";
-                            cmd = new SqlCommand(QuerySelect, con);
-                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                            adapter = new SqlDataAdapter(cmd);
-                            dt = new DataTable();
-                            adapter.Fill(dt);
-                            if(dt.Rows[0][0].ToString() == null || dt.Rows[0][0].ToString() == "")
+                            for(int i = 0; i < dt.Rows.Count; i++)
                             {
-                                batch_number = 1;
-                            }
-                            else
-                            {
-                                batch_number = Convert.ToInt32(dt.Rows[0][0].ToString()) + 1;
-                            }
-
-
-                            for (int i = 0; i < rows; i++)
-                            {
-                               QueryInsert = "INSERT INTO tblInventories " +
-                               "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id, Status) " +
-                               "VALUES ('"
-                               + batch_number + "', '"
-                               + dgvSKUList.Rows[i].Cells[0].Value.ToString() + "', @mDate, @sDate, '"
-                               + Id + "'," +
-                               "(SELECT Item_id  FROM tblItems WHERE Description = @desc), 'Stock In')";
-                                
-                                cmd = new SqlCommand(QueryInsert, con);
-                                cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                                cmd.Parameters.AddWithValue("@mDate", dtpMilledDate.Value.Date);
-                                cmd.Parameters.AddWithValue("@sDate", dtpStockInDate.Value.Date);
-
+                                QueryDelete = "DELETE FROM tblInventories WHERE SKU = '" + dt.Rows[i][0].ToString() + "' AND Batch_number = '"+Batch_number+"'";
+                                cmd = new SqlCommand(QueryDelete, con);
                                 cmd.ExecuteNonQuery();
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Generate SKU First!");
-                        }
-                        txtViewItem.Clear();
-                        txtBatchQuantity.Clear();
-                        dgvSKUList.Rows.Clear();
-                        dgvSKUList.Refresh();
-                        MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
 
+                                
+                            }
+                            MessageBox.Show("Stock updated!");
+                            this.Close();
+                        }
                     }
 
                     catch (Exception ex)
@@ -261,35 +239,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         public void autoCompleteDescription()
         {
-            con.Close();
-            QuerySelect = "SELECT [Description] FROM tblItems " +
-                "WHERE Description LIKE '"+txtViewItem.Text+"%'";
-            cmd = new SqlCommand(QuerySelect, con);
-            con.Open();
-            reader = cmd.ExecuteReader();
-            AutoCompleteStringCollection MyCollection = new AutoCompleteStringCollection();
-            while (reader.Read())
-            {
-                MyCollection.Add(reader.GetString(0));
-            }
-            txtViewItem.AutoCompleteCustomSource = MyCollection;
-            con.Close();
+            //con.Close();
+            //QuerySelect = "SELECT [Description] FROM tblItems " +
+            //    "WHERE Description LIKE '"+txtViewItem.Text+"%'";
+            //cmd = new SqlCommand(QuerySelect, con);
+            //con.Open();
+            //reader = cmd.ExecuteReader();
+            //AutoCompleteStringCollection MyCollection = new AutoCompleteStringCollection();
+            //while (reader.Read())
+            //{
+            //    MyCollection.Add(reader.GetString(0));
+            //}
+            //txtViewItem.AutoCompleteCustomSource = MyCollection;
+            //con.Close();
         }
 
 
-
-        private void txtViewItem_TextChange(object sender, EventArgs e)
-        {
-            if (txtViewItem.Text != "" || txtViewItem.Text != null)
-            {
-                DisplayItems();
-            }
-            else
-            {
-                ClearControls();
-            }
-            
-        }
 
         public static string ReplaceWhitespace(string input, string replacement)
         {
@@ -299,7 +264,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            addStock();
+            updateStock();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -345,83 +310,117 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         }
 
+        public void displayExistingSKU()
+        {
+            con.Close();
+            QuerySelect = "Select SKU from tblInventories " +
+                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc) " +
+                       "AND Batch_number = @batch_num AND status = 'Stock In'";
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@desc", Description);
+            cmd.Parameters.AddWithValue("@batch_num", Batch_number);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvSKUList.DataSource = dt;
+
+            dgvSKUList.Refresh();
+        }
+
         public void displaySKU()
         {
-            try
+            displayExistingSKU();
+            int existingQuantity = Convert.ToInt32(Quantity);
+            int updatedQuantity = Convert.ToInt32(txtBatchQuantity.Text);
+            index = existingQuantity - updatedQuantity;
+            for(int i = 0; i<index; i++)
             {
-                dgvSKUList.Rows.Clear();
-                dgvSKUList.Refresh();
-
-                if (txtDescription.Text == "")
-                {
-                    MessageBox.Show("Enter Item Description!");
-                }
-                else if (txtBatchQuantity.Text == "")
-                {
-                    MessageBox.Show("Enter Quantity!");
-                }
-                else
-                {
-                    string description;
-                    int quantity;
-
-                    description = txtDescription.Text;
-                    quantity = Convert.ToInt32(txtBatchQuantity.Text);
-
-                    dgvSKUList.ColumnCount = 1;
-                    //dgvSKUList.Columns[0].Name = "";
-                    dgvSKUList.Columns[0].Name = "SKU";
-
-                    QuerySelect = "Select SKU from tblInventories " +
-                        "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories) " +
-                        "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + description + "')";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    con.Open();
-                    reader = cmd.ExecuteReader();
-                    reader.Read();
-                    if (reader.HasRows)
-                    {
-
-                        string sku = reader.GetString(0);
-                        string lastCharacter = sku.Substring(sku.Length - 3);
-                        //string lastCharacter = (sku1 + sku2 + sku3).ToString();
-                        //MessageBox.Show(lastCharacter.ToString());
-                        int lastSKU = Convert.ToInt32(lastCharacter.ToString()) + 1;
-                        string newDesc = makeShortCode(description);
-                        for (int i = lastSKU; i < quantity + lastSKU; i++)
-                        {
-                            string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
-                            dgvSKUList.Rows.Add(row);
-                        }
-
-                    }
-                    else
-                    {
-                        string newDesc = makeShortCode(description);
-                        for (int i = 1; i <= quantity; i++)
-                        {
-                            string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
-                            dgvSKUList.Rows.Add(row);
-                        }
-                    }
-                    con.Close();
-
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
+                dgvSKUList.Rows.RemoveAt(dgvSKUList.Rows.Count - 1);
             }
             
+            //try
+            //{
+            //    dgvSKUList.Rows.Clear();
+            //    dgvSKUList.Refresh();
+
+            //    if (txtBatchQuantity.Text == "")
+            //    {
+            //        MessageBox.Show("Enter Quantity!");
+            //    }
+            //    else
+            //    {
+            //        string description;
+            //        int quantity;
+
+            //        description = txtDescription.Text;
+            //        quantity = Convert.ToInt32(txtBatchQuantity.Text);
+
+            //        dgvSKUList.ColumnCount = 1;
+            //        //dgvSKUList.Columns[0].Name = "";
+            //        dgvSKUList.Columns[0].Name = "SKU";
+
+            //        QuerySelect = "Select SKU from tblInventories " +
+            //            "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories) " +
+            //            "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + description + "')";
+            //        cmd = new SqlCommand(QuerySelect, con);
+            //        con.Open();
+            //        reader = cmd.ExecuteReader();
+            //        reader.Read();
+            //        if (reader.HasRows)
+            //        {
+
+            //            string sku = reader.GetString(0);
+            //            string lastCharacter = sku.Substring(sku.Length - 3);
+            //            //string lastCharacter = (sku1 + sku2 + sku3).ToString();
+            //            //MessageBox.Show(lastCharacter.ToString());
+            //            int lastSKU = Convert.ToInt32(lastCharacter.ToString()) + 1;
+            //            string newDesc = makeShortCode(description);
+            //            for (int i = lastSKU; i < quantity + lastSKU; i++)
+            //            {
+            //                string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
+            //                dgvSKUList.Rows.Add(row);
+            //            }
+
+            //        }
+            //        else
+            //        {
+            //            string newDesc = makeShortCode(description);
+            //            for (int i = 1; i <= quantity; i++)
+            //            {
+            //                string[] row = new string[] { ReplaceWhitespace(newDesc, "") + "" + i.ToString("000") };
+            //                dgvSKUList.Rows.Add(row);
+            //            }
+            //        }
+            //        con.Close();
+
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    con.Close();
+            //}
+
         }
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            displaySKU();
+            int existingQuantity = Convert.ToInt32(Quantity);
+            int updatedQuantity = Convert.ToInt32(txtBatchQuantity.Text);
+            if(existingQuantity < updatedQuantity)
+            {
+                MessageBox.Show("Please input lesser quantity", "Authorization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtBatchQuantity.Text = Quantity;
+            }
+            else
+            {
+               
+                displaySKU();
+            }
+           
         }
        
         private void bunifuButton2_Click(object sender, EventArgs e)

@@ -41,6 +41,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         public static string QueryUpdate;
         public static string QueryDelete;
         public static string status = "Active";
+        public static string adminPass;
+        public static bool isAllowed = false;
         public InventoryManagement()
         {
             InitializeComponent();
@@ -128,13 +130,63 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             f1.ShowDialog();
         }
 
+        void UpdateAuth()
+        {
+
+            if (String.IsNullOrEmpty(adminPass))
+            {
+                frmvoidauth voidauth = new frmvoidauth();
+                voidauth.ShowDialog();
+                adminPass = voidauth.adminPassword;
+            }
+            try
+            {
+                isAllowed = false;
+                con.Open();
+                QuerySelect = "SELECT * FROM tblUsers WHERE Password = '" + adminPass + "'";
+                cmd = new SqlCommand(QuerySelect, con);
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    isAllowed = true;
+                }
+                else
+                {
+                    isAllowed = false;
+                  
+                }
+                con.Close();
+                adminPass = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
         private void dgvStockList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvStockList[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
             {
-                updateNew.Id = dgvStockList[2, e.RowIndex].Value.ToString();
-                updateNew.ShowDialog();
+                UpdateAuth();
+                if (isAllowed)
+                {
+                    updateNew.Description = dgvStockList[1, e.RowIndex].Value.ToString();
+                    updateNew.Batch_number = dgvStockList[2, e.RowIndex].Value.ToString();
+                    updateNew.Quantity = dgvStockList[3, e.RowIndex].Value.ToString();
+                    updateNew.ShowDialog();
             }
+            else
+            {
+                MessageBox.Show("Wrong Password! Try Again", "Authorization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
         }
     }
 }
