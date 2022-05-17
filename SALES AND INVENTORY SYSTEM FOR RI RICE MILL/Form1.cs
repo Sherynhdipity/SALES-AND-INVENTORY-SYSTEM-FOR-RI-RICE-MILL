@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
+namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class frmTransactionNumber : Form
+    public partial class Form1 : Form
     {
-        public frmTransactionNumber()
+        public Form1()
         {
             InitializeComponent();
         }

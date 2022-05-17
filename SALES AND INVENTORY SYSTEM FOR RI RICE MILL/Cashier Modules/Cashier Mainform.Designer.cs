@@ -155,6 +155,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.lblDate.Text = "Sunday, January 1, 1998";
             this.lblDate.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblDate.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblDate.Click += new System.EventHandler(this.lblDate_Click);
             // 
             // lblUserRole
             // 

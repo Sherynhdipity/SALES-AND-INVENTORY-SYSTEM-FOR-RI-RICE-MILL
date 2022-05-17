@@ -46,6 +46,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             dgvSKUList.Refresh();
             autoCompleteDescription();
             this.ActiveControl = txtViewItem;
+
+            DateTime date = DateTime.Now;
+            dtpMilledDate.Text = string.Format("{0:D}", date);
+            dtpStockInDate.Text = string.Format("{0:D}", date);
         }
 
         public void ClearControls()

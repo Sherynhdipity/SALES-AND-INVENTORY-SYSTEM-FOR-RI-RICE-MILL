@@ -35,6 +35,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         public string Description { get; set; }
 
         public string Order_details_id { get; set; }
+        public string Price { get; set; }
         private void lblDescription_Click(object sender, EventArgs e)
         {
 
@@ -49,6 +50,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         {
             cmbRemarks.SelectedIndex = 0;
             DisplaySKU();
+
+            DateTime date = DateTime.Now;
+            dtpReturnDate.Text = string.Format("{0:D}", date);
         }
 
         public void DisplaySKU()
@@ -58,7 +62,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             {
                 con.Close();
                 con.Open();
-                QuerySelect = "SELECT SKU FROM OrderDetailsView WHERE Order_details_id = @id";
+                //QuerySelect = "SELECT SKU FROM OrderDetailsView WHERE Order_details_id = @id";
+                QuerySelect = "SELECT SKU FROM tblInventories WHERE SKU IN(SELECT SKU FROM tblOrderDetails WHERE Order_id = (SELECT OR_number FROM tblOrders WHERE Order_id = @id)) AND Status = 'Stock Out'";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@id", Order_details_id);
                 //cmd.Parameters.AddWithValue("@desc", Description);
@@ -145,7 +150,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                 {
                                     con.Close();
                                 }
-
+                            con.Open();
+                            QuerySelect = "SELECT Price FROM tblItems WHERE Item_id = (SELECT Item_id FROM tblInventories WHERE SKu = @sku)";
+                            cmd = new SqlCommand(QuerySelect, con);
+                            cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                            reader = cmd.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    Price = reader["Price"].ToString();
+                                }
+                            }
+                            reader.Close();
+                            con.Close();
                             MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
                             this.Close();
                         }
@@ -166,22 +184,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                 {
                                     con.Close();
                                     con.Open();
-
-
                                     QueryInsert = "Insert into tblReturns (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
                                         "Values(@id, @sku, @qty, @remarks, @date)";
                                     cmd = new SqlCommand(QueryInsert, con);
-                                    cmd.Parameters.AddWithValue("@id", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
-                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[2].Value.ToString());
-                                    cmd.Parameters.AddWithValue("@qty", dgvOrderDetails.Rows[i].Cells[3].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@id", Order_details_id);
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@qty", '1');
                                     cmd.Parameters.AddWithValue("@remarks", "DAMAGED");
                                     cmd.Parameters.AddWithValue("@date", dtpReturnDate.Value.Date);
                                     cmd.ExecuteNonQuery();
-
-
-
-
-                                }
+                            }
                                 catch (Exception ex)
                                 {
                                     MessageBox.Show(ex.Message);
@@ -194,9 +206,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
                             }
                         }
+
                         MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
-
-
                         this.Close();
 
                     }

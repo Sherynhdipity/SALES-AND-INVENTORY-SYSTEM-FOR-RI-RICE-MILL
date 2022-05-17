@@ -97,16 +97,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     while (reader.Read())
                     {
-                        ORNo = reader["id"].ToString();
-                        count = int.Parse(ORNo) + 1;
-                        txtORNumber.Text = count.ToString().PadLeft(4, '0');
+                        if (reader["id"].ToString() != "")
+                        {
+                            ORNo = reader["id"].ToString();
+                            count = int.Parse(ORNo) + 1;
+                            txtORNumber.Text = count.ToString().PadLeft(4, '0');
+                        }
+                        else
+                        {
+                            count = 1;
+                            txtORNumber.Text = count.ToString().PadLeft(4, '0');
+                        }
+                        
                     }
                 }
-                else
-                {
-                    ORNo = OR + "1";
-                    txtORNumber.Text = ORNo;
-                }
+                
 
                 reader.Close();
                 con.Close();

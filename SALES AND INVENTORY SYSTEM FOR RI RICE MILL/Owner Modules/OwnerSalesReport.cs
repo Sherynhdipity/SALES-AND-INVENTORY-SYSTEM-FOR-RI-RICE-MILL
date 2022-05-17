@@ -50,7 +50,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = "Select * from SalesReportView where [Order Date] between @FromDate and @ToDate";
+                QuerySelect = "Select [Order Date], Description, [Total Cost Price], [Returned Sales], [Gross Sales] from SalesReportView where [Order Date] between @FromDate and @ToDate";
                     
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -104,6 +104,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
             }
 
+
+        }
+
+        private void bunifuLabel4_Click(object sender, EventArgs e)
+        {
 
         }
     }

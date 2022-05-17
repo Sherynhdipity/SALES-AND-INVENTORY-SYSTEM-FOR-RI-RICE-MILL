@@ -29,11 +29,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOwnerSalesReport));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOwnerSalesReport));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -44,6 +48,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnPrintReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvSalesOwnerReport = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.txtItemDesc = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOwnerReport)).BeginInit();
@@ -51,6 +57,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.bunifuLabel4);
+            this.groupBox1.Controls.Add(this.txtItemDesc);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.bunifuLabel2);
             this.groupBox1.Controls.Add(this.dtpToDate);
@@ -85,7 +93,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
-            this.btnSearch.Location = new System.Drawing.Point(633, 37);
+            this.btnSearch.Location = new System.Drawing.Point(633, 14);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Rotation = 0;
             this.btnSearch.ShowActiveImage = true;
@@ -107,7 +115,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel2.Location = new System.Drawing.Point(335, 54);
+            this.bunifuLabel2.Location = new System.Drawing.Point(335, 31);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(67, 18);
@@ -135,7 +143,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dtpToDate.IconColor = System.Drawing.SystemColors.Control;
             this.dtpToDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
             this.dtpToDate.LeftTextMargin = 5;
-            this.dtpToDate.Location = new System.Drawing.Point(408, 48);
+            this.dtpToDate.Location = new System.Drawing.Point(408, 25);
             this.dtpToDate.MinimumSize = new System.Drawing.Size(4, 32);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(182, 32);
@@ -149,7 +157,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(21, 54);
+            this.bunifuLabel1.Location = new System.Drawing.Point(21, 31);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(88, 18);
@@ -177,7 +185,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dtpFromDate.IconColor = System.Drawing.SystemColors.Control;
             this.dtpFromDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
             this.dtpFromDate.LeftTextMargin = 5;
-            this.dtpFromDate.Location = new System.Drawing.Point(115, 48);
+            this.dtpFromDate.Location = new System.Drawing.Point(115, 25);
             this.dtpFromDate.MinimumSize = new System.Drawing.Size(4, 32);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(182, 32);
@@ -369,6 +377,98 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvSalesOwnerReport.TabIndex = 133;
             this.dgvSalesOwnerReport.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
+            // txtItemDesc
+            // 
+            this.txtItemDesc.AcceptsReturn = false;
+            this.txtItemDesc.AcceptsTab = false;
+            this.txtItemDesc.AnimationSpeed = 200;
+            this.txtItemDesc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtItemDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtItemDesc.AutoSizeHeight = true;
+            this.txtItemDesc.BackColor = System.Drawing.Color.Transparent;
+            this.txtItemDesc.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtItemDesc.BackgroundImage")));
+            this.txtItemDesc.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtItemDesc.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtItemDesc.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtItemDesc.BorderColorIdle = System.Drawing.Color.Silver;
+            this.txtItemDesc.BorderRadius = 1;
+            this.txtItemDesc.BorderThickness = 1;
+            this.txtItemDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtItemDesc.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtItemDesc.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtItemDesc.DefaultText = "";
+            this.txtItemDesc.FillColor = System.Drawing.Color.White;
+            this.txtItemDesc.HideSelection = true;
+            this.txtItemDesc.IconLeft = null;
+            this.txtItemDesc.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtItemDesc.IconPadding = 10;
+            this.txtItemDesc.IconRight = null;
+            this.txtItemDesc.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtItemDesc.Lines = new string[0];
+            this.txtItemDesc.Location = new System.Drawing.Point(163, 63);
+            this.txtItemDesc.MaxLength = 50;
+            this.txtItemDesc.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtItemDesc.Modified = false;
+            this.txtItemDesc.Multiline = false;
+            this.txtItemDesc.Name = "txtItemDesc";
+            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtItemDesc.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtItemDesc.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtItemDesc.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.Silver;
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtItemDesc.OnIdleState = stateProperties4;
+            this.txtItemDesc.Padding = new System.Windows.Forms.Padding(3);
+            this.txtItemDesc.PasswordChar = '\0';
+            this.txtItemDesc.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtItemDesc.PlaceholderText = "";
+            this.txtItemDesc.ReadOnly = false;
+            this.txtItemDesc.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtItemDesc.SelectedText = "";
+            this.txtItemDesc.SelectionLength = 0;
+            this.txtItemDesc.SelectionStart = 0;
+            this.txtItemDesc.ShortcutsEnabled = true;
+            this.txtItemDesc.Size = new System.Drawing.Size(352, 39);
+            this.txtItemDesc.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtItemDesc.TabIndex = 120;
+            this.txtItemDesc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtItemDesc.TextMarginBottom = 0;
+            this.txtItemDesc.TextMarginLeft = 3;
+            this.txtItemDesc.TextMarginTop = 1;
+            this.txtItemDesc.TextPlaceholder = "";
+            this.txtItemDesc.UseSystemPasswordChar = false;
+            this.txtItemDesc.WordWrap = true;
+            // 
+            // bunifuLabel4
+            // 
+            this.bunifuLabel4.AllowParentOverrides = false;
+            this.bunifuLabel4.AutoEllipsis = false;
+            this.bunifuLabel4.CursorType = null;
+            this.bunifuLabel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.bunifuLabel4.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel4.Location = new System.Drawing.Point(21, 73);
+            this.bunifuLabel4.Name = "bunifuLabel4";
+            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel4.Size = new System.Drawing.Size(136, 18);
+            this.bunifuLabel4.TabIndex = 121;
+            this.bunifuLabel4.Text = "Item Description:";
+            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.bunifuLabel4.Click += new System.EventHandler(this.bunifuLabel4_Click);
+            // 
             // frmOwnerSalesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,5 +505,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private Bunifu.UI.WinForms.BunifuImageButton btnSearch;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPrintReport;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvSalesOwnerReport;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
+        public Bunifu.UI.WinForms.BunifuTextBox txtItemDesc;
     }
 }

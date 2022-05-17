@@ -29,24 +29,45 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string transTotal;
         public Boolean isRowUpdated = false;
         public bool isReturn;
+        public string price;
 
 
         public frmReturnTerminal()
         {
             InitializeComponent();
             transNum.FormClosed += new FormClosedEventHandler(Form_Closed);
+            sku.FormClosed += new FormClosedEventHandler(Form_Closed1);
         }
 
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
             frmSearchTransNo frm = (frmSearchTransNo)sender;
+            // dvgOrderList.Rows.Clear();
             DisplayReturn();
+            btnSearchProduct.Enabled = true;
            // btnNewTrans_Click((object)sender, (EventArgs)e);
             //btnSearchProduct_Click((object)sender, (EventArgs)e);
         }
 
+        void Form_Closed1(object sender, FormClosedEventArgs e)
+        {
+            dvgOrderList.DataSource = null;
+            lblTotal.Text = "0.00";
+            lblTransDate.Text = "";
+
+            price = sku.Price;
+            
+            //QuerySelect = "SELECT";
+
+
+            //frmReturnProductLookup productLookup = new frmReturnProductLookup();
+           // productLookup.productPrice = ??
+           
+        }
+
         public void DisplayReturn()
         {
+            dvgOrderList.Update();
             dvgOrderList.Refresh();
             transaction_number = transNum.Transaction_Number;
             //datagrid
@@ -54,7 +75,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
                 con.Open();
-                QuerySelect = "SELECT Transaction_number as 'Transaction Number', Description, Price, Quantity, Subtotal, Order_details_id as 'Id' FROM ReturnTransactionView WHERE Transaction_number = @trans";
+                //QuerySelect = "SELECT Transaction_number as 'Transaction Number', Description, Price, Quantity, Subtotal, Order_details_id as 'Id' FROM ReturnTransactionView WHERE Transaction_number = @trans";
+                QuerySelect = "SELECT Order_id as 'ID', Transaction_number as 'Transaction Number', Quantity, Total_cost as 'Total' FROM tblOrders WHERE Transaction_number = @trans";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@trans", transaction_number);
 
@@ -355,7 +377,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblDayDate.Text = string.Format("{0:D}", date);
         }
 
-        private void frmSalesManagement_Load(object sender, EventArgs e)
+        private void frmReturnTerminal_Load(object sender, EventArgs e)
         {
             //DatetimeTimer
             timer1.Enabled = true;
@@ -736,28 +758,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
-            frmProductLookup productLookup = new frmProductLookup();
+            frmReturnProductLookup productLookup = new frmReturnProductLookup(this);
+            //productLookup.price = price;
             productLookup.ShowDialog();
-            if(isReturn)
-            {
-                isReturn = true;
-            }
-            else
-            {
-                isReturn = false;
-            }
-            if(productLookup.quantity.ToString() != "")
+            //if(isReturn)
+            //{
+            //    isReturn = true;
+            //}
+            //else
+            //{
+            //    isReturn = false;
+            //}
+            if (productLookup.quantity.ToString() != "")
             {
                 txtProdDesc.Text = productLookup.productDesc;
                 txtProdPrice.Text = productLookup.productPrice;
                 txtQuantity.Text = productLookup.quantity.ToString();
                 txtStock.Text = productLookup.stock;
 
-               
+
                 btnAdd_Click((object)sender, (EventArgs)e);
             }
-          
-          
+
+
         }
 
         private void btnPay_Click(object sender, EventArgs e)
@@ -869,9 +892,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void dvgOrderList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
-            sku.Transaction_Number = dvgOrderList.CurrentRow.Cells["Transaction Number"].Value.ToString();
-            sku.Order_details_id = dvgOrderList.CurrentRow.Cells["Id"].Value.ToString();
+            //sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
+            //sku.Transaction_Number = dvgOrderList.CurrentRow.Cells["Transaction Number"].Value.ToString();
+            sku.Order_details_id = dvgOrderList.CurrentRow.Cells["ID"].Value.ToString();
             sku.ShowDialog();            
         }
 
