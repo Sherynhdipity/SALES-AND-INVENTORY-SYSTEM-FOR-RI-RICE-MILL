@@ -209,13 +209,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             //get SKU
                             con.Open();
-                            SKU = new string[total_quantity];
-                            DESCRIPTION = new string[total_quantity];
+                          
+                            DESCRIPTION = new string[SKU.Length];
                             int ctr = 0;
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
-                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " SKU, Item_id FROM tblInventories" +
-                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
+                                QuerySelect = "SELECT " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " Item_id FROM tblInventories" +
+                                   " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
                                 cmd = new SqlCommand(QuerySelect, con);
 
                                 cmd.Parameters.AddWithValue("@desc", dtFromSalesMgt.Rows[i][0].ToString());
@@ -224,8 +224,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 adapter.Fill(dtNew);
                                 for (int j =0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
                                 {
-                                    SKU[ctr] = dtNew.Rows[j][0].ToString();
-                                    DESCRIPTION[ctr] = dtNew.Rows[j][1].ToString();
+                                    
+                                     DESCRIPTION[ctr] = dtNew.Rows[j][0].ToString();
 
                                     ctr++;
 
@@ -266,7 +266,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+                            MessageBox.Show(ex.Message + "\n" + ex.StackTrace + " here!!");
                         }
                         finally
                         {
@@ -480,83 +480,83 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 reader.Read();
                 if (reader.HasRows)
                 {
-                    //if(isReturn)
-                    //{
-                    //    amount = Convert.ToDouble(txtAmount.Text);
-                    //    //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                    //    //discount_total = amount * discount;
-                    //    total = amount;
-                    //    txtAmount.Text = total.ToString();
-                    //}
-                    //else
-                    //{
-                    //    dt.Clear();
-                    //    customerID = reader.GetInt32(0);
-                    //    QuerySelect = "SELECT * FROM viewDiscount WHERE [Customer ID] = '" + customerID + "'";
-                    //    cmd = new SqlCommand(QuerySelect, con);
-                    //    con.Close();
-                    //    con.Open();
-                    //    adapter = new SqlDataAdapter(cmd);
-                    //    adapter.Fill(dt);
-                    //    cmd.ExecuteNonQuery();
-                    //    con.Close();
+                    if (isReturn)
+                    {
+                        amount = Convert.ToDouble(txtAmount.Text);
+                        //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        //discount_total = amount * discount;
+                        total = amount;
+                        txtAmount.Text = total.ToString();
+                    }
+                    else
+                    {
+                        dt.Clear();
+                        customerID = reader.GetInt32(0);
+                        QuerySelect = "SELECT * FROM viewDiscount WHERE [Customer ID] = '" + customerID + "'";
+                        cmd = new SqlCommand(QuerySelect, con);
+                        con.Close();
+                        con.Open();
+                        adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
 
-                    //    //DiscountCodeTextbox
+                        //DiscountCodeTextbox
 
-                    //    if (dt.Rows[0][1].ToString() == "SC01")
-                    //    {
-                    //        lblPWDORSC.Visible = true;
-                    //        lblPWDORSC.Text = "SC #:";
-                    //        txtPWDOSCA.Visible = true;
+                        //if (dt.Rows[0][1].ToString() == "SC01")
+                        //{
+                        //    lblPWDORSC.Visible = true;
+                        //    lblPWDORSC.Text = "SC #:";
+                        //    txtPWDOSCA.Visible = true;
 
-                    //        amount = Convert.ToDouble(txtAmount.Text);
-                    //        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                    //        discount_total = amount * discount;
-                    //        total = amount - discount_total;
-                    //        txtAmount.Text = total.ToString();
-                    //        txtDiscountAmount.Text = discount_total.ToString();
-                    //        txtDiscountPer.Text = "20%";
-                    //    }
-                    //    else if (dt.Rows[0][1].ToString() == "PWD01")
-                    //    {
-                    //        lblPWDORSC.Visible = true;
-                    //        lblPWDORSC.Text = "PWD #:";
-                    //        txtPWDOSCA.Visible = true;
+                        //    amount = Convert.ToDouble(txtAmount.Text);
+                        //    discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        //    discount_total = amount * discount;
+                        //    total = amount - discount_total;
+                        //    txtAmount.Text = total.ToString();
+                        //    txtDiscountAmount.Text = discount_total.ToString();
+                        //    txtDiscountPer.Text = "20%";
+                        //}
+                        //else if (dt.Rows[0][1].ToString() == "PWD01")
+                        //{
+                        //    lblPWDORSC.Visible = true;
+                        //    lblPWDORSC.Text = "PWD #:";
+                        //    txtPWDOSCA.Visible = true;
 
-                    //        amount = Convert.ToDouble(txtAmount.Text);
-                    //        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                    //        discount_total = amount * discount;
-                    //        total = amount - discount_total;
-                    //        txtAmount.Text = total.ToString();
-                    //        txtDiscountAmount.Text = "20%";
-                    //    }
-                    //    else if (dt.Rows[0][1].ToString() == "LC01")
-                    //    {
-                    //        lblPWDORSC.Visible = false;
-                    //        txtPWDOSCA.Visible = false;
+                        //    amount = Convert.ToDouble(txtAmount.Text);
+                        //    discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        //    discount_total = amount * discount;
+                        //    total = amount - discount_total;
+                        //    txtAmount.Text = total.ToString();
+                        //    txtDiscountAmount.Text = "20%";
+                        //}
+                        //else if (dt.Rows[0][1].ToString() == "LC01")
+                        //{
+                        //    lblPWDORSC.Visible = false;
+                        //    txtPWDOSCA.Visible = false;
 
-                    //        amount = Convert.ToDouble(txtAmount.Text);
-                    //        discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                    //        discount_total = amount * discount;
-                    //        total = amount - discount_total;
-                    //        txtAmount.Text = total.ToString();
-                    //        txtDiscountAmount.Text = "10%";
-                    //    }
-                    //    else if (dt.Rows[0][1].ToString() == "NC01")
-                    //    {
-                    //        loyaltyCheck();
-                    //    }
+                        //    amount = Convert.ToDouble(txtAmount.Text);
+                        //    discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        //    discount_total = amount * discount;
+                        //    total = amount - discount_total;
+                        //    txtAmount.Text = total.ToString();
+                        //    txtDiscountAmount.Text = "10%";
+                        //}
+                        //else if (dt.Rows[0][1].ToString() == "NC01")
+                        //{
+                        //    loyaltyCheck();
+                        //}
 
 
-                    //    //recompute amount
+                        //recompute amount
 
-                    //    //amount = Convert.ToDouble(txtAmount.Text);
-                    //    //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                    //    //discount_total = amount * discount;
-                    //    //total = amount - discount_total;
-                    //    //txtAmount.Text = total.ToString();
-                    //}
+                        //amount = Convert.ToDouble(txtAmount.Text);
+                        //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+                        //discount_total = amount * discount;
+                        //total = amount - discount_total;
+                        //txtAmount.Text = total.ToString();
+                    }
 
                 }
 
@@ -570,78 +570,78 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public void loyaltyCheck()  
         {
-            double totalCost;
+            //double totalCost;
 
-            //check for loyal customer*
-            QuerySelect = "SELECT total_transaction, total_cost FROM tblDiscounts WHERE Discount_code = 'LC01'";
-            cmd = new SqlCommand(QuerySelect, con);
-            con.Open();
-            adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-            cmd.ExecuteNonQuery();
-            int trans = Convert.ToInt32(dt.Rows[1][3].ToString());
-            double cost = Convert.ToDouble(dt.Rows[1][4].ToString());
-            con.Close();
+            ////check for loyal customer*
+            //QuerySelect = "SELECT total_transaction, total_cost FROM tblDiscounts WHERE Discount_code = 'LC01'";
+            //cmd = new SqlCommand(QuerySelect, con);
+            //con.Open();
+            //adapter = new SqlDataAdapter(cmd);
+            //adapter.Fill(dt);
+            //cmd.ExecuteNonQuery();
+            //int trans = Convert.ToInt32(dt.Rows[1][3].ToString());
+            //double cost = Convert.ToDouble(dt.Rows[1][4].ToString());
+            //con.Close();
 
 
-            string QuerySelect1 = "SELECT COUNT(User_id), SUM(Total_cost) as 'Sum' From tblOrders WHERE [Customer_id] = '" + customerID + "'";
-            SqlCommand cmd1 = new SqlCommand(QuerySelect1, con);
-            con.Open();
-            SqlDataAdapter adapter1 = new SqlDataAdapter(cmd1);
-            DataTable newDt = new DataTable();
-            adapter1.Fill(newDt);
-            cmd1.ExecuteNonQuery();
-            con.Close();
-            int transactionCount = Convert.ToInt32(newDt.Rows[0][0].ToString());
-            if (newDt.Rows[0][1].ToString() == "")
-            {
-                totalCost = 0;
-            }
-            else
-            {
-                totalCost = Convert.ToDouble(newDt.Rows[0][1].ToString());
-            }
+            //string QuerySelect1 = "SELECT COUNT(User_id), SUM(Total_cost) as 'Sum' From tblOrders WHERE [Customer_id] = '" + customerID + "'";
+            //SqlCommand cmd1 = new SqlCommand(QuerySelect1, con);
+            //con.Open();
+            //SqlDataAdapter adapter1 = new SqlDataAdapter(cmd1);
+            //DataTable newDt = new DataTable();
+            //adapter1.Fill(newDt);
+            //cmd1.ExecuteNonQuery();
+            //con.Close();
+            //int transactionCount = Convert.ToInt32(newDt.Rows[0][0].ToString());
+            //if (newDt.Rows[0][1].ToString() == "")
+            //{
+            //    totalCost = 0;
+            //}
+            //else
+            //{
+            //    totalCost = Convert.ToDouble(newDt.Rows[0][1].ToString());
+            //}
             
-            if (transactionCount >= trans && totalCost >= cost)
-            {
-                string QuerySelect2 = "SELECT Discount_Percentage FROM tblDiscounts";
-                SqlCommand cmd2 = new SqlCommand(QuerySelect2, con);
-                con.Open();
-                SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
-                DataTable newDt1 = new DataTable();
-                adapter2.Fill(newDt1);
-                cmd2.ExecuteNonQuery();
-                con.Close();
-                double loyal_customer = Convert.ToDouble(newDt1.Rows[0][0].ToString());
-                double normal_customer = Convert.ToDouble(newDt1.Rows[1][0].ToString());
-                double pwd = Convert.ToDouble(newDt1.Rows[2][0].ToString());
-                double senior = Convert.ToDouble(newDt1.Rows[3][0].ToString());
+            //if (transactionCount >= trans && totalCost >= cost)
+            //{
+            //    string QuerySelect2 = "SELECT Discount_Percentage FROM tblDiscounts";
+            //    SqlCommand cmd2 = new SqlCommand(QuerySelect2, con);
+            //    con.Open();
+            //    SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+            //    DataTable newDt1 = new DataTable();
+            //    adapter2.Fill(newDt1);
+            //    cmd2.ExecuteNonQuery();
+            //    con.Close();
+            //    double loyal_customer = Convert.ToDouble(newDt1.Rows[0][0].ToString());
+            //    double normal_customer = Convert.ToDouble(newDt1.Rows[1][0].ToString());
+            //    double pwd = Convert.ToDouble(newDt1.Rows[2][0].ToString());
+            //    double senior = Convert.ToDouble(newDt1.Rows[3][0].ToString());
 
-                //update discount status of customer
-                QueryUpdate = "Update tblCustomers SET Discount_code = 'LC01' WHERE Customer_id = '"+customerID+"'";
-                cmd = new SqlCommand(QueryUpdate, con);
-                con.Open();
-                cmd.ExecuteNonQuery();
+            //    //update discount status of customer
+            //    QueryUpdate = "Update tblCustomers SET Discount_code = 'LC01' WHERE Customer_id = '"+customerID+"'";
+            //    cmd = new SqlCommand(QueryUpdate, con);
+            //    con.Open();
+            //    cmd.ExecuteNonQuery();
 
 
-                MessageBox.Show(txtViewCustomer.Text + " is now a loyal customer. Discount is applied.");
-                amount = Convert.ToDouble(txtAmount.Text);
-                discount = Convert.ToDouble(loyal_customer);
-                discount_total = amount * discount;
-                total = amount - discount_total;
-                txtAmount.Text = total.ToString();
-                txtDiscountAmount.Text = discount_total.ToString();
-            }
-            else
-            {
-                amount = Convert.ToDouble(txtAmount.Text);
-                //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
-                //discount_total = amount * discount;
-                total = amount;
-                txtAmount.Text = total.ToString();
-                txtDiscountAmount.Text = discount_total.ToString();
-            }
-            con.Close();
+            //    MessageBox.Show(txtViewCustomer.Text + " is now a loyal customer. Discount is applied.");
+            //    amount = Convert.ToDouble(txtAmount.Text);
+            //    discount = Convert.ToDouble(loyal_customer);
+            //    discount_total = amount * discount;
+            //    total = amount - discount_total;
+            //    txtAmount.Text = total.ToString();
+            //    txtDiscountAmount.Text = discount_total.ToString();
+            //}
+            //else
+            //{
+            //    amount = Convert.ToDouble(txtAmount.Text);
+            //    //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
+            //    //discount_total = amount * discount;
+            //    total = amount;
+            //    txtAmount.Text = total.ToString();
+            //    txtDiscountAmount.Text = discount_total.ToString();
+            //}
+            //con.Close();
         }
 
         private void btnGenerateOR_Click(object sender, EventArgs e)

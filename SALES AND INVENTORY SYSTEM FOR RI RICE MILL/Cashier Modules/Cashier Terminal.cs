@@ -27,7 +27,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string transTotal;
         public Boolean isRowUpdated = false;
         public bool isReturn;
-
+        public string[] SKU;
 
         public frmSalesManagement()
         {
@@ -368,6 +368,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             try
             {
                 //if (txtProdDesc.Text == "")
@@ -473,9 +474,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
         private void recompute(double totalamount)
         {
+            
 
-            txtVatable.Text = (totalamount / 1.12).ToString("#,0.00");
+            
             txtVatAmount.Text = (totalamount * 0.12).ToString("#,0.00");
+            txtVatable.Text = (totalamount - float.Parse(txtVatAmount.Text)).ToString("#,0.00");
             totalamount = totalamount + (totalamount * 0.12);
             lblTotal.Text = txtAmount.Text;
             //lblTotal.Text = totalamount.ToString("#,0.00");
@@ -687,6 +690,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtProdPrice.Text = productLookup.productPrice;
                 txtQuantity.Text = productLookup.quantity.ToString();
                 txtStock.Text = productLookup.stock;
+                SKU = productLookup.sku;
 
                
                 btnAdd_Click((object)sender, (EventArgs)e);
@@ -730,6 +734,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 payment.Price = price;
                 payment.tax = txtVatAmount.Text;
                 payment.vatable = txtVatable.Text;
+                payment.SKU = SKU;
 
 
                 DialogResult res = payment.ShowDialog();

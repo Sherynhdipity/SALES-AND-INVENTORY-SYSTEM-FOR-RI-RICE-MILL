@@ -41,14 +41,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public int quantity { get; set; }
         public string stock { get; set; }
+        public string[] sku { get; set; }
 
 
-    //Display ProductData in DataGridView  
-    public void DisplayProductList()
+        //Display ProductData in DataGridView  
+        public void DisplayProductList()
         {
 
             con.Open();
-            QuerySelect = "SELECT Description, Price, Stock FROM ItemLookUp";
+            QuerySelect = "SELECT Description, Batch_number, Price, Stock FROM ItemLookUp";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -68,7 +69,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
                 con.Open();
-                QuerySelect = "SELECT Description, Price, Stock FROM  ItemLookup WHERE (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR (Stock LIKE '%' + @stock + '%')";
+                QuerySelect = "SELECT Description, Batch_number, Price, Stock FROM  ItemLookup WHERE (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR (Stock LIKE '%' + @stock + '%')";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@desc", txtSearchProduct.Text);
                 cmd.Parameters.AddWithValue("@price", txtSearchProduct.Text);
@@ -122,7 +123,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 frmPLQuant qty = new frmPLQuant();
                 //qty.product_Code = Convert.ToString(selectedRow.Cells["Barcode"].Value);
                 qty.product_Desc = Convert.ToString(selectedRow.Cells["Description"].Value);
-              //  qty.product_Variety = Convert.ToString(selectedRow.Cells["Product Variety"].Value);
+                qty.Batch_number = Convert.ToString(selectedRow.Cells["Batch_number"].Value);
+                //  qty.product_Variety = Convert.ToString(selectedRow.Cells["Product Variety"].Value);
                 qty.product_Price = Convert.ToString(selectedRow.Cells["Price"].Value);
                 qty.Product_Stock = temp_stock;
                 qty.ShowDialog();
@@ -134,6 +136,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     productPrice = qty.product_Price;
                     quantity = qty.Product_Quantity;
                     stock = qty.Product_Stock;
+                    sku = qty.SKU;
                     this.Close();
                 }
                 

@@ -63,7 +63,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 con.Close();
                 con.Open();
                 //QuerySelect = "SELECT SKU FROM OrderDetailsView WHERE Order_details_id = @id";
-                QuerySelect = "SELECT SKU FROM tblInventories WHERE SKU IN(SELECT SKU FROM tblOrderDetails WHERE Order_id = (SELECT OR_number FROM tblOrders WHERE Order_id = @id)) AND Status = 'Stock Out'";
+                QuerySelect = "SELECT SKU FROM tblInventories WHERE SKU IN(SELECT SKU FROM tblOrderDetails WHERE Order_id = (SELECT Order_id FROM tblOrders WHERE Order_id = @id)) AND Status = 'Stock Out'";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@id", Order_details_id);
                 //cmd.Parameters.AddWithValue("@desc", Description);
@@ -103,7 +103,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                     {
                         for (int i = 0; i < selectedRows; i++)
                         {
-                            result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+                            
                             if (result == DialogResult.Yes)
                             {
                                 try
@@ -164,11 +164,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             }
                             reader.Close();
                             con.Close();
+                     
                             MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
-                            this.Close();
-                        }
 
-                        }
+                            this.Close();
+                            }
+
+                        result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+
+
+
+                    }
 
                         
 

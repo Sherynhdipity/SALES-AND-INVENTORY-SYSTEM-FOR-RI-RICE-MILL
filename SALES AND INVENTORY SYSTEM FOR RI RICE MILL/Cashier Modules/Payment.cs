@@ -209,12 +209,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             //get SKU
                             con.Open();
-                            SKU = new string[total_quantity];
-                            DESCRIPTION = new string[total_quantity];
+                            DESCRIPTION = new string[SKU.Length];
+                            //SKU = new string[total_quantity];
+                            //DESCRIPTION = new string[total_quantity];
                             int ctr = 0;
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
-                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " SKU, Item_id FROM tblInventories" +
+                                QuerySelect = "SELECT " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " Item_id FROM tblInventories" +
                                     " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
                                 cmd = new SqlCommand(QuerySelect, con);
 
@@ -222,14 +223,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 adapter = new SqlDataAdapter(cmd);
                                 DataTable dtNew = new DataTable();
                                 adapter.Fill(dtNew);
-                                for (int j =0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
+                                for (int j = 0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
                                 {
-                                    SKU[ctr] = dtNew.Rows[j][0].ToString();
-                                    DESCRIPTION[ctr] = dtNew.Rows[j][1].ToString();
+                                   
+                                    DESCRIPTION[ctr] = dtNew.Rows[j][0].ToString();
 
                                     ctr++;
 
-    
+
                                 }
                             }
 

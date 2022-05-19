@@ -133,4 +133,25 @@
   <data name="bunifuLabel1.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
+  <data name="bunifuLabel2.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
+  </data>
+  <data name="btnEnter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIgAAAAnCAYAAADU8ABpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACPSURBVHhe7dKxDcIwAABBJ0pBwwrMzH6MkQGMhNwQ0E9w
+        xW1wY7/dX2OMCVfrxpiP54QfK4og/CcISRCSICRBSIKQBCEJQhKEJAhJEJIgJEFIgpAEIQlCEoQkCEkQ
+        kiAkQUiCkAQhCUIShCQISRCSICRBSIKQBCEJQhKEJAhJEJIgpE+QbT/ONQW+bPtxvgEYdhrG3YJnwgAA
+        AABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnCancel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAIgAAAAnCAYAAADU8ABpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACOSURBVHhe7dKxCcNAEADBDy79/otzGSpABvGJjdgKZmA7
+        2LX3/qy1bum/88a64c0ZxSC8MwjJICSDkAxCMgjJICSDkAxCMgjJICSDkAxCMgjJICSDkAxCMgjJICSD
+        kAxCMgjJICSDkAxCMgjJICSDkAxCMgjJICSDkAxCMgjJICSDkJ5BZuY6p0g/zcz1BQADh8dUz7YfAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
 </root>
