@@ -400,6 +400,18 @@
     <Compile Include="Owner Modules\Add Customer.Designer.cs">
       <DependentUpon>Add Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Owner Modules\CustomerListReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\CustomerListReports.Designer.cs">
+      <DependentUpon>CustomerListReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\ItemList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\ItemList.Designer.cs">
+      <DependentUpon>ItemList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Owner Modules\Update User.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -722,6 +734,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\CustomerListReports.resx">
+      <DependentUpon>CustomerListReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\ItemList.resx">
+      <DependentUpon>ItemList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Update User.resx">
       <DependentUpon>Update User.cs</DependentUpon>

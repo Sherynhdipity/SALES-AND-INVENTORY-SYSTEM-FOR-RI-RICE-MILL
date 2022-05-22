@@ -342,6 +342,7 @@
             this.txtViewCustomers.UseSystemPasswordChar = false;
             this.txtViewCustomers.WordWrap = true;
             this.txtViewCustomers.TextChange += new System.EventHandler(this.txtViewCustomers_TextChange);
+            this.txtViewCustomers.TextChanged += new System.EventHandler(this.txtViewCustomers_TextChanged);
             // 
             // dgvCustomerList
             // 

@@ -79,5 +79,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             frm.Show();
 
         }
+
+        private void dgvRestockReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

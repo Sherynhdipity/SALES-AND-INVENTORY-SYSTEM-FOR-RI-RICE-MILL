@@ -52,7 +52,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = "Select Description, [Cost Sales], [Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
+                QuerySelect = "Select [Date], Description, [Cost Sales], [Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
                     
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);

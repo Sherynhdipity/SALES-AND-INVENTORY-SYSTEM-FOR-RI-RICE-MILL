@@ -140,5 +140,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             DiscountRequirements discount = new DiscountRequirements();
             discount.ShowDialog();
         }
+
+        private void txtViewCustomers_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

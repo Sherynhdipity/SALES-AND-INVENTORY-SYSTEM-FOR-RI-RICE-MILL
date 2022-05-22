@@ -225,6 +225,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvRestockReport.Size = new System.Drawing.Size(950, 327);
             this.dgvRestockReport.TabIndex = 135;
             this.dgvRestockReport.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dgvRestockReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRestockReport_CellContentClick);
             // 
             // frmRestockReport
             // 
@@ -238,7 +239,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmRestockReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RestockReport";
             this.Load += new System.EventHandler(this.RestockReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRestockReport)).EndInit();

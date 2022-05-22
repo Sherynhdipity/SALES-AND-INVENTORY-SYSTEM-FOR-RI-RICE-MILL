@@ -175,5 +175,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
 
         }
+
+        private void btnCustomerList_Click(object sender, EventArgs e)
+        {
+            Owner_Modules.frmCustomerListReports f5 = new Owner_Modules.frmCustomerListReports();
+            f5.ShowDialog();
+        }
+
+        private void btnItemList_Click(object sender, EventArgs e)
+        {
+            Owner_Modules.frmItemList f6 = new Owner_Modules.frmItemList();
+            f6.ShowDialog();
+        }
     }
 }
