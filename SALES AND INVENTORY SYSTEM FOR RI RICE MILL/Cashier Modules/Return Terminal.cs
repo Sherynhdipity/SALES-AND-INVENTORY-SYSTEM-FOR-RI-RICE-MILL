@@ -30,8 +30,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string transTotal;
         public Boolean isRowUpdated = false;
         public bool isReturn;
+        public bool isComplete;
         public string[] SKU;
         public string price;
+        public string CustomerId;
 
 
         public frmReturnTerminal()
@@ -59,7 +61,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblTransDate.Text = "";
 
             price = sku.Price;
-            
+
             //QuerySelect = "SELECT";
 
 
@@ -79,7 +81,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Close();
                 con.Open();
                 //QuerySelect = "SELECT Transaction_number as 'Transaction Number', Description, Price, Quantity, Subtotal, Order_details_id as 'Id' FROM ReturnTransactionView WHERE Transaction_number = @trans";
-                QuerySelect = "SELECT Order_id as 'ID', Transaction_number as 'Transaction Number', Quantity, T\otal_cost as 'Total' FROM tblOrders WHERE Transaction_number = @trans";
+                QuerySelect = "SELECT Order_id as 'ID', Transaction_number as 'Transaction Number', Quantity, Total_cost as 'Total' FROM tblOrders WHERE Transaction_number = @trans";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@trans", transaction_number);
 
@@ -116,6 +118,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                         DateTime orderDate = Convert.ToDateTime(reader["Order_date"].ToString());
                         lblTransDate.Text = orderDate.ToString("MMMM dd, yyyy");
+                        CustomerId = reader["Customer_id"].ToString();
                     }
                 }
                 reader.Close();
@@ -575,8 +578,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void recompute(double totalamount)
         {
 
-            txtVatable.Text = (totalamount / 1.12).ToString("#,0.00");
-            txtVatAmount.Text = (totalamount * 0.12).ToString("#,0.00");
+            //txtVatable.Text = (totalamount / 1.12).ToString("#,0.00");
+            //txtVatAmount.Text = (totalamount * 0.12).ToString("#,0.00");
             //totalamount = totalamount + (totalamount * 0.12);
             double minus_price = totalamount - Convert.ToDouble(price);
             lblTotal.Text = minus_price.ToString();
@@ -776,28 +779,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
+            
             frmReturnProductLookup productLookup = new frmReturnProductLookup(this);
-            //productLookup.price = price;
-            productLookup.ShowDialog();
-            //if(isReturn)
-            //{
-            //    isReturn = true;
-            //}
-            //else
-            //{
-            //    isReturn = false;
-            //}
-            if (productLookup.quantity.ToString() != "")
+            if(isComplete)
             {
-                txtProdDesc.Text = productLookup.productDesc;
-                txtProdPrice.Text = productLookup.productPrice;
-                txtQuantity.Text = productLookup.quantity.ToString();
-                txtStock.Text = productLookup.stock;
-                SKU = productLookup.sku;
-
-
-                btnAdd_Click((object)sender, (EventArgs)e);
+                MessageBox.Show("Cannot add another item!");
             }
+            else
+            {
+                productLookup.ShowDialog();
+
+                if (productLookup.quantity.ToString() != "")
+                {
+                    txtProdDesc.Text = productLookup.productDesc;
+                    txtProdPrice.Text = productLookup.productPrice;
+                    txtQuantity.Text = productLookup.quantity.ToString();
+                    txtStock.Text = productLookup.stock;
+                    SKU = productLookup.sku;
+                    isComplete = productLookup.isComplete;
+
+                    btnAdd_Click((object)sender, (EventArgs)e);
+                }
+            }
+            
 
 
         }
@@ -838,6 +842,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 payment.tax = txtVatAmount.Text;
                 payment.vatable = txtVatable.Text;
                 payment.SKU = SKU;
+                payment.cust = CustomerId;
 
 
                 DialogResult res = payment.ShowDialog();

@@ -129,12 +129,12 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bunifuPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAkcAAAAmCAYAAADOdD8hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADISURBVHhe7dZBDYAwAMDAOQPUEFzglEzJ+BBSEfe4pBI6
-        tvPZj2veAADMe3yxAACYyxwBAIQ5AgAIcwQAEOYIACDMEQBAmCMAgDBHAABhjgAAwhwBAIQ5AgAIcwQA
-        EOYIACDMEQBAmCMAgDBHAABhjgAAwhwBAIQ5AgAIcwQAEOYIACDMEQBAmCMAgDBHAABhjgAAwhwBAIQ5
-        AgAIcwQAEOYIACDMEQBAmCMAgDBHAABhjgAAwhwBAIQ5AgAIcwQAEOYIAOA31wvQYJNRbKCopgAAAABJ
-        RU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAjkAAAAmCAYAAAAm9IoKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADPSURBVHhe7dZBDYAwAMDAOQPUEFzgdJmS8UFFc49LKqHj
+        uOd5PesFACgZf2wAgBKTAwAkmRwAIMnkAABJJgcASDI5AECSyQEAkkwOAJBkcgCAJJMDACSZHAAgyeQA
+        AEkmBwBIMjkAQJLJAQCSTA4AkGRyAIAkkwMAJJkcACDJ5AAASSYHAEgyOQBAkskBAJJMDgCQZHIAgCST
+        AwAkmRwAIMnkAABJJgcASDI5AECSyQEAkkwOAJBkcgCAJJMDACSZHAAgyeQAAEkmBwAIWvsDE3VTMHW9
+        cRQAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="bunifuLabel3.BaseStylesheet" xml:space="preserve">
@@ -142,10 +142,11 @@
   </data>
   <data name="btnConfirm.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAIEAAAAnCAYAAAAo5SujAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB0SURBVHhe7dIxAQAgEMQwlGAZ/CGD/eEE4IAMmbq29Vmr
-        z3P4Va1M8Ar8xASYABMQJsAEmIAwASbABIQJMAEmIEyACTABYQJMgAkIE2ACTECYABNgAsIEmAATECbA
-        BJiAMAEmwASECTABJiBaH7VfgU+M2hc+XoTbIG6EVgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAHQAAAAnCAYAAADegGx+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACISURBVHhe7dExEYAwAMDAKqll8FcZ7AUEYIDcDz9lzJjn
+        XvO8bwr2eod+Bf7K0BhDYwyNMTTG0BhDYwyNMTTG0BhDYwyNMTTG0BhDYwyNMTTG0BhDYwyNMTTG0BhD
+        YwyNMTTG0BhDYwyNMTTG0BhDYwyNMTTG0BhDYwyNMTRmzGNfX4EfOvb1AFxGOexR3Q2vAAAAAElFTkSu
+        QmCC
 </value>
   </data>
   <data name="btnCancel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

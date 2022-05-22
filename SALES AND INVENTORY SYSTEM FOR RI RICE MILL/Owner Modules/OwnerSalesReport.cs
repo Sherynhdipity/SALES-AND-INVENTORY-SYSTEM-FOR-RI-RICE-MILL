@@ -38,7 +38,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void frmOwnerSalesReport_Load(object sender, EventArgs e)
         {
-
+            DateTime date = DateTime.Now;
+            dtpFromDate.Text = string.Format("{0:D}", date);
+            dtpToDate.Text = string.Format("{0:D}", date);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -50,7 +52,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = "Select [Order Date], Description, [Total Cost Price], [Returned Sales], [Gross Sales] from SalesReportView where [Order Date] between @FromDate and @ToDate";
+                QuerySelect = "Select Description, [Cost Sales], [Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
                     
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -61,6 +63,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 adapter.Fill(dt);
                 dgvSalesOwnerReport.DataSource = dt;
                 dgvSalesOwnerReport.Refresh();
+
+               
 
             }
             catch (Exception ex)
@@ -108,6 +112,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         }
 
         private void bunifuLabel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpToDate_ValueChanged(object sender, EventArgs e)
         {
 
         }

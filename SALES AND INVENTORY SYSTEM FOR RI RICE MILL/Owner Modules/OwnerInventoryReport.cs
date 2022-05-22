@@ -60,7 +60,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void frmOwnerInventoryReport_Load(object sender, EventArgs e)
         {
-
+            DateTime date = DateTime.Now;
+            dtpFromDate.Text = string.Format("{0:D}", date);
+            dtpToDate.Text = string.Format("{0:D}", date);
         }
 
         private void btnPrintReport_Click(object sender, EventArgs e)

@@ -38,7 +38,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public int Product_Quantity { get; set; }
         public string Batch_number { get; set; }
         public string Product_Stock { get; set; }
-        public string[] SKU { get; set; }
+        public string[] SKU {get; set;}
+        public List<string> SKULIST { get; set; }
+       
+        // List<string> myList = new List<string>();
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -81,6 +84,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnEnter_Click(object sender, EventArgs e)
         {
             SKU = new string[dgvSKUList.SelectedRows.Count];
+            
             try
             {
 
@@ -91,10 +95,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (txtQty.Text != "0" || txtQty.Text != "")
                 {
                     int array_index = dgvSKUList.SelectedRows.Count-1; 
+              
                     foreach(DataGridViewRow row in dgvSKUList.SelectedRows)
                     {
 
                         SKU[array_index] = row.Cells["SKU"].Value.ToString();
+                        SKULIST.Add(row.Cells["SKU"].Value.ToString());
                         array_index--;
                     }
                     Product_Quantity = Convert.ToInt32(txtQty.Text);
@@ -122,11 +128,31 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
         private void frmPLQuant_Load(object sender, EventArgs e)
-        {                  
+        {
+            bool isEmpty = IsEmpty(SKULIST);
+            if (isEmpty)
+            {
+                //MessageBox.Show("List is Empty");
+                SKULIST = new List<string>();
+            }
+            else
+            {
+               // MessageBox.Show("List contains elements");
+            }
             displayExistingSKU();
             txtQty.Enabled = false;
             dgvSKUList.Rows[0].Cells[0].Selected = false;
             txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
+        }
+
+        public static bool IsEmpty<T>(List<T> list)
+        {
+            if (list == null)
+            {
+                return true;
+            }
+
+            return !list.Any();
         }
 
         private void dgvSKUList_CellClick(object sender, DataGridViewCellEventArgs e)

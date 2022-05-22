@@ -61,7 +61,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public bool isReturn{ get; set; }
 
-
+        public string cust{ get; set; }
         private int customerID;
         public int CustomerID
         {
@@ -76,6 +76,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //Cashier_Modules.addCustomer addCustomer = (Cashier_Modules.addCustomer)sender;
             //txtCustomer.Text = CustomerID;
             //this.ShowDialog();
+        }
+
+        public void GetCustomer()
+        {
+            con.Close();
+
+            QuerySelect = "SELECT CONCAT(First_name ,' ',  Last_name) as Name FROM tblCustomers WHERE Customer_id = '"+cust+"'";
+            con.Open();
+            cmd = new SqlCommand(QuerySelect, con);
+            reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    txtViewCustomer.Enabled = false;
+                    txtViewCustomer.Text = reader["Name"].ToString();
+                }
+            }
+            con.Close();
         }
 
         //Generate ORNo
@@ -390,7 +409,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public void frmPayment_Load(object sender, EventArgs e)
         {
-            autoCompleteCustomer();
+            //autoCompleteCustomer();
+            GetCustomer();
+            btnAddCustomer.Enabled = false;
         }
 
         private void txtCash_KeyPress(object sender, KeyPressEventArgs e)
@@ -453,8 +474,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            SettlePayment();
-            
+            //SettlePayment();
+            GenerateReceipt();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)

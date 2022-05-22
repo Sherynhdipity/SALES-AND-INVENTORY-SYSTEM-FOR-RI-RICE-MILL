@@ -30,7 +30,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         public static string QueryUpdate;
         public string temp_code;
         public string id;
-
+        public string[] prices;
         public string Transaction_Number { get; set; }
         public string Description { get; set; }
 
@@ -99,9 +99,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             //{
                 if (selectedRows > 0)
                 {
+                prices = new string[selectedRows];
                     if (cmbRemarks.SelectedIndex == 0)
                     {
-                        for (int i = 0; i < selectedRows; i++)
+                    result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+                    for (int i = 0; i < selectedRows; i++)
                         {
                             
                             if (result == DialogResult.Yes)
@@ -151,7 +153,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                     con.Close();
                                 }
                             con.Open();
-                            QuerySelect = "SELECT Price FROM tblItems WHERE Item_id = (SELECT Item_id FROM tblInventories WHERE SKu = @sku)";
+                            QuerySelect = "SELECT Price FROM tblItems WHERE Item_id = (SELECT Item_id FROM tblInventories WHERE SKU = @sku)";
                             cmd = new SqlCommand(QuerySelect, con);
                             cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
                             reader = cmd.ExecuteReader();
@@ -159,26 +161,31 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             {
                                 while (reader.Read())
                                 {
-                                    Price = reader["Price"].ToString();
+                                    prices[i] = reader["Price"].ToString();
                                 }
                             }
                             reader.Close();
                             con.Close();
-                     
-                            MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
-
-                            this.Close();
+                            int tempSum = 0;
+                            for(int j =0; j < prices.Length; j++)
+                            {
+                                tempSum += Convert.ToInt32(prices[j]);
+                            }
+                            Price = tempSum.ToString();
+                          
                             }
 
-                        result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+                   
 
 
 
                     }
 
-                        
 
-                    }
+                    MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
+
+                    this.Close();
+                }
                     else if (cmbRemarks.SelectedIndex == 1)
                     {
                         for (int i = 0; i < selectedRows; i++)

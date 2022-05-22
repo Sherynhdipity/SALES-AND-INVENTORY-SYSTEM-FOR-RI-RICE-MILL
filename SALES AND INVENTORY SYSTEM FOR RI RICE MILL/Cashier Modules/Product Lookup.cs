@@ -42,6 +42,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public int quantity { get; set; }
         public string stock { get; set; }
         public string[] sku { get; set; }
+        public List<string> skuList { get; set; }
 
 
         //Display ProductData in DataGridView  
@@ -124,6 +125,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //qty.product_Code = Convert.ToString(selectedRow.Cells["Barcode"].Value);
                 qty.product_Desc = Convert.ToString(selectedRow.Cells["Description"].Value);
                 qty.Batch_number = Convert.ToString(selectedRow.Cells["Batch_number"].Value);
+                qty.SKULIST = skuList;
                 //  qty.product_Variety = Convert.ToString(selectedRow.Cells["Product Variety"].Value);
                 qty.product_Price = Convert.ToString(selectedRow.Cells["Price"].Value);
                 qty.Product_Stock = temp_stock;
@@ -137,6 +139,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     quantity = qty.Product_Quantity;
                     stock = qty.Product_Stock;
                     sku = qty.SKU;
+                    skuList = qty.SKULIST;
                     this.Close();
                 }
                 

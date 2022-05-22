@@ -845,6 +845,7 @@
             this.dtpMilledDate.Size = new System.Drawing.Size(260, 32);
             this.dtpMilledDate.TabIndex = 34;
             this.dtpMilledDate.Value = new System.DateTime(2022, 4, 3, 11, 26, 0, 0);
+            this.dtpMilledDate.ValueChanged += new System.EventHandler(this.dtpMilledDate_ValueChanged);
             // 
             // bunifuLabel9
             // 

@@ -40,7 +40,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string productPrice { get; set; }
 
         public bool isReturn { get; set; }
-
+        public bool isComplete { get; set; }
         public int quantity { get; set; }
         public string stock { get; set; }
         public string[] sku { get; set; }
@@ -76,7 +76,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 QuerySelect = "SELECT Description, Batch_number, Price, Stock FROM  ItemLookup WHERE Price = @price AND (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR (Stock LIKE '%' + @stock + '%')";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@desc", txtSearchProduct.Text);
-                cmd.Parameters.AddWithValue("@price", txtSearchProduct.Text);
+                cmd.Parameters.AddWithValue("@price", price);
                 cmd.Parameters.AddWithValue("@stock", txtSearchProduct.Text);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -132,8 +132,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 qty.product_Price = Convert.ToString(selectedRow.Cells["Price"].Value);
                 qty.Product_Stock = temp_stock;
                 qty.ShowDialog();
-                if(qty.Product_Quantity != 0)
-                {
+
+                double total = Convert.ToDouble(qty.Product_Quantity) * Convert.ToDouble(qty.product_Price);
+                //if (qty.Product_Quantity != 0 && total == Convert.ToDouble(price))
+                //{
                     productCode = qty.product_Code;
                     productDesc = qty.product_Desc;
                     productVariety = qty.product_Variety;
@@ -141,11 +143,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     quantity = qty.Product_Quantity;
                     stock = qty.Product_Stock;
                     sku = qty.SKU;
+                    isComplete = true;
                     this.Close();
-                }
-                
-               
-               //this.Close();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Please select items that are equivalent to the total return, Try again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+
+
+                //this.Close();
             }
         }
 

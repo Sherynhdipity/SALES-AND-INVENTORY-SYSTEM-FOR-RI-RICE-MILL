@@ -458,5 +458,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             
          
         }
+
+        private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

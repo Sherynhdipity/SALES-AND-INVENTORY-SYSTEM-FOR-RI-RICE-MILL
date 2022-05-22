@@ -18,14 +18,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
     {
         public frmPayment()
         {
-            
+
             InitializeComponent();
             addNewCustomer.FormClosed += new FormClosedEventHandler(Form_Closed);
         }
         //start mods
-        public  DataTable dtFromSalesMgt;
+        public DataTable dtFromSalesMgt;
         public string transNo = "";
-        public  void storeDt(DataTable tempDT)
+        public void storeDt(DataTable tempDT)
         {
             dtFromSalesMgt = tempDT;
         }
@@ -52,14 +52,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public double total;
         public int total_quantity = 0;
         public string[] SKU;
+        public string[] NEW_SKU;
         public string[] DESCRIPTION;
         public string tax, vatable;
 
-        public string [] ItemDesc { get; set; }
-        public int []  Qty { get; set; }
+        public string[] ItemDesc { get; set; }
+        public int[] Qty { get; set; }
         public double[] Price { get; set; }
 
-        public bool isReturn{ get; set; }
+        public bool isReturn { get; set; }
+
+        public List<string> sku_list { get; set; }
 
 
         private int customerID;
@@ -108,10 +111,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             count = 1;
                             txtORNumber.Text = count.ToString().PadLeft(4, '0');
                         }
-                        
+
                     }
                 }
-                
+
 
                 reader.Close();
                 con.Close();
@@ -177,7 +180,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             {
                                 cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
                                 cmd.Parameters.AddWithValue("@PWD", "");
-                            }else if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "PWD #:")
+                            }
+                            else if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "PWD #:")
                             {
                                 cmd.Parameters.AddWithValue("@senior", "");
                                 cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
@@ -187,7 +191,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
                                 cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
                             }
-                            
+
                             cmd.ExecuteNonQuery();
 
                         }
@@ -209,23 +213,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             //get SKU
                             con.Open();
-                            DESCRIPTION = new string[SKU.Length];
+                            DESCRIPTION = new string[total_quantity];
                             //SKU = new string[total_quantity];
                             //DESCRIPTION = new string[total_quantity];
                             int ctr = 0;
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
-                                QuerySelect = "SELECT " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " Item_id FROM tblInventories" +
+                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " Item_id FROM tblInventories" +
                                     " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
                                 cmd = new SqlCommand(QuerySelect, con);
-
                                 cmd.Parameters.AddWithValue("@desc", dtFromSalesMgt.Rows[i][0].ToString());
                                 adapter = new SqlDataAdapter(cmd);
                                 DataTable dtNew = new DataTable();
                                 adapter.Fill(dtNew);
                                 for (int j = 0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
                                 {
-                                   
+
                                     DESCRIPTION[ctr] = dtNew.Rows[j][0].ToString();
 
                                     ctr++;
@@ -234,8 +237,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 }
                             }
 
+
+
                             //insert tblOrderDetails and Delete from inventory
-                            for (int i = 0; i < SKU.Length; i++)
+                            NEW_SKU = new string[sku_list.Count];
+                            for (int i = 0; i < NEW_SKU.Length; i++)
+                            {
+                                NEW_SKU[i] = sku_list[i];
+                            }
+                                for (int i = 0; i < DESCRIPTION.Length; i++)
                             {
 
                                 QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
@@ -243,15 +253,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd = new SqlCommand(QueryInsert, con);
 
                                 cmd.Parameters.AddWithValue("@description", DESCRIPTION[i]);
-                                cmd.Parameters.AddWithValue("@sku", SKU[i]);
+                                cmd.Parameters.AddWithValue("@sku", NEW_SKU[i]);
                                 cmd.ExecuteNonQuery();
 
                                 QueryUpdate = "UPDATE tblInventories SET Status = 'Stock Out' WHERE SKU = @sku";
                                 cmd = new SqlCommand(QueryUpdate, con);
-                                cmd.Parameters.AddWithValue("@sku", SKU[i]);
+                                cmd.Parameters.AddWithValue("@sku", NEW_SKU[i]);
                                 cmd.ExecuteNonQuery();
 
-   
+
                             }
 
                         }
@@ -265,16 +275,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         }
                     }
 
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
 
-                    MessageBox.Show("Change: "+( Convert.ToDouble(txtCash.Text)-Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GenerateReceipt();
                     this.Close();
@@ -386,7 +396,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             txtViewCustomer.AutoCompleteCustomSource = MyCollection;
             con.Close();
-           
+
         }
 
         public void frmPayment_Load(object sender, EventArgs e)
@@ -413,11 +423,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             try
             {
-                if (!txtCash.Text.ToString().Equals(string.Empty)) {
-                    txtAmount.Text = txtAmount.Text;   
+                if (!txtCash.Text.ToString().Equals(string.Empty))
+                {
+                    txtAmount.Text = txtAmount.Text;
                     double amount = double.Parse(txtAmount.Text.ToString());
                     double cash = double.Parse(txtCash.Text.ToString());
-                    if (amount>cash)
+                    if (amount > cash)
                     {
                         btnConfirm.Enabled = false;
                     }
@@ -455,14 +466,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             SettlePayment();
-            
+
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             //this.Close();
             addNewCustomer.FormClosed += new FormClosedEventHandler(Form_Closed);
-            addNewCustomer.ShowDialog();      
+            addNewCustomer.ShowDialog();
 
         }
 
@@ -473,15 +484,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 // With Discount Code
                 string phrase = txtViewCustomer.Text;
                 string[] words = phrase.Split(' ');
-                
-                QuerySelect = "SELECT Customer_id From tblCustomers WHERE First_name LIKE '%"+words[0]+"%' OR Last_name LIKE '%"+words[1]+"%'";
+
+                QuerySelect = "SELECT Customer_id From tblCustomers WHERE First_name LIKE '%" + words[0] + "%' OR Last_name LIKE '%" + words[1] + "%'";
                 cmd = new SqlCommand(QuerySelect, con);
                 con.Open();
                 reader = cmd.ExecuteReader();
                 reader.Read();
                 if (reader.HasRows)
                 {
-                    if(isReturn)
+                    if (isReturn)
                     {
                         amount = Convert.ToDouble(txtAmount.Text);
                         //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
@@ -567,7 +578,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
-        public void loyaltyCheck()  
+        public void loyaltyCheck()
         {
             double totalCost;
 
@@ -600,7 +611,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 totalCost = Convert.ToDouble(newDt.Rows[0][1].ToString());
             }
-            
+
             if (transactionCount >= trans && totalCost >= cost)
             {
                 string QuerySelect2 = "SELECT Discount_Percentage FROM tblDiscounts";
@@ -617,7 +628,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 double senior = Convert.ToDouble(newDt1.Rows[3][0].ToString());
 
                 //update discount status of customer
-                QueryUpdate = "Update tblCustomers SET Discount_code = 'LC01' WHERE Customer_id = '"+customerID+"'";
+                QueryUpdate = "Update tblCustomers SET Discount_code = 'LC01' WHERE Customer_id = '" + customerID + "'";
                 cmd = new SqlCommand(QueryUpdate, con);
                 con.Open();
                 cmd.ExecuteNonQuery();
@@ -664,4 +675,3 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
     }
 }
-

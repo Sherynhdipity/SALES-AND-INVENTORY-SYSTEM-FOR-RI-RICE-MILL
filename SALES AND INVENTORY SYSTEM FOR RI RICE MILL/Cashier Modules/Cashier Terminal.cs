@@ -1,5 +1,6 @@
 ﻿using SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public Boolean isRowUpdated = false;
         public bool isReturn;
         public string[] SKU;
+        public List<string> SKU_LIST { get; set; }
 
         public frmSalesManagement()
         {
@@ -675,6 +677,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
             frmProductLookup productLookup = new frmProductLookup();
+            productLookup.skuList = SKU_LIST;
             productLookup.ShowDialog();
             if(isReturn)
             {
@@ -691,7 +694,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 txtQuantity.Text = productLookup.quantity.ToString();
                 txtStock.Text = productLookup.stock;
                 SKU = productLookup.sku;
-
+                SKU_LIST = productLookup.skuList;
                
                 btnAdd_Click((object)sender, (EventArgs)e);
             }
@@ -735,6 +738,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 payment.tax = txtVatAmount.Text;
                 payment.vatable = txtVatable.Text;
                 payment.SKU = SKU;
+                payment.sku_list = SKU_LIST;
 
 
                 DialogResult res = payment.ShowDialog();

@@ -78,7 +78,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnExit = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnLogout = new Bunifu.Framework.UI.BunifuTileButton();
-            this.btnSet = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnCancel = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnPay = new Bunifu.Framework.UI.BunifuTileButton();
             this.txtQuantityCount = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -123,6 +122,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnReturn = new Bunifu.Framework.UI.BunifuTileButton();
             this.dgvItemReplaced = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.btnSet = new Bunifu.Framework.UI.BunifuTileButton();
             ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).BeginInit();
             this.bunifuPanel4.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
@@ -245,28 +245,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogout.Size = new System.Drawing.Size(96, 93);
             this.btnLogout.TabIndex = 37;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnSet
-            // 
-            this.btnSet.AutoSize = true;
-            this.btnSet.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnSet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.btnSet.color = System.Drawing.Color.RoyalBlue;
-            this.btnSet.colorActive = System.Drawing.Color.LightSteelBlue;
-            this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSet.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSet.ForeColor = System.Drawing.Color.White;
-            this.btnSet.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.history;
-            this.btnSet.ImagePosition = 14;
-            this.btnSet.ImageZoom = 50;
-            this.btnSet.LabelPosition = 29;
-            this.btnSet.LabelText = "Sales History";
-            this.btnSet.Location = new System.Drawing.Point(1258, 434);
-            this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSet.Name = "btnSet";
-            this.btnSet.Size = new System.Drawing.Size(95, 93);
-            this.btnSet.TabIndex = 36;
-            this.btnSet.Click += new System.EventHandler(this.btnRecords_Click);
             // 
             // btnCancel
             // 
@@ -428,7 +406,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnSearchProduct.ImagePosition = 14;
             this.btnSearchProduct.ImageZoom = 50;
             this.btnSearchProduct.LabelPosition = 29;
-            this.btnSearchProduct.LabelText = "[F2] Search";
+            this.btnSearchProduct.LabelText = "[F2]SearchProd";
             this.btnSearchProduct.Location = new System.Drawing.Point(1154, 434);
             this.btnSearchProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearchProduct.Name = "btnSearchProduct";
@@ -444,11 +422,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnNewTrans.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNewTrans.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewTrans.ForeColor = System.Drawing.Color.Black;
-            this.btnNewTrans.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.plus;
+            this.btnNewTrans.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.search;
             this.btnNewTrans.ImagePosition = 14;
             this.btnNewTrans.ImageZoom = 50;
             this.btnNewTrans.LabelPosition = 29;
-            this.btnNewTrans.LabelText = "[F1] New Transaction";
+            this.btnNewTrans.LabelText = "[F1]TransNumber";
             this.btnNewTrans.Location = new System.Drawing.Point(1048, 434);
             this.btnNewTrans.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNewTrans.Name = "btnNewTrans";
@@ -1689,6 +1667,28 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvItemReplaced.TabIndex = 40;
             this.dgvItemReplaced.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
+            // btnSet
+            // 
+            this.btnSet.AutoSize = true;
+            this.btnSet.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnSet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnSet.color = System.Drawing.Color.RoyalBlue;
+            this.btnSet.colorActive = System.Drawing.Color.LightSteelBlue;
+            this.btnSet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSet.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSet.ForeColor = System.Drawing.Color.White;
+            this.btnSet.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.history;
+            this.btnSet.ImagePosition = 14;
+            this.btnSet.ImageZoom = 50;
+            this.btnSet.LabelPosition = 29;
+            this.btnSet.LabelText = "Sales History";
+            this.btnSet.Location = new System.Drawing.Point(1258, 434);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSet.Name = "btnSet";
+            this.btnSet.Size = new System.Drawing.Size(95, 93);
+            this.btnSet.TabIndex = 36;
+            this.btnSet.Click += new System.EventHandler(this.btnRecords_Click);
+            // 
             // frmReturnTerminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1773,7 +1773,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.Framework.UI.BunifuTileButton btnVoid;
         private Bunifu.Framework.UI.BunifuTileButton btnPay;
         private Bunifu.Framework.UI.BunifuTileButton btnCancel;
-        private Bunifu.Framework.UI.BunifuTileButton btnSet;
         private Bunifu.Framework.UI.BunifuTileButton btnLogout;
         private Bunifu.Framework.UI.BunifuTileButton btnExit;
         public Bunifu.UI.WinForms.BunifuTextBox txtAmount;
@@ -1784,5 +1783,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public Bunifu.UI.WinForms.BunifuTextBox txtVatable;
         private Bunifu.Framework.UI.BunifuTileButton btnReturn;
         public Bunifu.UI.WinForms.BunifuDataGridView dgvItemReplaced;
+        private Bunifu.Framework.UI.BunifuTileButton btnSet;
     }
 }
