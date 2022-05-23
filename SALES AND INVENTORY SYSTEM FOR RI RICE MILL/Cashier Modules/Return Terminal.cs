@@ -325,7 +325,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         btnAdd.Enabled = false;
                         btnVoid.Enabled = false;
                         btnPay.Enabled = false;
-                        btnCancel.Enabled = false;
+                        //btnCancel.Enabled = false;
 
                         reader.Close();
                     }
@@ -373,9 +373,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     btnPay.Click += btnPay_Click;
                     return true;
 
-                case Keys.F6:
-                    btnCancel.Click += btnCancel_Click;
-                    return true;
+                //case Keys.F6:
+                //    btnCancel.Click += btnCancel_Click;
+                //    return true;
 
                 case Keys.F7:
                     btnSet.Click += btnRecords_Click;
@@ -404,7 +404,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblUserRole.Text = frmLogin.GetUserRole.ToString();
 
             btnVoid.LabelText = "[F3] Void" + Environment.NewLine + "Item" + Environment.NewLine;
-            btnCancel.LabelText = "[F5] Void" + Environment.NewLine + "Transaction" + Environment.NewLine;
+            //btnCancel.LabelText = "[F5] Void" + Environment.NewLine + "Transaction" + Environment.NewLine;
 
             //Datatable
             ColumnsLoader();
@@ -747,6 +747,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnNewTrans_Click(object sender, EventArgs e)
         {
             transNum.ShowDialog();
+            btnExit.Enabled = false;
+            btnLogout.Enabled = false;
             
             //GetTransNo();
             //txtSearch.Enabled = true;
@@ -856,7 +858,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     btnAdd.Enabled = false;
                     btnVoid.Enabled = false;
                     btnPay.Enabled = false;
-                    btnCancel.Enabled = false;
+                    //btnCancel.Enabled = false;
                 }
             }
                

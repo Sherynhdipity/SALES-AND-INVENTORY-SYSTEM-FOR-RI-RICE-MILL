@@ -155,17 +155,60 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                             if (dvgOrderList.SelectedRows.Count > 0)
                             {
-                                dvgOrderList.Rows.RemoveAt(row.Index);
+                            //insert into tblVoid
+                                con.Close();
+                                con.Open();
+                                string list_sku = String.Join("','", SKU_LIST.Select(i => i.Replace("'", "''")));
+                                int quants = Convert.ToInt32(dvgOrderList.Rows[row.Index].Cells[1].Value);
+                                string description = dvgOrderList.Rows[row.Index].Cells[0].Value.ToString();
+                                DataTable tempDT = new DataTable();
+                                //for (int i = 0; i < quants; i++)
+                               // {
+                                
+                                    QuerySelect = "SELECT Item_id, SKU FROM tblInventories WHERE SKU IN ('"+ list_sku + "') " +
+                                    "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '"+description+"')";
+                                    cmd = new SqlCommand(QuerySelect, con);
+                                    adapter = new SqlDataAdapter(cmd);
+                                    adapter.Fill(tempDT);
+                                    cmd.ExecuteNonQuery();
+                                
+                                
+                               // }
+                                con.Close();
+                                con.Open();
+                                for(int i = 0; i < tempDT.Rows.Count; i++)
+                                {
+                                     QueryInsert = "INSERT INTO tblVoid(description, SKU, quantity, void_date)" +
+                                     "VALUES((SELECT Description FROM tblItems WHERE Item_id = '"+tempDT.Rows[i][0].ToString()+"')" +
+                                     ",'"+ tempDT.Rows[i][1].ToString() + "', 1, (SELECT GETDATE()))";
+                                    cmd = new SqlCommand(QueryInsert, con);
+                                    cmd.ExecuteNonQuery();
+                                }
+                               
+                                con.Close();
+
+
+                        MessageBox.Show("Product is voided!");
+                            dvgOrderList.Rows.RemoveAt(row.Index);
                             }
                         }
 
                     int totalamount = 0;
                     for (int i = 0; i < dvgOrderList.Rows.Count; ++i)
                     {
-                        totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[2].Value);
+                        totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[3].Value);
                     }
 
                     //lblTotal.Text = totalamount.ToString() + "." + "00";
+                    
+                    //QueryInsert = "INSERT INTO tblVoid(description, SKU, quantity, void_date)" +
+                    // "VALUES((SELECT MAX(Order_id) FROM tblOrders),@description, @sku)";
+                    //cmd = new SqlCommand(QueryInsert, con);
+
+                    //cmd.Parameters.AddWithValue("@description", DESCRIPTION[i]);
+                    //cmd.Parameters.AddWithValue("@sku", NEW_SKU[i]);
+                    //cmd.ExecuteNonQuery();
+
 
                     txtAmount.Text = totalamount.ToString();
                     lblTotal.Text = txtAmount.Text;
@@ -173,6 +216,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     recompute(totalamount);
                     txtSearch.Focus();
                     dvgOrderList.Refresh();
+                    dvgOrderList.ClearSelection();
 
 
                     reader.Close();
@@ -466,6 +510,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     txtProdPrice.Text = "";
 
                     txtQuantityCount.Text = dvgOrderList.Rows.Count.ToString();
+                    dvgOrderList.ClearSelection();
                 }
             }
             catch (Exception ex)
@@ -650,17 +695,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtSearch.Focus();
 
             //buttons
+            //btnLogout.Enabled = false;
+            //btnExit.Enabled = false;
             btnSearchProduct.Enabled = true;
             btnAdd.Enabled = true;
             btnVoid.Enabled = true;
             btnReturn.Enabled = true;
             btnPay.Enabled = true;
             btnCancel.Enabled = true;
+            btnLogout.Enabled = false;
+            btnExit.Enabled = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             VoidTransaction();
+            btnLogout.Enabled = true;
+            btnExit.Enabled = true;
         }
 
         private void btnRecords_Click(object sender, EventArgs e)
@@ -671,7 +722,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnVoid_Click(object sender, EventArgs e)
         {
-            VoidProduct();
+            if(dvgOrderList.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Select product first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+               
+            }
+            else
+            {
+                VoidProduct();
+            }
+            
         }
 
         private void btnSearchProduct_Click(object sender, EventArgs e)
@@ -753,6 +813,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     btnVoid.Enabled = false;
                     btnPay.Enabled = false;
                     btnCancel.Enabled = false;
+                    btnLogout.Enabled = true;
+                    btnExit.Enabled = true;
                 }
             }
                

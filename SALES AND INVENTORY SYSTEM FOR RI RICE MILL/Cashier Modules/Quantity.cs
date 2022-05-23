@@ -76,6 +76,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dgvSKUList.Refresh();
         }
 
+        public void displayExistingSKUValidated()
+        {
+            string list_sku = String.Join("','", SKULIST.Select(i => i.Replace("'", "''")));
+           // string list_sku = String.Join(",", SKULIST);
+            con.Close();
+            QuerySelect = "Select SKU from tblInventories " +
+                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc) " +
+                       "AND Batch_number = @batch_num AND SKU NOT IN ('"+list_sku+"') AND status = 'Stock In'";
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@desc", product_Desc);
+            cmd.Parameters.AddWithValue("@batch_num", Batch_number);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvSKUList.DataSource = dt;
+
+            dgvSKUList.Refresh();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -134,15 +153,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 //MessageBox.Show("List is Empty");
                 SKULIST = new List<string>();
+                displayExistingSKU();
+                txtQty.Enabled = false;
+                dgvSKUList.Rows[0].Cells[0].Selected = false;
+                txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
             }
             else
             {
-               // MessageBox.Show("List contains elements");
+                // MessageBox.Show("List contains elements");
+                displayExistingSKUValidated();
+                txtQty.Enabled = false;
+                dgvSKUList.Rows[0].Cells[0].Selected = false;
+                txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
             }
-            displayExistingSKU();
-            txtQty.Enabled = false;
-            dgvSKUList.Rows[0].Cells[0].Selected = false;
-            txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
+          
         }
 
         public static bool IsEmpty<T>(List<T> list)

@@ -292,7 +292,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.ImageZoom = 30;
             this.btnCancel.LabelPosition = 29;
             this.btnCancel.LabelText = "[F5] Void Transaction";
-            this.btnCancel.Location = new System.Drawing.Point(1258, 533);
+            this.btnCancel.Location = new System.Drawing.Point(1155, 534);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(95, 96);
@@ -1626,7 +1626,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnReturn.ImageZoom = 50;
             this.btnReturn.LabelPosition = 29;
             this.btnReturn.LabelText = "[F4] Return Item";
-            this.btnReturn.Location = new System.Drawing.Point(1154, 536);
+            this.btnReturn.Location = new System.Drawing.Point(1258, 535);
             this.btnReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(96, 93);
