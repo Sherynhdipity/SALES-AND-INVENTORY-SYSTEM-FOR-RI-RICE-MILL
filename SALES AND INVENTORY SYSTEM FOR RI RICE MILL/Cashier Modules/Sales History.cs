@@ -41,5 +41,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //dgvSalesHistory.Refresh();
             //con.Close();
         }
+
+        private void dgvVoidHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        
+        }
+
+        private void frmSalesHistory_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string query = "Select description, quantity, void_date from tblVoid";
+                cmd = new SqlCommand(query, con);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvVoidHistory.DataSource = dt;
+                dgvVoidHistory.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }

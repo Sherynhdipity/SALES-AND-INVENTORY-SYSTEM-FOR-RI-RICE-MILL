@@ -1,7 +1,7 @@
 ﻿
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    partial class frmSalesReport
+    partial class frmSalesReturnReport
     {
         /// <summary>
         /// Required designer variable.
@@ -29,35 +29,38 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         /// </summary>
         private void InitializeComponent()
         {
-            this.SalesReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.SalesReturnViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.SalesReturn1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.SalesReturn();
             this.SuspendLayout();
             // 
-            // SalesReportViewer
+            // SalesReturnViewer
             // 
-            this.SalesReportViewer.ActiveViewIndex = -1;
-            this.SalesReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SalesReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SalesReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SalesReportViewer.Location = new System.Drawing.Point(0, 0);
-            this.SalesReportViewer.Name = "SalesReportViewer";
-            this.SalesReportViewer.Size = new System.Drawing.Size(800, 450);
-            this.SalesReportViewer.TabIndex = 0;
-            this.SalesReportViewer.Load += new System.EventHandler(this.SalesReportViewer_Load);
+            this.SalesReturnViewer.ActiveViewIndex = 0;
+            this.SalesReturnViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.SalesReturnViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SalesReturnViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SalesReturnViewer.Location = new System.Drawing.Point(0, 0);
+            this.SalesReturnViewer.Name = "SalesReturnViewer";
+            this.SalesReturnViewer.ReportSource = this.SalesReturn1;
+            this.SalesReturnViewer.Size = new System.Drawing.Size(800, 450);
+            this.SalesReturnViewer.TabIndex = 0;
             // 
-            // frmSalesReport
+            // frmSalesReturnReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.SalesReportViewer);
-            this.Name = "frmSalesReport";
-            this.Text = "SalesReport";
+            this.Controls.Add(this.SalesReturnViewer);
+            this.Name = "frmSalesReturnReport";
+            this.Text = "SalesReturnReport";
+            this.Load += new System.EventHandler(this.frmSalesReturnReport_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private SalesReport SalesReport1;
-        public CrystalDecisions.Windows.Forms.CrystalReportViewer SalesReportViewer;
+
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer SalesReturnViewer;
+        private SalesReturn SalesReturn1;
     }
 }

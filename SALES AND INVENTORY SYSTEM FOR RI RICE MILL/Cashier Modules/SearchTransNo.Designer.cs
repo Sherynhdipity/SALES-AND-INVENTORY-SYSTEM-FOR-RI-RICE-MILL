@@ -123,6 +123,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtQty.TextPlaceholder = "";
             this.txtQty.UseSystemPasswordChar = false;
             this.txtQty.WordWrap = true;
+            this.txtQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
             this.txtQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQty_KeyDown);
             // 
             // bunifuLabel1

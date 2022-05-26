@@ -268,7 +268,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnSet.ImagePosition = 14;
             this.btnSet.ImageZoom = 50;
             this.btnSet.LabelPosition = 29;
-            this.btnSet.LabelText = "Sales History";
+            this.btnSet.LabelText = "Void History";
             this.btnSet.Location = new System.Drawing.Point(1258, 434);
             this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSet.Name = "btnSet";
@@ -985,6 +985,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtSearch.UseSystemPasswordChar = false;
             this.txtSearch.WordWrap = true;
             this.txtSearch.TextChange += new System.EventHandler(this.txtSearch_TextChange);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // bunifuLabel17

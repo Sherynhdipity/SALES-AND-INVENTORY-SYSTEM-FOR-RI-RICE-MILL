@@ -6,7 +6,29 @@
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBSaleInventoryConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBSaleInventoryConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.GlobalReference.Default.DBSaleInventoryConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
-        <Tables />
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CustomerRecordsTableAdapter" GeneratorDataComponentClassName="CustomerRecordsTableAdapter" Name="CustomerRecords" UserDataComponentName="CustomerRecordsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.CustomerRecords" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT [First Name], [Last Name], Discount_Description, [Total Amount], [Total Transaction], [Last Date of Transaction] FROM dbo.CustomerRecords</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="First Name" DataSetColumn="First Name" />
+              <Mapping SourceColumn="Last Name" DataSetColumn="Last Name" />
+              <Mapping SourceColumn="Discount_Description" DataSetColumn="Discount_Description" />
+              <Mapping SourceColumn="Total Amount" DataSetColumn="Total Amount" />
+              <Mapping SourceColumn="Total Transaction" DataSetColumn="Total Transaction" />
+              <Mapping SourceColumn="Last Date of Transaction" DataSetColumn="Last Date of Transaction" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
         <Sources />
       </DataSource>
     </xs:appinfo>
@@ -14,7 +36,7 @@
   <xs:element name="reportsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="reportsDataSet" msprop:Generator_UserDSName="reportsDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="InventoryReportView" msprop:Generator_TableClassName="InventoryReportViewDataTable" msprop:Generator_TableVarName="tableInventoryReportView" msprop:Generator_TablePropName="InventoryReportView" msprop:Generator_RowDeletingName="InventoryReportViewRowDeleting" msprop:Generator_RowChangingName="InventoryReportViewRowChanging" msprop:Generator_RowEvHandlerName="InventoryReportViewRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryReportViewRowDeleted" msprop:Generator_UserTableName="InventoryReportView" msprop:Generator_RowChangedName="InventoryReportViewRowChanged" msprop:Generator_RowEvArgName="InventoryReportViewRowChangeEvent" msprop:Generator_RowClassName="InventoryReportViewRow">
+        <xs:element name="InventoryReportView" msprop:Generator_TableClassName="InventoryReportViewDataTable" msprop:Generator_TableVarName="tableInventoryReportView" msprop:Generator_RowChangedName="InventoryReportViewRowChanged" msprop:Generator_TablePropName="InventoryReportView" msprop:Generator_RowDeletingName="InventoryReportViewRowDeleting" msprop:Generator_RowChangingName="InventoryReportViewRowChanging" msprop:Generator_RowEvHandlerName="InventoryReportViewRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryReportViewRowDeleted" msprop:Generator_RowClassName="InventoryReportViewRow" msprop:Generator_UserTableName="InventoryReportView" msprop:Generator_RowEvArgName="InventoryReportViewRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
@@ -31,7 +53,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RestockListReportView" msprop:Generator_TableClassName="RestockListReportViewDataTable" msprop:Generator_TableVarName="tableRestockListReportView" msprop:Generator_TablePropName="RestockListReportView" msprop:Generator_RowDeletingName="RestockListReportViewRowDeleting" msprop:Generator_RowChangingName="RestockListReportViewRowChanging" msprop:Generator_RowEvHandlerName="RestockListReportViewRowChangeEventHandler" msprop:Generator_RowDeletedName="RestockListReportViewRowDeleted" msprop:Generator_UserTableName="RestockListReportView" msprop:Generator_RowChangedName="RestockListReportViewRowChanged" msprop:Generator_RowEvArgName="RestockListReportViewRowChangeEvent" msprop:Generator_RowClassName="RestockListReportViewRow">
+        <xs:element name="RestockListReportView" msprop:Generator_TableClassName="RestockListReportViewDataTable" msprop:Generator_TableVarName="tableRestockListReportView" msprop:Generator_RowChangedName="RestockListReportViewRowChanged" msprop:Generator_TablePropName="RestockListReportView" msprop:Generator_RowDeletingName="RestockListReportViewRowDeleting" msprop:Generator_RowChangingName="RestockListReportViewRowChanging" msprop:Generator_RowEvHandlerName="RestockListReportViewRowChangeEventHandler" msprop:Generator_RowDeletedName="RestockListReportViewRowDeleted" msprop:Generator_RowClassName="RestockListReportViewRow" msprop:Generator_UserTableName="RestockListReportView" msprop:Generator_RowEvArgName="RestockListReportViewRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Batch_number" msprop:Generator_ColumnVarNameInTable="columnBatch_number" msprop:Generator_ColumnPropNameInRow="Batch_number" msprop:Generator_ColumnPropNameInTable="Batch_numberColumn" msprop:Generator_UserColumnName="Batch_number" type="xs:int" />
@@ -44,6 +66,36 @@
               </xs:element>
               <xs:element name="Critical_Level" msprop:Generator_ColumnVarNameInTable="columnCritical_Level" msprop:Generator_ColumnPropNameInRow="Critical_Level" msprop:Generator_ColumnPropNameInTable="Critical_LevelColumn" msprop:Generator_UserColumnName="Critical_Level" type="xs:int" />
               <xs:element name="Remain_x0020_Quantity" msprop:Generator_ColumnVarNameInTable="columnRemain_Quantity" msprop:Generator_ColumnPropNameInRow="Remain_Quantity" msprop:Generator_ColumnPropNameInTable="Remain_QuantityColumn" msprop:Generator_UserColumnName="Remain Quantity" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CustomerRecords" msprop:Generator_TableClassName="CustomerRecordsDataTable" msprop:Generator_TableVarName="tableCustomerRecords" msprop:Generator_TablePropName="CustomerRecords" msprop:Generator_RowDeletingName="CustomerRecordsRowDeleting" msprop:Generator_RowChangingName="CustomerRecordsRowChanging" msprop:Generator_RowEvHandlerName="CustomerRecordsRowChangeEventHandler" msprop:Generator_RowDeletedName="CustomerRecordsRowDeleted" msprop:Generator_UserTableName="CustomerRecords" msprop:Generator_RowChangedName="CustomerRecordsRowChanged" msprop:Generator_RowEvArgName="CustomerRecordsRowChangeEvent" msprop:Generator_RowClassName="CustomerRecordsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="First_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnFirst_Name" msprop:Generator_ColumnPropNameInRow="First_Name" msprop:Generator_ColumnPropNameInTable="First_NameColumn" msprop:Generator_UserColumnName="First Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Last_x0020_Name" msprop:Generator_ColumnVarNameInTable="columnLast_Name" msprop:Generator_ColumnPropNameInRow="Last_Name" msprop:Generator_ColumnPropNameInTable="Last_NameColumn" msprop:Generator_UserColumnName="Last Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Discount_Description" msprop:Generator_ColumnVarNameInTable="columnDiscount_Description" msprop:Generator_ColumnPropNameInRow="Discount_Description" msprop:Generator_ColumnPropNameInTable="Discount_DescriptionColumn" msprop:Generator_UserColumnName="Discount_Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Total_x0020_Amount" msprop:Generator_ColumnVarNameInTable="columnTotal_Amount" msprop:Generator_ColumnPropNameInRow="Total_Amount" msprop:Generator_ColumnPropNameInTable="Total_AmountColumn" msprop:Generator_UserColumnName="Total Amount" type="xs:double" minOccurs="0" />
+              <xs:element name="Total_x0020_Transaction" msprop:Generator_ColumnVarNameInTable="columnTotal_Transaction" msprop:Generator_ColumnPropNameInRow="Total_Transaction" msprop:Generator_ColumnPropNameInTable="Total_TransactionColumn" msprop:Generator_UserColumnName="Total Transaction" type="xs:int" minOccurs="0" />
+              <xs:element name="Last_x0020_Date_x0020_of_x0020_Transaction" msprop:Generator_ColumnVarNameInTable="columnLast_Date_of_Transaction" msprop:Generator_ColumnPropNameInRow="Last_Date_of_Transaction" msprop:Generator_ColumnPropNameInTable="Last_Date_of_TransactionColumn" msprop:Generator_UserColumnName="Last Date of Transaction" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

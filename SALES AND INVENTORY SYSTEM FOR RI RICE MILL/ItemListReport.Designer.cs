@@ -1,7 +1,7 @@
 ﻿
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    partial class frmSalesReport
+    partial class frmItemListReport
     {
         /// <summary>
         /// Required designer variable.
@@ -29,35 +29,37 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         /// </summary>
         private void InitializeComponent()
         {
-            this.SalesReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.ItemListViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.ItemListReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ItemListReport();
             this.SuspendLayout();
             // 
-            // SalesReportViewer
+            // ItemListViewer
             // 
-            this.SalesReportViewer.ActiveViewIndex = -1;
-            this.SalesReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SalesReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SalesReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SalesReportViewer.Location = new System.Drawing.Point(0, 0);
-            this.SalesReportViewer.Name = "SalesReportViewer";
-            this.SalesReportViewer.Size = new System.Drawing.Size(800, 450);
-            this.SalesReportViewer.TabIndex = 0;
-            this.SalesReportViewer.Load += new System.EventHandler(this.SalesReportViewer_Load);
+            this.ItemListViewer.ActiveViewIndex = 0;
+            this.ItemListViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ItemListViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ItemListViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ItemListViewer.Location = new System.Drawing.Point(0, 0);
+            this.ItemListViewer.Name = "ItemListViewer";
+            this.ItemListViewer.ReportSource = this.ItemListReport1;
+            this.ItemListViewer.Size = new System.Drawing.Size(800, 450);
+            this.ItemListViewer.TabIndex = 0;
             // 
-            // frmSalesReport
+            // frmItemListReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.SalesReportViewer);
-            this.Name = "frmSalesReport";
-            this.Text = "SalesReport";
+            this.Controls.Add(this.ItemListViewer);
+            this.Name = "frmItemListReport";
+            this.Text = "ItemListReport";
+            this.Load += new System.EventHandler(this.frmItemListReport_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private SalesReport SalesReport1;
-        public CrystalDecisions.Windows.Forms.CrystalReportViewer SalesReportViewer;
+        private ItemListReport ItemListReport1;
+        public CrystalDecisions.Windows.Forms.CrystalReportViewer ItemListViewer;
     }
 }

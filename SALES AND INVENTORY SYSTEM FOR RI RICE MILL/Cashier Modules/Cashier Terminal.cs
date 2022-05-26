@@ -31,6 +31,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string[] SKU;
         public List<string> SKU_LIST { get; set; }
 
+        frmProductLookup productLookup = new frmProductLookup();
         public frmSalesManagement()
         {
             InitializeComponent();
@@ -425,7 +426,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //else 
                 if (txtQuantity.Text == "")
                 {
-                    txtQuantity.Text = "1";
+                    txtQuantity.Text = "0";
                     MessageBox.Show("Invalid Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else if (txtProdPrice.Text == "")
@@ -435,7 +436,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
                 else if (System.Text.RegularExpressions.Regex.IsMatch(txtQuantity.Text, "[^0-9]"))
                 {
-                    txtQuantity.Text = "1";
+                    txtQuantity.Text = "0";
                     MessageBox.Show("Invalid Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
@@ -450,11 +451,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     int result = 0;
                     double remainingqty = 0;
 
+                    
+
                     if (rows.Count() > 0)
                     {
                         item = rows[0];
                         int orderqty = Convert.ToInt32(item["quantity"]);
                         result = orderqty + qty;
+                    }
+                    else if (rows.Count() == 0)
+                    {
+                        
                     }
 
                     if (result > instock)
@@ -505,7 +512,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     txtSearch.Text = "";
                     txtSearch.Focus();
                     txtProdDesc.Text = "";
-                    txtQuantity.Text = "1";
+                    txtQuantity.Text = "0";
                     txtStock.Text = "0";
                     txtProdPrice.Text = "";
 
@@ -736,7 +743,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
-            frmProductLookup productLookup = new frmProductLookup();
+            
             productLookup.skuList = SKU_LIST;
             productLookup.ShowDialog();
             if(isReturn)
@@ -870,6 +877,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //txtStock.Text = returnItem.stock;
                 //btnAdd_Click((object)sender, (EventArgs)e);
 
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
 
         }
 

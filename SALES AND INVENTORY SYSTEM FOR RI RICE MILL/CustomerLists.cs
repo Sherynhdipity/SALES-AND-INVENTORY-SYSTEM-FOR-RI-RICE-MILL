@@ -10,22 +10,21 @@ using System.Windows.Forms;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
-    public partial class frmInventoryReport : Form
+    public partial class frmCustomerLists : Form
     {
-
-        private static frmInventoryReport frm;
-        public static frmInventoryReport getform
+        private static frmCustomerLists list;
+        public static frmCustomerLists getform
         {
             get
             {
-                if (frm == null)
+                if (list == null)
                 {
-                    frm = new frmInventoryReport();
+                    list = new frmCustomerLists();
                 }
-                return frm;
+                return list;
             }
         }
-        public frmInventoryReport()
+        public frmCustomerLists()
         {
             InitializeComponent();
         }
@@ -35,7 +34,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         }
 
-        private void ReturnReport1_InitReport(object sender, EventArgs e)
+        private void frmCustomerLists_Load(object sender, EventArgs e)
         {
 
         }

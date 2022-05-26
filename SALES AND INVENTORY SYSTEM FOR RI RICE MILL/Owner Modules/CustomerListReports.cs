@@ -29,6 +29,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static DialogResult result;
         public static string QuerySelect;
 
+        string first;
+        string last;
+
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -38,9 +41,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-               
-                QuerySelect = "Select * from CustomerRecords where [First Name] = @first Or [Last Name] = @Last";
 
+                if (txtSearchCustomers.Text == "" || txtSearchCustomers.Text == null)
+                {
+                    QuerySelect = "Select * from CustomerRecords";
+                }
+                else
+                {
+                    QuerySelect = " Select * from CustomerRecords where ([First Name] LIKE '%' + @first + '%') Or ([Last Name] LIKE '%' + @last + '%')";
+                }
+             
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@first", txtSearchCustomers.Text);
                 cmd.Parameters.AddWithValue("@last", txtSearchCustomers.Text);
@@ -55,6 +65,71 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
 
             }
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            CustomerList cust = new CustomerList();
+            frmCustomerLists list = new frmCustomerLists();
+           
+            try
+            {
+                
+                con.Open();
+                dt = new DataTable();
+
+                if (txtSearchCustomers.Text == "" || txtSearchCustomers.Text == null)
+                {
+                    QuerySelect = "Select * from CustomerRecords";
+                }
+                else
+                {
+                    QuerySelect = " Select * from CustomerRecords where ([First Name] LIKE '%' + @first + '%') Or ([Last Name] LIKE '%' + @last + '%')";
+                }
+
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@first", txtSearchCustomers.Text);
+                cmd.Parameters.AddWithValue("@last", txtSearchCustomers.Text);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                cust.Database.Tables["CustomerRecords"].SetDataSource(dt);
+                list.CustomerListViewer.ReportSource = cust;
+                con.Close();
+                list.Show();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void frmCustomerListReports_Load(object sender, EventArgs e)
+        {
+            try
+            {
+
+                QuerySelect = "Select * from CustomerRecords";
+
+                cmd = new SqlCommand(QuerySelect, con);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvCustomerList.DataSource = dt;
+                dgvCustomerList.Refresh();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void dgvCustomerList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
         }
     }
 }

@@ -188,5 +188,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         }
         }
+
+        private void txtViewStocks_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuPanel4_Click(object sender, EventArgs e)
+        {
+            dgvStockList.Refresh();
+        }
     }
 }

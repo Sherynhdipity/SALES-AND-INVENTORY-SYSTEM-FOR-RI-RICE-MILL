@@ -62,10 +62,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             {
                 con.Close();
                 con.Open();
-                //QuerySelect = "SELECT SKU FROM OrderDetailsView WHERE Order_details_id = @id";
-                QuerySelect = "SELECT SKU FROM tblInventories WHERE SKU IN(SELECT SKU FROM tblOrderDetails WHERE Order_id = (SELECT Order_id FROM tblOrders WHERE Order_id = @id)) AND Status = 'Stock Out'";
+                //QuerySelect = "SELECT SKU FROM OrderDetailsView WHERE Transaction_number = @trans";
+                QuerySelect = "SELECT SKU FROM tblInventories WHERE SKU IN(SELECT SKU FROM tblOrderDetails WHERE Order_id = (SELECT Order_id FROM tblOrders WHERE Transaction_number = @trans_num)) " +
+                    "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = @description) AND Status = 'Stock Out'";
                 cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@id", Order_details_id);
+                cmd.Parameters.AddWithValue("trans_num", Transaction_Number);
+                cmd.Parameters.AddWithValue("description", Description);
                 //cmd.Parameters.AddWithValue("@desc", Description);
 
                 adapter = new SqlDataAdapter(cmd);
@@ -111,25 +113,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                 try
                                 {
                                     con.Close();
-                                    //con.Open();
-                                    //QuerySelect = "SELECT TOP 1 Order_details_id FROM OrderDetailsView WHERE SKU = @sku";
-                                    //cmd = new SqlCommand(QuerySelect, con);
-                                    //cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
-    
-                                    //reader = cmd.ExecuteReader();
-                                    //if (reader.HasRows)
-                                    //{
-                                    //reader.Read();
-                                    //id = reader["Order_details_id"].ToString();
-                       
-                                    //reader.Close();
-                                    //}
-                                    //con.Close();
+                                    con.Open();
+                                    QuerySelect = "SELECT TOP 1 Order_details_id FROM OrderDetailsView WHERE SKU = @sku";
+                                    cmd = new SqlCommand(QuerySelect, con);
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+
+                                    reader = cmd.ExecuteReader();
+                                    if (reader.HasRows)
+                                    {
+                                        reader.Read();
+                                        id = reader["Order_details_id"].ToString();
+
+                                        reader.Close();
+                                    }
+                                    con.Close();
                                     con.Open();
                                     QueryInsert = "Insert into tblReturns (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
                                         "Values(@id, @sku, @qty, @remarks, @date)";
                                     cmd = new SqlCommand(QueryInsert, con);
-                                    cmd.Parameters.AddWithValue("@id", Order_details_id);
+                                    cmd.Parameters.AddWithValue("@id", id);
                                     cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
                                     cmd.Parameters.AddWithValue("@qty", '1');
                                     cmd.Parameters.AddWithValue("@remarks", "WRONG ITEM");
@@ -152,6 +154,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                 {
                                     con.Close();
                                 }
+
+
                             con.Open();
                             QuerySelect = "SELECT Price FROM tblItems WHERE Item_id = (SELECT Item_id FROM tblInventories WHERE SKU = @sku)";
                             cmd = new SqlCommand(QuerySelect, con);
@@ -167,24 +171,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             reader.Close();
                             con.Close();
                             int tempSum = 0;
-                            for(int j =0; j < prices.Length; j++)
+                            for (int j = 0; j < prices.Length; j++)
                             {
                                 tempSum += Convert.ToInt32(prices[j]);
                             }
                             Price = tempSum.ToString();
-                          
-                            }
 
-                   
-
-
+                        }
 
                     }
 
+                    
 
-                    MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
-
+                    //MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
                     this.Close();
+
                 }
                     else if (cmbRemarks.SelectedIndex == 1)
                     {
@@ -195,7 +196,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             {
                                 try
                                 {
-                                    con.Close();
+
+                                con.Close();
+                                con.Open();
+                                QuerySelect = "SELECT TOP 1 Order_details_id FROM OrderDetailsView WHERE SKU = @sku";
+                                cmd = new SqlCommand(QuerySelect, con);
+                                cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+
+                                reader = cmd.ExecuteReader();
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    id = reader["Order_details_id"].ToString();
+
+                                    reader.Close();
+                                }
+
+                                con.Close();
                                     con.Open();
                                     QueryInsert = "Insert into tblReturns (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
                                         "Values(@id, @sku, @qty, @remarks, @date)";
@@ -220,7 +237,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             }
                         }
 
-                        MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
+                        //MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
                         this.Close();
 
                     }
@@ -237,6 +254,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         private void btnSave_Click(object sender, EventArgs e)
         {
             ReturnItem();
+        }
+
+        private void dgvOrderDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

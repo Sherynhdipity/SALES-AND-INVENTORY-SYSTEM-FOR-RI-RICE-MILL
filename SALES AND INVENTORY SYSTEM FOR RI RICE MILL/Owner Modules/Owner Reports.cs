@@ -142,8 +142,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnViewInventoryReports_Click(object sender, EventArgs e)
         {
-            Owner_Modules.frmOwnerInventoryReport f2 = new Owner_Modules.frmOwnerInventoryReport();
-            f2.Show();
+            Owner_Modules.frmShowInventoryButtons show = new Owner_Modules.frmShowInventoryButtons();
+            show.Show();
         }
 
         private void frmReports_Load(object sender, EventArgs e)

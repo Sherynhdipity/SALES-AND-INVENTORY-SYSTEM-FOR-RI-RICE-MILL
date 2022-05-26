@@ -30,7 +30,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void InitializeComponent()
         {
             this.InventoryReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.ReturnReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ReturnReport();
             this.InventoryReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.InventoryReport();
             this.SuspendLayout();
             // 
@@ -42,8 +41,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.InventoryReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InventoryReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.InventoryReportViewer1.Name = "InventoryReportViewer1";
-            this.InventoryReportViewer1.ReportSource = this.InventoryReport1;
-            this.InventoryReportViewer1.Size = new System.Drawing.Size(800, 450);
+            this.InventoryReportViewer1.Size = new System.Drawing.Size(1135, 450);
             this.InventoryReportViewer1.TabIndex = 0;
             this.InventoryReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.InventoryReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
@@ -52,7 +50,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1135, 450);
             this.Controls.Add(this.InventoryReportViewer1);
             this.Name = "frmInventoryReport";
             this.Text = "InventoryRepot";
@@ -62,7 +60,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         #endregion
         public CrystalDecisions.Windows.Forms.CrystalReportViewer InventoryReportViewer1;
-        private ReturnReport ReturnReport1;
         private InventoryReport InventoryReport1;
     }
 }

@@ -16,14 +16,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ReturnReport : ReportClass {
+    public class ItemListReport : ReportClass {
         
-        public ReturnReport() {
+        public ItemListReport() {
         }
         
         public override string ResourceName {
             get {
-                return "ReturnReport.rpt";
+                return "ItemListReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         
         public override string FullResourceName {
             get {
-                return "SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ReturnReport.rpt";
+                return "SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ItemListReport.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_Date_Range {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedReturnReport : Component, ICachedReport {
+    public class CachedItemListReport : Component, ICachedReport {
         
-        public CachedReturnReport() {
+        public CachedItemListReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +137,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ReturnReport rpt = new ReturnReport();
+            ItemListReport rpt = new ItemListReport();
             rpt.Site = this.Site;
             return rpt;
         }

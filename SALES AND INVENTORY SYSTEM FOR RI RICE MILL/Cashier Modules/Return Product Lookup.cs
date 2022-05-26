@@ -40,17 +40,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string productPrice { get; set; }
 
         public bool isReturn { get; set; }
-        public bool isComplete { get; set; }
         public int quantity { get; set; }
         public string stock { get; set; }
         public string[] sku { get; set; }
         public string price;
+        public List<string> skuList { get; set; }
 
-    //Display ProductData in DataGridView  
-    public void DisplayProductList()
+        //Display ProductData in DataGridView  
+        public void DisplayProductList()
         {
-           // frmReturnTerminal terminal = new frmReturnTerminal();
-            price = terminal.price;
             con.Open();
             QuerySelect = "SELECT Description, Batch_number, Price, Stock FROM ItemLookUp";
             cmd = new SqlCommand(QuerySelect, con);
@@ -71,12 +69,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             else
             {
-                price = terminal.price;
                 con.Open();
-                QuerySelect = "SELECT Description, Batch_number, Price, Stock FROM  ItemLookup WHERE Price = @price AND (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR (Stock LIKE '%' + @stock + '%')";
+                QuerySelect = "SELECT Description, Batch_number, Price, Stock FROM  ItemLookup WHERE (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR (Stock LIKE '%' + @stock + '%')";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@desc", txtSearchProduct.Text);
-                cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@price", txtSearchProduct.Text);
                 cmd.Parameters.AddWithValue("@stock", txtSearchProduct.Text);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -128,6 +125,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //qty.product_Code = Convert.ToString(selectedRow.Cells["Barcode"].Value);
                 qty.product_Desc = Convert.ToString(selectedRow.Cells["Description"].Value);
                 qty.Batch_number = Convert.ToString(selectedRow.Cells["Batch_number"].Value);
+                qty.SKULIST = skuList;
                 //  qty.product_Variety = Convert.ToString(selectedRow.Cells["Product Variety"].Value);
                 qty.product_Price = Convert.ToString(selectedRow.Cells["Price"].Value);
                 qty.Product_Stock = temp_stock;
@@ -143,7 +141,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     quantity = qty.Product_Quantity;
                     stock = qty.Product_Stock;
                     sku = qty.SKU;
-                    isComplete = true;
+                    skuList = qty.SKULIST;
                     this.Close();
                 //}
                 //else
@@ -158,7 +156,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
+        }
+
+        private void frmReturnProductLookup_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuPanel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

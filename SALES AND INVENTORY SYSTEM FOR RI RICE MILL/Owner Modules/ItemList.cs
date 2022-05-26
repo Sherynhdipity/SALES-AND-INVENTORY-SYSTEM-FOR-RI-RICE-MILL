@@ -28,6 +28,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static DialogResult result;
         public static string QuerySelect;
 
+        string desc;
 
         private void ItemList_Load(object sender, EventArgs e)
         {
@@ -44,22 +45,74 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
             catch (Exception ex)
             {
-                
+
             }
-            
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string query = "Select Description, Cost_Price, Price, Critical_Level from tblItems where Description = @desc";
-    
-            cmd = new SqlCommand(query, con);
+            if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
+            {
+                QuerySelect = "Select * from tblItems";
+            }
+            else
+            {
+                QuerySelect = "Select Description, Cost_Price, Price, Critical_Level from tblItems where (Description LIKE '%' + @desc + '%')";
+            }
+
+            cmd = new SqlCommand(QuerySelect, con);
             cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             adapter.Fill(dt);
             dgvItemList.DataSource = dt;
             dgvItemList.Refresh();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            ItemListReport item = new ItemListReport();
+            frmItemListReport list = new frmItemListReport();
+
+            try
+            {
+                
+                con.Open();
+                dt = new DataTable();
+                if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
+                {
+                    QuerySelect = "Select * from tblItems";
+                }
+                else
+                {
+                    QuerySelect = "Select Description, Cost_Price, Price, Critical_Level from tblItems where (Description LIKE '%' + @desc + '%')";
+                }
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                item.Database.Tables["tblItems"].SetDataSource(dt);
+                list.ItemListViewer.ReportSource = item;
+                con.Close();
+                list.Show();
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void bunifuLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchItem_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

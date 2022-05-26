@@ -60,6 +60,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public double[] Price { get; set; }
 
         public bool isReturn{ get; set; }
+        public string[] NEW_SKU;
+
+        public List<string> sku_list { get; set; }
 
         public string cust{ get; set; }
         private int customerID;
@@ -196,7 +199,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             {
                                 cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
                                 cmd.Parameters.AddWithValue("@PWD", "");
-                            }else if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "PWD #:")
+                            }
+                            else if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "PWD #:")
                             {
                                 cmd.Parameters.AddWithValue("@senior", "");
                                 cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
@@ -206,7 +210,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd.Parameters.AddWithValue("@senior", txtPWDOSCA.Text);
                                 cmd.Parameters.AddWithValue("@PWD", txtPWDOSCA.Text);
                             }
-                            
+
                             cmd.ExecuteNonQuery();
 
                         }
@@ -228,32 +232,39 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         {
                             //get SKU
                             con.Open();
-                          
-                            DESCRIPTION = new string[SKU.Length];
+                            DESCRIPTION = new string[total_quantity];
+                            //SKU = new string[total_quantity];
+                            //DESCRIPTION = new string[total_quantity];
                             int ctr = 0;
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
-                                QuerySelect = "SELECT " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " Item_id FROM tblInventories" +
-                                   " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
+                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " Item_id FROM tblInventories" +
+                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
                                 cmd = new SqlCommand(QuerySelect, con);
-
                                 cmd.Parameters.AddWithValue("@desc", dtFromSalesMgt.Rows[i][0].ToString());
                                 adapter = new SqlDataAdapter(cmd);
                                 DataTable dtNew = new DataTable();
                                 adapter.Fill(dtNew);
-                                for (int j =0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
+                                for (int j = 0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
                                 {
-                                    
-                                     DESCRIPTION[ctr] = dtNew.Rows[j][0].ToString();
+
+                                    DESCRIPTION[ctr] = dtNew.Rows[j][0].ToString();
 
                                     ctr++;
 
-    
+
                                 }
                             }
 
+
+
                             //insert tblOrderDetails and Delete from inventory
-                            for (int i = 0; i < SKU.Length; i++)
+                            NEW_SKU = new string[sku_list.Count];
+                            for (int i = 0; i < NEW_SKU.Length; i++)
+                            {
+                                NEW_SKU[i] = sku_list[i];
+                            }
+                            for (int i = 0; i < DESCRIPTION.Length; i++)
                             {
 
                                 QueryInsert = "INSERT INTO tblOrderDetails(Order_id, Item_id, SKU)" +
@@ -261,15 +272,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd = new SqlCommand(QueryInsert, con);
 
                                 cmd.Parameters.AddWithValue("@description", DESCRIPTION[i]);
-                                cmd.Parameters.AddWithValue("@sku", SKU[i]);
+                                cmd.Parameters.AddWithValue("@sku", NEW_SKU[i]);
                                 cmd.ExecuteNonQuery();
 
                                 QueryUpdate = "UPDATE tblInventories SET Status = 'Stock Out' WHERE SKU = @sku";
                                 cmd = new SqlCommand(QueryUpdate, con);
-                                cmd.Parameters.AddWithValue("@sku", SKU[i]);
+                                cmd.Parameters.AddWithValue("@sku", NEW_SKU[i]);
                                 cmd.ExecuteNonQuery();
 
-   
+
                             }
 
                         }
@@ -283,16 +294,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         }
                     }
 
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message + "\n" + ex.StackTrace + " here!!");
-                        }
-                        finally
-                        {
-                            con.Close();
-                        }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + "\n" + ex.StackTrace);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
 
-                    MessageBox.Show("Change: "+( Convert.ToDouble(txtCash.Text)-Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GenerateReceipt();
                     this.Close();
@@ -300,6 +311,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
             }
         }
+
 
         void GenerateReceipt()
         {
@@ -474,7 +486,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            //SettlePayment();
+            SettlePayment();
             GenerateReceipt();
         }
 

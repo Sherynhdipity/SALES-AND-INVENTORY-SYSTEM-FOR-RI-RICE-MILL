@@ -335,6 +335,18 @@
     <Compile Include="Cashier Modules\SearchReturnTransaction.Designer.cs">
       <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomerList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomerLists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerLists.Designer.cs">
+      <DependentUpon>CustomerLists.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBSaleInventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -394,6 +406,18 @@
     <Compile Include="InventoryReports.Designer.cs">
       <DependentUpon>InventoryReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemListReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemListReport.Designer.cs">
+      <DependentUpon>ItemListReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemListReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemListReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Owner Modules\Add Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,11 +430,23 @@
     <Compile Include="Owner Modules\CustomerListReports.Designer.cs">
       <DependentUpon>CustomerListReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="Owner Modules\InventoryAdjustmentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\InventoryAdjustmentReport.Designer.cs">
+      <DependentUpon>InventoryAdjustmentReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Owner Modules\ItemList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Owner Modules\ItemList.Designer.cs">
       <DependentUpon>ItemList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner Modules\ShowInventoryButtons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\ShowInventoryButtons.Designer.cs">
+      <DependentUpon>ShowInventoryButtons.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Update User.cs">
       <SubType>Form</SubType>
@@ -566,12 +602,6 @@
       <DependentUpon>RestockReports.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReturnReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ReturnReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Owner Modules\Update Item.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -680,6 +710,18 @@
       <DependentUpon>SalesReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SalesReturn.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesReturn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SalesReturnReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesReturnReport.Designer.cs">
+      <DependentUpon>SalesReturnReport.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
       <DependentUpon>addCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -703,6 +745,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\SearchReturnTransaction.resx">
       <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerLists.resx">
+      <DependentUpon>CustomerLists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -732,14 +781,27 @@
     <EmbeddedResource Include="InventoryReports.resx">
       <DependentUpon>InventoryReports.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ItemListReport.resx">
+      <DependentUpon>ItemListReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemListReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ItemListReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\CustomerListReports.resx">
       <DependentUpon>CustomerListReports.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\InventoryAdjustmentReport.resx">
+      <DependentUpon>InventoryAdjustmentReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\ItemList.resx">
       <DependentUpon>ItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\ShowInventoryButtons.resx">
+      <DependentUpon>ShowInventoryButtons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Update User.resx">
       <DependentUpon>Update User.cs</DependentUpon>
@@ -796,10 +858,6 @@
     <EmbeddedResource Include="RestockReports.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RestockReports.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReturnReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ReturnReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintReceipt.resx">
       <DependentUpon>PrintReceipt.cs</DependentUpon>
@@ -883,6 +941,13 @@
     <EmbeddedResource Include="SalesReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>SalesReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesReturn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesReturn.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesReturnReport.resx">
+      <DependentUpon>SalesReturnReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="AppData.xsc">
       <DependentUpon>AppData.xsd</DependentUpon>

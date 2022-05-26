@@ -38,9 +38,58 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void frmOwnerSalesReport_Load(object sender, EventArgs e)
         {
-            DateTime date = DateTime.Now;
-            dtpFromDate.Text = string.Format("{0:D}", date);
-            dtpToDate.Text = string.Format("{0:D}", date);
+            try
+            {
+                DateTime date = DateTime.Now;
+                dtpFromDate.Text = string.Format("{0:D}", date);
+                dtpToDate.Text = string.Format("{0:D}", date);
+
+                QuerySelect = "Select [Date], Description, [Cost Sales], [Gross Sales] from SalesReportView";
+
+                cmd = new SqlCommand(QuerySelect, con);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvSalesOwnerReport.DataSource = dt;
+                dgvSalesOwnerReport.Refresh();
+
+                QuerySelect = "Select [Date], Description, [Returned Sales], Remarks from SalesReturnReportView";
+                cmd = new SqlCommand(QuerySelect, con);
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvReturn.DataSource = dt;
+                dgvReturn.Refresh();
+
+                float sum = 0;
+                float sum2 = 0;
+
+                for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
+                    sum2 += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                }
+                Gross.Text = sum.ToString();
+                Cost.Text = sum2.ToString();
+
+                float sum3 = 0;
+
+                for (int i = 0; i < dgvReturn.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                }
+                Return.Text = sum3.ToString();
+
+                net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString();
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -52,20 +101,50 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = "Select [Date], Description, [Cost Sales], [Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
-                    
+                
+                QuerySelect = "Select [Date], Description, [Cost Sales], [Gross Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
+                
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
                 cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
-
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
                 dgvSalesOwnerReport.DataSource = dt;
                 dgvSalesOwnerReport.Refresh();
 
-               
+              
 
+                QuerySelect = "Select [Date], Description, [Returned Sales], Remarks from SalesReturnReportView where [Date] between @FromDate and @ToDate";
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
+                cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvReturn.DataSource = dt;
+                dgvReturn.Refresh();
+
+                float sum = 0;
+                float sum2 = 0;
+                
+                for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
+                    sum2 += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                }
+                Gross.Text = sum.ToString();
+                Cost.Text = sum2.ToString();
+
+                float sum3 = 0;
+
+                for (int i = 0; i < dgvReturn.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                }
+                Return.Text = sum3.ToString();
+
+                net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString();
             }
             catch (Exception ex)
             {

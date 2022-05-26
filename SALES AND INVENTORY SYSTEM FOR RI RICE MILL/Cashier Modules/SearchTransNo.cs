@@ -65,7 +65,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     }
                     else
                     {
-                        MessageBox.Show("Please enter quantity!");
+                        MessageBox.Show("Please enter Transaction Number!");
                     }
                     
 
@@ -89,9 +89,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
+            
         }
 
         private void frmSearchTransNo_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtQty_TextChanged(object sender, EventArgs e)
         {
 
         }

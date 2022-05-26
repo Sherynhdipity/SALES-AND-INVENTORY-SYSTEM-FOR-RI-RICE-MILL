@@ -81,7 +81,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 }   
                 else
                 {   
-                    QuerySelect = "SELECT * FROM  CustomerView WHERE (ID LIKE '%' + @id + '%') OR ([First Name] LIKE '%' + @fName + '%') OR ([Last Name] LIKE '%' + @lName + '%') OR ([Contact Number] LIKE '%' + @cNum + '%') OR ([Description] LIKE '%' + @desc + '%')";
+                    QuerySelect = "SELECT * FROM  CustomerView WHERE (Customer_id LIKE '%' + @id + '%') OR ([First Name] LIKE '%' + @fName + '%') OR ([Last Name] LIKE '%' + @lName + '%') OR ([Contact Number] LIKE '%' + @cNum + '%') OR ([Description] LIKE '%' + @desc + '%')";
 
                 }
 

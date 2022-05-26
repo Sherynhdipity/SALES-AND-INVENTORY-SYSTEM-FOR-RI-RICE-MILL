@@ -58,6 +58,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 salesChart.Series[0].YValueMembers = "Total";
 
                 salesChart.DataBind();
+                
 
             }
             catch (Exception ex)
@@ -150,6 +151,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             populateDash();
             populateChart();
+            
+
+
 
         }
     }

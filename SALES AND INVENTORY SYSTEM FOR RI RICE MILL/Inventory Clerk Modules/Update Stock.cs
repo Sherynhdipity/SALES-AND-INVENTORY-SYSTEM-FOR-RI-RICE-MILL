@@ -60,8 +60,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             txtDescription.Text = Description;
             txtBatchQuantity.Text = Quantity;
+          
+            txtBatchQuantity.Enabled = false;
+            txtAdjustment.Enabled = false;
+            bunifuButton1.Enabled = false;
             dgvSKUList.Refresh();
             displayExistingSKU();
+            dgvSKUList.ClearSelection();
            // autoCompleteDescription();
             //this.ActiveControl = txtViewItem;
 
@@ -261,10 +266,64 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             return sWhitespace.Replace(input, replacement);
         }
 
+        public void adjustStock()
+        {
+            string id = "";
+            int selectedRows = dgvSKUList.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if(selectedRows > 0)
+            {
+                con.Close();
+                con.Open();
+                foreach (DataGridViewRow row in dgvSKUList.SelectedRows)
+                {
+                    QuerySelect = "SELECT Inventory_id FROM tblInventories WHERE SKU = @sku AND Status = 'Stock In'";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("sku", dgvSKUList.Rows[row.Index].Cells[0].Value.ToString());
+                    
+ 
+                    reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            id = reader["Inventory_id"].ToString();
+                        }
+                    }
+                    reader.Close();
+
+
+                    QueryInsert = "INSERT INTO tblInventoryAdjustment (Inventory_id, Reason, SKU)" +
+                        "VALUES (@inventory_id,@reason,@SKU)";
+                    cmd = new SqlCommand(QueryInsert, con);
+                    cmd.Parameters.AddWithValue("inventory_id", id);
+                    cmd.Parameters.AddWithValue("reason", txtReason.Text);
+                    cmd.Parameters.AddWithValue("SKU", dgvSKUList.Rows[row.Index].Cells[0].Value.ToString());
+                    cmd.ExecuteNonQuery();
+
+                    QueryDelete = "DELETE FROM tblInventories WHERE SKU = '" + dgvSKUList.Rows[row.Index].Cells[0].Value.ToString() + "' AND Batch_number = '" + Batch_number + "'";
+                    cmd = new SqlCommand(QueryDelete, con);
+                    cmd.ExecuteNonQuery();
+                }
+                con.Close();
+                dgvSKUList.ClearSelection();
+                txtReason.Text = "";
+                MessageBox.Show("Stock adjusted!");
+                this.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Please select row/s!");
+            }
+          
+
+        }
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            updateStock();
+            // updateStock();
+            adjustStock();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -462,6 +521,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pbBarcode_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvSKUList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedRows = dgvSKUList.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            int currentQuantity = Convert.ToInt32(Quantity);
+            txtBatchQuantity.Text = (currentQuantity - selectedRows).ToString();
+            txtAdjustment.Text = selectedRows.ToString();
+           // MessageBox.Show("test");
         }
     }
 }

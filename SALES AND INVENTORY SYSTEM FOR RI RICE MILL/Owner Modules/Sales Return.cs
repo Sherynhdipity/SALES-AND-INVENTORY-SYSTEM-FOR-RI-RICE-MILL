@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 {
@@ -33,7 +35,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = " Select * from SalesReturnReportView where return_date between @FromDate and @ToDate";
+                QuerySelect = " Select * from SalesReturnReportView where [Date] between @FromDate and @ToDate";
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -67,8 +69,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
-            frmInventoryReport frm = new frmInventoryReport();
-            ReturnReport ret = new ReturnReport();
+            SalesReturn sales = new SalesReturn();
+            frmSalesReturnReport list = new frmSalesReturnReport();
 
             try
             {
@@ -77,15 +79,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 con.Open();
 
                 dt = new DataTable();
-                QuerySelect = "Select * from tblReturns";
+                QuerySelect = "Select * from SalesReturnReportView";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
 
-                ret.Database.Tables["tblReturns"].SetDataSource(dt);
-                frm.InventoryReportViewer1.ReportSource = ret;
+                sales.Database.Tables["SalesReturnReportView"].SetDataSource(dt);
+                list.SalesReturnViewer.ReportSource = sales;
                 con.Close();
-                frm.Show();
+                list.Show();
             }
 
             catch (Exception ex)

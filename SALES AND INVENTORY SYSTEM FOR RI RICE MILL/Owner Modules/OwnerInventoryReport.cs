@@ -30,21 +30,36 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         string date1;
         string date2;
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        public void displayItems()
         {
             try
             {
-                QuerySelect = " Select *  from InventoryReportsView where Stock_in_date between @FromDate and @ToDate";
+
+                if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
+                {
+                    QuerySelect = "Select * from InventoryPerItemView";
+                }
+                else
+                {
+                    QuerySelect = "Select * from InventoryPerItemView where (Description LIKE '%' + @desc + '%')";
+                }
+
 
                 cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
-                cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
+                cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
 
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
                 dgvInventoryOwnerReport.DataSource = dt;
                 dgvInventoryOwnerReport.Refresh();
+
+                int sum = 0;
+                for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[4].Value);
+                }
+                txtTotal.Text = sum.ToString();
 
             }
             catch (Exception ex)
@@ -58,11 +73,31 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void frmOwnerInventoryReport_Load(object sender, EventArgs e)
         {
             DateTime date = DateTime.Now;
-            dtpFromDate.Text = string.Format("{0:D}", date);
-            dtpToDate.Text = string.Format("{0:D}", date);
+
+            QuerySelect = "Select * from InventoryPerItemView";
+
+            cmd = new SqlCommand(QuerySelect, con);
+
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvInventoryOwnerReport.DataSource = dt;
+            dgvInventoryOwnerReport.Refresh();
+
+            int sum = 0;
+            for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[4].Value);
+            }
+            txtTotal.Text = sum.ToString();
         }
 
         private void btnPrintReport_Click(object sender, EventArgs e)
@@ -78,17 +113,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
             try
             {
-                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
-                date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+               
                 con.Open();
 
                 dt = new DataTable();
-                QuerySelect = "SELECT * FROM InventoryReportsView WHERE Stock_in_date BETWEEN '" + date1 + "' AND '" + date2 + "'";
+
+                if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
+                {
+                    QuerySelect = "Select * from InventoryPerItemView";
+                }
+
+                else
+                {
+                    QuerySelect = "Select * from InventoryPerItemView where Description = '" + txtSearchItem.Text + "'";
+                }
+               
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
 
-                inventory.Database.Tables["InventoryReportsView"].SetDataSource(dt);
+                inventory.Database.Tables["InventoryPerItemView"].SetDataSource(dt);
                 frm.InventoryReportViewer1.ReportSource = inventory;
                 con.Close();
                 frm.Show();
@@ -138,6 +182,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearchItem_TextChange(object sender, EventArgs e)
+        {
+            displayItems();
+        }
+
+        private void txtSearchItem_TextChanged(object sender, EventArgs e)
         {
 
         }

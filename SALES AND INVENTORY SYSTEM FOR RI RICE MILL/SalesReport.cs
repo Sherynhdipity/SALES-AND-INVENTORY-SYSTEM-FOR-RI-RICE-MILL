@@ -16,5 +16,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             InitializeComponent();
         }
+
+        private void SalesReportViewer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

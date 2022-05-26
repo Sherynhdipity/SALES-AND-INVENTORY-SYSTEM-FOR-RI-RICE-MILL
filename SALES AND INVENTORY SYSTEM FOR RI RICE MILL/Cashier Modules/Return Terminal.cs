@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -30,11 +31,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string transTotal;
         public Boolean isRowUpdated = false;
         public bool isReturn;
-        public bool isComplete;
         public string[] SKU;
         public string price;
         public string CustomerId;
-
+        public List<string> SKU_LIST { get; set; }
 
         public frmReturnTerminal()
         {
@@ -49,6 +49,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // dvgOrderList.Rows.Clear();
             DisplayReturn();
             btnSearchProduct.Enabled = true;
+            
             btnPay.Enabled = true;
             // btnNewTrans_Click((object)sender, (EventArgs)e);
             //btnSearchProduct_Click((object)sender, (EventArgs)e);
@@ -61,13 +62,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             lblTransDate.Text = "";
 
             price = sku.Price;
-
+            btnSearchProduct_Click((object)sender, (EventArgs)e);
             //QuerySelect = "SELECT";
 
 
             //frmReturnProductLookup productLookup = new frmReturnProductLookup();
-           // productLookup.productPrice = ??
-           
+            // productLookup.productPrice = ??
+
         }
 
         public void DisplayReturn()
@@ -80,8 +81,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
                 con.Open();
-                //QuerySelect = "SELECT Transaction_number as 'Transaction Number', Description, Price, Quantity, Subtotal, Order_details_id as 'Id' FROM ReturnTransactionView WHERE Transaction_number = @trans";
-                QuerySelect = "SELECT Order_id as 'ID', Transaction_number as 'Transaction Number', Quantity, Total_cost as 'Total' FROM tblOrders WHERE Transaction_number = @trans";
+                QuerySelect = "SELECT Description, Price, Quantity, Subtotal FROM ReturnTransactionView WHERE Transaction_number = @trans";
+                //QuerySelect = "SELECT Order_id as 'ID', Transaction_number as 'Transaction Number', Quantity, Total_cost as 'Total' FROM tblOrders WHERE Transaction_number = @trans";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@trans", transaction_number);
 
@@ -104,7 +105,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
                 con.Open();
-                QuerySelect = "SELECT * FROM tblOrders WHERE Transaction_number = @trans";
+                QuerySelect = "SELECT * FROM ReturnTransactionView WHERE Transaction_number = @trans";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@trans", transaction_number);
                 reader = cmd.ExecuteReader();
@@ -128,7 +129,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             }finally
             {
-                con.Close();
+                //con.Close();
             }
 
 
@@ -250,19 +251,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     //    MessageBox.Show("Can't log-in into the system. Admin has deactivated your account", "User Deactivated", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //}
                     //else
-                        foreach (DataGridViewRow row in dvgOrderList.SelectedRows)
+                        foreach (DataGridViewRow row in dgvItemReplaced.SelectedRows)
                         {
 
-                            if (dvgOrderList.SelectedRows.Count > 0)
+                            if (dgvItemReplaced.SelectedRows.Count > 0)
                             {
-                                dvgOrderList.Rows.RemoveAt(row.Index);
+                                dgvItemReplaced.Rows.RemoveAt(row.Index);
                             }
                         }
 
                     int totalamount = 0;
-                    for (int i = 0; i < dvgOrderList.Rows.Count; ++i)
+                    for (int i = 0; i < dgvItemReplaced.Rows.Count; ++i)
                     {
-                        totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[2].Value);
+                        totalamount += Convert.ToInt32(dgvItemReplaced.Rows[i].Cells[2].Value);
                     }
 
                     //lblTotal.Text = totalamount.ToString() + "." + "00";
@@ -413,18 +414,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void dvgOrderList_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            int qty = Convert.ToInt32(dvgOrderList[e.ColumnIndex, e.RowIndex].Value.ToString());
+            int qty = Convert.ToInt32(dgvItemReplaced[e.ColumnIndex, e.RowIndex].Value.ToString());
             double instock = Convert.ToInt32(txtStock.Text);
 
             if (qty > instock)
             {
 
                 MessageBox.Show("You reached the limit of quantity of this product, Try again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                dvgOrderList[e.ColumnIndex, e.RowIndex].Value = 1;
+                dgvItemReplaced[e.ColumnIndex, e.RowIndex].Value = 1;
 
                 if (e.RowIndex > -1)
                 {
-                    DataGridViewRow row = dvgOrderList.Rows[e.RowIndex];
+                    DataGridViewRow row = dgvItemReplaced.Rows[e.RowIndex];
                     int quantity = int.Parse(row.Cells[3].Value.ToString());
                     double price = double.Parse(row.Cells[4].Value.ToString());
                     double result;
@@ -433,9 +434,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
 
                 int totalamount = 0;
-                for (int i = 0; i < dvgOrderList.Rows.Count; ++i)
+                for (int i = 0; i < dgvItemReplaced.Rows.Count; ++i)
                 {
-                    totalamount += Convert.ToInt32(dvgOrderList.Rows[i].Cells[5].Value);
+                    totalamount += Convert.ToInt32(dgvItemReplaced.Rows[i].Cells[5].Value);
                 }
 
                
@@ -747,8 +748,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnNewTrans_Click(object sender, EventArgs e)
         {
             transNum.ShowDialog();
-            btnExit.Enabled = false;
-            btnLogout.Enabled = false;
+            
             
             //GetTransNo();
             //txtSearch.Enabled = true;
@@ -781,29 +781,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
-            
-            frmReturnProductLookup productLookup = new frmReturnProductLookup(this);
-            if(isComplete)
-            {
-                MessageBox.Show("Cannot add another item!");
-            }
-            else
-            {
+
+
+            //if(isComplete)
+            //{
+            //    MessageBox.Show("Cannot add another item!");
+            //}
+            //else
+            //{
+                frmReturnProductLookup productLookup = new frmReturnProductLookup(this);
+                productLookup.skuList = SKU_LIST;
                 productLookup.ShowDialog();
+               
 
-                if (productLookup.quantity.ToString() != "")
-                {
-                    txtProdDesc.Text = productLookup.productDesc;
-                    txtProdPrice.Text = productLookup.productPrice;
-                    txtQuantity.Text = productLookup.quantity.ToString();
-                    txtStock.Text = productLookup.stock;
-                    SKU = productLookup.sku;
-                    isComplete = productLookup.isComplete;
+        
+            if (productLookup.quantity.ToString() != "")
+            {
+                txtProdDesc.Text = productLookup.productDesc;
+                txtProdPrice.Text = productLookup.productPrice;
+                txtQuantity.Text = productLookup.quantity.ToString();
+                txtStock.Text = productLookup.stock;
+                SKU = productLookup.sku;
+                SKU_LIST = productLookup.skuList;
 
-                    btnAdd_Click((object)sender, (EventArgs)e);
-                }
+                btnAdd_Click((object)sender, (EventArgs)e);
             }
-            
+            //}
+
 
 
         }
@@ -813,6 +817,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             if (!isRowUpdated)
             {
                 MessageBox.Show("Input Item First!");
+            }
+            else if(Convert.ToDouble(lblTotal.Text) < 0)
+            {
+                MessageBox.Show("It must be greater than the price that change", "Exit", MessageBoxButtons.OK);
             }
             else
             {
@@ -845,6 +853,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 payment.vatable = txtVatable.Text;
                 payment.SKU = SKU;
                 payment.cust = CustomerId;
+                payment.sku_list = SKU_LIST;
 
 
                 DialogResult res = payment.ShowDialog();
@@ -858,6 +867,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     btnAdd.Enabled = false;
                     btnVoid.Enabled = false;
                     btnPay.Enabled = false;
+                    btnExit.Enabled = true;
+                    btnLogout.Enabled = true;
                     //btnCancel.Enabled = false;
                 }
             }
@@ -919,10 +930,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void dvgOrderList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
+            sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
             //sku.Transaction_Number = dvgOrderList.CurrentRow.Cells["Transaction Number"].Value.ToString();
-            sku.Order_details_id = dvgOrderList.CurrentRow.Cells["ID"].Value.ToString();
+            sku.Transaction_Number = transaction_number;
             sku.ShowDialog();            
+        }
+
+        private void dvgOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         //mod end
