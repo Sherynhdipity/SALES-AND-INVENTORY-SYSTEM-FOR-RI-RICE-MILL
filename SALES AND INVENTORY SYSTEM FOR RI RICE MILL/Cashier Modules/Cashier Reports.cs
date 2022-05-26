@@ -39,7 +39,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
         string date1;
-        string date2;
 
         public ucCashierReports()
         {
@@ -51,11 +50,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             try
             {
-                QuerySelect = "Select * from SalesReportView where [Order Date] = @date";
+                DateTime date = DateTime.Now;
+                dtpDate.Text = string.Format("{0:D}", date);
+
+                QuerySelect = "Select [Date], Description, [Cost Sales], [Gross Sales] from SalesReportView where [Date] = @FromDate";
 
                 cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@date", dtpDate.Value);
-
+                cmd.Parameters.AddWithValue("@FromDate", dtpDate.Value);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
@@ -98,7 +99,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void bunifuLabel1_Click(object sender, EventArgs e)
         {
 
-        }
+        }   
 
         private void Search_Click(object sender, EventArgs e)
         {

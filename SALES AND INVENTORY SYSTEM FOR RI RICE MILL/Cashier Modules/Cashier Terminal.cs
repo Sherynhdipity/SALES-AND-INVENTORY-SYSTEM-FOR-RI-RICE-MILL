@@ -635,11 +635,44 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
+            bool isStockOut = false;
+            con.Close();
+            con.Open();
+            QuerySelect = "SELECT Status FROM tblInventories WHERE SKU = @sku";
+
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@sku", txtSearch.Text);
+
+            reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                if(reader["Status"].ToString() == "Stock Out")
+                {
+                    isStockOut = true;
+                }
+                
+
+                reader.Close();
+            }
+            
+            con.Close();
+
+
+
+
             if (e.KeyCode == Keys.Enter)
             {
                 if (txtSearch.Text == "")
                 {
                     MessageBox.Show("Search Product First!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);  
+                    txtProdDesc.Text = "";
+                    txtStock.Text = "0";
+                    txtProdPrice.Text = "";
+                }else if(isStockOut)
+                {
+                    MessageBox.Show("Product is unavailable!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtSearch.Text = "";
                     txtProdDesc.Text = "";
                     txtStock.Text = "0";
                     txtProdPrice.Text = "";
@@ -672,7 +705,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dtfromdvg.Columns.Clear();
             dtfromdvg.Columns.Add("Product Description", typeof(string)).ReadOnly = true;
             dtfromdvg.Columns.Add("Product Variety", typeof(string)).ReadOnly = true;
-            dtfromdvg.Columns.Add("Quantity", typeof(int));
+            dtfromdvg.Columns.Add("Quantity", typeof(Double));
             dtfromdvg.Columns.Add("Price", typeof(float)).ReadOnly = true;
             dtfromdvg.Columns.Add("SubTotal", typeof(float));
             try

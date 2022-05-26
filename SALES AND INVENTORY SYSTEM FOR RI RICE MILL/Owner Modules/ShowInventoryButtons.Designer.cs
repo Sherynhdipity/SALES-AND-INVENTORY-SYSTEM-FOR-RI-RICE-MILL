@@ -581,6 +581,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnViewInventoryReports.TextMarginLeft = 0;
             this.btnViewInventoryReports.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnViewInventoryReports.UseDefaultRadiusAndThickness = true;
+            this.btnViewInventoryReports.Click += new System.EventHandler(this.btnViewInventoryReports_Click);
             // 
             // frmShowInventoryButtons
             // 

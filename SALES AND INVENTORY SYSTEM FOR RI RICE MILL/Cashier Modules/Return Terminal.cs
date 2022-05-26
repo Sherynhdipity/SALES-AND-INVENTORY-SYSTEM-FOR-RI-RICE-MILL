@@ -57,12 +57,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         void Form_Closed1(object sender, FormClosedEventArgs e)
         {
-            dvgOrderList.DataSource = null;
+            //dvgOrderList.DataSource = null;
             lblTotal.Text = "0.00";
             lblTransDate.Text = "";
 
             price = sku.Price;
-            btnSearchProduct_Click((object)sender, (EventArgs)e);
+            txtReturnAmount.Text = price;
+            GetTransNo();
+            //btnSearchProduct_Click((object)sender, (EventArgs)e);
             //QuerySelect = "SELECT";
 
 
@@ -143,7 +145,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 string sdate = DateTime.Now.ToString("yyyyMMdd");
                 string transNo;
                 int count;
-
+                con.Close();
                 con.Open();
                 cmd = new SqlCommand("SELECT count(Transaction_number) as id FROM tblOrders WHERE Transaction_number LIKE '" + sdate + "%'", con);
                 reader = cmd.ExecuteReader();
@@ -208,6 +210,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
 
             //textbox controls
+            dvgOrderList.DataSource = null;
+            txtReturnAmount.Text = "0";
             txtSearch.Text = "";
             txtProdDesc.Text = "";
             txtQuantity.Text = "1";
@@ -408,6 +412,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //btnCancel.LabelText = "[F5] Void" + Environment.NewLine + "Transaction" + Environment.NewLine;
 
             //Datatable
+            txtReturnAmount.Text = "0";
             ColumnsLoader();
 
         }
@@ -722,7 +727,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dtfromdvg.Columns.Clear();
             dtfromdvg.Columns.Add("Product Description", typeof(string)).ReadOnly = true;
             dtfromdvg.Columns.Add("Product Variety", typeof(string)).ReadOnly = true;
-            dtfromdvg.Columns.Add("Quantity", typeof(int));
+            dtfromdvg.Columns.Add("Quantity", typeof(Double));
             dtfromdvg.Columns.Add("Price", typeof(float)).ReadOnly = true;
             dtfromdvg.Columns.Add("SubTotal", typeof(float));
             try
@@ -931,6 +936,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void dvgOrderList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
+            sku.Price = txtReturnAmount.Text;
             //sku.Transaction_Number = dvgOrderList.CurrentRow.Cells["Transaction Number"].Value.ToString();
             sku.Transaction_Number = transaction_number;
             sku.ShowDialog();            

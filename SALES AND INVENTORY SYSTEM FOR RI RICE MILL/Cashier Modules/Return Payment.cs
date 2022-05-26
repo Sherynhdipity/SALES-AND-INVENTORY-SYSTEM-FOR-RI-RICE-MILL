@@ -185,7 +185,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             "VALUES(@cID, @uID, @transNo,@OR, @orderDate, @qty, @discount, @total, @cash, @senior, @PWD)";
                             cmd = new SqlCommand(QueryInsert, con);
 
-                            cmd.Parameters.AddWithValue("@cID", CustomerID);
+                            cmd.Parameters.AddWithValue("@cID", cust);
                             cmd.Parameters.AddWithValue("@uID", frmLogin.GetUserID.ToString());
                             cmd.Parameters.AddWithValue("@transNo", transNo);
                             cmd.Parameters.AddWithValue("@OR", txtORNumber.Text);

@@ -425,7 +425,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 if (!txtCash.Text.ToString().Equals(string.Empty))
                 {
-                    txtAmount.Text = txtAmount.Text;
+                    txtAmount.Text = txtAmount.Text; 
                     double amount = double.Parse(txtAmount.Text.ToString());
                     double cash = double.Parse(txtCash.Text.ToString());
                     if (amount > cash)

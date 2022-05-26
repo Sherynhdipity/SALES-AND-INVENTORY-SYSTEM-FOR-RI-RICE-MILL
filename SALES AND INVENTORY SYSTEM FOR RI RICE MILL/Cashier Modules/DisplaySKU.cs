@@ -102,10 +102,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 if (selectedRows > 0)
                 {
                 prices = new string[selectedRows];
+                int ctr = 0;
                     if (cmbRemarks.SelectedIndex == 0)
                     {
                     result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
-                    for (int i = 0; i < selectedRows; i++)
+                  //  for (int i = 0; i < selectedRows; i++)
+                        foreach(DataGridViewRow row in dgvOrderDetails.SelectedRows)
                         {
                             
                             if (result == DialogResult.Yes)
@@ -116,7 +118,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                     con.Open();
                                     QuerySelect = "SELECT TOP 1 Order_details_id FROM OrderDetailsView WHERE SKU = @sku";
                                     cmd = new SqlCommand(QuerySelect, con);
-                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
 
                                     reader = cmd.ExecuteReader();
                                     if (reader.HasRows)
@@ -132,7 +134,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                         "Values(@id, @sku, @qty, @remarks, @date)";
                                     cmd = new SqlCommand(QueryInsert, con);
                                     cmd.Parameters.AddWithValue("@id", id);
-                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
                                     cmd.Parameters.AddWithValue("@qty", '1');
                                     cmd.Parameters.AddWithValue("@remarks", "WRONG ITEM");
                                     cmd.Parameters.AddWithValue("@date", dtpReturnDate.Value.Date);
@@ -142,7 +144,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                     con.Open();
                                     QueryUpdate = "Update tblInventories SET Status = 'Stock In' WHERE SKU = @sku";
                                     cmd = new SqlCommand(QueryUpdate, con);
-                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
                                     cmd.ExecuteNonQuery();
 
                             }
@@ -159,13 +161,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             con.Open();
                             QuerySelect = "SELECT Price FROM tblItems WHERE Item_id = (SELECT Item_id FROM tblInventories WHERE SKU = @sku)";
                             cmd = new SqlCommand(QuerySelect, con);
-                            cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                            cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
                             reader = cmd.ExecuteReader();
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
                                 {
-                                    prices[i] = reader["Price"].ToString();
+                                    if(ctr < selectedRows)
+                                    {
+                                        prices[ctr] = reader["Price"].ToString();
+                                        ctr++;
+                                    }
+                                    
                                 }
                             }
                             reader.Close();
@@ -175,13 +182,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             {
                                 tempSum += Convert.ToInt32(prices[j]);
                             }
-                            Price = tempSum.ToString();
+                            Price = (Convert.ToInt32(Price) + Convert.ToInt32(tempSum)).ToString();
 
                         }
 
                     }
-
-                    
 
                     //MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");
                     this.Close();

@@ -114,6 +114,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     lblTotalSales.Text = reader["totalSales"].ToString();
                 }
+
+                
             }
             catch (Exception ex)
             {
@@ -149,7 +151,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void ucSalesDashboard_Load(object sender, EventArgs e)
         {
+            this.Refresh();
             populateDash();
+            
             populateChart();
             
 

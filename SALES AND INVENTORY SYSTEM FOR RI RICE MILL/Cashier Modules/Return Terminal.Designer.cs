@@ -59,6 +59,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties25 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties26 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties27 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties28 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties29 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties30 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties31 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -74,10 +78,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties25 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties26 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties27 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties28 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.dvgOrderList = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnExit = new Bunifu.Framework.UI.BunifuTileButton();
@@ -109,6 +109,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel19 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel6 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.txtReturnAmount = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtVatable = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtAmount = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -125,8 +127,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvItemReplaced = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.btnSet = new Bunifu.Framework.UI.BunifuTileButton();
-            this.lblTotalReturnAmount = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).BeginInit();
             this.bunifuPanel4.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
@@ -1147,7 +1147,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel6.BorderRadius = 0;
             this.bunifuPanel6.BorderThickness = 0;
             this.bunifuPanel6.Controls.Add(this.bunifuLabel3);
-            this.bunifuPanel6.Controls.Add(this.lblTotalReturnAmount);
+            this.bunifuPanel6.Controls.Add(this.txtReturnAmount);
             this.bunifuPanel6.Controls.Add(this.txtVatable);
             this.bunifuPanel6.Controls.Add(this.bunifuLabel8);
             this.bunifuPanel6.Controls.Add(this.txtAmount);
@@ -1164,6 +1164,97 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel6.ShowBorders = false;
             this.bunifuPanel6.Size = new System.Drawing.Size(306, 307);
             this.bunifuPanel6.TabIndex = 5;
+            // 
+            // bunifuLabel3
+            // 
+            this.bunifuLabel3.AllowParentOverrides = false;
+            this.bunifuLabel3.AutoEllipsis = false;
+            this.bunifuLabel3.CursorType = null;
+            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.bunifuLabel3.Location = new System.Drawing.Point(37, 258);
+            this.bunifuLabel3.Name = "bunifuLabel3";
+            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel3.Size = new System.Drawing.Size(50, 45);
+            this.bunifuLabel3.TabIndex = 27;
+            this.bunifuLabel3.Text = "Total \r\nReturn \r\nAmount";
+            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // txtReturnAmount
+            // 
+            this.txtReturnAmount.AcceptsReturn = false;
+            this.txtReturnAmount.AcceptsTab = false;
+            this.txtReturnAmount.AnimationSpeed = 200;
+            this.txtReturnAmount.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtReturnAmount.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtReturnAmount.AutoSizeHeight = true;
+            this.txtReturnAmount.BackColor = System.Drawing.Color.Transparent;
+            this.txtReturnAmount.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtReturnAmount.BackgroundImage")));
+            this.txtReturnAmount.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtReturnAmount.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtReturnAmount.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtReturnAmount.BorderColorIdle = System.Drawing.Color.Silver;
+            this.txtReturnAmount.BorderRadius = 1;
+            this.txtReturnAmount.BorderThickness = 1;
+            this.txtReturnAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtReturnAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtReturnAmount.DefaultFont = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReturnAmount.DefaultText = "";
+            this.txtReturnAmount.Enabled = false;
+            this.txtReturnAmount.FillColor = System.Drawing.Color.White;
+            this.txtReturnAmount.HideSelection = true;
+            this.txtReturnAmount.IconLeft = null;
+            this.txtReturnAmount.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtReturnAmount.IconPadding = 10;
+            this.txtReturnAmount.IconRight = null;
+            this.txtReturnAmount.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtReturnAmount.Lines = new string[0];
+            this.txtReturnAmount.Location = new System.Drawing.Point(94, 258);
+            this.txtReturnAmount.MaxLength = 32767;
+            this.txtReturnAmount.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtReturnAmount.Modified = false;
+            this.txtReturnAmount.Multiline = false;
+            this.txtReturnAmount.Name = "txtReturnAmount";
+            stateProperties25.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties25.FillColor = System.Drawing.Color.Empty;
+            stateProperties25.ForeColor = System.Drawing.Color.Empty;
+            stateProperties25.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtReturnAmount.OnActiveState = stateProperties25;
+            stateProperties26.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties26.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties26.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtReturnAmount.OnDisabledState = stateProperties26;
+            stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties27.FillColor = System.Drawing.Color.Empty;
+            stateProperties27.ForeColor = System.Drawing.Color.Empty;
+            stateProperties27.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtReturnAmount.OnHoverState = stateProperties27;
+            stateProperties28.BorderColor = System.Drawing.Color.Silver;
+            stateProperties28.FillColor = System.Drawing.Color.White;
+            stateProperties28.ForeColor = System.Drawing.Color.Empty;
+            stateProperties28.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtReturnAmount.OnIdleState = stateProperties28;
+            this.txtReturnAmount.Padding = new System.Windows.Forms.Padding(3);
+            this.txtReturnAmount.PasswordChar = '\0';
+            this.txtReturnAmount.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtReturnAmount.PlaceholderText = "";
+            this.txtReturnAmount.ReadOnly = false;
+            this.txtReturnAmount.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtReturnAmount.SelectedText = "";
+            this.txtReturnAmount.SelectionLength = 0;
+            this.txtReturnAmount.SelectionStart = 0;
+            this.txtReturnAmount.ShortcutsEnabled = true;
+            this.txtReturnAmount.Size = new System.Drawing.Size(185, 41);
+            this.txtReturnAmount.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtReturnAmount.TabIndex = 26;
+            this.txtReturnAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtReturnAmount.TextMarginBottom = 0;
+            this.txtReturnAmount.TextMarginLeft = 3;
+            this.txtReturnAmount.TextMarginTop = 1;
+            this.txtReturnAmount.TextPlaceholder = "";
+            this.txtReturnAmount.UseSystemPasswordChar = false;
+            this.txtReturnAmount.WordWrap = true;
             // 
             // txtVatable
             // 
@@ -1650,97 +1741,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnSet.TabIndex = 36;
             this.btnSet.Click += new System.EventHandler(this.btnRecords_Click);
             // 
-            // lblTotalReturnAmount
-            // 
-            this.lblTotalReturnAmount.AcceptsReturn = false;
-            this.lblTotalReturnAmount.AcceptsTab = false;
-            this.lblTotalReturnAmount.AnimationSpeed = 200;
-            this.lblTotalReturnAmount.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.lblTotalReturnAmount.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.lblTotalReturnAmount.AutoSizeHeight = true;
-            this.lblTotalReturnAmount.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalReturnAmount.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lblTotalReturnAmount.BackgroundImage")));
-            this.lblTotalReturnAmount.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.lblTotalReturnAmount.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.lblTotalReturnAmount.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.lblTotalReturnAmount.BorderColorIdle = System.Drawing.Color.Silver;
-            this.lblTotalReturnAmount.BorderRadius = 1;
-            this.lblTotalReturnAmount.BorderThickness = 1;
-            this.lblTotalReturnAmount.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.lblTotalReturnAmount.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblTotalReturnAmount.DefaultFont = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalReturnAmount.DefaultText = "";
-            this.lblTotalReturnAmount.Enabled = false;
-            this.lblTotalReturnAmount.FillColor = System.Drawing.Color.White;
-            this.lblTotalReturnAmount.HideSelection = true;
-            this.lblTotalReturnAmount.IconLeft = null;
-            this.lblTotalReturnAmount.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblTotalReturnAmount.IconPadding = 10;
-            this.lblTotalReturnAmount.IconRight = null;
-            this.lblTotalReturnAmount.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblTotalReturnAmount.Lines = new string[0];
-            this.lblTotalReturnAmount.Location = new System.Drawing.Point(94, 258);
-            this.lblTotalReturnAmount.MaxLength = 32767;
-            this.lblTotalReturnAmount.MinimumSize = new System.Drawing.Size(1, 1);
-            this.lblTotalReturnAmount.Modified = false;
-            this.lblTotalReturnAmount.Multiline = false;
-            this.lblTotalReturnAmount.Name = "lblTotalReturnAmount";
-            stateProperties25.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties25.FillColor = System.Drawing.Color.Empty;
-            stateProperties25.ForeColor = System.Drawing.Color.Empty;
-            stateProperties25.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lblTotalReturnAmount.OnActiveState = stateProperties25;
-            stateProperties26.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties26.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties26.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.lblTotalReturnAmount.OnDisabledState = stateProperties26;
-            stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties27.FillColor = System.Drawing.Color.Empty;
-            stateProperties27.ForeColor = System.Drawing.Color.Empty;
-            stateProperties27.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lblTotalReturnAmount.OnHoverState = stateProperties27;
-            stateProperties28.BorderColor = System.Drawing.Color.Silver;
-            stateProperties28.FillColor = System.Drawing.Color.White;
-            stateProperties28.ForeColor = System.Drawing.Color.Empty;
-            stateProperties28.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lblTotalReturnAmount.OnIdleState = stateProperties28;
-            this.lblTotalReturnAmount.Padding = new System.Windows.Forms.Padding(3);
-            this.lblTotalReturnAmount.PasswordChar = '\0';
-            this.lblTotalReturnAmount.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.lblTotalReturnAmount.PlaceholderText = "";
-            this.lblTotalReturnAmount.ReadOnly = false;
-            this.lblTotalReturnAmount.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.lblTotalReturnAmount.SelectedText = "";
-            this.lblTotalReturnAmount.SelectionLength = 0;
-            this.lblTotalReturnAmount.SelectionStart = 0;
-            this.lblTotalReturnAmount.ShortcutsEnabled = true;
-            this.lblTotalReturnAmount.Size = new System.Drawing.Size(185, 41);
-            this.lblTotalReturnAmount.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.lblTotalReturnAmount.TabIndex = 26;
-            this.lblTotalReturnAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.lblTotalReturnAmount.TextMarginBottom = 0;
-            this.lblTotalReturnAmount.TextMarginLeft = 3;
-            this.lblTotalReturnAmount.TextMarginTop = 1;
-            this.lblTotalReturnAmount.TextPlaceholder = "";
-            this.lblTotalReturnAmount.UseSystemPasswordChar = false;
-            this.lblTotalReturnAmount.WordWrap = true;
-            // 
-            // bunifuLabel3
-            // 
-            this.bunifuLabel3.AllowParentOverrides = false;
-            this.bunifuLabel3.AutoEllipsis = false;
-            this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.bunifuLabel3.Location = new System.Drawing.Point(37, 258);
-            this.bunifuLabel3.Name = "bunifuLabel3";
-            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(50, 45);
-            this.bunifuLabel3.TabIndex = 27;
-            this.bunifuLabel3.Text = "Total \r\nReturn \r\nAmount";
-            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
             // frmReturnTerminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1833,6 +1833,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public Bunifu.UI.WinForms.BunifuDataGridView dgvItemReplaced;
         private Bunifu.Framework.UI.BunifuTileButton btnSet;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
-        public Bunifu.UI.WinForms.BunifuTextBox lblTotalReturnAmount;
+        public Bunifu.UI.WinForms.BunifuTextBox txtReturnAmount;
     }
 }
