@@ -29,17 +29,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOwnerSalesReport));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.dtpToDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.dtpFromDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvSalesOwnerReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -69,14 +72,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.Return = new Bunifu.UI.WinForms.BunifuLabel();
             this.net = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnPrintReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.dtpToDate = new Bunifu.UI.WinForms.BunifuDatePicker();
-            this.dtpFromDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbnDaily = new System.Windows.Forms.RadioButton();
+            this.rbnWeekly = new System.Windows.Forms.RadioButton();
+            this.rbnMonthly = new System.Windows.Forms.RadioButton();
+            this.rbnYearly = new System.Windows.Forms.RadioButton();
+            this.rbnCustom = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOwnerReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,14 +93,50 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.groupBox1.Controls.Add(this.dtpToDate);
             this.groupBox1.Controls.Add(this.bunifuLabel1);
             this.groupBox1.Controls.Add(this.dtpFromDate);
+            this.groupBox1.Controls.Add(this.btnPrintReport);
             this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(45, 93);
+            this.groupBox1.Location = new System.Drawing.Point(40, 119);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(738, 108);
+            this.groupBox1.Size = new System.Drawing.Size(950, 82);
             this.groupBox1.TabIndex = 112;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Date Range:";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.ActiveImage = null;
+            this.btnSearch.AllowAnimations = true;
+            this.btnSearch.AllowBuffering = false;
+            this.btnSearch.AllowToggling = false;
+            this.btnSearch.AllowZooming = false;
+            this.btnSearch.AllowZoomingOnFocus = false;
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSearch.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.ErrorImage")));
+            this.btnSearch.FadeWhenInactive = false;
+            this.btnSearch.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnSearch.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.search;
+            this.btnSearch.ImageActive = null;
+            this.btnSearch.ImageLocation = null;
+            this.btnSearch.ImageMargin = 20;
+            this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
+            this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
+            this.btnSearch.Location = new System.Drawing.Point(632, 30);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Rotation = 0;
+            this.btnSearch.ShowActiveImage = true;
+            this.btnSearch.ShowCursorChanges = true;
+            this.btnSearch.ShowImageBorders = true;
+            this.btnSearch.ShowSizeMarkers = false;
+            this.btnSearch.Size = new System.Drawing.Size(50, 50);
+            this.btnSearch.TabIndex = 119;
+            this.btnSearch.ToolTipText = "";
+            this.btnSearch.WaitOnLoad = false;
+            this.btnSearch.Zoom = 20;
+            this.btnSearch.ZoomSpeed = 10;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // bunifuLabel2
             // 
@@ -111,6 +154,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // dtpToDate
+            // 
+            this.dtpToDate.BackColor = System.Drawing.Color.Transparent;
+            this.dtpToDate.BorderColor = System.Drawing.Color.Black;
+            this.dtpToDate.BorderRadius = 10;
+            this.dtpToDate.Color = System.Drawing.Color.Black;
+            this.dtpToDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            this.dtpToDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            this.dtpToDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpToDate.DisplayWeekNumbers = false;
+            this.dtpToDate.DPHeight = 0;
+            this.dtpToDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpToDate.FillDatePicker = false;
+            this.dtpToDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpToDate.ForeColor = System.Drawing.Color.Black;
+            this.dtpToDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpToDate.Icon")));
+            this.dtpToDate.IconColor = System.Drawing.SystemColors.Control;
+            this.dtpToDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            this.dtpToDate.LeftTextMargin = 5;
+            this.dtpToDate.Location = new System.Drawing.Point(407, 41);
+            this.dtpToDate.MinimumSize = new System.Drawing.Size(4, 32);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(182, 32);
+            this.dtpToDate.TabIndex = 117;
+            this.dtpToDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
+            // 
             // bunifuLabel1
             // 
             this.bunifuLabel1.AllowParentOverrides = false;
@@ -126,6 +196,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel1.Text = "From Date:";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // dtpFromDate
+            // 
+            this.dtpFromDate.BackColor = System.Drawing.Color.Transparent;
+            this.dtpFromDate.BorderColor = System.Drawing.Color.Black;
+            this.dtpFromDate.BorderRadius = 10;
+            this.dtpFromDate.Color = System.Drawing.Color.Black;
+            this.dtpFromDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            this.dtpFromDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            this.dtpFromDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpFromDate.DisplayWeekNumbers = false;
+            this.dtpFromDate.DPHeight = 0;
+            this.dtpFromDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpFromDate.FillDatePicker = false;
+            this.dtpFromDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpFromDate.ForeColor = System.Drawing.Color.Black;
+            this.dtpFromDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpFromDate.Icon")));
+            this.dtpFromDate.IconColor = System.Drawing.SystemColors.Control;
+            this.dtpFromDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            this.dtpFromDate.LeftTextMargin = 5;
+            this.dtpFromDate.Location = new System.Drawing.Point(114, 41);
+            this.dtpFromDate.MinimumSize = new System.Drawing.Size(4, 32);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(182, 32);
+            this.dtpFromDate.TabIndex = 35;
+            this.dtpFromDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpMilledDate_ValueChanged);
             // 
             // bunifuLabel3
             // 
@@ -150,22 +247,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvSalesOwnerReport.AllowUserToDeleteRows = false;
             this.dgvSalesOwnerReport.AllowUserToResizeColumns = false;
             this.dgvSalesOwnerReport.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dgvSalesOwnerReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
+            this.dgvSalesOwnerReport.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.dgvSalesOwnerReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSalesOwnerReport.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvSalesOwnerReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSalesOwnerReport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvSalesOwnerReport.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSalesOwnerReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSalesOwnerReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.dgvSalesOwnerReport.ColumnHeadersHeight = 40;
             this.dgvSalesOwnerReport.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.dgvSalesOwnerReport.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -185,14 +282,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvSalesOwnerReport.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvSalesOwnerReport.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.dgvSalesOwnerReport.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSalesOwnerReport.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSalesOwnerReport.DefaultCellStyle = dataGridViewCellStyle33;
             this.dgvSalesOwnerReport.EnableHeadersVisualStyles = false;
             this.dgvSalesOwnerReport.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.dgvSalesOwnerReport.HeaderBackColor = System.Drawing.Color.DodgerBlue;
@@ -471,22 +568,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvReturn.AllowUserToDeleteRows = false;
             this.dgvReturn.AllowUserToResizeColumns = false;
             this.dgvReturn.AllowUserToResizeRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dgvReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
+            this.dgvReturn.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle34;
             this.dgvReturn.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvReturn.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvReturn.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvReturn.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvReturn.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReturn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReturn.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
             this.dgvReturn.ColumnHeadersHeight = 40;
             this.dgvReturn.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.dgvReturn.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -506,14 +603,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvReturn.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvReturn.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.dgvReturn.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReturn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReturn.DefaultCellStyle = dataGridViewCellStyle36;
             this.dgvReturn.EnableHeadersVisualStyles = false;
             this.dgvReturn.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.dgvReturn.HeaderBackColor = System.Drawing.Color.DodgerBlue;
@@ -676,11 +773,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnPrintReport.ColorContrastOnClick = 45;
             this.btnPrintReport.ColorContrastOnHover = 45;
             this.btnPrintReport.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnPrintReport.CustomizableEdges = borderEdges1;
+            borderEdges6.BottomLeft = true;
+            borderEdges6.BottomRight = true;
+            borderEdges6.TopLeft = true;
+            borderEdges6.TopRight = true;
+            this.btnPrintReport.CustomizableEdges = borderEdges6;
             this.btnPrintReport.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnPrintReport.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnPrintReport.DisabledFillColor = System.Drawing.Color.Empty;
@@ -706,7 +803,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnPrintReport.IdleIconLeftImage = null;
             this.btnPrintReport.IdleIconRightImage = null;
             this.btnPrintReport.IndicateFocus = false;
-            this.btnPrintReport.Location = new System.Drawing.Point(808, 130);
+            this.btnPrintReport.Location = new System.Drawing.Point(747, 41);
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnPrintReport.OnDisabledState.BorderRadius = 1;
@@ -749,95 +846,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnPrintReport.UseDefaultRadiusAndThickness = true;
             this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.ActiveImage = null;
-            this.btnSearch.AllowAnimations = true;
-            this.btnSearch.AllowBuffering = false;
-            this.btnSearch.AllowToggling = false;
-            this.btnSearch.AllowZooming = false;
-            this.btnSearch.AllowZoomingOnFocus = false;
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnSearch.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.ErrorImage")));
-            this.btnSearch.FadeWhenInactive = false;
-            this.btnSearch.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.btnSearch.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.search;
-            this.btnSearch.ImageActive = null;
-            this.btnSearch.ImageLocation = null;
-            this.btnSearch.ImageMargin = 20;
-            this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
-            this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
-            this.btnSearch.Location = new System.Drawing.Point(632, 30);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Rotation = 0;
-            this.btnSearch.ShowActiveImage = true;
-            this.btnSearch.ShowCursorChanges = true;
-            this.btnSearch.ShowImageBorders = true;
-            this.btnSearch.ShowSizeMarkers = false;
-            this.btnSearch.Size = new System.Drawing.Size(50, 50);
-            this.btnSearch.TabIndex = 119;
-            this.btnSearch.ToolTipText = "";
-            this.btnSearch.WaitOnLoad = false;
-            this.btnSearch.Zoom = 20;
-            this.btnSearch.ZoomSpeed = 10;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // dtpToDate
-            // 
-            this.dtpToDate.BackColor = System.Drawing.Color.Transparent;
-            this.dtpToDate.BorderColor = System.Drawing.Color.Black;
-            this.dtpToDate.BorderRadius = 10;
-            this.dtpToDate.Color = System.Drawing.Color.Black;
-            this.dtpToDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            this.dtpToDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpToDate.DisabledColor = System.Drawing.Color.White;
-            this.dtpToDate.DisplayWeekNumbers = false;
-            this.dtpToDate.DPHeight = 0;
-            this.dtpToDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpToDate.FillDatePicker = false;
-            this.dtpToDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpToDate.ForeColor = System.Drawing.Color.Black;
-            this.dtpToDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpToDate.Icon")));
-            this.dtpToDate.IconColor = System.Drawing.SystemColors.Control;
-            this.dtpToDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            this.dtpToDate.LeftTextMargin = 5;
-            this.dtpToDate.Location = new System.Drawing.Point(407, 41);
-            this.dtpToDate.MinimumSize = new System.Drawing.Size(4, 32);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(182, 32);
-            this.dtpToDate.TabIndex = 117;
-            this.dtpToDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
-            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
-            // 
-            // dtpFromDate
-            // 
-            this.dtpFromDate.BackColor = System.Drawing.Color.Transparent;
-            this.dtpFromDate.BorderColor = System.Drawing.Color.Black;
-            this.dtpFromDate.BorderRadius = 10;
-            this.dtpFromDate.Color = System.Drawing.Color.Black;
-            this.dtpFromDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            this.dtpFromDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpFromDate.DisabledColor = System.Drawing.Color.White;
-            this.dtpFromDate.DisplayWeekNumbers = false;
-            this.dtpFromDate.DPHeight = 0;
-            this.dtpFromDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpFromDate.FillDatePicker = false;
-            this.dtpFromDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpFromDate.ForeColor = System.Drawing.Color.Black;
-            this.dtpFromDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpFromDate.Icon")));
-            this.dtpFromDate.IconColor = System.Drawing.SystemColors.Control;
-            this.dtpFromDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            this.dtpFromDate.LeftTextMargin = 5;
-            this.dtpFromDate.Location = new System.Drawing.Point(114, 41);
-            this.dtpFromDate.MinimumSize = new System.Drawing.Size(4, 32);
-            this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(182, 32);
-            this.dtpFromDate.TabIndex = 35;
-            this.dtpFromDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
-            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpMilledDate_ValueChanged);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -849,11 +857,90 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.pictureBox1.TabIndex = 111;
             this.pictureBox1.TabStop = false;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.rbnCustom);
+            this.panel1.Controls.Add(this.rbnYearly);
+            this.panel1.Controls.Add(this.rbnMonthly);
+            this.panel1.Controls.Add(this.rbnWeekly);
+            this.panel1.Controls.Add(this.rbnDaily);
+            this.panel1.Location = new System.Drawing.Point(178, 88);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(558, 33);
+            this.panel1.TabIndex = 152;
+            // 
+            // rbnDaily
+            // 
+            this.rbnDaily.AutoSize = true;
+            this.rbnDaily.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnDaily.Location = new System.Drawing.Point(18, 7);
+            this.rbnDaily.Name = "rbnDaily";
+            this.rbnDaily.Size = new System.Drawing.Size(65, 22);
+            this.rbnDaily.TabIndex = 0;
+            this.rbnDaily.TabStop = true;
+            this.rbnDaily.Text = "Daily";
+            this.rbnDaily.UseVisualStyleBackColor = true;
+            this.rbnDaily.CheckedChanged += new System.EventHandler(this.rbnDaily_CheckedChanged);
+            // 
+            // rbnWeekly
+            // 
+            this.rbnWeekly.AutoSize = true;
+            this.rbnWeekly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnWeekly.Location = new System.Drawing.Point(109, 8);
+            this.rbnWeekly.Name = "rbnWeekly";
+            this.rbnWeekly.Size = new System.Drawing.Size(83, 22);
+            this.rbnWeekly.TabIndex = 1;
+            this.rbnWeekly.TabStop = true;
+            this.rbnWeekly.Text = "Weekly";
+            this.rbnWeekly.UseVisualStyleBackColor = true;
+            this.rbnWeekly.CheckedChanged += new System.EventHandler(this.rbnWeekly_CheckedChanged);
+            // 
+            // rbnMonthly
+            // 
+            this.rbnMonthly.AutoSize = true;
+            this.rbnMonthly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnMonthly.Location = new System.Drawing.Point(222, 8);
+            this.rbnMonthly.Name = "rbnMonthly";
+            this.rbnMonthly.Size = new System.Drawing.Size(88, 22);
+            this.rbnMonthly.TabIndex = 2;
+            this.rbnMonthly.TabStop = true;
+            this.rbnMonthly.Text = "Monthly";
+            this.rbnMonthly.UseVisualStyleBackColor = true;
+            this.rbnMonthly.CheckedChanged += new System.EventHandler(this.rbnMonthly_CheckedChanged);
+            // 
+            // rbnYearly
+            // 
+            this.rbnYearly.AutoSize = true;
+            this.rbnYearly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnYearly.Location = new System.Drawing.Point(332, 8);
+            this.rbnYearly.Name = "rbnYearly";
+            this.rbnYearly.Size = new System.Drawing.Size(76, 22);
+            this.rbnYearly.TabIndex = 3;
+            this.rbnYearly.TabStop = true;
+            this.rbnYearly.Text = "Yearly";
+            this.rbnYearly.UseVisualStyleBackColor = true;
+            this.rbnYearly.CheckedChanged += new System.EventHandler(this.rbnYearly_CheckedChanged);
+            // 
+            // rbnCustom
+            // 
+            this.rbnCustom.AutoSize = true;
+            this.rbnCustom.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnCustom.Location = new System.Drawing.Point(431, 7);
+            this.rbnCustom.Name = "rbnCustom";
+            this.rbnCustom.Size = new System.Drawing.Size(87, 22);
+            this.rbnCustom.TabIndex = 4;
+            this.rbnCustom.TabStop = true;
+            this.rbnCustom.Text = "Custom";
+            this.rbnCustom.UseVisualStyleBackColor = true;
+            this.rbnCustom.CheckedChanged += new System.EventHandler(this.rbnCustom_CheckedChanged);
+            // 
             // frmOwnerSalesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1023, 641);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.net);
             this.Controls.Add(this.Return);
             this.Controls.Add(this.Cost);
@@ -881,7 +968,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.Controls.Add(this.bunifuLabel9);
             this.Controls.Add(this.bunifuLabel4);
             this.Controls.Add(this.dgvSalesOwnerReport);
-            this.Controls.Add(this.btnPrintReport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bunifuLabel3);
             this.Controls.Add(this.pictureBox1);
@@ -894,6 +980,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOwnerReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -937,5 +1025,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private Bunifu.UI.WinForms.BunifuLabel Cost;
         private Bunifu.UI.WinForms.BunifuLabel Return;
         private Bunifu.UI.WinForms.BunifuLabel net;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rbnCustom;
+        private System.Windows.Forms.RadioButton rbnYearly;
+        private System.Windows.Forms.RadioButton rbnMonthly;
+        private System.Windows.Forms.RadioButton rbnWeekly;
+        private System.Windows.Forms.RadioButton rbnDaily;
     }
 }

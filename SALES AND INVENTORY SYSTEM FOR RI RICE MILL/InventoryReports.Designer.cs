@@ -30,7 +30,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void InitializeComponent()
         {
             this.InventoryReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.InventoryReport1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.InventoryReport();
             this.SuspendLayout();
             // 
             // InventoryReportViewer1
@@ -60,6 +59,5 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         #endregion
         public CrystalDecisions.Windows.Forms.CrystalReportViewer InventoryReportViewer1;
-        private InventoryReport InventoryReport1;
     }
 }

@@ -75,7 +75,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
-            InventoryReport inventory = new InventoryReport();
+            InventoryValuation inventory = new InventoryValuation();
             frmInventoryReport frm = new frmInventoryReport();
 
             try

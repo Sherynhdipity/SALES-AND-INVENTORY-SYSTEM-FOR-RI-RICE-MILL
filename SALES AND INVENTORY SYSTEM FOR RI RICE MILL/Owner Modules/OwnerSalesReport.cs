@@ -29,17 +29,49 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static DialogResult result;
         public static string QuerySelect;
 
+        
+
         string date1;
         string date2;
         private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
         {
+            if (rbnDaily.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value;
+                
+            }
+            else if (rbnWeekly.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value.AddDays(7);
+                
+            }
+            else if (rbnMonthly.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value.AddMonths(1).AddDays(-1);
+               
+            }
+            else if (rbnYearly.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value.AddYears(1).AddMonths(-1);
+          
+            }
+            else if (rbnCustom.Checked)
+            {
+                
+            }
 
-        }
+            }
 
-        private void frmOwnerSalesReport_Load(object sender, EventArgs e)
+            private void frmOwnerSalesReport_Load(object sender, EventArgs e)
         {
             try
             {
+                dtpToDate.Enabled = false;
+                dtpFromDate.Enabled = false;
+                btnSearch.Enabled = false;
+                btnPrintReport.Enabled = false;
+
+
                 DateTime date = DateTime.Now;
                 dtpFromDate.Text = string.Format("{0:D}", date);
                 dtpToDate.Text = string.Format("{0:D}", date);
@@ -146,6 +178,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 Return.Text = sum3.ToString();
 
                 net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString();
+
+                
             }
             catch (Exception ex)
             {
@@ -256,6 +290,47 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             con.Close();
             frm.Show();
 
+        }
+
+        private void rbnDaily_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrintReport.Enabled = true;
+        }
+
+        private void rbnCustom_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = true;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrintReport.Enabled = true;
+
+        }
+
+        private void rbnWeekly_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrintReport.Enabled = true;
+        }
+
+        private void rbnMonthly_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrintReport.Enabled = true;
+        }
+
+        private void rbnYearly_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrintReport.Enabled = true;
         }
     }
 }

@@ -394,17 +394,17 @@
     <Compile Include="Inventory Clerk Modules\ReStockInventory.Designer.cs">
       <DependentUpon>ReStockInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="InventoryReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InventoryReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="InventoryReports.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InventoryReports.Designer.cs">
       <DependentUpon>InventoryReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryValuation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryValuation.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ItemListReport.cs">
       <SubType>Form</SubType>
@@ -786,12 +786,12 @@
     <EmbeddedResource Include="Inventory Clerk Modules\ReStockInventory.resx">
       <DependentUpon>ReStockInventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InventoryReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InventoryReport.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="InventoryReports.resx">
       <DependentUpon>InventoryReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryValuation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>InventoryValuation.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemListReport.resx">
       <DependentUpon>ItemListReport.cs</DependentUpon>
