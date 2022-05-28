@@ -41,6 +41,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             adapter.Fill(dt);
             dgvInventoryValuation.DataSource = dt;
             dgvInventoryValuation.Refresh();
+
+            double sum = 0;
+            for (int i = 0; i < dgvInventoryValuation.Rows.Count; i++)
+            {
+                sum += Convert.ToDouble(dgvInventoryValuation.Rows[i].Cells[6].Value);
+            }
+
+            lblTotalProfit.Text = sum.ToString();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -60,7 +68,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 float sum = 0;
                 for (int i = 0; i < dgvInventoryValuation.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[7].Value);
+                    sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[6].Value);
                 }
 
                 lblTotalProfit.Text = sum.ToString();

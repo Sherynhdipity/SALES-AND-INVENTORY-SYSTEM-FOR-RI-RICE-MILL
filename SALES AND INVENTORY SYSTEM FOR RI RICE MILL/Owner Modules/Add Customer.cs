@@ -126,7 +126,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
                 && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != "")
             {
-                result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
+                result = MessageBox.Show("Do you want to Add this Customer?", "Add User", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     con.Close();

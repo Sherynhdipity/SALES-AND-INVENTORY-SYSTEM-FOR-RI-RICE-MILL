@@ -416,6 +416,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Controls.Add(this.bunifuPanel2);
             this.Name = "ucDashboard";
             this.Size = new System.Drawing.Size(1087, 675);
+            this.Load += new System.EventHandler(this.ucDashboard_Load);
             this.bunifuPanel2.ResumeLayout(false);
             this.bunifuPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

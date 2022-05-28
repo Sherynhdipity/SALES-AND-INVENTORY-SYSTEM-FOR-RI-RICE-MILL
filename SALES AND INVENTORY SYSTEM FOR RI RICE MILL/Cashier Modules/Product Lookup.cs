@@ -142,15 +142,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     skuList = qty.SKULIST;
                     this.Close();
                 }
+
                 
                
-               //this.Close();
+               this.Close();
             }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.Close();
             this.Hide();
+        }
+
+        private void frmProductLookup_Load(object sender, EventArgs e)
+        {
+            DisplayProductList();
+            this.Refresh();
+            dgvProductList.Refresh();
         }
     }
 }

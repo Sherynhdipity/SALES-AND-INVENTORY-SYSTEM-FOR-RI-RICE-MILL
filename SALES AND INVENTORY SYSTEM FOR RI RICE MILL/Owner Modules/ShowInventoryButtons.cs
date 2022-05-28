@@ -37,5 +37,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             f3.Show();
             this.Close();
         }
+
+        private void bunifuButton22_Click(object sender, EventArgs e)
+        {
+            Owner_Modules.frmInventoryDetailedReport f4 = new frmInventoryDetailedReport();
+            f4.Show();
+            this.Close();
+        }
     }
 }

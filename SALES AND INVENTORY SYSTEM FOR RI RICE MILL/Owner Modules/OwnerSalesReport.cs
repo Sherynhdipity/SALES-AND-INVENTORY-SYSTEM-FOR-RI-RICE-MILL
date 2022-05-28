@@ -54,7 +54,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 dgvSalesOwnerReport.DataSource = dt;
                 dgvSalesOwnerReport.Refresh();
 
-                QuerySelect = "Select [Date], Description, [Returned Sales], Remarks from SalesReturnReportView";
+                QuerySelect = "Select [Date], Description, Remarks, [Returned Sales] from SalesReturnReportView";
                 cmd = new SqlCommand(QuerySelect, con);
 
                 adapter = new SqlDataAdapter(cmd);
@@ -63,22 +63,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 dgvReturn.DataSource = dt;
                 dgvReturn.Refresh();
 
-                float sum = 0;
-                float sum2 = 0;
+                double sum = 0;
+                double sum2 = 0;
 
                 for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
-                    sum2 += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
+                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
                 }
                 Gross.Text = sum.ToString();
                 Cost.Text = sum2.ToString();
 
-                float sum3 = 0;
+                double sum3 = 0;
 
                 for (int i = 0; i < dgvReturn.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                    sum3 += Convert.ToDouble(dgvReturn.Rows[i].Cells[3].Value);
                 }
                 Return.Text = sum3.ToString();
 
@@ -89,6 +89,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
 
             }
+            dgvReturn.Visible = false;
             
         }
 
@@ -115,7 +116,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
               
 
-                QuerySelect = "Select [Date], Description, [Returned Sales], Remarks from SalesReturnReportView where [Date] between @FromDate and @ToDate";
+                QuerySelect = "Select [Date], Description, Remarks, [Returned Sales] from SalesReturnReportView where [Date] between @FromDate and @ToDate";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
                 cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
@@ -140,7 +141,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 for (int i = 0; i < dgvReturn.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                    sum3 += Convert.ToInt32(dgvReturn.Rows[i].Cells[3].Value);
                 }
                 Return.Text = sum3.ToString();
 
@@ -159,33 +160,44 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            SalesReport sales = new SalesReport();
-            frmSalesReport frm = new frmSalesReport();
-            
 
-            try
+            if (dgvSalesOwnerReport.Rows.Count == 0)
             {
-                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
-                date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
-                con.Open();
-
-                dt = new DataTable();
-                QuerySelect = "SELECT * FROM SalesReportView WHERE [Order Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-
-                sales.Database.Tables["SalesReportView"].SetDataSource(dt);
-                frm.SalesReportViewer.ReportSource = sales;
-                con.Close();
-                frm.Show();
-
+                MessageBox.Show("No Data");
             }
-            catch (Exception ex)
+            else
             {
-
+                SalesReport();
             }
+           
+
+            //DataSet ds = new DataSet();
+            //SalesReport sales = new SalesReport();
+            //frmSalesReport frm = new frmSalesReport();
+
+
+            //try
+            //{
+            //    date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+            //    date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+            //    con.Open();
+
+            //    dt = new DataTable();
+            //    QuerySelect = "SELECT * FROM SalesReportView WHERE [Order Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
+            //    cmd = new SqlCommand(QuerySelect, con);
+            //    adapter = new SqlDataAdapter(cmd);
+            //    adapter.Fill(dt);
+
+            //    sales.Database.Tables["SalesReportView"].SetDataSource(dt);
+            //    frm.SalesReportViewer.ReportSource = sales;
+            //    con.Close();
+            //    frm.Show();
+
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
 
 
         }
@@ -197,6 +209,52 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dtpToDate_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        void SalesReport()
+        {
+            DataSet ds = new DataSet();
+            SalesReport salesreport = new SalesReport();
+            frmSalesReport frm = new frmSalesReport();
+
+
+            //Date
+            TextObject DateFrom = (TextObject)salesreport.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["DateFrom"];
+            DateFrom.Text = dtpFromDate.Value.ToString();
+            TextObject DateTo = (TextObject)salesreport.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["DateTo"];
+            DateTo.Text = dtpToDate.Value.ToString();
+
+            //TotalGross
+            TextObject GrossSales = (TextObject)salesreport.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["TotalGross"];
+            GrossSales.Text = Gross.Text;
+
+            //TotalCost
+            TextObject CostSales = (TextObject)salesreport.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["TotalCost"];
+            CostSales.Text = Cost.Text;
+
+            //Return
+            TextObject ReturnSales = (TextObject)salesreport.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["TotalReturn"];
+            ReturnSales.Text = Return.Text;
+
+            //NetSales
+            TextObject NetSales = (TextObject)salesreport.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Net"];
+            NetSales.Text = net.Text;
+
+            date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+            date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+            con.Open();
+
+            dt = new DataTable();
+            QuerySelect = "SELECT * FROM SalesReportView WHERE [Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            salesreport.Database.Tables["SalesReportView"].SetDataSource(dt);
+            frm.SalesReportViewer.ReportSource = salesreport;
+            con.Close();
+            frm.Show();
 
         }
     }

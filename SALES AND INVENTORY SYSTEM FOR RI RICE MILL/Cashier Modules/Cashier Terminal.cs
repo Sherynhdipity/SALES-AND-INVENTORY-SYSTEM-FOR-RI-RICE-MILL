@@ -658,9 +658,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             
             con.Close();
 
-
-
-
             if (e.KeyCode == Keys.Enter)
             {
                 if (txtSearch.Text == "")
@@ -669,7 +666,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     txtProdDesc.Text = "";
                     txtStock.Text = "0";
                     txtProdPrice.Text = "";
-                }else if(isStockOut)
+                }
+                else if(isStockOut)
                 {
                     MessageBox.Show("Product is unavailable!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtSearch.Text = "";
@@ -682,7 +680,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     btnAdd_Click((object)sender, (EventArgs)e);
                     txtSearch.Text = ""; 
                     txtProdDesc.Text = "";
-                    txtStock.Text = "0";
+                    txtStock.Text = "1";
                     txtProdPrice.Text = "";
                 }
             }
@@ -740,7 +738,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             btnSearchProduct.Enabled = true;
             btnAdd.Enabled = true;
             btnVoid.Enabled = true;
-            btnReturn.Enabled = true;
+            //btnReturn.Enabled = true;
             btnPay.Enabled = true;
             btnCancel.Enabled = true;
             btnLogout.Enabled = false;
@@ -765,6 +763,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             if(dvgOrderList.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Select product first!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                
                
             }
             else
@@ -798,7 +797,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                
                 btnAdd_Click((object)sender, (EventArgs)e);
             }
-          
+
           
         }
 

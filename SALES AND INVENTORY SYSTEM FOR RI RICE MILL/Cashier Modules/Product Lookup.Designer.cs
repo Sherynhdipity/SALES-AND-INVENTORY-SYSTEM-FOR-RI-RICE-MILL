@@ -270,6 +270,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Name = "frmProductLookup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Product Lookup";
+            this.Load += new System.EventHandler(this.frmProductLookup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
             this.bunifuPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

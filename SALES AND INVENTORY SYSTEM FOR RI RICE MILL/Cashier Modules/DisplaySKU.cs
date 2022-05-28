@@ -177,12 +177,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             }
                             reader.Close();
                             con.Close();
-                            int tempSum = 0;
+                            double tempSum = 0;
                             for (int j = 0; j < prices.Length; j++)
                             {
-                                tempSum += Convert.ToInt32(prices[j]);
+                                tempSum += Convert.ToDouble(prices[j]);
                             }
-                            Price = (Convert.ToInt32(Price) + Convert.ToInt32(tempSum)).ToString();
+                            Price = (Convert.ToDouble(Price) + Convert.ToInt32(tempSum)).ToString();
 
                         }
 

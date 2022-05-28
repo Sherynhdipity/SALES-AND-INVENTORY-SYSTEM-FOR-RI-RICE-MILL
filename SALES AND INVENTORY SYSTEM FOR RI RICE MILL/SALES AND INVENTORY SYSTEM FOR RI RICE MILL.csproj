@@ -436,6 +436,12 @@
     <Compile Include="Owner Modules\InventoryAdjustmentReport.Designer.cs">
       <DependentUpon>InventoryAdjustmentReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Owner Modules\InventoryDetailedReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner Modules\InventoryDetailedReport.Designer.cs">
+      <DependentUpon>InventoryDetailedReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Owner Modules\InventoryValuation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -802,6 +808,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\InventoryAdjustmentReport.resx">
       <DependentUpon>InventoryAdjustmentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner Modules\InventoryDetailedReport.resx">
+      <DependentUpon>InventoryDetailedReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\InventoryValuation.resx">
       <DependentUpon>InventoryValuation.cs</DependentUpon>

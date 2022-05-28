@@ -382,9 +382,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //    btnCancel.Click += btnCancel_Click;
                 //    return true;
 
-                case Keys.F7:
-                    btnSet.Click += btnRecords_Click;
-                    return true;
+                //case Keys.F7:
+                //    btnSet.Click += btnRecords_Click;
+                //    return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
             }

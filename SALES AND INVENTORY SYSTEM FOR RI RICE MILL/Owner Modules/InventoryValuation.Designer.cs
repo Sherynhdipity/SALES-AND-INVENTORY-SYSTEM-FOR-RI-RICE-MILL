@@ -382,7 +382,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(625, 537);
+            this.bunifuLabel1.Location = new System.Drawing.Point(560, 537);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(193, 22);
@@ -398,7 +398,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.lblTotalProfit.CursorType = null;
             this.lblTotalProfit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
             this.lblTotalProfit.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalProfit.Location = new System.Drawing.Point(886, 537);
+            this.lblTotalProfit.Location = new System.Drawing.Point(818, 537);
             this.lblTotalProfit.Name = "lblTotalProfit";
             this.lblTotalProfit.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTotalProfit.Size = new System.Drawing.Size(11, 22);

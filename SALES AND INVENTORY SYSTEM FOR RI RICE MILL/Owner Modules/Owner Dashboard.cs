@@ -159,7 +159,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT COUNT(SKU) AS [Available Stock] FROM tblInventories";
+                QuerySelect = "SELECT [Available Stock] FROM InventoryDashboardView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
@@ -198,6 +198,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
+        private void ucDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
