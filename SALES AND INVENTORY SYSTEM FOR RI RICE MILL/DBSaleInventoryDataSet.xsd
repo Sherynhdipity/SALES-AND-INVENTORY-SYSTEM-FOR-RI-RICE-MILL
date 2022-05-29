@@ -24,6 +24,28 @@
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="InventoryDetailedReportTableAdapter" GeneratorDataComponentClassName="InventoryDetailedReportTableAdapter" Name="InventoryDetailedReport" UserDataComponentName="InventoryDetailedReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DBSaleInventoryConnectionString (Settings)" DbObjectName="DBSaleInventory.dbo.InventoryDetailedReport" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Batch_number, Description, [Cost Price], [Selling Price], [Stock Out Quantity], [Stock In Quantity], [Available Quantity] FROM dbo.InventoryDetailedReport</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Batch_number" DataSetColumn="Batch_number" />
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+              <Mapping SourceColumn="Cost Price" DataSetColumn="Cost Price" />
+              <Mapping SourceColumn="Selling Price" DataSetColumn="Selling Price" />
+              <Mapping SourceColumn="Stock Out Quantity" DataSetColumn="Stock Out Quantity" />
+              <Mapping SourceColumn="Stock In Quantity" DataSetColumn="Stock In Quantity" />
+              <Mapping SourceColumn="Available Quantity" DataSetColumn="Available Quantity" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -32,7 +54,7 @@
   <xs:element name="DBSaleInventoryDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DBSaleInventoryDataSet" msprop:Generator_UserDSName="DBSaleInventoryDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="CashierDashboardView" msprop:Generator_TableClassName="CashierDashboardViewDataTable" msprop:Generator_RowEvArgName="CashierDashboardViewRowChangeEvent" msprop:Generator_TableVarName="tableCashierDashboardView" msprop:Generator_TablePropName="CashierDashboardView" msprop:Generator_RowDeletingName="CashierDashboardViewRowDeleting" msprop:Generator_RowChangingName="CashierDashboardViewRowChanging" msprop:Generator_RowDeletedName="CashierDashboardViewRowDeleted" msprop:Generator_RowEvHandlerName="CashierDashboardViewRowChangeEventHandler" msprop:Generator_UserTableName="CashierDashboardView" msprop:Generator_RowChangedName="CashierDashboardViewRowChanged" msprop:Generator_RowClassName="CashierDashboardViewRow">
+        <xs:element name="CashierDashboardView" msprop:Generator_TableClassName="CashierDashboardViewDataTable" msprop:Generator_RowEvArgName="CashierDashboardViewRowChangeEvent" msprop:Generator_TableVarName="tableCashierDashboardView" msprop:Generator_TablePropName="CashierDashboardView" msprop:Generator_RowDeletingName="CashierDashboardViewRowDeleting" msprop:Generator_RowChangingName="CashierDashboardViewRowChanging" msprop:Generator_RowDeletedName="CashierDashboardViewRowDeleted" msprop:Generator_RowEvHandlerName="CashierDashboardViewRowChangeEventHandler" msprop:Generator_RowChangedName="CashierDashboardViewRowChanged" msprop:Generator_UserTableName="CashierDashboardView" msprop:Generator_RowClassName="CashierDashboardViewRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Total_x0020_Transactions" msprop:Generator_ColumnVarNameInTable="columnTotal_Transactions" msprop:Generator_ColumnPropNameInRow="Total_Transactions" msprop:Generator_ColumnPropNameInTable="Total_TransactionsColumn" msprop:Generator_UserColumnName="Total Transactions" type="xs:int" minOccurs="0" />
@@ -40,12 +62,31 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ReceiptDt" msprop:Generator_TableClassName="ReceiptDtDataTable" msprop:Generator_TableVarName="tableReceiptDt" msprop:Generator_TablePropName="ReceiptDt" msprop:Generator_RowDeletingName="ReceiptDtRowDeleting" msprop:Generator_RowChangingName="ReceiptDtRowChanging" msprop:Generator_RowEvHandlerName="ReceiptDtRowChangeEventHandler" msprop:Generator_RowDeletedName="ReceiptDtRowDeleted" msprop:Generator_UserTableName="ReceiptDt" msprop:Generator_RowChangedName="ReceiptDtRowChanged" msprop:Generator_RowEvArgName="ReceiptDtRowChangeEvent" msprop:Generator_RowClassName="ReceiptDtRow">
+        <xs:element name="ReceiptDt" msprop:Generator_TableClassName="ReceiptDtDataTable" msprop:Generator_TableVarName="tableReceiptDt" msprop:Generator_RowChangedName="ReceiptDtRowChanged" msprop:Generator_TablePropName="ReceiptDt" msprop:Generator_RowDeletingName="ReceiptDtRowDeleting" msprop:Generator_RowChangingName="ReceiptDtRowChanging" msprop:Generator_RowEvHandlerName="ReceiptDtRowChangeEventHandler" msprop:Generator_RowDeletedName="ReceiptDtRowDeleted" msprop:Generator_RowClassName="ReceiptDtRow" msprop:Generator_UserTableName="ReceiptDt" msprop:Generator_RowEvArgName="ReceiptDtRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
               <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
               <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InventoryDetailedReport" msprop:Generator_TableClassName="InventoryDetailedReportDataTable" msprop:Generator_TableVarName="tableInventoryDetailedReport" msprop:Generator_TablePropName="InventoryDetailedReport" msprop:Generator_RowDeletingName="InventoryDetailedReportRowDeleting" msprop:Generator_RowChangingName="InventoryDetailedReportRowChanging" msprop:Generator_RowEvHandlerName="InventoryDetailedReportRowChangeEventHandler" msprop:Generator_RowDeletedName="InventoryDetailedReportRowDeleted" msprop:Generator_UserTableName="InventoryDetailedReport" msprop:Generator_RowChangedName="InventoryDetailedReportRowChanged" msprop:Generator_RowEvArgName="InventoryDetailedReportRowChangeEvent" msprop:Generator_RowClassName="InventoryDetailedReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Batch_number" msprop:Generator_ColumnVarNameInTable="columnBatch_number" msprop:Generator_ColumnPropNameInRow="Batch_number" msprop:Generator_ColumnPropNameInTable="Batch_numberColumn" msprop:Generator_UserColumnName="Batch_number" type="xs:int" />
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Cost_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnCost_Price" msprop:Generator_ColumnPropNameInRow="Cost_Price" msprop:Generator_ColumnPropNameInTable="Cost_PriceColumn" msprop:Generator_UserColumnName="Cost Price" type="xs:double" minOccurs="0" />
+              <xs:element name="Selling_x0020_Price" msprop:Generator_ColumnVarNameInTable="columnSelling_Price" msprop:Generator_ColumnPropNameInRow="Selling_Price" msprop:Generator_ColumnPropNameInTable="Selling_PriceColumn" msprop:Generator_UserColumnName="Selling Price" type="xs:double" />
+              <xs:element name="Stock_x0020_Out_x0020_Quantity" msprop:Generator_ColumnVarNameInTable="columnStock_Out_Quantity" msprop:Generator_ColumnPropNameInRow="Stock_Out_Quantity" msprop:Generator_ColumnPropNameInTable="Stock_Out_QuantityColumn" msprop:Generator_UserColumnName="Stock Out Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Stock_x0020_In_x0020_Quantity" msprop:Generator_ColumnVarNameInTable="columnStock_In_Quantity" msprop:Generator_ColumnPropNameInRow="Stock_In_Quantity" msprop:Generator_ColumnPropNameInTable="Stock_In_QuantityColumn" msprop:Generator_UserColumnName="Stock In Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Available_x0020_Quantity" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAvailable_Quantity" msprop:Generator_ColumnPropNameInRow="Available_Quantity" msprop:Generator_ColumnPropNameInTable="Available_QuantityColumn" msprop:Generator_UserColumnName="Available Quantity" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

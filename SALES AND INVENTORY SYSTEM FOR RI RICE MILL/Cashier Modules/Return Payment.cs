@@ -279,7 +279,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd.Parameters.AddWithValue("@sku", NEW_SKU[i]);
                                 cmd.ExecuteNonQuery();
 
-
                             }
 
                         }
@@ -301,13 +300,49 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     {
                         con.Close();
                     }
-
+                    con.Open();
+                    QueryInsert = "INSERT INTO tblReturns(Order_details_id, SKU, Return_quantity, Remarks, Return_date)(SELECT Order_details_id, SKU, Return_quantity, Remarks, Return_date FROM tblTemp_return)";
+                    cmd = new SqlCommand(QueryInsert, con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    con.Open();
+                    QueryDelete = "TRUNCATE TABLE tblTemp_return";
+                    cmd = new SqlCommand(QueryDelete, con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
                     MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GenerateReceipt();
                     this.Close();
 
                 }
+            }
+        }
+
+        public void insertTblReturn()
+        {
+            try
+            {
+                int count = 0;
+                con.Open();
+                QuerySelect = "SELECT COUNT(SKU) as 'count' FROM tblTemp_return";
+                cmd = new SqlCommand(QuerySelect, con);
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        count = Convert.ToInt32(reader["count"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
             }
         }
 

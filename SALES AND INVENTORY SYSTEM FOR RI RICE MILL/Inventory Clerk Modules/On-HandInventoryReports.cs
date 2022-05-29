@@ -74,34 +74,34 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            InventoryValuation inventory = new InventoryValuation();
-            frmInventoryReport frm = new frmInventoryReport();
+            //DataSet ds = new DataSet();
+            //frmInventoryValuationReport inventory = new frmInventoryValuationReport();
+            //frmInventoryReport frm = new frmInventoryReport();
 
-            try
-            {
-                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
-                date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
-                con.Open();
+            //try
+            //{
+            //    date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+            //    date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+            //    con.Open();
 
-                dt = new DataTable();
-                QuerySelect = "SELECT * FROM InventoryReportsView WHERE Stock_in_date BETWEEN '" + date1 + "' AND '" + date2 + "'";
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+            //    dt = new DataTable();
+            //    QuerySelect = "SELECT * FROM InventoryReportsView WHERE Stock_in_date BETWEEN '" + date1 + "' AND '" + date2 + "'";
+            //    cmd = new SqlCommand(QuerySelect, con);
+            //    adapter = new SqlDataAdapter(cmd);
+            //    adapter.Fill(dt);
 
-                inventory.Database.Tables["InventoryReportsView"].SetDataSource(dt);
-                frm.InventoryReportViewer1.ReportSource = inventory;
-                con.Close();
-                frm.Show();
+            //    inventory.Database.Tables["InventoryReportsView"].SetDataSource(dt);
+            //    frm.InventoryReportViewer1.ReportSource = inventory;
+            //    con.Close();
+            //    frm.Show();
 
 
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-            }
+            //}
         }
     }
 }

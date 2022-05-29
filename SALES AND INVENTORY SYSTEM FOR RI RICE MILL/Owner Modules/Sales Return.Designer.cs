@@ -264,6 +264,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvReturnOwnerReport.Size = new System.Drawing.Size(950, 324);
             this.dgvReturnOwnerReport.TabIndex = 136;
             this.dgvReturnOwnerReport.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dgvReturnOwnerReport.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReturnOwnerReport_CellFormatting);
             // 
             // pictureBox8
             // 

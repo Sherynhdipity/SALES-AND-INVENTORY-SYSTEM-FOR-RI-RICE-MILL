@@ -36,6 +36,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         public string Order_details_id { get; set; }
         public string Price { get; set; }
+
         private void lblDescription_Click(object sender, EventArgs e)
         {
 
@@ -130,7 +131,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                     }
                                     con.Close();
                                     con.Open();
-                                    QueryInsert = "Insert into tblReturns (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
+                                    QueryInsert = "Insert into tblTemp_return (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
                                         "Values(@id, @sku, @qty, @remarks, @date)";
                                     cmd = new SqlCommand(QueryInsert, con);
                                     cmd.Parameters.AddWithValue("@id", id);
@@ -139,7 +140,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                     cmd.Parameters.AddWithValue("@remarks", "WRONG ITEM");
                                     cmd.Parameters.AddWithValue("@date", dtpReturnDate.Value.Date);
                                     cmd.ExecuteNonQuery();
-                                    
+
                                     con.Close();
                                     con.Open();
                                     QueryUpdate = "Update tblInventories SET Status = 'Stock In' WHERE SKU = @sku";
@@ -219,7 +220,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
                                 con.Close();
                                     con.Open();
-                                    QueryInsert = "Insert into tblReturns (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
+                                    QueryInsert = "Insert into tblTemp_return (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
                                         "Values(@id, @sku, @qty, @remarks, @date)";
                                     cmd = new SqlCommand(QueryInsert, con);
                                     cmd.Parameters.AddWithValue("@id", Order_details_id);
@@ -268,7 +269,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

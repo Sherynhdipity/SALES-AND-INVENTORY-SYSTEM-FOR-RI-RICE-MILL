@@ -103,8 +103,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
                     sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
                 }
-                Gross.Text = sum.ToString();
-                Cost.Text = sum2.ToString();
+                Gross.Text = sum.ToString("N2");
+                Cost.Text = sum2.ToString("N2");
 
                 double sum3 = 0;
 
@@ -112,9 +112,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 {
                     sum3 += Convert.ToDouble(dgvReturn.Rows[i].Cells[3].Value);
                 }
-                Return.Text = sum3.ToString();
+                Return.Text = sum3.ToString("N2");
 
-                net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString();
+                net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString("N2");
             }
 
             catch (Exception ex)
@@ -166,8 +166,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
                     sum2 += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
                 }
-                Gross.Text = sum.ToString();
-                Cost.Text = sum2.ToString();
+                Gross.Text = sum.ToString("N2");
+                Cost.Text = sum2.ToString("N2");
 
                 float sum3 = 0;
 
@@ -175,7 +175,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 {
                     sum3 += Convert.ToInt32(dgvReturn.Rows[i].Cells[3].Value);
                 }
-                Return.Text = sum3.ToString();
+                Return.Text = sum3.ToString("N2");
 
                 net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString();
 
@@ -331,6 +331,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             dtpFromDate.Enabled = true;
             btnSearch.Enabled = true;
             btnPrintReport.Enabled = true;
+        }
+
+        private void dgvSalesOwnerReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+           if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
+        private void dgvSalesOwnerReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -53,7 +53,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
+                    
                     txtTotalSales.Text = reader["totalSales"].ToString();
+                   
                 }
             }
             catch (Exception ex)

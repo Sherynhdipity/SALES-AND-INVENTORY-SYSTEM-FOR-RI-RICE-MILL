@@ -189,6 +189,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dvgOrderList.TabIndex = 6;
             this.dvgOrderList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.dvgOrderList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOrderList_CellEndEdit);
+            this.dvgOrderList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgOrderList_CellFormatting);
             // 
             // timer1
             // 
@@ -269,7 +270,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnSet.LabelPosition = 27;
             this.btnSet.LabelText = "History of Void";
             this.btnSet.Location = new System.Drawing.Point(1258, 434);
-            this.btnSet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSet.Margin = new System.Windows.Forms.Padding(4);
             this.btnSet.Name = "btnSet";
             this.btnSet.Size = new System.Drawing.Size(95, 93);
             this.btnSet.TabIndex = 36;

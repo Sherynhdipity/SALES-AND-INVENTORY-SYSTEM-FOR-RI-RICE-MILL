@@ -26,6 +26,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         
         private CashierDashboardViewDataTable tableCashierDashboardView;
         
+        private InventoryDetailedReportDataTable tableInventoryDetailedReport;
+        
         private ReceiptDtDataTable tableReceiptDt;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
@@ -59,6 +61,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
                 if ((ds.Tables["CashierDashboardView"] != null)) {
                     base.Tables.Add(new CashierDashboardViewDataTable(ds.Tables["CashierDashboardView"]));
                 }
+                if ((ds.Tables["InventoryDetailedReport"] != null)) {
+                    base.Tables.Add(new InventoryDetailedReportDataTable(ds.Tables["InventoryDetailedReport"]));
+                }
                 if ((ds.Tables["ReceiptDt"] != null)) {
                     base.Tables.Add(new ReceiptDtDataTable(ds.Tables["ReceiptDt"]));
                 }
@@ -87,6 +92,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         public CashierDashboardViewDataTable CashierDashboardView {
             get {
                 return this.tableCashierDashboardView;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public InventoryDetailedReportDataTable InventoryDetailedReport {
+            get {
+                return this.tableInventoryDetailedReport;
             }
         }
         
@@ -170,6 +185,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
                 if ((ds.Tables["CashierDashboardView"] != null)) {
                     base.Tables.Add(new CashierDashboardViewDataTable(ds.Tables["CashierDashboardView"]));
                 }
+                if ((ds.Tables["InventoryDetailedReport"] != null)) {
+                    base.Tables.Add(new InventoryDetailedReportDataTable(ds.Tables["InventoryDetailedReport"]));
+                }
                 if ((ds.Tables["ReceiptDt"] != null)) {
                     base.Tables.Add(new ReceiptDtDataTable(ds.Tables["ReceiptDt"]));
                 }
@@ -212,6 +230,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
                     this.tableCashierDashboardView.InitVars();
                 }
             }
+            this.tableInventoryDetailedReport = ((InventoryDetailedReportDataTable)(base.Tables["InventoryDetailedReport"]));
+            if ((initTable == true)) {
+                if ((this.tableInventoryDetailedReport != null)) {
+                    this.tableInventoryDetailedReport.InitVars();
+                }
+            }
             this.tableReceiptDt = ((ReceiptDtDataTable)(base.Tables["ReceiptDt"]));
             if ((initTable == true)) {
                 if ((this.tableReceiptDt != null)) {
@@ -230,6 +254,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableCashierDashboardView = new CashierDashboardViewDataTable();
             base.Tables.Add(this.tableCashierDashboardView);
+            this.tableInventoryDetailedReport = new InventoryDetailedReportDataTable();
+            base.Tables.Add(this.tableInventoryDetailedReport);
             this.tableReceiptDt = new ReceiptDtDataTable();
             base.Tables.Add(this.tableReceiptDt);
         }
@@ -237,6 +263,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeCashierDashboardView() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeInventoryDetailedReport() {
             return false;
         }
         
@@ -303,6 +335,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void CashierDashboardViewRowChangeEventHandler(object sender, CashierDashboardViewRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void InventoryDetailedReportRowChangeEventHandler(object sender, InventoryDetailedReportRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void ReceiptDtRowChangeEventHandler(object sender, ReceiptDtRowChangeEvent e);
@@ -528,6 +563,342 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CashierDashboardViewDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class InventoryDetailedReportDataTable : global::System.Data.TypedTableBase<InventoryDetailedReportRow> {
+            
+            private global::System.Data.DataColumn columnBatch_number;
+            
+            private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnCost_Price;
+            
+            private global::System.Data.DataColumn columnSelling_Price;
+            
+            private global::System.Data.DataColumn columnStock_Out_Quantity;
+            
+            private global::System.Data.DataColumn columnStock_In_Quantity;
+            
+            private global::System.Data.DataColumn columnAvailable_Quantity;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public InventoryDetailedReportDataTable() {
+                this.TableName = "InventoryDetailedReport";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal InventoryDetailedReportDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected InventoryDetailedReportDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Batch_numberColumn {
+                get {
+                    return this.columnBatch_number;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Cost_PriceColumn {
+                get {
+                    return this.columnCost_Price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Selling_PriceColumn {
+                get {
+                    return this.columnSelling_Price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Stock_Out_QuantityColumn {
+                get {
+                    return this.columnStock_Out_Quantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Stock_In_QuantityColumn {
+                get {
+                    return this.columnStock_In_Quantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Available_QuantityColumn {
+                get {
+                    return this.columnAvailable_Quantity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public InventoryDetailedReportRow this[int index] {
+                get {
+                    return ((InventoryDetailedReportRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event InventoryDetailedReportRowChangeEventHandler InventoryDetailedReportRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event InventoryDetailedReportRowChangeEventHandler InventoryDetailedReportRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event InventoryDetailedReportRowChangeEventHandler InventoryDetailedReportRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event InventoryDetailedReportRowChangeEventHandler InventoryDetailedReportRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddInventoryDetailedReportRow(InventoryDetailedReportRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public InventoryDetailedReportRow AddInventoryDetailedReportRow(int Batch_number, string Description, double Cost_Price, double Selling_Price, int Stock_Out_Quantity, int Stock_In_Quantity, int Available_Quantity) {
+                InventoryDetailedReportRow rowInventoryDetailedReportRow = ((InventoryDetailedReportRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Batch_number,
+                        Description,
+                        Cost_Price,
+                        Selling_Price,
+                        Stock_Out_Quantity,
+                        Stock_In_Quantity,
+                        Available_Quantity};
+                rowInventoryDetailedReportRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowInventoryDetailedReportRow);
+                return rowInventoryDetailedReportRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                InventoryDetailedReportDataTable cln = ((InventoryDetailedReportDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new InventoryDetailedReportDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnBatch_number = base.Columns["Batch_number"];
+                this.columnDescription = base.Columns["Description"];
+                this.columnCost_Price = base.Columns["Cost Price"];
+                this.columnSelling_Price = base.Columns["Selling Price"];
+                this.columnStock_Out_Quantity = base.Columns["Stock Out Quantity"];
+                this.columnStock_In_Quantity = base.Columns["Stock In Quantity"];
+                this.columnAvailable_Quantity = base.Columns["Available Quantity"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnBatch_number = new global::System.Data.DataColumn("Batch_number", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBatch_number);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnCost_Price = new global::System.Data.DataColumn("Cost Price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCost_Price);
+                this.columnSelling_Price = new global::System.Data.DataColumn("Selling Price", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSelling_Price);
+                this.columnStock_Out_Quantity = new global::System.Data.DataColumn("Stock Out Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStock_Out_Quantity);
+                this.columnStock_In_Quantity = new global::System.Data.DataColumn("Stock In Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStock_In_Quantity);
+                this.columnAvailable_Quantity = new global::System.Data.DataColumn("Available Quantity", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAvailable_Quantity);
+                this.columnBatch_number.AllowDBNull = false;
+                this.columnDescription.AllowDBNull = false;
+                this.columnDescription.MaxLength = 50;
+                this.columnSelling_Price.AllowDBNull = false;
+                this.columnAvailable_Quantity.ReadOnly = true;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public InventoryDetailedReportRow NewInventoryDetailedReportRow() {
+                return ((InventoryDetailedReportRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new InventoryDetailedReportRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(InventoryDetailedReportRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.InventoryDetailedReportRowChanged != null)) {
+                    this.InventoryDetailedReportRowChanged(this, new InventoryDetailedReportRowChangeEvent(((InventoryDetailedReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.InventoryDetailedReportRowChanging != null)) {
+                    this.InventoryDetailedReportRowChanging(this, new InventoryDetailedReportRowChangeEvent(((InventoryDetailedReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.InventoryDetailedReportRowDeleted != null)) {
+                    this.InventoryDetailedReportRowDeleted(this, new InventoryDetailedReportRowChangeEvent(((InventoryDetailedReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.InventoryDetailedReportRowDeleting != null)) {
+                    this.InventoryDetailedReportRowDeleting(this, new InventoryDetailedReportRowChangeEvent(((InventoryDetailedReportRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveInventoryDetailedReportRow(InventoryDetailedReportRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DBSaleInventoryDataSet ds = new DBSaleInventoryDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "InventoryDetailedReportDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -918,6 +1289,169 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class InventoryDetailedReportRow : global::System.Data.DataRow {
+            
+            private InventoryDetailedReportDataTable tableInventoryDetailedReport;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal InventoryDetailedReportRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableInventoryDetailedReport = ((InventoryDetailedReportDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Batch_number {
+                get {
+                    return ((int)(this[this.tableInventoryDetailedReport.Batch_numberColumn]));
+                }
+                set {
+                    this[this.tableInventoryDetailedReport.Batch_numberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Description {
+                get {
+                    return ((string)(this[this.tableInventoryDetailedReport.DescriptionColumn]));
+                }
+                set {
+                    this[this.tableInventoryDetailedReport.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Cost_Price {
+                get {
+                    try {
+                        return ((double)(this[this.tableInventoryDetailedReport.Cost_PriceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cost Price\' in table \'InventoryDetailedReport\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInventoryDetailedReport.Cost_PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public double Selling_Price {
+                get {
+                    return ((double)(this[this.tableInventoryDetailedReport.Selling_PriceColumn]));
+                }
+                set {
+                    this[this.tableInventoryDetailedReport.Selling_PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Stock_Out_Quantity {
+                get {
+                    try {
+                        return ((int)(this[this.tableInventoryDetailedReport.Stock_Out_QuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Stock Out Quantity\' in table \'InventoryDetailedReport\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInventoryDetailedReport.Stock_Out_QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Stock_In_Quantity {
+                get {
+                    try {
+                        return ((int)(this[this.tableInventoryDetailedReport.Stock_In_QuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Stock In Quantity\' in table \'InventoryDetailedReport\' is DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableInventoryDetailedReport.Stock_In_QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Available_Quantity {
+                get {
+                    try {
+                        return ((int)(this[this.tableInventoryDetailedReport.Available_QuantityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Available Quantity\' in table \'InventoryDetailedReport\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableInventoryDetailedReport.Available_QuantityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsCost_PriceNull() {
+                return this.IsNull(this.tableInventoryDetailedReport.Cost_PriceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetCost_PriceNull() {
+                this[this.tableInventoryDetailedReport.Cost_PriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsStock_Out_QuantityNull() {
+                return this.IsNull(this.tableInventoryDetailedReport.Stock_Out_QuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetStock_Out_QuantityNull() {
+                this[this.tableInventoryDetailedReport.Stock_Out_QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsStock_In_QuantityNull() {
+                return this.IsNull(this.tableInventoryDetailedReport.Stock_In_QuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetStock_In_QuantityNull() {
+                this[this.tableInventoryDetailedReport.Stock_In_QuantityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsAvailable_QuantityNull() {
+                return this.IsNull(this.tableInventoryDetailedReport.Available_QuantityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetAvailable_QuantityNull() {
+                this[this.tableInventoryDetailedReport.Available_QuantityColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class ReceiptDtRow : global::System.Data.DataRow {
             
             private ReceiptDtDataTable tableReceiptDt;
@@ -1034,6 +1568,40 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CashierDashboardViewRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class InventoryDetailedReportRowChangeEvent : global::System.EventArgs {
+            
+            private InventoryDetailedReportRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public InventoryDetailedReportRowChangeEvent(InventoryDetailedReportRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public InventoryDetailedReportRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -1249,6 +1817,181 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.DBSaleInventoryDataSetTabl
         public virtual DBSaleInventoryDataSet.CashierDashboardViewDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             DBSaleInventoryDataSet.CashierDashboardViewDataTable dataTable = new DBSaleInventoryDataSet.CashierDashboardViewDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class InventoryDetailedReportTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public InventoryDetailedReportTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "InventoryDetailedReport";
+            tableMapping.ColumnMappings.Add("Batch_number", "Batch_number");
+            tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("Cost Price", "Cost Price");
+            tableMapping.ColumnMappings.Add("Selling Price", "Selling Price");
+            tableMapping.ColumnMappings.Add("Stock Out Quantity", "Stock Out Quantity");
+            tableMapping.ColumnMappings.Add("Stock In Quantity", "Stock In Quantity");
+            tableMapping.ColumnMappings.Add("Available Quantity", "Available Quantity");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Settings.Default.DBSaleInventoryConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Batch_number, Description, [Cost Price], [Selling Price], [Stock Out Quant" +
+                "ity], [Stock In Quantity], [Available Quantity] FROM dbo.InventoryDetailedReport" +
+                "";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DBSaleInventoryDataSet.InventoryDetailedReportDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DBSaleInventoryDataSet.InventoryDetailedReportDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DBSaleInventoryDataSet.InventoryDetailedReportDataTable dataTable = new DBSaleInventoryDataSet.InventoryDetailedReportDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

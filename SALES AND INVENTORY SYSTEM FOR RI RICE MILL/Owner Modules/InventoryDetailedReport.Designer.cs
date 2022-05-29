@@ -30,22 +30,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInventoryDetailedReport));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.txtSearchInventory = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
             this.lblTotalProfit = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvInventoryDetailed = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.txtSearchInventory = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblTotalStockSold = new Bunifu.UI.WinForms.BunifuLabel();
@@ -83,120 +83,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel2.Text = "Search Batch/Item:";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // lblTotalProfit
-            // 
-            this.lblTotalProfit.AllowParentOverrides = false;
-            this.lblTotalProfit.AutoEllipsis = false;
-            this.lblTotalProfit.CursorType = null;
-            this.lblTotalProfit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
-            this.lblTotalProfit.ForeColor = System.Drawing.Color.Black;
-            this.lblTotalProfit.Location = new System.Drawing.Point(815, 537);
-            this.lblTotalProfit.Name = "lblTotalProfit";
-            this.lblTotalProfit.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblTotalProfit.Size = new System.Drawing.Size(11, 22);
-            this.lblTotalProfit.TabIndex = 165;
-            this.lblTotalProfit.Text = "0";
-            this.lblTotalProfit.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblTotalProfit.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel1
-            // 
-            this.bunifuLabel1.AllowParentOverrides = false;
-            this.bunifuLabel1.AutoEllipsis = false;
-            this.bunifuLabel1.CursorType = null;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
-            this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(557, 537);
-            this.bunifuLabel1.Name = "bunifuLabel1";
-            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(193, 22);
-            this.bunifuLabel1.TabIndex = 164;
-            this.bunifuLabel1.Text = "Total Available Stock";
-            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // dgvInventoryDetailed
-            // 
-            this.dgvInventoryDetailed.AllowCustomTheming = false;
-            this.dgvInventoryDetailed.AllowUserToAddRows = false;
-            this.dgvInventoryDetailed.AllowUserToDeleteRows = false;
-            this.dgvInventoryDetailed.AllowUserToResizeColumns = false;
-            this.dgvInventoryDetailed.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dgvInventoryDetailed.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvInventoryDetailed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvInventoryDetailed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvInventoryDetailed.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvInventoryDetailed.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvInventoryDetailed.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInventoryDetailed.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvInventoryDetailed.ColumnHeadersHeight = 40;
-            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvInventoryDetailed.CurrentTheme.BackColor = System.Drawing.Color.White;
-            this.dgvInventoryDetailed.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvInventoryDetailed.CurrentTheme.Name = null;
-            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInventoryDetailed.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvInventoryDetailed.EnableHeadersVisualStyles = false;
-            this.dgvInventoryDetailed.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dgvInventoryDetailed.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.dgvInventoryDetailed.HeaderBgColor = System.Drawing.Color.Empty;
-            this.dgvInventoryDetailed.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvInventoryDetailed.Location = new System.Drawing.Point(12, 212);
-            this.dgvInventoryDetailed.Name = "dgvInventoryDetailed";
-            this.dgvInventoryDetailed.ReadOnly = true;
-            this.dgvInventoryDetailed.RowHeadersVisible = false;
-            this.dgvInventoryDetailed.RowTemplate.Height = 40;
-            this.dgvInventoryDetailed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventoryDetailed.Size = new System.Drawing.Size(922, 319);
-            this.dgvInventoryDetailed.TabIndex = 162;
-            this.dgvInventoryDetailed.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.dgvInventoryDetailed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventoryDetailed_CellContentClick);
-            // 
-            // bunifuLabel3
-            // 
-            this.bunifuLabel3.AllowParentOverrides = false;
-            this.bunifuLabel3.AutoEllipsis = false;
-            this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(328, 12);
-            this.bunifuLabel3.Name = "bunifuLabel3";
-            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(310, 80);
-            this.bunifuLabel3.TabIndex = 159;
-            this.bunifuLabel3.Text = "Inventory Detailed\r\nReport";
-            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // txtSearchInventory
             // 
@@ -308,6 +194,121 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnSearch.Zoom = 20;
             this.btnSearch.ZoomSpeed = 10;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblTotalProfit
+            // 
+            this.lblTotalProfit.AllowParentOverrides = false;
+            this.lblTotalProfit.AutoEllipsis = false;
+            this.lblTotalProfit.CursorType = null;
+            this.lblTotalProfit.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.lblTotalProfit.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalProfit.Location = new System.Drawing.Point(815, 537);
+            this.lblTotalProfit.Name = "lblTotalProfit";
+            this.lblTotalProfit.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTotalProfit.Size = new System.Drawing.Size(11, 22);
+            this.lblTotalProfit.TabIndex = 165;
+            this.lblTotalProfit.Text = "0";
+            this.lblTotalProfit.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblTotalProfit.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel1
+            // 
+            this.bunifuLabel1.AllowParentOverrides = false;
+            this.bunifuLabel1.AutoEllipsis = false;
+            this.bunifuLabel1.CursorType = null;
+            this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel1.Location = new System.Drawing.Point(557, 537);
+            this.bunifuLabel1.Name = "bunifuLabel1";
+            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel1.Size = new System.Drawing.Size(193, 22);
+            this.bunifuLabel1.TabIndex = 164;
+            this.bunifuLabel1.Text = "Total Available Stock";
+            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // dgvInventoryDetailed
+            // 
+            this.dgvInventoryDetailed.AllowCustomTheming = false;
+            this.dgvInventoryDetailed.AllowUserToAddRows = false;
+            this.dgvInventoryDetailed.AllowUserToDeleteRows = false;
+            this.dgvInventoryDetailed.AllowUserToResizeColumns = false;
+            this.dgvInventoryDetailed.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dgvInventoryDetailed.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvInventoryDetailed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvInventoryDetailed.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvInventoryDetailed.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvInventoryDetailed.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvInventoryDetailed.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInventoryDetailed.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvInventoryDetailed.ColumnHeadersHeight = 40;
+            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.dgvInventoryDetailed.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvInventoryDetailed.CurrentTheme.BackColor = System.Drawing.Color.White;
+            this.dgvInventoryDetailed.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.dgvInventoryDetailed.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvInventoryDetailed.CurrentTheme.Name = null;
+            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.dgvInventoryDetailed.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInventoryDetailed.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvInventoryDetailed.EnableHeadersVisualStyles = false;
+            this.dgvInventoryDetailed.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.dgvInventoryDetailed.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.dgvInventoryDetailed.HeaderBgColor = System.Drawing.Color.Empty;
+            this.dgvInventoryDetailed.HeaderForeColor = System.Drawing.Color.White;
+            this.dgvInventoryDetailed.Location = new System.Drawing.Point(12, 212);
+            this.dgvInventoryDetailed.Name = "dgvInventoryDetailed";
+            this.dgvInventoryDetailed.ReadOnly = true;
+            this.dgvInventoryDetailed.RowHeadersVisible = false;
+            this.dgvInventoryDetailed.RowTemplate.Height = 40;
+            this.dgvInventoryDetailed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvInventoryDetailed.Size = new System.Drawing.Size(922, 319);
+            this.dgvInventoryDetailed.TabIndex = 162;
+            this.dgvInventoryDetailed.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dgvInventoryDetailed.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventoryDetailed_CellContentClick);
+            this.dgvInventoryDetailed.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInventoryDetailed_CellFormatting);
+            // 
+            // bunifuLabel3
+            // 
+            this.bunifuLabel3.AllowParentOverrides = false;
+            this.bunifuLabel3.AutoEllipsis = false;
+            this.bunifuLabel3.CursorType = null;
+            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel3.Location = new System.Drawing.Point(328, 12);
+            this.bunifuLabel3.Name = "bunifuLabel3";
+            this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel3.Size = new System.Drawing.Size(310, 80);
+            this.bunifuLabel3.TabIndex = 159;
+            this.bunifuLabel3.Text = "Inventory Detailed\r\nReport";
+            this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // pictureBox6
             // 

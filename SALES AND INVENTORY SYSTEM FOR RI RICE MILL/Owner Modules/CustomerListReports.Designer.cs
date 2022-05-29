@@ -42,9 +42,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtSearchCustomers = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
+            this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomerList)).BeginInit();
@@ -117,6 +117,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvCustomerList.TabIndex = 144;
             this.dgvCustomerList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.dgvCustomerList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomerList_CellContentClick);
+            this.dgvCustomerList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvCustomerList_CellFormatting);
             // 
             // bunifuLabel3
             // 
@@ -163,22 +164,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel2.Text = "Search Name:";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel1
-            // 
-            this.bunifuLabel1.AllowParentOverrides = false;
-            this.bunifuLabel1.AutoEllipsis = false;
-            this.bunifuLabel1.CursorType = null;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(21, 54);
-            this.bunifuLabel1.Name = "bunifuLabel1";
-            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(88, 18);
-            this.bunifuLabel1.TabIndex = 116;
-            this.bunifuLabel1.Text = "From Date:";
-            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // txtSearchCustomers
             // 
@@ -289,6 +274,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnSearch.Zoom = 20;
             this.btnSearch.ZoomSpeed = 10;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // bunifuLabel1
+            // 
+            this.bunifuLabel1.AllowParentOverrides = false;
+            this.bunifuLabel1.AutoEllipsis = false;
+            this.bunifuLabel1.CursorType = null;
+            this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel1.Location = new System.Drawing.Point(21, 54);
+            this.bunifuLabel1.Name = "bunifuLabel1";
+            this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel1.Size = new System.Drawing.Size(88, 18);
+            this.bunifuLabel1.TabIndex = 116;
+            this.bunifuLabel1.Text = "From Date:";
+            this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // bunifuButton1
             // 

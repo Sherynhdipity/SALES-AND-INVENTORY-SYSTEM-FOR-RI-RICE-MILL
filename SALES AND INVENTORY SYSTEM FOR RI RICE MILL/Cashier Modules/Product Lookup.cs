@@ -161,5 +161,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Refresh();
             dgvProductList.Refresh();
         }
+
+        private void dgvProductList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
     }
 }

@@ -590,6 +590,15 @@
         AAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnPrintReport.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAnCAYAAAD+QPHGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACSSURBVHhe7dKhAYAwAMAwLtnL8B9n4Dc4AAs1EVG13cYx
+        z3GsBf+Z5zPeW4BvGY+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E
+        8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIbGOf11uAz+zzugFcoFNzH6WN
+        kgAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="bunifuLabel3.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 30pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
@@ -667,14 +676,5 @@
   </data>
   <data name="net.BaseStylesheet" xml:space="preserve">
     <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 12pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
-  </data>
-  <data name="btnPrintReport.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAnCAYAAAD+QPHGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACSSURBVHhe7dKhAYAwAMAwLtnL8B9n4Dc4AAs1EVG13cYx
-        z3GsBf+Z5zPeW4BvGY+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E
-        8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIbGOf11uAz+zzugFcoFNzH6WN
-        kgAAAABJRU5ErkJggg==
-</value>
   </data>
 </root>

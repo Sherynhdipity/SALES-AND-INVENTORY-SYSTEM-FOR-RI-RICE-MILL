@@ -42,15 +42,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             transNum.FormClosed += new FormClosedEventHandler(Form_Closed);
             sku.FormClosed += new FormClosedEventHandler(Form_Closed1);
         }
-
+        
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
             frmSearchTransNo frm = (frmSearchTransNo)sender;
             // dvgOrderList.Rows.Clear();
             DisplayReturn();
-            btnSearchProduct.Enabled = true;
+            btnSearchProduct.Enabled = false;
             
-            btnPay.Enabled = true;
+            btnPay.Enabled = false;
+            btnExit.Enabled = false;
+            btnLogout.Enabled = false;
+            btnCancel.Enabled = true;
             // btnNewTrans_Click((object)sender, (EventArgs)e);
             //btnSearchProduct_Click((object)sender, (EventArgs)e);
         }
@@ -58,11 +61,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         void Form_Closed1(object sender, FormClosedEventArgs e)
         {
             //dvgOrderList.DataSource = null;
+            btnSearchProduct.Enabled = true;
+
+            btnPay.Enabled = true;
             lblTotal.Text = "0.00";
             lblTransDate.Text = "";
 
             price = sku.Price;
-            txtReturnAmount.Text = price;
+            if(price.Equals("0.00"))
+            {
+                txtReturnAmount.Text = Convert.ToDouble(price).ToString("N2");
+            }
+            else
+            {
+                txtReturnAmount.Text = Convert.ToDouble(price).ToString("N2");
+            }
+            
             GetTransNo();
             //btnSearchProduct_Click((object)sender, (EventArgs)e);
             //QuerySelect = "SELECT";
@@ -116,7 +130,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     while (reader.Read())
                     {
                         lblTotal.Text = reader["Total_cost"].ToString();
-                        string total = String.Format("{0:n}", reader["Transaction_number"].ToString());
+                        string total = String.Format("N2", reader["Transaction_number"].ToString());
                         lblTransNo.Text = total;
 
                         DateTime orderDate = Convert.ToDateTime(reader["Order_date"].ToString());
@@ -211,7 +225,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             //textbox controls
             dvgOrderList.DataSource = null;
-            txtReturnAmount.Text = "0";
+            txtReturnAmount.Text = "0.00";
             txtSearch.Text = "";
             txtProdDesc.Text = "";
             txtQuantity.Text = "1";
@@ -272,8 +286,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                     //lblTotal.Text = totalamount.ToString() + "." + "00";
 
-                    txtAmount.Text = totalamount.ToString();
-                    lblTotal.Text = txtAmount.Text;
+                    txtAmount.Text = totalamount.ToString("N2");
+                    lblTotal.Text = Convert.ToDouble(txtAmount.Text).ToString("N2");
 
                     recompute(totalamount);
                     txtSearch.Focus();
@@ -412,7 +426,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //btnCancel.LabelText = "[F5] Void" + Environment.NewLine + "Transaction" + Environment.NewLine;
 
             //Datatable
-            txtReturnAmount.Text = "0";
+            txtReturnAmount.Text = "0.00";
             ColumnsLoader();
 
         }
@@ -446,7 +460,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                
                 txtAmount.Text = /*"P " +*/ totalamount.ToString("#,0.00");
-                lblTotal.Text = txtAmount.Text;
+                lblTotal.Text = Convert.ToDouble(txtAmount.Text).ToString("N2");
                 //lblTotal.Text = totalamount.ToString("#,0.00");
             }
             else
@@ -556,7 +570,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         
                         txtAmount.Text = /*"P " +*/ totalamount.ToString("#,0.00");
                         double minus_price = Convert.ToDouble(txtAmount.Text) - Convert.ToDouble(price);
-                        lblTotal.Text = minus_price.ToString();
+                        lblTotal.Text = minus_price.ToString("N2");
                         //lblTotal.Text = txtAmount.Text;
                         //lblTotal.Text = totalamount.ToString("#,0.00");
                         //compute here lols
@@ -588,7 +602,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //txtVatAmount.Text = (totalamount * 0.12).ToString("#,0.00");
             //totalamount = totalamount + (totalamount * 0.12);
             double minus_price = totalamount - Convert.ToDouble(price);
-            lblTotal.Text = minus_price.ToString();
+            lblTotal.Text = minus_price.ToString("N2");
             //lblTotal.Text = txtAmount.Text;
             //lblTotal.Text = totalamount.ToString("#,0.00");
         }
@@ -753,6 +767,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnNewTrans_Click(object sender, EventArgs e)
         {
             transNum.ShowDialog();
+            btnPay.Enabled = false;
+            btnSearchProduct.Enabled = false;
+            
             
             
             //GetTransNo();
@@ -786,7 +803,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
-
+            btnVoid.Enabled = true;
+            btnPay.Enabled = false;
 
             //if(isComplete)
             //{
@@ -810,6 +828,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SKU_LIST = productLookup.skuList;
 
                 btnAdd_Click((object)sender, (EventArgs)e);
+                btnPay.Enabled = true;
             }
             //}
 
@@ -874,7 +893,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     btnPay.Enabled = false;
                     btnExit.Enabled = true;
                     btnLogout.Enabled = true;
-                    //btnCancel.Enabled = false;
+                    btnCancel.Enabled = false;
                 }
             }
                
@@ -936,7 +955,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void dvgOrderList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
-            sku.Price = txtReturnAmount.Text;
+            sku.Price = Convert.ToDouble(txtReturnAmount.Text).ToString("N2");
             //sku.Transaction_Number = dvgOrderList.CurrentRow.Cells["Transaction Number"].Value.ToString();
             sku.Transaction_Number = transaction_number;
             sku.ShowDialog();            
@@ -945,6 +964,108 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void dvgOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dvgOrderList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 1 || e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
+        private void dgvItemReplaced_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
+        private void txtReturnAmount_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            string[] sku_return;
+            result = MessageBox.Show("Do you want to cancel this transaction?", "Cancel Transaction", MessageBoxButtons.YesNo);
+            
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    con.Close();
+                    con.Open();
+                    QuerySelect = "SELECT SKU FROM tblTemp_return";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    if(dt.Rows.Count > 0)
+                    {
+                        //sku_return = new string[dt.Rows.Count];
+                        for (int i = 0; i < dt.Rows.Count; i++)
+                        {
+                            con.Close();
+                            con.Open();
+                            QueryUpdate = "Update tblInventories SET Status = 'Stock Out' WHERE SKU = @sku";
+                            cmd = new SqlCommand(QueryUpdate, con);
+                            cmd.Parameters.AddWithValue("@sku", dt.Rows[i][0].ToString());
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    //reader = cmd.ExecuteReader();
+
+                    //if (reader.HasRows)
+                    //{
+                    //    while (reader.Read())
+                    //    {
+
+                    //        count++;
+                    //        //sku_return = new string[reader.]
+                    //        //con.Close();
+                    //        //QueryUpdate = "Update tblInventories SET Status = 'Stock Out' WHERE SKU = @sku";
+                    //        //cmd = new SqlCommand(QueryUpdate, con);
+                    //        //cmd.Parameters.AddWithValue("@sku", reader["SKU"].ToString());
+                    //        //cmd.ExecuteNonQuery();
+                    //    }
+                    //}
+                    //sku_return = new string[count];
+                    //for(int i = 0; i < sku_return.Length; i++)
+                    //{
+                    //    sku
+                    //}
+                    con.Close();
+                    con.Open();
+                    QueryDelete = "TRUNCATE TABLE tblTemp_return";
+                    cmd = new SqlCommand(QueryDelete, con);
+                    cmd.ExecuteNonQuery();
+
+                    btnExit.Enabled = true;
+                    btnLogout.Enabled = true;
+                    btnSearchProduct.Enabled = false;
+                    btnPay.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                    MessageBox.Show("Transaction is canceled!");
+                    ClearAll();
+                }
+            }
+            
+        }
+
+        private void lblTotal_Click(object sender, EventArgs e)
+        {
+            
         }
 
         //mod end

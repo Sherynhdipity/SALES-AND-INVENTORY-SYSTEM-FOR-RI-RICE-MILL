@@ -284,7 +284,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         con.Close();
                     }
 
-                    MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.00"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GenerateReceipt();
                     this.Close();
@@ -498,7 +498,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
                         //discount_total = amount * discount;
                         total = amount;
-                        txtAmount.Text = total.ToString();
+                        txtAmount.Text = total.ToString("N2");
                     }
                     else
                     {
@@ -526,7 +526,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount = Convert.ToDouble(dt.Rows[0][2].ToString());
                             discount_total = amount * discount;
                             total = amount - discount_total;
-                            txtAmount.Text = total.ToString();
+                            txtAmount.Text = total.ToString("N2");
                             txtDiscountAmount.Text = discount_total.ToString();
                             txtDiscountPer.Text = "20%";
                         }
@@ -540,7 +540,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount = Convert.ToDouble(dt.Rows[0][2].ToString());
                             discount_total = amount * discount;
                             total = amount - discount_total;
-                            txtAmount.Text = total.ToString();
+                            txtAmount.Text = total.ToString("N2");
                             txtDiscountAmount.Text = "20%";
                         }
                         else if (dt.Rows[0][1].ToString() == "LC01")
@@ -552,7 +552,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount = Convert.ToDouble(dt.Rows[0][2].ToString());
                             discount_total = amount * discount;
                             total = amount - discount_total;
-                            txtAmount.Text = total.ToString();
+                            txtAmount.Text = total.ToString("N2");
                             txtDiscountAmount.Text = "10%";
                         }
                         else if (dt.Rows[0][1].ToString() == "NC01")

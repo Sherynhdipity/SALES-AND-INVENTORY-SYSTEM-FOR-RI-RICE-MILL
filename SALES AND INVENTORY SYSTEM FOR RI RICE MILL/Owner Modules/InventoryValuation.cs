@@ -49,7 +49,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 sum += Convert.ToDouble(dgvInventoryValuation.Rows[i].Cells[7].Value);
             }
 
-            lblTotalProfit.Text = sum.ToString();
+            lblTotalProfit.Text = sum.ToString("N2");
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[7].Value);
                 }
 
-                lblTotalProfit.Text = sum.ToString();
+                lblTotalProfit.Text = sum.ToString("N2");
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            if (txtSearchInventory.Text == "")
+            if (dgvInventoryValuation.Rows.Count == 0)
             {
                 MessageBox.Show("No Data");
             }
@@ -100,9 +100,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         public void showInventoryValuation()
         {
-     
+
             InventoryValuation valuation = new InventoryValuation();
-            frmInventoryReport frm = new frmInventoryReport();
+            frmInventoryValuationReport frm = new frmInventoryValuationReport();
             DataSet dt = new DataSet();
             if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
             {
@@ -121,7 +121,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             adapter.Fill(dt);
 
             valuation.Database.Tables["InventoryValuationView"].SetDataSource(dt);
-            frm.InventoryReportViewer1.ReportSource = valuation;
+            frm.InventoryValuationViewer.ReportSource = valuation;
             con.Close();
             frm.Show();
 
@@ -153,7 +153,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[7].Value);
             }
 
-            lblTotalProfit.Text = sum.ToString();
+            lblTotalProfit.Text = sum.ToString("N2");
+        }
+
+        private void dgvInventoryValuation_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 6 || e.ColumnIndex == 7)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
+        private void dgvInventoryValuation_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

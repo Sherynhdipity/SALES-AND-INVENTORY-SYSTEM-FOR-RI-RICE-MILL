@@ -55,7 +55,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             for (int i = 0; i < dgvInventoryDetailed.Rows.Count; i++)
             {
                 sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
-                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[4].Value);
+                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[5].Value);
             }
 
             lblTotalProfit.Text = sum.ToString();
@@ -79,7 +79,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             for (int i = 0; i < dgvInventoryDetailed.Rows.Count; i++)
             {
                 sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
-                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[4].Value);
+                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[5].Value);
             }
 
             lblTotalProfit.Text = sum.ToString();
@@ -104,7 +104,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             for (int i = 0; i < dgvInventoryDetailed.Rows.Count; i++)
             {
                 sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
-                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[4].Value);
+                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[5].Value);
             }
 
             lblTotalProfit.Text = sum.ToString();
@@ -113,7 +113,43 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            showInventoryDetails();
+        }
 
+        private void dgvInventoryDetailed_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
+        public void showInventoryDetails()
+        {
+            InventoryDetailed detail = new InventoryDetailed();
+            frmInventoryDetailed det = new frmInventoryDetailed();
+            DataSet dt = new DataSet();
+
+            //if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
+            //{
+            QuerySelect = "Select * from InventoryDetailedReport";
+
+            //}
+            //else
+            //{
+            //    QuerySelect = "Select * from InventoryDetailedReport where (Batch_number LIKE '%' + @batch + '%') or (Description LIKE '%' + @desc + '%')";
+            //}
+
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
+            cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+            adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            detail.Database.Tables["InventoryDetailedReport"].SetDataSource(dt);
+            det.InventoryDetailedViewer.ReportSource = detail;
+            con.Close();
+            det.Show();
         }
     }
 }

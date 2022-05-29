@@ -52,6 +52,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Controls.Add(this.SalesReportViewer);
             this.Name = "frmSalesReport";
             this.Text = "SalesReport";
+            this.Load += new System.EventHandler(this.frmSalesReport_Load);
             this.ResumeLayout(false);
 
         }

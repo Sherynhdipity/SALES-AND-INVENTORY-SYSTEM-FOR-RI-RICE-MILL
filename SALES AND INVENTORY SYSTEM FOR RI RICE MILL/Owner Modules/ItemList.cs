@@ -114,5 +114,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
 
         }
+
+        private void dgvItemList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 1 || e.ColumnIndex == 2)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
     }
 }

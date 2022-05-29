@@ -289,6 +289,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvItemList.Size = new System.Drawing.Size(922, 319);
             this.dgvItemList.TabIndex = 150;
             this.dgvItemList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dgvItemList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvItemList_CellFormatting);
             // 
             // pictureBox6
             // 

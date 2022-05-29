@@ -258,6 +258,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvInventoryValuation.Size = new System.Drawing.Size(922, 319);
             this.dgvInventoryValuation.TabIndex = 155;
             this.dgvInventoryValuation.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dgvInventoryValuation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventoryValuation_CellContentClick);
+            this.dgvInventoryValuation.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvInventoryValuation_CellFormatting);
             // 
             // bunifuLabel3
             // 

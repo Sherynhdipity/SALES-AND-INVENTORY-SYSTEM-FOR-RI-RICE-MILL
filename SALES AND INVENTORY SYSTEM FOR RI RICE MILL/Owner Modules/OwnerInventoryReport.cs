@@ -107,43 +107,43 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            InventoryValuation inventory = new InventoryValuation();
-            frmInventoryReport frm = new frmInventoryReport();
+            //DataSet ds = new DataSet();
+            //frmInventoryPerItem valuation = new Inven();
+            //frmInventoryValuation frm = new frmInventoryValuation();
 
-            try
-            {
-               
-                con.Open();
+            //try
+            //{
 
-                dt = new DataTable();
+            //    con.Open();
 
-                if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
-                {
-                    QuerySelect = "Select * from InventoryPerItemView";
-                }
+            //    dt = new DataTable();
 
-                else
-                {
-                    QuerySelect = "Select * from InventoryPerItemView where Description = '" + txtSearchItem.Text + "'";
-                }
-               
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+            //    if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
+            //    {
+            //        QuerySelect = "Select * from InventoryPerItemView";
+            //    }
 
-                inventory.Database.Tables["InventoryPerItemView"].SetDataSource(dt);
-                frm.InventoryReportViewer1.ReportSource = inventory;
-                con.Close();
-                frm.Show();
+            //    else
+            //    {
+            //        QuerySelect = "Select * from InventoryPerItemView where Description = '" + txtSearchItem.Text + "'";
+            //    }
 
-               
+            //    cmd = new SqlCommand(QuerySelect, con);
+            //    adapter = new SqlDataAdapter(cmd);
+            //    adapter.Fill(dt);
 
-            }
-            catch (Exception ex)
-            {
+            //    i.Database.Tables["InventoryPerItemView"].SetDataSource(dt);
+            //    frm.InventoryReportViewer1.ReportSource = inventory;
+            //    con.Close();
+            //    frm.Show();
 
-            }
+
+
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
         }
 
         private void bunifuLabel2_Click(object sender, EventArgs e)
