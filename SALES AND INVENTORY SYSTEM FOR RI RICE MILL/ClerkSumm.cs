@@ -16,14 +16,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class InventoryDetailed : ReportClass {
+    public class ClerkSumm : ReportClass {
         
-        public InventoryDetailed() {
+        public ClerkSumm() {
         }
         
         public override string ResourceName {
             get {
-                return "InventoryDetailed.rpt";
+                return "ClerkSumm.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         
         public override string FullResourceName {
             get {
-                return "SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.InventoryDetailed.rpt";
+                return "SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ClerkSumm.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedInventoryDetailed : Component, ICachedReport {
+    public class CachedClerkSumm : Component, ICachedReport {
         
-        public CachedInventoryDetailed() {
+        public CachedClerkSumm() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            InventoryDetailed rpt = new InventoryDetailed();
+            ClerkSumm rpt = new ClerkSumm();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -65,6 +65,7 @@
             this.bunifuPanel1.ShowBorders = false;
             this.bunifuPanel1.Size = new System.Drawing.Size(550, 38);
             this.bunifuPanel1.TabIndex = 106;
+            this.bunifuPanel1.Click += new System.EventHandler(this.bunifuPanel1_Click);
             // 
             // btnClose
             // 

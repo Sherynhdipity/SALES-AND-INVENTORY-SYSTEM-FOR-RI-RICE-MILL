@@ -183,7 +183,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             {
                                 tempSum += Convert.ToDouble(prices[j]);
                             }
-                            Price = (Convert.ToDouble(Price) + Convert.ToInt32(tempSum)).ToString();
+                            Price = (Convert.ToDouble(Price) + Convert.ToDouble(tempSum)).ToString("N2");
 
                         }
 
@@ -195,19 +195,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 }
                     else if (cmbRemarks.SelectedIndex == 1)
                     {
-                        for (int i = 0; i < selectedRows; i++)
+                    //for (int i = 0; i < selectedRows; i++)
+                        foreach (DataGridViewRow row in dgvOrderDetails.SelectedRows)
                         {
                             result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
                             if (result == DialogResult.Yes)
                             {
                                 try
                                 {
-
                                 con.Close();
                                 con.Open();
                                 QuerySelect = "SELECT TOP 1 Order_details_id FROM OrderDetailsView WHERE SKU = @sku";
                                 cmd = new SqlCommand(QuerySelect, con);
-                                cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
+                                cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
 
                                 reader = cmd.ExecuteReader();
                                 if (reader.HasRows)
@@ -217,18 +217,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
 
                                     reader.Close();
                                 }
+                                con.Close();
+                                con.Open();
+                                QueryInsert = "Insert into tblTemp_return (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
+                                    "Values(@id, @sku, @qty, @remarks, @date)";
+                                cmd = new SqlCommand(QueryInsert, con);
+                                cmd.Parameters.AddWithValue("@id", id);
+                                cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
+                                cmd.Parameters.AddWithValue("@qty", '1');
+                                cmd.Parameters.AddWithValue("@remarks", "DAMAGED");
+                                cmd.Parameters.AddWithValue("@date", dtpReturnDate.Value.Date);
+                                cmd.ExecuteNonQuery();
 
                                 con.Close();
-                                    con.Open();
-                                    QueryInsert = "Insert into tblTemp_return (Order_details_id, SKU, Return_quantity, Remarks, Return_date)" +
-                                        "Values(@id, @sku, @qty, @remarks, @date)";
-                                    cmd = new SqlCommand(QueryInsert, con);
-                                    cmd.Parameters.AddWithValue("@id", Order_details_id);
-                                    cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[i].Cells[0].Value.ToString());
-                                    cmd.Parameters.AddWithValue("@qty", '1');
-                                    cmd.Parameters.AddWithValue("@remarks", "DAMAGED");
-                                    cmd.Parameters.AddWithValue("@date", dtpReturnDate.Value.Date);
-                                    cmd.ExecuteNonQuery();
+                                con.Open();
+
+                                QueryUpdate = "Update tblInventories SET Status = 'Damaged' WHERE SKU = @sku";
+                                cmd = new SqlCommand(QueryUpdate, con);
+                                cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
+                                cmd.ExecuteNonQuery();
+
                             }
                                 catch (Exception ex)
                                 {
@@ -239,8 +247,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                     con.Close();
                                 }
 
+                            con.Open();
+                            QuerySelect = "SELECT Price FROM tblItems WHERE Item_id = (SELECT Item_id FROM tblInventories WHERE SKU = @sku)";
+                            cmd = new SqlCommand(QuerySelect, con);
+                            cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
+                            reader = cmd.ExecuteReader();
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    if (ctr < selectedRows)
+                                    {
+                                        prices[ctr] = reader["Price"].ToString();
+                                        ctr++;
+                                    }
 
+                                }
                             }
+                            reader.Close();
+                            con.Close();
+                            double tempSum = 0;
+                            for (int j = 0; j < prices.Length; j++)
+                            {
+                                tempSum += Convert.ToDouble(prices[j]);
+                            }
+                            Price = (Convert.ToDouble(Price) + Convert.ToDouble(tempSum)).ToString("N2");
+
+                        }
                         }
 
                         //MessageBox.Show("Item Successfully Returned, Please Select Replacement Item. ");

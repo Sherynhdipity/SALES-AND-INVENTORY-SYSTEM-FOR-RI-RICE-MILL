@@ -42,16 +42,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.InventoryDetailedViewer.Location = new System.Drawing.Point(0, 0);
             this.InventoryDetailedViewer.Name = "InventoryDetailedViewer";
             this.InventoryDetailedViewer.ReportSource = this.InventoryDetailed1;
-            this.InventoryDetailedViewer.Size = new System.Drawing.Size(800, 450);
+            this.InventoryDetailedViewer.Size = new System.Drawing.Size(1345, 749);
             this.InventoryDetailedViewer.TabIndex = 0;
             // 
             // frmInventoryDetailed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1345, 749);
             this.Controls.Add(this.InventoryDetailedViewer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmInventoryDetailed";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InventoryDetailedReport";
             this.Load += new System.EventHandler(this.frmInventoryDetailedReport_Load);
             this.ResumeLayout(false);

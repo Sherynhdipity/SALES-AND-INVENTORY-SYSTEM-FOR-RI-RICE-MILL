@@ -35,12 +35,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(On_HandInventoryReports));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvInventoryOwnerReport = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblTotal = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.dtpToDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.dtpFromDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnPrintReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -52,34 +52,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.bunifuLabel2);
-            this.groupBox1.Controls.Add(this.dtpToDate);
             this.groupBox1.Controls.Add(this.bunifuLabel1);
             this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(10, 109);
+            this.groupBox1.Location = new System.Drawing.Point(14, 91);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(738, 108);
             this.groupBox1.TabIndex = 123;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Date Range:";
-            // 
-            // bunifuLabel2
-            // 
-            this.bunifuLabel2.AllowParentOverrides = false;
-            this.bunifuLabel2.AutoEllipsis = false;
-            this.bunifuLabel2.CursorType = null;
-            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel2.Location = new System.Drawing.Point(335, 54);
-            this.bunifuLabel2.Name = "bunifuLabel2";
-            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(67, 18);
-            this.bunifuLabel2.TabIndex = 118;
-            this.bunifuLabel2.Text = "To Date:";
-            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // bunifuLabel1
             // 
@@ -88,12 +69,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(21, 54);
+            this.bunifuLabel1.Location = new System.Drawing.Point(105, 45);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(88, 18);
+            this.bunifuLabel1.Size = new System.Drawing.Size(43, 18);
             this.bunifuLabel1.TabIndex = 116;
-            this.bunifuLabel1.Text = "From Date:";
+            this.bunifuLabel1.Text = "Date:";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -104,12 +85,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(326, 30);
+            this.bunifuLabel3.Location = new System.Drawing.Point(330, 12);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(315, 80);
+            this.bunifuLabel3.Size = new System.Drawing.Size(330, 80);
             this.bunifuLabel3.TabIndex = 122;
-            this.bunifuLabel3.Text = "On-hand Inventory\r\nReports";
+            this.bunifuLabel3.Text = "Inventory Summary\r\nReports";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -168,7 +149,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.dgvInventoryOwnerReport.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvInventoryOwnerReport.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvInventoryOwnerReport.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvInventoryOwnerReport.Location = new System.Drawing.Point(10, 223);
+            this.dgvInventoryOwnerReport.Location = new System.Drawing.Point(14, 205);
             this.dgvInventoryOwnerReport.Name = "dgvInventoryOwnerReport";
             this.dgvInventoryOwnerReport.ReadOnly = true;
             this.dgvInventoryOwnerReport.RowHeadersVisible = false;
@@ -179,6 +160,38 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.dgvInventoryOwnerReport.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.dgvInventoryOwnerReport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventoryOwnerReport_CellContentClick);
             this.dgvInventoryOwnerReport.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvInventoryOwnerReport_Scroll);
+            // 
+            // bunifuLabel2
+            // 
+            this.bunifuLabel2.AllowParentOverrides = false;
+            this.bunifuLabel2.AutoEllipsis = false;
+            this.bunifuLabel2.CursorType = null;
+            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel2.Location = new System.Drawing.Point(638, 507);
+            this.bunifuLabel2.Name = "bunifuLabel2";
+            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel2.Size = new System.Drawing.Size(154, 18);
+            this.bunifuLabel2.TabIndex = 134;
+            this.bunifuLabel2.Text = "Total Remain Stock";
+            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AllowParentOverrides = false;
+            this.lblTotal.AutoEllipsis = false;
+            this.lblTotal.CursorType = null;
+            this.lblTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.lblTotal.ForeColor = System.Drawing.Color.Black;
+            this.lblTotal.Location = new System.Drawing.Point(848, 507);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTotal.Size = new System.Drawing.Size(10, 18);
+            this.lblTotal.TabIndex = 135;
+            this.lblTotal.Text = "0";
+            this.lblTotal.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblTotal.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // btnSearch
             // 
@@ -200,7 +213,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
-            this.btnSearch.Location = new System.Drawing.Point(633, 37);
+            this.btnSearch.Location = new System.Drawing.Point(448, 33);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Rotation = 0;
             this.btnSearch.ShowActiveImage = true;
@@ -214,32 +227,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.btnSearch.Zoom = 20;
             this.btnSearch.ZoomSpeed = 10;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // dtpToDate
-            // 
-            this.dtpToDate.BackColor = System.Drawing.Color.Transparent;
-            this.dtpToDate.BorderColor = System.Drawing.Color.Black;
-            this.dtpToDate.BorderRadius = 10;
-            this.dtpToDate.Color = System.Drawing.Color.Black;
-            this.dtpToDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            this.dtpToDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpToDate.DisabledColor = System.Drawing.Color.White;
-            this.dtpToDate.DisplayWeekNumbers = false;
-            this.dtpToDate.DPHeight = 0;
-            this.dtpToDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpToDate.FillDatePicker = false;
-            this.dtpToDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpToDate.ForeColor = System.Drawing.Color.Black;
-            this.dtpToDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpToDate.Icon")));
-            this.dtpToDate.IconColor = System.Drawing.SystemColors.Control;
-            this.dtpToDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            this.dtpToDate.LeftTextMargin = 5;
-            this.dtpToDate.Location = new System.Drawing.Point(408, 48);
-            this.dtpToDate.MinimumSize = new System.Drawing.Size(4, 32);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(182, 32);
-            this.dtpToDate.TabIndex = 117;
-            this.dtpToDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
             // 
             // dtpFromDate
             // 
@@ -260,7 +247,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.dtpFromDate.IconColor = System.Drawing.SystemColors.Control;
             this.dtpFromDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
             this.dtpFromDate.LeftTextMargin = 5;
-            this.dtpFromDate.Location = new System.Drawing.Point(115, 48);
+            this.dtpFromDate.Location = new System.Drawing.Point(169, 40);
             this.dtpFromDate.MinimumSize = new System.Drawing.Size(4, 32);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(182, 32);
@@ -271,7 +258,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.clipboard;
-            this.pictureBox6.Location = new System.Drawing.Point(235, 19);
+            this.pictureBox6.Location = new System.Drawing.Point(239, 1);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(85, 69);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -327,7 +314,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.btnPrintReport.IdleIconLeftImage = null;
             this.btnPrintReport.IdleIconRightImage = null;
             this.btnPrintReport.IndicateFocus = false;
-            this.btnPrintReport.Location = new System.Drawing.Point(764, 142);
+            this.btnPrintReport.Location = new System.Drawing.Point(768, 124);
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnPrintReport.OnDisabledState.BorderRadius = 1;
@@ -375,13 +362,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 529);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.btnPrintReport);
             this.Controls.Add(this.dgvInventoryOwnerReport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.bunifuLabel3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "On_HandInventoryReports";
-            this.Text = "On_HandInventoryReports";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.On_HandInventoryReports_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -396,13 +386,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private System.Windows.Forms.GroupBox groupBox1;
         private Bunifu.UI.WinForms.BunifuImageButton btnSearch;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
-        private Bunifu.UI.WinForms.BunifuDatePicker dtpToDate;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuDatePicker dtpFromDate;
         private System.Windows.Forms.PictureBox pictureBox6;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvInventoryOwnerReport;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Bunifu.UI.WinForms.BunifuLabel lblTotal;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPrintReport;
     }
 }

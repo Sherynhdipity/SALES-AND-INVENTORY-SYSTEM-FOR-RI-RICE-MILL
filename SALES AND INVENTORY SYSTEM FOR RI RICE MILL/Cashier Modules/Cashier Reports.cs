@@ -50,10 +50,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             try
             {
-                DateTime date = DateTime.Now;
-                dtpDate.Text = string.Format("{0:D}", date);
+           
 
-                QuerySelect = "Select [Date], Description, [Cost Sales], [Gross Sales] from SalesReportView where [Date] = @FromDate";
+                QuerySelect = "Select * from CashierSales where [Date] = @FromDate";
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpDate.Value);
@@ -62,6 +61,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 adapter.Fill(dt);
                 dgvSalesReport.DataSource = dt;
                 dgvSalesReport.Refresh();
+
+                double sum1 = 0;
+                double sum2 = 0;
+
+                for (int i = 0; i < dgvSalesReport.Rows.Count; i++)
+                {
+                    sum1 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[4].Value);
+                    sum2 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[5].Value);
+                }
+                lblTotal.Text = sum1.ToString();
+                lblSales.Text = sum2.ToString("N2");
             }
             catch (Exception ex)
             {
@@ -88,7 +98,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void ucCashierReports_Load(object sender, EventArgs e)
         {
+            DateTime date = DateTime.Now;
+            dtpDate.Text = string.Format("{0:D}", date);
 
+            DisplaySalesReport();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -110,8 +123,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
-            SalesReport sales = new SalesReport();
-            frmSalesReport frm = new frmSalesReport();
+            CashierRep rep = new CashierRep();
+            frmCashier_Report frm = new frmCashier_Report();
 
             try
             {
@@ -119,13 +132,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Open();
 
                 dt = new DataTable();
-                QuerySelect = "SELECT * FROM SalesReportView WHERE [Order Date] = '" + date1 + "'";
+                QuerySelect = "SELECT * FROM CashierSales WHERE [Date] = '" + date1 + "'";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);
 
-                sales.Database.Tables["SalesReportView"].SetDataSource(dt);
-                frm.SalesReportViewer.ReportSource = sales;
+                rep.Database.Tables["CashierSales"].SetDataSource(dt);
+                frm.crystalReportViewer1.ReportSource = rep;
                 con.Close();
                 frm.Show();
 
@@ -139,6 +152,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void bunifuLabel2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bunifuLabel2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvSalesReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5 || e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
         }
     }
 }

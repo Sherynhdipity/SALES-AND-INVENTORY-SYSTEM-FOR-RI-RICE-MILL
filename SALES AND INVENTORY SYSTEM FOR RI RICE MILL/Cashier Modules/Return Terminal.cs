@@ -129,7 +129,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     while (reader.Read())
                     {
-                        lblTotal.Text = reader["Total_cost"].ToString();
+                       
+                        lblTotal.Text = Convert.ToDouble(reader["Total_cost"]).ToString("N2");
                         string total = String.Format("N2", reader["Transaction_number"].ToString());
                         lblTransNo.Text = total;
 

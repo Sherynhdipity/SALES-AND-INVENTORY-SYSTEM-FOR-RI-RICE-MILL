@@ -335,6 +335,30 @@
     <Compile Include="Cashier Modules\SearchReturnTransaction.Designer.cs">
       <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cashier Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cashier Report.Designer.cs">
+      <DependentUpon>Cashier Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CashierRep.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CashierRep.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClerkSumm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClerkSumm.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClerkSummaryRep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClerkSummaryRep.Designer.cs">
+      <DependentUpon>ClerkSummaryRep.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerList.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -393,6 +417,12 @@
     </Compile>
     <Compile Include="Inventory Clerk Modules\ReStockInventory.Designer.cs">
       <DependentUpon>ReStockInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InventoryReport.Designer.cs">
+      <DependentUpon>InventoryReport.cs</DependentUpon>
     </Compile>
     <Compile Include="InventoryDetailed.cs">
       <AutoGen>True</AutoGen>
@@ -617,6 +647,12 @@
     <Compile Include="Owner Modules\Sales Return.Designer.cs">
       <DependentUpon>Sales Return.cs</DependentUpon>
     </Compile>
+    <Compile Include="PerItems.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PerItems.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Receipt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -625,6 +661,12 @@
     </Compile>
     <Compile Include="reportsDataSet.cs">
       <DependentUpon>reportsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RestockReporting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RestockReporting.Designer.cs">
+      <DependentUpon>RestockReporting.cs</DependentUpon>
     </Compile>
     <Compile Include="RestockReports.cs">
       <AutoGen>True</AutoGen>
@@ -776,6 +818,20 @@
     <EmbeddedResource Include="Cashier Modules\SearchReturnTransaction.resx">
       <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cashier Report.resx">
+      <DependentUpon>Cashier Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CashierRep.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CashierRep.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClerkSumm.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ClerkSumm.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClerkSummaryRep.resx">
+      <DependentUpon>ClerkSummaryRep.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomerList.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CustomerList.cs</LastGenOutput>
@@ -803,6 +859,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory Clerk Modules\ReStockInventory.resx">
       <DependentUpon>ReStockInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryReport.resx">
+      <DependentUpon>InventoryReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InventoryDetailed.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -894,9 +953,16 @@
     <EmbeddedResource Include="Owner Modules\DiscountRequirements.resx">
       <DependentUpon>DiscountRequirements.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PerItems.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PerItems.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Receipt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Receipt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestockReporting.resx">
+      <DependentUpon>RestockReporting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RestockReports.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

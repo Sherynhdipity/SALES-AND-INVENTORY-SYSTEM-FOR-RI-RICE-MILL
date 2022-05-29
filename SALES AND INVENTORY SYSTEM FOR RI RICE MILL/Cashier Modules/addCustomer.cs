@@ -113,5 +113,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
   
             //Form2 = new Form2(myValue); //you pass it to Form2
         }
+
+        private void bunifuPanel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

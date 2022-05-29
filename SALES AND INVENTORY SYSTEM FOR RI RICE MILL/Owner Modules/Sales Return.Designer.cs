@@ -44,9 +44,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dgvReturnOwnerReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btnGenerateReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbnCustom = new System.Windows.Forms.RadioButton();
+            this.rbnYearly = new System.Windows.Forms.RadioButton();
+            this.rbnMonthly = new System.Windows.Forms.RadioButton();
+            this.rbnWeekly = new System.Windows.Forms.RadioButton();
+            this.rbnDaily = new System.Windows.Forms.RadioButton();
+            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.TotalReturnedSales = new Bunifu.UI.WinForms.BunifuLabel();
+            this.bunifuLabel6 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblTotalReturnItem = new Bunifu.UI.WinForms.BunifuLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnOwnerReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -58,9 +69,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(16, 91);
+            this.groupBox1.Location = new System.Drawing.Point(16, 117);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(738, 108);
+            this.groupBox1.Size = new System.Drawing.Size(738, 73);
             this.groupBox1.TabIndex = 123;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Date Range:";
@@ -85,7 +96,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
-            this.btnSearch.Location = new System.Drawing.Point(633, 48);
+            this.btnSearch.Location = new System.Drawing.Point(633, 14);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Rotation = 0;
             this.btnSearch.ShowActiveImage = true;
@@ -107,7 +118,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel2.Location = new System.Drawing.Point(335, 65);
+            this.bunifuLabel2.Location = new System.Drawing.Point(335, 31);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(67, 18);
@@ -135,7 +146,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dtpToDate.IconColor = System.Drawing.SystemColors.Control;
             this.dtpToDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
             this.dtpToDate.LeftTextMargin = 5;
-            this.dtpToDate.Location = new System.Drawing.Point(408, 59);
+            this.dtpToDate.Location = new System.Drawing.Point(408, 25);
             this.dtpToDate.MinimumSize = new System.Drawing.Size(4, 32);
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(182, 32);
@@ -149,7 +160,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(21, 65);
+            this.bunifuLabel1.Location = new System.Drawing.Point(21, 31);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(88, 18);
@@ -177,12 +188,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dtpFromDate.IconColor = System.Drawing.SystemColors.Control;
             this.dtpFromDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
             this.dtpFromDate.LeftTextMargin = 5;
-            this.dtpFromDate.Location = new System.Drawing.Point(115, 59);
+            this.dtpFromDate.Location = new System.Drawing.Point(115, 25);
             this.dtpFromDate.MinimumSize = new System.Drawing.Size(4, 32);
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(182, 32);
             this.dtpFromDate.TabIndex = 35;
             this.dtpFromDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // bunifuLabel3
             // 
@@ -191,7 +203,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(334, 31);
+            this.bunifuLabel3.Location = new System.Drawing.Point(334, 26);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(342, 40);
@@ -270,7 +282,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.White;
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(240, 12);
+            this.pictureBox8.Location = new System.Drawing.Point(240, 7);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(73, 73);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -369,11 +381,158 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnGenerateReport.UseDefaultRadiusAndThickness = true;
             this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.rbnCustom);
+            this.panel1.Controls.Add(this.rbnYearly);
+            this.panel1.Controls.Add(this.rbnMonthly);
+            this.panel1.Controls.Add(this.rbnWeekly);
+            this.panel1.Controls.Add(this.rbnDaily);
+            this.panel1.Location = new System.Drawing.Point(190, 92);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(558, 33);
+            this.panel1.TabIndex = 153;
+            // 
+            // rbnCustom
+            // 
+            this.rbnCustom.AutoSize = true;
+            this.rbnCustom.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnCustom.Location = new System.Drawing.Point(431, 7);
+            this.rbnCustom.Name = "rbnCustom";
+            this.rbnCustom.Size = new System.Drawing.Size(87, 22);
+            this.rbnCustom.TabIndex = 4;
+            this.rbnCustom.TabStop = true;
+            this.rbnCustom.Text = "Custom";
+            this.rbnCustom.UseVisualStyleBackColor = true;
+            this.rbnCustom.CheckedChanged += new System.EventHandler(this.rbnCustom_CheckedChanged);
+            // 
+            // rbnYearly
+            // 
+            this.rbnYearly.AutoSize = true;
+            this.rbnYearly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnYearly.Location = new System.Drawing.Point(332, 8);
+            this.rbnYearly.Name = "rbnYearly";
+            this.rbnYearly.Size = new System.Drawing.Size(76, 22);
+            this.rbnYearly.TabIndex = 3;
+            this.rbnYearly.TabStop = true;
+            this.rbnYearly.Text = "Yearly";
+            this.rbnYearly.UseVisualStyleBackColor = true;
+            this.rbnYearly.CheckedChanged += new System.EventHandler(this.rbnYearly_CheckedChanged);
+            // 
+            // rbnMonthly
+            // 
+            this.rbnMonthly.AutoSize = true;
+            this.rbnMonthly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnMonthly.Location = new System.Drawing.Point(222, 8);
+            this.rbnMonthly.Name = "rbnMonthly";
+            this.rbnMonthly.Size = new System.Drawing.Size(88, 22);
+            this.rbnMonthly.TabIndex = 2;
+            this.rbnMonthly.TabStop = true;
+            this.rbnMonthly.Text = "Monthly";
+            this.rbnMonthly.UseVisualStyleBackColor = true;
+            this.rbnMonthly.CheckedChanged += new System.EventHandler(this.rbnMonthly_CheckedChanged);
+            // 
+            // rbnWeekly
+            // 
+            this.rbnWeekly.AutoSize = true;
+            this.rbnWeekly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnWeekly.Location = new System.Drawing.Point(109, 8);
+            this.rbnWeekly.Name = "rbnWeekly";
+            this.rbnWeekly.Size = new System.Drawing.Size(83, 22);
+            this.rbnWeekly.TabIndex = 1;
+            this.rbnWeekly.TabStop = true;
+            this.rbnWeekly.Text = "Weekly";
+            this.rbnWeekly.UseVisualStyleBackColor = true;
+            this.rbnWeekly.CheckedChanged += new System.EventHandler(this.rbnWeekly_CheckedChanged);
+            // 
+            // rbnDaily
+            // 
+            this.rbnDaily.AutoSize = true;
+            this.rbnDaily.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnDaily.Location = new System.Drawing.Point(18, 7);
+            this.rbnDaily.Name = "rbnDaily";
+            this.rbnDaily.Size = new System.Drawing.Size(65, 22);
+            this.rbnDaily.TabIndex = 0;
+            this.rbnDaily.TabStop = true;
+            this.rbnDaily.Text = "Daily";
+            this.rbnDaily.UseVisualStyleBackColor = true;
+            this.rbnDaily.CheckedChanged += new System.EventHandler(this.rbnDaily_CheckedChanged);
+            // 
+            // bunifuLabel4
+            // 
+            this.bunifuLabel4.AllowParentOverrides = false;
+            this.bunifuLabel4.AutoEllipsis = false;
+            this.bunifuLabel4.CursorType = null;
+            this.bunifuLabel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.bunifuLabel4.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel4.Location = new System.Drawing.Point(621, 568);
+            this.bunifuLabel4.Name = "bunifuLabel4";
+            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel4.Size = new System.Drawing.Size(167, 18);
+            this.bunifuLabel4.TabIndex = 154;
+            this.bunifuLabel4.Text = "Total Returned Sales";
+            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // TotalReturnedSales
+            // 
+            this.TotalReturnedSales.AllowParentOverrides = false;
+            this.TotalReturnedSales.AutoEllipsis = false;
+            this.TotalReturnedSales.CursorType = null;
+            this.TotalReturnedSales.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.TotalReturnedSales.ForeColor = System.Drawing.Color.Black;
+            this.TotalReturnedSales.Location = new System.Drawing.Point(870, 568);
+            this.TotalReturnedSales.Name = "TotalReturnedSales";
+            this.TotalReturnedSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TotalReturnedSales.Size = new System.Drawing.Size(10, 18);
+            this.TotalReturnedSales.TabIndex = 155;
+            this.TotalReturnedSales.Text = "0";
+            this.TotalReturnedSales.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.TotalReturnedSales.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel6
+            // 
+            this.bunifuLabel6.AllowParentOverrides = false;
+            this.bunifuLabel6.AutoEllipsis = false;
+            this.bunifuLabel6.CursorType = null;
+            this.bunifuLabel6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.bunifuLabel6.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel6.Location = new System.Drawing.Point(621, 535);
+            this.bunifuLabel6.Name = "bunifuLabel6";
+            this.bunifuLabel6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel6.Size = new System.Drawing.Size(158, 18);
+            this.bunifuLabel6.TabIndex = 156;
+            this.bunifuLabel6.Text = "Total Returned Item";
+            this.bunifuLabel6.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel6.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblTotalReturnItem
+            // 
+            this.lblTotalReturnItem.AllowParentOverrides = false;
+            this.lblTotalReturnItem.AutoEllipsis = false;
+            this.lblTotalReturnItem.CursorType = null;
+            this.lblTotalReturnItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            this.lblTotalReturnItem.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalReturnItem.Location = new System.Drawing.Point(870, 535);
+            this.lblTotalReturnItem.Name = "lblTotalReturnItem";
+            this.lblTotalReturnItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTotalReturnItem.Size = new System.Drawing.Size(10, 18);
+            this.lblTotalReturnItem.TabIndex = 157;
+            this.lblTotalReturnItem.Text = "0";
+            this.lblTotalReturnItem.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblTotalReturnItem.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // frmSales_Return
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 541);
+            this.ClientSize = new System.Drawing.Size(979, 598);
+            this.Controls.Add(this.lblTotalReturnItem);
+            this.Controls.Add(this.bunifuLabel6);
+            this.Controls.Add(this.TotalReturnedSales);
+            this.Controls.Add(this.bunifuLabel4);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.dgvReturnOwnerReport);
             this.Controls.Add(this.pictureBox8);
@@ -388,6 +547,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturnOwnerReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,5 +566,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private System.Windows.Forms.PictureBox pictureBox8;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvReturnOwnerReport;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnGenerateReport;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rbnCustom;
+        private System.Windows.Forms.RadioButton rbnYearly;
+        private System.Windows.Forms.RadioButton rbnMonthly;
+        private System.Windows.Forms.RadioButton rbnWeekly;
+        private System.Windows.Forms.RadioButton rbnDaily;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
+        private Bunifu.UI.WinForms.BunifuLabel TotalReturnedSales;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel6;
+        private Bunifu.UI.WinForms.BunifuLabel lblTotalReturnItem;
     }
 }

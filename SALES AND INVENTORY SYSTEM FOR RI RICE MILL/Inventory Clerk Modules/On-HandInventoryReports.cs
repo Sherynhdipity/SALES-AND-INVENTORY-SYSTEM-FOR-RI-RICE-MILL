@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 {
@@ -31,24 +32,55 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void On_HandInventoryReports_Load(object sender, EventArgs e)
         {
+            DateTime date = DateTime.Now;
+            dtpFromDate.Text = string.Format("{0:D}", date);
 
+            QuerySelect = " Select [Date], [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk";
+
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
+            //cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
+
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvInventoryOwnerReport.DataSource = dt;
+            dgvInventoryOwnerReport.Refresh();
+
+            int sum = 0;
+
+            for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[3].Value);
+            }
+
+            lblTotal.Text = sum.ToString();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-                QuerySelect = " Select *  from InventoryReportsView where Stock_in_date between @FromDate and @ToDate";
+                QuerySelect = " Select [Date], [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where [Date] = @Date";
 
                 cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
-                cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
+                cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
+                //cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
 
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
                 dgvInventoryOwnerReport.DataSource = dt;
                 dgvInventoryOwnerReport.Refresh();
+
+                int sum = 0;
+
+                for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[3].Value);
+                }
+
+                lblTotal.Text = sum.ToString();
 
             }
             catch (Exception ex)
@@ -74,34 +106,41 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
-            //DataSet ds = new DataSet();
-            //frmInventoryValuationReport inventory = new frmInventoryValuationReport();
-            //frmInventoryReport frm = new frmInventoryReport();
+            DataSet ds = new DataSet();
+            ClerkSumm sum = new ClerkSumm();
+            frmClerkSummaryRep frm = new frmClerkSummaryRep();
 
-            //try
-            //{
-            //    date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
-            //    date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
-            //    con.Open();
+            try
+            {
+                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+                //date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+                con.Open();
 
-            //    dt = new DataTable();
-            //    QuerySelect = "SELECT * FROM InventoryReportsView WHERE Stock_in_date BETWEEN '" + date1 + "' AND '" + date2 + "'";
-            //    cmd = new SqlCommand(QuerySelect, con);
-            //    adapter = new SqlDataAdapter(cmd);
-            //    adapter.Fill(dt);
+                dt = new DataTable();
 
-            //    inventory.Database.Tables["InventoryReportsView"].SetDataSource(dt);
-            //    frm.InventoryReportViewer1.ReportSource = inventory;
-            //    con.Close();
-            //    frm.Show();
+                TextObject DateFrom = (TextObject)sum.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["DateFrom"];
+                DateFrom.Text = dtpFromDate.Value.ToString();
 
 
+                QuerySelect = "Select [Date], [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where [Date] = @Date";
+                
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
 
-            //}
-            //catch (Exception ex)
-            //{
+                sum.Database.Tables["InventorySummaryReportInventoryClerk"].SetDataSource(dt);
+                frm.crystalReportViewer1.ReportSource = sum;
+                con.Close();
+                frm.Show();
 
-            //}
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

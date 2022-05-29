@@ -30,19 +30,23 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCashierReports));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnGenerateReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.dtpDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.Search = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvSalesReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnGenerateReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblSales = new Bunifu.UI.WinForms.BunifuLabel();
+            this.bunifuLabel5 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblTotal = new Bunifu.UI.WinForms.BunifuLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -73,13 +77,105 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.groupBox1.Controls.Add(this.bunifuLabel4);
             this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(82, 189);
+            this.groupBox1.Location = new System.Drawing.Point(79, 165);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(930, 73);
+            this.groupBox1.Size = new System.Drawing.Size(930, 61);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Date Range:";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.AllowAnimations = true;
+            this.btnGenerateReport.AllowMouseEffects = true;
+            this.btnGenerateReport.AllowToggling = false;
+            this.btnGenerateReport.AnimationSpeed = 200;
+            this.btnGenerateReport.AutoGenerateColors = false;
+            this.btnGenerateReport.AutoRoundBorders = false;
+            this.btnGenerateReport.AutoSizeLeftIcon = true;
+            this.btnGenerateReport.AutoSizeRightIcon = true;
+            this.btnGenerateReport.BackColor = System.Drawing.Color.Transparent;
+            this.btnGenerateReport.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnGenerateReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGenerateReport.BackgroundImage")));
+            this.btnGenerateReport.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnGenerateReport.ButtonText = "Generate Report";
+            this.btnGenerateReport.ButtonTextMarginLeft = 0;
+            this.btnGenerateReport.ColorContrastOnClick = 45;
+            this.btnGenerateReport.ColorContrastOnHover = 45;
+            this.btnGenerateReport.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnGenerateReport.CustomizableEdges = borderEdges1;
+            this.btnGenerateReport.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnGenerateReport.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGenerateReport.DisabledFillColor = System.Drawing.Color.Empty;
+            this.btnGenerateReport.DisabledForecolor = System.Drawing.Color.Empty;
+            this.btnGenerateReport.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnGenerateReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerateReport.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerateReport.IconLeft = null;
+            this.btnGenerateReport.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerateReport.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGenerateReport.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnGenerateReport.IconMarginLeft = 11;
+            this.btnGenerateReport.IconPadding = 10;
+            this.btnGenerateReport.IconRight = null;
+            this.btnGenerateReport.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerateReport.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnGenerateReport.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnGenerateReport.IconSize = 25;
+            this.btnGenerateReport.IdleBorderColor = System.Drawing.Color.Empty;
+            this.btnGenerateReport.IdleBorderRadius = 0;
+            this.btnGenerateReport.IdleBorderThickness = 0;
+            this.btnGenerateReport.IdleFillColor = System.Drawing.Color.Empty;
+            this.btnGenerateReport.IdleIconLeftImage = null;
+            this.btnGenerateReport.IdleIconRightImage = null;
+            this.btnGenerateReport.IndicateFocus = false;
+            this.btnGenerateReport.Location = new System.Drawing.Point(755, 19);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnGenerateReport.OnDisabledState.BorderRadius = 1;
+            this.btnGenerateReport.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnGenerateReport.OnDisabledState.BorderThickness = 1;
+            this.btnGenerateReport.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnGenerateReport.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnGenerateReport.OnDisabledState.IconLeftImage = null;
+            this.btnGenerateReport.OnDisabledState.IconRightImage = null;
+            this.btnGenerateReport.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnGenerateReport.onHoverState.BorderRadius = 1;
+            this.btnGenerateReport.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnGenerateReport.onHoverState.BorderThickness = 1;
+            this.btnGenerateReport.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnGenerateReport.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnGenerateReport.onHoverState.IconLeftImage = null;
+            this.btnGenerateReport.onHoverState.IconRightImage = null;
+            this.btnGenerateReport.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnGenerateReport.OnIdleState.BorderRadius = 1;
+            this.btnGenerateReport.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnGenerateReport.OnIdleState.BorderThickness = 1;
+            this.btnGenerateReport.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnGenerateReport.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerateReport.OnIdleState.IconLeftImage = null;
+            this.btnGenerateReport.OnIdleState.IconRightImage = null;
+            this.btnGenerateReport.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnGenerateReport.OnPressedState.BorderRadius = 1;
+            this.btnGenerateReport.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnGenerateReport.OnPressedState.BorderThickness = 1;
+            this.btnGenerateReport.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnGenerateReport.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnGenerateReport.OnPressedState.IconLeftImage = null;
+            this.btnGenerateReport.OnPressedState.IconRightImage = null;
+            this.btnGenerateReport.Size = new System.Drawing.Size(158, 38);
+            this.btnGenerateReport.TabIndex = 108;
+            this.btnGenerateReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGenerateReport.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnGenerateReport.TextMarginLeft = 0;
+            this.btnGenerateReport.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnGenerateReport.UseDefaultRadiusAndThickness = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
             // 
             // dtpDate
             // 
@@ -228,15 +324,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvSalesReport.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvSalesReport.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvSalesReport.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvSalesReport.Location = new System.Drawing.Point(82, 268);
+            this.dgvSalesReport.Location = new System.Drawing.Point(79, 244);
             this.dgvSalesReport.Name = "dgvSalesReport";
             this.dgvSalesReport.ReadOnly = true;
             this.dgvSalesReport.RowHeadersVisible = false;
             this.dgvSalesReport.RowTemplate.Height = 40;
             this.dgvSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSalesReport.Size = new System.Drawing.Size(930, 350);
+            this.dgvSalesReport.Size = new System.Drawing.Size(930, 338);
             this.dgvSalesReport.TabIndex = 107;
             this.dgvSalesReport.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dgvSalesReport.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvSalesReport_CellFormatting);
             // 
             // pictureBox1
             // 
@@ -249,103 +346,81 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.pictureBox1.TabIndex = 102;
             this.pictureBox1.TabStop = false;
             // 
-            // btnGenerateReport
+            // bunifuLabel2
             // 
-            this.btnGenerateReport.AllowAnimations = true;
-            this.btnGenerateReport.AllowMouseEffects = true;
-            this.btnGenerateReport.AllowToggling = false;
-            this.btnGenerateReport.AnimationSpeed = 200;
-            this.btnGenerateReport.AutoGenerateColors = false;
-            this.btnGenerateReport.AutoRoundBorders = false;
-            this.btnGenerateReport.AutoSizeLeftIcon = true;
-            this.btnGenerateReport.AutoSizeRightIcon = true;
-            this.btnGenerateReport.BackColor = System.Drawing.Color.Transparent;
-            this.btnGenerateReport.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
-            this.btnGenerateReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGenerateReport.BackgroundImage")));
-            this.btnGenerateReport.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnGenerateReport.ButtonText = "Generate Report";
-            this.btnGenerateReport.ButtonTextMarginLeft = 0;
-            this.btnGenerateReport.ColorContrastOnClick = 45;
-            this.btnGenerateReport.ColorContrastOnHover = 45;
-            this.btnGenerateReport.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnGenerateReport.CustomizableEdges = borderEdges1;
-            this.btnGenerateReport.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnGenerateReport.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnGenerateReport.DisabledFillColor = System.Drawing.Color.Empty;
-            this.btnGenerateReport.DisabledForecolor = System.Drawing.Color.Empty;
-            this.btnGenerateReport.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnGenerateReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerateReport.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerateReport.IconLeft = null;
-            this.btnGenerateReport.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerateReport.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnGenerateReport.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnGenerateReport.IconMarginLeft = 11;
-            this.btnGenerateReport.IconPadding = 10;
-            this.btnGenerateReport.IconRight = null;
-            this.btnGenerateReport.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGenerateReport.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnGenerateReport.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnGenerateReport.IconSize = 25;
-            this.btnGenerateReport.IdleBorderColor = System.Drawing.Color.Empty;
-            this.btnGenerateReport.IdleBorderRadius = 0;
-            this.btnGenerateReport.IdleBorderThickness = 0;
-            this.btnGenerateReport.IdleFillColor = System.Drawing.Color.Empty;
-            this.btnGenerateReport.IdleIconLeftImage = null;
-            this.btnGenerateReport.IdleIconRightImage = null;
-            this.btnGenerateReport.IndicateFocus = false;
-            this.btnGenerateReport.Location = new System.Drawing.Point(755, 19);
-            this.btnGenerateReport.Name = "btnGenerateReport";
-            this.btnGenerateReport.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnGenerateReport.OnDisabledState.BorderRadius = 1;
-            this.btnGenerateReport.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnGenerateReport.OnDisabledState.BorderThickness = 1;
-            this.btnGenerateReport.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnGenerateReport.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnGenerateReport.OnDisabledState.IconLeftImage = null;
-            this.btnGenerateReport.OnDisabledState.IconRightImage = null;
-            this.btnGenerateReport.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnGenerateReport.onHoverState.BorderRadius = 1;
-            this.btnGenerateReport.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnGenerateReport.onHoverState.BorderThickness = 1;
-            this.btnGenerateReport.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnGenerateReport.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.btnGenerateReport.onHoverState.IconLeftImage = null;
-            this.btnGenerateReport.onHoverState.IconRightImage = null;
-            this.btnGenerateReport.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnGenerateReport.OnIdleState.BorderRadius = 1;
-            this.btnGenerateReport.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnGenerateReport.OnIdleState.BorderThickness = 1;
-            this.btnGenerateReport.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnGenerateReport.OnIdleState.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerateReport.OnIdleState.IconLeftImage = null;
-            this.btnGenerateReport.OnIdleState.IconRightImage = null;
-            this.btnGenerateReport.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnGenerateReport.OnPressedState.BorderRadius = 1;
-            this.btnGenerateReport.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnGenerateReport.OnPressedState.BorderThickness = 1;
-            this.btnGenerateReport.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnGenerateReport.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.btnGenerateReport.OnPressedState.IconLeftImage = null;
-            this.btnGenerateReport.OnPressedState.IconRightImage = null;
-            this.btnGenerateReport.Size = new System.Drawing.Size(158, 38);
-            this.btnGenerateReport.TabIndex = 108;
-            this.btnGenerateReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnGenerateReport.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnGenerateReport.TextMarginLeft = 0;
-            this.btnGenerateReport.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnGenerateReport.UseDefaultRadiusAndThickness = true;
-            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
+            this.bunifuLabel2.AllowParentOverrides = false;
+            this.bunifuLabel2.AutoEllipsis = false;
+            this.bunifuLabel2.CursorType = null;
+            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel2.Location = new System.Drawing.Point(614, 623);
+            this.bunifuLabel2.Name = "bunifuLabel2";
+            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel2.Size = new System.Drawing.Size(107, 22);
+            this.bunifuLabel2.TabIndex = 111;
+            this.bunifuLabel2.Text = "Total Sales:";
+            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.bunifuLabel2.Click += new System.EventHandler(this.bunifuLabel2_Click_1);
+            // 
+            // lblSales
+            // 
+            this.lblSales.AllowParentOverrides = false;
+            this.lblSales.AutoEllipsis = false;
+            this.lblSales.CursorType = null;
+            this.lblSales.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.lblSales.ForeColor = System.Drawing.Color.Black;
+            this.lblSales.Location = new System.Drawing.Point(793, 623);
+            this.lblSales.Name = "lblSales";
+            this.lblSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblSales.Size = new System.Drawing.Size(11, 22);
+            this.lblSales.TabIndex = 112;
+            this.lblSales.Text = "0";
+            this.lblSales.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblSales.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel5
+            // 
+            this.bunifuLabel5.AllowParentOverrides = false;
+            this.bunifuLabel5.AutoEllipsis = false;
+            this.bunifuLabel5.CursorType = null;
+            this.bunifuLabel5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.bunifuLabel5.ForeColor = System.Drawing.Color.Black;
+            this.bunifuLabel5.Location = new System.Drawing.Point(614, 595);
+            this.bunifuLabel5.Name = "bunifuLabel5";
+            this.bunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel5.Size = new System.Drawing.Size(138, 22);
+            this.bunifuLabel5.TabIndex = 113;
+            this.bunifuLabel5.Text = "Total Sold Item";
+            this.bunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.bunifuLabel5.Click += new System.EventHandler(this.bunifuLabel5_Click);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AllowParentOverrides = false;
+            this.lblTotal.AutoEllipsis = false;
+            this.lblTotal.CursorType = null;
+            this.lblTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F);
+            this.lblTotal.ForeColor = System.Drawing.Color.Black;
+            this.lblTotal.Location = new System.Drawing.Point(793, 595);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblTotal.Size = new System.Drawing.Size(11, 22);
+            this.lblTotal.TabIndex = 114;
+            this.lblTotal.Text = "0";
+            this.lblTotal.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblTotal.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // ucCashierReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.bunifuLabel5);
+            this.Controls.Add(this.lblSales);
+            this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvSalesReport);
             this.Controls.Add(this.pictureBox1);
@@ -372,5 +447,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuImageButton Search;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnGenerateReport;
         private Bunifu.UI.WinForms.BunifuDatePicker dtpDate;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Bunifu.UI.WinForms.BunifuLabel lblSales;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel5;
+        private Bunifu.UI.WinForms.BunifuLabel lblTotal;
     }
 }

@@ -219,12 +219,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel30.CursorType = null;
             this.bunifuLabel30.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel30.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel30.Location = new System.Drawing.Point(8, 31);
+            this.bunifuLabel30.Location = new System.Drawing.Point(57, 15);
             this.bunifuLabel30.Name = "bunifuLabel30";
             this.bunifuLabel30.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel30.Size = new System.Drawing.Size(258, 18);
+            this.bunifuLabel30.Size = new System.Drawing.Size(155, 36);
             this.bunifuLabel30.TabIndex = 57;
-            this.bunifuLabel30.Text = "View On-hand Inventory Reports";
+            this.bunifuLabel30.Text = "Inventory Summary \r\nReports";
             this.bunifuLabel30.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel30.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -253,7 +253,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewInventoryReports.BackColor1 = System.Drawing.Color.White;
             this.btnViewInventoryReports.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewInventoryReports.BackgroundImage")));
             this.btnViewInventoryReports.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnViewInventoryReports.ButtonText = "            On-Hand \r\n            Inventory\r\n            Reports";
+            this.btnViewInventoryReports.ButtonText = "           Inventory\r\n           Summary\r\n            Reports";
             this.btnViewInventoryReports.ButtonTextMarginLeft = 0;
             this.btnViewInventoryReports.ColorContrastOnClick = 45;
             this.btnViewInventoryReports.ColorContrastOnHover = 45;
