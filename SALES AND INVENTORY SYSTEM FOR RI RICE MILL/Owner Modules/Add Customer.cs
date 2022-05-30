@@ -100,15 +100,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show("Phone number must be 11 digit only");
                 txtContact.Clear();
             }
-            else if (!Regex.IsMatch(txtFirstName.Text, @"^[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*$"))
+            else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
             {
-                MessageBox.Show("First Name must be a letter only");
-                txtFirstName.Clear();
+                MessageBox.Show("First Name must be a letter only and no spacial characters or numbers");
+                
             }
-            else if (!Regex.IsMatch(txtLastName.Text, @"^[a-z, A-Z,.'-]+$"))
+            //else if (!Regex.IsMatch(txtMiddleName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
+            //{
+            //    MessageBox.Show("Middle Name must be a letter only");
+            //    txtFirstName.Clear();
+            //}
+            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
             {
-                MessageBox.Show("Last name must be a letter only");
-                txtLastName.Clear();
+                MessageBox.Show("Last name must be a letter only and no spacial characters or numbers");
+                
             }
             //else if (cmbProvince.SelectedIndex == -1)//Nothing selected
             //{
@@ -275,6 +280,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             //frmPayment payment = new frmPayment();
             //payment.frmPayment_Load(sender, e);
+        }
+
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+            //if (Regex.IsMatch(txtFirstName.Text, @"^([a-z,A-Z]+?)([-,\s'][a-z,A-Z]+)*?$") == true)
+            //{
+                
+            //}
+            //else
+            //{
+            //    MessageBox.Show("First Name must be a letter only");
+            //}
+        }
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+            //if (!Regex.IsMatch(txtMiddleName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
+            //{
+            //    MessageBox.Show("Middle Name must be a letter only");
+            //    txtFirstName.Clear();
+            //}
+        }
+
+        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //var regex = new Regex(@"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$");
+            //if (regex.IsMatch(e.KeyChar.ToString()))
+            //{
+            //    e.Handled = true;
+            //}
         }
     }
 }

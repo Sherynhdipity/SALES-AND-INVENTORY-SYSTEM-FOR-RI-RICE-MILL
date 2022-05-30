@@ -605,7 +605,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtQuantity.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtQuantity.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtQuantity.DefaultFont = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.DefaultText = "0";
+            this.txtQuantity.DefaultText = "1";
             this.txtQuantity.FillColor = System.Drawing.Color.White;
             this.txtQuantity.HideSelection = true;
             this.txtQuantity.IconLeft = null;
@@ -614,7 +614,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtQuantity.IconRight = null;
             this.txtQuantity.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtQuantity.Lines = new string[] {
-        "0"};
+        "1"};
             this.txtQuantity.Location = new System.Drawing.Point(165, 427);
             this.txtQuantity.MaxLength = 32767;
             this.txtQuantity.MinimumSize = new System.Drawing.Size(1, 1);

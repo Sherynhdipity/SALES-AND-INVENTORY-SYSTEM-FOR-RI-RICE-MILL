@@ -73,6 +73,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             DateTime date = DateTime.Now;
             dtpMilledDate.Text = string.Format("{0:D}", date);
             dtpStockInDate.Text = string.Format("{0:D}", date);
+            dtpDate.Text = string.Format("{0:D}", date);
         }
 
         public void ClearControls()
@@ -269,6 +270,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         public void adjustStock()
         {
             string id = "";
+           
             int selectedRows = dgvSKUList.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if(selectedRows > 0)
             {
@@ -292,12 +294,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                     reader.Close();
 
 
-                    QueryInsert = "INSERT INTO tblInventoryAdjustment (Inventory_id, Reason, SKU)" +
-                        "VALUES (@inventory_id,@reason,@SKU)";
+                    QueryInsert = "INSERT INTO tblInventoryAdjustment (Inventory_id, Reason, SKU, Date)" +
+                        "VALUES (@inventory_id, @reason,@SKU,@date)";
                     cmd = new SqlCommand(QueryInsert, con);
                     cmd.Parameters.AddWithValue("inventory_id", id);
                     cmd.Parameters.AddWithValue("reason", txtReason.Text);
                     cmd.Parameters.AddWithValue("SKU", dgvSKUList.Rows[row.Index].Cells[0].Value.ToString());
+                    cmd.Parameters.AddWithValue("Date", dtpDate.Value.ToString());
                     cmd.ExecuteNonQuery();
 
                     QueryDelete = "DELETE FROM tblInventories WHERE SKU = '" + dgvSKUList.Rows[row.Index].Cells[0].Value.ToString() + "' AND Batch_number = '" + Batch_number + "'";

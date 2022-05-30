@@ -132,6 +132,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 con.Open();
 
                 dt = new DataTable();
+
+                TextObject DateFrom = (TextObject)rep.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["DateFrom"];
+                DateFrom.Text = date1.ToString();
                 QuerySelect = "SELECT * FROM CashierSales WHERE [Date] = '" + date1 + "'";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);

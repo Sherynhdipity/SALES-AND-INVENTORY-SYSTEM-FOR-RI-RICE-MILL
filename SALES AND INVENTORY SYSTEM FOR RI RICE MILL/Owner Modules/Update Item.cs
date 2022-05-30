@@ -129,6 +129,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCriticalLevel.Focus();
             }
+            else if (Convert.ToDouble(txtCostPrice.Text) >= Convert.ToDouble(txtPrice.Text))
+            {
+                MessageBox.Show("Cost price must be less than selling price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtCriticalLevel.Focus();
+            }
             else if (txtDescription.Text != "" && txtPrice.Text != ""
                 && txtCriticalLevel.Text != "")
             {

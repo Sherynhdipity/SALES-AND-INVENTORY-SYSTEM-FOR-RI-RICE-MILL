@@ -26,22 +26,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static DialogResult result;
         public static string QuerySelect;
 
+        string date1;
+        string date2;
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
             {
-
-                if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
-                {
-                    QuerySelect = "Select * from InventoryAdjustmentView";
-                }
-                else
-                {
-                    QuerySelect = " Select * from InventoryAdjustmentView where (Description LIKE '%' + @desc + '%')";
-                }
+                QuerySelect = " Select * from InventoryAdjustmentView where [Date] between @fromDate and @ToDate";
+               
 
                 cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+                cmd.Parameters.AddWithValue("@fromDate", dtpFromDate.Value);
+                cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
 
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -53,6 +49,48 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
 
             }
+        }
+
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+
+            DataSet ds = new DataSet();
+            Adjustments ad = new Adjustments();
+            frmInventoryAdjust frm = new frmInventoryAdjust();
+
+            date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
+            date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
+            con.Open();
+
+            dt = new DataTable();
+            QuerySelect = "SELECT * FROM InventoryAdjustmentView WHERE [Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            ad.Database.Tables["InventoryAdjustmentView"].SetDataSource(dt);
+            frm.crystalReportViewer1.ReportSource = ad;
+            con.Close();
+            frm.Show();
+        }
+
+        private void frmInventoryAdjustmentReport_Load(object sender, EventArgs e)
+        {
+
+            DateTime date = DateTime.Now;
+            dtpFromDate.Text = string.Format("{0:D}", date);
+            dtpToDate.Text = string.Format("{0:D}", date);
+
+            QuerySelect = " Select * from InventoryAdjustmentView";
+
+            cmd = new SqlCommand(QuerySelect, con);
+         
+
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvInventoryAdjust.DataSource = dt;
+            dgvInventoryAdjust.Refresh();
         }
     }
 }

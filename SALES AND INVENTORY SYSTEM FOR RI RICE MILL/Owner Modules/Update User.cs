@@ -142,14 +142,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show("Phone number must be 11 digit only");
                 txtContact.Clear();
             }
-            else if (!Regex.IsMatch(txtFirstName.Text, @"^[^\s]+[-a-zA-Z\s]+([-a-zA-Z]+)*$"))
+            else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("First Name must be a letter only");
                 txtFirstName.Clear();
             }
 
             
-            else if (!Regex.IsMatch(txtLastName.Text, @"^[a-z, A-Z,.'-]+$"))
+            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("Last name must be a letter only");
                 txtLastName.Clear();

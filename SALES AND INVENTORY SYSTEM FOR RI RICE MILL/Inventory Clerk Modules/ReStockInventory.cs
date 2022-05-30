@@ -72,20 +72,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void btnPrintReport_Click(object sender, EventArgs e)
         {
-            //DataSet ds = new DataSet();
-            //frmInventoryReport frm = new frmInventoryReport();
-            //RestockReports restock = new RestockReports();
+            DataSet ds = new DataSet();
+            RestockReports restock = new RestockReports();
+            frmRestockReporting frm = new frmRestockReporting();
 
-            //dt = new DataTable();
-            //QuerySelect = "SELECT * FROM lowStockView WHERE [Available Stock] < [Restock Level]";
-            //cmd = new SqlCommand(QuerySelect, con);
-            //adapter = new SqlDataAdapter(cmd);
-            //adapter.Fill(dt);
+            dt = new DataTable();
+            QuerySelect = "SELECT * FROM lowStockView WHERE [Available Stock] < [Restock Level]";
+            cmd = new SqlCommand(QuerySelect, con);
+            adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
 
-            //restock.Database.Tables["lowStockView"].SetDataSource(dt);
-            //frm.InventoryReportViewer1.ReportSource = restock;
-            //con.Close();
-            //frm.Show();
+            restock.Database.Tables["lowStockView"].SetDataSource(dt);
+            frm.crystalReportViewer1.ReportSource = restock;
+            con.Close();
+            frm.Show();
         }
     }
 }

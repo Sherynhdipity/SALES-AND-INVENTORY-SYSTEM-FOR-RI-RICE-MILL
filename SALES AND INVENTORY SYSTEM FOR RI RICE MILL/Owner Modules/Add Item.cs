@@ -45,6 +45,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             txtDescription.Clear();
             txtPrice.Clear();
             txtCriticalLevel.Clear();
+            txtCostPrice.Clear();
         }
 
         //add item

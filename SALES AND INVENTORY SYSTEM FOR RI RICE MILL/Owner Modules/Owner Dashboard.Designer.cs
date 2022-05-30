@@ -338,15 +338,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.bunifuLabel5.AllowParentOverrides = false;
             this.bunifuLabel5.AutoEllipsis = false;
+            this.bunifuLabel5.AutoSize = false;
             this.bunifuLabel5.CursorType = null;
             this.bunifuLabel5.Font = new System.Drawing.Font("Impact", 15.75F);
             this.bunifuLabel5.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel5.Location = new System.Drawing.Point(108, 25);
+            this.bunifuLabel5.Location = new System.Drawing.Point(109, 15);
             this.bunifuLabel5.Name = "bunifuLabel5";
             this.bunifuLabel5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel5.Size = new System.Drawing.Size(97, 27);
+            this.bunifuLabel5.Size = new System.Drawing.Size(109, 72);
             this.bunifuLabel5.TabIndex = 5;
-            this.bunifuLabel5.Text = "STOCKED IN";
+            this.bunifuLabel5.Text = "AVAILABLE \r\nSTOCK";
             this.bunifuLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft;
             this.bunifuLabel5.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 

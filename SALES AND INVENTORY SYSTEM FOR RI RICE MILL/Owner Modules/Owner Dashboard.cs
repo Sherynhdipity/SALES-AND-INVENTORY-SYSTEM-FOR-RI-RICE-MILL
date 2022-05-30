@@ -159,11 +159,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT [Available Stock] FROM InventoryDashboardView";
+                QuerySelect = "SELECT [Available Quantity] FROM AvailableStockView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    lblStockedIn.Text = reader["Available Stock"].ToString();
+                    lblStockedIn.Text = reader["Available Quantity"].ToString();
                 }
             }
             catch (Exception)

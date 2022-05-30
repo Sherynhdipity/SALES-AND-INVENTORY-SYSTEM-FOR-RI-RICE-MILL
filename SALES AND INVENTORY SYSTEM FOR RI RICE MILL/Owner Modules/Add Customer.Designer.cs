@@ -730,10 +730,10 @@
             this.txtStreet.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStreet.Lines = new string[0];
             validationObject12.CustomErrorMessage = "";
-            validationObject12.Optional = false;
+            validationObject12.Optional = true;
             validationObject12.PropertyName = "Text";
-            validationObject12.Regex = "^[a-z ,.\'-]+$";
-            validationObject12.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Name;
+            validationObject12.Regex = null;
+            validationObject12.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.txtStreet, validationObject12);
             this.txtStreet.Location = new System.Drawing.Point(315, 53);
             this.txtStreet.MaxLength = 50;
@@ -883,6 +883,7 @@
             this.txtLastName.TextPlaceholder = "Type here..";
             this.txtLastName.UseSystemPasswordChar = false;
             this.txtLastName.WordWrap = true;
+            this.txtLastName.TextChanged += new System.EventHandler(this.txtLastName_TextChanged);
             // 
             // bunifuLabel1
             // 
@@ -1038,8 +1039,8 @@
             validationObject18.CustomErrorMessage = "Invalid First Name";
             validationObject18.Optional = false;
             validationObject18.PropertyName = "Text";
-            validationObject18.Regex = "^[a-z ,.\'-]+$";
-            validationObject18.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Name;
+            validationObject18.Regex = "^([a-zA-Z]+?)([-\\s\'][a-zA-Z]+)*?$";
+            validationObject18.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtFirstName, validationObject18);
             this.txtFirstName.Location = new System.Drawing.Point(16, 53);
             this.txtFirstName.MaxLength = 50;
@@ -1087,6 +1088,8 @@
             this.txtFirstName.TextPlaceholder = "";
             this.txtFirstName.UseSystemPasswordChar = false;
             this.txtFirstName.WordWrap = true;
+            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
+            this.txtFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFirstName_KeyPress);
             // 
             // bunifuElipse1
             // 
@@ -1104,7 +1107,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(652, 481);
             this.Controls.Add(this.bunifuPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "frmAddNewCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

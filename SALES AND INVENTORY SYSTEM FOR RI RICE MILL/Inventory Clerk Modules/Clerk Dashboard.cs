@@ -85,12 +85,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT COUNT(SKU) AS [Available Stock] FROM tblInventories";
+                QuerySelect = "SELECT [Available Quantity] from AvailableStockView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
 
                 if (reader.Read())
                 {
-                    lblTotalAvailableStock.Text = reader["Available Stock"].ToString();
+                    lblTotalAvailableStock.Text = reader["Available Quantity"].ToString();
                 }
             }
             catch (Exception ex)
@@ -125,6 +125,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 con.Close();
             }
+
+        }
+
+        private void ucInventoryDashboard_Load(object sender, EventArgs e)
+        {
 
         }
     }
