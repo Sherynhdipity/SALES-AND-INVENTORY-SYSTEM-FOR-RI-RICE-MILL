@@ -29,6 +29,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public Boolean isRowUpdated = false;
         public bool isReturn;
         public string[] SKU;
+        public List<string> sku_items = new List<string>();
         public List<string> SKU_LIST { get; set; }
 
         frmProductLookup productLookup = new frmProductLookup();
@@ -130,7 +131,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //Remove Product from List
         void VoidProduct()
         {
-
+            bool isEmptyScanned = IsEmpty(sku_items);
+            bool isEmptyLookUp = IsEmpty(SKU_LIST);
+            string list_sku ="";
             if (String.IsNullOrEmpty(adminPass))
             {
                 frmvoidauth voidauth = new frmvoidauth();
@@ -159,7 +162,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             //insert into tblVoid
                                 con.Close();
                                 con.Open();
-                                string list_sku = String.Join("','", SKU_LIST.Select(i => i.Replace("'", "''")));
+                            if (isEmptyScanned && !isEmptyLookUp)
+                            {
+                                list_sku = String.Join("','", SKU_LIST.Select(i => i.Replace("'", "''")));
+                            }
+                            else if (!isEmptyScanned && isEmptyLookUp)
+                            {
+                                list_sku = String.Join("','", sku_items.Select(i => i.Replace("'", "''")));
+                            }
+                            // string list_sku = String.Join("','", SKU_LIST.Select(i => i.Replace("'", "''")));
+                           
                                 int quants = Convert.ToInt32(dvgOrderList.Rows[row.Index].Cells[1].Value);
                                 string description = dvgOrderList.Rows[row.Index].Cells[0].Value.ToString();
                                 DataTable tempDT = new DataTable();
@@ -413,8 +425,48 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         }
 
+        public static bool IsEmpty<T>(List<T> list)
+        {
+            if (list == null)
+            {
+                return true;
+            }
+
+            return !list.Any();
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            btnSearchProduct.Enabled = false;
+            bool isEmpty = IsEmpty(sku_items);
+            bool isScanned = false;
+            if(isEmpty)
+            {
+                sku_items.Add(txtSearch.Text);
+            }
+            else
+            {
+                sku_items.Add(txtSearch.Text);
+                IEnumerable<string> duplicates = sku_items.GroupBy(x => x)
+                                    .SelectMany(g => g.Skip(1));
+                string test = String.Join(",", duplicates);
+                if (test.Length > 0)
+                {
+                    isScanned = true;
+                    sku_items.Remove(test);
+                    //List<string> uniqueList = sku_items.Distinct().ToList();
+                    //sku_items.Clear();
+                    //uniqueList.ForEach(i => sku_items.Add(i));
+
+                    //sku_items.Clear();
+                }
+                else
+                {
+                    isScanned = false;
+                    //sku_items.Add(txtSearch.Text);
+                }
+            }
+
 
             try
             {
@@ -429,6 +481,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     txtQuantity.Text = "0";
                     MessageBox.Show("Invalid Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if(isScanned)
+                {
+                    txtSearch.Text = "";
+                    txtProdDesc.Text = "";
+                    txtProdPrice.Text = "";
+                    txtStock.Text = "0";
+                    //txtQuantity.Text = "1";
+                    MessageBox.Show("Product Already Scanned!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+
                 else if (txtProdPrice.Text == "")
                 {
                     MessageBox.Show("Please Search Product First!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -512,7 +575,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     txtSearch.Text = "";
                     txtSearch.Focus();
                     txtProdDesc.Text = "";
-                    txtQuantity.Text = "0";
+                    txtQuantity.Text = "1";
                     txtStock.Text = "0";
                     txtProdPrice.Text = "";
 
@@ -636,6 +699,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void txtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             bool isStockOut = false;
+           
             con.Close();
             con.Open();
             QuerySelect = "SELECT Status FROM tblInventories WHERE SKU = @sku";
@@ -650,6 +714,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if(reader["Status"].ToString() == "Stock Out")
                 {
                     isStockOut = true;
+                   
                 }
                 
 
@@ -662,7 +727,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 if (txtSearch.Text == "")
                 {
-                    MessageBox.Show("Search Product First!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);  
+                    MessageBox.Show("The barcode is scanned!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);  
                     txtProdDesc.Text = "";
                     txtStock.Text = "0";
                     txtProdPrice.Text = "";
@@ -680,7 +745,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     btnAdd_Click((object)sender, (EventArgs)e);
                     txtSearch.Text = ""; 
                     txtProdDesc.Text = "";
-                    txtStock.Text = "1";
+                    txtStock.Text = "0";
                     txtProdPrice.Text = "";
                 }
             }
@@ -728,6 +793,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnNewTrans_Click(object sender, EventArgs e)
         {
+            bool isEmptyScanned = IsEmpty(sku_items);
+            bool isEmptyLookUp = IsEmpty(SKU_LIST);
+            if(isEmptyScanned && !isEmptyLookUp)
+            {
+                SKU_LIST.Clear();
+            }
+            else if(!isEmptyScanned && isEmptyLookUp)
+            {
+                sku_items.Clear();
+            }
+
             GetTransNo();
             txtSearch.Enabled = true;
             txtSearch.Focus();
@@ -788,14 +864,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             if(productLookup.quantity.ToString() != "")
             {
+                txtSearch.Enabled = false;
+                btnAdd.Enabled = false;
                 txtProdDesc.Text = productLookup.productDesc;
                 txtProdPrice.Text = productLookup.productPrice;
                 txtQuantity.Text = productLookup.quantity.ToString();
                 txtStock.Text = productLookup.stock;
                 SKU = productLookup.sku;
                 SKU_LIST = productLookup.skuList;
-               
-                btnAdd_Click((object)sender, (EventArgs)e);
+                
+                btnAddItemScan_Click((object)sender, (EventArgs)e);
             }
 
           
@@ -823,7 +901,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     price[i] = Convert.ToDouble(dvgOrderList.Rows[i].Cells[3].Value.ToString());
                 }
 
-
+                bool isEmptyScanned = IsEmpty(sku_items);
+                bool isEmptyLookUp = IsEmpty(SKU_LIST);
 
                 setdt();
                 frmPayment payment = new frmPayment();
@@ -837,7 +916,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 payment.tax = txtVatAmount.Text;
                 payment.vatable = txtVatable.Text;
                 payment.SKU = SKU;
-                payment.sku_list = SKU_LIST;
+                if(isEmptyScanned && !isEmptyLookUp)
+                {
+                    payment.sku_list = SKU_LIST;
+                   // SKU_LIST.Clear();
+                }
+                else if(!isEmptyScanned && isEmptyLookUp)
+                {
+                    payment.sku_list = sku_items;
+                   // sku_items.Clear();
+                }
+       
 
 
                 DialogResult res = payment.ShowDialog();
@@ -845,7 +934,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (res == DialogResult.OK)
                 {
                     ClearAll();
-
+                    
                     //buttons
                     btnSearchProduct.Enabled = false;
                     btnAdd.Enabled = false;
@@ -923,6 +1012,161 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
                 e.CellStyle.Format = "N2";
             }
+        }
+
+        private void bunifuPanel4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dvgOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAddItemScan_Click(object sender, EventArgs e)
+        {
+                //bool isEmpty = IsEmpty(sku_items);
+                //bool isScanned = false;
+                //if (isEmpty)
+                //{
+                //    sku_items.Add(txtSearch.Text);
+                //}
+                //else
+                //{
+                //    sku_items.Add(txtSearch.Text);
+                //    IEnumerable<string> duplicates = sku_items.GroupBy(x => x)
+                //                        .SelectMany(g => g.Skip(1));
+                //    string test = String.Join(",", duplicates);
+                //    if (test.Length > 0)
+                //    {
+                //        isScanned = true;
+                //        sku_items.Remove(test);
+                //        //List<string> uniqueList = sku_items.Distinct().ToList();
+                //        //sku_items.Clear();
+                //        //uniqueList.ForEach(i => sku_items.Add(i));
+
+                //        //sku_items.Clear();
+                //    }
+                //    else
+                //    {
+                //        isScanned = false;
+                //        //sku_items.Add(txtSearch.Text);
+                //    }
+                //}
+
+
+                try
+                {
+                    //if (txtProdDesc.Text == "")
+                    //{
+                    //    MessageBox.Show("Please Search Product First!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    txtSearch.Focus();
+                    //}
+                    //else 
+                    if (txtQuantity.Text == "")
+                    {
+                        txtQuantity.Text = "0";
+                        MessageBox.Show("Invalid Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+
+                    else if (txtProdPrice.Text == "")
+                    {
+                        MessageBox.Show("Please Search Product First!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtSearch.Focus();
+                    }
+                    else if (System.Text.RegularExpressions.Regex.IsMatch(txtQuantity.Text, "[^0-9]"))
+                    {
+                        txtQuantity.Text = "0";
+                        MessageBox.Show("Invalid Quantity", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+
+                        DataRow[] rows = dt.Select(string.Format("[product description]='{0}'", txtProdDesc.Text));
+                        DataRow item;
+
+                        int qty = Convert.ToInt32(txtQuantity.Text);
+                        double price = Convert.ToDouble(txtProdPrice.Text);
+                        double instock = Convert.ToInt32(txtStock.Text);
+                        int result = 0;
+                        double remainingqty = 0;
+
+
+
+                        if (rows.Count() > 0)
+                        {
+                            item = rows[0];
+                            int orderqty = Convert.ToInt32(item["quantity"]);
+                            result = orderqty + qty;
+                        }
+                        else if (rows.Count() == 0)
+                        {
+
+                        }
+
+                        if (result > instock)
+                        {
+                            MessageBox.Show("You reached the limit of quantity of this product, Try again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtQuantityCount.Text = "";
+                            txtAmount.Text = "";
+                        }
+                        else if (qty > instock)
+                        {
+                            MessageBox.Show("You reached the limit of quantity of this product, Try again!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtQuantityCount.Text = "";
+                            txtAmount.Text = "";
+                        }
+                        else
+                        {
+                            if (rows.Count() > 0)
+                            {
+                                item = rows[0];
+                                int eqty = Convert.ToInt32(item["quantity"]);
+                                eqty = eqty + qty;
+                                item["quantity"] = eqty;
+                                item["subtotal"] = eqty * price;
+                                dt.AcceptChanges();
+                            }
+                            else
+                            {
+                                item = dt.NewRow();
+                                item["product description"] = txtProdDesc.Text;
+                                item["quantity"] = txtQuantity.Text;
+                                item["price"] = price.ToString("#,0.00");
+                                item["subtotal"] = qty * price;
+                                dt.Rows.Add(item);
+                            }
+
+                            double totalamount = 0;
+                            totalamount = Convert.ToDouble(dt.Compute("sum([subtotal])", ""));
+
+                            txtAmount.Text = /*"P " +*/ totalamount.ToString("#,0.00");
+                            lblTotal.Text = txtAmount.Text;
+                            //lblTotal.Text = totalamount.ToString("#,0.00");
+                            //compute here lols
+                            recompute(totalamount);
+                            //asta lng di
+                        }
+
+
+                        txtSearch.Text = "";
+                        txtSearch.Focus();
+                        txtProdDesc.Text = "";
+                        txtQuantity.Text = "1";
+                        txtStock.Text = "0";
+                        txtProdPrice.Text = "";
+
+                        txtQuantityCount.Text = dvgOrderList.Rows.Count.ToString();
+                        dvgOrderList.ClearSelection();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                isRowUpdated = true;
         }
 
         //mod end

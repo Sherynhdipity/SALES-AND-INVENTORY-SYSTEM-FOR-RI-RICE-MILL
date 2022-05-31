@@ -685,7 +685,7 @@
             validationObject9.CustomErrorMessage = "Invalid Contact Number";
             validationObject9.Optional = false;
             validationObject9.PropertyName = "Text";
-            validationObject9.Regex = "(09|\\+639)\\d{9}$\")";
+            validationObject9.Regex = "@\"^(09)\\d{9}$\"";
             validationObject9.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtContact, validationObject9);
             this.txtContact.Location = new System.Drawing.Point(16, 282);

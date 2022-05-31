@@ -29,7 +29,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public static DialogResult result;
         public static string QuerySelect;
 
-        
+
 
         string date1;
         string date2;
@@ -38,31 +38,40 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             if (rbnDaily.Checked)
             {
                 dtpToDate.Value = dtpFromDate.Value;
-                
+
             }
             else if (rbnWeekly.Checked)
             {
                 dtpToDate.Value = dtpFromDate.Value.AddDays(7);
-                
+
             }
             else if (rbnMonthly.Checked)
             {
                 dtpToDate.Value = dtpFromDate.Value.AddMonths(1).AddDays(-1);
-               
+
             }
             else if (rbnYearly.Checked)
             {
                 dtpToDate.Value = dtpFromDate.Value.AddYears(1).AddMonths(-1);
-          
+
             }
             else if (rbnCustom.Checked)
             {
-                
+                if (DateTime.Today < dtpFromDate.Value)
+                {
+                    MessageBox.Show("The Date is Invalid");
+                    dtpFromDate.Value = DateTime.Today;
+                }
+                else if (dtpToDate.Value < dtpToDate.Value)
+                {
+                    MessageBox.Show("To Date must be greater than From Date");
+                    dtpToDate.Value = DateTime.Today;
+                }
             }
 
-            }
+        }
 
-            private void frmOwnerSalesReport_Load(object sender, EventArgs e)
+        private void frmOwnerSalesReport_Load(object sender, EventArgs e)
         {
             try
             {
@@ -122,7 +131,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
             }
             dgvReturn.Visible = false;
-            
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -132,11 +141,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         public void ShowReport()
         {
+
             try
             {
-                
+
                 QuerySelect = "Select [Date], Description, [Cost Sales], [Gross Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
-                
+
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
                 cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
@@ -146,7 +156,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 dgvSalesOwnerReport.DataSource = dt;
                 dgvSalesOwnerReport.Refresh();
 
-              
+
 
                 QuerySelect = "Select [Date], Description, Remarks, [Returned Sales] from SalesReturnReportView where [Date] between @FromDate and @ToDate";
                 cmd = new SqlCommand(QuerySelect, con);
@@ -160,7 +170,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 float sum = 0;
                 float sum2 = 0;
-                
+
                 for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
                 {
                     sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
@@ -179,7 +189,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString();
 
-                
+
             }
             catch (Exception ex)
             {
@@ -203,7 +213,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
                 SalesReport();
             }
-           
+
 
             //DataSet ds = new DataSet();
             //SalesReport sales = new SalesReport();
@@ -243,6 +253,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dtpToDate_ValueChanged(object sender, EventArgs e)
         {
+            //if (DateTime.Today > dtpToDate.Value || DateTime.Today < dtpToDate.Value)
+            //{
+            //    MessageBox.Show("The date is Invalid");
+            //    dtpToDate.Value = DateTime.Today;
+            //}
+
+            if (dtpFromDate.Value > dtpToDate.Value)
+            {
+                MessageBox.Show("To Date must be greater than From Date");
+                dtpToDate.Value = DateTime.Today;
+            }
+
 
         }
 
@@ -306,6 +328,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             dtpFromDate.Enabled = true;
             btnSearch.Enabled = true;
             btnPrintReport.Enabled = true;
+
+            
 
         }
 

@@ -636,6 +636,7 @@
             this.txtPrice.TextPlaceholder = "";
             this.txtPrice.UseSystemPasswordChar = false;
             this.txtPrice.WordWrap = true;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // bunifuLabel13

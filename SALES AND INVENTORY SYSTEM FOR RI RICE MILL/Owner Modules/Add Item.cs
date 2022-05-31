@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ZXing;
+using System.Text.RegularExpressions;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 {
@@ -73,6 +74,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtCostPrice.Clear();
             }
+            else if (!Regex.IsMatch(txtCostPrice.Text, @"^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$"))
+            {
+                MessageBox.Show("Cost Price must be Number Only");
+            }
+            else if (!Regex.IsMatch(txtPrice.Text, @"^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$"))
+            {
+                MessageBox.Show("Price must be Number Only");
+
+            }
+            else if (!Regex.IsMatch(txtCriticalLevel.Text, @"^\d+$"))
+            {
+                MessageBox.Show("Critical Level Number Only");
+
+            }
             else if (String.IsNullOrEmpty(txtPrice.Text))
             {
                 MessageBox.Show("Enter Selling Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -83,6 +98,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtPrice.Clear();
             }
+            
             else if (String.IsNullOrEmpty(txtCriticalLevel.Text))
             {
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -98,50 +114,68 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 result = MessageBox.Show("Do you want to add this item?", "Add Item", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    con.Close();
-                    con.Open();
-                    QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical AND Cost_Price = @cost";
+                    
+                        con.Close();
+                        con.Open();
+                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc";
 
-                    cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                    cmd.Parameters.AddWithValue("@price", txtPrice.Text);
-                    cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
-                    cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
+                        cmd = new SqlCommand(QuerySelect, con);
+                        cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
 
-                    reader = cmd.ExecuteReader();
+                        reader = cmd.ExecuteReader();
 
                     if (reader.HasRows)
-
                     {
                         MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        ClearControls();
+
                     }
                     else
                     {
-                        try
+                        con.Close();
+                        con.Open();
+                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical AND Cost_Price = @cost";
+
+                        cmd = new SqlCommand(QuerySelect, con);
+                        cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                        cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                        cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+                        cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
+
+                        reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows)
+
                         {
-                            con.Close();
-                            con.Open();
-                            QueryInsert = "INSERT INTO tblItems (Description,Price,Critical_Level, Cost_Price) VALUES (@desc, @price, @critical, @cost)";
-
-                            cmd = new SqlCommand(QueryInsert, con);
-                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                            cmd.Parameters.AddWithValue("@price", txtPrice.Text.Replace(",",""));
-                            cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
-                            cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
-                            cmd.ExecuteNonQuery();
-
-                            MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             ClearControls();
-                            this.Close();
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            MessageBox.Show(ex.Message);
-                        }
-                        finally
-                        {
-                            con.Close();
+                            try
+                            {
+                                con.Close();
+                                con.Open();
+                                QueryInsert = "INSERT INTO tblItems (Description,Price,Critical_Level, Cost_Price) VALUES (@desc, @price, @critical, @cost)";
+
+                                cmd = new SqlCommand(QueryInsert, con);
+                                cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                                cmd.Parameters.AddWithValue("@price", txtPrice.Text.Replace(",", ""));
+                                cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+                                cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
+                                cmd.ExecuteNonQuery();
+
+                                MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                ClearControls();
+                                this.Close();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+                            }
+                            finally
+                            {
+                                con.Close();
+                            }
                         }
                     }
                 }
@@ -183,6 +217,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void btnSave_Click(object sender, EventArgs e)
         {
             addItem();
+        }
+
+        private void txtCostPrice_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            
+            
+
+        }
+
+        private void txtCriticalLevel_TextChanged(object sender, EventArgs e)
+        {
+           
+            
+
         }
     }
 }

@@ -31,11 +31,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucInventoryDashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel3 = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblQtyStockedOut = new Bunifu.UI.WinForms.BunifuLabel();
@@ -84,7 +84,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel3.Controls.Add(this.lblQtyStockedOut);
             this.bunifuPanel3.Controls.Add(this.bunifuLabel3);
             this.bunifuPanel3.Controls.Add(this.pictureBox4);
-            this.bunifuPanel3.Location = new System.Drawing.Point(558, 130);
+            this.bunifuPanel3.Location = new System.Drawing.Point(558, 124);
             this.bunifuPanel3.Name = "bunifuPanel3";
             this.bunifuPanel3.ShowBorders = true;
             this.bunifuPanel3.Size = new System.Drawing.Size(234, 133);
@@ -128,7 +128,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel10.Controls.Add(this.lblTotalAvailableStock);
             this.bunifuPanel10.Controls.Add(this.bunifuLabel7);
             this.bunifuPanel10.Controls.Add(this.pictureBox3);
-            this.bunifuPanel10.Location = new System.Drawing.Point(213, 130);
+            this.bunifuPanel10.Location = new System.Drawing.Point(213, 124);
             this.bunifuPanel10.Name = "bunifuPanel10";
             this.bunifuPanel10.ShowBorders = true;
             this.bunifuPanel10.Size = new System.Drawing.Size(282, 133);
@@ -182,31 +182,31 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.StocksChart.BorderlineColor = System.Drawing.Color.Black;
             this.StocksChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.StocksChart.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.StocksChart.ChartAreas.Add(chartArea2);
             this.StocksChart.DataSource = this.stockChartViewBindingSource;
-            legend1.Name = "Legend1";
-            this.StocksChart.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.StocksChart.Legends.Add(legend2);
             this.StocksChart.Location = new System.Drawing.Point(213, 269);
             this.StocksChart.Name = "StocksChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Stockin";
-            series1.XValueMember = "Description";
-            series1.YValueMembers = "Quantity";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Stockout";
-            series2.XValueMember = "Description";
-            series2.YValueMembers = "QtySold";
-            this.StocksChart.Series.Add(series1);
-            this.StocksChart.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Stockin";
+            series3.XValueMember = "Description";
+            series3.YValueMembers = "Quantity";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Stockout";
+            series4.XValueMember = "Description";
+            series4.YValueMembers = "QtySold";
+            this.StocksChart.Series.Add(series3);
+            this.StocksChart.Series.Add(series4);
             this.StocksChart.Size = new System.Drawing.Size(579, 345);
             this.StocksChart.TabIndex = 76;
             this.StocksChart.Text = "chart1";
-            title1.Name = "Inventory Data";
-            title1.Text = "Inventory Data Chart";
-            this.StocksChart.Titles.Add(title1);
+            title2.Name = "Inventory Data";
+            title2.Text = "Inventory Data Chart";
+            this.StocksChart.Titles.Add(title2);
             // 
             // stockChartViewBindingSource
             // 

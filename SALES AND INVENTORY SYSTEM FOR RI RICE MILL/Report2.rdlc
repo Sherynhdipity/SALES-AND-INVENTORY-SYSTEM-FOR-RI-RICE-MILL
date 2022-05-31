@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.7723in</Width>
+              <Width>2.66666in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -25,7 +25,7 @@
                           <Top>0.125in</Top>
                           <Left>0.05208in</Left>
                           <Height>0.64931in</Height>
-                          <Width>1.61458in</Width>
+                          <Width>2.5in</Width>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -49,10 +49,10 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Top>0.82986in</Top>
-                          <Left>0.05208in</Left>
+                          <Top>0.84375in</Top>
+                          <Left>0.35416in</Left>
                           <Height>0.25in</Height>
-                          <Width>1.61458in</Width>
+                          <Width>1.73958in</Width>
                           <ZIndex>1</ZIndex>
                           <Style>
                             <Border>
@@ -93,7 +93,7 @@
         <Top>0.05556in</Top>
         <Left>0.05208in</Left>
         <Height>1.21527in</Height>
-        <Width>1.7723in</Width>
+        <Width>2.66666in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -104,7 +104,7 @@
     <Height>2.13417in</Height>
     <Style />
   </Body>
-  <Width>1.82438in</Width>
+  <Width>2.71874in</Width>
   <Page>
     <PageHeader>
       <Height>0.63542in</Height>

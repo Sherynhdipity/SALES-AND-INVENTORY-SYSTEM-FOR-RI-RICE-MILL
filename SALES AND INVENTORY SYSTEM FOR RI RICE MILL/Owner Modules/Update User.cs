@@ -132,30 +132,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MessageBox.Show("Whitespace is not allowed!");
                 txtConfirmPassword.Clear();
             }
-            else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,15}$"))
+            else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[a-z]).{8,15}$"))
             {
-                MessageBox.Show("Password must be 8 characters with special character");
+                MessageBox.Show("Password must be 8 characters");
                 txtPassword.Clear();
             }
-            else if (!Regex.IsMatch(txtContact.Text, @"^(09|\+639)\d{9}$"))
+            else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[A-Z])"))
+            {
+                MessageBox.Show("Password must be have atleast 1 Uppercase letter");
+            }
+            else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[@$!%*#?&_])"))
+            {
+                MessageBox.Show("Password must have atleast 1 special characters");
+            }
+            else if (!Regex.IsMatch(txtContact.Text, @"^(09)\d{9}$"))
             {
                 MessageBox.Show("Phone number must be 11 digit only");
-                txtContact.Clear();
+
             }
             else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("First Name must be a letter only");
-                txtFirstName.Clear();
+
             }
 
-            
             else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("Last name must be a letter only");
                 txtLastName.Clear();
             }
-
-
 
             else if (txtFirstName.Text != "" 
                 && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""

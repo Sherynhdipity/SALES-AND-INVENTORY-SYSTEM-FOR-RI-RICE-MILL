@@ -204,8 +204,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
             else if (rbnCustom.Checked)
             {
+                if (DateTime.Today < dtpFromDate.Value)
+                {
+                    MessageBox.Show("The Date is Invalid");
+                    dtpFromDate.Value = DateTime.Today;
+                }
+                else if (dtpToDate.Value < dtpToDate.Value)
+                {
+                    MessageBox.Show("To Date must be greater than From Date");
+                }
 
             }
+        }
+
+        private void dtpToDate_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

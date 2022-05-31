@@ -236,11 +236,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                         {
                             MessageBox.Show("Generate SKU First!");
                         }
+
+                        
+                        MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        btnPrintBarcode.PerformClick();
                         txtViewItem.Clear();
                         txtBatchQuantity.Clear();
                         dgvSKUList.Rows.Clear();
                         dgvSKUList.Refresh();
-                        MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
 
                     }
@@ -300,6 +303,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private void btnSave_Click(object sender, EventArgs e)
         {
             addStock();
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -428,9 +432,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             this.appData1.Clear();
             int rows = dgvSKUList.Rows.Count;
-            if(rows > 0)
+            if (rows > 0)
             {
-                for (int i =0; i < rows; i++)
+                for (int i = 0; i < rows; i++)
                 {
                     //MessageBox.Show(dgvSKUList.Rows[i].Cells[0].Value.ToString());
                     BarcodeLib.Barcode barcode = new BarcodeLib.Barcode();
@@ -444,7 +448,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                         //for (int i = 0; i < 5; i++)
                         this.appData1.Barcode.AddBarcodeRow(dgvSKUList.Rows[i].Cells[0].Value.ToString(), ms.ToArray());
                     }
-                    
+
 
                 }
                 using (frmBarcodes frm = new frmBarcodes(this.appData1.Barcode))
@@ -456,8 +460,31 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
                 MessageBox.Show("Enter Item First!");
             }
-            
-         
+
+
+        }
+
+        private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (DateTime.Today < dtpMilledDate.Value)
+            {
+                MessageBox.Show("The selected milled date is Invalid!");
+                dtpMilledDate.Value = DateTime.Today;
+            }
+        }
+
+        private void dtpStockInDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (DateTime.Today > dtpStockInDate.Value || DateTime.Today < dtpStockInDate.Value)
+            {
+                MessageBox.Show("The Selected Stock In Date is Invalid");
+                dtpStockInDate.Value = DateTime.Today;
+            }
+        }
+
+        private void txtViewItem_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

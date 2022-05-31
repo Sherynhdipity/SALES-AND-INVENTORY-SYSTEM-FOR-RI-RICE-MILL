@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using ZXing;
+using System.Text.RegularExpressions;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 {
@@ -129,6 +130,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCriticalLevel.Focus();
             }
+            else if (!Regex.IsMatch(txtCostPrice.Text, @"^(^[0-9](\.[0-9]{0,2}))*?$"))
+            {
+                MessageBox.Show("Cost Price must be Number Only");
+            }
+            else if (!Regex.IsMatch(txtPrice.Text, @"^(^[0-9](\.[0-9]{0,2}))*?$"))
+            {
+                MessageBox.Show("Price must be Number Only");
+
+            }
+            else if (!Regex.IsMatch(txtCriticalLevel.Text, @"^(^[0-9])*?$"))
+            {
+                MessageBox.Show("Critical Level Number Only");
+
+            }
             else if (Convert.ToDouble(txtCostPrice.Text) >= Convert.ToDouble(txtPrice.Text))
             {
                 MessageBox.Show("Cost price must be less than selling price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -212,6 +227,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -235,6 +235,7 @@
             this.txtCostPrice.TextPlaceholder = "";
             this.txtCostPrice.UseSystemPasswordChar = false;
             this.txtCostPrice.WordWrap = true;
+            this.txtCostPrice.TextChanged += new System.EventHandler(this.txtCostPrice_TextChanged);
             // 
             // btnSave
             // 
@@ -533,6 +534,7 @@
             this.txtCriticalLevel.TextPlaceholder = "";
             this.txtCriticalLevel.UseSystemPasswordChar = false;
             this.txtCriticalLevel.WordWrap = true;
+            this.txtCriticalLevel.TextChanged += new System.EventHandler(this.txtCriticalLevel_TextChanged);
             this.txtCriticalLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCriticalLevel_KeyPress);
             // 
             // bunifuLabel1
@@ -636,6 +638,7 @@
             this.txtPrice.TextPlaceholder = "";
             this.txtPrice.UseSystemPasswordChar = false;
             this.txtPrice.WordWrap = true;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // bunifuLabel13

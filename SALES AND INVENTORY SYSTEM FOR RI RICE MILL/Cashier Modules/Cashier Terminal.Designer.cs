@@ -58,7 +58,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties25 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties26 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties27 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -71,6 +71,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties34 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties35 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties36 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.dvgOrderList = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bunifuLabel7 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -119,6 +120,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTotal = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel13 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.btnAddItemScan = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).BeginInit();
             this.bunifuPanel4.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
@@ -188,6 +190,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dvgOrderList.Size = new System.Drawing.Size(690, 545);
             this.dvgOrderList.TabIndex = 6;
             this.dvgOrderList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dvgOrderList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOrderList_CellContentClick);
             this.dvgOrderList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOrderList_CellEndEdit);
             this.dvgOrderList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgOrderList_CellFormatting);
             // 
@@ -482,6 +485,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel4.ShowBorders = false;
             this.bunifuPanel4.Size = new System.Drawing.Size(690, 52);
             this.bunifuPanel4.TabIndex = 9;
+            this.bunifuPanel4.Click += new System.EventHandler(this.bunifuPanel4_Click);
             // 
             // lblDayDate
             // 
@@ -566,6 +570,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel2.BorderRadius = 0;
             this.bunifuPanel2.BorderThickness = 0;
+            this.bunifuPanel2.Controls.Add(this.btnAddItemScan);
             this.bunifuPanel2.Controls.Add(this.txtQuantity);
             this.bunifuPanel2.Controls.Add(this.txtStock);
             this.bunifuPanel2.Controls.Add(this.txtProdPrice);
@@ -1039,11 +1044,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnAdd.ColorContrastOnClick = 45;
             this.btnAdd.ColorContrastOnHover = 45;
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnAdd.CustomizableEdges = borderEdges1;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnAdd.CustomizableEdges = borderEdges2;
             this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnAdd.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAdd.DisabledFillColor = System.Drawing.Color.Empty;
@@ -1070,7 +1075,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnAdd.IdleIconLeftImage = null;
             this.btnAdd.IdleIconRightImage = null;
             this.btnAdd.IndicateFocus = false;
-            this.btnAdd.Location = new System.Drawing.Point(19, 476);
+            this.btnAdd.Location = new System.Drawing.Point(19, 475);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAdd.OnDisabledState.BorderRadius = 1;
@@ -1611,6 +1616,100 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel13.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel13.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // btnAddItemScan
+            // 
+            this.btnAddItemScan.AllowAnimations = true;
+            this.btnAddItemScan.AllowMouseEffects = true;
+            this.btnAddItemScan.AllowToggling = false;
+            this.btnAddItemScan.AnimationSpeed = 200;
+            this.btnAddItemScan.AutoGenerateColors = false;
+            this.btnAddItemScan.AutoRoundBorders = false;
+            this.btnAddItemScan.AutoSizeLeftIcon = true;
+            this.btnAddItemScan.AutoSizeRightIcon = true;
+            this.btnAddItemScan.BackColor = System.Drawing.Color.Transparent;
+            this.btnAddItemScan.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnAddItemScan.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddItemScan.BackgroundImage")));
+            this.btnAddItemScan.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnAddItemScan.ButtonText = "Add Item Scan";
+            this.btnAddItemScan.ButtonTextMarginLeft = 0;
+            this.btnAddItemScan.ColorContrastOnClick = 45;
+            this.btnAddItemScan.ColorContrastOnHover = 45;
+            this.btnAddItemScan.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnAddItemScan.CustomizableEdges = borderEdges1;
+            this.btnAddItemScan.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAddItemScan.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnAddItemScan.DisabledFillColor = System.Drawing.Color.Empty;
+            this.btnAddItemScan.DisabledForecolor = System.Drawing.Color.Empty;
+            this.btnAddItemScan.Enabled = false;
+            this.btnAddItemScan.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnAddItemScan.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddItemScan.ForeColor = System.Drawing.Color.White;
+            this.btnAddItemScan.IconLeft = null;
+            this.btnAddItemScan.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddItemScan.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnAddItemScan.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnAddItemScan.IconMarginLeft = 11;
+            this.btnAddItemScan.IconPadding = 10;
+            this.btnAddItemScan.IconRight = null;
+            this.btnAddItemScan.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddItemScan.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnAddItemScan.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnAddItemScan.IconSize = 25;
+            this.btnAddItemScan.IdleBorderColor = System.Drawing.Color.Empty;
+            this.btnAddItemScan.IdleBorderRadius = 0;
+            this.btnAddItemScan.IdleBorderThickness = 0;
+            this.btnAddItemScan.IdleFillColor = System.Drawing.Color.Empty;
+            this.btnAddItemScan.IdleIconLeftImage = null;
+            this.btnAddItemScan.IdleIconRightImage = null;
+            this.btnAddItemScan.IndicateFocus = false;
+            this.btnAddItemScan.Location = new System.Drawing.Point(19, 520);
+            this.btnAddItemScan.Name = "btnAddItemScan";
+            this.btnAddItemScan.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnAddItemScan.OnDisabledState.BorderRadius = 1;
+            this.btnAddItemScan.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnAddItemScan.OnDisabledState.BorderThickness = 1;
+            this.btnAddItemScan.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnAddItemScan.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnAddItemScan.OnDisabledState.IconLeftImage = null;
+            this.btnAddItemScan.OnDisabledState.IconRightImage = null;
+            this.btnAddItemScan.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnAddItemScan.onHoverState.BorderRadius = 1;
+            this.btnAddItemScan.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnAddItemScan.onHoverState.BorderThickness = 1;
+            this.btnAddItemScan.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnAddItemScan.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnAddItemScan.onHoverState.IconLeftImage = null;
+            this.btnAddItemScan.onHoverState.IconRightImage = null;
+            this.btnAddItemScan.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddItemScan.OnIdleState.BorderRadius = 1;
+            this.btnAddItemScan.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnAddItemScan.OnIdleState.BorderThickness = 1;
+            this.btnAddItemScan.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddItemScan.OnIdleState.ForeColor = System.Drawing.Color.White;
+            this.btnAddItemScan.OnIdleState.IconLeftImage = null;
+            this.btnAddItemScan.OnIdleState.IconRightImage = null;
+            this.btnAddItemScan.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnAddItemScan.OnPressedState.BorderRadius = 1;
+            this.btnAddItemScan.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnAddItemScan.OnPressedState.BorderThickness = 1;
+            this.btnAddItemScan.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnAddItemScan.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnAddItemScan.OnPressedState.IconLeftImage = null;
+            this.btnAddItemScan.OnPressedState.IconRightImage = null;
+            this.btnAddItemScan.Size = new System.Drawing.Size(292, 39);
+            this.btnAddItemScan.TabIndex = 19;
+            this.btnAddItemScan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAddItemScan.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnAddItemScan.TextMarginLeft = 0;
+            this.btnAddItemScan.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnAddItemScan.UseDefaultRadiusAndThickness = true;
+            this.btnAddItemScan.Visible = false;
+            this.btnAddItemScan.Click += new System.EventHandler(this.btnAddItemScan_Click);
+            // 
             // frmSalesManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1703,5 +1802,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public Bunifu.UI.WinForms.BunifuLabel lblTransNo;
         public Bunifu.UI.WinForms.BunifuTextBox txtVatAmount;
         public Bunifu.UI.WinForms.BunifuTextBox txtVatable;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnAddItemScan;
     }
 }

@@ -200,6 +200,15 @@
         BAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnAddItemScan.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAASQAAAAnCAYAAACmGjX2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACuSURBVHhe7dShAYAwAMAwLtnL8B9n4Dc4AA0VEVH13cYx
+        z3GsBfCveT5DegsA3zMkIMOQgAxDAjIMCcgwJCDDkIAMQwIyDAnIMCQgw5CADEMCMgwJyDAkIMOQgAxD
+        AjIMCcgwJCDDkIAMQwIyDAnIMCQgw5CADEMCMgwJyDAkIMOQgAxDAjIMCcgwJCDDkIAMQwIyDAnIMCQg
+        w5CADEMCMgwJyNjGPq+3APCpfV43P+rh1ezHy7IAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="txtQuantity.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAJIAAAApCAYAAADednA4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

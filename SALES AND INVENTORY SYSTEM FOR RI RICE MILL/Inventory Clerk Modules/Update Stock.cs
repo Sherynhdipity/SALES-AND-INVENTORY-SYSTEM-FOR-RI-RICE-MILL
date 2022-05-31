@@ -523,7 +523,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
         {
-
+            dtpMilledDate.Enabled = false;
         }
 
         private void pbBarcode_Click(object sender, EventArgs e)
@@ -538,6 +538,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             txtBatchQuantity.Text = (currentQuantity - selectedRows).ToString();
             txtAdjustment.Text = selectedRows.ToString();
            // MessageBox.Show("test");
+        }
+
+        private void dtpStockInDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtpStockInDate.Enabled = false;
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (DateTime.Today > dtpDate.Value || DateTime.Today < dtpDate.Value)
+            {
+                MessageBox.Show("The Selected date is Invalid!!");
+                dtpDate.Value = DateTime.Today;
+            }
         }
     }
 }

@@ -48,6 +48,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             frmSearchTransNo frm = (frmSearchTransNo)sender;
             // dvgOrderList.Rows.Clear();
             DisplayReturn();
+           
             btnSearchProduct.Enabled = false;
             
             btnPay.Enabled = false;
@@ -60,6 +61,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         void Form_Closed1(object sender, FormClosedEventArgs e)
         {
+            DisplayReturnDetails();
             //dvgOrderList.DataSource = null;
             btnSearchProduct.Enabled = true;
 
@@ -85,6 +87,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             //frmReturnProductLookup productLookup = new frmReturnProductLookup();
             // productLookup.productPrice = ??
 
+        }
+
+        public void DisplayReturnDetails()
+        {
+            //datagrid
+            try
+            {
+                con.Close();
+                con.Open();
+                //QuerySelect = "SELECT SKU FROM OrderDetailsView WHERE Transaction_number = @trans";
+                QuerySelect = "SELECT SKU, Remarks FROM tblTemp_return";
+                cmd = new SqlCommand(QuerySelect, con);
+               
+
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvShowReturn.DataSource = dt;
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         public void DisplayReturn()
@@ -1058,6 +1089,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     con.Close();
                     MessageBox.Show("Transaction is canceled!");
+                    DisplayReturnDetails();
                     ClearAll();
                 }
             }

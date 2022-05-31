@@ -134,6 +134,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.txtTotalTransactions.TextPlaceholder = "";
             this.txtTotalTransactions.UseSystemPasswordChar = false;
             this.txtTotalTransactions.WordWrap = true;
+            this.txtTotalTransactions.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalTransactions_KeyPress);
             // 
             // txtTotalCost
             // 
@@ -215,6 +216,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.txtTotalCost.TextPlaceholder = "";
             this.txtTotalCost.UseSystemPasswordChar = false;
             this.txtTotalCost.WordWrap = true;
+            this.txtTotalCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalCost_KeyPress);
             // 
             // btnSetReq
             // 

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUpdateStocks));
             Kimtoo.ValidationProvider.ValidationObject validationObject22 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject1 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject2 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject3 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject4 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject5 = new Kimtoo.ValidationProvider.ValidationObject();
@@ -72,9 +74,9 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Kimtoo.ValidationProvider.ValidationObject validationObject2 = new Kimtoo.ValidationProvider.ValidationObject();
-            Kimtoo.ValidationProvider.ValidationObject validationObject1 = new Kimtoo.ValidationProvider.ValidationObject();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.dtpDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtAdjustment = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -96,8 +98,6 @@
             this.txtBatchQuantity = new Bunifu.UI.WinForms.BunifuTextBox();
             this.appData1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.AppData();
             this.validationProvider1 = new Kimtoo.ValidationProvider.ValidationProvider();
-            this.dtpDate = new Bunifu.UI.WinForms.BunifuDatePicker();
-            this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuShadowPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSKUList)).BeginInit();
@@ -134,6 +134,61 @@
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(894, 522);
             this.bunifuPanel1.TabIndex = 1;
+            // 
+            // bunifuLabel4
+            // 
+            this.bunifuLabel4.AllowParentOverrides = false;
+            this.bunifuLabel4.AutoEllipsis = false;
+            this.bunifuLabel4.CursorType = null;
+            this.bunifuLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            validationObject1.CustomErrorMessage = "";
+            validationObject1.Optional = false;
+            validationObject1.PropertyName = "Text";
+            validationObject1.Regex = null;
+            validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.bunifuLabel4, validationObject1);
+            this.bunifuLabel4.Location = new System.Drawing.Point(629, 307);
+            this.bunifuLabel4.Name = "bunifuLabel4";
+            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel4.Size = new System.Drawing.Size(28, 17);
+            this.bunifuLabel4.TabIndex = 38;
+            this.bunifuLabel4.Text = "Date";
+            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.BackColor = System.Drawing.Color.Transparent;
+            this.dtpDate.BorderColor = System.Drawing.Color.Black;
+            this.dtpDate.BorderRadius = 10;
+            this.dtpDate.Color = System.Drawing.Color.Black;
+            this.dtpDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
+            this.dtpDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
+            this.dtpDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpDate.DisplayWeekNumbers = false;
+            this.dtpDate.DPHeight = 0;
+            this.dtpDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dtpDate.FillDatePicker = false;
+            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpDate.ForeColor = System.Drawing.Color.Black;
+            this.dtpDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpDate.Icon")));
+            this.dtpDate.IconColor = System.Drawing.Color.Gray;
+            this.dtpDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
+            this.dtpDate.LeftTextMargin = 5;
+            validationObject2.CustomErrorMessage = "";
+            validationObject2.Optional = false;
+            validationObject2.PropertyName = "Text";
+            validationObject2.Regex = null;
+            validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.dtpDate, validationObject2);
+            this.dtpDate.Location = new System.Drawing.Point(620, 330);
+            this.dtpDate.MinDate = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
+            this.dtpDate.MinimumSize = new System.Drawing.Size(4, 32);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(260, 32);
+            this.dtpDate.TabIndex = 38;
+            this.dtpDate.Value = new System.DateTime(2022, 4, 3, 11, 26, 0, 0);
+            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // bunifuLabel3
             // 
@@ -783,7 +838,7 @@
             this.dtpStockInDate.Color = System.Drawing.Color.Black;
             this.dtpStockInDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
             this.dtpStockInDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpStockInDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpStockInDate.DisabledColor = System.Drawing.Color.Black;
             this.dtpStockInDate.DisplayWeekNumbers = false;
             this.dtpStockInDate.DPHeight = 0;
             this.dtpStockInDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
@@ -807,6 +862,7 @@
             this.dtpStockInDate.Size = new System.Drawing.Size(260, 32);
             this.dtpStockInDate.TabIndex = 36;
             this.dtpStockInDate.Value = new System.DateTime(2022, 4, 3, 11, 26, 0, 0);
+            this.dtpStockInDate.ValueChanged += new System.EventHandler(this.dtpStockInDate_ValueChanged);
             // 
             // bunifuButton1
             // 
@@ -1033,7 +1089,7 @@
             this.dtpMilledDate.Color = System.Drawing.Color.Black;
             this.dtpMilledDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
             this.dtpMilledDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpMilledDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpMilledDate.DisabledColor = System.Drawing.Color.Black;
             this.dtpMilledDate.DisplayWeekNumbers = false;
             this.dtpMilledDate.DPHeight = 0;
             this.dtpMilledDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
@@ -1191,60 +1247,6 @@
             // validationProvider1
             // 
             this.validationProvider1.ErrorColor = System.Drawing.Color.Crimson;
-            // 
-            // dtpDate
-            // 
-            this.dtpDate.BackColor = System.Drawing.Color.Transparent;
-            this.dtpDate.BorderColor = System.Drawing.Color.Black;
-            this.dtpDate.BorderRadius = 10;
-            this.dtpDate.Color = System.Drawing.Color.Black;
-            this.dtpDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            this.dtpDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpDate.DisabledColor = System.Drawing.Color.White;
-            this.dtpDate.DisplayWeekNumbers = false;
-            this.dtpDate.DPHeight = 0;
-            this.dtpDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpDate.FillDatePicker = false;
-            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpDate.ForeColor = System.Drawing.Color.Black;
-            this.dtpDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpDate.Icon")));
-            this.dtpDate.IconColor = System.Drawing.Color.Gray;
-            this.dtpDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            this.dtpDate.LeftTextMargin = 5;
-            validationObject2.CustomErrorMessage = "";
-            validationObject2.Optional = false;
-            validationObject2.PropertyName = "Text";
-            validationObject2.Regex = null;
-            validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
-            this.validationProvider1.SetLink(this.dtpDate, validationObject2);
-            this.dtpDate.Location = new System.Drawing.Point(620, 330);
-            this.dtpDate.MinDate = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
-            this.dtpDate.MinimumSize = new System.Drawing.Size(4, 32);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(260, 32);
-            this.dtpDate.TabIndex = 38;
-            this.dtpDate.Value = new System.DateTime(2022, 4, 3, 11, 26, 0, 0);
-            // 
-            // bunifuLabel4
-            // 
-            this.bunifuLabel4.AllowParentOverrides = false;
-            this.bunifuLabel4.AutoEllipsis = false;
-            this.bunifuLabel4.CursorType = null;
-            this.bunifuLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            validationObject1.CustomErrorMessage = "";
-            validationObject1.Optional = false;
-            validationObject1.PropertyName = "Text";
-            validationObject1.Regex = null;
-            validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
-            this.validationProvider1.SetLink(this.bunifuLabel4, validationObject1);
-            this.bunifuLabel4.Location = new System.Drawing.Point(629, 307);
-            this.bunifuLabel4.Name = "bunifuLabel4";
-            this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel4.Size = new System.Drawing.Size(28, 17);
-            this.bunifuLabel4.TabIndex = 38;
-            this.bunifuLabel4.Text = "Date";
-            this.bunifuLabel4.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel4.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // frmUpdateStocks
             // 

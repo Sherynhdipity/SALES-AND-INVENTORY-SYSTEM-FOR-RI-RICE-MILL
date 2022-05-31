@@ -30,19 +30,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOwnerSalesReport));
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dtpToDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dtpFromDate = new Bunifu.UI.WinForms.BunifuDatePicker();
+            this.btnPrintReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvSalesOwnerReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -71,14 +72,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.Cost = new Bunifu.UI.WinForms.BunifuLabel();
             this.Return = new Bunifu.UI.WinForms.BunifuLabel();
             this.net = new Bunifu.UI.WinForms.BunifuLabel();
-            this.btnPrintReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rbnDaily = new System.Windows.Forms.RadioButton();
-            this.rbnWeekly = new System.Windows.Forms.RadioButton();
-            this.rbnMonthly = new System.Windows.Forms.RadioButton();
-            this.rbnYearly = new System.Windows.Forms.RadioButton();
             this.rbnCustom = new System.Windows.Forms.RadioButton();
+            this.rbnYearly = new System.Windows.Forms.RadioButton();
+            this.rbnMonthly = new System.Windows.Forms.RadioButton();
+            this.rbnWeekly = new System.Windows.Forms.RadioButton();
+            this.rbnDaily = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOwnerReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReturn)).BeginInit();
@@ -162,7 +162,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dtpToDate.Color = System.Drawing.Color.Black;
             this.dtpToDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
             this.dtpToDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpToDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpToDate.DisabledColor = System.Drawing.Color.Black;
             this.dtpToDate.DisplayWeekNumbers = false;
             this.dtpToDate.DPHeight = 0;
             this.dtpToDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
@@ -205,7 +205,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dtpFromDate.Color = System.Drawing.Color.Black;
             this.dtpFromDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
             this.dtpFromDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpFromDate.DisabledColor = System.Drawing.Color.White;
+            this.dtpFromDate.DisabledColor = System.Drawing.Color.Black;
             this.dtpFromDate.DisplayWeekNumbers = false;
             this.dtpFromDate.DPHeight = 0;
             this.dtpFromDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
@@ -223,6 +223,98 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.dtpFromDate.TabIndex = 35;
             this.dtpFromDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpMilledDate_ValueChanged);
+            // 
+            // btnPrintReport
+            // 
+            this.btnPrintReport.AllowAnimations = true;
+            this.btnPrintReport.AllowMouseEffects = true;
+            this.btnPrintReport.AllowToggling = false;
+            this.btnPrintReport.AnimationSpeed = 200;
+            this.btnPrintReport.AutoGenerateColors = false;
+            this.btnPrintReport.AutoRoundBorders = false;
+            this.btnPrintReport.AutoSizeLeftIcon = true;
+            this.btnPrintReport.AutoSizeRightIcon = true;
+            this.btnPrintReport.BackColor = System.Drawing.Color.Transparent;
+            this.btnPrintReport.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
+            this.btnPrintReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrintReport.BackgroundImage")));
+            this.btnPrintReport.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPrintReport.ButtonText = "Export Report";
+            this.btnPrintReport.ButtonTextMarginLeft = 0;
+            this.btnPrintReport.ColorContrastOnClick = 45;
+            this.btnPrintReport.ColorContrastOnHover = 45;
+            this.btnPrintReport.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnPrintReport.CustomizableEdges = borderEdges1;
+            this.btnPrintReport.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPrintReport.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnPrintReport.DisabledFillColor = System.Drawing.Color.Empty;
+            this.btnPrintReport.DisabledForecolor = System.Drawing.Color.Empty;
+            this.btnPrintReport.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnPrintReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrintReport.ForeColor = System.Drawing.Color.Black;
+            this.btnPrintReport.IconLeft = null;
+            this.btnPrintReport.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintReport.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnPrintReport.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnPrintReport.IconMarginLeft = 11;
+            this.btnPrintReport.IconPadding = 10;
+            this.btnPrintReport.IconRight = null;
+            this.btnPrintReport.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrintReport.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnPrintReport.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnPrintReport.IconSize = 25;
+            this.btnPrintReport.IdleBorderColor = System.Drawing.Color.Empty;
+            this.btnPrintReport.IdleBorderRadius = 0;
+            this.btnPrintReport.IdleBorderThickness = 0;
+            this.btnPrintReport.IdleFillColor = System.Drawing.Color.Empty;
+            this.btnPrintReport.IdleIconLeftImage = null;
+            this.btnPrintReport.IdleIconRightImage = null;
+            this.btnPrintReport.IndicateFocus = false;
+            this.btnPrintReport.Location = new System.Drawing.Point(747, 34);
+            this.btnPrintReport.Name = "btnPrintReport";
+            this.btnPrintReport.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnPrintReport.OnDisabledState.BorderRadius = 1;
+            this.btnPrintReport.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPrintReport.OnDisabledState.BorderThickness = 1;
+            this.btnPrintReport.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnPrintReport.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnPrintReport.OnDisabledState.IconLeftImage = null;
+            this.btnPrintReport.OnDisabledState.IconRightImage = null;
+            this.btnPrintReport.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnPrintReport.onHoverState.BorderRadius = 1;
+            this.btnPrintReport.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPrintReport.onHoverState.BorderThickness = 1;
+            this.btnPrintReport.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btnPrintReport.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnPrintReport.onHoverState.IconLeftImage = null;
+            this.btnPrintReport.onHoverState.IconRightImage = null;
+            this.btnPrintReport.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrintReport.OnIdleState.BorderRadius = 1;
+            this.btnPrintReport.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPrintReport.OnIdleState.BorderThickness = 1;
+            this.btnPrintReport.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrintReport.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnPrintReport.OnIdleState.IconLeftImage = null;
+            this.btnPrintReport.OnIdleState.IconRightImage = null;
+            this.btnPrintReport.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnPrintReport.OnPressedState.BorderRadius = 1;
+            this.btnPrintReport.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPrintReport.OnPressedState.BorderThickness = 1;
+            this.btnPrintReport.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnPrintReport.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnPrintReport.OnPressedState.IconLeftImage = null;
+            this.btnPrintReport.OnPressedState.IconRightImage = null;
+            this.btnPrintReport.Size = new System.Drawing.Size(158, 39);
+            this.btnPrintReport.TabIndex = 116;
+            this.btnPrintReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPrintReport.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnPrintReport.TextMarginLeft = 0;
+            this.btnPrintReport.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnPrintReport.UseDefaultRadiusAndThickness = true;
+            this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
             // bunifuLabel3
             // 
@@ -756,98 +848,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.net.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.net.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // btnPrintReport
-            // 
-            this.btnPrintReport.AllowAnimations = true;
-            this.btnPrintReport.AllowMouseEffects = true;
-            this.btnPrintReport.AllowToggling = false;
-            this.btnPrintReport.AnimationSpeed = 200;
-            this.btnPrintReport.AutoGenerateColors = false;
-            this.btnPrintReport.AutoRoundBorders = false;
-            this.btnPrintReport.AutoSizeLeftIcon = true;
-            this.btnPrintReport.AutoSizeRightIcon = true;
-            this.btnPrintReport.BackColor = System.Drawing.Color.Transparent;
-            this.btnPrintReport.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
-            this.btnPrintReport.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrintReport.BackgroundImage")));
-            this.btnPrintReport.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPrintReport.ButtonText = "Export Report";
-            this.btnPrintReport.ButtonTextMarginLeft = 0;
-            this.btnPrintReport.ColorContrastOnClick = 45;
-            this.btnPrintReport.ColorContrastOnHover = 45;
-            this.btnPrintReport.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnPrintReport.CustomizableEdges = borderEdges1;
-            this.btnPrintReport.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPrintReport.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnPrintReport.DisabledFillColor = System.Drawing.Color.Empty;
-            this.btnPrintReport.DisabledForecolor = System.Drawing.Color.Empty;
-            this.btnPrintReport.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnPrintReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrintReport.ForeColor = System.Drawing.Color.Black;
-            this.btnPrintReport.IconLeft = null;
-            this.btnPrintReport.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintReport.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnPrintReport.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnPrintReport.IconMarginLeft = 11;
-            this.btnPrintReport.IconPadding = 10;
-            this.btnPrintReport.IconRight = null;
-            this.btnPrintReport.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrintReport.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnPrintReport.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnPrintReport.IconSize = 25;
-            this.btnPrintReport.IdleBorderColor = System.Drawing.Color.Empty;
-            this.btnPrintReport.IdleBorderRadius = 0;
-            this.btnPrintReport.IdleBorderThickness = 0;
-            this.btnPrintReport.IdleFillColor = System.Drawing.Color.Empty;
-            this.btnPrintReport.IdleIconLeftImage = null;
-            this.btnPrintReport.IdleIconRightImage = null;
-            this.btnPrintReport.IndicateFocus = false;
-            this.btnPrintReport.Location = new System.Drawing.Point(747, 34);
-            this.btnPrintReport.Name = "btnPrintReport";
-            this.btnPrintReport.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnPrintReport.OnDisabledState.BorderRadius = 1;
-            this.btnPrintReport.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPrintReport.OnDisabledState.BorderThickness = 1;
-            this.btnPrintReport.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnPrintReport.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnPrintReport.OnDisabledState.IconLeftImage = null;
-            this.btnPrintReport.OnDisabledState.IconRightImage = null;
-            this.btnPrintReport.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnPrintReport.onHoverState.BorderRadius = 1;
-            this.btnPrintReport.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPrintReport.onHoverState.BorderThickness = 1;
-            this.btnPrintReport.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btnPrintReport.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.btnPrintReport.onHoverState.IconLeftImage = null;
-            this.btnPrintReport.onHoverState.IconRightImage = null;
-            this.btnPrintReport.OnIdleState.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrintReport.OnIdleState.BorderRadius = 1;
-            this.btnPrintReport.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPrintReport.OnIdleState.BorderThickness = 1;
-            this.btnPrintReport.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrintReport.OnIdleState.ForeColor = System.Drawing.Color.Black;
-            this.btnPrintReport.OnIdleState.IconLeftImage = null;
-            this.btnPrintReport.OnIdleState.IconRightImage = null;
-            this.btnPrintReport.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnPrintReport.OnPressedState.BorderRadius = 1;
-            this.btnPrintReport.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPrintReport.OnPressedState.BorderThickness = 1;
-            this.btnPrintReport.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnPrintReport.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.btnPrintReport.OnPressedState.IconLeftImage = null;
-            this.btnPrintReport.OnPressedState.IconRightImage = null;
-            this.btnPrintReport.Size = new System.Drawing.Size(158, 39);
-            this.btnPrintReport.TabIndex = 116;
-            this.btnPrintReport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnPrintReport.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnPrintReport.TextMarginLeft = 0;
-            this.btnPrintReport.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnPrintReport.UseDefaultRadiusAndThickness = true;
-            this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -872,44 +872,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.panel1.Size = new System.Drawing.Size(558, 33);
             this.panel1.TabIndex = 152;
             // 
-            // rbnDaily
+            // rbnCustom
             // 
-            this.rbnDaily.AutoSize = true;
-            this.rbnDaily.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnDaily.Location = new System.Drawing.Point(18, 7);
-            this.rbnDaily.Name = "rbnDaily";
-            this.rbnDaily.Size = new System.Drawing.Size(65, 22);
-            this.rbnDaily.TabIndex = 0;
-            this.rbnDaily.TabStop = true;
-            this.rbnDaily.Text = "Daily";
-            this.rbnDaily.UseVisualStyleBackColor = true;
-            this.rbnDaily.CheckedChanged += new System.EventHandler(this.rbnDaily_CheckedChanged);
-            // 
-            // rbnWeekly
-            // 
-            this.rbnWeekly.AutoSize = true;
-            this.rbnWeekly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnWeekly.Location = new System.Drawing.Point(109, 8);
-            this.rbnWeekly.Name = "rbnWeekly";
-            this.rbnWeekly.Size = new System.Drawing.Size(83, 22);
-            this.rbnWeekly.TabIndex = 1;
-            this.rbnWeekly.TabStop = true;
-            this.rbnWeekly.Text = "Weekly";
-            this.rbnWeekly.UseVisualStyleBackColor = true;
-            this.rbnWeekly.CheckedChanged += new System.EventHandler(this.rbnWeekly_CheckedChanged);
-            // 
-            // rbnMonthly
-            // 
-            this.rbnMonthly.AutoSize = true;
-            this.rbnMonthly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnMonthly.Location = new System.Drawing.Point(222, 8);
-            this.rbnMonthly.Name = "rbnMonthly";
-            this.rbnMonthly.Size = new System.Drawing.Size(88, 22);
-            this.rbnMonthly.TabIndex = 2;
-            this.rbnMonthly.TabStop = true;
-            this.rbnMonthly.Text = "Monthly";
-            this.rbnMonthly.UseVisualStyleBackColor = true;
-            this.rbnMonthly.CheckedChanged += new System.EventHandler(this.rbnMonthly_CheckedChanged);
+            this.rbnCustom.AutoSize = true;
+            this.rbnCustom.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnCustom.Location = new System.Drawing.Point(431, 7);
+            this.rbnCustom.Name = "rbnCustom";
+            this.rbnCustom.Size = new System.Drawing.Size(87, 22);
+            this.rbnCustom.TabIndex = 4;
+            this.rbnCustom.TabStop = true;
+            this.rbnCustom.Text = "Custom";
+            this.rbnCustom.UseVisualStyleBackColor = true;
+            this.rbnCustom.CheckedChanged += new System.EventHandler(this.rbnCustom_CheckedChanged);
             // 
             // rbnYearly
             // 
@@ -924,18 +898,44 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.rbnYearly.UseVisualStyleBackColor = true;
             this.rbnYearly.CheckedChanged += new System.EventHandler(this.rbnYearly_CheckedChanged);
             // 
-            // rbnCustom
+            // rbnMonthly
             // 
-            this.rbnCustom.AutoSize = true;
-            this.rbnCustom.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbnCustom.Location = new System.Drawing.Point(431, 7);
-            this.rbnCustom.Name = "rbnCustom";
-            this.rbnCustom.Size = new System.Drawing.Size(87, 22);
-            this.rbnCustom.TabIndex = 4;
-            this.rbnCustom.TabStop = true;
-            this.rbnCustom.Text = "Custom";
-            this.rbnCustom.UseVisualStyleBackColor = true;
-            this.rbnCustom.CheckedChanged += new System.EventHandler(this.rbnCustom_CheckedChanged);
+            this.rbnMonthly.AutoSize = true;
+            this.rbnMonthly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnMonthly.Location = new System.Drawing.Point(222, 8);
+            this.rbnMonthly.Name = "rbnMonthly";
+            this.rbnMonthly.Size = new System.Drawing.Size(88, 22);
+            this.rbnMonthly.TabIndex = 2;
+            this.rbnMonthly.TabStop = true;
+            this.rbnMonthly.Text = "Monthly";
+            this.rbnMonthly.UseVisualStyleBackColor = true;
+            this.rbnMonthly.CheckedChanged += new System.EventHandler(this.rbnMonthly_CheckedChanged);
+            // 
+            // rbnWeekly
+            // 
+            this.rbnWeekly.AutoSize = true;
+            this.rbnWeekly.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnWeekly.Location = new System.Drawing.Point(109, 8);
+            this.rbnWeekly.Name = "rbnWeekly";
+            this.rbnWeekly.Size = new System.Drawing.Size(83, 22);
+            this.rbnWeekly.TabIndex = 1;
+            this.rbnWeekly.TabStop = true;
+            this.rbnWeekly.Text = "Weekly";
+            this.rbnWeekly.UseVisualStyleBackColor = true;
+            this.rbnWeekly.CheckedChanged += new System.EventHandler(this.rbnWeekly_CheckedChanged);
+            // 
+            // rbnDaily
+            // 
+            this.rbnDaily.AutoSize = true;
+            this.rbnDaily.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbnDaily.Location = new System.Drawing.Point(18, 7);
+            this.rbnDaily.Name = "rbnDaily";
+            this.rbnDaily.Size = new System.Drawing.Size(65, 22);
+            this.rbnDaily.TabIndex = 0;
+            this.rbnDaily.TabStop = true;
+            this.rbnDaily.Text = "Daily";
+            this.rbnDaily.UseVisualStyleBackColor = true;
+            this.rbnDaily.CheckedChanged += new System.EventHandler(this.rbnDaily_CheckedChanged);
             // 
             // frmOwnerSalesReport
             // 
