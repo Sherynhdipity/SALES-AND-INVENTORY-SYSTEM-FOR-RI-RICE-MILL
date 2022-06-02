@@ -48,6 +48,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.stockChartViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ownerDashboardDataset = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OwnerDashboardDataset();
             this.stockChartViewTableAdapter = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.OwnerDashboardDatasetTableAdapters.StockChartViewTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.bunifuPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.bunifuPanel10.SuspendLayout();
@@ -222,6 +223,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.stockChartViewTableAdapter.ClearBeforeFill = true;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // ucInventoryDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,5 +263,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private System.Windows.Forms.BindingSource stockChartViewBindingSource;
         private OwnerDashboardDataset ownerDashboardDataset;
         private OwnerDashboardDatasetTableAdapters.StockChartViewTableAdapter stockChartViewTableAdapter;
+        private System.Windows.Forms.Timer timer1;
     }
 }

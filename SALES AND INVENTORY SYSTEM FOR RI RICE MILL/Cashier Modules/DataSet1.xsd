@@ -12,12 +12,31 @@
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="order_details" msprop:Generator_TableClassName="order_detailsDataTable" msprop:Generator_TableVarName="tableorder_details" msprop:Generator_TablePropName="order_details" msprop:Generator_RowDeletingName="order_detailsRowDeleting" msprop:Generator_RowChangingName="order_detailsRowChanging" msprop:Generator_RowEvHandlerName="order_detailsRowChangeEventHandler" msprop:Generator_RowDeletedName="order_detailsRowDeleted" msprop:Generator_UserTableName="order_details" msprop:Generator_RowChangedName="order_detailsRowChanged" msprop:Generator_RowEvArgName="order_detailsRowChangeEvent" msprop:Generator_RowClassName="order_detailsRow">
+        <xs:element name="order_details" msprop:Generator_TableClassName="order_detailsDataTable" msprop:Generator_TableVarName="tableorder_details" msprop:Generator_RowChangedName="order_detailsRowChanged" msprop:Generator_TablePropName="order_details" msprop:Generator_RowDeletingName="order_detailsRowDeleting" msprop:Generator_RowChangingName="order_detailsRowChanging" msprop:Generator_RowEvHandlerName="order_detailsRowChangeEventHandler" msprop:Generator_RowDeletedName="order_detailsRowDeleted" msprop:Generator_RowClassName="order_detailsRow" msprop:Generator_UserTableName="order_details" msprop:Generator_RowEvArgName="order_detailsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
               <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
               <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="return_details" msprop:Generator_TableClassName="return_detailsDataTable" msprop:Generator_TableVarName="tablereturn_details" msprop:Generator_TablePropName="return_details" msprop:Generator_RowDeletingName="return_detailsRowDeleting" msprop:Generator_RowChangingName="return_detailsRowChanging" msprop:Generator_RowEvHandlerName="return_detailsRowChangeEventHandler" msprop:Generator_RowDeletedName="return_detailsRowDeleted" msprop:Generator_UserTableName="return_details" msprop:Generator_RowChangedName="return_detailsRowChanged" msprop:Generator_RowEvArgName="return_detailsRowChangeEvent" msprop:Generator_RowClassName="return_detailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReturnDescription" msprop:Generator_ColumnVarNameInTable="columnReturnDescription" msprop:Generator_ColumnPropNameInRow="ReturnDescription" msprop:Generator_ColumnPropNameInTable="ReturnDescriptionColumn" msprop:Generator_UserColumnName="ReturnDescription" type="xs:string" minOccurs="0" />
+              <xs:element name="ReturnQty" msprop:Generator_ColumnVarNameInTable="columnReturnQty" msprop:Generator_ColumnPropNameInRow="ReturnQty" msprop:Generator_ColumnPropNameInTable="ReturnQtyColumn" msprop:Generator_UserColumnName="ReturnQty" type="xs:string" minOccurs="0" />
+              <xs:element name="ReturnPrice" msprop:Generator_ColumnVarNameInTable="columnReturnPrice" msprop:Generator_ColumnPropNameInRow="ReturnPrice" msprop:Generator_ColumnPropNameInTable="ReturnPriceColumn" msprop:Generator_UserColumnName="ReturnPrice" type="xs:string" minOccurs="0" />
+              <xs:element name="ReturnRemarks" msprop:Generator_ColumnVarNameInTable="columnReturnRemarks" msprop:Generator_ColumnPropNameInRow="ReturnRemarks" msprop:Generator_ColumnPropNameInTable="ReturnRemarksColumn" msprop:Generator_UserColumnName="ReturnRemarks" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="replace_details" msprop:Generator_TableClassName="replace_detailsDataTable" msprop:Generator_TableVarName="tablereplace_details" msprop:Generator_RowChangedName="replace_detailsRowChanged" msprop:Generator_TablePropName="replace_details" msprop:Generator_RowDeletingName="replace_detailsRowDeleting" msprop:Generator_RowChangingName="replace_detailsRowChanging" msprop:Generator_RowEvHandlerName="replace_detailsRowChangeEventHandler" msprop:Generator_RowDeletedName="replace_detailsRowDeleted" msprop:Generator_RowClassName="replace_detailsRow" msprop:Generator_UserTableName="replace_details" msprop:Generator_RowEvArgName="replace_detailsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReplaceDescription" msprop:Generator_ColumnVarNameInTable="columnReplaceDescription" msprop:Generator_ColumnPropNameInRow="ReplaceDescription" msprop:Generator_ColumnPropNameInTable="ReplaceDescriptionColumn" msprop:Generator_UserColumnName="ReplaceDescription" type="xs:string" minOccurs="0" />
+              <xs:element name="ReplaceQty" msprop:Generator_ColumnVarNameInTable="columnReplaceQty" msprop:Generator_ColumnPropNameInRow="ReplaceQty" msprop:Generator_ColumnPropNameInTable="ReplaceQtyColumn" msprop:Generator_UserColumnName="ReplaceQty" type="xs:string" minOccurs="0" />
+              <xs:element name="ReplacePrice" msprop:Generator_ColumnVarNameInTable="columnReplacePrice" msprop:Generator_ColumnPropNameInRow="ReplacePrice" msprop:Generator_ColumnPropNameInTable="ReplacePriceColumn" msprop:Generator_UserColumnName="ReplacePrice" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

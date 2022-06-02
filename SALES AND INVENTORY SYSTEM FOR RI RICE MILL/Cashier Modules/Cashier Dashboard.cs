@@ -36,6 +36,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public ucSalesDashboard()
         {
             InitializeComponent();
+            populateDash();
+            populateChart();
         }
 
         public void populateChart()
@@ -151,14 +153,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void ucSalesDashboard_Load(object sender, EventArgs e)
         {
-            this.Refresh();
+            InitTimer();
+        }
+
+        public void InitTimer()
+        {
+            timer1 = new Timer();
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Interval = 3000; // in miliseconds
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
             populateDash();
-            
             populateChart();
-            
-
-
-
         }
     }
 }

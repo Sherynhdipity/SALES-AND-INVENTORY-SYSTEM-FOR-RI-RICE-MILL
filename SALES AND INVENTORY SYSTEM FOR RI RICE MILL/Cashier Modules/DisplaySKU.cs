@@ -183,7 +183,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             {
                                 tempSum += Convert.ToDouble(prices[j]);
                             }
-                            Price = (Convert.ToDouble(Price) + Convert.ToDouble(tempSum)).ToString("N2");
+                            Price = (Convert.ToDouble(tempSum)).ToString("N2");
 
                         }
 
@@ -271,7 +271,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                             {
                                 tempSum += Convert.ToDouble(prices[j]);
                             }
-                            Price = (Convert.ToDouble(Price) + Convert.ToDouble(tempSum)).ToString("N2");
+                            Price = (Convert.ToDouble(tempSum)).ToString("N2");
 
                         }
                         }

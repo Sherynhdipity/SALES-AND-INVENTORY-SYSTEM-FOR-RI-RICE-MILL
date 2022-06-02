@@ -85,7 +85,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 dtpFromDate.Text = string.Format("{0:D}", date);
                 dtpToDate.Text = string.Format("{0:D}", date);
 
-                QuerySelect = "Select [Date], Description, [Cost Sales], [Gross Sales] from SalesReportView";
+                QuerySelect = "Select * from SalesReportView";
 
                 cmd = new SqlCommand(QuerySelect, con);
 
@@ -109,8 +109,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
-                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[6].Value);
+                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[5].Value);
                 }
                 Gross.Text = sum.ToString("N2");
                 Cost.Text = sum2.ToString("N2");
@@ -145,7 +145,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             try
             {
 
-                QuerySelect = "Select [Date], Description, [Cost Sales], [Gross Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
+                QuerySelect = "Select * from SalesReportView where [Date] between @FromDate and @ToDate";
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -168,26 +168,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 dgvReturn.DataSource = dt;
                 dgvReturn.Refresh();
 
-                float sum = 0;
-                float sum2 = 0;
+                double sum = 0;
+                double sum2 = 0;
 
                 for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[3].Value);
-                    sum2 += Convert.ToInt32(dgvSalesOwnerReport.Rows[i].Cells[2].Value);
+                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[6].Value);
+                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[5].Value);
                 }
                 Gross.Text = sum.ToString("N2");
                 Cost.Text = sum2.ToString("N2");
 
-                float sum3 = 0;
+                double sum3 = 0;
 
                 for (int i = 0; i < dgvReturn.Rows.Count; i++)
                 {
-                    sum3 += Convert.ToInt32(dgvReturn.Rows[i].Cells[3].Value);
+                    sum3 += Convert.ToDouble(dgvReturn.Rows[i].Cells[3].Value);
                 }
                 Return.Text = sum3.ToString("N2");
 
-                net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString();
+                net.Text = (Convert.ToDouble(Gross.Text) - Convert.ToDouble(Cost.Text) - Convert.ToDouble(Return.Text)).ToString("N2");
 
 
             }
@@ -359,13 +359,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dgvSalesOwnerReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-           if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+           if (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 5 || e.ColumnIndex == 6)
             {
                 e.CellStyle.Format = "N2";
             }
         }
 
         private void dgvSalesOwnerReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bunifuLabel3_Click(object sender, EventArgs e)
         {
 
         }

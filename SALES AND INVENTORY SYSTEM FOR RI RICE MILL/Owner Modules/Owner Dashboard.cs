@@ -30,6 +30,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             populateChart();
         }
 
+
+
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
         public static SqlDataReader reader;
@@ -200,7 +202,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void ucDashboard_Load(object sender, EventArgs e)
         {
+            InitTimer();
+        }
 
+        public void InitTimer()
+        {
+            timer1 = new Timer();
+            timer1.Tick += new EventHandler(timer1_Tick);
+            timer1.Interval = 3000; // in miliseconds
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            populateDash();
+            populateChart();
+            
         }
     }
 

@@ -927,7 +927,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewSalesReports.BackColor1 = System.Drawing.Color.White;
             this.btnViewSalesReports.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewSalesReports.BackgroundImage")));
             this.btnViewSalesReports.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnViewSalesReports.ButtonText = "            Sales\r\n            Reports";
+            this.btnViewSalesReports.ButtonText = "            Sales\r\n            Reports\r\n            Per Item";
             this.btnViewSalesReports.ButtonTextMarginLeft = 0;
             this.btnViewSalesReports.ColorContrastOnClick = 45;
             this.btnViewSalesReports.ColorContrastOnHover = 45;
@@ -1275,7 +1275,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtTotalTransaction.CursorType = null;
             this.txtTotalTransaction.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalTransaction.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalTransaction.Location = new System.Drawing.Point(128, 135);
+            this.txtTotalTransaction.Location = new System.Drawing.Point(121, 135);
             this.txtTotalTransaction.Name = "txtTotalTransaction";
             this.txtTotalTransaction.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTotalTransaction.Size = new System.Drawing.Size(16, 33);
@@ -1352,7 +1352,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtTotalSales.CursorType = null;
             this.txtTotalSales.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalSales.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalSales.Location = new System.Drawing.Point(163, 145);
+            this.txtTotalSales.Location = new System.Drawing.Point(127, 140);
             this.txtTotalSales.Name = "txtTotalSales";
             this.txtTotalSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTotalSales.Size = new System.Drawing.Size(16, 33);

@@ -18,14 +18,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
     {
         public frmReturnPayment()
         {
-            
+
             InitializeComponent();
             addNewCustomer.FormClosed += new FormClosedEventHandler(Form_Closed);
         }
         //start mods
-        public  DataTable dtFromSalesMgt;
+        public DataTable dtFromSalesMgt;
         public string transNo = "";
-        public  void storeDt(DataTable tempDT)
+        public void storeDt(DataTable tempDT)
         {
             dtFromSalesMgt = tempDT;
         }
@@ -55,16 +55,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string[] DESCRIPTION;
         public string tax, vatable;
 
-        public string [] ItemDesc { get; set; }
-        public int []  Qty { get; set; }
-        public double[] Price { get; set; }
+        public string[] ReplacedItemDesc { get; set; }
+        public int[] ReplacedQty { get; set; }
+        public double[] ReplacedPrice { get; set; }
 
-        public bool isReturn{ get; set; }
+
+        public string[] ReturnedItemDesc { get; set; }
+        public int[] ReturnedQty { get; set; }
+        public double[] ReturnedPrice { get; set; }
+        public string[] Remarks { get; set; }
+
+        public bool isReturn { get; set; }
         public string[] NEW_SKU;
 
         public List<string> sku_list { get; set; }
 
-        public string cust{ get; set; }
+        public string cust { get; set; }
         private int customerID;
         public int CustomerID
         {
@@ -85,7 +91,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             con.Close();
 
-            QuerySelect = "SELECT CONCAT(First_name ,' ',  Last_name) as Name FROM tblCustomers WHERE Customer_id = '"+cust+"'";
+            QuerySelect = "SELECT CONCAT(First_name ,' ',  Last_name) as Name FROM tblCustomers WHERE Customer_id = '" + cust + "'";
             con.Open();
             cmd = new SqlCommand(QuerySelect, con);
             reader = cmd.ExecuteReader();
@@ -130,10 +136,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             count = 1;
                             txtORNumber.Text = count.ToString().PadLeft(4, '0');
                         }
-                        
+
                     }
                 }
-                
+
 
                 reader.Close();
                 con.Close();
@@ -192,7 +198,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             cmd.Parameters.AddWithValue("@orderDate", DateTime.Now.Date.ToString("yyyy-MM-dd H:mm:ss"));
                             cmd.Parameters.AddWithValue("@qty", total_quantity);
                             cmd.Parameters.AddWithValue("@discount", discount_total);
-                            cmd.Parameters.AddWithValue("@total", total);
+                            cmd.Parameters.AddWithValue("@total", Convert.ToDouble(txtAmount.Text));
                             cmd.Parameters.AddWithValue("@cash", txtCash.Text.Replace(",", ""));
 
                             if (txtPWDOSCA.Visible == true && lblPWDORSC.Text == "SC #:")
@@ -312,7 +318,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     con.Close();
                     MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    GenerateReceipt();
+                    GenerateReturnSlip();
                     this.Close();
 
                 }
@@ -347,9 +353,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
 
-        void GenerateReceipt()
+        void GenerateReturnSlip()
         {
-            Receipt resibo = new Receipt();
+            ReturnSlip resibo = new ReturnSlip();
 
             /*------- Official Receipt Details ------*/
 
@@ -363,65 +369,123 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             ORNum.Text = txtORNumber.Text;
 
 
-
-            //RFS1 - ITEMS TOTAL
-
-            TextObject totalqty = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalQty"];
-            totalqty.Text = total_quantity.ToString();
-            TextObject totalamt = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalAmount"];
-            totalamt.Text = total.ToString();
-            TextObject amtpaid = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cash"];
-            amtpaid.Text = txtCash.Text;
-            TextObject change = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Change"];
-            change.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0");
-            TextObject vatSale = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["vatSale"];
-            vatSale.Text = vatable;
-            TextObject VAT = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["Tax"];
-            VAT.Text = tax;
-            TextObject Discount = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalDisc"];
-            Discount.Text = discount_total.ToString(); ;
+            //RFS1 - RETURNED ITEMS
+            TextObject totalqtyreturned = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalQtyReturned"];
+            totalqtyreturned.Text = total_quantity.ToString();        
+            TextObject totalamtReturned = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalAmount"];
+            totalamtReturned.Text = txtAmount.Text;
 
 
             //RFS1 - CUSTOMER DETAILS
             TextObject customer = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
             customer.Text = txtViewCustomer.Text;
-            TextObject cusNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
-            customer.Text = txtViewCustomer.Text;
-            TextObject cusIdNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cusNO"];
-            cusIdNo.Text = txtPWDOSCA.Text;
+            TextObject cusNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cusNO"];
+            cusNo.Text = txtViewCustomer.Text;
 
 
-
-            //DETAILS - ITEM DETAILS
-
-            string[,] table = new string[ItemDesc.Length, 3];
-            for (int i = 0; i < ItemDesc.Length; i++)
+            //DETAILS - RETURNED ITEM DETAILS
+            string[,] OrderReturntable = new string[ReturnedItemDesc.Length, 4];
+            for (int i = 0; i < ReturnedItemDesc.Length; i++)
             {
-                table[i, 0] = ItemDesc[i];
-                table[i, 1] = Qty[i].ToString();
-                table[i, 2] = Price[i].ToString();
+                OrderReturntable[i, 0] = ReturnedItemDesc[i];
+                OrderReturntable[i, 1] = ReturnedQty[i].ToString();
+                OrderReturntable[i, 2] = ReturnedPrice[i].ToString();
+                OrderReturntable[i, 3] = Remarks[i];
             }
 
-            DataTable testDt = new DataTable();
+            DataTable OrderReturnDt = new DataTable();
 
-            testDt.Columns.Add("Description", typeof(string));
-            testDt.Columns.Add("Qty", typeof(string));
-            testDt.Columns.Add("Price", typeof(string));
+            OrderReturnDt.Columns.Add("ReturnDescription", typeof(string));
+            OrderReturnDt.Columns.Add("ReturnQty", typeof(string));
+            OrderReturnDt.Columns.Add("ReturnPrice", typeof(string));
+            OrderReturnDt.Columns.Add("ReturnRemarks", typeof(string));
 
-            for (int outerIndex = 0; outerIndex < ItemDesc.Length; outerIndex++)
+            for (int outerIndex = 0; outerIndex < ReturnedItemDesc.Length; outerIndex++)
             {
-                DataRow newRow = testDt.NewRow();
+                DataRow newRow = OrderReturnDt.NewRow();
+                for (int innerIndex = 0; innerIndex < 4; innerIndex++)
+                {
+
+                    newRow[innerIndex] = OrderReturntable[outerIndex, innerIndex];
+
+                }
+
+                OrderReturnDt.Rows.Add(newRow);
+            }
+
+            resibo.Database.Tables["return_details"].SetDataSource(OrderReturnDt);
+
+            frmPrintReceipt.getform.Show();
+            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = null;
+            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = resibo;
+
+            //GenerateReplaceSlip();
+            this.DialogResult = DialogResult.OK;
+        }
+
+        void GenerateReplaceSlip()
+        {
+            ReplacedSlip resibo = new ReplacedSlip();
+
+            /*------- Official Receipt Details ------*/
+
+            // PHS1 - TERMINAL DETAILS
+
+            TextObject cashier = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["cashierName"];
+            cashier.Text = frmLogin.GetUserName.ToString();
+            TextObject transNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["transNo"];
+            transNum.Text = transNo;
+            TextObject ORNum = (TextObject)resibo.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["ORNo"];
+            ORNum.Text = txtORNumber.Text;
+
+
+            //RFS1 - REPLACED ITEMS
+            TextObject totalqtyreplaced = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalQtyReplaced"];
+            totalqtyreplaced.Text = total_quantity.ToString();
+            TextObject totalamt = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["totalAmount"];
+            totalamt.Text = txtAmount.Text;
+            TextObject amtpaid = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cash"];
+            amtpaid.Text = txtCash.Text;
+            TextObject change = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["change"];
+            change.Text = (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.00");
+
+
+            //RFS1 - CUSTOMER DETAILS
+            TextObject customer = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["CustomerName"];
+            customer.Text = txtViewCustomer.Text;
+            TextObject cusNo = (TextObject)resibo.ReportDefinition.Sections["ReportFooterSection1"].ReportObjects["cusNO"];
+            cusNo.Text = txtViewCustomer.Text;
+
+
+            //DETAILS - REPLACED ITEM DETAILS
+            string[,] Replacedtable = new string[ReplacedItemDesc.Length, 3];
+            for (int i = 0; i < ReplacedItemDesc.Length; i++)
+            {
+                Replacedtable[i, 0] = ReplacedItemDesc[i];
+                Replacedtable[i, 1] = ReplacedQty[i].ToString();
+                Replacedtable[i, 2] = ReplacedPrice[i].ToString();
+            }
+
+            DataTable ReplaceDt = new DataTable();
+
+            ReplaceDt.Columns.Add("ReplacedDescription", typeof(string));
+            ReplaceDt.Columns.Add("ReplacedQty", typeof(string));
+            ReplaceDt.Columns.Add("ReplacedPrice", typeof(string));
+
+            for (int outerIndex = 0; outerIndex < ReplacedItemDesc.Length; outerIndex++)
+            {
+                DataRow newRow = ReplaceDt.NewRow();
                 for (int innerIndex = 0; innerIndex < 3; innerIndex++)
                 {
 
-                    newRow[innerIndex] = table[outerIndex, innerIndex];
+                    newRow[innerIndex] = Replacedtable[outerIndex, innerIndex];
 
                 }
-                testDt.Rows.Add(newRow);
+                ReplaceDt.Rows.Add(newRow);
             }
-            resibo.Database.Tables["order_details"].SetDataSource(testDt);
 
-            //resibo.SetDataSource(testDt);
+            resibo.Database.Tables["replace_details"].SetDataSource(ReplaceDt);
+
             frmPrintReceipt.getform.Show();
             frmPrintReceipt.getform.crystalReportViewer1.ReportSource = null;
             frmPrintReceipt.getform.crystalReportViewer1.ReportSource = resibo;
@@ -429,6 +493,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.DialogResult = DialogResult.OK;
 
         }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -521,7 +586,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             SettlePayment();
-            GenerateReceipt();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)

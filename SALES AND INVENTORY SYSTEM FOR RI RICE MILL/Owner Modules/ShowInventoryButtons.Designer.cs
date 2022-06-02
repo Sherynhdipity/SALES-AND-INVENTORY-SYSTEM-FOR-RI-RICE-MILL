@@ -402,7 +402,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnViewInventoryReports.BackColor1 = System.Drawing.Color.White;
             this.btnViewInventoryReports.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewInventoryReports.BackgroundImage")));
             this.btnViewInventoryReports.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnViewInventoryReports.ButtonText = "                Inventory\r\n                Evaluation";
+            this.btnViewInventoryReports.ButtonText = "                Inventory\r\n                Valuation";
             this.btnViewInventoryReports.ButtonTextMarginLeft = 0;
             this.btnViewInventoryReports.ColorContrastOnClick = 45;
             this.btnViewInventoryReports.ColorContrastOnHover = 45;

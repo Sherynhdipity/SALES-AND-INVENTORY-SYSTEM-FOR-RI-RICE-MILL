@@ -427,7 +427,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 {
                     txtAmount.Text = txtAmount.Text; 
                     double amount = double.Parse(txtAmount.Text.ToString());
-                    double cash = double.Parse(txtCash.Text.ToString());
+                    double cash = double.Parse(txtCash.Text.Replace(",", "").ToString());
                     if (amount > cash)
                     {
                         btnConfirm.Enabled = false;
@@ -481,12 +481,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             if (e.KeyCode == Keys.Enter)
             {
+
                 // With Discount Code
                 string phrase = txtViewCustomer.Text;
                 string[] words = phrase.Split(' ');
-
-                QuerySelect = "SELECT Customer_id From tblCustomers WHERE First_name LIKE '%" + words[0] + "%' OR Last_name LIKE '%" + words[1] + "%'";
+                if(words.Length > 1)
+                {
+                    QuerySelect = "SELECT Customer_id From tblCustomers WHERE First_name = '" + words[0] + "' OR Last_name = '" + words[1] + "'";
+                }
+                else
+                {
+                    QuerySelect = "SELECT Customer_id From tblCustomers WHERE First_name = '" + words[0] + "' OR Last_name = '" + words[0] + "'";
+                }
+               
                 cmd = new SqlCommand(QuerySelect, con);
+                con.Close();
                 con.Open();
                 reader = cmd.ExecuteReader();
                 reader.Read();
@@ -527,7 +536,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount_total = amount * discount;
                             total = amount - discount_total;
                             txtAmount.Text = total.ToString("N2");
-                            txtDiscountAmount.Text = discount_total.ToString();
+                            txtDiscountAmount.Text = discount_total.ToString("N2");
                             txtDiscountPer.Text = "20%";
                         }
                         else if (dt.Rows[0][1].ToString() == "PWD01")
@@ -541,7 +550,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount_total = amount * discount;
                             total = amount - discount_total;
                             txtAmount.Text = total.ToString("N2");
-                            txtDiscountAmount.Text = "20%";
+                            txtDiscountAmount.Text = discount_total.ToString("N2");
+                            txtDiscountPer.Text = "20%";
                         }
                         else if (dt.Rows[0][1].ToString() == "LC01")
                         {
@@ -553,7 +563,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             discount_total = amount * discount;
                             total = amount - discount_total;
                             txtAmount.Text = total.ToString("N2");
-                            txtDiscountAmount.Text = "10%";
+                            txtDiscountAmount.Text = discount_total.ToString("N2");
+                            txtDiscountPer.Text = "10%";
                         }
                         else if (dt.Rows[0][1].ToString() == "NC01")
                         {
@@ -569,12 +580,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                         //total = amount - discount_total;
                         //txtAmount.Text = total.ToString();
                     }
+                    con.Close();
+                    //txtViewCustomer.Enabled = true;
+                    txtCash.Focus();
 
                 }
+                else
+                {
+                    MessageBox.Show("Customer not found!");
+                }
 
-                con.Close();
-                //txtViewCustomer.Enabled = true;
-                txtCash.Focus();
+              
             }
         }
 
@@ -639,8 +655,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 discount = Convert.ToDouble(loyal_customer);
                 discount_total = amount * discount;
                 total = amount - discount_total;
-                txtAmount.Text = total.ToString();
-                txtDiscountAmount.Text = discount_total.ToString();
+                txtAmount.Text = total.ToString("N2");
+                txtDiscountAmount.Text = discount_total.ToString("N2");
             }
             else
             {
@@ -648,8 +664,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //discount = Convert.ToDouble(dt.Rows[0][2].ToString());
                 //discount_total = amount * discount;
                 total = amount;
-                txtAmount.Text = total.ToString();
-                txtDiscountAmount.Text = discount_total.ToString();
+                txtAmount.Text = total.ToString("N2");
             }
             con.Close();
         }

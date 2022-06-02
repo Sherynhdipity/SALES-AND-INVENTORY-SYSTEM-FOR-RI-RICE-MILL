@@ -668,10 +668,22 @@
       <DependentUpon>PerItems.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PrintReturnSlip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintReturnSlip.Designer.cs">
+      <DependentUpon>PrintReturnSlip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Receipt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Receipt.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReplacedSlip.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReplacedSlip.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="reportsDataSet.cs">
@@ -784,6 +796,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>reportsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnSlip.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReturnSlip.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SalesReport.cs">
       <SubType>Form</SubType>
@@ -979,9 +997,16 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PerItems.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintReturnSlip.resx">
+      <DependentUpon>PrintReturnSlip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Receipt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Receipt.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReplacedSlip.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReplacedSlip.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RestockReporting.resx">
       <DependentUpon>RestockReporting.cs</DependentUpon>
@@ -1066,6 +1091,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report2.rdlc" />
     <EmbeddedResource Include="Report1.rdlc" />
+    <EmbeddedResource Include="ReturnSlip.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReturnSlip.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>
     </EmbeddedResource>

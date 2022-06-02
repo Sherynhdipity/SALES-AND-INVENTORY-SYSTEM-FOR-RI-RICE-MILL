@@ -377,7 +377,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                     dgvSKUList.Columns[0].Name = "SKU";
 
                     QuerySelect = "Select SKU from tblInventories " +
-                        "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories) " +
+                        "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories " +
+                        "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = '"+ description +"')) " +
                         "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + description + "')";
                     cmd = new SqlCommand(QuerySelect, con);
                     con.Open();

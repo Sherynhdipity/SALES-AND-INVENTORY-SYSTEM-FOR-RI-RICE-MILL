@@ -67,8 +67,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 for (int i = 0; i < dgvSalesReport.Rows.Count; i++)
                 {
-                    sum1 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[4].Value);
-                    sum2 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[5].Value);
+                    sum1 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[3].Value);
+                    sum2 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[4].Value);
                 }
                 lblTotal.Text = sum1.ToString();
                 lblSales.Text = sum2.ToString("N2");
@@ -169,10 +169,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void dgvSalesReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 5 || e.ColumnIndex == 3)
+            if (e.ColumnIndex == 2 || e.ColumnIndex == 4)
             {
                 e.CellStyle.Format = "N2";
             }
+        }
+
+        private void bunifuLabel3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
