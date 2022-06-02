@@ -260,11 +260,11 @@
             this.txtAdjustment.IconRight = null;
             this.txtAdjustment.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtAdjustment.Lines = new string[0];
-            validationObject5.CustomErrorMessage = "Invalid Quantity";
+            validationObject5.CustomErrorMessage = "";
             validationObject5.Optional = false;
-            validationObject5.PropertyName = "Text";
-            validationObject5.Regex = "^\\d+$";
-            validationObject5.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Integer;
+            validationObject5.PropertyName = "";
+            validationObject5.Regex = null;
+            validationObject5.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.txtAdjustment, validationObject5);
             this.txtAdjustment.Location = new System.Drawing.Point(763, 368);
             this.txtAdjustment.MaxLength = 5;
@@ -348,7 +348,7 @@
             validationObject6.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.txtReason, validationObject6);
             this.txtReason.Location = new System.Drawing.Point(620, 426);
-            this.txtReason.MaxLength = 5;
+            this.txtReason.MaxLength = 50;
             this.txtReason.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtReason.Modified = false;
             this.txtReason.Multiline = false;

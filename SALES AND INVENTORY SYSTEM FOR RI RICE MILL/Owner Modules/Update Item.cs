@@ -130,19 +130,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCriticalLevel.Focus();
             }
-            else if (!Regex.IsMatch(txtCostPrice.Text, @"^(^[0-9](\.[0-9]{0,2}))*?$"))
+            else if (!Regex.IsMatch(txtDescription.Text, @"^[A-Za-z0-9\s-]*$"))
+            {
+                MessageBox.Show("Description must be letter, dash, space and numbers only");
+            }
+            else if (!Regex.IsMatch(txtCostPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
             {
                 MessageBox.Show("Cost Price must be Number Only");
             }
-            else if (!Regex.IsMatch(txtPrice.Text, @"^(^[0-9](\.[0-9]{0,2}))*?$"))
+            else if (!Regex.IsMatch(txtPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
             {
                 MessageBox.Show("Price must be Number Only");
 
             }
-            else if (!Regex.IsMatch(txtCriticalLevel.Text, @"^(^[0-9])*?$"))
+            else if (!Regex.IsMatch(txtCriticalLevel.Text, @"^\d+$"))
             {
                 MessageBox.Show("Critical Level Number Only");
-
             }
             else if (Convert.ToDouble(txtCostPrice.Text) >= Convert.ToDouble(txtPrice.Text))
             {
@@ -230,6 +233,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         }
 
         private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCostPrice_TextChanged(object sender, EventArgs e)
         {
 
         }

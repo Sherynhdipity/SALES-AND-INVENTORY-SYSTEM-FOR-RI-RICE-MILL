@@ -26,7 +26,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         public frmBarcodeLookup()
         {
             InitializeComponent();
-            autoCompleteDescription();
+            
         }
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -44,7 +44,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void frmAddStocks_Load(object sender, EventArgs e)
         {
+            autoCompleteDescription();
             this.ActiveControl = txtViewItem;
+            
         }
 
         public void ClearControls()
@@ -216,6 +218,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 MessageBox.Show("Enter Item First!");
             }
 
+        }
+
+        private void txtBatchNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

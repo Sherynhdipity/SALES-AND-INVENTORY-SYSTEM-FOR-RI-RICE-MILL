@@ -163,7 +163,7 @@
             this.txtCostPrice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.txtCostPrice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
             this.txtCostPrice.AutoSizeHeight = true;
-            this.txtCostPrice.BackColor = System.Drawing.Color.Transparent;
+            this.txtCostPrice.BackColor = System.Drawing.Color.White;
             this.txtCostPrice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtCostPrice.BackgroundImage")));
             this.txtCostPrice.BorderColorActive = System.Drawing.Color.DodgerBlue;
             this.txtCostPrice.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -186,8 +186,8 @@
             validationObject2.CustomErrorMessage = "Number Only!";
             validationObject2.Optional = false;
             validationObject2.PropertyName = "Text";
-            validationObject2.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
-            validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
+            validationObject2.Regex = "^-?(?:\\d+|\\d{1,2}(?:,\\d{3})+)(?:(\\.|,)\\d+)?$";
+            validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtCostPrice, validationObject2);
             this.txtCostPrice.Location = new System.Drawing.Point(19, 134);
             this.txtCostPrice.MaxLength = 10;
@@ -235,7 +235,9 @@
             this.txtCostPrice.TextPlaceholder = "";
             this.txtCostPrice.UseSystemPasswordChar = false;
             this.txtCostPrice.WordWrap = true;
+            this.txtCostPrice.TextChange += new System.EventHandler(this.txtCostPrice_TextChange);
             this.txtCostPrice.TextChanged += new System.EventHandler(this.txtCostPrice_TextChanged);
+            this.txtCostPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostPrice_KeyPress);
             // 
             // btnSave
             // 
@@ -534,7 +536,6 @@
             this.txtCriticalLevel.TextPlaceholder = "";
             this.txtCriticalLevel.UseSystemPasswordChar = false;
             this.txtCriticalLevel.WordWrap = true;
-            this.txtCriticalLevel.TextChanged += new System.EventHandler(this.txtCriticalLevel_TextChanged);
             this.txtCriticalLevel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCriticalLevel_KeyPress);
             // 
             // bunifuLabel1
@@ -589,8 +590,8 @@
             validationObject8.CustomErrorMessage = "Number Only!";
             validationObject8.Optional = false;
             validationObject8.PropertyName = "Text";
-            validationObject8.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
-            validationObject8.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
+            validationObject8.Regex = "^-?(?:\\d+|\\d{1,2}(?:,\\d{3})+)(?:(\\.|,)\\d+)?$";
+            validationObject8.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtPrice, validationObject8);
             this.txtPrice.Location = new System.Drawing.Point(19, 220);
             this.txtPrice.MaxLength = 10;
@@ -638,7 +639,7 @@
             this.txtPrice.TextPlaceholder = "";
             this.txtPrice.UseSystemPasswordChar = false;
             this.txtPrice.WordWrap = true;
-            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
+            this.txtPrice.TextChange += new System.EventHandler(this.txtPrice_TextChange);
             this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // bunifuLabel13

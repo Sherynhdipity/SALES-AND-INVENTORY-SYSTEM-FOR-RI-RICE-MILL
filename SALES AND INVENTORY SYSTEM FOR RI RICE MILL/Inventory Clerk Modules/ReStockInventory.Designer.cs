@@ -238,6 +238,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.Controls.Add(this.pictureBox6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ReStockInventory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReStockInventory";
             this.Load += new System.EventHandler(this.ReStockInventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSalesOwnerReport)).EndInit();

@@ -29,5 +29,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 return list;
             }
         }
+
+        private void frmClerkSummaryRep_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

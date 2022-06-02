@@ -53,6 +53,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.Name = "frmClerkSummaryRep";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ClerkSummaryRep";
+            this.Load += new System.EventHandler(this.frmClerkSummaryRep_Load);
             this.ResumeLayout(false);
 
         }

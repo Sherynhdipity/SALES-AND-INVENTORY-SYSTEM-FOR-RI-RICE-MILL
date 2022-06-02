@@ -274,44 +274,52 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             int selectedRows = dgvSKUList.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if(selectedRows > 0)
             {
-                con.Close();
-                con.Open();
-                foreach (DataGridViewRow row in dgvSKUList.SelectedRows)
+                if (selectedRows>0 && txtAdjustment.Text == null)
                 {
-                    QuerySelect = "SELECT Inventory_id FROM tblInventories WHERE SKU = @sku AND Status = 'Stock In'";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("sku", dgvSKUList.Rows[row.Index].Cells[0].Value.ToString());
-                    
- 
-                    reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            id = reader["Inventory_id"].ToString();
-                        }
-                    }
-                    reader.Close();
-
-
-                    QueryInsert = "INSERT INTO tblInventoryAdjustment (Inventory_id, Reason, SKU, Date)" +
-                        "VALUES (@inventory_id, @reason,@SKU,@date)";
-                    cmd = new SqlCommand(QueryInsert, con);
-                    cmd.Parameters.AddWithValue("inventory_id", id);
-                    cmd.Parameters.AddWithValue("reason", txtReason.Text);
-                    cmd.Parameters.AddWithValue("SKU", dgvSKUList.Rows[row.Index].Cells[0].Value.ToString());
-                    cmd.Parameters.AddWithValue("Date", dtpDate.Value.ToString());
-                    cmd.ExecuteNonQuery();
-
-                    QueryDelete = "DELETE FROM tblInventories WHERE SKU = '" + dgvSKUList.Rows[row.Index].Cells[0].Value.ToString() + "' AND Batch_number = '" + Batch_number + "'";
-                    cmd = new SqlCommand(QueryDelete, con);
-                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Please enter the reason");
                 }
-                con.Close();
-                dgvSKUList.ClearSelection();
-                txtReason.Text = "";
-                MessageBox.Show("Stock adjusted!");
-                this.Close();
+                else
+                {
+                    con.Close();
+                    con.Open();
+                    foreach (DataGridViewRow row in dgvSKUList.SelectedRows)
+                    {
+                        QuerySelect = "SELECT Inventory_id FROM tblInventories WHERE SKU = @sku AND Status = 'Stock In'";
+                        cmd = new SqlCommand(QuerySelect, con);
+                        cmd.Parameters.AddWithValue("sku", dgvSKUList.Rows[row.Index].Cells[0].Value.ToString());
+
+
+                        reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                id = reader["Inventory_id"].ToString();
+                            }
+                        }
+                        reader.Close();
+
+
+                        QueryInsert = "INSERT INTO tblInventoryAdjustment (Inventory_id, Reason, SKU, Date)" +
+                            "VALUES (@inventory_id, @reason,@SKU,@date)";
+                        cmd = new SqlCommand(QueryInsert, con);
+                        cmd.Parameters.AddWithValue("inventory_id", id);
+                        cmd.Parameters.AddWithValue("reason", txtReason.Text);
+                        cmd.Parameters.AddWithValue("SKU", dgvSKUList.Rows[row.Index].Cells[0].Value.ToString());
+                        cmd.Parameters.AddWithValue("Date", dtpDate.Value.ToString());
+                        cmd.ExecuteNonQuery();
+
+                        QueryDelete = "DELETE FROM tblInventories WHERE SKU = '" + dgvSKUList.Rows[row.Index].Cells[0].Value.ToString() + "' AND Batch_number = '" + Batch_number + "'";
+                        cmd = new SqlCommand(QueryDelete, con);
+                        cmd.ExecuteNonQuery();
+                    }
+                    con.Close();
+                    dgvSKUList.ClearSelection();
+                    txtReason.Text = "";
+                    MessageBox.Show("Stock adjusted!");
+                    this.Close();
+                }
+                
 
             }
             else
@@ -326,7 +334,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private void btnSave_Click(object sender, EventArgs e)
         {
             // updateStock();
-            adjustStock();
+            if (txtAdjustment.Text == "" || txtAdjustment == null)
+            {
+                MessageBox.Show("Enter Reason of Adjustment");
+            }
+            else
+            {
+                adjustStock();
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

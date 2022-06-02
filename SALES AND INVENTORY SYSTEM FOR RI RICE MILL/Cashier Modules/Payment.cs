@@ -383,6 +383,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public void autoCompleteCustomer()
         {
+            
             con.Close();
             QuerySelect = "SELECT CONCAT(First_name ,' ',  Last_name) as Name FROM tblCustomers " +
                 "WHERE First_name LIKE '" + txtViewCustomer.Text + "%' OR Last_name LIKE '" + txtViewCustomer.Text + "%'";
@@ -395,12 +396,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 MyCollection.Add(reader.GetString(0));
             }
             txtViewCustomer.AutoCompleteCustomSource = MyCollection;
+              
             con.Close();
-
+            
         }
 
         public void frmPayment_Load(object sender, EventArgs e)
         {
+
             autoCompleteCustomer();
         }
 

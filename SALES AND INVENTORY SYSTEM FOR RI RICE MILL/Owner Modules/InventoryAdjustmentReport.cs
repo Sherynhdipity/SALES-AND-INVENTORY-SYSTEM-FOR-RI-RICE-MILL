@@ -76,6 +76,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void frmInventoryAdjustmentReport_Load(object sender, EventArgs e)
         {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = false;
+            btnSearch.Enabled = false;
+            btnPrint.Enabled = false;
 
             DateTime date = DateTime.Now;
             dtpFromDate.Text = string.Format("{0:D}", date);
@@ -92,5 +96,84 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             dgvInventoryAdjust.DataSource = dt;
             dgvInventoryAdjust.Refresh();
         }
+
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (rbnDaily.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value;
+
+            }
+            else if (rbnWeekly.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value.AddDays(7);
+
+            }
+            else if (rbnMonthly.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value.AddMonths(1).AddDays(-1);
+
+            }
+            else if (rbnYearly.Checked)
+            {
+                dtpToDate.Value = dtpFromDate.Value.AddYears(1).AddMonths(-1);
+
+            }
+            else if (rbnCustom.Checked)
+            {
+                if (DateTime.Today < dtpFromDate.Value)
+                {
+                    MessageBox.Show("The Date is Invalid");
+                    dtpFromDate.Value = DateTime.Today;
+                }
+                else if (dtpToDate.Value < dtpToDate.Value)
+                {
+                    MessageBox.Show("To Date must be greater than From Date");
+                    dtpToDate.Value = DateTime.Today;
+                }
+            }
+        }
+
+        private void rbnDaily_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrint.Enabled = true;
+        }
+
+        private void rbnWeekly_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrint.Enabled = true;
+        }
+
+        private void rbnMonthly_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrint.Enabled = true;
+        }
+
+        private void rbnYearly_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpToDate.Enabled = false;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrint.Enabled = true;
+        }
+
+        private void rbnCustom_CheckedChanged(object sender, EventArgs e)
+        {
+
+            dtpToDate.Enabled = true;
+            dtpFromDate.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPrint.Enabled = true;
+        }
     }
+    
 }

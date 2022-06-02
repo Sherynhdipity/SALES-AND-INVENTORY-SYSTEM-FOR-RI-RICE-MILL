@@ -186,6 +186,7 @@
             this.txtBatchNumber.TextPlaceholder = "Enter Batch Number";
             this.txtBatchNumber.UseSystemPasswordChar = false;
             this.txtBatchNumber.WordWrap = true;
+            this.txtBatchNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBatchNumber_KeyPress);
             // 
             // btnPrintBarcode
             // 
@@ -543,7 +544,7 @@
             this.txtViewItem.BorderColorIdle = System.Drawing.Color.Black;
             this.txtViewItem.BorderRadius = 20;
             this.txtViewItem.BorderThickness = 1;
-            this.txtViewItem.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtViewItem.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtViewItem.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtViewItem.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
             this.txtViewItem.DefaultText = "";
@@ -584,7 +585,7 @@
             this.txtViewItem.Padding = new System.Windows.Forms.Padding(3);
             this.txtViewItem.PasswordChar = '\0';
             this.txtViewItem.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtViewItem.PlaceholderText = "Search item here..";
+            this.txtViewItem.PlaceholderText = "SEARCH ITEM HERE..";
             this.txtViewItem.ReadOnly = false;
             this.txtViewItem.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtViewItem.SelectedText = "";
@@ -598,7 +599,7 @@
             this.txtViewItem.TextMarginBottom = 0;
             this.txtViewItem.TextMarginLeft = 3;
             this.txtViewItem.TextMarginTop = 1;
-            this.txtViewItem.TextPlaceholder = "Search item here..";
+            this.txtViewItem.TextPlaceholder = "SEARCH ITEM HERE..";
             this.txtViewItem.UseSystemPasswordChar = false;
             this.txtViewItem.WordWrap = true;
             this.txtViewItem.TextChange += new System.EventHandler(this.txtViewItem_TextChange);

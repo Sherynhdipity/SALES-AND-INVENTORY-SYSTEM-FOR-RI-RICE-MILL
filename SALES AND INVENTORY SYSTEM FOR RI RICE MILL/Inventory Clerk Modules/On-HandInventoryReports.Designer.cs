@@ -32,18 +32,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(On_HandInventoryReports));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(On_HandInventoryReports));
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.dgvInventoryOwnerReport = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblTotal = new Bunifu.UI.WinForms.BunifuLabel();
-            this.btnSearch = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.dtpFromDate = new Bunifu.UI.WinForms.BunifuDatePicker();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btnPrintReport = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.txtSearchInventory = new Bunifu.UI.WinForms.BunifuTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventoryOwnerReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -51,9 +55,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtSearchInventory);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.bunifuLabel1);
-            this.groupBox1.Controls.Add(this.dtpFromDate);
             this.groupBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(14, 91);
@@ -62,6 +66,41 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.groupBox1.TabIndex = 123;
             this.groupBox1.TabStop = false;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.ActiveImage = null;
+            this.btnSearch.AllowAnimations = true;
+            this.btnSearch.AllowBuffering = false;
+            this.btnSearch.AllowToggling = false;
+            this.btnSearch.AllowZooming = false;
+            this.btnSearch.AllowZoomingOnFocus = false;
+            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnSearch.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnSearch.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.ErrorImage")));
+            this.btnSearch.FadeWhenInactive = false;
+            this.btnSearch.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.btnSearch.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.search;
+            this.btnSearch.ImageActive = null;
+            this.btnSearch.ImageLocation = null;
+            this.btnSearch.ImageMargin = 20;
+            this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
+            this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
+            this.btnSearch.Location = new System.Drawing.Point(581, 44);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Rotation = 0;
+            this.btnSearch.ShowActiveImage = true;
+            this.btnSearch.ShowCursorChanges = true;
+            this.btnSearch.ShowImageBorders = true;
+            this.btnSearch.ShowSizeMarkers = false;
+            this.btnSearch.Size = new System.Drawing.Size(50, 50);
+            this.btnSearch.TabIndex = 119;
+            this.btnSearch.ToolTipText = "";
+            this.btnSearch.WaitOnLoad = false;
+            this.btnSearch.Zoom = 20;
+            this.btnSearch.ZoomSpeed = 10;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // bunifuLabel1
             // 
             this.bunifuLabel1.AllowParentOverrides = false;
@@ -69,12 +108,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.bunifuLabel1.CursorType = null;
             this.bunifuLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(105, 45);
+            this.bunifuLabel1.Location = new System.Drawing.Point(103, 54);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(43, 18);
+            this.bunifuLabel1.Size = new System.Drawing.Size(102, 18);
             this.bunifuLabel1.TabIndex = 116;
-            this.bunifuLabel1.Text = "Date:";
+            this.bunifuLabel1.Text = "Search Item:";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel1.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -193,72 +232,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.lblTotal.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.lblTotal.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // btnSearch
-            // 
-            this.btnSearch.ActiveImage = null;
-            this.btnSearch.AllowAnimations = true;
-            this.btnSearch.AllowBuffering = false;
-            this.btnSearch.AllowToggling = false;
-            this.btnSearch.AllowZooming = false;
-            this.btnSearch.AllowZoomingOnFocus = false;
-            this.btnSearch.BackColor = System.Drawing.Color.Transparent;
-            this.btnSearch.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnSearch.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.ErrorImage")));
-            this.btnSearch.FadeWhenInactive = false;
-            this.btnSearch.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
-            this.btnSearch.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.search;
-            this.btnSearch.ImageActive = null;
-            this.btnSearch.ImageLocation = null;
-            this.btnSearch.ImageMargin = 20;
-            this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
-            this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
-            this.btnSearch.Location = new System.Drawing.Point(448, 33);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Rotation = 0;
-            this.btnSearch.ShowActiveImage = true;
-            this.btnSearch.ShowCursorChanges = true;
-            this.btnSearch.ShowImageBorders = true;
-            this.btnSearch.ShowSizeMarkers = false;
-            this.btnSearch.Size = new System.Drawing.Size(50, 50);
-            this.btnSearch.TabIndex = 119;
-            this.btnSearch.ToolTipText = "";
-            this.btnSearch.WaitOnLoad = false;
-            this.btnSearch.Zoom = 20;
-            this.btnSearch.ZoomSpeed = 10;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // dtpFromDate
-            // 
-            this.dtpFromDate.BackColor = System.Drawing.Color.Transparent;
-            this.dtpFromDate.BorderColor = System.Drawing.Color.Black;
-            this.dtpFromDate.BorderRadius = 10;
-            this.dtpFromDate.Color = System.Drawing.Color.Black;
-            this.dtpFromDate.DateBorderThickness = Bunifu.UI.WinForms.BunifuDatePicker.BorderThickness.Thin;
-            this.dtpFromDate.DateTextAlign = Bunifu.UI.WinForms.BunifuDatePicker.TextAlign.Left;
-            this.dtpFromDate.DisabledColor = System.Drawing.Color.White;
-            this.dtpFromDate.DisplayWeekNumbers = false;
-            this.dtpFromDate.DPHeight = 0;
-            this.dtpFromDate.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dtpFromDate.FillDatePicker = false;
-            this.dtpFromDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpFromDate.ForeColor = System.Drawing.Color.Black;
-            this.dtpFromDate.Icon = ((System.Drawing.Image)(resources.GetObject("dtpFromDate.Icon")));
-            this.dtpFromDate.IconColor = System.Drawing.SystemColors.Control;
-            this.dtpFromDate.IconLocation = Bunifu.UI.WinForms.BunifuDatePicker.Indicator.Right;
-            this.dtpFromDate.LeftTextMargin = 5;
-            this.dtpFromDate.Location = new System.Drawing.Point(169, 40);
-            this.dtpFromDate.MinimumSize = new System.Drawing.Size(4, 32);
-            this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(182, 32);
-            this.dtpFromDate.TabIndex = 35;
-            this.dtpFromDate.Value = new System.DateTime(2022, 4, 27, 0, 0, 0, 0);
-            // 
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.clipboard;
-            this.pictureBox6.Location = new System.Drawing.Point(239, 1);
+            this.pictureBox6.Location = new System.Drawing.Point(239, 7);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(85, 69);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -357,6 +335,82 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.btnPrintReport.UseDefaultRadiusAndThickness = true;
             this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
+            // txtSearchInventory
+            // 
+            this.txtSearchInventory.AcceptsReturn = false;
+            this.txtSearchInventory.AcceptsTab = false;
+            this.txtSearchInventory.AnimationSpeed = 200;
+            this.txtSearchInventory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtSearchInventory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtSearchInventory.AutoSizeHeight = true;
+            this.txtSearchInventory.BackColor = System.Drawing.Color.Transparent;
+            this.txtSearchInventory.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtSearchInventory.BackgroundImage")));
+            this.txtSearchInventory.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtSearchInventory.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtSearchInventory.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtSearchInventory.BorderColorIdle = System.Drawing.Color.Black;
+            this.txtSearchInventory.BorderRadius = 20;
+            this.txtSearchInventory.BorderThickness = 1;
+            this.txtSearchInventory.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtSearchInventory.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchInventory.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
+            this.txtSearchInventory.DefaultText = "";
+            this.txtSearchInventory.FillColor = System.Drawing.Color.White;
+            this.txtSearchInventory.HideSelection = true;
+            this.txtSearchInventory.IconLeft = null;
+            this.txtSearchInventory.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchInventory.IconPadding = 10;
+            this.txtSearchInventory.IconRight = null;
+            this.txtSearchInventory.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearchInventory.Lines = new string[0];
+            this.txtSearchInventory.Location = new System.Drawing.Point(211, 44);
+            this.txtSearchInventory.MaxLength = 32767;
+            this.txtSearchInventory.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtSearchInventory.Modified = false;
+            this.txtSearchInventory.Multiline = false;
+            this.txtSearchInventory.Name = "txtSearchInventory";
+            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtSearchInventory.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtSearchInventory.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtSearchInventory.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.Black;
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtSearchInventory.OnIdleState = stateProperties4;
+            this.txtSearchInventory.Padding = new System.Windows.Forms.Padding(3);
+            this.txtSearchInventory.PasswordChar = '\0';
+            this.txtSearchInventory.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtSearchInventory.PlaceholderText = "Search..";
+            this.txtSearchInventory.ReadOnly = false;
+            this.txtSearchInventory.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtSearchInventory.SelectedText = "";
+            this.txtSearchInventory.SelectionLength = 0;
+            this.txtSearchInventory.SelectionStart = 0;
+            this.txtSearchInventory.ShortcutsEnabled = true;
+            this.txtSearchInventory.Size = new System.Drawing.Size(349, 39);
+            this.txtSearchInventory.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtSearchInventory.TabIndex = 121;
+            this.txtSearchInventory.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtSearchInventory.TextMarginBottom = 0;
+            this.txtSearchInventory.TextMarginLeft = 3;
+            this.txtSearchInventory.TextMarginTop = 1;
+            this.txtSearchInventory.TextPlaceholder = "Search..";
+            this.txtSearchInventory.UseSystemPasswordChar = false;
+            this.txtSearchInventory.WordWrap = true;
+            this.txtSearchInventory.TextChanged += new System.EventHandler(this.txtSearchInventory_TextChanged);
+            // 
             // On_HandInventoryReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,12 +441,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private System.Windows.Forms.GroupBox groupBox1;
         private Bunifu.UI.WinForms.BunifuImageButton btnSearch;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
-        private Bunifu.UI.WinForms.BunifuDatePicker dtpFromDate;
         private System.Windows.Forms.PictureBox pictureBox6;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvInventoryOwnerReport;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuLabel lblTotal;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPrintReport;
+        private Bunifu.UI.WinForms.BunifuTextBox txtSearchInventory;
     }
 }

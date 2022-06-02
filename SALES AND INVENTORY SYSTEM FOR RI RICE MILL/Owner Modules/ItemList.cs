@@ -52,15 +52,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
-            {
-                QuerySelect = "Select * from tblItems";
-            }
-            else
-            {
-                QuerySelect = "Select Description, Cost_Price, Price, Critical_Level from tblItems where (Description LIKE '%' + @desc + '%')";
-            }
-
+         
+             QuerySelect = "Select Description, Cost_Price, Price, Critical_Level from tblItems where (Description LIKE '%' + @desc + '%')";
             cmd = new SqlCommand(QuerySelect, con);
             cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
             adapter = new SqlDataAdapter(cmd);
@@ -84,19 +77,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
                 {
                     QuerySelect = "Select * from tblItems";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    item.Database.Tables["tblItems"].SetDataSource(dt);
+                    list.ItemListViewer.ReportSource = item;
+                    con.Close();
+                    list.Show();
                 }
                 else
                 {
                     QuerySelect = "Select Description, Cost_Price, Price, Critical_Level from tblItems where (Description LIKE '%' + @desc + '%')";
-                }
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
 
-                item.Database.Tables["tblItems"].SetDataSource(dt);
-                list.ItemListViewer.ReportSource = item;
-                con.Close();
-                list.Show();
+                    item.Database.Tables["tblItems"].SetDataSource(dt);
+                    list.ItemListViewer.ReportSource = item;
+                    con.Close();
+                    list.Show();
+                }
+                
             }
 
             catch (Exception ex)

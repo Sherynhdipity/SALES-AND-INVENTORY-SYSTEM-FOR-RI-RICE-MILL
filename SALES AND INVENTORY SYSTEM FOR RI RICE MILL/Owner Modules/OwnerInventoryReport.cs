@@ -121,21 +121,31 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
                 {
                     QuerySelect = "Select * from InventoryPerItemView";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    inventory.Database.Tables["InventoryPerItemView"].SetDataSource(dt);
+                    frm.InventoryReportViewer1.ReportSource = inventory;
+                    con.Close();
+                    frm.Show();
                 }
 
                 else
                 {
-                    QuerySelect = "Select * from InventoryPerItemView where Description = '" + txtSearchItem.Text + "'";
+                    QuerySelect = "Select * from InventoryPerItemView where (Description LIKE '%' + @desc + '%')";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    inventory.Database.Tables["InventoryPerItemView"].SetDataSource(dt);
+                    frm.InventoryReportViewer1.ReportSource = inventory;
+                    con.Close();
+                    frm.Show();
                 }
 
-                cmd = new SqlCommand(QuerySelect, con);
-                adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-
-                inventory.Database.Tables["InventoryPerItemView"].SetDataSource(dt);
-                frm.InventoryReportViewer1.ReportSource = inventory;
-                con.Close();
-                frm.Show();
+               
 
 
 

@@ -97,20 +97,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtStreet.Clear();
             }
-            else if (!Regex.IsMatch(txtContact.Text, @"^(9)\d{9}$"))
+            else if (!Regex.IsMatch(txtContact.Text, @"^(09)\d{9}$"))
             {
                 MessageBox.Show("Phone number must be 11 digit only");
-                txtContact.Clear();
+              
             }
-            else if (!Regex.IsMatch(txtFirstName.Text,  @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
+            else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("First Name must be a letter only");
-                txtFirstName.Clear();
+
             }
-            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
+            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("Last name must be a letter only");
-                txtLastName.Clear();
+
+            }
+            else if (!Regex.IsMatch(txtStreet.Text, @"^[A-Za-z0-9\s@]*$"))
+            {
+                MessageBox.Show("Street must be a letter and number only");
             }
 
             else if (txtFirstName.Text != ""

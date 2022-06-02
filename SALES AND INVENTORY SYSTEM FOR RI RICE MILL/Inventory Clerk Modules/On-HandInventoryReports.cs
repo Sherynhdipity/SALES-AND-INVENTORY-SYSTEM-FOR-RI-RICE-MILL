@@ -32,13 +32,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void On_HandInventoryReports_Load(object sender, EventArgs e)
         {
-            DateTime date = DateTime.Now;
-            dtpFromDate.Text = string.Format("{0:D}", date);
+            //DateTime date = DateTime.Now;
+            ////dtpFromDate.Text = string.Format("{0:D}", date);
 
-            QuerySelect = " Select [Date], [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk";
+            QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk";
 
             cmd = new SqlCommand(QuerySelect, con);
-            cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
+            //cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
             //cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
 
             adapter = new SqlDataAdapter(cmd);
@@ -51,7 +51,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
             for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[3].Value);
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
             }
 
             lblTotal.Text = sum.ToString();
@@ -61,10 +61,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             try
             {
-                QuerySelect = " Select [Date], [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where [Date] = @Date";
+                QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')"; 
 
                 cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
+                cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
                 //cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
 
                 adapter = new SqlDataAdapter(cmd);
@@ -77,7 +77,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
                 for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[3].Value);
+                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
                 }
 
                 lblTotal.Text = sum.ToString();
@@ -112,35 +112,64 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
             try
             {
-                date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
-                //date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
-                con.Open();
-
                 dt = new DataTable();
 
-                TextObject DateFrom = (TextObject)sum.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["DateFrom"];
-                DateFrom.Text = dtpFromDate.Value.ToString();
+                if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
+                {
+                    QuerySelect = "Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
 
+                    sum.Database.Tables["InventorySummaryReportInventoryClerk"].SetDataSource(dt);
+                    frm.crystalReportViewer1.ReportSource = sum;
+                    con.Close();
+                    frm.Show();
+                }
+                else
+                {
+                    QuerySelect = "Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
 
-                QuerySelect = "Select [Date], [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where [Date] = @Date";
-                
-                cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
-                adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+                    sum.Database.Tables["InventorySummaryReportInventoryClerk"].SetDataSource(dt);
+                    frm.crystalReportViewer1.ReportSource = sum;
+                    con.Close();
+                    frm.Show();
 
-                sum.Database.Tables["InventorySummaryReportInventoryClerk"].SetDataSource(dt);
-                frm.crystalReportViewer1.ReportSource = sum;
-                con.Close();
-                frm.Show();
-
-
+                }
 
             }
             catch (Exception ex)
             {
 
             }
+        }
+
+        private void txtSearchInventory_TextChanged(object sender, EventArgs e)
+        {
+            QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
+
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+            //cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
+
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvInventoryOwnerReport.DataSource = dt;
+            dgvInventoryOwnerReport.Refresh();
+
+            int sum = 0;
+
+            for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
+            }
+
+            lblTotal.Text = sum.ToString();
         }
     }
 }

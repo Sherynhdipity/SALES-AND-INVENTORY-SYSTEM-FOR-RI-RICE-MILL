@@ -42,14 +42,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             try
             {
 
-                if (txtSearchCustomers.Text == "" || txtSearchCustomers.Text == null)
-                {
-                    QuerySelect = "Select * from CustomerRecords";
-                }
-                else
-                {
-                    QuerySelect = " Select * from CustomerRecords where ([First Name] LIKE '%' + @first + '%') Or ([Last Name] LIKE '%' + @last + '%')";
-                }
+                
+                QuerySelect = " Select * from CustomerRecords where ([First Name] LIKE '%' + @first + '%') Or ([Last Name] LIKE '%' + @last + '%')";
+                
              
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@first", txtSearchCustomers.Text);
@@ -82,23 +77,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 if (txtSearchCustomers.Text == "" || txtSearchCustomers.Text == null)
                 {
                     QuerySelect = "Select * from CustomerRecords";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    cust.Database.Tables["CustomerRecords"].SetDataSource(dt);
+                    list.CustomerListViewer.ReportSource = cust;
+                    con.Close();
+                    list.Show();
                 }
                 else
                 {
                     QuerySelect = " Select * from CustomerRecords where ([First Name] LIKE '%' + @first + '%') Or ([Last Name] LIKE '%' + @last + '%')";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    cust.Database.Tables["CustomerRecords"].SetDataSource(dt);
+                    list.CustomerListViewer.ReportSource = cust;
+                    con.Close();
+                    list.Show();
                 }
-
-                cmd = new SqlCommand(QuerySelect, con);
-                cmd.Parameters.AddWithValue("@first", txtSearchCustomers.Text);
-                cmd.Parameters.AddWithValue("@last", txtSearchCustomers.Text);
-                adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-
-                cust.Database.Tables["CustomerRecords"].SetDataSource(dt);
-                list.CustomerListViewer.ReportSource = cust;
-                con.Close();
-                list.Show();
-
             }
             catch (Exception ex)
             {

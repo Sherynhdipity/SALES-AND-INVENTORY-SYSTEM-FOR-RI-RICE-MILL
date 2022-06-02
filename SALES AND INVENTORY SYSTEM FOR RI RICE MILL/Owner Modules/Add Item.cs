@@ -74,11 +74,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtCostPrice.Clear();
             }
-            else if (!Regex.IsMatch(txtCostPrice.Text, @"^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$"))
+            else if(!Regex.IsMatch(txtDescription.Text, @"^[A-Za-z0-9\s-]*$"))
+            {
+                MessageBox.Show("Description must contain letters, numbers, space and dash only");
+            }
+
+            else if (!Regex.IsMatch(txtCostPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
             {
                 MessageBox.Show("Cost Price must be Number Only");
             }
-            else if (!Regex.IsMatch(txtPrice.Text, @"^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$"))
+            else if (!Regex.IsMatch(txtPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
             {
                 MessageBox.Show("Price must be Number Only");
 
@@ -159,7 +164,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                                cmd.Parameters.AddWithValue("@price", txtPrice.Text.Replace(",", ""));
+                                cmd.Parameters.AddWithValue("@price", txtPrice.Text.Replace(",",""));
                                 cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
                                 cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
                                 cmd.ExecuteNonQuery();
@@ -219,22 +224,47 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             addItem();
         }
 
+        private void txtCostPrice_TextChange(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    txtCostPrice.Text = string.Format("{0:#,##0.00}", double.Parse(txtCostPrice.Text));
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            
+        }
+
+        private void txtCostPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrice_TextChange(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    txtPrice.Text = string.Format("{0:#,##0.00}", double.Parse(txtPrice.Text));
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+        }
+
         private void txtCostPrice_TextChanged(object sender, EventArgs e)
         {
-           
-        }
-
-        private void txtPrice_TextChanged(object sender, EventArgs e)
-        {
-            
-            
-
-        }
-
-        private void txtCriticalLevel_TextChanged(object sender, EventArgs e)
-        {
-           
-            
 
         }
     }

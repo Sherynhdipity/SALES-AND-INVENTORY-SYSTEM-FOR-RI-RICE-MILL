@@ -54,7 +54,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void ucInventoryReports_Load(object sender, EventArgs e)
         {
             AvailableStock();
-            StockOut();
+            //StockOut();
         }
 
         public void AvailableStock()
@@ -62,11 +62,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             try
             {
                 con.Open();
-                QuerySelect = "SELECT * from InventoryDashboardView";
+                QuerySelect = "SELECT * from AvailableStockView";
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    txtTotalAvailableStock.Text = reader["Available Stock"].ToString();
+                    txtTotalAvailableStock.Text = reader["Available Quantity"].ToString();
 
                 }
             }
@@ -80,29 +80,29 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
-        public void StockOut()
-        {
-            try
-            {
-                con.Open();
-                QuerySelect = "SELECT * from InventoryDashboardView";
-                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-                if (reader.Read())
-                {
-                   txtStockOut.Text = reader["Stock out"].ToString();
+        //public void StockOut()
+        //{
+        //    try
+        //    {
+        //        con.Open();
+        //        QuerySelect = "SELECT Count(SKU) from tblInventoryAdjustment";
+        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+        //        if (reader.Read())
+        //        {
+        //           txtStockOut.Text = reader["Count(SKU)"].ToString();
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        con.Close();
+        //    }
 
-        }
+        //}
 
        
 

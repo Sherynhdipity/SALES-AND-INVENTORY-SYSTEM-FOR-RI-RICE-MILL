@@ -80,10 +80,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 e.Handled = true;
             }
 
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+           
+        }
+
+        private void txtTotalCost_TextChanged(object sender, EventArgs e)
+        {
+            try
             {
-                e.Handled = true;
+                txtTotalCost.Text = string.Format("{0:##,###}", double.Parse(txtTotalCost.Text));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

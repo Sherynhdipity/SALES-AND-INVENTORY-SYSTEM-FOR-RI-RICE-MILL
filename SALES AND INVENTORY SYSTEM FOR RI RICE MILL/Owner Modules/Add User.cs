@@ -79,8 +79,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
             //else if (String.IsNullOrWhiteSpace(txtMiddleName.Text))
             //{
-               // MessageBox.Show("Whitespace is not allowed!");
-               // txtMiddleName.Clear();
+            // MessageBox.Show("Whitespace is not allowed!");
+            // txtMiddleName.Clear();
             //}
             else if (String.IsNullOrEmpty(txtLastName.Text))
             {
@@ -189,58 +189,60 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (!Regex.IsMatch(txtContact.Text, @"^(09)\d{9}$"))
             {
                 MessageBox.Show("Phone number must be 11 digit only");
-                
+
             }
-            else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
+            else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("First Name must be a letter only");
-                
-            }
-            //else if (!Regex.IsMatch(txtMiddleName.Text, @"^[^\s*]([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
-            //{
-                //MessageBox.Show("Middle Name must be a letter only");
-                
-            //}
 
-            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
+            }
+
+            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
             {
-                MessageBox.Show("Last name must be a letter only");
-                txtLastName.Clear();
+                MessageBox.Show("Last name must be letter only");
+                
             }
-
-            else if (txtFirstName.Text != "" 
+            else if (!Regex.IsMatch(txtStreet.Text, @"^[A-Za-z0-9\s@]*$"))
+            {
+                MessageBox.Show("Invalid Street");
+            }
+            else if (!Regex.IsMatch(txtUserName.Text, @"^[A-Za-z0-9_!@#$%^&*()+={}[]*$"))
+            {
+                MessageBox.Show("Invalid Username");
+            }
+            else if (txtFirstName.Text != ""
                 && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""
                 && cmbBarangay.Text != "" && cmbMunicipality.Text != "" && cmbProvince.Text != ""
                 && txtUserName.Text != "" && txtPassword.Text != "" && txtConfirmPassword.Text != "")
             {
                 if (txtPassword.Text == txtConfirmPassword.Text) {
-                result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
+                    result = MessageBox.Show("Do you want to Add this User?", "Add User", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
                         con.Close();
                         con.Open();
                         QuerySelect = "SELECT * FROM tblUsers WHERE Username = @uName";
-                        
+
                         cmd = new SqlCommand(QuerySelect, con);
                         cmd.Parameters.AddWithValue("@uName", txtUserName.Text);
 
                         reader = cmd.ExecuteReader();
 
-                    if (reader.HasRows)
-                    {
-                        MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        txtUserName.Clear();
-                    }
-                    else
-                    {
-                        try
+                        if (reader.HasRows)
                         {
-                            con.Close();
-                            con.Open();
-                            QueryInsert = "INSERT INTO tblUsers (Last_name,First_name,Middle_name,Birthday,Street," +
-                            "Barangay,Municipality,Province,Contact_number,Sex,Username,Password,User_type) " +
-                            "VALUES (@lName, @fName, @mName, @birthday, @street, @brgy, @city, @province, @cNo, @gender, @username, @password, @userType)";
-                                
+                            MessageBox.Show("This user already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtUserName.Clear();
+                        }
+                        else
+                        {
+                            try
+                            {
+                                con.Close();
+                                con.Open();
+                                QueryInsert = "INSERT INTO tblUsers (Last_name,First_name,Middle_name,Birthday,Street," +
+                                "Barangay,Municipality,Province,Contact_number,Sex,Username,Password,User_type) " +
+                                "VALUES (@lName, @fName, @mName, @birthday, @street, @brgy, @city, @province, @cNo, @gender, @username, @password, @userType)";
+
                                 cmd = new SqlCommand(QueryInsert, con);
 
                                 cmd.Parameters.AddWithValue("@fName", txtFirstName.Text);
@@ -258,24 +260,24 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                                 cmd.Parameters.AddWithValue("@userType", cmbUser_Type.SelectedItem.ToString());
 
                                 cmd.ExecuteNonQuery();
-                                
+
                                 MessageBox.Show("User Added Successfully!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 this.Close();
                                 ClearControls();
-                           
-                        }
 
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
+                            }
+
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message);
+
+                            }
+                            finally
+                            {
+                                con.Close();
+                            }
 
                         }
-                        finally
-                        {
-                            con.Close();
-                        }
-
-                    }
 
                     }
 
@@ -389,6 +391,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
         private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStreet_TextChanged(object sender, EventArgs e)
         {
 
         }

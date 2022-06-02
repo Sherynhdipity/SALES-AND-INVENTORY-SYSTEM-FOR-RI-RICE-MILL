@@ -64,7 +64,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            QuerySelect = "Select * from InventoryDetailedReport where Batch_number = @batch or Description = @desc";
+            QuerySelect = "Select * from InventoryDetailedReport where (Batch_number LIKE '%' + @batch + '%') or (Description LIKE '%' + @desc + '%')";
             cmd = new SqlCommand(QuerySelect, con);
             cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
             cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
@@ -128,28 +128,39 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             InventoryDetailed detail = new InventoryDetailed();
             frmInventoryDetailed det = new frmInventoryDetailed();
-            DataSet dt = new DataSet();
+            DataTable dt = new DataTable();
 
-            //if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
-            //{
-            QuerySelect = "Select * from InventoryDetailedReport";
+            con.Open();
 
-            //}
-            //else
-            //{
-            //    QuerySelect = "Select * from InventoryDetailedReport where (Batch_number LIKE '%' + @batch + '%') or (Description LIKE '%' + @desc + '%')";
-            //}
+            if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
+            {
+                QuerySelect = "Select * from InventoryDetailedReport";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
 
-            cmd = new SqlCommand(QuerySelect, con);
-            cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
-            cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
-            adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
+                detail.Database.Tables["InventoryDetailedReport"].SetDataSource(dt);
+                det.InventoryDetailedViewer.ReportSource = detail;
+                con.Close();
+                det.Show();
 
-            detail.Database.Tables["InventoryDetailedReport"].SetDataSource(dt);
-            det.InventoryDetailedViewer.ReportSource = detail;
-            con.Close();
-            det.Show();
+            }
+            else
+            {
+                QuerySelect = "Select * from InventoryDetailedReport where (Batch_number LIKE '%' + @batch + '%') or (Description LIKE '%' + @desc + '%')";
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
+                cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                detail.Database.Tables["InventoryDetailedReport"].SetDataSource(dt);
+                det.InventoryDetailedViewer.ReportSource = detail;
+                con.Close();
+                det.Show();
+            }
+
+            
         }
     }
 }

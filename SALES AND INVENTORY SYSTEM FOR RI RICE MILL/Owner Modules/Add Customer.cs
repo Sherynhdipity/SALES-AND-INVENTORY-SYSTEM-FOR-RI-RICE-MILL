@@ -98,21 +98,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (!Regex.IsMatch(txtContact.Text, @"^(09)\d{9}$"))
             {
                 MessageBox.Show("Phone number must be 11 digit only");
-                txtContact.Clear();
-            }
-            else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
-            {
-                MessageBox.Show("First Name must be a letter only and no spacial characters or numbers");
                 
             }
-            //else if (!Regex.IsMatch(txtMiddleName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
-            //{
-            //    MessageBox.Show("Middle Name must be a letter only");
-            //    txtFirstName.Clear();
-            //}
-            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
+            else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
             {
-                MessageBox.Show("Last name must be a letter only and no spacial characters or numbers");
+                MessageBox.Show("First Name must be a letter only");
+                
+            }
+            else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
+            {
+                MessageBox.Show("Last name must be a letter only");
                 
             }
             //else if (cmbProvince.SelectedIndex == -1)//Nothing selected
@@ -126,6 +121,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (cmbBarangay.SelectedIndex == -1)//Nothing selected
             {
                 MessageBox.Show("You must select a Barangay!", "Error");
+            }
+
+            else if (!Regex.IsMatch(txtStreet.Text, @"^[A-Za-z0-9\s@]*$"))
+            {
+                MessageBox.Show("Street must be a letter and number only");
             }
             else if (txtFirstName.Text != ""
                 && txtLastName.Text != "" && txtContact.Text != "" && txtStreet.Text != ""

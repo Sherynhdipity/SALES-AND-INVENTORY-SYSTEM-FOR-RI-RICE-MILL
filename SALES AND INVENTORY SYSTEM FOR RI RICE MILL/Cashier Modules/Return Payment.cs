@@ -318,7 +318,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     con.Close();
                     MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //GenerateReturnSlip();
                     GenerateReturnSlip();
+                    
                     this.Close();
 
                 }
@@ -421,6 +423,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             //GenerateReplaceSlip();
             this.DialogResult = DialogResult.OK;
+            GenerateReplaceSlip();
         }
 
         void GenerateReplaceSlip()
@@ -468,9 +471,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             DataTable ReplaceDt = new DataTable();
 
-            ReplaceDt.Columns.Add("ReplacedDescription", typeof(string));
-            ReplaceDt.Columns.Add("ReplacedQty", typeof(string));
-            ReplaceDt.Columns.Add("ReplacedPrice", typeof(string));
+            ReplaceDt.Columns.Add("ReplaceDescription", typeof(string));
+            ReplaceDt.Columns.Add("ReplaceQty", typeof(string));
+            ReplaceDt.Columns.Add("ReplacePrice", typeof(string));
 
             for (int outerIndex = 0; outerIndex < ReplacedItemDesc.Length; outerIndex++)
             {

@@ -499,12 +499,6 @@
     <Compile Include="Owner Modules\InventoryDetailedReport.Designer.cs">
       <DependentUpon>InventoryDetailedReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\InventorySummary.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Owner Modules\InventorySummary.Designer.cs">
-      <DependentUpon>InventorySummary.cs</DependentUpon>
-    </Compile>
     <Compile Include="Owner Modules\InventoryValuation.cs">
       <SubType>Form</SubType>
     </Compile>

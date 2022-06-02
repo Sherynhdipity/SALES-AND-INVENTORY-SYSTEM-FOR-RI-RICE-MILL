@@ -179,7 +179,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.btnSearch.ImageSize = new System.Drawing.Size(30, 30);
             this.btnSearch.ImageZoomSize = new System.Drawing.Size(50, 50);
             this.btnSearch.InitialImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.InitialImage")));
-            this.btnSearch.Location = new System.Drawing.Point(581, 37);
+            this.btnSearch.Location = new System.Drawing.Point(581, 40);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Rotation = 0;
             this.btnSearch.ShowActiveImage = true;

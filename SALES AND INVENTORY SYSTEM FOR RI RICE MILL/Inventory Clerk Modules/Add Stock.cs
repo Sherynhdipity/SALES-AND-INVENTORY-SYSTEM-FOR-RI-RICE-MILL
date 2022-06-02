@@ -145,7 +145,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                         //txtSKU.Text = remVowel(dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Unit"].ToString());
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -184,6 +184,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtBatchQuantity.Clear();
             }
+
+            else if (!Regex.IsMatch(txtDescription.Text, @"^\d +$"))
+            {
+                MessageBox.Show("Number only!");
+            }
             else
             {
                 result = MessageBox.Show("Do you want to add this stock?", "Update Item", MessageBoxButtons.YesNo);
@@ -194,17 +199,17 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                         int rows = dgvSKUList.Rows.Count;
                         con.Close();
                         con.Open();
-                        if(rows > 0)
+                        if (rows > 0)
                         {
                             int batch_number;
-                                    QuerySelect = "SELECT MAX(Batch_number) FROM tblInventories " +
-                                        "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc)";
+                            QuerySelect = "SELECT MAX(Batch_number) FROM tblInventories " +
+                                "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc)";
                             cmd = new SqlCommand(QuerySelect, con);
                             cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
                             adapter = new SqlDataAdapter(cmd);
                             dt = new DataTable();
                             adapter.Fill(dt);
-                            if(dt.Rows[0][0].ToString() == null || dt.Rows[0][0].ToString() == "")
+                            if (dt.Rows[0][0].ToString() == null || dt.Rows[0][0].ToString() == "")
                             {
                                 batch_number = 1;
                             }
@@ -216,14 +221,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
                             for (int i = 0; i < rows; i++)
                             {
-                               QueryInsert = "INSERT INTO tblInventories " +
-                               "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id, Status) " +
-                               "VALUES ('"
-                               + batch_number + "', '"
-                               + dgvSKUList.Rows[i].Cells[0].Value.ToString() + "', @mDate, @sDate, '"
-                               + Id + "'," +
-                               "(SELECT Item_id  FROM tblItems WHERE Description = @desc), 'Stock In')";
-                                
+                                QueryInsert = "INSERT INTO tblInventories " +
+                                "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id, Status) " +
+                                "VALUES ('"
+                                + batch_number + "', '"
+                                + dgvSKUList.Rows[i].Cells[0].Value.ToString() + "', @mDate, @sDate, '"
+                                + Id + "'," +
+                                "(SELECT Item_id  FROM tblItems WHERE Description = @desc), 'Stock In')";
+
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
                                 cmd.Parameters.AddWithValue("@mDate", dtpMilledDate.Value.Date);
@@ -237,7 +242,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                             MessageBox.Show("Generate SKU First!");
                         }
 
-                        
+
                         MessageBox.Show("Stock Added Successfully!", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         btnPrintBarcode.PerformClick();
                         txtViewItem.Clear();
@@ -266,7 +271,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             con.Close();
             QuerySelect = "SELECT [Description] FROM tblItems " +
-                "WHERE Description LIKE '"+txtViewItem.Text+"%'";
+                "WHERE Description LIKE '" + txtViewItem.Text + "%'";
             cmd = new SqlCommand(QuerySelect, con);
             con.Open();
             reader = cmd.ExecuteReader();
@@ -291,7 +296,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
                 ClearControls();
             }
-            
+
         }
 
         public static string ReplaceWhitespace(string input, string replacement)
@@ -303,7 +308,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private void btnSave_Click(object sender, EventArgs e)
         {
             addStock();
-            
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -314,13 +319,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private void txtBatchQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-            (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // only allow one decimal point
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+                (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -333,11 +332,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             int length = input.Length;
             //if (length >= 9)
             //{
-                input = input.Remove(input.Length - 2);
-                input = input + "00000000";
-                input = input.Substring(0, 9);
-                
-                return input;
+            input = input.Remove(input.Length - 2);
+            input = input + "00000000";
+            input = input.Substring(0, 9);
+
+            return input;
             //}
             //else
             //{
@@ -378,7 +377,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
                     QuerySelect = "Select SKU from tblInventories " +
                         "WHERE Inventory_id = (SELECT MAX(Inventory_id) FROM tblInventories " +
-                        "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = '"+ description +"')) " +
+                        "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + description + "')) " +
                         "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = '" + description + "')";
                     cmd = new SqlCommand(QuerySelect, con);
                     con.Open();
@@ -413,7 +412,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -421,12 +420,38 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
                 con.Close();
             }
-            
+
         }
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            displaySKU();
+            if (txtBatchQuantity.Text == "" || txtViewItem.Text == "")
+            {
+                MessageBox.Show("Enter Item and Batch Quantity");
+            }
+            else if (txtViewItem.Text == "")
+            {
+                MessageBox.Show("Enter Item");
+            }
+            else if (txtBatchQuantity.Text == "")
+            {
+                MessageBox.Show("Enter Batch Quantity");
+            }
+            
+            else if (!Regex.IsMatch(txtBatchQuantity.Text, @"^\d+$"))
+            {
+                MessageBox.Show("Batch Quantity must be number only");
+            }
+            else if (!Regex.IsMatch(txtViewItem.Text, @"^[A-Za-z0-9\s-]*$"))
+            {
+                MessageBox.Show("Search must be exact as the product textbox show");
+            }
+                       
+            else
+            {
+                displaySKU();
+            }
+            
         }
        
         private void bunifuButton2_Click(object sender, EventArgs e)

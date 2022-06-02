@@ -88,72 +88,62 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            if (dgvInventoryValuation.Rows.Count == 0)
-            {
-                MessageBox.Show("No Data");
-            }
-            else
-            {
-                showInventoryValuation();
-            }
-        }
-
-        public void showInventoryValuation()
-        {
-
             InventoryValuation valuation = new InventoryValuation();
             frmInventoryValuationReport frm = new frmInventoryValuationReport();
-            DataSet dt = new DataSet();
+
+            DataTable dt = new DataTable();
+
             if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
             {
-                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView where (Batch_number LIKE '%' + @batch + '%') OR (Description LIKE '%' + @desc + '%')";
-                
+                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView";
+                cmd = new SqlCommand(QuerySelect, con);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                valuation.Database.Tables["InventoryValuationView"].SetDataSource(dt);
+                frm.InventoryValuationViewer.ReportSource = valuation;
+                con.Close();
+                frm.Show();
             }
             else
             {
-                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView";
+                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView where(Batch_number LIKE '%' + @batch + '%') or (Description LIKE '%' + @desc + '%')";
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
+                cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+                adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                valuation.Database.Tables["InventoryValuationView"].SetDataSource(dt);
+                frm.InventoryValuationViewer.ReportSource = valuation;
+                con.Close();
+                frm.Show();
             }
-
-            cmd = new SqlCommand(QuerySelect, con);
-            cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
-            cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
-            adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-
-            valuation.Database.Tables["InventoryValuationView"].SetDataSource(dt);
-            frm.InventoryValuationViewer.ReportSource = valuation;
-            con.Close();
-            frm.Show();
-
         }
 
         private void txtSearchInventory_TextChanged(object sender, EventArgs e)
         {
-            if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
-            {
-                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView";
-            }
-            else
-            {
+
                 QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView where (Batch_number LIKE '%' + @batch + '%') OR (Description LIKE '%' + @desc + '%')";
-            }
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
+                cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvInventoryValuation.DataSource = dt;
+                dgvInventoryValuation.Refresh();
 
-            cmd = new SqlCommand(QuerySelect, con);
-            cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
-            cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
-            dgvInventoryValuation.DataSource = dt;
-            dgvInventoryValuation.Refresh();
+                float sum = 0;
+                for (int i = 0; i < dgvInventoryValuation.Rows.Count; i++)
+                {
+                    sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[7].Value);
+                }
 
-            float sum = 0;
-            for (int i = 0; i < dgvInventoryValuation.Rows.Count; i++)
-            {
-                sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[7].Value);
-            }
+                lblTotalProfit.Text = sum.ToString("N2");
+            
 
-            lblTotalProfit.Text = sum.ToString("N2");
+            
         }
 
         private void dgvInventoryValuation_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

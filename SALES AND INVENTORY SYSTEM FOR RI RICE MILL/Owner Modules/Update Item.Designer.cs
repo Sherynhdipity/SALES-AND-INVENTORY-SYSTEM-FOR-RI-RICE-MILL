@@ -165,8 +165,8 @@
             validationObject1.CustomErrorMessage = "Number Only!";
             validationObject1.Optional = false;
             validationObject1.PropertyName = "Text";
-            validationObject1.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
-            validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
+            validationObject1.Regex = "^-?(?:\\d+|\\d{1,2}(?:,\\d{3})+)(?:(\\.|,)\\d+)?$";
+            validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtCostPrice, validationObject1);
             this.txtCostPrice.Location = new System.Drawing.Point(19, 132);
             this.txtCostPrice.MaxLength = 10;
@@ -214,6 +214,7 @@
             this.txtCostPrice.TextPlaceholder = "";
             this.txtCostPrice.UseSystemPasswordChar = false;
             this.txtCostPrice.WordWrap = true;
+            this.txtCostPrice.TextChanged += new System.EventHandler(this.txtCostPrice_TextChanged);
             // 
             // bunifuLabel3
             // 
@@ -587,8 +588,8 @@
             validationObject8.CustomErrorMessage = "Number Only";
             validationObject8.Optional = false;
             validationObject8.PropertyName = "Text";
-            validationObject8.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
-            validationObject8.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
+            validationObject8.Regex = "^-?(?:\\d+|\\d{1,2}(?:,\\d{3})+)(?:(\\.|,)\\d+)?$";
+            validationObject8.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtPrice, validationObject8);
             this.txtPrice.Location = new System.Drawing.Point(19, 213);
             this.txtPrice.MaxLength = 10;

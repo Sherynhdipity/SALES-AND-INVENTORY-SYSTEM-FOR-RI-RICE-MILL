@@ -216,6 +216,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.txtTotalCost.TextPlaceholder = "";
             this.txtTotalCost.UseSystemPasswordChar = false;
             this.txtTotalCost.WordWrap = true;
+            this.txtTotalCost.TextChanged += new System.EventHandler(this.txtTotalCost_TextChanged);
             this.txtTotalCost.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalCost_KeyPress);
             // 
             // btnSetReq

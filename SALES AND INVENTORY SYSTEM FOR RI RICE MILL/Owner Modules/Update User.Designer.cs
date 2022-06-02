@@ -685,7 +685,7 @@
             validationObject9.CustomErrorMessage = "Invalid Contact Number";
             validationObject9.Optional = false;
             validationObject9.PropertyName = "Text";
-            validationObject9.Regex = "(09|\\+639)\\d{9}$\")";
+            validationObject9.Regex = "^(09)\\d{9}$";
             validationObject9.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtContact, validationObject9);
             this.txtContact.Location = new System.Drawing.Point(16, 282);
@@ -848,11 +848,11 @@
             this.txtStreet.IconRight = null;
             this.txtStreet.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtStreet.Lines = new string[0];
-            validationObject14.CustomErrorMessage = "Invalid Street";
-            validationObject14.Optional = true;
+            validationObject14.CustomErrorMessage = "";
+            validationObject14.Optional = false;
             validationObject14.PropertyName = "Text";
-            validationObject14.Regex = "^[a-zA-Z0-9_.-]*$";
-            validationObject14.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
+            validationObject14.Regex = null;
+            validationObject14.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.txtStreet, validationObject14);
             this.txtStreet.Location = new System.Drawing.Point(302, 282);
             this.txtStreet.MaxLength = 50;
@@ -1008,8 +1008,8 @@
             validationObject18.CustomErrorMessage = "Invalid Last Name";
             validationObject18.Optional = false;
             validationObject18.PropertyName = "Text";
-            validationObject18.Regex = "^[a-z ,.\'-]+$";
-            validationObject18.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Name;
+            validationObject18.Regex = "^([a-zA-Z-.]+?)([-\\s\'][a-zA-Z]+)*?$";
+            validationObject18.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtLastName, validationObject18);
             this.txtLastName.Location = new System.Drawing.Point(16, 206);
             this.txtLastName.MaxLength = 50;
@@ -1212,8 +1212,8 @@
             validationObject22.CustomErrorMessage = "Invalid First Name";
             validationObject22.Optional = false;
             validationObject22.PropertyName = "Text";
-            validationObject22.Regex = "^[a-z ,.\'-]+$";
-            validationObject22.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Name;
+            validationObject22.Regex = "^([a-zA-Z-.]+?)([-\\s\'][a-zA-Z]+)*?$";
+            validationObject22.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.CustomRegex;
             this.validationProvider1.SetLink(this.txtFirstName, validationObject22);
             this.txtFirstName.Location = new System.Drawing.Point(16, 53);
             this.txtFirstName.MaxLength = 50;

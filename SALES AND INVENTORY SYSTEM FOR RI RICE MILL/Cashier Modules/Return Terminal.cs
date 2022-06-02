@@ -882,9 +882,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else
             {
                 //Returned
-                string[] ReturneditemDesc = new string[dvgOrderList.Rows.Count];
+                string[] ReturneditemDesc = new string[dgvShowReturn.Rows.Count];
                 int[] Returnedqty = new int[dgvShowReturn.Rows.Count];
-                double[] Returnedprice = new double[dvgOrderList.Rows.Count];
+                double[] Returnedprice = new double[dgvShowReturn.Rows.Count];
                 string[] Remarks = new string[dgvShowReturn.Rows.Count];
 
                 //Replaced
@@ -895,15 +895,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 try
                 {
                     //Returned Itemdeets to pass on payment
-                    for (int i = 0; i < dvgOrderList.Rows.Count; i++)
-                    {
-                        ReturneditemDesc[i] = dvgOrderList.Rows[i].Cells[0].Value.ToString();     
-                        Returnedprice[i] = Convert.ToDouble(dvgOrderList.Rows[i].Cells[1].Value.ToString());
-                    }
                     for (int i = 0; i < dgvShowReturn.Rows.Count; i++)
                     {
-                        Returnedqty[i] = Convert.ToInt32(dgvShowReturn.Rows[i].Cells[1].Value.ToString());
-                        Remarks[i] = dgvShowReturn.Rows[i].Cells[2].Value.ToString();
+                        ReturneditemDesc[i] = dgvShowReturn.Rows[i].Cells[0].Value.ToString();
+                        Returnedqty[i] = Convert.ToInt32(dgvShowReturn.Rows[i].Cells[2].Value.ToString());
+                        Returnedprice[i] = Convert.ToDouble(dgvShowReturn.Rows[i].Cells[3].Value.ToString());
+                        Remarks[i] = dgvShowReturn.Rows[i].Cells[4].Value.ToString();
                     }
 
 
@@ -1134,6 +1131,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void lblTotal_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void dvgOrderList_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            sku.Description = dvgOrderList.CurrentRow.Cells["Description"].Value.ToString();
+            sku.Price = Convert.ToDouble(txtReturnAmount.Text).ToString("N2");
+            //sku.Transaction_Number = dvgOrderList.CurrentRow.Cells["Transaction Number"].Value.ToString();
+            sku.Transaction_Number = transaction_number;
+            sku.ShowDialog();
         }
 
         //mod end
