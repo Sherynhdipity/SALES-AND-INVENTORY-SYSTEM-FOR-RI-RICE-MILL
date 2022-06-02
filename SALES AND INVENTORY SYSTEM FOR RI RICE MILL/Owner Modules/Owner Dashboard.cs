@@ -113,7 +113,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public void populateDash()
         {
-            string var = Convert.ToDouble(lblTotalSales.Text).ToString("N2");
+            
 
             // Total Sales
             try
@@ -123,7 +123,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    var = reader["totalSales"].ToString();
+                   string var = reader["totalSales"].ToString();
+                    lblTotalSales.Text = Convert.ToDouble(var).ToString("N2");
                 }
             }
             catch (Exception)

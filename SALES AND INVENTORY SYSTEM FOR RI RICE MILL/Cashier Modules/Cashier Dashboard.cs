@@ -114,7 +114,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
                 if (reader.Read())
                 {
-                    lblTotalSales.Text = reader["totalSales"].ToString();
+                    string var = reader["totalSales"].ToString();
+                    lblTotalSales.Text = Convert.ToDouble(var).ToString("N2");
                 }
 
                 
@@ -137,6 +138,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     lblTotalTransactions.Text = reader["totalTrans"].ToString();
+                   
                 }
             }
             catch (Exception ex)

@@ -34,8 +34,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.AppData = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.AppData();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.btnClose = new System.Windows.Forms.Button();
             this.SalesReturnSlip1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ReturnSlip();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.BarcodeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppData)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +91,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPrintReturnSlip";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PrintReceipt";
+            this.Text = "PrintReturnSlip";
             ((System.ComponentModel.ISupportInitialize)(this.BarcodeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppData)).EndInit();
             this.ResumeLayout(false);

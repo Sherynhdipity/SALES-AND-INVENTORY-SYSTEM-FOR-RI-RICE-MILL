@@ -54,7 +54,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 if (reader.Read())
                 {
                     
-                    txtTotalSales.Text = reader["totalSales"].ToString();
+                    string var = reader["totalSales"].ToString();
+                    txtTotalSales.Text = Convert.ToDouble(var).ToString("N2");
                    
                 }
             }

@@ -318,8 +318,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     con.Close();
                     MessageBox.Show("Change: " + (Convert.ToDouble(txtCash.Text) - Convert.ToDouble(txtAmount.Text)).ToString("#,0.0"), "Change", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     MessageBox.Show("Transaction Finished!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //GenerateReturnSlip();
+                    
+                    
                     GenerateReturnSlip();
+                    GenerateReplaceSlip();
                     
                     this.Close();
 
@@ -417,13 +419,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             resibo.Database.Tables["return_details"].SetDataSource(OrderReturnDt);
 
-            frmPrintReceipt.getform.Show();
-            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = null;
-            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = resibo;
+            frmPrintReturnSlip.getform.Show();
+            frmPrintReturnSlip.getform.crystalReportViewer1.ReportSource = null;
+            frmPrintReturnSlip.getform.crystalReportViewer1.ReportSource = resibo;
 
-            //GenerateReplaceSlip();
             this.DialogResult = DialogResult.OK;
-            GenerateReplaceSlip();
         }
 
         void GenerateReplaceSlip()

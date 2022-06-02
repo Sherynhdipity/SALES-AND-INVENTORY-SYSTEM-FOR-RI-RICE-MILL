@@ -31,14 +31,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSalesDashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblTotalTransactions = new Bunifu.UI.WinForms.BunifuLabel();
@@ -153,7 +153,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblTotalSales.CursorType = null;
             this.lblTotalSales.Font = new System.Drawing.Font("Impact", 15.75F);
             this.lblTotalSales.ForeColor = System.Drawing.Color.White;
-            this.lblTotalSales.Location = new System.Drawing.Point(106, 61);
+            this.lblTotalSales.Location = new System.Drawing.Point(102, 67);
             this.lblTotalSales.Name = "lblTotalSales";
             this.lblTotalSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTotalSales.Size = new System.Drawing.Size(11, 26);
@@ -183,48 +183,48 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.salesChart.BorderlineColor = System.Drawing.Color.Black;
             this.salesChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.salesChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.salesChart.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.salesChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.salesChart.Legends.Add(legend3);
             this.salesChart.Location = new System.Drawing.Point(60, 251);
             this.salesChart.Name = "salesChart";
             this.salesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Total Sales";
-            series1.XValueMember = "Date";
-            series1.YValueMembers = "Total";
-            this.salesChart.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Total Sales";
+            series3.XValueMember = "Date";
+            series3.YValueMembers = "Total";
+            this.salesChart.Series.Add(series3);
             this.salesChart.Size = new System.Drawing.Size(474, 313);
             this.salesChart.TabIndex = 75;
             this.salesChart.Text = "Sales Chart";
-            title1.Name = "Title1";
-            title1.Text = "Sales Data Chart";
-            this.salesChart.Titles.Add(title1);
+            title3.Name = "Title1";
+            title3.Text = "Sales Data Chart";
+            this.salesChart.Titles.Add(title3);
             // 
             // StocksChart
             // 
             this.StocksChart.BorderlineColor = System.Drawing.Color.Black;
             this.StocksChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.Name = "ChartArea1";
-            this.StocksChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.StocksChart.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.StocksChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.StocksChart.Legends.Add(legend4);
             this.StocksChart.Location = new System.Drawing.Point(540, 251);
             this.StocksChart.Name = "StocksChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Quantity";
-            series2.XValueMember = "Description";
-            series2.YValueMembers = "QtySold";
-            this.StocksChart.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Quantity";
+            series4.XValueMember = "Description";
+            series4.YValueMembers = "QtySold";
+            this.StocksChart.Series.Add(series4);
             this.StocksChart.Size = new System.Drawing.Size(471, 313);
             this.StocksChart.TabIndex = 76;
             this.StocksChart.Text = "chart1";
-            title2.Name = "Title1";
-            title2.Text = "Rice Item Sold by Variety";
-            this.StocksChart.Titles.Add(title2);
+            title4.Name = "Title1";
+            title4.Text = "Rice Item Sold by Variety";
+            this.StocksChart.Titles.Add(title4);
             // 
             // timer1
             // 

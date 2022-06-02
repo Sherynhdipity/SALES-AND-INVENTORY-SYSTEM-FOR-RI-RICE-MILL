@@ -113,14 +113,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel3.AllowParentOverrides = false;
             this.bunifuLabel3.AutoEllipsis = false;
             this.bunifuLabel3.CursorType = null;
-            this.bunifuLabel3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F);
+            this.bunifuLabel3.Font = new System.Drawing.Font("Impact", 30F);
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(54, 53);
+            this.bunifuLabel3.Location = new System.Drawing.Point(54, 34);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel3.Size = new System.Drawing.Size(156, 46);
+            this.bunifuLabel3.Size = new System.Drawing.Size(142, 48);
             this.bunifuLabel3.TabIndex = 44;
-            this.bunifuLabel3.Text = "Reports";
+            this.bunifuLabel3.Text = "REPORTS";
             this.bunifuLabel3.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel3.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
@@ -480,10 +480,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel5.Controls.Add(this.pictureBox1);
             this.bunifuPanel5.Controls.Add(this.btnViewSalesReports);
             this.bunifuPanel5.Controls.Add(this.btnViewInventoryReports);
-            this.bunifuPanel5.Location = new System.Drawing.Point(54, 121);
+            this.bunifuPanel5.Location = new System.Drawing.Point(54, 99);
             this.bunifuPanel5.Name = "bunifuPanel5";
             this.bunifuPanel5.ShowBorders = true;
-            this.bunifuPanel5.Size = new System.Drawing.Size(269, 534);
+            this.bunifuPanel5.Size = new System.Drawing.Size(269, 548);
             this.bunifuPanel5.TabIndex = 55;
             this.bunifuPanel5.Click += new System.EventHandler(this.bunifuPanel5_Click);
             // 
@@ -556,7 +556,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnItemList.IdleIconLeftImage = null;
             this.btnItemList.IdleIconRightImage = null;
             this.btnItemList.IndicateFocus = false;
-            this.btnItemList.Location = new System.Drawing.Point(46, 449);
+            this.btnItemList.Location = new System.Drawing.Point(26, 449);
             this.btnItemList.Name = "btnItemList";
             this.btnItemList.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnItemList.OnDisabledState.BorderRadius = 10;
@@ -590,7 +590,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnItemList.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnItemList.OnPressedState.IconLeftImage = null;
             this.btnItemList.OnPressedState.IconRightImage = null;
-            this.btnItemList.Size = new System.Drawing.Size(183, 81);
+            this.btnItemList.Size = new System.Drawing.Size(220, 81);
             this.btnItemList.TabIndex = 63;
             this.btnItemList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnItemList.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -646,7 +646,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCustomerList.IdleIconLeftImage = null;
             this.btnCustomerList.IdleIconRightImage = null;
             this.btnCustomerList.IndicateFocus = false;
-            this.btnCustomerList.Location = new System.Drawing.Point(46, 362);
+            this.btnCustomerList.Location = new System.Drawing.Point(26, 362);
             this.btnCustomerList.Name = "btnCustomerList";
             this.btnCustomerList.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCustomerList.OnDisabledState.BorderRadius = 10;
@@ -680,7 +680,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCustomerList.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnCustomerList.OnPressedState.IconLeftImage = null;
             this.btnCustomerList.OnPressedState.IconRightImage = null;
-            this.btnCustomerList.Size = new System.Drawing.Size(183, 81);
+            this.btnCustomerList.Size = new System.Drawing.Size(220, 81);
             this.btnCustomerList.TabIndex = 62;
             this.btnCustomerList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCustomerList.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -747,7 +747,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuButton22.IdleIconLeftImage = null;
             this.bunifuButton22.IdleIconRightImage = null;
             this.bunifuButton22.IndicateFocus = false;
-            this.bunifuButton22.Location = new System.Drawing.Point(46, 190);
+            this.bunifuButton22.Location = new System.Drawing.Point(26, 190);
             this.bunifuButton22.Name = "bunifuButton22";
             this.bunifuButton22.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.bunifuButton22.OnDisabledState.BorderRadius = 10;
@@ -781,7 +781,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuButton22.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton22.OnPressedState.IconLeftImage = null;
             this.bunifuButton22.OnPressedState.IconRightImage = null;
-            this.bunifuButton22.Size = new System.Drawing.Size(183, 81);
+            this.bunifuButton22.Size = new System.Drawing.Size(220, 81);
             this.bunifuButton22.TabIndex = 61;
             this.bunifuButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton22.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -848,7 +848,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuButton21.IdleIconLeftImage = null;
             this.bunifuButton21.IdleIconRightImage = null;
             this.bunifuButton21.IndicateFocus = false;
-            this.bunifuButton21.Location = new System.Drawing.Point(46, 275);
+            this.bunifuButton21.Location = new System.Drawing.Point(26, 275);
             this.bunifuButton21.Name = "bunifuButton21";
             this.bunifuButton21.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.bunifuButton21.OnDisabledState.BorderRadius = 10;
@@ -882,7 +882,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuButton21.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton21.OnPressedState.IconLeftImage = null;
             this.bunifuButton21.OnPressedState.IconRightImage = null;
-            this.bunifuButton21.Size = new System.Drawing.Size(183, 81);
+            this.bunifuButton21.Size = new System.Drawing.Size(220, 81);
             this.bunifuButton21.TabIndex = 58;
             this.bunifuButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton21.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -927,7 +927,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewSalesReports.BackColor1 = System.Drawing.Color.White;
             this.btnViewSalesReports.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewSalesReports.BackgroundImage")));
             this.btnViewSalesReports.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnViewSalesReports.ButtonText = "            Sales\r\n            Reports\r\n            Per Item";
+            this.btnViewSalesReports.ButtonText = "                        \r\n                    Sales\r\n                    Summary\r" +
+    "\n                    Reports\r\n            ";
             this.btnViewSalesReports.ButtonTextMarginLeft = 0;
             this.btnViewSalesReports.ColorContrastOnClick = 45;
             this.btnViewSalesReports.ColorContrastOnHover = 45;
@@ -960,7 +961,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewSalesReports.IdleIconLeftImage = null;
             this.btnViewSalesReports.IdleIconRightImage = null;
             this.btnViewSalesReports.IndicateFocus = false;
-            this.btnViewSalesReports.Location = new System.Drawing.Point(46, 16);
+            this.btnViewSalesReports.Location = new System.Drawing.Point(26, 16);
             this.btnViewSalesReports.Name = "btnViewSalesReports";
             this.btnViewSalesReports.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnViewSalesReports.OnDisabledState.BorderRadius = 10;
@@ -994,7 +995,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewSalesReports.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnViewSalesReports.OnPressedState.IconLeftImage = null;
             this.btnViewSalesReports.OnPressedState.IconRightImage = null;
-            this.btnViewSalesReports.Size = new System.Drawing.Size(183, 81);
+            this.btnViewSalesReports.Size = new System.Drawing.Size(220, 81);
             this.btnViewSalesReports.TabIndex = 0;
             this.btnViewSalesReports.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnViewSalesReports.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1017,7 +1018,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewInventoryReports.BackColor1 = System.Drawing.Color.White;
             this.btnViewInventoryReports.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnViewInventoryReports.BackgroundImage")));
             this.btnViewInventoryReports.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton2.BorderStyles.Solid;
-            this.btnViewInventoryReports.ButtonText = "                Inventory\r\n                 Reports";
+            this.btnViewInventoryReports.ButtonText = "                       Inventory\r\n                       Reports";
             this.btnViewInventoryReports.ButtonTextMarginLeft = 0;
             this.btnViewInventoryReports.ColorContrastOnClick = 45;
             this.btnViewInventoryReports.ColorContrastOnHover = 45;
@@ -1050,7 +1051,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewInventoryReports.IdleIconLeftImage = null;
             this.btnViewInventoryReports.IdleIconRightImage = null;
             this.btnViewInventoryReports.IndicateFocus = false;
-            this.btnViewInventoryReports.Location = new System.Drawing.Point(46, 103);
+            this.btnViewInventoryReports.Location = new System.Drawing.Point(26, 103);
             this.btnViewInventoryReports.Name = "btnViewInventoryReports";
             this.btnViewInventoryReports.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnViewInventoryReports.OnDisabledState.BorderRadius = 10;
@@ -1084,7 +1085,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnViewInventoryReports.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnViewInventoryReports.OnPressedState.IconLeftImage = null;
             this.btnViewInventoryReports.OnPressedState.IconRightImage = null;
-            this.btnViewInventoryReports.Size = new System.Drawing.Size(183, 81);
+            this.btnViewInventoryReports.Size = new System.Drawing.Size(220, 81);
             this.btnViewInventoryReports.TabIndex = 2;
             this.btnViewInventoryReports.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnViewInventoryReports.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1118,7 +1119,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtTotalnventoryItem.CursorType = null;
             this.txtTotalnventoryItem.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalnventoryItem.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalnventoryItem.Location = new System.Drawing.Point(163, 179);
+            this.txtTotalnventoryItem.Location = new System.Drawing.Point(137, 179);
             this.txtTotalnventoryItem.Name = "txtTotalnventoryItem";
             this.txtTotalnventoryItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTotalnventoryItem.Size = new System.Drawing.Size(16, 33);
@@ -1196,7 +1197,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtTotalReturn.CursorType = null;
             this.txtTotalReturn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalReturn.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalReturn.Location = new System.Drawing.Point(128, 178);
+            this.txtTotalReturn.Location = new System.Drawing.Point(121, 178);
             this.txtTotalReturn.Name = "txtTotalReturn";
             this.txtTotalReturn.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTotalReturn.Size = new System.Drawing.Size(16, 33);
@@ -1275,7 +1276,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtTotalTransaction.CursorType = null;
             this.txtTotalTransaction.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalTransaction.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalTransaction.Location = new System.Drawing.Point(121, 135);
+            this.txtTotalTransaction.Location = new System.Drawing.Point(128, 135);
             this.txtTotalTransaction.Name = "txtTotalTransaction";
             this.txtTotalTransaction.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTotalTransaction.Size = new System.Drawing.Size(16, 33);
@@ -1352,7 +1353,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtTotalSales.CursorType = null;
             this.txtTotalSales.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalSales.ForeColor = System.Drawing.Color.Black;
-            this.txtTotalSales.Location = new System.Drawing.Point(127, 140);
+            this.txtTotalSales.Location = new System.Drawing.Point(115, 140);
             this.txtTotalSales.Name = "txtTotalSales";
             this.txtTotalSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTotalSales.Size = new System.Drawing.Size(16, 33);

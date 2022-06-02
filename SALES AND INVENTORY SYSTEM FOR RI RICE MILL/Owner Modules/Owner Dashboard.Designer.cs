@@ -88,7 +88,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblTotalSales.CursorType = null;
             this.lblTotalSales.Font = new System.Drawing.Font("Impact", 15.75F);
             this.lblTotalSales.ForeColor = System.Drawing.Color.White;
-            this.lblTotalSales.Location = new System.Drawing.Point(106, 61);
+            this.lblTotalSales.Location = new System.Drawing.Point(102, 67);
             this.lblTotalSales.Name = "lblTotalSales";
             this.lblTotalSales.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblTotalSales.Size = new System.Drawing.Size(11, 26);
