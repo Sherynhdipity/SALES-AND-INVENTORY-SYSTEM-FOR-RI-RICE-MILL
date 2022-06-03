@@ -357,9 +357,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.Location = new System.Drawing.Point(614, 623);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(107, 22);
+            this.bunifuLabel2.Size = new System.Drawing.Size(115, 22);
             this.bunifuLabel2.TabIndex = 111;
-            this.bunifuLabel2.Text = "Total Sales:";
+            this.bunifuLabel2.Text = "Gross Sales:";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.bunifuLabel2.Click += new System.EventHandler(this.bunifuLabel2_Click_1);

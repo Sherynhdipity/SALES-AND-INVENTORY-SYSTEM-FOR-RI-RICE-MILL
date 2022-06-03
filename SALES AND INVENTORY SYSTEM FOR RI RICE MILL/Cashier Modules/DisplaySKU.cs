@@ -194,7 +194,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 //    this.Close();
 
                 //}
-                    if (cmbRemarks.SelectedIndex == 1)
+                    if (cmbRemarks.SelectedIndex == 0)
                     {
                     //for (int i = 0; i < selectedRows; i++)
                         foreach (DataGridViewRow row in dgvOrderDetails.SelectedRows)
@@ -311,6 +311,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void cmbRemarks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

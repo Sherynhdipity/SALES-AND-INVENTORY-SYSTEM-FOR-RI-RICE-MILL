@@ -1142,6 +1142,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             sku.ShowDialog();
         }
 
+        private void dvgOrderList_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 1 || e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
+        private void dgvShowReturn_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
         //mod end
 
     }

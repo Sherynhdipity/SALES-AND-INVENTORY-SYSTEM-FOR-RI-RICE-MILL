@@ -31,6 +31,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDisplaySKU));
             Kimtoo.ValidationProvider.ValidationObject validationObject11 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject1 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject10 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject2 = new Kimtoo.ValidationProvider.ValidationObject();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,8 +46,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             Kimtoo.ValidationProvider.ValidationObject validationObject7 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject8 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject9 = new Kimtoo.ValidationProvider.ValidationObject();
-            Kimtoo.ValidationProvider.ValidationObject validationObject1 = new Kimtoo.ValidationProvider.ValidationObject();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuShadowPanel2 = new Bunifu.UI.WinForms.BunifuShadowPanel();
             this.cmbRemarks = new Bunifu.UI.WinForms.BunifuDropdown();
             this.dgvOrderDetails = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -57,7 +58,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.bunifuLabel5 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblDescription = new Bunifu.UI.WinForms.BunifuLabel();
             this.validationProvider1 = new Kimtoo.ValidationProvider.ValidationProvider();
-            this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuShadowPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderDetails)).BeginInit();
@@ -84,6 +84,32 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(603, 394);
             this.bunifuPanel1.TabIndex = 2;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.color = System.Drawing.Color.RoyalBlue;
+            this.btnClose.colorActive = System.Drawing.Color.IndianRed;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
+            this.btnClose.Image = null;
+            this.btnClose.ImagePosition = 21;
+            this.btnClose.ImageZoom = 50;
+            this.btnClose.LabelPosition = 43;
+            this.btnClose.LabelText = "x";
+            validationObject1.CustomErrorMessage = "";
+            validationObject1.Optional = false;
+            validationObject1.PropertyName = "Text";
+            validationObject1.Regex = null;
+            validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.btnClose, validationObject1);
+            this.btnClose.Location = new System.Drawing.Point(532, 8);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(63, 47);
+            this.btnClose.TabIndex = 50;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // bunifuShadowPanel2
             // 
@@ -157,7 +183,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.cmbRemarks.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
             this.cmbRemarks.ItemHighLightForeColor = System.Drawing.Color.White;
             this.cmbRemarks.Items.AddRange(new object[] {
-            "Wrong Item",
             "Damaged"});
             this.cmbRemarks.ItemTopMargin = 3;
             validationObject2.CustomErrorMessage = "";
@@ -173,6 +198,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             this.cmbRemarks.Text = null;
             this.cmbRemarks.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
             this.cmbRemarks.TextLeftMargin = 5;
+            this.cmbRemarks.SelectedIndexChanged += new System.EventHandler(this.cmbRemarks_SelectedIndexChanged);
             // 
             // dgvOrderDetails
             // 
@@ -538,32 +564,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
             // validationProvider1
             // 
             this.validationProvider1.ErrorColor = System.Drawing.Color.Crimson;
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btnClose.color = System.Drawing.Color.RoyalBlue;
-            this.btnClose.colorActive = System.Drawing.Color.IndianRed;
-            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Image = null;
-            this.btnClose.ImagePosition = 21;
-            this.btnClose.ImageZoom = 50;
-            this.btnClose.LabelPosition = 43;
-            this.btnClose.LabelText = "x";
-            validationObject1.CustomErrorMessage = "";
-            validationObject1.Optional = false;
-            validationObject1.PropertyName = "Text";
-            validationObject1.Regex = null;
-            validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
-            this.validationProvider1.SetLink(this.btnClose, validationObject1);
-            this.btnClose.Location = new System.Drawing.Point(532, 8);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(8);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(63, 47);
-            this.btnClose.TabIndex = 50;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmDisplaySKU
             // 

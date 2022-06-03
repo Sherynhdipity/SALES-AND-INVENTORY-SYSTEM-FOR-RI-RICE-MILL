@@ -35,6 +35,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -78,9 +81,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnExit = new Bunifu.Framework.UI.BunifuTileButton();
             this.btnLogout = new Bunifu.Framework.UI.BunifuTileButton();
@@ -96,6 +96,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblUserRole = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel23 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.dvgOrderList = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.txtQuantity = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtStock = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtProdPrice = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -132,15 +133,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel7 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCancel = new Bunifu.Framework.UI.BunifuTileButton();
             this.dgvShowReturn = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.dvgOrderList = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.bunifuPanel4.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.bunifuPanel6.SuspendLayout();
             this.bunifuPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemReplaced)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowReturn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -478,6 +478,72 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.ShowBorders = false;
             this.bunifuPanel2.Size = new System.Drawing.Size(334, 609);
             this.bunifuPanel2.TabIndex = 8;
+            // 
+            // dvgOrderList
+            // 
+            this.dvgOrderList.AllowCustomTheming = false;
+            this.dvgOrderList.AllowUserToAddRows = false;
+            this.dvgOrderList.AllowUserToDeleteRows = false;
+            this.dvgOrderList.AllowUserToResizeColumns = false;
+            this.dvgOrderList.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dvgOrderList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dvgOrderList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvgOrderList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvgOrderList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dvgOrderList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgOrderList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dvgOrderList.ColumnHeadersHeight = 40;
+            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dvgOrderList.CurrentTheme.BackColor = System.Drawing.Color.White;
+            this.dvgOrderList.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.dvgOrderList.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.dvgOrderList.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.dvgOrderList.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dvgOrderList.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.dvgOrderList.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dvgOrderList.CurrentTheme.Name = null;
+            this.dvgOrderList.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dvgOrderList.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dvgOrderList.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.dvgOrderList.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.dvgOrderList.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgOrderList.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dvgOrderList.EnableHeadersVisualStyles = false;
+            this.dvgOrderList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.dvgOrderList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.dvgOrderList.HeaderBgColor = System.Drawing.Color.Empty;
+            this.dvgOrderList.HeaderForeColor = System.Drawing.Color.White;
+            this.dvgOrderList.Location = new System.Drawing.Point(0, 53);
+            this.dvgOrderList.Name = "dvgOrderList";
+            this.dvgOrderList.ReadOnly = true;
+            this.dvgOrderList.RowHeadersVisible = false;
+            this.dvgOrderList.RowTemplate.Height = 40;
+            this.dvgOrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvgOrderList.Size = new System.Drawing.Size(335, 249);
+            this.dvgOrderList.TabIndex = 45;
+            this.dvgOrderList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.dvgOrderList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgOrderList_CellFormatting_1);
+            this.dvgOrderList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgOrderList_CellMouseDoubleClick_1);
             // 
             // txtQuantity
             // 
@@ -1791,71 +1857,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvShowReturn.Size = new System.Drawing.Size(693, 241);
             this.dgvShowReturn.TabIndex = 44;
             this.dgvShowReturn.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // dvgOrderList
-            // 
-            this.dvgOrderList.AllowCustomTheming = false;
-            this.dvgOrderList.AllowUserToAddRows = false;
-            this.dvgOrderList.AllowUserToDeleteRows = false;
-            this.dvgOrderList.AllowUserToResizeColumns = false;
-            this.dvgOrderList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dvgOrderList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dvgOrderList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dvgOrderList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dvgOrderList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dvgOrderList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dvgOrderList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dvgOrderList.ColumnHeadersHeight = 40;
-            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dvgOrderList.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dvgOrderList.CurrentTheme.BackColor = System.Drawing.Color.White;
-            this.dvgOrderList.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dvgOrderList.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.dvgOrderList.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.dvgOrderList.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dvgOrderList.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.dvgOrderList.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.dvgOrderList.CurrentTheme.Name = null;
-            this.dvgOrderList.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dvgOrderList.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dvgOrderList.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dvgOrderList.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.dvgOrderList.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dvgOrderList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dvgOrderList.EnableHeadersVisualStyles = false;
-            this.dvgOrderList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.dvgOrderList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.dvgOrderList.HeaderBgColor = System.Drawing.Color.Empty;
-            this.dvgOrderList.HeaderForeColor = System.Drawing.Color.White;
-            this.dvgOrderList.Location = new System.Drawing.Point(0, 53);
-            this.dvgOrderList.Name = "dvgOrderList";
-            this.dvgOrderList.ReadOnly = true;
-            this.dvgOrderList.RowHeadersVisible = false;
-            this.dvgOrderList.RowTemplate.Height = 40;
-            this.dvgOrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgOrderList.Size = new System.Drawing.Size(335, 249);
-            this.dvgOrderList.TabIndex = 45;
-            this.dvgOrderList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.dvgOrderList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgOrderList_CellMouseDoubleClick_1);
+            this.dgvShowReturn.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvShowReturn_CellFormatting);
             // 
             // frmReturnTerminal
             // 
@@ -1889,6 +1891,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel4.PerformLayout();
             this.bunifuPanel2.ResumeLayout(false);
             this.bunifuPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.bunifuPanel6.ResumeLayout(false);
             this.bunifuPanel6.PerformLayout();
@@ -1896,7 +1899,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemReplaced)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowReturn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
