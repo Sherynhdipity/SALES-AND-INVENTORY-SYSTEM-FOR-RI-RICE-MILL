@@ -70,27 +70,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtFirstName.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtFirstName.Clear();
+                
             }
             else if (String.IsNullOrEmpty(txtLastName.Text))
             {
                 MessageBox.Show("Enter Last Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtLastName.Focus();
+                
             }
             else if (String.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtLastName.Clear();
+               
             }
             else if (String.IsNullOrEmpty(txtContact.Text))
             {
                 MessageBox.Show("Enter Contact Number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtContact.Focus();
+                
             }
             else if (String.IsNullOrWhiteSpace(txtContact.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtContact.Clear();
+                
             }
             else if (String.IsNullOrEmpty(txtStreet.Text))
             {
@@ -135,7 +135,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[a-z]).{8,15}$"))
             {
                 MessageBox.Show("Password must be 8 characters");
-                txtPassword.Clear();
+                
             }
             else if (!Regex.IsMatch(txtPassword.Text, @"^(?=.*[A-Z])"))
             {

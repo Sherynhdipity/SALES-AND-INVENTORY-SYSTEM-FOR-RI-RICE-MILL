@@ -34,6 +34,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string[] SKU;
         public string price;
         public string CustomerId;
+        public double returnTotal = 0;
         public List<string> SKU_LIST { get; set; }
 
         public frmReturnTerminal()
@@ -45,6 +46,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         
         void Form_Closed(object sender, FormClosedEventArgs e)
         {
+            returnTotal = 0;
             frmSearchTransNo frm = (frmSearchTransNo)sender;
             // dvgOrderList.Rows.Clear();
             DisplayReturn();
@@ -68,8 +70,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             btnPay.Enabled = true;
             lblTotal.Text = "0.00";
             lblTransDate.Text = "";
-
-            price = sku.Price;
+            returnTotal += Convert.ToDouble(sku.Price);
+            price = returnTotal.ToString();
             if(price.Equals("0.00"))
             {
                 txtReturnAmount.Text = Convert.ToDouble(price).ToString("N2");

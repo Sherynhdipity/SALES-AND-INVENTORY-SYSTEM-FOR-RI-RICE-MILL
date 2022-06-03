@@ -131,6 +131,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             }
         }
 
+        public bool isValidCustomer(string name)
+        {
+            string phrase = name;
+            string[] words = phrase.Split(' ');
+            if(words.Length > 1)
+            {
+                QuerySelect = "SELECT CONCAT(First_name ,' ',  Last_name) as Name FROM tblCustomers WHERE First_name = '" + words[0] + "' AND Last_name = '" + words[1] + "'";
+                cmd = new SqlCommand(QuerySelect, con);
+                con.Close();
+                con.Open();
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                if(reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
 
         void SettlePayment()
         {
@@ -141,6 +170,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrEmpty(txtCash.Text) && String.IsNullOrWhiteSpace(txtCash.Text))
             {
                 MessageBox.Show("Invalid Input!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(!isValidCustomer(txtViewCustomer.Text))
+            {
+                MessageBox.Show("Invalid Customer Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (txtCash.Text != "")
             {

@@ -66,7 +66,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtFirstName.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtFirstName.Clear();
+               
             }
             else if (String.IsNullOrEmpty(txtLastName.Text))
             {
@@ -75,7 +75,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtLastName.Clear();
+                
             }
             else if (String.IsNullOrEmpty(txtContact.Text))
             {
@@ -84,7 +84,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtContact.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtContact.Clear();
+                
             }
             else if (String.IsNullOrEmpty(txtStreet.Text))
             {
@@ -93,7 +93,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtStreet.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                txtStreet.Clear();
+                
             }
             else if (!Regex.IsMatch(txtContact.Text, @"^(09)\d{9}$"))
             {
