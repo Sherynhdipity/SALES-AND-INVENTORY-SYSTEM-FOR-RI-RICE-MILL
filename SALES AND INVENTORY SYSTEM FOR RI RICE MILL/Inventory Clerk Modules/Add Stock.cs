@@ -185,10 +185,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 txtBatchQuantity.Clear();
             }
 
-            else if (!Regex.IsMatch(txtDescription.Text, @"^\d +$"))
-            {
-                MessageBox.Show("Number only!");
-            }
+           
             else
             {
                 result = MessageBox.Show("Do you want to add this stock?", "Update Item", MessageBoxButtons.YesNo);

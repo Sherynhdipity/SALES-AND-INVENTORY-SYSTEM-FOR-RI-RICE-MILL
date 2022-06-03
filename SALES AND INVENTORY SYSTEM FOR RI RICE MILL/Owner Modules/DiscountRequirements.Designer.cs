@@ -164,11 +164,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             this.txtTotalCost.IconRight = null;
             this.txtTotalCost.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalCost.Lines = new string[0];
-            validationObject2.CustomErrorMessage = "Invalid cost of transaction";
+            validationObject2.CustomErrorMessage = "";
             validationObject2.Optional = false;
-            validationObject2.PropertyName = "Text";
-            validationObject2.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
-            validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
+            validationObject2.PropertyName = "";
+            validationObject2.Regex = null;
+            validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.txtTotalCost, validationObject2);
             this.txtTotalCost.Location = new System.Drawing.Point(22, 206);
             this.txtTotalCost.MaxLength = 10;

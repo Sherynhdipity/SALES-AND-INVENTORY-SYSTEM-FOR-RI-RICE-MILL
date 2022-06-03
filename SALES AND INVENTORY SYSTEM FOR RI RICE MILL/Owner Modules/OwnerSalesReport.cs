@@ -85,7 +85,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 dtpFromDate.Text = string.Format("{0:D}", date);
                 dtpToDate.Text = string.Format("{0:D}", date);
 
-                QuerySelect = "Select * from SalesReportView";
+                QuerySelect = "Select Date, Description, [Cost Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales]  from SalesReportView";
 
                 cmd = new SqlCommand(QuerySelect, con);
 
@@ -145,7 +145,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             try
             {
 
-                QuerySelect = "Select * from SalesReportView where [Date] between @FromDate and @ToDate";
+                QuerySelect = "Select Date, Description, [Cost Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -302,7 +302,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             con.Open();
 
             dt = new DataTable();
-            QuerySelect = "SELECT * FROM SalesReportView WHERE [Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
+            QuerySelect = "SELECT Date, Description, [Cost Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales] FROM SalesReportView WHERE [Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
