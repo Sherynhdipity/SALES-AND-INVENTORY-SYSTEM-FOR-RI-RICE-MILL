@@ -45,6 +45,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             txtDescription.Clear();
             txtCriticalLevel.Clear();
+            cmbUnit.ResetText();
         }
 
         //add item
@@ -88,10 +89,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     {
                         con.Close();
                         con.Open();
-                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc";
+                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc and Unit = @unit";
 
                         cmd = new SqlCommand(QuerySelect, con);
                         cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                        cmd.Parameters.AddWithValue("@unit", cmbUnit.Text);
 
                         reader = cmd.ExecuteReader();
 
@@ -157,10 +159,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     {
                         con.Close();
                         con.Open();
-                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc";
+                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc and Unit = @unit";
 
                         cmd = new SqlCommand(QuerySelect, con);
                         cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                        cmd.Parameters.AddWithValue("@unit", cmbUnit.Text);
 
                         reader = cmd.ExecuteReader();
 

@@ -45,8 +45,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             dgvSKUList.Refresh();
             autoCompleteDescription();
+            autoCompleteUnit();
             this.ActiveControl = txtViewItem;
-
+            txtSellingPrice.Text = "0.00";
             DateTime date = DateTime.Now;
             dtpMilledDate.Text = string.Format("{0:D}", date);
             dtpStockInDate.Text = string.Format("{0:D}", date);
@@ -101,14 +102,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 else
                 {
                     con.Open();
-                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
+                    QuerySelect = "SELECT Description FROM  ItemViews WHERE  (Description LIKE '%' + @desc + '%')";
 
 
                     cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("@id", txtViewItem.Text);
                     cmd.Parameters.AddWithValue("@desc", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@price", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@crit", txtViewItem.Text);
                     adapter = new SqlDataAdapter(cmd);
                     dt = new DataTable();
                     adapter.Fill(dt);
@@ -130,12 +128,49 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             }
         }
 
+        public void DisplayUnits()
+        {
+            try
+            {
+                if (txtUnitView.Text == "" || txtUnitView.Text == null)
+                {
+                    ClearControls();
+                }
+                else
+                {
+                    con.Open();
+                    QuerySelect = "SELECT Unit FROM tblItems WHERE Unit = @unit";
+
+
+                    cmd = new SqlCommand(QuerySelect, con);        
+                    cmd.Parameters.AddWithValue("@unit", txtUnitView.Text);
+                    adapter = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    adapter.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtUnit.Text = dt.Rows[0]["Unit"].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
         //add item
 
         public void addStock()
         {
             con.Close();
-
+            con.Open();
             if (String.IsNullOrEmpty(txtViewItem.Text))
             {
                 MessageBox.Show("Enter Item!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -172,9 +207,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                         {
                             int batch_number;
                             QuerySelect = "SELECT MAX(Batch_number) FROM tblInventories " +
-                                "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc)";
+                                "WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Unit = @unit)";
                             cmd = new SqlCommand(QuerySelect, con);
                             cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                            cmd.Parameters.AddWithValue("@unit", txtUnit.Text);
                             adapter = new SqlDataAdapter(cmd);
                             dt = new DataTable();
                             adapter.Fill(dt);
@@ -191,17 +227,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                             for (int i = 0; i < rows; i++)
                             {
                                 QueryInsert = "INSERT INTO tblInventories " +
-                                "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id, Status) " +
+                                "(Batch_number,SKU,Milled_date,Stock_in_date,User_id,Item_id, Status, OrigPrice, Markup, SellPrice) " +
                                 "VALUES ('"
                                 + batch_number + "', '"
                                 + dgvSKUList.Rows[i].Cells[0].Value.ToString() + "', @mDate, @sDate, '"
                                 + Id + "'," +
-                                "(SELECT Item_id  FROM tblItems WHERE Description = @desc), 'Stock In')";
+                                "(SELECT Item_id  FROM tblItems WHERE Description = @desc and Unit = @unit), 'Stock In', @origPrice, @markUp, @sellPrice)";
 
                                 cmd = new SqlCommand(QueryInsert, con);
                                 cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                                cmd.Parameters.AddWithValue("@unit", txtUnit.Text);
                                 cmd.Parameters.AddWithValue("@mDate", dtpMilledDate.Value.Date);
                                 cmd.Parameters.AddWithValue("@sDate", dtpStockInDate.Value.Date);
+                                cmd.Parameters.AddWithValue("@origPrice", txtOriginalPrice.Text);
+                                cmd.Parameters.AddWithValue("@markUp", txtMarkUp.Text);
+                                cmd.Parameters.AddWithValue("@sellPrice", txtSellingPrice.Text);
 
                                 cmd.ExecuteNonQuery();
                             }
@@ -218,8 +258,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                         txtBatchQuantity.Clear();
                         dgvSKUList.Rows.Clear();
                         dgvSKUList.Refresh();
+                        txtDescription.Clear();
+                        txtUnit.Clear();
+                        txtUnitView.Clear();
+                        txtViewItem.Clear();
+                        txtSellingPrice.Clear();
+                        txtMarkUp.Clear();
+                        txtOriginalPrice.Clear();
                         this.Close();
-
+                        con.Close();
                     }
 
                     catch (Exception ex)
@@ -253,19 +300,21 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             con.Close();
         }
 
-
-
-        private void txtViewItem_TextChange(object sender, EventArgs e)
+        public void autoCompleteUnit()
         {
-            if (txtViewItem.Text != "" || txtViewItem.Text != null)
+            con.Close();
+            QuerySelect = "SELECT [Unit] FROM tblItems " +
+                "WHERE Description = '" + txtDescription.Text + "%'";
+            cmd = new SqlCommand(QuerySelect, con);
+            con.Open();
+            reader = cmd.ExecuteReader();
+            AutoCompleteStringCollection MyCollection2 = new AutoCompleteStringCollection();
+            while (reader.Read())
             {
-                DisplayItems();
+                MyCollection2.Add(reader.GetString(0));
             }
-            else
-            {
-                ClearControls();
-            }
-
+            txtUnitView.AutoCompleteCustomSource = MyCollection2;
+            con.Close();
         }
 
         public static string ReplaceWhitespace(string input, string replacement)
@@ -309,6 +358,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 {
                     MessageBox.Show("Enter Item Description!");
                 }
+                else if(txtUnit.Text == "")
+                {
+                    MessageBox.Show("Enter Unit!");
+                }
                 else if (txtBatchQuantity.Text == "")
                 {
                     MessageBox.Show("Enter Quantity!");
@@ -318,7 +371,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                     string description;
                     int quantity;
 
-                    description = txtDescription.Text;
+                    description = txtDescription.Text + "-" + txtUnit.Text;
                     quantity = Convert.ToInt32(txtBatchQuantity.Text);
 
                     dgvSKUList.ColumnCount = 1;
@@ -440,11 +493,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
                 MessageBox.Show("Enter Batch Quantity");
             }
-
-            else if (!Regex.IsMatch(txtBatchQuantity.Text, @"^\d+$"))
-            {
-                MessageBox.Show("Batch Quantity must be number only");
-            }
             else if (!Regex.IsMatch(txtViewItem.Text, @"^[A-Za-z0-9\s-]*$"))
             {
                 MessageBox.Show("Search must be exact as the product textbox show");
@@ -458,11 +506,69 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void txtBatchQuantity_TextChange(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(txtBatchQuantity.Text, @"^\d+$"))
-            {
-                MessageBox.Show("Batch Quantity must be in Numbers Only!");
+           
+        }
 
+        private void txtViewItem_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtViewItem.Text != "" || txtViewItem.Text != null)
+            {
+                DisplayItems();
             }
+            else
+            {
+                ClearControls();
+            }
+        }
+
+        private void txtUnitView_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtUnitView.Text != "" || txtUnitView.Text != null)
+            {
+                DisplayUnits();
+            }
+            else
+            {
+                ClearControls();
+            }
+        }
+
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOriginalPrice_TextChange(object sender, EventArgs e)
+        {
+            if(txtMarkUp.Text != "" && txtOriginalPrice.Text != "")
+            {
+                double selling_price = Convert.ToDouble(txtOriginalPrice.Text) + Convert.ToDouble(txtMarkUp.Text);
+                txtSellingPrice.Text = selling_price.ToString();
+            }
+            else
+            {
+                txtSellingPrice.Text = "0.00";
+            }
+        }
+
+        private void txtMarkUp_TextChange(object sender, EventArgs e)
+        {
+            if (txtMarkUp.Text != "" && txtOriginalPrice.Text != "")
+            {
+                double selling_price = Convert.ToDouble(txtOriginalPrice.Text) + Convert.ToDouble(txtMarkUp.Text);
+                txtSellingPrice.Text = selling_price.ToString();
+            }
+            else
+            {
+                txtSellingPrice.Text = "0.00";
+            }
+        }
+
+        private void txtViewItem_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }

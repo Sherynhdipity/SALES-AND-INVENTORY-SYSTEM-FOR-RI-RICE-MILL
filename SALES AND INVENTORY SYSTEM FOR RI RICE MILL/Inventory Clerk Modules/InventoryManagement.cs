@@ -93,6 +93,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 dgvStockList.DataSource = dt;
 
                 dgvStockList.Refresh();
+                con.Close();
+
             }
             catch (Exception ex)
             {
@@ -197,6 +199,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private void bunifuPanel4_Click(object sender, EventArgs e)
         {
             dgvStockList.Refresh();
+        }
+
+        private void InventoryManagement_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvStockList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 3)
+            {
+                e.CellStyle.Format = "N2";
+            }
         }
     }
 }
