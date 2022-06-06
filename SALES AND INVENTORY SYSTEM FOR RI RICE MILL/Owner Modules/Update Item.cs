@@ -65,9 +65,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 if (dt.Rows.Count > 0)
                 {
                     txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                    txtPrice.Text = dt.Rows[0]["Price"].ToString();
+                    cmbUnit.Text = dt.Rows[0]["Unit"].ToString();
                     txtCriticalLevel.Text = dt.Rows[0]["Critical_level"].ToString();
-                    txtCostPrice.Text = dt.Rows[0]["Cost_Price"].ToString();
                 }
             }
             catch (Exception ex)
@@ -86,9 +85,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public void ClearControls()
         {
             txtDescription.Clear();
-            txtPrice.Clear();
             txtCriticalLevel.Clear();
-            txtCostPrice.Clear();
+
         }
 
 
@@ -105,26 +103,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtDescription.Clear();
             }
-            else if (String.IsNullOrEmpty(txtPrice.Text))
-            {
-                MessageBox.Show("Enter Selling Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPrice.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtPrice.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtPrice.Clear();
-            }
-            else if (String.IsNullOrEmpty(txtCostPrice.Text))
-            {
-                MessageBox.Show("Enter Cost Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCostPrice.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtCostPrice.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtCostPrice.Clear();
-            }
             else if (String.IsNullOrEmpty(txtCriticalLevel.Text))
             {
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -134,26 +112,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             {
                 MessageBox.Show("Description must be letter, dash, space and numbers only");
             }
-            else if (!Regex.IsMatch(txtCostPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
-            {
-                MessageBox.Show("Cost Price must be Number Only");
-            }
-            else if (!Regex.IsMatch(txtPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
-            {
-                MessageBox.Show("Price must be Number Only");
-
-            }
             else if (!Regex.IsMatch(txtCriticalLevel.Text, @"^\d+$"))
             {
                 MessageBox.Show("Critical Level Number Only");
             }
-            else if (Convert.ToDouble(txtCostPrice.Text) >= Convert.ToDouble(txtPrice.Text))
-            {
-                MessageBox.Show("Cost price must be less than selling price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCriticalLevel.Focus();
-            }
-            else if (txtDescription.Text != "" && txtPrice.Text != ""
-                && txtCriticalLevel.Text != "")
+            else if (txtDescription.Text != "" && txtCriticalLevel.Text != "")
             {
                 result = MessageBox.Show("Do you want to update this item?", "Update Item", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
@@ -165,12 +128,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     {
                         con.Close();
                         con.Open();
-                        QueryUpdate = "UPDATE tblItems SET Description = @desc, Price = @price,Critical_level = @crit WHERE Item_id = '" + id + "'";
+                        QueryUpdate = "UPDATE tblItems SET Description = @desc, Unit = @unit,Critical_level = @crit WHERE Item_id = '" + id + "'";
 
                         cmd = new SqlCommand(QueryUpdate, con);
 
                         cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                        cmd.Parameters.AddWithValue("@price", txtPrice.Text);
+                        cmd.Parameters.AddWithValue("@unit", cmbUnit.SelectedItem.ToString());
                         cmd.Parameters.AddWithValue("@crit", txtCriticalLevel.Text);
 
                         cmd.ExecuteNonQuery();

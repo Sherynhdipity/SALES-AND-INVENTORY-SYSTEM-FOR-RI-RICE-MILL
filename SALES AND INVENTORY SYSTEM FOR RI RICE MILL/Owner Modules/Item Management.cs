@@ -80,13 +80,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 }
                 else
                 {
-                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
+                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Unit LIKE '%' + @unit + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
                 }
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@id", txtViewItems.Text);
                 cmd.Parameters.AddWithValue("@desc", txtViewItems.Text);
-                cmd.Parameters.AddWithValue("@price", txtViewItems.Text);
+                cmd.Parameters.AddWithValue("@unit", txtViewItems.Text);
                 cmd.Parameters.AddWithValue("@crit", txtViewItems.Text);
 
                 adapter = new SqlDataAdapter(cmd);
@@ -134,24 +134,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             }
 
             
-        }
-
-        private void dgvItemList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == 3 || e.ColumnIndex == 4)
-            {
-                e.CellStyle.Format = "N2";
-            }
-        }
-
-        private void txtViewItems_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmItems_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

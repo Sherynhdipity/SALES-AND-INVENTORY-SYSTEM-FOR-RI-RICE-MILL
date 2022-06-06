@@ -247,7 +247,6 @@
             this.txtViewItems.UseSystemPasswordChar = false;
             this.txtViewItems.WordWrap = true;
             this.txtViewItems.TextChange += new System.EventHandler(this.txtViewItems_TextChange);
-            this.txtViewItems.TextChanged += new System.EventHandler(this.txtViewItems_TextChanged);
             // 
             // dgvItemList
             // 
@@ -314,7 +313,6 @@
             this.dgvItemList.TabIndex = 4;
             this.dgvItemList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.dgvItemList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemList_CellContentClick);
-            this.dgvItemList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvItemList_CellFormatting);
             // 
             // frmItems
             // 
@@ -324,7 +322,6 @@
             this.Controls.Add(this.bunifuLabel3);
             this.Name = "frmItems";
             this.Size = new System.Drawing.Size(1002, 646);
-            this.Load += new System.EventHandler(this.frmItems_Load);
             this.bunifuPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItemList)).EndInit();
             this.ResumeLayout(false);

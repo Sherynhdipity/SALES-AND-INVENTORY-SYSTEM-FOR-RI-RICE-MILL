@@ -26,7 +26,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         public frmBarcodeLookup()
         {
             InitializeComponent();
-            
         }
 
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -44,9 +43,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void frmAddStocks_Load(object sender, EventArgs e)
         {
+            dgvSKUList.Refresh();
             autoCompleteDescription();
             this.ActiveControl = txtViewItem;
-            
+            DateTime date = DateTime.Now;
         }
 
         public void ClearControls()
@@ -56,6 +56,101 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             dgvSKUList.Rows.Clear();
             dgvSKUList.Refresh();
         }
+
+        static String remVowel(String str, String str1)
+        {
+            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+
+            List<char> al = vowels.OfType<char>().ToList();
+
+            StringBuilder sb = new StringBuilder(str);
+
+            for (int i = 0; i < sb.Length; i++)
+            {
+
+                if (al.Contains(sb[i]))
+                {
+                    sb.Replace(sb[i].ToString(), "");
+                    i--;
+                }
+            }
+
+            string final = sb.ToString() + "-" + str1.ToString();
+            final = final.Replace(" ", String.Empty);
+            return final;
+        }
+
+        static string RemoveVowel(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                switch (input[i])
+                {
+                    case 'a':
+                    case 'e':
+                    case 'i':
+                    case 'o':
+                    case 'u':
+                    case 'A':
+                    case 'E':
+                    case 'I':
+                    case 'O':
+                    case 'U':
+                    case '-':
+                    case ' ':
+                        sb.Append("");
+                        break;
+
+                    default:
+                        sb.Append(input[i]);
+                        break;
+                }
+            }
+            return sb.ToString();
+        }
+
+        public void DisplayItems()
+        {
+            try
+            {
+                if (txtViewItem.Text == "" || txtViewItem.Text == null)
+                {
+                    ClearControls();
+                }
+                else
+                {
+                    con.Open();
+                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
+
+
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@id", txtViewItem.Text);
+                    cmd.Parameters.AddWithValue("@desc", txtViewItem.Text);
+                    cmd.Parameters.AddWithValue("@price", txtViewItem.Text);
+                    cmd.Parameters.AddWithValue("@crit", txtViewItem.Text);
+                    adapter = new SqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    adapter.Fill(dt);
+                    if (dt.Rows.Count > 0)
+                    {
+                        txtDescription.Text = dt.Rows[0]["Description"].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
 
         public void autoCompleteDescription()
         {
@@ -74,51 +169,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             con.Close();
         }
 
-        public void DisplayItems()
-        {
-            try
-            {
-                if (txtViewItem.Text == "" || txtViewItem.Text == null)
-                {
-                    ClearControls();
-                }
-                else
-                {
-                    con.Open();
-                    QuerySelect = "SELECT * FROM  ItemViews WHERE (ID LIKE '%' + @id + '%') OR (Description LIKE '%' + @desc + '%') OR (Price LIKE '%' + @price + '%') OR ([Critical Level] LIKE '%' + @crit + '%')";
-
-                    cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("@id", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@desc", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@price", txtViewItem.Text);
-                    cmd.Parameters.AddWithValue("@crit", txtViewItem.Text);
-
-                    adapter = new SqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    adapter.Fill(dt);
-                    if (dt.Rows.Count > 0)
-                    {
-                        //txtItemNumber.Text = dt.Rows[0]["ID"].ToString();
-                        txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                        //txtBarcode.Text = dt.Rows[0]["Barcode"].ToString();
-                        //txtPrice.Text = dt.Rows[0]["Price"].ToString();
-                        //txtUnit.Text = dt.Rows[0]["Unit"].ToString();
-                        //txtCriticalLevel.Text = dt.Rows[0]["Critical Level"].ToString();
-                        //txtSKU.Text = remVowel(dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Unit"].ToString());
-                    }
-                }
-                
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
 
 
         private void txtViewItem_TextChange(object sender, EventArgs e)
@@ -131,7 +181,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
                 ClearControls();
             }
-            
+
         }
 
         public void displaySKU()
@@ -176,8 +226,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 {
                     con.Close();
                 }
-               
-            }         
+
+            }
+
+        }
+
+
+        private void txtBatchNumber_TextChange(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(txtBatchNumber.Text, @"^\d+$"))
+            {
+                MessageBox.Show("Batch Number must be in Numbers Only!");
+
+            }
         }
 
         private void btnGenerateSKU_Click(object sender, EventArgs e)
@@ -216,16 +277,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             else
             {
                 MessageBox.Show("Enter Item First!");
-            }
-
-        }
-
-        private void txtBatchNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-            {
-                e.Handled = true;
             }
         }
     }

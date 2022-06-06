@@ -41,19 +41,19 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             Kimtoo.ValidationProvider.ValidationObject validationObject4 = new Kimtoo.ValidationProvider.ValidationObject();
-            Kimtoo.ValidationProvider.ValidationObject validationObject5 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Kimtoo.ValidationProvider.ValidationObject validationObject6 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject5 = new Kimtoo.ValidationProvider.ValidationObject();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Kimtoo.ValidationProvider.ValidationObject validationObject6 = new Kimtoo.ValidationProvider.ValidationObject();
             Kimtoo.ValidationProvider.ValidationObject validationObject7 = new Kimtoo.ValidationProvider.ValidationObject();
             this.txtQty = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnClose = new Bunifu.Framework.UI.BunifuTileButton();
             this.validationProvider1 = new Kimtoo.ValidationProvider.ValidationProvider();
             this.dgvSKUList = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnEnter = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnCancel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSKUList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +91,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject1.Regex = null;
             validationObject1.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.txtQty, validationObject1);
-            this.txtQty.Location = new System.Drawing.Point(345, 45);
+            this.txtQty.Location = new System.Drawing.Point(431, 79);
             this.txtQty.MaxLength = 4;
             this.txtQty.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtQty.Modified = false;
@@ -152,7 +152,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject2.Regex = null;
             validationObject2.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel1, validationObject2);
-            this.bunifuLabel1.Location = new System.Drawing.Point(266, 55);
+            this.bunifuLabel1.Location = new System.Drawing.Point(352, 90);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel1.Size = new System.Drawing.Size(73, 18);
@@ -163,7 +163,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BackColor = System.Drawing.Color.Crimson;
             this.btnClose.color = System.Drawing.Color.RoyalBlue;
             this.btnClose.colorActive = System.Drawing.Color.IndianRed;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -180,7 +180,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject3.Regex = null;
             validationObject3.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.btnClose, validationObject3);
-            this.btnClose.Location = new System.Drawing.Point(565, -2);
+            this.btnClose.Location = new System.Drawing.Point(582, -5);
             this.btnClose.Margin = new System.Windows.Forms.Padding(8);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(63, 56);
@@ -202,7 +202,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.dgvSKUList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSKUList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvSKUList.BackgroundColor = System.Drawing.Color.White;
+            this.dgvSKUList.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvSKUList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSKUList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvSKUList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -252,38 +252,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject4.Regex = null;
             validationObject4.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.dgvSKUList, validationObject4);
-            this.dgvSKUList.Location = new System.Drawing.Point(3, 90);
+            this.dgvSKUList.Location = new System.Drawing.Point(8, 134);
             this.dgvSKUList.Name = "dgvSKUList";
             this.dgvSKUList.ReadOnly = true;
             this.dgvSKUList.RowHeadersVisible = false;
             this.dgvSKUList.RowTemplate.Height = 40;
             this.dgvSKUList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSKUList.Size = new System.Drawing.Size(625, 208);
+            this.dgvSKUList.Size = new System.Drawing.Size(625, 187);
             this.dgvSKUList.TabIndex = 50;
             this.dgvSKUList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.dgvSKUList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSKUList_CellClick);
-            // 
-            // bunifuLabel2
-            // 
-            this.bunifuLabel2.AllowParentOverrides = false;
-            this.bunifuLabel2.AutoEllipsis = false;
-            this.bunifuLabel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabel2.CursorType = System.Windows.Forms.Cursors.Default;
-            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
-            validationObject5.CustomErrorMessage = "";
-            validationObject5.Optional = false;
-            validationObject5.PropertyName = "Text";
-            validationObject5.Regex = null;
-            validationObject5.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
-            this.validationProvider1.SetLink(this.bunifuLabel2, validationObject5);
-            this.bunifuLabel2.Location = new System.Drawing.Point(12, 66);
-            this.bunifuLabel2.Name = "bunifuLabel2";
-            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(95, 18);
-            this.bunifuLabel2.TabIndex = 51;
-            this.bunifuLabel2.Text = "Select SKU:";
-            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // btnEnter
             // 
@@ -334,13 +312,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnEnter.IdleIconLeftImage = null;
             this.btnEnter.IdleIconRightImage = null;
             this.btnEnter.IndicateFocus = false;
-            validationObject6.CustomErrorMessage = "";
-            validationObject6.Optional = false;
-            validationObject6.PropertyName = "Text";
-            validationObject6.Regex = null;
-            validationObject6.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
-            this.validationProvider1.SetLink(this.btnEnter, validationObject6);
-            this.btnEnter.Location = new System.Drawing.Point(481, 304);
+            validationObject5.CustomErrorMessage = "";
+            validationObject5.Optional = false;
+            validationObject5.PropertyName = "Text";
+            validationObject5.Regex = null;
+            validationObject5.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.btnEnter, validationObject5);
+            this.btnEnter.Location = new System.Drawing.Point(497, 327);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnEnter.OnDisabledState.BorderRadius = 1;
@@ -432,13 +410,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.IdleIconLeftImage = null;
             this.btnCancel.IdleIconRightImage = null;
             this.btnCancel.IndicateFocus = false;
-            validationObject7.CustomErrorMessage = "";
-            validationObject7.Optional = false;
-            validationObject7.PropertyName = "Text";
-            validationObject7.Regex = null;
-            validationObject7.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
-            this.validationProvider1.SetLink(this.btnCancel, validationObject7);
-            this.btnCancel.Location = new System.Drawing.Point(339, 304);
+            validationObject6.CustomErrorMessage = "";
+            validationObject6.Optional = false;
+            validationObject6.PropertyName = "Text";
+            validationObject6.Regex = null;
+            validationObject6.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.btnCancel, validationObject6);
+            this.btnCancel.Location = new System.Drawing.Point(351, 327);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCancel.OnDisabledState.BorderRadius = 1;
@@ -481,14 +459,36 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.UseDefaultRadiusAndThickness = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // bunifuLabel2
+            // 
+            this.bunifuLabel2.AllowParentOverrides = false;
+            this.bunifuLabel2.AutoEllipsis = false;
+            this.bunifuLabel2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.bunifuLabel2.CursorType = System.Windows.Forms.Cursors.Default;
+            this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
+            validationObject7.CustomErrorMessage = "";
+            validationObject7.Optional = false;
+            validationObject7.PropertyName = "Text";
+            validationObject7.Regex = null;
+            validationObject7.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.bunifuLabel2, validationObject7);
+            this.bunifuLabel2.Location = new System.Drawing.Point(8, 110);
+            this.bunifuLabel2.Name = "bunifuLabel2";
+            this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel2.Size = new System.Drawing.Size(68, 18);
+            this.bunifuLabel2.TabIndex = 54;
+            this.bunifuLabel2.Text = "SKU List";
+            this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
             // frmPLQuant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 348);
+            this.ClientSize = new System.Drawing.Size(641, 388);
+            this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnEnter);
-            this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.dgvSKUList);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.bunifuLabel1);
@@ -510,8 +510,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.Framework.UI.BunifuTileButton btnClose;
         private Kimtoo.ValidationProvider.ValidationProvider validationProvider1;
         private Bunifu.UI.WinForms.BunifuDataGridView dgvSKUList;
-        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnEnter;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnCancel;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
     }
 }

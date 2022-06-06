@@ -60,17 +60,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             }
         }
 
-        private void dgvRestockReport_Scroll(object sender, ScrollEventArgs e)
-        {
-           
-        }
-
-        private void dgvStockIN_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnPrintReport_Click(object sender, EventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
             RestockReports restock = new RestockReports();

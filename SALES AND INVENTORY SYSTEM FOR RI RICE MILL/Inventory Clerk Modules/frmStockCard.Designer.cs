@@ -101,7 +101,7 @@
             this.dgvStockIN.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvStockIN.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvStockIN.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvStockIN.Location = new System.Drawing.Point(24, 154);
+            this.dgvStockIN.Location = new System.Drawing.Point(14, 130);
             this.dgvStockIN.Name = "dgvStockIN";
             this.dgvStockIN.ReadOnly = true;
             this.dgvStockIN.RowHeadersVisible = false;
@@ -167,7 +167,7 @@
             this.dgvStockOut.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dgvStockOut.HeaderBgColor = System.Drawing.Color.Empty;
             this.dgvStockOut.HeaderForeColor = System.Drawing.Color.White;
-            this.dgvStockOut.Location = new System.Drawing.Point(24, 410);
+            this.dgvStockOut.Location = new System.Drawing.Point(14, 360);
             this.dgvStockOut.Name = "dgvStockOut";
             this.dgvStockOut.ReadOnly = true;
             this.dgvStockOut.RowHeadersVisible = false;
@@ -181,7 +181,7 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox6.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.clipboard;
-            this.pictureBox6.Location = new System.Drawing.Point(252, 37);
+            this.pictureBox6.Location = new System.Drawing.Point(228, 12);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(85, 69);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -195,7 +195,7 @@
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Impact", 30F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(343, 47);
+            this.bunifuLabel3.Location = new System.Drawing.Point(319, 24);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(259, 48);
@@ -209,12 +209,12 @@
             this.bunifuLabel1.AllowParentOverrides = false;
             this.bunifuLabel1.AutoEllipsis = false;
             this.bunifuLabel1.CursorType = null;
-            this.bunifuLabel1.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Underline);
+            this.bunifuLabel1.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel1.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel1.Location = new System.Drawing.Point(24, 118);
+            this.bunifuLabel1.Location = new System.Drawing.Point(14, 100);
             this.bunifuLabel1.Name = "bunifuLabel1";
             this.bunifuLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel1.Size = new System.Drawing.Size(98, 34);
+            this.bunifuLabel1.Size = new System.Drawing.Size(86, 29);
             this.bunifuLabel1.TabIndex = 128;
             this.bunifuLabel1.Text = "STOCK IN";
             this.bunifuLabel1.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -225,12 +225,12 @@
             this.bunifuLabel2.AllowParentOverrides = false;
             this.bunifuLabel2.AutoEllipsis = false;
             this.bunifuLabel2.CursorType = null;
-            this.bunifuLabel2.Font = new System.Drawing.Font("Impact", 20.25F, System.Drawing.FontStyle.Underline);
+            this.bunifuLabel2.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel2.Location = new System.Drawing.Point(24, 374);
+            this.bunifuLabel2.Location = new System.Drawing.Point(14, 331);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel2.Size = new System.Drawing.Size(117, 34);
+            this.bunifuLabel2.Size = new System.Drawing.Size(103, 29);
             this.bunifuLabel2.TabIndex = 129;
             this.bunifuLabel2.Text = "STOCK OUT";
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
@@ -241,7 +241,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(913, 617);
+            this.ClientSize = new System.Drawing.Size(876, 563);
             this.Controls.Add(this.bunifuLabel2);
             this.Controls.Add(this.bunifuLabel1);
             this.Controls.Add(this.bunifuLabel3);

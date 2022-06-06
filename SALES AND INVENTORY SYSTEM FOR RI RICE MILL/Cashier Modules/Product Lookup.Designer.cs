@@ -51,7 +51,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.bunifuLabel13.AllowParentOverrides = false;
             this.bunifuLabel13.AutoEllipsis = false;
-            this.bunifuLabel13.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bunifuLabel13.BackColor = System.Drawing.Color.MidnightBlue;
             this.bunifuLabel13.CursorType = null;
             this.bunifuLabel13.Font = new System.Drawing.Font("Impact", 15.75F);
             this.bunifuLabel13.ForeColor = System.Drawing.Color.White;
@@ -156,7 +156,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtSearchProduct.IconRight = null;
             this.txtSearchProduct.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSearchProduct.Lines = new string[0];
-            this.txtSearchProduct.Location = new System.Drawing.Point(119, 55);
+            this.txtSearchProduct.Location = new System.Drawing.Point(103, 55);
             this.txtSearchProduct.MaxLength = 32767;
             this.txtSearchProduct.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtSearchProduct.Modified = false;
@@ -211,7 +211,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel8.CursorType = null;
             this.bunifuLabel8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F);
             this.bunifuLabel8.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel8.Location = new System.Drawing.Point(15, 61);
+            this.bunifuLabel8.Location = new System.Drawing.Point(12, 68);
             this.bunifuLabel8.Name = "bunifuLabel8";
             this.bunifuLabel8.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel8.Size = new System.Drawing.Size(76, 23);
@@ -222,7 +222,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // bunifuPanel1
             // 
-            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.MidnightBlue;
             this.bunifuPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel1.BackgroundImage")));
             this.bunifuPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuPanel1.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -238,7 +238,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BackColor = System.Drawing.Color.Crimson;
             this.btnClose.color = System.Drawing.Color.RoyalBlue;
             this.btnClose.colorActive = System.Drawing.Color.IndianRed;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;

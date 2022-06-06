@@ -19,7 +19,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             InitializeComponent();
         }
 
-
         public static SqlConnection con = new SqlConnection(DBConnection.con);
         public static SqlCommand cmd = new SqlCommand();
         public static SqlDataReader reader;
@@ -31,14 +30,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QueryUpdate;
         public static string QueryDelete;
         public static string discountCode = "NC01";
-        
-
-        private void frmAddNewCustomer_Load(object sender, EventArgs e)
-        {
-            loadProvinces();   
-        }
-
-        //methods
 
         //clear controls
         public void ClearControls()
@@ -48,9 +39,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             txtLastName.Clear();
             txtContact.Clear();
             txtStreet.Clear();
-            cmbBarangay.SelectedIndex = 0;
+            cmbBarangay.SelectedIndex =0;
             cmbMunicipality.SelectedIndex = 0;
-            cmbProvince.SelectedIndex = 0;
+            cmbProvince.SelectedIndex =0;
+            cmbGender.SelectedIndex = 0;
         }
 
         //AddCustomer
@@ -66,7 +58,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtFirstName.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-               
+
             }
             else if (String.IsNullOrEmpty(txtLastName.Text))
             {
@@ -75,7 +67,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtLastName.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                
+
             }
             else if (String.IsNullOrEmpty(txtContact.Text))
             {
@@ -84,7 +76,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtContact.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                
+
             }
             else if (String.IsNullOrEmpty(txtStreet.Text))
             {
@@ -93,22 +85,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrWhiteSpace(txtStreet.Text))
             {
                 MessageBox.Show("Whitespace is not allowed!");
-                
+
             }
             else if (!Regex.IsMatch(txtContact.Text, @"^(09)\d{9}$"))
             {
                 MessageBox.Show("Phone number must be 11 digit only");
-                
+
             }
             else if (!Regex.IsMatch(txtFirstName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("First Name must be a letter only");
-                
+
             }
             else if (!Regex.IsMatch(txtLastName.Text, @"^([a-zA-Z-.]+?)([-\s'][a-zA-Z]+)*?$"))
             {
                 MessageBox.Show("Last name must be a letter only");
-                
+
             }
             //else if (cmbProvince.SelectedIndex == -1)//Nothing selected
             //{
@@ -193,13 +185,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                     }
                 }
             }
-            
+
             else
             {
                 MessageBox.Show("Please Provide Details!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
         public void loadProvinces()
         {
@@ -223,7 +214,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             con.Close();
             con.Open();
-            QuerySelect = "Select * From tblMunicipality Where province_code = '" + cmbProvince.SelectedValue + "' Order by municipality_desc ASC";
+            QuerySelect = "Select * From tblMunicipality Where province_code = '"+cmbProvince.SelectedValue+ "' Order by municipality_desc ASC";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -259,56 +250,35 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             AddCustomer();
         }
 
+        private void txtContact_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+            (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-            ClearControls();
         }
 
-
-        private void cmbMunicipality_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            loadBarangays();
-        }
-
-        private void cmbProvince_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmbProvince_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadMunicipalities();
         }
 
-        private void frmAddNewCustomer_FormClosed(object sender, FormClosedEventArgs e)
+        private void cmbMunicipality_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //frmPayment payment = new frmPayment();
-            //payment.frmPayment_Load(sender, e);
+            loadBarangays();
         }
+        
 
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        private void frmAddCustomer_Load(object sender, EventArgs e)
         {
-            //if (Regex.IsMatch(txtFirstName.Text, @"^([a-z,A-Z]+?)([-,\s'][a-z,A-Z]+)*?$") == true)
-            //{
-                
-            //}
-            //else
-            //{
-            //    MessageBox.Show("First Name must be a letter only");
-            //}
-        }
-        private void txtLastName_TextChanged(object sender, EventArgs e)
-        {
-            //if (!Regex.IsMatch(txtMiddleName.Text, @"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$"))
-            //{
-            //    MessageBox.Show("Middle Name must be a letter only");
-            //    txtFirstName.Clear();
-            //}
-        }
-
-        private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //var regex = new Regex(@"^([a-zA-Z]+?)([-\s'][a-zA-Z]+)*?$");
-            //if (regex.IsMatch(e.KeyChar.ToString()))
-            //{
-            //    e.Handled = true;
-            //}
+            cmbGender.SelectedIndex = 0;
+            loadProvinces();
         }
     }
 }

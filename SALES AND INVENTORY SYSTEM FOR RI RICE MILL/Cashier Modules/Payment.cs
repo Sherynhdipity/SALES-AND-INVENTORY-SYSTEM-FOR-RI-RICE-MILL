@@ -32,7 +32,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //end mods
 
         frmSalesManagement sales = new frmSalesManagement();
-        Cashier_Modules.addCustomer addCustomer = new Cashier_Modules.addCustomer();
+        frmAddNewCustomer addCustomer = new frmAddNewCustomer();
         frmPrintReceipt receipt = new frmPrintReceipt();
         frmAddNewCustomer addNewCustomer = new frmAddNewCustomer();
         public static SqlConnection con = new SqlConnection(DBConnection.con);
@@ -170,10 +170,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             else if (String.IsNullOrEmpty(txtCash.Text) && String.IsNullOrWhiteSpace(txtCash.Text))
             {
                 MessageBox.Show("Invalid Input!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if(!isValidCustomer(txtViewCustomer.Text))
-            {
-                MessageBox.Show("Invalid Customer Name!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (txtCash.Text != "")
             {
@@ -708,6 +704,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void btnGenerateOR_Click(object sender, EventArgs e)
         {
             GetORNo();
+        }
+
+        private void lblDiscount_Click(object sender, EventArgs e)
+        {
+            cmbDiscount.Visible = true;
         }
 
         private void txtPWDOSCA_KeyPress(object sender, KeyPressEventArgs e)

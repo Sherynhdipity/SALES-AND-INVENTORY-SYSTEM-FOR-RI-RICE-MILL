@@ -88,6 +88,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties27 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties28 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Kimtoo.ValidationProvider.ValidationObject validationObject25 = new Kimtoo.ValidationProvider.ValidationObject();
+            Kimtoo.ValidationProvider.ValidationObject validationObject27 = new Kimtoo.ValidationProvider.ValidationObject();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel4 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
@@ -115,6 +116,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel8 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtDiscountAmount = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.lblDiscount = new Bunifu.UI.WinForms.BunifuLabel();
+            this.cmbDiscount = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -165,7 +168,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // bunifuPanel1
             // 
-            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.bunifuPanel1.BackgroundColor = System.Drawing.Color.MidnightBlue;
             this.bunifuPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel1.BackgroundImage")));
             this.bunifuPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuPanel1.BorderColor = System.Drawing.Color.Transparent;
@@ -189,7 +192,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // btnClose
             // 
-            this.btnClose.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnClose.BackColor = System.Drawing.Color.Crimson;
             this.btnClose.color = System.Drawing.Color.RoyalBlue;
             this.btnClose.colorActive = System.Drawing.Color.IndianRed;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -206,10 +209,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject3.Regex = null;
             validationObject3.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.btnClose, validationObject3);
-            this.btnClose.Location = new System.Drawing.Point(520, -9);
+            this.btnClose.Location = new System.Drawing.Point(472, -9);
             this.btnClose.Margin = new System.Windows.Forms.Padding(8);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(63, 56);
+            this.btnClose.Size = new System.Drawing.Size(97, 56);
             this.btnClose.TabIndex = 102;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -310,7 +313,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject7.Regex = null;
             validationObject7.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.btnConfirm, validationObject7);
-            this.btnConfirm.Location = new System.Drawing.Point(296, 561);
+            this.btnConfirm.Location = new System.Drawing.Point(309, 618);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirm.OnDisabledState.BorderRadius = 1;
@@ -408,7 +411,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject8.Regex = null;
             validationObject8.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.btnCancel, validationObject8);
-            this.btnCancel.Location = new System.Drawing.Point(169, 561);
+            this.btnCancel.Location = new System.Drawing.Point(182, 618);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCancel.OnDisabledState.BorderRadius = 1;
@@ -485,7 +488,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject9.Regex = "^[0-9]*(\\.[0-9]{1,4})?$";
             validationObject9.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Decimal;
             this.validationProvider1.SetLink(this.txtCash, validationObject9);
-            this.txtCash.Location = new System.Drawing.Point(191, 489);
+            this.txtCash.Location = new System.Drawing.Point(204, 546);
             this.txtCash.MaxLength = 13;
             this.txtCash.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCash.Modified = false;
@@ -853,7 +856,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject14.Regex = "^\\d+$";
             validationObject14.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Integer;
             this.validationProvider1.SetLink(this.txtPWDOSCA, validationObject14);
-            this.txtPWDOSCA.Location = new System.Drawing.Point(169, 230);
+            this.txtPWDOSCA.Location = new System.Drawing.Point(169, 298);
             this.txtPWDOSCA.MaxLength = 5;
             this.txtPWDOSCA.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtPWDOSCA.Modified = false;
@@ -937,7 +940,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject15.Regex = "^\\d+$";
             validationObject15.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.Integer;
             this.validationProvider1.SetLink(this.txtORNumber, validationObject15);
-            this.txtORNumber.Location = new System.Drawing.Point(190, 446);
+            this.txtORNumber.Location = new System.Drawing.Point(203, 503);
             this.txtORNumber.MaxLength = 4;
             this.txtORNumber.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtORNumber.Modified = false;
@@ -997,7 +1000,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject16.Regex = null;
             validationObject16.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel6, validationObject16);
-            this.bunifuLabel6.Location = new System.Drawing.Point(134, 458);
+            this.bunifuLabel6.Location = new System.Drawing.Point(147, 515);
             this.bunifuLabel6.Name = "bunifuLabel6";
             this.bunifuLabel6.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel6.Size = new System.Drawing.Size(50, 22);
@@ -1019,7 +1022,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject17.Regex = null;
             validationObject17.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.lblPWDORSC, validationObject17);
-            this.lblPWDORSC.Location = new System.Drawing.Point(103, 240);
+            this.lblPWDORSC.Location = new System.Drawing.Point(118, 307);
             this.lblPWDORSC.Name = "lblPWDORSC";
             this.lblPWDORSC.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblPWDORSC.Size = new System.Drawing.Size(16, 22);
@@ -1134,7 +1137,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject20.Regex = null;
             validationObject20.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.btnGenerateOR, validationObject20);
-            this.btnGenerateOR.Location = new System.Drawing.Point(373, 446);
+            this.btnGenerateOR.Location = new System.Drawing.Point(386, 503);
             this.btnGenerateOR.Name = "btnGenerateOR";
             this.btnGenerateOR.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGenerateOR.OnDisabledState.BorderRadius = 1;
@@ -1190,7 +1193,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject21.Regex = null;
             validationObject21.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuLabel7, validationObject21);
-            this.bunifuLabel7.Location = new System.Drawing.Point(102, 487);
+            this.bunifuLabel7.Location = new System.Drawing.Point(115, 544);
             this.bunifuLabel7.Name = "bunifuLabel7";
             this.bunifuLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel7.Size = new System.Drawing.Size(82, 36);
@@ -1219,7 +1222,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             validationObject26.Regex = null;
             validationObject26.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
             this.validationProvider1.SetLink(this.bunifuPanel2, validationObject26);
-            this.bunifuPanel2.Location = new System.Drawing.Point(68, 275);
+            this.bunifuPanel2.Location = new System.Drawing.Point(68, 343);
             this.bunifuPanel2.Name = "bunifuPanel2";
             this.bunifuPanel2.ShowBorders = true;
             this.bunifuPanel2.Size = new System.Drawing.Size(400, 154);
@@ -1433,12 +1436,82 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.TextAlignment = System.Drawing.ContentAlignment.TopRight;
             this.bunifuLabel2.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
+            // lblDiscount
+            // 
+            this.lblDiscount.AllowParentOverrides = false;
+            this.lblDiscount.AutoEllipsis = false;
+            this.lblDiscount.CursorType = null;
+            this.lblDiscount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Underline);
+            this.lblDiscount.ForeColor = System.Drawing.Color.MidnightBlue;
+            validationObject27.CustomErrorMessage = "";
+            validationObject27.Optional = false;
+            validationObject27.PropertyName = "Text";
+            validationObject27.Regex = null;
+            validationObject27.ValidationType = Kimtoo.ValidationProvider.ValidationTypes.None;
+            this.validationProvider1.SetLink(this.lblDiscount, validationObject27);
+            this.lblDiscount.Location = new System.Drawing.Point(321, 217);
+            this.lblDiscount.Name = "lblDiscount";
+            this.lblDiscount.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblDiscount.Size = new System.Drawing.Size(104, 15);
+            this.lblDiscount.TabIndex = 120;
+            this.lblDiscount.Text = "Apply Discount?";
+            this.lblDiscount.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblDiscount.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.lblDiscount.Click += new System.EventHandler(this.lblDiscount_Click);
+            // 
+            // cmbDiscount
+            // 
+            this.cmbDiscount.BackColor = System.Drawing.Color.Transparent;
+            this.cmbDiscount.BackgroundColor = System.Drawing.Color.White;
+            this.cmbDiscount.BorderColor = System.Drawing.Color.Black;
+            this.cmbDiscount.BorderRadius = 1;
+            this.cmbDiscount.Color = System.Drawing.Color.Black;
+            this.cmbDiscount.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.cmbDiscount.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cmbDiscount.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.cmbDiscount.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cmbDiscount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.cmbDiscount.DisabledIndicatorColor = System.Drawing.Color.DarkGray;
+            this.cmbDiscount.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbDiscount.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            this.cmbDiscount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDiscount.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.cmbDiscount.FillDropDown = true;
+            this.cmbDiscount.FillIndicator = false;
+            this.cmbDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbDiscount.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbDiscount.ForeColor = System.Drawing.Color.Black;
+            this.cmbDiscount.FormattingEnabled = true;
+            this.cmbDiscount.Icon = null;
+            this.cmbDiscount.IndicatorAlignment = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.cmbDiscount.IndicatorColor = System.Drawing.Color.DarkGray;
+            this.cmbDiscount.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.cmbDiscount.IndicatorThickness = 2;
+            this.cmbDiscount.IsDropdownOpened = false;
+            this.cmbDiscount.ItemBackColor = System.Drawing.Color.White;
+            this.cmbDiscount.ItemBorderColor = System.Drawing.Color.Black;
+            this.cmbDiscount.ItemForeColor = System.Drawing.Color.Black;
+            this.cmbDiscount.ItemHeight = 26;
+            this.cmbDiscount.ItemHighLightColor = System.Drawing.Color.DodgerBlue;
+            this.cmbDiscount.ItemHighLightForeColor = System.Drawing.Color.White;
+            this.cmbDiscount.ItemTopMargin = 3;
+            this.validationProvider1.SetLink(this.cmbDiscount, null);
+            this.cmbDiscount.Location = new System.Drawing.Point(169, 238);
+            this.cmbDiscount.Name = "cmbDiscount";
+            this.cmbDiscount.Size = new System.Drawing.Size(256, 32);
+            this.cmbDiscount.TabIndex = 121;
+            this.cmbDiscount.TextAlignment = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.cmbDiscount.TextLeftMargin = 5;
+            this.cmbDiscount.Visible = false;
+            // 
             // frmPayment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(569, 612);
+            this.ClientSize = new System.Drawing.Size(569, 669);
+            this.Controls.Add(this.cmbDiscount);
+            this.Controls.Add(this.lblDiscount);
             this.Controls.Add(this.bunifuPanel2);
             this.Controls.Add(this.bunifuLabel7);
             this.Controls.Add(this.btnGenerateOR);
@@ -1499,5 +1572,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel8;
         public Bunifu.UI.WinForms.BunifuTextBox txtDiscountAmount;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
+        private Bunifu.UI.WinForms.BunifuLabel lblDiscount;
+        private Bunifu.UI.WinForms.BunifuDropdown cmbDiscount;
     }
 }

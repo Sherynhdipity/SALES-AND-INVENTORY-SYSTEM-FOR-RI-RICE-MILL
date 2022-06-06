@@ -58,28 +58,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             txtBatchQuantity.Clear();
         }
 
-        static String remVowel(String str, String str1)
-        {
-            char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
-
-            List<char> al = vowels.OfType<char>().ToList();
-
-            StringBuilder sb = new StringBuilder(str);
-
-            for (int i = 0; i < sb.Length; i++)
-            {
-
-                if (al.Contains(sb[i]))
-                {
-                    sb.Replace(sb[i].ToString(), "");
-                    i--;
-                }
-            }
-
-            string final = sb.ToString() + "-" + str1.ToString();
-            final = final.Replace(" ", String.Empty);
-            return final;
-        }
 
         static string RemoveVowel(string input)
         {
@@ -136,13 +114,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                     adapter.Fill(dt);
                     if (dt.Rows.Count > 0)
                     {
-                        //txtItemNumber.Text = dt.Rows[0]["ID"].ToString();
                         txtDescription.Text = dt.Rows[0]["Description"].ToString();
-                        //txtBarcode.Text = dt.Rows[0]["Barcode"].ToString();
-                        //txtPrice.Text = dt.Rows[0]["Price"].ToString();
-                        //txtUnit.Text = dt.Rows[0]["Unit"].ToString();
-                        //txtCriticalLevel.Text = dt.Rows[0]["Critical Level"].ToString();
-                        //txtSKU.Text = remVowel(dt.Rows[0]["Description"].ToString(), dt.Rows[0]["Unit"].ToString());
                     }
                 }
 
@@ -313,35 +285,16 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             this.Close();
         }
 
-        private void txtBatchQuantity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-        }
-
         static string makeShortCode(string i)
         {
             string input = i;
             input = RemoveVowel(input);
             int length = input.Length;
-            //if (length >= 9)
-            //{
+
             input = input.Remove(input.Length - 2);
             input = input + "00000000";
             input = input.Substring(0, 9);
-
             return input;
-            //}
-            //else
-            //{
-            //    input = input + "00000000";
-            //    input = input.Substring(0, 9);
-
-            //    return input;
-            //}
 
         }
 
@@ -419,39 +372,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             }
 
         }
-
-        private void bunifuButton1_Click(object sender, EventArgs e)
-        {
-            if (txtBatchQuantity.Text == "" || txtViewItem.Text == "")
-            {
-                MessageBox.Show("Enter Item and Batch Quantity");
-            }
-            else if (txtViewItem.Text == "")
-            {
-                MessageBox.Show("Enter Item");
-            }
-            else if (txtBatchQuantity.Text == "")
-            {
-                MessageBox.Show("Enter Batch Quantity");
-            }
-            
-            else if (!Regex.IsMatch(txtBatchQuantity.Text, @"^\d+$"))
-            {
-                MessageBox.Show("Batch Quantity must be number only");
-            }
-            else if (!Regex.IsMatch(txtViewItem.Text, @"^[A-Za-z0-9\s-]*$"))
-            {
-                MessageBox.Show("Search must be exact as the product textbox show");
-            }
-                       
-            else
-            {
-                displaySKU();
-            }
-            
-        }
        
-        private void bunifuButton2_Click(object sender, EventArgs e)
+
+        private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (DateTime.Today < dtpMilledDate.Value)
+            {
+                MessageBox.Show("The selected milled date is Invalid!");
+                dtpMilledDate.Value = DateTime.Today;
+            }
+        }
+
+        private void dtpStockInDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (DateTime.Today > dtpStockInDate.Value || DateTime.Today < dtpStockInDate.Value)
+            {
+                MessageBox.Show("The Selected Stock In Date is Invalid");
+                dtpStockInDate.Value = DateTime.Today;
+            }
+        }
+
+        private void btnPrintBarcode_Click(object sender, EventArgs e)
         {
             this.appData1.Clear();
             int rows = dgvSKUList.Rows.Count;
@@ -483,31 +424,45 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
                 MessageBox.Show("Enter Item First!");
             }
-
-
         }
 
-        private void dtpMilledDate_ValueChanged(object sender, EventArgs e)
+        private void btnGenerateSKU_Click(object sender, EventArgs e)
         {
-            if (DateTime.Today < dtpMilledDate.Value)
+            if (txtBatchQuantity.Text == "" || txtViewItem.Text == "")
             {
-                MessageBox.Show("The selected milled date is Invalid!");
-                dtpMilledDate.Value = DateTime.Today;
+                MessageBox.Show("Enter Item and Batch Quantity");
+            }
+            else if (txtViewItem.Text == "")
+            {
+                MessageBox.Show("Enter Item");
+            }
+            else if (txtBatchQuantity.Text == "")
+            {
+                MessageBox.Show("Enter Batch Quantity");
+            }
+
+            else if (!Regex.IsMatch(txtBatchQuantity.Text, @"^\d+$"))
+            {
+                MessageBox.Show("Batch Quantity must be number only");
+            }
+            else if (!Regex.IsMatch(txtViewItem.Text, @"^[A-Za-z0-9\s-]*$"))
+            {
+                MessageBox.Show("Search must be exact as the product textbox show");
+            }
+
+            else
+            {
+                displaySKU();
             }
         }
 
-        private void dtpStockInDate_ValueChanged(object sender, EventArgs e)
+        private void txtBatchQuantity_TextChange(object sender, EventArgs e)
         {
-            if (DateTime.Today > dtpStockInDate.Value || DateTime.Today < dtpStockInDate.Value)
+            if (!Regex.IsMatch(txtBatchQuantity.Text, @"^\d+$"))
             {
-                MessageBox.Show("The Selected Stock In Date is Invalid");
-                dtpStockInDate.Value = DateTime.Today;
+                MessageBox.Show("Batch Quantity must be in Numbers Only!");
+
             }
-        }
-
-        private void txtViewItem_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

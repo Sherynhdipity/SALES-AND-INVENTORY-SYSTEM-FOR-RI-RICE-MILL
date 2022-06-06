@@ -309,12 +309,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppData.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\addCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashier Modules\addCustomer.Designer.cs">
-      <DependentUpon>addCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cashier Modules\Return Payment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,11 +335,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Cashier Modules\DisplaySKU.cs">
+    <Compile Include="Cashier Modules\Return DisplaySKU.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cashier Modules\DisplaySKU.Designer.cs">
-      <DependentUpon>DisplaySKU.cs</DependentUpon>
+    <Compile Include="Cashier Modules\Return DisplaySKU.Designer.cs">
+      <DependentUpon>Return DisplaySKU.cs</DependentUpon>
     </Compile>
     <Compile Include="Cashier Modules\SearchTransNo.cs">
       <SubType>Form</SubType>
@@ -358,12 +352,6 @@
     </Compile>
     <Compile Include="Cashier Modules\ReturnItem.Designer.cs">
       <DependentUpon>ReturnItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Cashier Modules\SearchReturnTransaction.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cashier Modules\SearchReturnTransaction.Designer.cs">
-      <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Cashier Report.cs">
       <SubType>Form</SubType>
@@ -511,35 +499,35 @@
     <Compile Include="Owner Modules\Add Customer.Designer.cs">
       <DependentUpon>Add Customer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\CustomerListReports.cs">
+    <Compile Include="Owner Modules\Customer List Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\CustomerListReports.Designer.cs">
-      <DependentUpon>CustomerListReports.cs</DependentUpon>
+    <Compile Include="Owner Modules\Customer List Report.Designer.cs">
+      <DependentUpon>Customer List Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\InventoryAdjustmentReport.cs">
+    <Compile Include="Owner Modules\Inventory Adjustment Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\InventoryAdjustmentReport.Designer.cs">
-      <DependentUpon>InventoryAdjustmentReport.cs</DependentUpon>
+    <Compile Include="Owner Modules\Inventory Adjustment Report.Designer.cs">
+      <DependentUpon>Inventory Adjustment Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\InventoryDetailedReport.cs">
+    <Compile Include="Owner Modules\Inventory Detailed Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\InventoryDetailedReport.Designer.cs">
-      <DependentUpon>InventoryDetailedReport.cs</DependentUpon>
+    <Compile Include="Owner Modules\Inventory Detailed Report.Designer.cs">
+      <DependentUpon>Inventory Detailed Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\InventoryValuation.cs">
+    <Compile Include="Owner Modules\Inventory Valuation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\InventoryValuation.Designer.cs">
-      <DependentUpon>InventoryValuation.cs</DependentUpon>
+    <Compile Include="Owner Modules\Inventory Valuation.Designer.cs">
+      <DependentUpon>Inventory Valuation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\ItemList.cs">
+    <Compile Include="Owner Modules\Item List.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\ItemList.Designer.cs">
-      <DependentUpon>ItemList.cs</DependentUpon>
+    <Compile Include="Owner Modules\Item List.Designer.cs">
+      <DependentUpon>Item List.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\ShowInventoryButtons.cs">
       <SubType>Form</SubType>
@@ -650,11 +638,11 @@
     <Compile Include="Owner Modules\Customer Management.Designer.cs">
       <DependentUpon>Customer Management.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\DiscountRequirements.cs">
+    <Compile Include="Owner Modules\Discount Requirements.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\DiscountRequirements.Designer.cs">
-      <DependentUpon>DiscountRequirements.cs</DependentUpon>
+    <Compile Include="Owner Modules\Discount Requirements.Designer.cs">
+      <DependentUpon>Discount Requirements.cs</DependentUpon>
     </Compile>
     <Compile Include="Owner Modules\Item Management.cs">
       <SubType>UserControl</SubType>
@@ -662,29 +650,29 @@
     <Compile Include="Owner Modules\Item Management.Designer.cs">
       <DependentUpon>Item Management.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\OwnerInventoryReport.cs">
+    <Compile Include="Owner Modules\Inventory Per Item Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\OwnerInventoryReport.Designer.cs">
-      <DependentUpon>OwnerInventoryReport.cs</DependentUpon>
+    <Compile Include="Owner Modules\Inventory Per Item Report.Designer.cs">
+      <DependentUpon>Inventory Per Item Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\OwnerSalesReport.cs">
+    <Compile Include="Owner Modules\Sales Summary Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\OwnerSalesReport.Designer.cs">
-      <DependentUpon>OwnerSalesReport.cs</DependentUpon>
+    <Compile Include="Owner Modules\Sales Summary Report.Designer.cs">
+      <DependentUpon>Sales Summary Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\RestockReport.cs">
+    <Compile Include="Owner Modules\Restock Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\RestockReport.Designer.cs">
-      <DependentUpon>RestockReport.cs</DependentUpon>
+    <Compile Include="Owner Modules\Restock Report.Designer.cs">
+      <DependentUpon>Restock Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\Sales Return.cs">
+    <Compile Include="Owner Modules\Sales Return Report.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Owner Modules\Sales Return.Designer.cs">
-      <DependentUpon>Sales Return.cs</DependentUpon>
+    <Compile Include="Owner Modules\Sales Return Report.Designer.cs">
+      <DependentUpon>Sales Return Report.cs</DependentUpon>
     </Compile>
     <Compile Include="PerItems.cs">
       <AutoGen>True</AutoGen>
@@ -755,23 +743,17 @@
     <Compile Include="Owner Modules\Owner Mainform.Designer.cs">
       <DependentUpon>Owner Mainform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\Owner Reports.cs">
+    <Compile Include="Owner Modules\Owner Report Dashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Owner Modules\Owner Reports.Designer.cs">
-      <DependentUpon>Owner Reports.cs</DependentUpon>
+    <Compile Include="Owner Modules\Owner Report Dashboard.Designer.cs">
+      <DependentUpon>Owner Report Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Owner Modules\UserManagement.cs">
+    <Compile Include="Owner Modules\User Management.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Owner Modules\UserManagement.Designer.cs">
-      <DependentUpon>UserManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Owner Modules\Users.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Owner Modules\Users.Designer.cs">
-      <DependentUpon>Users.cs</DependentUpon>
+    <Compile Include="Owner Modules\User Management.Designer.cs">
+      <DependentUpon>User Management.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintReceipt.cs">
       <SubType>Form</SubType>
@@ -855,9 +837,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Adjustments.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\addCustomer.resx">
-      <DependentUpon>addCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\Return Payment.resx">
       <DependentUpon>Return Payment.cs</DependentUpon>
     </EmbeddedResource>
@@ -867,17 +846,14 @@
     <EmbeddedResource Include="Cashier Modules\Return Terminal.resx">
       <DependentUpon>Return Terminal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\DisplaySKU.resx">
-      <DependentUpon>DisplaySKU.cs</DependentUpon>
+    <EmbeddedResource Include="Cashier Modules\Return DisplaySKU.resx">
+      <DependentUpon>Return DisplaySKU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\SearchTransNo.resx">
       <DependentUpon>SearchTransNo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Modules\ReturnItem.resx">
       <DependentUpon>ReturnItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Cashier Modules\SearchReturnTransaction.resx">
-      <DependentUpon>SearchReturnTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cashier Report.resx">
       <DependentUpon>Cashier Report.cs</DependentUpon>
@@ -954,20 +930,20 @@
     <EmbeddedResource Include="Owner Modules\Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\CustomerListReports.resx">
-      <DependentUpon>CustomerListReports.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Customer List Report.resx">
+      <DependentUpon>Customer List Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\InventoryAdjustmentReport.resx">
-      <DependentUpon>InventoryAdjustmentReport.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Inventory Adjustment Report.resx">
+      <DependentUpon>Inventory Adjustment Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\InventoryDetailedReport.resx">
-      <DependentUpon>InventoryDetailedReport.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Inventory Detailed Report.resx">
+      <DependentUpon>Inventory Detailed Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\InventoryValuation.resx">
-      <DependentUpon>InventoryValuation.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Inventory Valuation.resx">
+      <DependentUpon>Inventory Valuation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\ItemList.resx">
-      <DependentUpon>ItemList.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Item List.resx">
+      <DependentUpon>Item List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\ShowInventoryButtons.resx">
       <DependentUpon>ShowInventoryButtons.cs</DependentUpon>
@@ -1017,8 +993,8 @@
     <EmbeddedResource Include="Cashier Modules\Payment.resx">
       <DependentUpon>Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\DiscountRequirements.resx">
-      <DependentUpon>DiscountRequirements.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Discount Requirements.resx">
+      <DependentUpon>Discount Requirements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PerItems.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1054,17 +1030,17 @@
     <EmbeddedResource Include="Owner Modules\Item Management.resx">
       <DependentUpon>Item Management.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\OwnerInventoryReport.resx">
-      <DependentUpon>OwnerInventoryReport.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Inventory Per Item Report.resx">
+      <DependentUpon>Inventory Per Item Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\OwnerSalesReport.resx">
-      <DependentUpon>OwnerSalesReport.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Sales Summary Report.resx">
+      <DependentUpon>Sales Summary Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\RestockReport.resx">
-      <DependentUpon>RestockReport.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Restock Report.resx">
+      <DependentUpon>Restock Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\Sales Return.resx">
-      <DependentUpon>Sales Return.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Sales Return Report.resx">
+      <DependentUpon>Sales Return Report.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Owner Modules\Update Item.resx">
       <DependentUpon>Update Item.cs</DependentUpon>
@@ -1081,14 +1057,11 @@
     <EmbeddedResource Include="Owner Modules\Owner Mainform.resx">
       <DependentUpon>Owner Mainform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\Owner Reports.resx">
-      <DependentUpon>Owner Reports.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\Owner Report Dashboard.resx">
+      <DependentUpon>Owner Report Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\UserManagement.resx">
-      <DependentUpon>UserManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Owner Modules\Users.resx">
-      <DependentUpon>Users.cs</DependentUpon>
+    <EmbeddedResource Include="Owner Modules\User Management.resx">
+      <DependentUpon>User Management.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

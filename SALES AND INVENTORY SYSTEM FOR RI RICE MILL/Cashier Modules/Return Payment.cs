@@ -32,7 +32,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         //end mods
 
         frmSalesManagement sales = new frmSalesManagement();
-        Cashier_Modules.addCustomer addCustomer = new Cashier_Modules.addCustomer();
+        frmAddNewCustomer addCustomer = new frmAddNewCustomer();
         frmPrintReceipt receipt = new frmPrintReceipt();
         frmAddNewCustomer addNewCustomer = new frmAddNewCustomer();
         public static SqlConnection con = new SqlConnection(DBConnection.con);

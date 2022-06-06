@@ -44,9 +44,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         public void ClearControls()
         {
             txtDescription.Clear();
-            txtPrice.Clear();
             txtCriticalLevel.Clear();
-            txtCostPrice.Clear();
         }
 
         //add item
@@ -64,62 +62,30 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 MessageBox.Show("Whitespace is not allowed!");
                 txtDescription.Clear();
             }
-            else if (String.IsNullOrEmpty(txtCostPrice.Text))
-            {
-                MessageBox.Show("Enter Cost Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCostPrice.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtCostPrice.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtCostPrice.Clear();
-            }
-            else if(!Regex.IsMatch(txtDescription.Text, @"^[A-Za-z0-9\s-]*$"))
+            else if (!Regex.IsMatch(txtDescription.Text, @"^[A-Za-z0-9\s-]*$"))
             {
                 MessageBox.Show("Description must contain letters, numbers, space and dash only");
             }
 
-            else if (!Regex.IsMatch(txtCostPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
-            {
-                MessageBox.Show("Cost Price must be Number Only");
-            }
-            else if (!Regex.IsMatch(txtPrice.Text, @"^-?(?:\d+|\d{1,2}(?:,\d{3})+)(?:(\.|,)\d+)?$"))
-            {
-                MessageBox.Show("Price must be Number Only");
-
-            }
             else if (!Regex.IsMatch(txtCriticalLevel.Text, @"^\d+$"))
             {
                 MessageBox.Show("Critical Level Number Only");
 
             }
-            else if (String.IsNullOrEmpty(txtPrice.Text))
-            {
-                MessageBox.Show("Enter Selling Price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPrice.Focus();
-            }
-            else if (String.IsNullOrWhiteSpace(txtPrice.Text))
-            {
-                MessageBox.Show("Whitespace is not allowed!");
-                txtPrice.Clear();
-            }
-            
             else if (String.IsNullOrEmpty(txtCriticalLevel.Text))
             {
                 MessageBox.Show("Enter Critical Level!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCriticalLevel.Focus();
             }
-            else if (Convert.ToDouble(txtCostPrice.Text) >= Convert.ToDouble(txtPrice.Text))
-            {
-                MessageBox.Show("Cost price must be less than selling price!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtCriticalLevel.Focus();
-            }
             else
             {
-                result = MessageBox.Show("Do you want to add this item?", "Add Item", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                if (cmbUnit.SelectedIndex == 0)
                 {
-                    
+                    result = MessageBox.Show("Do you want to add this item?", "Add Item", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+
+                    {
                         con.Close();
                         con.Open();
                         QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc";
@@ -129,60 +95,131 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                         reader = cmd.ExecuteReader();
 
-                    if (reader.HasRows)
-                    {
-                        MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            con.Close();
+                            con.Open();
+                            QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Unit = @unit AND Critical_Level = @critical";
 
+                            cmd = new SqlCommand(QuerySelect, con);
+                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                            cmd.Parameters.AddWithValue("@unit", cmbUnit.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+
+                            reader = cmd.ExecuteReader();
+
+                            if (reader.HasRows)
+                            {
+                                MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                ClearControls();
+                            }
+
+                            else
+                            {
+                                try
+                                {
+                                    con.Close();
+                                    con.Open();
+                                    QueryInsert = "INSERT INTO tblItems (Description,Unit,Critical_Level) VALUES (@desc, @unit, @critical)";
+
+                                    cmd = new SqlCommand(QueryInsert, con);
+                                    cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                                    cmd.Parameters.AddWithValue("@unit", cmbUnit.SelectedItem.ToString());
+                                    cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+                                    cmd.ExecuteNonQuery();
+
+                                    MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    ClearControls();
+                                    this.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                                finally
+                                {
+                                    con.Close();
+                                }
+                            }
+                        }
                     }
-                    else
+                }
+                else if(cmbUnit.SelectedIndex == 1)
+                {
+                    result = MessageBox.Show("Do you want to add this item?", "Add Item", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes)
+
                     {
                         con.Close();
                         con.Open();
-                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Price = @price AND Critical_Level = @critical AND Cost_Price = @cost";
+                        QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc";
 
                         cmd = new SqlCommand(QuerySelect, con);
                         cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                        cmd.Parameters.AddWithValue("@price", txtPrice.Text);
-                        cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
-                        cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
 
                         reader = cmd.ExecuteReader();
 
                         if (reader.HasRows)
-
                         {
                             MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            ClearControls();
                         }
                         else
                         {
-                            try
+                            con.Close();
+                            con.Open();
+                            QuerySelect = "SELECT * FROM tblItems WHERE Description = @desc AND Unit = @unit AND Critical_Level = @critical";
+
+                            cmd = new SqlCommand(QuerySelect, con);
+                            cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                            cmd.Parameters.AddWithValue("@unit", cmbUnit.SelectedItem.ToString());
+                            cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+
+                            reader = cmd.ExecuteReader();
+
+                            if (reader.HasRows)
                             {
-                                con.Close();
-                                con.Open();
-                                QueryInsert = "INSERT INTO tblItems (Description,Price,Critical_Level, Cost_Price) VALUES (@desc, @price, @critical, @cost)";
-
-                                cmd = new SqlCommand(QueryInsert, con);
-                                cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                                cmd.Parameters.AddWithValue("@price", txtPrice.Text.Replace(",",""));
-                                cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
-                                cmd.Parameters.AddWithValue("@cost", txtCostPrice.Text);
-                                cmd.ExecuteNonQuery();
-
-                                MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("This Item already exists!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 ClearControls();
-                                this.Close();
                             }
-                            catch (Exception ex)
+
+                            else
                             {
-                                MessageBox.Show(ex.Message);
-                            }
-                            finally
-                            {
-                                con.Close();
+                                try
+                                {
+                                    con.Close();
+                                    con.Open();
+                                    QueryInsert = "INSERT INTO tblItems (Description,Unit,Critical_Level) VALUES (@desc, @unit, @critical)";
+
+                                    cmd = new SqlCommand(QueryInsert, con);
+                                    cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
+                                    cmd.Parameters.AddWithValue("@unit", cmbUnit.SelectedItem.ToString());
+                                    cmd.Parameters.AddWithValue("@critical", txtCriticalLevel.Text);
+                                    cmd.ExecuteNonQuery();
+
+                                    MessageBox.Show("Item Added Successfully!", "Add Item", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    ClearControls();
+                                    this.Close();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                                finally
+                                {
+                                    con.Close();
+                                }
                             }
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Please Select Unit");
                 }
             }
         }

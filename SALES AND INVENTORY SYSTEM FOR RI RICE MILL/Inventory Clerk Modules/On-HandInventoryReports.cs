@@ -94,18 +94,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             }
         }
 
-        private void dgvInventoryOwnerReport_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void txtSearchInventory_TextChanged(object sender, EventArgs e)
         {
+            QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
 
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
+            //cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
+
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvInventoryOwnerReport.DataSource = dt;
+            dgvInventoryOwnerReport.Refresh();
+
+            int sum = 0;
+
+            for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
+            {
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
+            }
+
+            lblTotal.Text = sum.ToString();
         }
 
-        private void dgvInventoryOwnerReport_Scroll(object sender, ScrollEventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnPrintReport_Click(object sender, EventArgs e)
-        {
             DataSet ds = new DataSet();
             ClerkSumm sum = new ClerkSumm();
             frmClerkSummaryRep frm = new frmClerkSummaryRep();
@@ -146,30 +161,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             {
 
             }
-        }
-
-        private void txtSearchInventory_TextChanged(object sender, EventArgs e)
-        {
-            QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
-
-            cmd = new SqlCommand(QuerySelect, con);
-            cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
-            //cmd.Parameters.AddWithValue("@ToDate", dtpToDate.Value);
-
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
-            dgvInventoryOwnerReport.DataSource = dt;
-            dgvInventoryOwnerReport.Refresh();
-
-            int sum = 0;
-
-            for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
-            {
-                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
-            }
-
-            lblTotal.Text = sum.ToString();
         }
     }
 }
