@@ -137,7 +137,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             timer1 = new Timer();
             timer1.Tick += new EventHandler(timer1_Tick);
-            timer1.Interval = 3000; // in miliseconds
+            timer1.Interval = 1000; // in miliseconds
             timer1.Start();
         }
 

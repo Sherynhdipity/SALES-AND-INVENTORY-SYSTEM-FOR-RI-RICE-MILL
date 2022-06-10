@@ -355,6 +355,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             private global::System.Data.DataColumn columnPrice;
             
+            private global::System.Data.DataColumn columnUnit;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public order_detailsDataTable() {
@@ -414,6 +416,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn UnitColumn {
+                get {
+                    return this.columnUnit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,12 +459,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public order_detailsRow Addorder_detailsRow(string Description, string Qty, string Price) {
+            public order_detailsRow Addorder_detailsRow(string Description, string Qty, string Price, string Unit) {
                 order_detailsRow roworder_detailsRow = ((order_detailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Description,
                         Qty,
-                        Price};
+                        Price,
+                        Unit};
                 roworder_detailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(roworder_detailsRow);
                 return roworder_detailsRow;
@@ -480,6 +491,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
                 this.columnDescription = base.Columns["Description"];
                 this.columnQty = base.Columns["Qty"];
                 this.columnPrice = base.Columns["Price"];
+                this.columnUnit = base.Columns["Unit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -491,6 +503,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
                 base.Columns.Add(this.columnQty);
                 this.columnPrice = new global::System.Data.DataColumn("Price", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
+                this.columnUnit = new global::System.Data.DataColumn("Unit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUnit);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -632,6 +646,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             private global::System.Data.DataColumn columnReturnRemarks;
             
+            private global::System.Data.DataColumn columnReturnUnit;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public return_detailsDataTable() {
@@ -699,6 +715,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ReturnUnitColumn {
+                get {
+                    return this.columnReturnUnit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -734,13 +758,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public return_detailsRow Addreturn_detailsRow(string ReturnDescription, string ReturnQty, string ReturnPrice, string ReturnRemarks) {
+            public return_detailsRow Addreturn_detailsRow(string ReturnDescription, string ReturnQty, string ReturnPrice, string ReturnRemarks, string ReturnUnit) {
                 return_detailsRow rowreturn_detailsRow = ((return_detailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ReturnDescription,
                         ReturnQty,
                         ReturnPrice,
-                        ReturnRemarks};
+                        ReturnRemarks,
+                        ReturnUnit};
                 rowreturn_detailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowreturn_detailsRow);
                 return rowreturn_detailsRow;
@@ -767,6 +792,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
                 this.columnReturnQty = base.Columns["ReturnQty"];
                 this.columnReturnPrice = base.Columns["ReturnPrice"];
                 this.columnReturnRemarks = base.Columns["ReturnRemarks"];
+                this.columnReturnUnit = base.Columns["ReturnUnit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -780,6 +806,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
                 base.Columns.Add(this.columnReturnPrice);
                 this.columnReturnRemarks = new global::System.Data.DataColumn("ReturnRemarks", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReturnRemarks);
+                this.columnReturnUnit = new global::System.Data.DataColumn("ReturnUnit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReturnUnit);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -919,6 +947,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             private global::System.Data.DataColumn columnReplacePrice;
             
+            private global::System.Data.DataColumn columnReplaceUnit;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public replace_detailsDataTable() {
@@ -978,6 +1008,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ReplaceUnitColumn {
+                get {
+                    return this.columnReplaceUnit;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1013,12 +1051,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public replace_detailsRow Addreplace_detailsRow(string ReplaceDescription, string ReplaceQty, string ReplacePrice) {
+            public replace_detailsRow Addreplace_detailsRow(string ReplaceDescription, string ReplaceQty, string ReplacePrice, string ReplaceUnit) {
                 replace_detailsRow rowreplace_detailsRow = ((replace_detailsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ReplaceDescription,
                         ReplaceQty,
-                        ReplacePrice};
+                        ReplacePrice,
+                        ReplaceUnit};
                 rowreplace_detailsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowreplace_detailsRow);
                 return rowreplace_detailsRow;
@@ -1044,6 +1083,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
                 this.columnReplaceDescription = base.Columns["ReplaceDescription"];
                 this.columnReplaceQty = base.Columns["ReplaceQty"];
                 this.columnReplacePrice = base.Columns["ReplacePrice"];
+                this.columnReplaceUnit = base.Columns["ReplaceUnit"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1055,6 +1095,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
                 base.Columns.Add(this.columnReplaceQty);
                 this.columnReplacePrice = new global::System.Data.DataColumn("ReplacePrice", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnReplacePrice);
+                this.columnReplaceUnit = new global::System.Data.DataColumn("ReplaceUnit", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReplaceUnit);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1245,6 +1287,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string Unit {
+                get {
+                    try {
+                        return ((string)(this[this.tableorder_details.UnitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Unit\' in table \'order_details\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableorder_details.UnitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDescriptionNull() {
                 return this.IsNull(this.tableorder_details.DescriptionColumn);
             }
@@ -1277,6 +1335,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPriceNull() {
                 this[this.tableorder_details.PriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsUnitNull() {
+                return this.IsNull(this.tableorder_details.UnitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetUnitNull() {
+                this[this.tableorder_details.UnitColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1360,6 +1430,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ReturnUnit {
+                get {
+                    try {
+                        return ((string)(this[this.tablereturn_details.ReturnUnitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReturnUnit\' in table \'return_details\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablereturn_details.ReturnUnitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsReturnDescriptionNull() {
                 return this.IsNull(this.tablereturn_details.ReturnDescriptionColumn);
             }
@@ -1404,6 +1490,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetReturnRemarksNull() {
                 this[this.tablereturn_details.ReturnRemarksColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsReturnUnitNull() {
+                return this.IsNull(this.tablereturn_details.ReturnUnitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetReturnUnitNull() {
+                this[this.tablereturn_details.ReturnUnitColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1471,6 +1569,22 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ReplaceUnit {
+                get {
+                    try {
+                        return ((string)(this[this.tablereplace_details.ReplaceUnitColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ReplaceUnit\' in table \'replace_details\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablereplace_details.ReplaceUnitColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsReplaceDescriptionNull() {
                 return this.IsNull(this.tablereplace_details.ReplaceDescriptionColumn);
             }
@@ -1503,6 +1617,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetReplacePriceNull() {
                 this[this.tablereplace_details.ReplacePriceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsReplaceUnitNull() {
+                return this.IsNull(this.tablereplace_details.ReplaceUnitColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetReplaceUnitNull() {
+                this[this.tablereplace_details.ReplaceUnitColumn] = global::System.Convert.DBNull;
             }
         }
         

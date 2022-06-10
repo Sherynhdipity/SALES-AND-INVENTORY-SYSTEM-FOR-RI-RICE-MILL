@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SALES AND INVENTORY SYSTEM FOR RI RICE MILL", "SALES AND INVENTORY SYSTEM FOR RI RICE MILL\SALES AND INVENTORY SYSTEM FOR RI RICE MILL.csproj", "{64AAA976-733A-4699-8E33-BF7AB53E34C0}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SalesInventorySetup", "SalesInventorySetup\SalesInventorySetup.vdproj", "{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SalesInventorySetup", "SalesInventorySetup\SalesInventorySetup.vdproj", "{D4D3F57A-3553-4E99-8355-7DBCB319F88E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,12 @@ Global
 		{64AAA976-733A-4699-8E33-BF7AB53E34C0}.Release|x64.Build.0 = Release|x64
 		{64AAA976-733A-4699-8E33-BF7AB53E34C0}.Release|x86.ActiveCfg = Release|x86
 		{64AAA976-733A-4699-8E33-BF7AB53E34C0}.Release|x86.Build.0 = Release|x86
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Debug|Any CPU.ActiveCfg = Debug
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Debug|x64.ActiveCfg = Debug
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Debug|x86.ActiveCfg = Debug
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Debug|x86.Build.0 = Debug
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Release|Any CPU.ActiveCfg = Release
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Release|x64.ActiveCfg = Release
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Release|x86.ActiveCfg = Release
-		{8F82CB5E-DB8A-4419-93B0-D2D58EEE870F}.Release|x86.Build.0 = Release
+		{D4D3F57A-3553-4E99-8355-7DBCB319F88E}.Debug|Any CPU.ActiveCfg = Debug
+		{D4D3F57A-3553-4E99-8355-7DBCB319F88E}.Debug|x64.ActiveCfg = Debug
+		{D4D3F57A-3553-4E99-8355-7DBCB319F88E}.Debug|x86.ActiveCfg = Debug
+		{D4D3F57A-3553-4E99-8355-7DBCB319F88E}.Release|Any CPU.ActiveCfg = Release
+		{D4D3F57A-3553-4E99-8355-7DBCB319F88E}.Release|x64.ActiveCfg = Release
+		{D4D3F57A-3553-4E99-8355-7DBCB319F88E}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

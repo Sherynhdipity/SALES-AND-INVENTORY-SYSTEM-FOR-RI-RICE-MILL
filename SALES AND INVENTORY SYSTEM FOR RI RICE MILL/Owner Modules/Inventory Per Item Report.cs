@@ -57,7 +57,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 int sum = 0;
                 for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[4].Value);
+                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[5].Value);
                 }
                 txtTotal.Text = sum.ToString();
 
@@ -90,7 +90,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             int sum = 0;
             for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[4].Value);
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[5].Value);
             }
             txtTotal.Text = sum.ToString();
         }

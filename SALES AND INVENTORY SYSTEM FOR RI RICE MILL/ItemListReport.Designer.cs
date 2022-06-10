@@ -59,7 +59,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
         #endregion
-        private ItemListReport ItemListReport1;
         public CrystalDecisions.Windows.Forms.CrystalReportViewer ItemListViewer;
+        private ItemListReport ItemListReport1;
     }
 }

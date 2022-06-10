@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 {
@@ -111,96 +112,95 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
 
-        //public void populateDash()
-        //{
-            
+        public void populateDash()
+        {
 
-        //    // Total Sales
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "SELECT SUM(Total_cost) AS [totalSales] FROM tblOrders";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //           string var = reader["totalSales"].ToString();
-        //            lblTotalSales.Text = Convert.ToDouble(var).ToString("N2");
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+            // Total Sales
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT SUM(Total_cost) AS [totalSales] FROM tblOrders";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    string var = reader["totalSales"].ToString();
+                    lblTotalSales.Text = Convert.ToDouble(var).ToString("N2");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
 
-        //    //Total transactions
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "SELECT COUNT(Transaction_number) AS[totalTrans] FROM tblOrders";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            lblTotalTransactions.Text = reader["totalTrans"].ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+            //Total transactions
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT COUNT(Transaction_number) AS[totalTrans] FROM tblOrders";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblTotalTransactions.Text = reader["totalTrans"].ToString();
+                }
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-        //    //StockedIn
+            //StockedIn
 
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "SELECT [Available Quantity] FROM AvailableStockView";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            lblStockedIn.Text = reader["Available Quantity"].ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT [Available Quantity] FROM AvailableStockView";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblStockedIn.Text = reader["Available Quantity"].ToString();
+                }
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
-        //    //StockedOut
-        //    try
-        //    {
-        //        con.Open();
-        //        QuerySelect = "SELECT COUNT(SKU) AS [Stock out] FROM tblOrderDetails";
-        //        SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
-        //        if (reader.Read())
-        //        {
-        //            lblStockedOut.Text = reader["Stock Out"].ToString();
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+            //StockedOut
+            try
+            {
+                con.Open();
+                QuerySelect = "SELECT COUNT(SKU) AS [Stock out] FROM tblOrderDetails";
+                SqlDataReader reader = new SqlCommand(QuerySelect, con).ExecuteReader();
+                if (reader.Read())
+                {
+                    lblStockedOut.Text = reader["Stock Out"].ToString();
+                }
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        con.Close();
-        //    }
-        //}
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
         private void ucDashboard_Load(object sender, EventArgs e)
         {
@@ -217,11 +217,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //populateDash();
+            populateDash();
             populateChart();
-            
+        }
+
+        private void panelTotalSale_Click(object sender, EventArgs e)
+        {
+            frmOwnerSalesReport sales = new frmOwnerSalesReport();
+            sales.Show();
+        }
+
+        private void panelTotalTrans_Click(object sender, EventArgs e)
+        {
+            frmOwnerSalesReport sales = new frmOwnerSalesReport();
+            sales.Show();
+        }
+
+        private void panelAvailStock_Click(object sender, EventArgs e)
+        {
+            frmRestockReport restockReport = new frmRestockReport();
+            restockReport.Show();
+        }
+
+        private void panelStockedOut_Click(object sender, EventArgs e)
+        {
+            frmRestockReport restockReport = new frmRestockReport();
+            restockReport.Show();
         }
     }
-
 }
 

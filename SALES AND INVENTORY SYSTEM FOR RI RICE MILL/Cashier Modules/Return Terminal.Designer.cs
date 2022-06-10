@@ -75,6 +75,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties38 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties39 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties40 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties41 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties42 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties43 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties44 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -97,6 +101,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel23 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
             this.dvgOrderList = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.bunifuLabel12 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtQuantity = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtStock = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtProdPrice = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -109,6 +114,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel19 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.txtUnit = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.bunifuLabel15 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel6 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuLabel3 = new Bunifu.UI.WinForms.BunifuLabel();
             this.txtReturnAmount = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -131,7 +138,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel7 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnCancel = new Bunifu.Framework.UI.BunifuTileButton();
             this.dgvShowReturn = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.bunifuLabel12 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuPanel4.SuspendLayout();
             this.bunifuPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgOrderList)).BeginInit();
@@ -160,7 +166,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnExit.ImageZoom = 50;
             this.btnExit.LabelPosition = 29;
             this.btnExit.LabelText = "Dashboard";
-            this.btnExit.Location = new System.Drawing.Point(1258, 436);
+            this.btnExit.Location = new System.Drawing.Point(1152, 638);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(96, 93);
@@ -182,7 +188,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnLogout.ImageZoom = 50;
             this.btnLogout.LabelPosition = 29;
             this.btnLogout.LabelText = "Logout";
-            this.btnLogout.Location = new System.Drawing.Point(1258, 535);
+            this.btnLogout.Location = new System.Drawing.Point(1258, 638);
             this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(96, 93);
@@ -204,8 +210,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnPay.ImagePosition = 14;
             this.btnPay.ImageZoom = 50;
             this.btnPay.LabelPosition = 29;
-            this.btnPay.LabelText = "[F6] Payment";
-            this.btnPay.Location = new System.Drawing.Point(1154, 535);
+            this.btnPay.LabelText = "[F5] Payment";
+            this.btnPay.Location = new System.Drawing.Point(1048, 638);
             this.btnPay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPay.Name = "btnPay";
             this.btnPay.Size = new System.Drawing.Size(96, 93);
@@ -241,7 +247,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtQuantityCount.IconRight = null;
             this.txtQuantityCount.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtQuantityCount.Lines = new string[0];
-            this.txtQuantityCount.Location = new System.Drawing.Point(317, 636);
+            this.txtQuantityCount.Location = new System.Drawing.Point(590, 550);
             this.txtQuantityCount.MaxLength = 32767;
             this.txtQuantityCount.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtQuantityCount.Modified = false;
@@ -277,7 +283,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtQuantityCount.SelectionLength = 0;
             this.txtQuantityCount.SelectionStart = 0;
             this.txtQuantityCount.ShortcutsEnabled = true;
-            this.txtQuantityCount.Size = new System.Drawing.Size(690, 41);
+            this.txtQuantityCount.Size = new System.Drawing.Size(363, 41);
             this.txtQuantityCount.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtQuantityCount.TabIndex = 19;
             this.txtQuantityCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -300,14 +306,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnVoid.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoid.ForeColor = System.Drawing.Color.White;
             this.btnVoid.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.remove_from_cart_pngrepo_com;
-            this.btnVoid.ImagePosition = 8;
-            this.btnVoid.ImageZoom = 35;
-            this.btnVoid.LabelPosition = 29;
+            this.btnVoid.ImagePosition = 14;
+            this.btnVoid.ImageZoom = 25;
+            this.btnVoid.LabelPosition = 30;
             this.btnVoid.LabelText = "[F3] Void Item";
             this.btnVoid.Location = new System.Drawing.Point(1048, 534);
             this.btnVoid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Size = new System.Drawing.Size(96, 94);
+            this.btnVoid.Size = new System.Drawing.Size(147, 94);
             this.btnVoid.TabIndex = 32;
             this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
@@ -324,13 +330,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnSearchProduct.ForeColor = System.Drawing.Color.White;
             this.btnSearchProduct.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.search;
             this.btnSearchProduct.ImagePosition = 14;
-            this.btnSearchProduct.ImageZoom = 50;
-            this.btnSearchProduct.LabelPosition = 29;
-            this.btnSearchProduct.LabelText = "[F2]SearchProd";
-            this.btnSearchProduct.Location = new System.Drawing.Point(1154, 434);
+            this.btnSearchProduct.ImageZoom = 20;
+            this.btnSearchProduct.LabelPosition = 30;
+            this.btnSearchProduct.LabelText = "[F2] SearchProduct";
+            this.btnSearchProduct.Location = new System.Drawing.Point(1203, 434);
             this.btnSearchProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearchProduct.Name = "btnSearchProduct";
-            this.btnSearchProduct.Size = new System.Drawing.Size(96, 93);
+            this.btnSearchProduct.Size = new System.Drawing.Size(151, 93);
             this.btnSearchProduct.TabIndex = 31;
             this.btnSearchProduct.Click += new System.EventHandler(this.btnSearchProduct_Click);
             // 
@@ -344,13 +350,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnNewTrans.ForeColor = System.Drawing.Color.Black;
             this.btnNewTrans.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.search;
             this.btnNewTrans.ImagePosition = 14;
-            this.btnNewTrans.ImageZoom = 50;
-            this.btnNewTrans.LabelPosition = 29;
-            this.btnNewTrans.LabelText = "[F1]TransNumber";
+            this.btnNewTrans.ImageZoom = 20;
+            this.btnNewTrans.LabelPosition = 40;
+            this.btnNewTrans.LabelText = "[F1] Search Transaction";
             this.btnNewTrans.Location = new System.Drawing.Point(1048, 434);
             this.btnNewTrans.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNewTrans.Name = "btnNewTrans";
-            this.btnNewTrans.Size = new System.Drawing.Size(96, 93);
+            this.btnNewTrans.Size = new System.Drawing.Size(147, 93);
             this.btnNewTrans.TabIndex = 30;
             this.btnNewTrans.Click += new System.EventHandler(this.btnNewTrans_Click);
             // 
@@ -450,14 +456,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             // bunifuPanel2
             // 
-            this.bunifuPanel2.BackgroundColor = System.Drawing.Color.RoyalBlue;
+            this.bunifuPanel2.BackgroundColor = System.Drawing.Color.MidnightBlue;
             this.bunifuPanel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuPanel2.BackgroundImage")));
             this.bunifuPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuPanel2.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel2.BorderRadius = 0;
             this.bunifuPanel2.BorderThickness = 0;
-            this.bunifuPanel2.Controls.Add(this.bunifuLabel12);
             this.bunifuPanel2.Controls.Add(this.dvgOrderList);
+            this.bunifuPanel2.Controls.Add(this.bunifuLabel12);
             this.bunifuPanel2.Controls.Add(this.txtQuantity);
             this.bunifuPanel2.Controls.Add(this.txtStock);
             this.bunifuPanel2.Controls.Add(this.txtProdPrice);
@@ -470,6 +476,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuPanel2.Controls.Add(this.bunifuLabel1);
             this.bunifuPanel2.Controls.Add(this.bunifuLabel2);
             this.bunifuPanel2.Controls.Add(this.bunifuLabel19);
+            this.bunifuPanel2.Controls.Add(this.txtUnit);
+            this.bunifuPanel2.Controls.Add(this.bunifuLabel15);
             this.bunifuPanel2.Location = new System.Drawing.Point(0, 122);
             this.bunifuPanel2.Name = "bunifuPanel2";
             this.bunifuPanel2.ShowBorders = false;
@@ -530,7 +538,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dvgOrderList.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.dvgOrderList.HeaderBgColor = System.Drawing.Color.Empty;
             this.dvgOrderList.HeaderForeColor = System.Drawing.Color.White;
-            this.dvgOrderList.Location = new System.Drawing.Point(15, 50);
+            this.dvgOrderList.Location = new System.Drawing.Point(16, 50);
             this.dvgOrderList.Name = "dvgOrderList";
             this.dvgOrderList.ReadOnly = true;
             this.dvgOrderList.RowHeadersVisible = false;
@@ -539,8 +547,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dvgOrderList.Size = new System.Drawing.Size(448, 483);
             this.dvgOrderList.TabIndex = 45;
             this.dvgOrderList.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.dvgOrderList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgOrderList_CellFormatting_1);
-            this.dvgOrderList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgOrderList_CellMouseDoubleClick_1);
+            this.dvgOrderList.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgOrderList_CellEndEdit);
+            this.dvgOrderList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dvgOrderList_CellFormatting);
+            this.dvgOrderList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dvgOrderList_CellMouseDoubleClick);
+            // 
+            // bunifuLabel12
+            // 
+            this.bunifuLabel12.AllowParentOverrides = false;
+            this.bunifuLabel12.AutoEllipsis = false;
+            this.bunifuLabel12.CursorType = null;
+            this.bunifuLabel12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuLabel12.ForeColor = System.Drawing.Color.White;
+            this.bunifuLabel12.Location = new System.Drawing.Point(17, 20);
+            this.bunifuLabel12.Name = "bunifuLabel12";
+            this.bunifuLabel12.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel12.Size = new System.Drawing.Size(142, 24);
+            this.bunifuLabel12.TabIndex = 45;
+            this.bunifuLabel12.Text = "Order Details:";
+            this.bunifuLabel12.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel12.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // txtQuantity
             // 
@@ -804,7 +829,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtProdDesc.IconRight = null;
             this.txtProdDesc.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtProdDesc.Lines = new string[0];
-            this.txtProdDesc.Location = new System.Drawing.Point(19, 299);
+            this.txtProdDesc.Location = new System.Drawing.Point(19, 237);
             this.txtProdDesc.MaxLength = 32767;
             this.txtProdDesc.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtProdDesc.Modified = false;
@@ -1099,7 +1124,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel2.CursorType = null;
             this.bunifuLabel2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.bunifuLabel2.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel2.Location = new System.Drawing.Point(22, 281);
+            this.bunifuLabel2.Location = new System.Drawing.Point(22, 219);
             this.bunifuLabel2.Name = "bunifuLabel2";
             this.bunifuLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel2.Size = new System.Drawing.Size(108, 15);
@@ -1116,7 +1141,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel19.CursorType = null;
             this.bunifuLabel19.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F);
             this.bunifuLabel19.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel19.Location = new System.Drawing.Point(89, 225);
+            this.bunifuLabel19.Location = new System.Drawing.Point(86, 163);
             this.bunifuLabel19.Name = "bunifuLabel19";
             this.bunifuLabel19.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel19.Size = new System.Drawing.Size(160, 18);
@@ -1125,6 +1150,100 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel19.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.bunifuLabel19.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             this.bunifuLabel19.Visible = false;
+            // 
+            // txtUnit
+            // 
+            this.txtUnit.AcceptsReturn = false;
+            this.txtUnit.AcceptsTab = false;
+            this.txtUnit.AnimationSpeed = 200;
+            this.txtUnit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtUnit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtUnit.AutoSizeHeight = true;
+            this.txtUnit.BackColor = System.Drawing.Color.Transparent;
+            this.txtUnit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtUnit.BackgroundImage")));
+            this.txtUnit.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtUnit.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtUnit.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtUnit.BorderColorIdle = System.Drawing.Color.Silver;
+            this.txtUnit.BorderRadius = 1;
+            this.txtUnit.BorderThickness = 1;
+            this.txtUnit.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtUnit.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUnit.DefaultFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnit.DefaultText = "";
+            this.txtUnit.Enabled = false;
+            this.txtUnit.FillColor = System.Drawing.Color.White;
+            this.txtUnit.HideSelection = true;
+            this.txtUnit.IconLeft = null;
+            this.txtUnit.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUnit.IconPadding = 10;
+            this.txtUnit.IconRight = null;
+            this.txtUnit.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUnit.Lines = new string[0];
+            this.txtUnit.Location = new System.Drawing.Point(19, 300);
+            this.txtUnit.MaxLength = 32767;
+            this.txtUnit.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtUnit.Modified = false;
+            this.txtUnit.Multiline = false;
+            this.txtUnit.Name = "txtUnit";
+            stateProperties25.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties25.FillColor = System.Drawing.Color.Empty;
+            stateProperties25.ForeColor = System.Drawing.Color.Empty;
+            stateProperties25.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUnit.OnActiveState = stateProperties25;
+            stateProperties26.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties26.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties26.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtUnit.OnDisabledState = stateProperties26;
+            stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties27.FillColor = System.Drawing.Color.Empty;
+            stateProperties27.ForeColor = System.Drawing.Color.Empty;
+            stateProperties27.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUnit.OnHoverState = stateProperties27;
+            stateProperties28.BorderColor = System.Drawing.Color.Silver;
+            stateProperties28.FillColor = System.Drawing.Color.White;
+            stateProperties28.ForeColor = System.Drawing.Color.Empty;
+            stateProperties28.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtUnit.OnIdleState = stateProperties28;
+            this.txtUnit.Padding = new System.Windows.Forms.Padding(3);
+            this.txtUnit.PasswordChar = '\0';
+            this.txtUnit.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtUnit.PlaceholderText = "";
+            this.txtUnit.ReadOnly = false;
+            this.txtUnit.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtUnit.SelectedText = "";
+            this.txtUnit.SelectionLength = 0;
+            this.txtUnit.SelectionStart = 0;
+            this.txtUnit.ShortcutsEnabled = true;
+            this.txtUnit.Size = new System.Drawing.Size(292, 37);
+            this.txtUnit.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtUnit.TabIndex = 47;
+            this.txtUnit.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtUnit.TextMarginBottom = 0;
+            this.txtUnit.TextMarginLeft = 3;
+            this.txtUnit.TextMarginTop = 1;
+            this.txtUnit.TextPlaceholder = "";
+            this.txtUnit.UseSystemPasswordChar = false;
+            this.txtUnit.Visible = false;
+            this.txtUnit.WordWrap = true;
+            // 
+            // bunifuLabel15
+            // 
+            this.bunifuLabel15.AllowParentOverrides = false;
+            this.bunifuLabel15.AutoEllipsis = false;
+            this.bunifuLabel15.CursorType = null;
+            this.bunifuLabel15.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.bunifuLabel15.ForeColor = System.Drawing.Color.White;
+            this.bunifuLabel15.Location = new System.Drawing.Point(22, 282);
+            this.bunifuLabel15.Name = "bunifuLabel15";
+            this.bunifuLabel15.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel15.Size = new System.Drawing.Size(108, 15);
+            this.bunifuLabel15.TabIndex = 46;
+            this.bunifuLabel15.Text = "Item Description";
+            this.bunifuLabel15.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel15.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            this.bunifuLabel15.Visible = false;
             // 
             // bunifuPanel6
             // 
@@ -1203,26 +1322,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtReturnAmount.Modified = false;
             this.txtReturnAmount.Multiline = false;
             this.txtReturnAmount.Name = "txtReturnAmount";
-            stateProperties25.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties25.FillColor = System.Drawing.Color.Empty;
-            stateProperties25.ForeColor = System.Drawing.Color.Empty;
-            stateProperties25.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtReturnAmount.OnActiveState = stateProperties25;
-            stateProperties26.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties26.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties26.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtReturnAmount.OnDisabledState = stateProperties26;
-            stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties27.FillColor = System.Drawing.Color.Empty;
-            stateProperties27.ForeColor = System.Drawing.Color.Empty;
-            stateProperties27.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtReturnAmount.OnHoverState = stateProperties27;
-            stateProperties28.BorderColor = System.Drawing.Color.Silver;
-            stateProperties28.FillColor = System.Drawing.Color.White;
-            stateProperties28.ForeColor = System.Drawing.Color.Empty;
-            stateProperties28.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtReturnAmount.OnIdleState = stateProperties28;
+            stateProperties29.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties29.FillColor = System.Drawing.Color.Empty;
+            stateProperties29.ForeColor = System.Drawing.Color.Empty;
+            stateProperties29.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtReturnAmount.OnActiveState = stateProperties29;
+            stateProperties30.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties30.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties30.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtReturnAmount.OnDisabledState = stateProperties30;
+            stateProperties31.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties31.FillColor = System.Drawing.Color.Empty;
+            stateProperties31.ForeColor = System.Drawing.Color.Empty;
+            stateProperties31.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtReturnAmount.OnHoverState = stateProperties31;
+            stateProperties32.BorderColor = System.Drawing.Color.Silver;
+            stateProperties32.FillColor = System.Drawing.Color.White;
+            stateProperties32.ForeColor = System.Drawing.Color.Empty;
+            stateProperties32.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtReturnAmount.OnIdleState = stateProperties32;
             this.txtReturnAmount.Padding = new System.Windows.Forms.Padding(3);
             this.txtReturnAmount.PasswordChar = '\0';
             this.txtReturnAmount.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1243,7 +1362,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtReturnAmount.TextPlaceholder = "";
             this.txtReturnAmount.UseSystemPasswordChar = false;
             this.txtReturnAmount.WordWrap = true;
-            this.txtReturnAmount.TextChanged += new System.EventHandler(this.txtReturnAmount_TextChanged);
             // 
             // txtVatable
             // 
@@ -1280,26 +1398,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtVatable.Modified = false;
             this.txtVatable.Multiline = false;
             this.txtVatable.Name = "txtVatable";
-            stateProperties29.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties29.FillColor = System.Drawing.Color.Empty;
-            stateProperties29.ForeColor = System.Drawing.Color.Empty;
-            stateProperties29.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtVatable.OnActiveState = stateProperties29;
-            stateProperties30.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties30.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties30.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtVatable.OnDisabledState = stateProperties30;
-            stateProperties31.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties31.FillColor = System.Drawing.Color.Empty;
-            stateProperties31.ForeColor = System.Drawing.Color.Empty;
-            stateProperties31.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtVatable.OnHoverState = stateProperties31;
-            stateProperties32.BorderColor = System.Drawing.Color.Silver;
-            stateProperties32.FillColor = System.Drawing.Color.White;
-            stateProperties32.ForeColor = System.Drawing.Color.Empty;
-            stateProperties32.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtVatable.OnIdleState = stateProperties32;
+            stateProperties33.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties33.FillColor = System.Drawing.Color.Empty;
+            stateProperties33.ForeColor = System.Drawing.Color.Empty;
+            stateProperties33.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtVatable.OnActiveState = stateProperties33;
+            stateProperties34.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties34.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties34.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtVatable.OnDisabledState = stateProperties34;
+            stateProperties35.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties35.FillColor = System.Drawing.Color.Empty;
+            stateProperties35.ForeColor = System.Drawing.Color.Empty;
+            stateProperties35.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtVatable.OnHoverState = stateProperties35;
+            stateProperties36.BorderColor = System.Drawing.Color.Silver;
+            stateProperties36.FillColor = System.Drawing.Color.White;
+            stateProperties36.ForeColor = System.Drawing.Color.Empty;
+            stateProperties36.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtVatable.OnIdleState = stateProperties36;
             this.txtVatable.Padding = new System.Windows.Forms.Padding(3);
             this.txtVatable.PasswordChar = '\0';
             this.txtVatable.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1371,26 +1489,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtAmount.Modified = false;
             this.txtAmount.Multiline = false;
             this.txtAmount.Name = "txtAmount";
-            stateProperties33.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties33.FillColor = System.Drawing.Color.Empty;
-            stateProperties33.ForeColor = System.Drawing.Color.Empty;
-            stateProperties33.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtAmount.OnActiveState = stateProperties33;
-            stateProperties34.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties34.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties34.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtAmount.OnDisabledState = stateProperties34;
-            stateProperties35.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties35.FillColor = System.Drawing.Color.Empty;
-            stateProperties35.ForeColor = System.Drawing.Color.Empty;
-            stateProperties35.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtAmount.OnHoverState = stateProperties35;
-            stateProperties36.BorderColor = System.Drawing.Color.Silver;
-            stateProperties36.FillColor = System.Drawing.Color.White;
-            stateProperties36.ForeColor = System.Drawing.Color.Empty;
-            stateProperties36.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtAmount.OnIdleState = stateProperties36;
+            stateProperties37.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties37.FillColor = System.Drawing.Color.Empty;
+            stateProperties37.ForeColor = System.Drawing.Color.Empty;
+            stateProperties37.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtAmount.OnActiveState = stateProperties37;
+            stateProperties38.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties38.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties38.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtAmount.OnDisabledState = stateProperties38;
+            stateProperties39.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties39.FillColor = System.Drawing.Color.Empty;
+            stateProperties39.ForeColor = System.Drawing.Color.Empty;
+            stateProperties39.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtAmount.OnHoverState = stateProperties39;
+            stateProperties40.BorderColor = System.Drawing.Color.Silver;
+            stateProperties40.FillColor = System.Drawing.Color.White;
+            stateProperties40.ForeColor = System.Drawing.Color.Empty;
+            stateProperties40.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtAmount.OnIdleState = stateProperties40;
             this.txtAmount.Padding = new System.Windows.Forms.Padding(3);
             this.txtAmount.PasswordChar = '\0';
             this.txtAmount.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1462,26 +1580,26 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtVatAmount.Modified = false;
             this.txtVatAmount.Multiline = false;
             this.txtVatAmount.Name = "txtVatAmount";
-            stateProperties37.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties37.FillColor = System.Drawing.Color.Empty;
-            stateProperties37.ForeColor = System.Drawing.Color.Empty;
-            stateProperties37.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtVatAmount.OnActiveState = stateProperties37;
-            stateProperties38.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties38.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties38.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtVatAmount.OnDisabledState = stateProperties38;
-            stateProperties39.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties39.FillColor = System.Drawing.Color.Empty;
-            stateProperties39.ForeColor = System.Drawing.Color.Empty;
-            stateProperties39.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtVatAmount.OnHoverState = stateProperties39;
-            stateProperties40.BorderColor = System.Drawing.Color.Silver;
-            stateProperties40.FillColor = System.Drawing.Color.White;
-            stateProperties40.ForeColor = System.Drawing.Color.Empty;
-            stateProperties40.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtVatAmount.OnIdleState = stateProperties40;
+            stateProperties41.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties41.FillColor = System.Drawing.Color.Empty;
+            stateProperties41.ForeColor = System.Drawing.Color.Empty;
+            stateProperties41.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtVatAmount.OnActiveState = stateProperties41;
+            stateProperties42.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties42.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties42.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtVatAmount.OnDisabledState = stateProperties42;
+            stateProperties43.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties43.FillColor = System.Drawing.Color.Empty;
+            stateProperties43.ForeColor = System.Drawing.Color.Empty;
+            stateProperties43.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtVatAmount.OnHoverState = stateProperties43;
+            stateProperties44.BorderColor = System.Drawing.Color.Silver;
+            stateProperties44.FillColor = System.Drawing.Color.White;
+            stateProperties44.ForeColor = System.Drawing.Color.Empty;
+            stateProperties44.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtVatAmount.OnIdleState = stateProperties44;
             this.txtVatAmount.Padding = new System.Windows.Forms.Padding(3);
             this.txtVatAmount.PasswordChar = '\0';
             this.txtVatAmount.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1627,7 +1745,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.lblTotal.Text = "0.00";
             this.lblTotal.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblTotal.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
             // bunifuLabel13
             // 
@@ -1716,7 +1833,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.bunifuLabel4.AutoEllipsis = false;
             this.bunifuLabel4.CursorType = null;
             this.bunifuLabel4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuLabel4.Location = new System.Drawing.Point(481, 122);
+            this.bunifuLabel4.Location = new System.Drawing.Point(484, 124);
             this.bunifuLabel4.Name = "bunifuLabel4";
             this.bunifuLabel4.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel4.Size = new System.Drawing.Size(151, 24);
@@ -1753,15 +1870,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Image = global::SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Properties.Resources.cancel;
             this.btnCancel.ImagePosition = 14;
-            this.btnCancel.ImageZoom = 30;
-            this.btnCancel.LabelPosition = 29;
-            this.btnCancel.LabelText = "[F5] Cancel Transaction";
-            this.btnCancel.Location = new System.Drawing.Point(1048, 636);
+            this.btnCancel.ImageZoom = 20;
+            this.btnCancel.LabelPosition = 40;
+            this.btnCancel.LabelText = "[F4] Cancel Transaction";
+            this.btnCancel.Location = new System.Drawing.Point(1203, 534);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 96);
+            this.btnCancel.Size = new System.Drawing.Size(151, 96);
             this.btnCancel.TabIndex = 43;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dgvShowReturn
             // 
@@ -1828,34 +1945,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.dgvShowReturn.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.dgvShowReturn.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvShowReturn_CellFormatting);
             // 
-            // bunifuLabel12
-            // 
-            this.bunifuLabel12.AllowParentOverrides = false;
-            this.bunifuLabel12.AutoEllipsis = false;
-            this.bunifuLabel12.CursorType = null;
-            this.bunifuLabel12.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuLabel12.ForeColor = System.Drawing.Color.White;
-            this.bunifuLabel12.Location = new System.Drawing.Point(12, 20);
-            this.bunifuLabel12.Name = "bunifuLabel12";
-            this.bunifuLabel12.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel12.Size = new System.Drawing.Size(142, 24);
-            this.bunifuLabel12.TabIndex = 45;
-            this.bunifuLabel12.Text = "Order Details:";
-            this.bunifuLabel12.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel12.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
             // frmReturnTerminal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1366, 738);
+            this.Controls.Add(this.dgvItemReplaced);
             this.Controls.Add(this.bunifuPanel4);
             this.Controls.Add(this.dgvShowReturn);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.bunifuLabel7);
             this.Controls.Add(this.bunifuLabel4);
-            this.Controls.Add(this.dgvItemReplaced);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnPay);
@@ -1941,5 +2042,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public Bunifu.UI.WinForms.BunifuDataGridView dgvShowReturn;
         public Bunifu.UI.WinForms.BunifuDataGridView dvgOrderList;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel12;
+        private Bunifu.UI.WinForms.BunifuTextBox txtUnit;
+        private Bunifu.UI.WinForms.BunifuLabel bunifuLabel15;
     }
 }

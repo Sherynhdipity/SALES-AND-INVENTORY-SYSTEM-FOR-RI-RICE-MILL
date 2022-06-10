@@ -304,7 +304,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             con.Close();
             QuerySelect = "SELECT [Unit] FROM tblItems " +
-                "WHERE Description = '" + txtDescription.Text + "%'";
+                "WHERE Description Like '" + txtDescription.Text + "%'";
             cmd = new SqlCommand(QuerySelect, con);
             con.Open();
             reader = cmd.ExecuteReader();

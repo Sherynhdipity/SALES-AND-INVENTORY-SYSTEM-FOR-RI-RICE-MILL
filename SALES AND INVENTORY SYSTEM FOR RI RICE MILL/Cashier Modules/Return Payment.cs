@@ -56,11 +56,13 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string tax, vatable;
 
         public string[] ReplacedItemDesc { get; set; }
+        public string[] ReplacedItemUnit { get; set; }
         public int[] ReplacedQty { get; set; }
         public double[] ReplacedPrice { get; set; }
 
 
         public string[] ReturnedItemDesc { get; set; }
+        public string[] ReturnedItemUnit { get; set; }
         public int[] ReturnedQty { get; set; }
         public double[] ReturnedPrice { get; set; }
         public string[] Remarks { get; set; }
@@ -185,7 +187,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             con.Open();
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
-                                total_quantity += Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString());
+                                total_quantity += Convert.ToInt32(dtFromSalesMgt.Rows[i][2].ToString());
                             }
                             QueryInsert = "INSERT INTO tblOrders(Customer_id, User_id, Transaction_number, OR_number, Order_date, Quantity, Total_discount, Total_cost, Cash, Senior_Citizen_number,PWD_number )" +
                             "VALUES(@cID, @uID, @transNo,@OR, @orderDate, @qty, @discount, @total, @cash, @senior, @PWD)";
@@ -244,14 +246,15 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                             int ctr = 0;
                             for (int i = 0; i < dtFromSalesMgt.Rows.Count; i++)
                             {
-                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()) + " Item_id FROM tblInventories" +
-                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Status = 'Stock In')";
+                                QuerySelect = "SELECT TOP " + Convert.ToInt32(dtFromSalesMgt.Rows[i][2].ToString()) + " Item_id FROM tblInventories" +
+                                    " WHERE Item_id = (SELECT Item_id FROM tblItems WHERE Description = @desc and Unit = @unit and Status = 'Stock In')";
                                 cmd = new SqlCommand(QuerySelect, con);
                                 cmd.Parameters.AddWithValue("@desc", dtFromSalesMgt.Rows[i][0].ToString());
+                                cmd.Parameters.AddWithValue("@unit", dtFromSalesMgt.Rows[i][1].ToString());
                                 adapter = new SqlDataAdapter(cmd);
                                 DataTable dtNew = new DataTable();
                                 adapter.Fill(dtNew);
-                                for (int j = 0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][1].ToString()); j++)
+                                for (int j = 0; j < Convert.ToInt32(dtFromSalesMgt.Rows[i][2].ToString()); j++)
                                 {
 
                                     DESCRIPTION[ctr] = dtNew.Rows[j][0].ToString();
@@ -388,18 +391,20 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
             //DETAILS - RETURNED ITEM DETAILS
-            string[,] OrderReturntable = new string[ReturnedItemDesc.Length, 4];
+            string[,] OrderReturntable = new string[ReturnedItemDesc.Length, 5];
             for (int i = 0; i < ReturnedItemDesc.Length; i++)
             {
                 OrderReturntable[i, 0] = ReturnedItemDesc[i];
-                OrderReturntable[i, 1] = ReturnedQty[i].ToString();
-                OrderReturntable[i, 2] = ReturnedPrice[i].ToString();
-                OrderReturntable[i, 3] = Remarks[i];
+                OrderReturntable[i, 1] = ReturnedItemUnit[i];
+                OrderReturntable[i, 2] = ReturnedQty[i].ToString();
+                OrderReturntable[i, 3] = ReturnedPrice[i].ToString();
+                OrderReturntable[i, 4] = Remarks[i];
             }
 
             DataTable OrderReturnDt = new DataTable();
 
             OrderReturnDt.Columns.Add("ReturnDescription", typeof(string));
+            OrderReturnDt.Columns.Add("ReturnUnit", typeof(string));
             OrderReturnDt.Columns.Add("ReturnQty", typeof(string));
             OrderReturnDt.Columns.Add("ReturnPrice", typeof(string));
             OrderReturnDt.Columns.Add("ReturnRemarks", typeof(string));
@@ -407,7 +412,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             for (int outerIndex = 0; outerIndex < ReturnedItemDesc.Length; outerIndex++)
             {
                 DataRow newRow = OrderReturnDt.NewRow();
-                for (int innerIndex = 0; innerIndex < 4; innerIndex++)
+                for (int innerIndex = 0; innerIndex < 5; innerIndex++)
                 {
 
                     newRow[innerIndex] = OrderReturntable[outerIndex, innerIndex];
@@ -461,24 +466,27 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
 
             //DETAILS - REPLACED ITEM DETAILS
-            string[,] Replacedtable = new string[ReplacedItemDesc.Length, 3];
+            string[,] Replacedtable = new string[ReplacedItemDesc.Length, 4];
             for (int i = 0; i < ReplacedItemDesc.Length; i++)
             {
                 Replacedtable[i, 0] = ReplacedItemDesc[i];
-                Replacedtable[i, 1] = ReplacedQty[i].ToString();
-                Replacedtable[i, 2] = ReplacedPrice[i].ToString();
+                Replacedtable[i, 1] = ReplacedItemUnit[i];
+                Replacedtable[i, 2] = ReplacedQty[i].ToString();
+                Replacedtable[i, 3] = ReplacedPrice[i].ToString();
+                
             }
 
             DataTable ReplaceDt = new DataTable();
 
             ReplaceDt.Columns.Add("ReplaceDescription", typeof(string));
+            ReplaceDt.Columns.Add("ReplaceUnit", typeof(string));
             ReplaceDt.Columns.Add("ReplaceQty", typeof(string));
             ReplaceDt.Columns.Add("ReplacePrice", typeof(string));
 
             for (int outerIndex = 0; outerIndex < ReplacedItemDesc.Length; outerIndex++)
             {
                 DataRow newRow = ReplaceDt.NewRow();
-                for (int innerIndex = 0; innerIndex < 3; innerIndex++)
+                for (int innerIndex = 0; innerIndex < 4; innerIndex++)
                 {
 
                     newRow[innerIndex] = Replacedtable[outerIndex, innerIndex];
@@ -489,9 +497,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
             resibo.Database.Tables["replace_details"].SetDataSource(ReplaceDt);
 
-            frmPrintReceipt.getform.Show();
-            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = null;
-            frmPrintReceipt.getform.crystalReportViewer1.ReportSource = resibo;
+            frmPrintReturnSlip.getform.Show();
+            frmPrintReturnSlip.getform.crystalReportViewer2.ReportSource = null;
+            frmPrintReturnSlip.getform.crystalReportViewer2.ReportSource = resibo;
 
             this.DialogResult = DialogResult.OK;
 

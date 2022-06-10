@@ -137,6 +137,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.txtQty.TextPlaceholder = "";
             this.txtQty.UseSystemPasswordChar = false;
             this.txtQty.WordWrap = true;
+            this.txtQty.TextChange += new System.EventHandler(this.txtQty_TextChange);
             this.txtQty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQty_KeyDown);
             // 
             // bunifuLabel1
@@ -164,7 +165,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Crimson;
-            this.btnClose.color = System.Drawing.Color.RoyalBlue;
+            this.btnClose.color = System.Drawing.Color.Crimson;
             this.btnClose.colorActive = System.Drawing.Color.IndianRed;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

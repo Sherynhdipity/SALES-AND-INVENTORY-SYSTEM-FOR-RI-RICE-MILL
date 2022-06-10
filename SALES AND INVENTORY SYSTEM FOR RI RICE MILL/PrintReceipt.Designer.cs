@@ -64,7 +64,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.ReportSource = this.Receipt1;
             this.crystalReportViewer1.ShowCloseButton = false;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(723, 604);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(723, 588);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -85,7 +85,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 604);
+            this.ClientSize = new System.Drawing.Size(761, 653);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.crystalReportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

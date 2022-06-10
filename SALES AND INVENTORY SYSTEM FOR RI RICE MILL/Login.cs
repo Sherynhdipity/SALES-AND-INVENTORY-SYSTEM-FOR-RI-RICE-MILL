@@ -151,6 +151,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         private void pbExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+            con.Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

@@ -171,6 +171,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             populateDash();
             populateChart();
         }
+
+        private void panelTotalSales_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 

@@ -239,7 +239,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             // btnClose
             // 
             this.btnClose.BackColor = System.Drawing.Color.Crimson;
-            this.btnClose.color = System.Drawing.Color.RoyalBlue;
+            this.btnClose.color = System.Drawing.Color.Crimson;
             this.btnClose.colorActive = System.Drawing.Color.IndianRed;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

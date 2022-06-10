@@ -31,7 +31,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             this.SalesReturnViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SalesReturn1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.SalesReturn();
-            this.ClerkSumm1 = new SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.ClerkSumm();
             this.SuspendLayout();
             // 
             // SalesReturnViewer
@@ -42,7 +41,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             this.SalesReturnViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SalesReturnViewer.Location = new System.Drawing.Point(0, 0);
             this.SalesReturnViewer.Name = "SalesReturnViewer";
-            this.SalesReturnViewer.ReportSource = this.ClerkSumm1;
+            this.SalesReturnViewer.ReportSource = this.SalesReturn1;
             this.SalesReturnViewer.Size = new System.Drawing.Size(800, 450);
             this.SalesReturnViewer.TabIndex = 0;
             // 
@@ -63,6 +62,5 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         public CrystalDecisions.Windows.Forms.CrystalReportViewer SalesReturnViewer;
         private SalesReturn SalesReturn1;
-        private ClerkSumm ClerkSumm1;
     }
 }

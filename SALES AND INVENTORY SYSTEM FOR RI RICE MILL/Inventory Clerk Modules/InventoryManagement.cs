@@ -178,9 +178,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 UpdateAuth();
                 if (isAllowed)
                 {
-                    updateNew.Description = dgvStockList[1, e.RowIndex].Value.ToString();
-                    updateNew.Batch_number = dgvStockList[2, e.RowIndex].Value.ToString();
-                    updateNew.Quantity = dgvStockList[3, e.RowIndex].Value.ToString();
+                    updateNew.Description = dgvStockList[2, e.RowIndex].Value.ToString();
+                    updateNew.Unit = dgvStockList[3, e.RowIndex].Value.ToString();
+                    updateNew.Batch_number = dgvStockList[1, e.RowIndex].Value.ToString();
+                    updateNew.Quantity = dgvStockList[5, e.RowIndex].Value.ToString();
                     updateNew.ShowDialog();
             }
             else
@@ -208,7 +209,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void dgvStockList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == 4)
             {
                 e.CellStyle.Format = "N2";
             }

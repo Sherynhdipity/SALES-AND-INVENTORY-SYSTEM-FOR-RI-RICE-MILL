@@ -18,6 +18,7 @@
               <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description" type="xs:string" minOccurs="0" />
               <xs:element name="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnPropNameInTable="QtyColumn" msprop:Generator_UserColumnName="Qty" type="xs:string" minOccurs="0" />
               <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
+              <xs:element name="Unit" msprop:Generator_ColumnVarNameInTable="columnUnit" msprop:Generator_ColumnPropNameInRow="Unit" msprop:Generator_ColumnPropNameInTable="UnitColumn" msprop:Generator_UserColumnName="Unit" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -28,6 +29,7 @@
               <xs:element name="ReturnQty" msprop:Generator_ColumnVarNameInTable="columnReturnQty" msprop:Generator_ColumnPropNameInRow="ReturnQty" msprop:Generator_ColumnPropNameInTable="ReturnQtyColumn" msprop:Generator_UserColumnName="ReturnQty" type="xs:string" minOccurs="0" />
               <xs:element name="ReturnPrice" msprop:Generator_ColumnVarNameInTable="columnReturnPrice" msprop:Generator_ColumnPropNameInRow="ReturnPrice" msprop:Generator_ColumnPropNameInTable="ReturnPriceColumn" msprop:Generator_UserColumnName="ReturnPrice" type="xs:string" minOccurs="0" />
               <xs:element name="ReturnRemarks" msprop:Generator_ColumnVarNameInTable="columnReturnRemarks" msprop:Generator_ColumnPropNameInRow="ReturnRemarks" msprop:Generator_ColumnPropNameInTable="ReturnRemarksColumn" msprop:Generator_UserColumnName="ReturnRemarks" type="xs:string" minOccurs="0" />
+              <xs:element name="ReturnUnit" msprop:Generator_ColumnVarNameInTable="columnReturnUnit" msprop:Generator_ColumnPropNameInRow="ReturnUnit" msprop:Generator_ColumnPropNameInTable="ReturnUnitColumn" msprop:Generator_UserColumnName="ReturnUnit" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -37,6 +39,7 @@
               <xs:element name="ReplaceDescription" msprop:Generator_ColumnVarNameInTable="columnReplaceDescription" msprop:Generator_ColumnPropNameInRow="ReplaceDescription" msprop:Generator_ColumnPropNameInTable="ReplaceDescriptionColumn" msprop:Generator_UserColumnName="ReplaceDescription" type="xs:string" minOccurs="0" />
               <xs:element name="ReplaceQty" msprop:Generator_ColumnVarNameInTable="columnReplaceQty" msprop:Generator_ColumnPropNameInRow="ReplaceQty" msprop:Generator_ColumnPropNameInTable="ReplaceQtyColumn" msprop:Generator_UserColumnName="ReplaceQty" type="xs:string" minOccurs="0" />
               <xs:element name="ReplacePrice" msprop:Generator_ColumnVarNameInTable="columnReplacePrice" msprop:Generator_ColumnPropNameInRow="ReplacePrice" msprop:Generator_ColumnPropNameInTable="ReplacePriceColumn" msprop:Generator_UserColumnName="ReplacePrice" type="xs:string" minOccurs="0" />
+              <xs:element name="ReplaceUnit" msprop:Generator_ColumnVarNameInTable="columnReplaceUnit" msprop:Generator_ColumnPropNameInRow="ReplaceUnit" msprop:Generator_ColumnPropNameInTable="ReplaceUnitColumn" msprop:Generator_UserColumnName="ReplaceUnit" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -53,7 +53,7 @@
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Impact", 30F, System.Drawing.FontStyle.Underline);
             this.bunifuLabel3.ForeColor = System.Drawing.Color.Black;
-            this.bunifuLabel3.Location = new System.Drawing.Point(49, 75);
+            this.bunifuLabel3.Location = new System.Drawing.Point(69, 73);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(305, 48);
@@ -74,7 +74,7 @@
             this.bunifuPanel4.Controls.Add(this.txtViewUsers);
             this.bunifuPanel4.Controls.Add(this.dgvUserList);
             this.bunifuPanel4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bunifuPanel4.Location = new System.Drawing.Point(49, 129);
+            this.bunifuPanel4.Location = new System.Drawing.Point(69, 127);
             this.bunifuPanel4.Name = "bunifuPanel4";
             this.bunifuPanel4.ShowBorders = false;
             this.bunifuPanel4.Size = new System.Drawing.Size(907, 497);
@@ -129,7 +129,7 @@
             this.bunifuButton1.IdleIconLeftImage = null;
             this.bunifuButton1.IdleIconRightImage = null;
             this.bunifuButton1.IndicateFocus = false;
-            this.bunifuButton1.Location = new System.Drawing.Point(769, 29);
+            this.bunifuButton1.Location = new System.Drawing.Point(769, 25);
             this.bunifuButton1.Name = "bunifuButton1";
             this.bunifuButton1.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.bunifuButton1.OnDisabledState.BorderRadius = 1;

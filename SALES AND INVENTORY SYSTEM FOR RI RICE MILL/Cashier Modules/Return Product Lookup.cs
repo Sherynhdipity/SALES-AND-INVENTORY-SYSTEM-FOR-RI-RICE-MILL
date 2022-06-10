@@ -36,6 +36,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public static string QuerySelect;
         public string productCode { get; set; }
         public string productDesc { get; set; }
+        public string productUnit { get; set; }
         public string productVariety { get; set; }
         public string productPrice { get; set; }
 
@@ -50,7 +51,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public void DisplayProductList()
         {
             con.Open();
-            QuerySelect = "SELECT Description, Batch_number, Price, Stock FROM ItemLookUp";
+            QuerySelect = "SELECT Description, [Unit Measurement], Batch_number, Price, Stock FROM ItemLookUp";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -124,6 +125,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 frmPLQuant qty = new frmPLQuant();
                 //qty.product_Code = Convert.ToString(selectedRow.Cells["Barcode"].Value);
                 qty.product_Desc = Convert.ToString(selectedRow.Cells["Description"].Value);
+                qty.unit_measurement = Convert.ToString(selectedRow.Cells["Unit Measurement"].Value);
                 qty.Batch_number = Convert.ToString(selectedRow.Cells["Batch_number"].Value);
                 qty.SKULIST = skuList;
                 //  qty.product_Variety = Convert.ToString(selectedRow.Cells["Product Variety"].Value);
@@ -136,6 +138,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 //{
                     productCode = qty.product_Code;
                     productDesc = qty.product_Desc;
+                    productUnit = qty.unit_measurement;
                     productVariety = qty.product_Variety;
                     productPrice = qty.product_Price;
                     quantity = qty.Product_Quantity;

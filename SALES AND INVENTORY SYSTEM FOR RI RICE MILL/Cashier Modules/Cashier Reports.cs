@@ -67,8 +67,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
                 for (int i = 0; i < dgvSalesReport.Rows.Count; i++)
                 {
-                    sum1 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[3].Value);
-                    sum2 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[4].Value);
+                    sum1 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[5].Value);
+                    sum2 += Convert.ToDouble(dgvSalesReport.Rows[i].Cells[6].Value);
                 }
                 lblTotal.Text = sum1.ToString();
                 lblSales.Text = sum2.ToString("N2");
@@ -85,16 +85,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         }
 
-       
-        private void btnViewReport_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void btnPrintReport_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void ucCashierReports_Load(object sender, EventArgs e)
         {
@@ -104,15 +95,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             DisplaySalesReport();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void bunifuLabel1_Click(object sender, EventArgs e)
-        {
-
-        }   
 
         private void Search_Click(object sender, EventArgs e)
         {
@@ -120,7 +103,18 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
           
         }
 
-        private void btnGenerateReport_Click(object sender, EventArgs e)
+
+        private void dgvSalesReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 6 || e.ColumnIndex == 4)
+            {
+                e.CellStyle.Format = "N2";
+            }
+        }
+
+
+
+        private void btnPrint_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
             CashierRep rep = new CashierRep();
@@ -150,34 +144,6 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             {
 
             }
-        }
-
-        private void bunifuLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuLabel2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuLabel5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvSalesReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == 2 || e.ColumnIndex == 4)
-            {
-                e.CellStyle.Format = "N2";
-            }
-        }
-
-        private void bunifuLabel3_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

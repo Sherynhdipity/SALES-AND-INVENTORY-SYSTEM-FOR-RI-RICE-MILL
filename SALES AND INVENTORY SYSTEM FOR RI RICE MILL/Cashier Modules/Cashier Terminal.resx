@@ -200,6 +200,18 @@
         BAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="txtUnit.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAASQAAAAlCAYAAADr0pT9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC3SURBVHhe7dQxDQMxAARB80fll2EERgDkZclNEHiLGema
+        A7ADIGWt9Zlz/szMbmw36ORojH0A3LIbdHIkSMBdggRkCBKQIUhAhiABGYIEZAgSkCFIQIYgARmCBGQI
+        EpAhSECGIAEZggRkCBKQIUhAhiABGYIEZAgSkCFIQIYgARmCBGQIEpAhSECGIAEZggRkCBKQIUhAhiAB
+        GYIEZAgSkCFIQMZfkJ7n+e7DzOzGdoNOjgAKxngBnkYlV1KfguAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="bunifuLabel3.BaseStylesheet" xml:space="preserve">
+    <value>#bunifu-label { padding: 0px; font-family: 'Arial Rounded MT Bold'; font-size: 9.75pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(255, 255, 255); text-align: left; }</value>
+  </data>
   <data name="btnAddItemScan.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASQAAAAnCAYAAACmGjX2AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

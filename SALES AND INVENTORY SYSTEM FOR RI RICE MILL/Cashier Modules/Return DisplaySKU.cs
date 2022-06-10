@@ -33,6 +33,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
         public string[] prices;
         public string Transaction_Number { get; set; }
         public string Description { get; set; }
+        public string Unit { get; set; }
 
         public string Order_details_id { get; set; }
         public string Price { get; set; }
@@ -65,10 +66,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                 con.Open();
                 //QuerySelect = "SELECT SKU FROM OrderDetailsView WHERE Transaction_number = @trans";
                 QuerySelect = "SELECT SKU FROM tblInventories WHERE SKU IN(SELECT SKU FROM tblOrderDetails WHERE Order_id = (SELECT Order_id FROM tblOrders WHERE Transaction_number = @trans_num)) " +
-                    "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = @description) AND Status = 'Stock Out'";
+                    "AND Item_id = (SELECT Item_id FROM tblItems WHERE Description = @description AND Unit = @unit) AND Status = 'Stock Out'";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("trans_num", Transaction_Number);
                 cmd.Parameters.AddWithValue("description", Description);
+                cmd.Parameters.AddWithValue("unit", Unit);
                 //cmd.Parameters.AddWithValue("@desc", Description);
 
                 adapter = new SqlDataAdapter(cmd);
@@ -101,9 +103,10 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                     if (cmbRemarks.SelectedIndex == 0)
                     {
                     //for (int i = 0; i < selectedRows; i++)
-                        foreach (DataGridViewRow row in dgvOrderDetails.SelectedRows)
+                    result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+                    foreach (DataGridViewRow row in dgvOrderDetails.SelectedRows)
                         {
-                            result = MessageBox.Show("Do you want to return this Item/s?", "Return Item", MessageBoxButtons.YesNo);
+                           
                             if (result == DialogResult.Yes)
                             {
                                 try
@@ -153,7 +156,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                 }
 
                             con.Open();
-                            QuerySelect = "SELECT Price FROM tblItems WHERE Item_id = (SELECT Item_id FROM tblInventories WHERE SKU = @sku)";
+                            QuerySelect = "SELECT SellPrice FROM tblInventories WHERE SKU = @sku";
                             cmd = new SqlCommand(QuerySelect, con);
                             cmd.Parameters.AddWithValue("@sku", dgvOrderDetails.Rows[row.Index].Cells[0].Value.ToString());
                             reader = cmd.ExecuteReader();
@@ -163,7 +166,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Cashier_Modules
                                 {
                                     if (ctr < selectedRows)
                                     {
-                                        prices[ctr] = reader["Price"].ToString();
+                                        prices[ctr] = reader["SellPrice"].ToString();
                                         ctr++;
                                     }
 

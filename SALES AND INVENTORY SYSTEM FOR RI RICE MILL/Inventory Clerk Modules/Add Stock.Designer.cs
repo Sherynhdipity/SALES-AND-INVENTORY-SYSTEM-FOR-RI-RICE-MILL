@@ -1190,6 +1190,7 @@
             this.txtUnit.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUnit.DefaultFont = new System.Drawing.Font("Segoe UI", 9.25F);
             this.txtUnit.DefaultText = "";
+            this.txtUnit.Enabled = false;
             this.txtUnit.FillColor = System.Drawing.Color.White;
             this.txtUnit.HideSelection = true;
             this.txtUnit.IconLeft = null;

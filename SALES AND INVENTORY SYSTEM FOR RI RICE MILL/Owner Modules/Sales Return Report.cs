@@ -88,8 +88,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
             for (int i = 0; i < dgvReturnOwnerReport.Rows.Count; i++)
             {
-                sum += Convert.ToDouble(dgvReturnOwnerReport.Rows[i].Cells[4].Value);
-                sum2 += Convert.ToDouble(dgvReturnOwnerReport.Rows[i].Cells[6].Value);
+                sum += Convert.ToDouble(dgvReturnOwnerReport.Rows[i].Cells[5].Value);
+                sum2 += Convert.ToDouble(dgvReturnOwnerReport.Rows[i].Cells[7].Value);
             }
             lblTotalReturnItem.Text = sum.ToString();
             TotalReturnedSales.Text = sum2.ToString("N2");
@@ -97,7 +97,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dgvReturnOwnerReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 6)
+            if (e.ColumnIndex == 4 || e.ColumnIndex == 3 ||  e.ColumnIndex == 7)
             {
                 e.CellStyle.Format = "N2";
             }

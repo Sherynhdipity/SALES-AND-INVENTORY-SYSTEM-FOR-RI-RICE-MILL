@@ -85,14 +85,14 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 dtpFromDate.Text = string.Format("{0:D}", date);
                 dtpToDate.Text = string.Format("{0:D}", date);
 
-                QuerySelect = "Select Date, Description, [Cost Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales]  from SalesReportView";
+                QuerySelect = "Select Date, Description, Unit, [Original Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales]  from SalesReportView";
 
                 cmd = new SqlCommand(QuerySelect, con);
 
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 adapter.Fill(dt);
-                dgvSalesOwnerReport.DataSource = dt;
+                dgvSalesOwnerReport.DataSource = dt;    
                 dgvSalesOwnerReport.Refresh();
 
                 QuerySelect = "Select [Date], Description, Remarks, [Returned Sales] from SalesReturnReportView";
@@ -109,8 +109,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[6].Value);
-                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[5].Value);
+                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[7].Value);
+                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[6].Value);
                 }
                 Gross.Text = sum.ToString("N2");
                 Cost.Text = sum2.ToString("N2");
@@ -145,7 +145,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             try
             {
 
-                QuerySelect = "Select Date, Description, [Cost Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
+                QuerySelect = "Select Date, Description, Unit, [Original Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales] from SalesReportView where [Date] between @FromDate and @ToDate";
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@FromDate", dtpFromDate.Value);
@@ -173,8 +173,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
                 for (int i = 0; i < dgvSalesOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[6].Value);
-                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[5].Value);
+                    sum += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[7].Value);
+                    sum2 += Convert.ToDouble(dgvSalesOwnerReport.Rows[i].Cells[6].Value);
                 }
                 Gross.Text = sum.ToString("N2");
                 Cost.Text = sum2.ToString("N2");
@@ -248,7 +248,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             con.Open();
 
             dt = new DataTable();
-            QuerySelect = "SELECT Date, Description, [Cost Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales] FROM SalesReportView WHERE [Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
+            QuerySelect = "SELECT Date, Description, Unit, [Original Price], [Selling Price], [Quantity], [Cost Sales], [Gross Sales] FROM SalesReportView WHERE [Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";
             cmd = new SqlCommand(QuerySelect, con);
             adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
@@ -303,7 +303,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dgvSalesOwnerReport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-           if (e.ColumnIndex == 2 || e.ColumnIndex == 3 || e.ColumnIndex == 5 || e.ColumnIndex == 6)
+           if (e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 7 || e.ColumnIndex == 6)
             {
                 e.CellStyle.Format = "N2";
             }

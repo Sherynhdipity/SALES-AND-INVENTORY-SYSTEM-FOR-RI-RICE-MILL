@@ -59,7 +59,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         }
 
         #endregion
-        private RestockReports RestockReports1;
+
         public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
+        private RestockReports RestockReports1;
     }
 }

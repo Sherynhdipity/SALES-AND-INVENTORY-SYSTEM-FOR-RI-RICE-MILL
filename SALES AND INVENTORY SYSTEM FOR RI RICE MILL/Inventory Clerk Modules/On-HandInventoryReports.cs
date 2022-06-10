@@ -35,7 +35,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
             //DateTime date = DateTime.Now;
             ////dtpFromDate.Text = string.Format("{0:D}", date);
 
-            QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk";
+            QuerySelect = " Select [Batch Number], Description, Unit, [Remain Stock]  from InventorySummaryReportInventoryClerk";
 
             cmd = new SqlCommand(QuerySelect, con);
             //cmd.Parameters.AddWithValue("@Date", dtpFromDate.Value);
@@ -51,7 +51,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
             for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[3].Value);
             }
 
             lblTotal.Text = sum.ToString();
@@ -61,7 +61,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             try
             {
-                QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')"; 
+                QuerySelect = " Select [Batch Number], Description, Unit,  [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')"; 
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
@@ -77,7 +77,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
                 for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
+                    sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[3].Value);
                 }
 
                 lblTotal.Text = sum.ToString();
@@ -96,7 +96,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
         private void txtSearchInventory_TextChanged(object sender, EventArgs e)
         {
-            QuerySelect = " Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
+            QuerySelect = " Select [Batch Number], Description, Unit, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
 
             cmd = new SqlCommand(QuerySelect, con);
             cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
@@ -112,7 +112,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
             for (int i = 0; i < dgvInventoryOwnerReport.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[2].Value);
+                sum += Convert.ToInt32(dgvInventoryOwnerReport.Rows[i].Cells[3].Value);
             }
 
             lblTotal.Text = sum.ToString();
@@ -131,7 +131,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
 
                 if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
                 {
-                    QuerySelect = "Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk";
+                    QuerySelect = "Select [Batch Number], Description, Unit, [Remain Stock]  from InventorySummaryReportInventoryClerk";
                     cmd = new SqlCommand(QuerySelect, con);
                     adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
@@ -143,7 +143,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
                 }
                 else
                 {
-                    QuerySelect = "Select [Batch Number], Description, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
+                    QuerySelect = "Select [Batch Number], Description, Unit, [Remain Stock]  from InventorySummaryReportInventoryClerk where (Description LIKE '%' + @desc + '%')";
                     cmd = new SqlCommand(QuerySelect, con);
                     cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
                     adapter = new SqlDataAdapter(cmd);

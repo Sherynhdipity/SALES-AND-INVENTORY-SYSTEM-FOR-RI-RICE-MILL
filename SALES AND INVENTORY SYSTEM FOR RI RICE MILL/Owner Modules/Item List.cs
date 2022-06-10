@@ -34,7 +34,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                string query = "Select Description, Cost_Price, Price, Critical_Level from tblItems";
+                string query = "Select * from ItemMasterlistView";
                 cmd = new SqlCommand(query, con);
                 adapter = new SqlDataAdapter(cmd);
                 dt = new DataTable();
@@ -52,60 +52,33 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-         
-             QuerySelect = "Select Description, Cost_Price, Price, Critical_Level from tblItems where (Description LIKE '%' + @desc + '%')";
-            cmd = new SqlCommand(QuerySelect, con);
-            cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
-            adapter = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            adapter.Fill(dt);
-            dgvItemList.DataSource = dt;
-            dgvItemList.Refresh();
+            if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
+            {
+                string query = "Select * from ItemMasterlistView";
+                cmd = new SqlCommand(query, con);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvItemList.DataSource = dt;
+                dgvItemList.Refresh();
+            }
+            else
+            {
+                QuerySelect = "Select * from ItemMasterlistView where (Description LIKE '%' + @desc + '%')";
+                cmd = new SqlCommand(QuerySelect, con);
+                cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
+                adapter = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dgvItemList.DataSource = dt;
+                dgvItemList.Refresh();
+            }
+                
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            ItemListReport item = new ItemListReport();
-            frmItemListReport list = new frmItemListReport();
-
-            try
-            {
-                
-                con.Open();
-                dt = new DataTable();
-                if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
-                {
-                    QuerySelect = "Select * from tblItems";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-
-                    item.Database.Tables["tblItems"].SetDataSource(dt);
-                    list.ItemListViewer.ReportSource = item;
-                    con.Close();
-                    list.Show();
-                }
-                else
-                {
-                    QuerySelect = "Select Description, Cost_Price, Price, Critical_Level from tblItems where (Description LIKE '%' + @desc + '%')";
-                    cmd = new SqlCommand(QuerySelect, con);
-                    cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
-                    adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-
-                    item.Database.Tables["tblItems"].SetDataSource(dt);
-                    list.ItemListViewer.ReportSource = item;
-                    con.Close();
-                    list.Show();
-                }
-                
-            }
-
-            catch (Exception ex)
-            {
-
-            }
+            
         }
 
         private void bunifuLabel3_Click(object sender, EventArgs e)
@@ -120,9 +93,54 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dgvItemList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 1 || e.ColumnIndex == 2)
+            if (e.ColumnIndex == 3 || e.ColumnIndex == 2)
             {
                 e.CellStyle.Format = "N2";
+            }
+        }
+
+        private void btnPrint_Click_1(object sender, EventArgs e)
+        {
+            dt = new DataTable();
+            ItemListReport item = new ItemListReport();
+            frmItemListReport list = new frmItemListReport();
+
+            try
+            {
+
+                con.Open();
+                
+                if (txtSearchItem.Text == "" || txtSearchItem.Text == null)
+                {
+                    QuerySelect = "Select * from ItemMasterlistView ";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    item.Database.Tables["ItemMasterlistView"].SetDataSource(dt);
+                    list.ItemListViewer.ReportSource = item;
+                    con.Close();
+                    list.Show();
+                }
+                else
+                {
+                    QuerySelect = "Select * from ItemMasterlistView  where (Description LIKE '%' + @desc + '%')";
+                    cmd = new SqlCommand(QuerySelect, con);
+                    cmd.Parameters.AddWithValue("@desc", txtSearchItem.Text);
+                    adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    item.Database.Tables["ItemMasterlistView"].SetDataSource(dt);
+                    list.ItemListViewer.ReportSource = item;
+                    con.Close();
+                    list.Show();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+
             }
         }
     }

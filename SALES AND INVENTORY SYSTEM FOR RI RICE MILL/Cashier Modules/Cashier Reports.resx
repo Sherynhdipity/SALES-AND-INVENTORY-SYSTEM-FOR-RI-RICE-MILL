@@ -121,13 +121,13 @@
     <value>#bunifu-label { padding: 0px; font-family: 'Impact'; font-size: 30pt; width: 100%; height: 100%; font-style: normal; font-weight: normal; text-decoration: none; color: rgb(0, 0, 0); text-align: left; }</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnGenerateReport.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPrint.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAmCAYAAAA1HCJjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACPSURBVHhe7dKhAYAwAMAwLtnL8B9n4Dc4AAs1EVG13cYx
-        z3GsBf+Z5zPeW4BvGY+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E
-        8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPhPFIGI+E8UgYj4TxSBiPxDb2eb0F+Mw+rxuxj60tJdoIYgAA
-        AABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAJ4AAAAnCAYAAAD+QPHGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACTSURBVHhe7dKhFYNAFADBK+NTZa5fyqCA5MVjYc2IUWt3
+        zXzO49hfeMv/uXUX4GnGI2E8EsYjYTwSxiNhPBLGI2E8EsYjYTwSxiNhPBLGI2E8EsYjYTwSxiNhPBLG
+        I2E8EsYjYTwSxiNhPBLGI2E8EsYjYTwSxiNhPBLGI2E8EsYjYTwSxiNhPBJrZl93AZ4ys68f7QE3MjDx
+        dPgAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="dtpDate.Icon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

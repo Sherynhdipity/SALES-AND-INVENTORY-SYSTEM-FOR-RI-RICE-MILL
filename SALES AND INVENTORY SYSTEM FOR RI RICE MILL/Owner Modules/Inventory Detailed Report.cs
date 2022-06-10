@@ -49,8 +49,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             int sum2 = 0;
             for (int i = 0; i < dgvInventoryDetailed.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
-                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[5].Value);
+                sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[7].Value);
+                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
             }
 
             lblTotalProfit.Text = sum.ToString();
@@ -73,8 +73,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             int sum2 = 0;
             for (int i = 0; i < dgvInventoryDetailed.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
-                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[5].Value);
+                sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[7].Value);
+                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
             }
 
             lblTotalProfit.Text = sum.ToString();
@@ -98,8 +98,8 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             int sum2 = 0;
             for (int i = 0; i < dgvInventoryDetailed.Rows.Count; i++)
             {
-                sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
-                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[5].Value);
+                sum += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[7].Value);
+                sum2 += Convert.ToInt32(dgvInventoryDetailed.Rows[i].Cells[6].Value);
             }
 
             lblTotalProfit.Text = sum.ToString();
@@ -108,7 +108,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dgvInventoryDetailed_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 2 || e.ColumnIndex == 3)
+            if (e.ColumnIndex == 4 || e.ColumnIndex == 3)
             {
                 e.CellStyle.Format = "N2";
             }

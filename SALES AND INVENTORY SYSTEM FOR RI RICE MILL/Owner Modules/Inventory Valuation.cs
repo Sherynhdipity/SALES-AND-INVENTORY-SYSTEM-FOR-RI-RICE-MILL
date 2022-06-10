@@ -32,7 +32,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void InventoryValuation_Load(object sender, EventArgs e)
         {
            
-            QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView";
+            QuerySelect = "Select Batch_number, Description, Unit, [In Stock], [Original Price], [Selling Price], [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView";
 
             cmd = new SqlCommand(QuerySelect, con);
             cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
@@ -46,7 +46,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             double sum = 0;
             for (int i = 0; i < dgvInventoryValuation.Rows.Count; i++)
             {
-                sum += Convert.ToDouble(dgvInventoryValuation.Rows[i].Cells[7].Value);
+                sum += Convert.ToDouble(dgvInventoryValuation.Rows[i].Cells[8].Value);
             }
 
             lblTotalProfit.Text = sum.ToString("N2");
@@ -56,7 +56,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         {
             try
             {
-                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView where (Batch_number LIKE '%' + @batch + '%') or (Description LIKE '%' + @desc + '%')";
+                QuerySelect = "Select Batch_number, Description, Unit, [In Stock], [Original Price], [Selling Price], [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView where (Batch_number LIKE '%' + @batch + '%') or (Description LIKE '%' + @desc + '%')";
 
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
@@ -70,7 +70,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 float sum = 0;
                 for (int i = 0; i < dgvInventoryValuation.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[7].Value);
+                    sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[8].Value);
                 }
 
                 lblTotalProfit.Text = sum.ToString("N2");
@@ -84,7 +84,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
         private void txtSearchInventory_TextChanged(object sender, EventArgs e)
         {
 
-                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView where (Batch_number LIKE '%' + @batch + '%') OR (Description LIKE '%' + @desc + '%')";
+                QuerySelect = "Select Batch_number, Description, Unit, [In Stock], [Original Price], [Selling Price], [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView where (Batch_number LIKE '%' + @batch + '%') OR (Description LIKE '%' + @desc + '%')";
                 cmd = new SqlCommand(QuerySelect, con);
                 cmd.Parameters.AddWithValue("@batch", txtSearchInventory.Text);
                 cmd.Parameters.AddWithValue("@desc", txtSearchInventory.Text);
@@ -97,7 +97,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                 float sum = 0;
                 for (int i = 0; i < dgvInventoryValuation.Rows.Count; i++)
                 {
-                    sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[7].Value);
+                    sum += Convert.ToInt32(dgvInventoryValuation.Rows[i].Cells[8].Value);
                 }
 
                 lblTotalProfit.Text = sum.ToString("N2");
@@ -108,7 +108,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
         private void dgvInventoryValuation_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 6 || e.ColumnIndex == 7)
+            if (e.ColumnIndex == 8 || e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 6 || e.ColumnIndex == 7)
             {
                 e.CellStyle.Format = "N2";
             }
@@ -123,7 +123,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 
             if (txtSearchInventory.Text == "" || txtSearchInventory.Text == null)
             {
-                QuerySelect = "Select Batch_number, Description, [In Stock], Cost_Price, Price, [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView";
+                QuerySelect = "Select Batch_number, Description, Unit, [In Stock], [Original Price], [Selling Price], [Item Total Cost], [Total Selling Price], [Total Selling Price] - [Item Total Cost] as [Potential Profit]  from InventoryValuationView";
                 cmd = new SqlCommand(QuerySelect, con);
                 adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(dt);

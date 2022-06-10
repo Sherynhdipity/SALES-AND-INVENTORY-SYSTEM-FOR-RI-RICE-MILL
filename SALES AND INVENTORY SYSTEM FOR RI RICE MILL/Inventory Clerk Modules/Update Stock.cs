@@ -20,6 +20,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         private string quantity;
         private string description;
         private string batch_number;
+        private string unit;
         public string Quantity
         {
             get { return quantity; }
@@ -36,6 +37,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             get { return batch_number; }
             set { batch_number = value; }
+        }
+
+        public string Unit
+        {
+            get { return unit; }
+            set { unit = value; }
         }
         public frmUpdateStocks()
         {
@@ -392,11 +399,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Inventory_Clerk_Modules
         {
             con.Close();
             QuerySelect = "Select SKU from tblInventories " +
-                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc) " +
+                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc AND Unit = @unit) " +
                        "AND Batch_number = @batch_num AND status = 'Stock In'";
             cmd = new SqlCommand(QuerySelect, con);
             cmd.Parameters.AddWithValue("@desc", Description);
             cmd.Parameters.AddWithValue("@batch_num", Batch_number);
+            cmd.Parameters.AddWithValue("@unit", Unit);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
             adapter.Fill(dt);

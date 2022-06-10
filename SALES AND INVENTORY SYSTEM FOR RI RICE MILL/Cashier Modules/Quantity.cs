@@ -32,6 +32,7 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         public string temp_code;
         public string product_Code { get; set; }
         public string product_Desc { get; set; }
+        public string unit_measurement { get; set; }
         public string product_Variety { get; set; }
         public string product_Price { get; set; }
 
@@ -63,10 +64,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
         {
             con.Close();
             QuerySelect = "Select SKU from tblInventories " +
-                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc) " +
+                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc AND Unit = @unit) " +
                        "AND Batch_number = @batch_num AND status = 'Stock In'";
             cmd = new SqlCommand(QuerySelect, con);
             cmd.Parameters.AddWithValue("@desc", product_Desc);
+            cmd.Parameters.AddWithValue("@unit", unit_measurement);
             cmd.Parameters.AddWithValue("@batch_num", Batch_number);
             adapter = new SqlDataAdapter(cmd);
             dt = new DataTable();
@@ -95,6 +97,63 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
             dgvSKUList.Refresh();
         }
 
+        public void displayExistingSKUTop()
+        {
+            int quantity = 0;
+            if (txtQty.Text == "")
+            {
+                quantity = 0;
+            }
+            else
+            {
+                quantity = Convert.ToInt32(txtQty.Text);
+            }
+             
+            con.Close();
+            QuerySelect = "Select TOP "+ quantity +" SKU from tblInventories " +
+                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc AND Unit = @unit) " +
+                       "AND Batch_number = @batch_num AND status = 'Stock In'";
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@desc", product_Desc);
+            cmd.Parameters.AddWithValue("@unit", unit_measurement);
+            cmd.Parameters.AddWithValue("@batch_num", Batch_number);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvSKUList.DataSource = dt;
+
+            dgvSKUList.Refresh();
+        }
+
+        public void displayExistingSKUValidatedTop()
+        {
+            int quantity = 0;
+            if (txtQty.Text == "")
+            {
+                quantity = 0;
+            }
+            else
+            {
+                quantity = Convert.ToInt32(txtQty.Text);
+            }
+            string list_sku = String.Join("','", SKULIST.Select(i => i.Replace("'", "''")));
+            // string list_sku = String.Join(",", SKULIST);
+            con.Close();
+            QuerySelect = "Select TOP " + quantity + " SKU from tblInventories " +
+                       "WHERE Item_id = (SELECT Item_id From tblItems WHERE Description = @desc AND Unit = @unit) " +
+                       "AND Batch_number = @batch_num AND SKU NOT IN ('" + list_sku + "') AND status = 'Stock In'";
+            cmd = new SqlCommand(QuerySelect, con);
+            cmd.Parameters.AddWithValue("@desc", product_Desc);
+            cmd.Parameters.AddWithValue("@unit", unit_measurement);
+            cmd.Parameters.AddWithValue("@batch_num", Batch_number);
+            adapter = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            adapter.Fill(dt);
+            dgvSKUList.DataSource = dt;
+
+            dgvSKUList.Refresh();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -102,8 +161,9 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            SKU = new string[dgvSKUList.SelectedRows.Count];
-            
+            //SKU = new string[dgvSKUList.SelectedRows.Count];
+            SKU = new string[dgvSKUList.RowCount];
+
             try
             {
 
@@ -113,14 +173,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
                 }
                 if (txtQty.Text != "0" || txtQty.Text != "")
                 {
-                    int array_index = dgvSKUList.SelectedRows.Count-1; 
-              
-                    foreach(DataGridViewRow row in dgvSKUList.SelectedRows)
-                    {
+                    //int array_index = dgvSKUList.SelectedRows.Count-1; 
 
-                        SKU[array_index] = row.Cells["SKU"].Value.ToString();
+                    //foreach(DataGridViewRow row in dgvSKUList.SelectedRows)
+                    //{
+
+                    //    SKU[array_index] = row.Cells["SKU"].Value.ToString();
+                    //    SKULIST.Add(row.Cells["SKU"].Value.ToString());
+                    //    array_index--;
+                    //}
+                    //Product_Quantity = Convert.ToInt32(txtQty.Text);
+                    //this.Close();
+
+                    int ctr = 0;
+                    foreach (DataGridViewRow row in dgvSKUList.Rows)
+                    {
+                        SKU[ctr] = row.Cells["SKU"].Value.ToString();
                         SKULIST.Add(row.Cells["SKU"].Value.ToString());
-                        array_index--;
+                        ctr++;
+                        //More code here
                     }
                     Product_Quantity = Convert.ToInt32(txtQty.Text);
                     this.Close();
@@ -148,24 +219,25 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void frmPLQuant_Load(object sender, EventArgs e)
         {
-            bool isEmpty = IsEmpty(SKULIST);
-            if (isEmpty)
-            {
-                //MessageBox.Show("List is Empty");
-                SKULIST = new List<string>();
-                displayExistingSKU();
-                txtQty.Enabled = false;
-                dgvSKUList.Rows[0].Cells[0].Selected = false;
-                txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
-            }
-            else
-            {
-                // MessageBox.Show("List contains elements");
-                displayExistingSKUValidated();
-                txtQty.Enabled = false;
-                dgvSKUList.Rows[0].Cells[0].Selected = false;
-                txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
-            }
+            dgvSKUList.Enabled = false;
+            //bool isEmpty = IsEmpty(SKULIST);
+            //if (isEmpty)
+            //{
+            //    //MessageBox.Show("List is Empty");
+            //    SKULIST = new List<string>();
+            //    displayExistingSKU();
+                txtQty.Enabled = true;
+            //    dgvSKUList.Rows[0].Cells[0].Selected = false;
+            //    txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
+            //}
+            //else
+            //{
+            //    // MessageBox.Show("List contains elements");
+            //    displayExistingSKUValidated();
+            //    txtQty.Enabled = true;
+            //    dgvSKUList.Rows[0].Cells[0].Selected = false;
+            //    txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
+            //}
           
         }
 
@@ -181,12 +253,37 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL
 
         private void dgvSKUList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
+           // txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void txtQty_TextChange(object sender, EventArgs e)
+        {
+            
+            bool isEmpty = IsEmpty(SKULIST);
+            if (isEmpty)
+            {
+                //MessageBox.Show("List is Empty");
+                SKULIST = new List<string>();
+                displayExistingSKUTop();
+                dgvSKUList.ClearSelection();
+                // txtQty.Enabled = true;
+                //dgvSKUList.Rows[0].Cells[0].Selected = false;
+                //txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
+            }
+            else
+            {
+                // MessageBox.Show("List contains elements");
+                displayExistingSKUValidatedTop();
+                dgvSKUList.ClearSelection();
+                //txtQty.Enabled = true;
+                //dgvSKUList.Rows[0].Cells[0].Selected = false;
+                //txtQty.Text = dgvSKUList.SelectedRows.Count.ToString();
+            }
         }
     }
 }
