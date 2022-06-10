@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
 {
@@ -161,6 +162,11 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
             date1 = dtpFromDate.Value.Year + "-" + dtpFromDate.Value.Month + "-" + dtpFromDate.Value.Day;
             date2 = dtpToDate.Value.Year + "-" + dtpToDate.Value.Month + "-" + dtpToDate.Value.Day;
             con.Open();
+
+            TextObject DateFrom = (TextObject)ad.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["DateFrom"];
+            DateFrom.Text = dtpFromDate.Value.ToString();
+            TextObject DateTo = (TextObject)ad.ReportDefinition.Sections["PageHeaderSection1"].ReportObjects["DateTo"];
+            DateTo.Text = dtpToDate.Value.ToString();
 
             dt = new DataTable();
             QuerySelect = "SELECT * FROM InventoryAdjustmentView WHERE [Date] BETWEEN '" + date1 + "' AND '" + date2 + "'";

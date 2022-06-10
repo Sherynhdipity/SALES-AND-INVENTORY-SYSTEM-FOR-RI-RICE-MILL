@@ -128,12 +128,12 @@ namespace SALES_AND_INVENTORY_SYSTEM_FOR_RI_RICE_MILL.Owner_Modules
                     {
                         con.Close();
                         con.Open();
-                        QueryUpdate = "UPDATE tblItems SET Description = @desc, Unit = @unit,Critical_level = @crit WHERE Item_id = '" + id + "'";
+                        QueryUpdate = "UPDATE tblItems SET Description = @desc, Unit = @unit,Critical_Level = @crit WHERE Item_id = '" + id + "'";
 
                         cmd = new SqlCommand(QueryUpdate, con);
 
                         cmd.Parameters.AddWithValue("@desc", txtDescription.Text);
-                        cmd.Parameters.AddWithValue("@unit", cmbUnit.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@unit", cmbUnit.SelectedItem);
                         cmd.Parameters.AddWithValue("@crit", txtCriticalLevel.Text);
 
                         cmd.ExecuteNonQuery();
